@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Article Navigation — Spacecraft I&T Series</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:    #1a1814;
+    --paper:  #f5f0e8;
+    --cream:  #ede7d5;
+    --rust:   #b84a2e;
+    --gold:   #c89a3a;
+    --steel:  #4a6274;
+    --muted:  #6b6459;
+    --rule:   #c8bfae;
+    --white:  #ffffff;
+    --green:  #2e7d52;
+    --teal:   #1e6a5a;
+    --violet: #5a3a7a;
+    --amber:  #b87420;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.78;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+  }
+
+  /* ── CARD ── */
+  .nav-card {
+    width: 100%;
+    max-width: 640px;
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-top: 4px solid var(--gold);
+    box-shadow: 0 8px 40px rgba(26,24,20,0.12);
+  }
+
+  .nav-card-header {
+    background: var(--ink);
+    padding: 24px 28px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .nav-card-header::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      -45deg, transparent, transparent 28px,
+      rgba(200,154,58,0.04) 28px, rgba(200,154,58,0.04) 29px
+    );
+    pointer-events: none;
+  }
+  .nav-card-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 8px; position: relative; z-index: 1;
+  }
+  .nav-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; font-weight: 700; line-height: 1.2;
+    color: var(--paper); position: relative; z-index: 1;
+  }
+  .nav-card-sub {
+    font-size: 0.85rem; font-style: italic; font-weight: 300;
+    color: rgba(240,235,220,0.5); margin-top: 6px;
+    position: relative; z-index: 1;
+  }
+
+  .nav-card-body { padding: 24px 28px 28px; }
+
+  /* ── DROPDOWN ── */
+  .dropdown-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--muted);
+    margin-bottom: 8px; display: block;
+  }
+
+  .select-wrapper {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  .select-wrapper::after {
+    content: '▾';
+    position: absolute; right: 14px; top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px; color: var(--gold);
+    pointer-events: none;
+  }
+
+  select {
+    width: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+    background: var(--cream);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--steel);
+    padding: 12px 40px 12px 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.06em;
+    color: var(--ink);
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  select:hover  { border-color: var(--gold); background: var(--paper); }
+  select:focus  { border-color: var(--gold); border-left-color: var(--rust); background: var(--white); }
+
+  optgroup {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: var(--white);
+    font-style: normal;
+  }
+  option {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink);
+    background: var(--white);
+    padding: 4px 0;
+  }
+
+  /* ── PREVIEW PANEL ── */
+  .preview-panel {
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--rust);
+    background: var(--cream);
+    padding: 16px 18px;
+    min-height: 88px;
+    margin-bottom: 20px;
+    transition: border-left-color 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .preview-panel.active { border-left-color: var(--gold); }
+
+  .preview-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--rust);
+    margin-bottom: 5px;
+  }
+  .preview-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem; font-weight: 700; color: var(--ink);
+    line-height: 1.3; margin-bottom: 5px;
+  }
+  .preview-desc {
+    font-size: 0.82rem; font-style: italic; font-weight: 300;
+    color: var(--muted); line-height: 1.55;
+  }
+  .preview-empty {
+    font-size: 0.85rem; font-style: italic;
+    color: var(--muted); text-align: center;
+  }
+
+  /* ── GO BUTTON ── */
+  .go-btn {
+    display: block; width: 100%;
+    background: var(--ink); color: var(--paper);
+    border: none; padding: 13px 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.2em;
+    text-transform: uppercase; cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    position: relative; overflow: hidden;
+  }
+  .go-btn::after {
+    content: ' →';
+    display: inline-block;
+    transition: transform 0.2s;
+  }
+  .go-btn:hover { background: var(--rust); }
+  .go-btn:hover::after { transform: translateX(4px); }
+  .go-btn:disabled {
+    background: var(--rule);
+    color: var(--muted);
+    cursor: default;
+  }
+  .go-btn:disabled::after { content: ''; }
+
+  /* ── ARTICLE COUNT STRIP ── */
+  .count-strip {
+    display: flex;
+    border-top: 1px solid var(--rule);
+    background: var(--ink);
+  }
+  .count-cell {
+    flex: 1;
+    padding: 10px 8px;
+    text-align: center;
+    border-right: 1px solid rgba(200,191,174,0.15);
+  }
+  .count-cell:last-child { border-right: none; }
+  .count-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 700; color: var(--gold);
+    display: block; line-height: 1.1;
+  }
+  .count-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: rgba(200,191,174,0.5);
+    display: block; margin-top: 2px;
+  }
+</style>
+</head>
+<body>
+
+<div class="nav-card">
+
+  <div class="nav-card-header">
+    <div class="nav-card-eyebrow">Spacecraft Engineering Series</div>
+    <div class="nav-card-title">Integration &amp; Test<br>Article Navigator</div>
+    <div class="nav-card-sub">Charles Chidekel · Integration &amp; Test Guru · 40 Years of I&amp;T Experience</div>
+  </div>
+
+  <div class="nav-card-body">
+
+    <span class="dropdown-label">Select an article</span>
+
+    <div class="select-wrapper">
+      <select id="articleSelect" onchange="updatePreview(this)">
+        <option value="" data-title="" data-num="" data-desc="">— Choose an article —</option>
+
+        <optgroup label="── Module 1 — Foundations ──────────────────">
+          <option value="spacecraft_iat_intro.html"
+                  data-num="Article 01 of 17 · Introduction"
+                  data-title="Introduction to Spacecraft Integration &amp; Test"
+                  data-desc="Why I&amp;T exists, what it costs when it fails, and the philosophy that underpins every test campaign from components to launch.">
+            01 · Introduction to Spacecraft I&amp;T
+          </option>
+          <option value="spacecraft_iat_article01.html"
+                  data-num="Article 02 of 17"
+                  data-title="The I&amp;T Programme — Structure, Documents, and Reviews"
+                  data-desc="Integration levels, programme phases, governing documents, technical reviews, and the I&amp;T plan that orchestrates the campaign.">
+            02 · I&amp;T Programme Structure
+          </option>
+          <option value="spacecraft_iat_article11.html"
+                  data-num="Article 03 of 17"
+                  data-title="Configuration Management and the As-Built Record"
+                  data-desc="How a programme tracks exactly what it has built, controls every change, and arrives at launch knowing precisely what is aboard the spacecraft.">
+            03 · Configuration Management
+          </option>
+          <option value="spacecraft_iat_article16.html"
+                  data-num="Article 04 of 17"
+                  data-title="Quality Assurance — The Engineering Discipline of Trust"
+                  data-desc="QA roles, inspection types, technician certification, stop-work authority, and why quality culture determines the outcome before the first hardware arrives.">
+            04 · Quality Assurance
+          </option>
+        </optgroup>
+
+        <optgroup label="── Module 2 — The Work Environment ────────────">
+          <option value="spacecraft_iat_article02.html"
+                  data-num="Article 05 of 17"
+                  data-title="The Controlled Environment — Cleanrooms, Contamination, and ESD"
+                  data-desc="ISO 14644-1 classification, molecular contamination, the nine-step gowning protocol, and the four threats every technician must control.">
+            05 · Cleanrooms &amp; Contamination Control
+          </option>
+          <option value="spacecraft_iat_article10.html"
+                  data-num="Article 06 of 17"
+                  data-title="Electrical Ground Support Equipment and the Test Harness"
+                  data-desc="EGSE categories, test harness design, ground loop problems, simulator fidelity, and why EGSE failures are responsible for over half of early I&amp;T anomalies.">
+            06 · EGSE &amp; Test Harness
+          </option>
+        </optgroup>
+
+        <optgroup label="── Module 3 — Functional Testing ───────────────">
+          <option value="spacecraft_iat_article03.html"
+                  data-num="Article 07 of 17"
+                  data-title="Functional Testing — Verifying What the Spacecraft Does"
+                  data-desc="TAYF principle, requirement traceability, six test types, seven spacecraft operating modes, and the seven formal test campaigns from unit to system level.">
+            07 · Functional Testing
+          </option>
+          <option value="spacecraft_iat_article09.html"
+                  data-num="Article 08 of 17"
+                  data-title="Flight Software Verification and Validation"
+                  data-desc="V&amp;V hierarchy, hardware-in-the-loop testing, fault protection, DO-178C, FSW build and release process, and what the I&amp;T engineer must know about flight software.">
+            08 · Flight Software V&amp;V
+          </option>
+        </optgroup>
+
+        <optgroup label="── Module 4 — Structural &amp; Mechanical Verification ──">
+          <option value="spacecraft_iat_article14.html"
+                  data-num="Article 09 of 17"
+                  data-title="Mass Properties, Structural Analysis, and Load Verification"
+                  data-desc="Mass measurement, centre-of-mass consequences, moments of inertia, FEM role and limits, modal survey testing, and coupled loads analysis.">
+            09 · Mass Properties &amp; Structural Loads
+          </option>
+          <option value="spacecraft_iat_article04.html"
+                  data-num="Article 10 of 17"
+                  data-title="Environmental Testing — Vibration, Acoustics, and Shock"
+                  data-desc="Launch event timeline, qualification vs. acceptance, sine and random vibration, acoustic testing, shock and SRS, notching, and force limiting.">
+            10 · Vibration, Acoustics &amp; Shock
+          </option>
+          <option value="spacecraft_iat_article05.html"
+                  data-num="Article 11 of 17"
+                  data-title="Thermal-Vacuum and Thermal Balance Testing"
+                  data-desc="Space thermal environment, T-V test objectives, chamber systems, thermal balance testing, thermal cycling, and the eight-phase T-V campaign sequence.">
+            11 · Thermal-Vacuum Testing
+          </option>
+        </optgroup>
+
+        <optgroup label="── Module 5 — Specialist Systems ──────────────">
+          <option value="spacecraft_iat_article12.html"
+                  data-num="Article 12 of 17"
+                  data-title="Electromagnetic Compatibility Testing"
+                  data-desc="Three coupling paths, MIL-STD-461, the EMC test campaign, conducted and radiated emissions, bonding and grounding, and intra-system interference diagnosis.">
+            12 · EMC Testing
+          </option>
+          <option value="spacecraft_iat_article07.html"
+                  data-num="Article 13 of 17"
+                  data-title="Science Instrument Integration and Calibration"
+                  data-desc="Four instrument classes, PI instrument model, five-phase delivery framework, five-level calibration traceability chain, and on-orbit calibration strategy.">
+            13 · Instrument Integration &amp; Calibration
+          </option>
+          <option value="spacecraft_iat_article13.html"
+                  data-num="Article 14 of 17"
+                  data-title="Propulsion System Test and Verification"
+                  data-desc="Hazardous operations framework, component-level testing, leak verification, propellant loading, TAYF boundary analysis, and historical propulsion failures.">
+            14 · Propulsion Testing
+          </option>
+        </optgroup>
+
+        <optgroup label="── Module 6 — Anomaly Management ─────────────">
+          <option value="spacecraft_iat_article06.html"
+                  data-num="Article 15 of 17"
+                  data-title="Anomaly Management — From Discrepancy Report to Root Cause"
+                  data-desc="DR anatomy and lifecycle, severity matrix, root cause analysis, DR Board, waivers vs. deviations, normalisation of deviance, and historical lessons.">
+            15 · Anomaly Management
+          </option>
+        </optgroup>
+
+        <optgroup label="── Module 7 — Launch Readiness ─────────────────">
+          <option value="spacecraft_iat_article15.html"
+                  data-num="Article 16 of 17"
+                  data-title="Launch Vehicle Integration — The Spacecraft's Perspective"
+                  data-desc="Payload User's Guide, ICD domains, clamp band separation, CLA obligations, Payload Acceptance Review, launch site integration sequence, and encapsulation.">
+            16 · Launch Vehicle Integration
+          </option>
+          <option value="spacecraft_iat_article08.html"
+                  data-num="Article 17 of 17 · Final Article"
+                  data-title="Launch Readiness — From Pre-Ship Review to On-Orbit Commissioning"
+                  data-desc="Five dimensions of launch readiness, review hierarchy, LRR structure, go/no-go poll, launch site countdown, separation and initial acquisition, commissioning phases.">
+            17 · Launch Readiness &amp; Commissioning ✦
+          </option>
+        </optgroup>
+
+        <optgroup label="── Supplementary ────────────────────────────">
+          <option value="spacecraft_iat_smallsat.html"
+                  data-num="Supplementary · Small Satellites"
+                  data-title="Small Satellites and the Limits of the Test Pyramid"
+                  data-desc="Which I&amp;T principles scale down faithfully, which ones break, what the industry has learned from failures, and the five non-negotiables for any smallsat programme.">
+            Supp · Small Satellites &amp; Test Compression
+          </option>
+          <option value="spacecraft_iat_case_studies.html"
+                  data-num="Supplementary · Case Studies"
+                  data-title="Case Studies — Nine Missions That Changed How We Test"
+                  data-desc="Mars Climate Orbiter, Apollo 1, Challenger, Mars Observer, Columbia, Hubble, JWST, Solar Array Acoustic Failure, and Mars Polar Lander.">
+            Supp · Case Studies
+          </option>
+        </optgroup>
+      </select>
+    </div>
+
+    <div class="preview-panel" id="previewPanel">
+      <div class="preview-empty">Select an article above to see a preview</div>
+    </div>
+
+    <button class="go-btn" id="goBtn" disabled onclick="goToArticle()">
+      Open Article
+    </button>
+
+  </div>
+
+  <div class="count-strip">
+    <div class="count-cell">
+      <span class="count-num">17</span>
+      <span class="count-label">Articles</span>
+    </div>
+    <div class="count-cell">
+      <span class="count-num">7</span>
+      <span class="count-label">Modules</span>
+    </div>
+    <div class="count-cell">
+      <span class="count-num">2</span>
+      <span class="count-label">Supplementary</span>
+    </div>
+    <div class="count-cell">
+      <span class="count-num">40yr</span>
+      <span class="count-label">Experience</span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const articles = {};
+  document.querySelectorAll('select option[value]').forEach(opt => {
+    if (opt.value) {
+      articles[opt.value] = {
+        num:   opt.dataset.num,
+        title: opt.dataset.title,
+        desc:  opt.dataset.desc
+      };
+    }
+  });
+
+  function updatePreview(sel) {
+    const panel = document.getElementById('previewPanel');
+    const btn   = document.getElementById('goBtn');
+    const val   = sel.value;
+    const data  = articles[val];
+
+    if (!val || !data) {
+      panel.classList.remove('active');
+      panel.innerHTML = '<div class="preview-empty">Select an article above to see a preview</div>';
+      btn.disabled = true;
+      return;
+    }
+
+    panel.classList.add('active');
+    panel.innerHTML = `
+      <div class="preview-num">${data.num}</div>
+      <div class="preview-title">${data.title}</div>
+      <div class="preview-desc">${data.desc}</div>
+    `;
+    btn.disabled = false;
+  }
+
+  function goToArticle() {
+    const val = document.getElementById('articleSelect').value;
+    if (val) window.location.href = val;
+  }
+</script>
+
+</body>
+</html>
