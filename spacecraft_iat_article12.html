@@ -1,0 +1,281 @@
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://raw.githubusercontent.com/cchidekel-gif/spacecraft-iat-styles/refs/heads/main/styles.css">
+
+<div class="masthead">
+  <span class="masthead-series">Spacecraft Engineering Series · Integration &amp; Test</span>
+  <span class="masthead-right">Article 12 of 17</span>
+</div>
+
+<div class="series-nav">
+  <span>Series:</span>
+  <span class="sep">·</span>
+  <span>Intro</span>
+  <span class="sep">·</span>
+  <span>01</span>
+  <span class="sep">·</span>
+  <span>02</span>
+  <span class="sep">·</span>
+  <span>03</span>
+  <span class="sep">·</span>
+  <span>04</span>
+  <span class="sep">·</span>
+  <span>05</span>
+  <span class="sep">·</span>
+  <span>06</span>
+  <span class="sep">·</span>
+  <span>07</span>
+  <span class="sep">·</span>
+  <span>08</span>
+  <span class="sep">·</span>
+  <span>09</span>
+  <span class="sep">·</span>
+  <span>10</span>
+  <span class="sep">·</span>
+  <span class="current">11</span>
+  <span class="sep">·</span>
+  <span>12</span>
+  <span class="sep">·</span>
+  <span>13</span>
+  <span class="sep">·</span>
+  <span>14</span>
+  <span class="sep">·</span>
+  <span>15</span>
+  <span class="sep">·</span>
+  <span>16</span>
+</div>
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Spacecraft Integration &amp; Test · Article 12 of 17</div>
+    <h1>Electromagnetic<br>Compatibility Testing</h1>
+    <p class="hero-sub">The discipline of ensuring that no part of the spacecraft interferes with any other part — and that the spacecraft as a whole can survive the electromagnetic environments it will encounter from launch through the end of mission.</p>
+    <div class="byline">
+      <div class="byline-avatar">📡</div>
+      <div>
+        <div class="byline-name">Charles Chidekel</div>
+        <div class="byline-title">Integration &amp; Test Guru · 40 Years of I&amp;T Experience</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+<article class="article-body">
+
+  <div class="toc-wrap">
+    <div class="toc-label">In This Article</div>
+    <ul class="toc-list">
+      <li><a href="#s1"><span>1. What EMC Is and Why It Is an I&T Discipline</span><span class="toc-num">§1</span></a></li>
+      <li><a href="#s2"><span>2. The Three Coupling Paths</span><span class="toc-num">§2</span></a></li>
+      <li><a href="#s3"><span>3. EMC Requirements and the Relevant Standards</span><span class="toc-num">§3</span></a></li>
+      <li><a href="#s4"><span>4. The EMC Test Campaign — Structure and Sequence</span><span class="toc-num">§4</span></a></li>
+      <li><a href="#s5"><span>5. Conducted Emissions and Susceptibility</span><span class="toc-num">§5</span></a></li>
+      <li><a href="#s6"><span>6. Radiated Emissions and Susceptibility</span><span class="toc-num">§6</span></a></li>
+      <li><a href="#s7"><span>7. The Bonding and Grounding Network</span><span class="toc-num">§7</span></a></li>
+      <li><a href="#s8"><span>8. Intra-System Interference — The Internal EMC Problem</span><span class="toc-num">§8</span></a></li>
+      <li><a href="#s9"><span>9. EMC at the System Level — The Integrated Spacecraft Test</span><span class="toc-num">§9</span></a></li>
+      <li><a href="#s10"><span>10. EMC Anomalies — Diagnosis and Resolution</span><span class="toc-num">§10</span></a></li>
+      <li><a href="#s11"><span>11. Limitations and the On-Orbit EMC Environment</span><span class="toc-num">§11</span></a></li>
+      <li><a href="#glossary"><span>Key Terms Glossary</span><span class="toc-num">GL</span></a></li>
+    </ul>
+  </div>
+
+  <p class="lead">A spacecraft is a collection of radio transmitters, switching power supplies, digital processors, precision analog sensors, and high-gain antennas, all packaged together in a volume that would fit inside a small room, connected by kilometres of wire harness, and expected to operate without mutual interference across a mission lifetime of years. Electromagnetic compatibility — ensuring that all of these systems can coexist without corrupting each other's signals, triggering each other's fault protection, or being disabled by external electromagnetic sources — is one of the most technically complex disciplines in the I&T programme and one of the least visible to engineers outside the EMC specialty.</p>
+
+  <p>EMC testing is not simply a regulatory compliance exercise. It is a programme of verification that the spacecraft's electromagnetic environment — the distribution of electric and magnetic fields, conducted currents, and radiated power across the spacecraft — is within the limits that each subsystem can tolerate while performing its specified function. When the EMC test programme discovers an interference problem on the ground, it is giving the programme the opportunity to understand and resolve it before launch. Interference problems discovered on orbit are far more difficult, and sometimes impossible, to resolve.</p>
+
+  <div class="pull-quote">
+    <p>"EMC problems are invisible. You cannot see them in the cleanroom. You cannot feel them during handling. They manifest as anomalous telemetry readings, as spurious commanding events, as degraded science data, as attitude control upsets — and the connection between the symptom and the electromagnetic root cause can take weeks to establish even with the full test facility available. Find them on the ground."</p>
+  </div>
+
+  <!-- S1 -->
+  <h2 class="sh" id="s1">1. What EMC Is and Why It Is an I&T Discipline</h2>
+  <p><span class="kt">Electromagnetic compatibility (EMC)</span> is the condition in which a system operates as intended in its electromagnetic environment without introducing intolerable electromagnetic disturbance to anything in that environment. For a spacecraft, the electromagnetic environment has two components: the internal environment — the fields and currents generated by the spacecraft's own subsystems — and the external environment — the fields generated by the launch vehicle, the launch site, and eventually the space environment itself including solar radio bursts, magnetospheric effects, and charged particle precipitation.</p>
+  <p>EMC is an I&T discipline rather than solely a design discipline because interference phenomena are inherently systemic: they emerge from the interaction of multiple subsystems in their actual integrated configuration, with actual wiring lengths, actual grounding paths, and actual proximity relationships. An EMC analysis performed at the design stage can identify likely interference mechanisms and inform design decisions, but it cannot replace the measurement of the actual integrated system. Interference that was not predicted by the analysis — because of a modelling simplification, a grounding assumption that was not implemented as designed, or a coupling path that was not in the model — is discovered only by testing.</p>
+
+  <!-- S2 -->
+  <h2 class="sh" id="s2">2. The Three Coupling Paths</h2>
+  <p>Every electromagnetic interference problem has the same three elements: a source that generates electromagnetic energy, a coupling path through which that energy is transferred, and a receptor that is affected by the transferred energy. EMC engineering addresses all three — reducing the source's emissions, disrupting the coupling path, and increasing the receptor's immunity — but in practice the coupling path is the most accessible target during I&T, because it is determined by the harness routing, the grounding architecture, and the shielding implementation that are finalised during integration.</p>
+
+  <div class="int-grid">
+    <div class="int-card">
+      <div class="int-header"><span class="int-icon">⚡</span><div class="int-title">Conducted — Common Impedance</div></div>
+      <div class="int-body"><p>Two subsystems share a common return path — a wire, a chassis section, a connector shell — and one subsystem's current flow through that shared impedance creates a voltage that is seen by the other subsystem as a signal. Power switching transients, digital bus currents, and motor drive currents are the most common sources. The mitigation is single-point grounding and low-impedance return paths that minimise shared impedance.</p></div>
+    </div>
+    <div class="int-card">
+      <div class="int-header"><span class="int-icon">🔁</span><div class="int-title">Conducted — Inductive/Capacitive</div></div>
+      <div class="int-body"><p>Two conductors in close proximity — adjacent wires in a harness bundle, a signal wire running parallel to a power wire — exchange energy through mutual inductance (magnetic coupling) or parasitic capacitance (electric coupling). High-frequency switching signals are particularly effective inductive sources. The mitigation is separation of signal and power wiring, twisted-pair routing for sensitive signals, and careful harness design that minimises the area of coupling loops.</p></div>
+    </div>
+    <div class="int-card">
+      <div class="int-header"><span class="int-icon">📻</span><div class="int-title">Radiated — Far Field</div></div>
+      <div class="int-body"><p>A subsystem radiates electromagnetic energy into the space around it, and another subsystem receives that energy through its antenna, sensor aperture, or wiring acting as an unintentional receive antenna. RF transmitters are the most powerful radiated sources aboard a spacecraft, but switching power supplies, digital clocks, and motor drives also radiate at levels that can affect sensitive receivers and instruments. The mitigation is shielding, spatial separation, and directional antenna design.</p></div>
+    </div>
+    <div class="int-card">
+      <div class="int-header"><span class="int-icon">🧲</span><div class="int-title">Radiated — Near Field / Magnetic</div></div>
+      <div class="int-body"><p>High-current loops — power distribution wiring, reaction wheel motor windings, battery charge/discharge circuits — generate magnetic fields that diminish rapidly with distance but can affect magnetically sensitive instruments and attitude sensors at close range. Magnetometers and magnetic attitude sensors are especially vulnerable. The mitigation is twisted-pair wiring (which cancels the magnetic field of the current loop), magnetic shielding, and physical separation between high-current sources and sensitive sensors.</p></div>
+    </div>
+  </div>
+
+  <!-- S3 -->
+  <h2 class="sh" id="s3">3. EMC Requirements and the Relevant Standards</h2>
+  <p>Spacecraft EMC requirements are defined in the programme's EMC control plan and in the subsystem-level EMC specifications, derived from the system-level electromagnetic environment requirements. The primary governing standards in the US government space sector are <span class="kt">MIL-STD-461</span> (Requirements for the Control of Electromagnetic Interference Characteristics of Subsystems and Equipment) and its companion test method standard MIL-STD-462. NASA programmes typically use MIL-STD-461 as the baseline and tailor it for specific mission requirements. ESA programmes use the ECSS-E-ST-20-07 standard.</p>
+  <p>The requirements address both emissions — the electromagnetic energy a subsystem puts into its environment — and susceptibility — the electromagnetic energy a subsystem can tolerate from its environment without functional degradation. Every subsystem must meet both types of requirement: its emissions must be below the levels that would affect other subsystems, and its susceptibility threshold must be above the levels it will be exposed to from other subsystems and from external sources.</p>
+
+  <div class="callout steel">
+    <div class="callout-label">⚙ Tailoring — The Most Important EMC Decision</div>
+    <p>MIL-STD-461 is a general standard written to cover a wide range of military platforms — aircraft, ships, vehicles, ground equipment — not specifically spacecraft. Its requirements are conservative for some spacecraft applications and insufficient for others. The process of adapting the standard to the specific needs of a spacecraft programme — tailoring — is the most consequential EMC engineering decision the programme makes.</p>
+    <p>Tailoring too aggressively — relaxing requirements beyond what the analysis supports — creates the risk of undetected interference at the system level. Tailoring too conservatively — requiring unnecessary test levels or margins — creates unreasonable cost and schedule burden without corresponding benefit. Good tailoring requires understanding both the spacecraft's internal electromagnetic environment (what levels each subsystem will actually be exposed to) and the external environment (what the launch vehicle, launch site, and space environment will impose). A programme that adopts MIL-STD-461 without tailoring it to its specific application is not performing EMC engineering — it is performing EMC compliance documentation.</p>
+  </div>
+
+  <!-- S4 -->
+  <h2 class="sh" id="s4">4. The EMC Test Campaign — Structure and Sequence</h2>
+  <p>The spacecraft EMC test campaign follows the same hierarchical structure as the overall I&T programme: testing progresses from lower assembly levels to higher, with each level building on and complementing the tests performed at the level below. Component and unit-level EMC testing establishes the baseline performance of individual subsystems. System-level testing verifies the compatibility of the assembled spacecraft in its actual integrated configuration.</p>
+
+  <table class="emc-table">
+    <thead><tr><th>Test Type</th><th>Full Name</th><th>What It Measures</th><th>Primary Concern for Spacecraft</th></tr></thead>
+    <tbody>
+      <tr><td>CE</td><td>Conducted Emissions</td><td>Electromagnetic energy conducted from the unit under test back onto its power input and signal lines</td><td>Switching power supply harmonics corrupting the spacecraft power bus; digital noise coupling into analog signal circuits through shared power returns</td></tr>
+      <tr><td>CS</td><td>Conducted Susceptibility</td><td>The unit's sensitivity to electromagnetic energy injected onto its power and signal lines from external sources</td><td>Power bus transients from other subsystems causing resets or data errors; signal line noise causing spurious commands or sensor output corruption</td></tr>
+      <tr><td>RE</td><td>Radiated Emissions</td><td>Electromagnetic energy radiated from the unit's enclosure and cables into the surrounding space</td><td>Digital processor clock harmonics reaching the science instrument band; reaction wheel drive electronics radiating into the RF receive band</td></tr>
+      <tr><td>RS</td><td>Radiated Susceptibility</td><td>The unit's sensitivity to electromagnetic energy radiated at it from external sources</td><td>RF transmitter near-field effects on sensitive sensors; solar radio burst effects on uplink receiver; launch vehicle RF environment during ascent</td></tr>
+      <tr><td>MF</td><td>Magnetic Field Emissions</td><td>DC and low-frequency magnetic fields generated by the unit's internal currents and materials</td><td>Permanent magnets in mechanisms; battery current loops; reaction wheel motor DC fields affecting magnetometer readings and attitude determination</td></tr>
+      <tr><td>ESD</td><td>Electrostatic Discharge</td><td>The unit's response to electrostatic discharge events — both the direct ESD pulse and the RF energy it radiates</td><td>Charging of spacecraft surfaces in the space plasma environment; launch site handling-induced ESD events during final assembly</td></tr>
+    </tbody>
+  </table>
+
+  <!-- S5 -->
+  <h2 class="sh" id="s5">5. Conducted Emissions and Susceptibility</h2>
+  <p>Conducted emissions and susceptibility testing is performed at the unit level and at the system level, using standardised measurement setups defined in MIL-STD-461/462. The unit is powered through a <span class="kt">Line Impedance Stabilisation Network (LISN)</span> — a passive network that presents a defined, reproducible source impedance to the unit under test, isolating the measurement from the impedance variations of the actual power source. Conducted emissions are measured as the voltage across the LISN at specified frequencies; conducted susceptibility is tested by injecting specified current levels onto the power and signal lines and observing whether the unit's performance is degraded.</p>
+  <p>The most common conducted emissions failures in spacecraft are from switching power supply harmonics. Every DC-DC converter, battery charge controller, and motor drive aboard the spacecraft generates switching noise at its fundamental switching frequency and at harmonics thereof. If these harmonics are not adequately filtered before they reach the power bus, they propagate throughout the spacecraft and couple into any subsystem sharing the bus. The remedy — low-pass filtering at the converter output, combined with the LISN's impedance stabilisation — is well understood, but its implementation must be verified by measurement, not assumed from the design.</p>
+
+  <!-- S6 -->
+  <h2 class="sh" id="s6">6. Radiated Emissions and Susceptibility</h2>
+  <p>Radiated emissions and susceptibility testing requires a controlled electromagnetic environment — either a shielded room (Faraday cage) that excludes external RF sources, or an anechoic chamber that additionally absorbs internal reflections for more accurate antenna pattern and field-strength measurements. The spacecraft or unit under test is placed at a defined distance from calibrated measurement antennas, and the radiated field levels are measured across the frequency range of interest — typically from 30 Hz to 18 GHz or higher for spacecraft applications.</p>
+  <p>For science missions carrying sensitive receivers or detectors, the radiated emissions requirements are often more stringent than the MIL-STD-461 baseline — because the instrument's sensitivity may be substantially better than the susceptibility of a typical military system. A radio astronomy instrument that can detect astronomical sources at microjansky power levels will be exquisitely sensitive to any locally generated RF noise in its observing band. The EMC control plan for such a mission must define specific quiet zones — frequency ranges and times during which specific subsystems are prohibited from operating — and the radiated emissions testing must verify that the quiet zone is actually clean when only the permitted subsystems are operating.</p>
+
+  <div class="callout amber">
+    <div class="callout-label">◆ The Science Band Quiet Zone</div>
+    <p>One of the most demanding EMC requirements for science spacecraft is the protection of the science instrument's operating frequency band from internally generated interference. For a microwave radiometer, a radio receiver, or a spectroscopic instrument operating in a specific frequency band, even very low levels of internally generated noise can corrupt measurements — because the instrument is designed to detect extraordinarily faint external signals, and any internal noise floor that is not well below the science requirement will appear in the data as a systematic error or as periodic interference spikes.</p>
+    <p>Meeting this requirement imposes constraints on every other subsystem: the spacecraft's digital processors must use clock frequencies whose harmonics do not fall in the science band; the RF communications system must be designed so that its transmitter output cannot couple into the science receiver; the thermal control system's heater switching must not produce broadband emissions in the science band. Verifying that all of these constraints are met requires a system-level EMC test with the science instrument powered and in its operating mode — a test that can only be performed with a fully integrated spacecraft.</p>
+  </div>
+
+  <!-- S7 -->
+  <h2 class="sh" id="s7">7. The Bonding and Grounding Network</h2>
+  <p>The spacecraft's electrical bonding and grounding network — the system of intentional metallic connections that establishes a common reference potential for all circuits and provides controlled current return paths — is the foundation of the spacecraft's EMC design. It determines the impedance of every common return path, the effectiveness of every shield, and the magnitude of ground loop currents. It is also one of the most difficult aspects of the spacecraft's design to verify, because its performance depends not on a few discrete components but on the quality of hundreds of individual bond connections distributed throughout the structure.</p>
+  <p>A <span class="kt">bonding</span> connection — a mechanical connection between two metallic elements intended to provide a low-impedance electrical path — must be made to defined resistance specifications. The typical requirement for a structural bond is less than 2.5 milliohms DC resistance, measured between the two elements. This sounds trivial until you consider that a bond made through a painted or anodized surface, through a corroded fastener interface, or through a thin electroless plating layer may have a resistance of tens or hundreds of milliohms — ten to a hundred times the specification. Bond resistance measurements must be performed on every bonded joint in the spacecraft's grounding network during I&T, using a four-wire milliohm measurement technique that eliminates the contribution of the test lead resistance from the measurement.</p>
+
+  <!-- S8 -->
+  <h2 class="sh" id="s8">8. Intra-System Interference — The Internal EMC Problem</h2>
+  <p>The most consequential EMC verification activity for most spacecraft programmes is not the MIL-STD-461 unit-level test campaign — it is the system-level intra-system interference test: the test that verifies, with the complete integrated spacecraft operating in its flight configuration, that no subsystem interferes with any other subsystem at a level that degrades mission performance.</p>
+  <p>The intra-system interference test is structured around the spacecraft's margin budget for each susceptible function. For each sensitive receiver, sensor, or circuit aboard the spacecraft, the programme defines a <span class="kt">susceptibility threshold</span> — the level of electromagnetic energy at which the function begins to degrade — and a <span class="kt">compatibility margin</span> — the required difference between the predicted worst-case interference level and the susceptibility threshold. Typically 6 dB is the minimum acceptable margin; some programmes require 10 dB or more for functions critical to mission success.</p>
+  <p>The test proceeds by operating each potential interference source — one at a time and in combinations representing likely operational modes — while monitoring each susceptible function for degradation. Any degradation observed is an interference finding requiring investigation. The investigation determines the coupling path, the source power level, and the receptor susceptibility level, and calculates the margin. If the margin is negative — the interference level exceeds the susceptibility threshold — a fix is required before launch.</p>
+
+  <!-- S9 -->
+  <h2 class="sh" id="s9">9. EMC at the System Level — The Integrated Spacecraft Test</h2>
+  <p>The system-level EMC test is typically conducted in a shielded facility with the spacecraft in its flight configuration — all harnesses installed as they will be in flight, all subsystems powered and operating in the modes they will use on orbit, and the spacecraft mechanically configured as close to its launch configuration as the test facility permits. Measurements are taken of the radiated emissions from the integrated spacecraft to confirm that the system-level emissions are consistent with the sum of the unit-level measurements, and that no new coupling paths have emerged in the integrated configuration that were not predicted from unit-level data.</p>
+  <p>New coupling paths in the integrated configuration are a routine discovery at the system level. They arise because the actual harness routing — which may have been modified from the design routing to accommodate integration constraints, connector accessibility, or thermal blanket clearances — creates new inductive coupling loops or new common impedance paths that were not in the unit-level model. Every system-level EMC test should be approached with the expectation that some new findings will be made, and the test plan should provide adequate time for investigation and remediation before the test must be completed.</p>
+
+  <div class="stat-strip">
+    <div class="stat-cell"><span class="stat-num">30 Hz</span><p>Lowest frequency typically tested in a spacecraft EMC campaign — covering magnetic field and power bus frequency content</p></div>
+    <div class="stat-cell"><span class="stat-num">18+ GHz</span><p>Upper frequency limit for radiated emissions testing on spacecraft with Ka-band or higher-frequency communication systems</p></div>
+    <div class="stat-cell"><span class="stat-num">6 dB</span><p>Minimum compatibility margin typically required between predicted interference level and susceptibility threshold</p></div>
+    <div class="stat-cell"><span class="stat-num">2.5 mΩ</span><p>Typical maximum allowable DC resistance for a structural bonding connection — a limit that requires careful surface preparation at every joint</p></div>
+  </div>
+
+  <!-- S10 -->
+  <h2 class="sh" id="s10">10. EMC Anomalies — Diagnosis and Resolution</h2>
+  <p>EMC anomalies are among the most difficult to diagnose in the I&T environment. Unlike hardware failures, which produce a specific, persistent symptom at a specific location, interference problems are typically frequency-dependent, mode-dependent, and sensitive to the exact configuration of the test setup — including cable routing, EGSE connections, and the electromagnetic environment of the test facility itself. An interference problem that is visible in one test configuration may disappear when a cable is rerouted or when a different EGSE power supply is used, making it difficult to distinguish from an EGSE-induced artefact.</p>
+  <p>The diagnostic process for an EMC anomaly follows a structured sequence:</p>
+  <ul class="body-list">
+    <li><strong>Characterise the symptom fully.</strong> What exactly is degraded — signal-to-noise ratio, data error rate, sensor output noise floor, or functional upset? At what frequency does the interference appear? Is it periodic, intermittent, or continuous? Does it correlate with the operating state of any specific subsystem?</li>
+    <li><strong>Identify the source by subsystem elimination.</strong> Power down each subsystem in turn while monitoring the interference. When powering down a specific subsystem causes the interference to disappear, that subsystem is the source — or at minimum, a necessary contributor to the coupling path.</li>
+    <li><strong>Identify the coupling path by configuration variation.</strong> Change the harness routing between the source and the receptor. Add shielding. Change ground connections. Each configuration variation that affects the interference level reveals information about the coupling path.</li>
+    <li><strong>Determine the margin and assess mission impact.</strong> Measure the interference level and the receptor's susceptibility threshold. Calculate the margin. Assess whether the observed degradation affects any mission requirement. A narrower-than-required margin that does not cause functional degradation may be acceptable with formal analysis support; a margin that causes demonstrated functional degradation requires a hardware or design fix before launch.</li>
+  </ul>
+
+  <div class="callout rust">
+    <div class="callout-label">⚠ The Configuration-Sensitive Anomaly</div>
+    <p>The most frustrating category of EMC anomaly is the one that appears in one test configuration and disappears when the configuration is changed — not because the interference has been fixed, but because the change has altered the coupling path in a way that moves the interference below the threshold at which it is observable. This kind of "fix" is not a fix; it is a changed measurement, and it creates the risk that the original coupling path is restored when the spacecraft's configuration is finalized.</p>
+    <p>The correct response to a configuration-sensitive EMC anomaly is to understand the coupling path completely — to know why the anomaly appears in configuration A and not in configuration B — before concluding that the flight configuration is acceptable. If the flight configuration is configuration B, and the reason it does not exhibit the anomaly is understood and documented, then the flight configuration may be acceptable. If the reason is not understood, then the programme does not know whether the flight configuration is configuration A or configuration B — and it cannot make a defensible launch-readiness determination.</p>
+  </div>
+
+  <!-- S11 -->
+  <h2 class="sh" id="s11">11. Limitations and the On-Orbit EMC Environment</h2>
+  <p>The ground EMC test campaign, however thorough, cannot fully replicate the on-orbit electromagnetic environment. The spacecraft is tested in a grounded test facility with specific cable connections, specific power sources, and specific proximity to metallic structures — all of which differ from the flight environment. In flight, the spacecraft is electrically isolated from any ground reference (except through its own grounding architecture), operates in the space plasma environment that provides a diffuse surrounding conductor, and may be exposed to transient electromagnetic events — solar radio bursts, magnetospheric emissions, charged particle precipitation — that cannot be replicated at the test facility.</p>
+  <p>The most significant limitation is the spacecraft charging environment. In geosynchronous orbit and in polar low-Earth orbit, the spacecraft can accumulate significant surface charge potentials relative to the ambient plasma — potentials that can discharge suddenly through electrostatic discharge events that are orders of magnitude larger than the ESD events used in ground susceptibility testing. These charging-induced discharge events can disrupt electronics, corrupt memory, and in extreme cases damage components. The mitigation — conductive surface materials, charge dissipation coatings, and design of electronics to survive specified ESD pulse levels — is addressed during design and verified by analysis and component-level ESD testing, not by system-level ground testing that can replicate the actual space charging environment.</p>
+
+
+  <!-- NEXT LESSON -->
+  <div class="next-article">
+    <div class="next-article-content">
+      <div class="next-label">Next Lesson · L13 of 17 · Article 13</div>
+      <div class="next-title">Science Instrument Integration and Calibration</div>
+      <div class="next-desc">The payloads that give the mission its purpose — instrument delivery, interface verification, calibration traceability, and the PI-programme relationship</div>
+    </div>
+  </div>
+
+  <h2 class="sh" id="glossary">Key Terms Used in This Article</h2>
+  <table class="gloss-table">
+    <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+    <tbody>
+      <tr><td>Bonding</td><td>A mechanical connection between two metallic elements providing a low-impedance electrical path. Required to meet a specified resistance — typically less than 2.5 mΩ — to ensure effective grounding and shielding.</td></tr>
+      <tr><td>Compatibility Margin</td><td>The decibel difference between the predicted worst-case interference level and the susceptibility threshold of the affected function. Typically required to be at least 6 dB.</td></tr>
+      <tr><td>Conducted Emissions (CE)</td><td>Electromagnetic energy conducted from a unit back onto its power and signal lines, potentially propagating to other units sharing those lines.</td></tr>
+      <tr><td>Conducted Susceptibility (CS)</td><td>A unit's sensitivity to electromagnetic energy injected onto its power and signal lines from external sources.</td></tr>
+      <tr><td>EMC (Electromagnetic Compatibility)</td><td>The condition in which a system operates as intended in its electromagnetic environment without introducing intolerable electromagnetic disturbance to anything in that environment.</td></tr>
+      <tr><td>LISN (Line Impedance Stabilisation Network)</td><td>A passive network presenting a defined, reproducible source impedance for conducted emissions measurements, isolating the measurement from the test power source's impedance variations.</td></tr>
+      <tr><td>Radiated Emissions (RE)</td><td>Electromagnetic energy radiated from a unit's enclosure and cables into the surrounding space, potentially affecting other units that receive this radiation.</td></tr>
+      <tr><td>Radiated Susceptibility (RS)</td><td>A unit's sensitivity to electromagnetic energy radiated at it from external sources.</td></tr>
+      <tr><td>Susceptibility Threshold</td><td>The level of electromagnetic energy at which a sensitive function begins to degrade. EMC design requires that the worst-case interference level remain below this threshold with adequate margin.</td></tr>
+      <tr><td>Tailoring</td><td>The programme-specific adaptation of a general EMC standard (e.g., MIL-STD-461) to the actual requirements of a specific spacecraft and mission. The most consequential EMC engineering decision of the programme.</td></tr>
+    </tbody>
+  </table>
+</article>
+</div>
+
+
+<!-- ARTICLE NAVIGATOR -->
+<div class="art-nav">
+  <div class="art-nav-inner">
+    <span class="art-nav-label">Go to article</span>
+    <div class="art-nav-select-wrap">
+      <select id="artNav_spacecraft_iat_article12_html" onchange="this.nextElementSibling.disabled = !this.value || this.options[this.selectedIndex].disabled">
+        <option value="">— Select any article in the series —</option>
+        <optgroup label="── Main Series ──────────────────────────">
+      <option value="spacecraft_iat_intro.html">01 · Introduction to Spacecraft I&T</option>
+      <option value="spacecraft_iat_article01.html">02 · I&T Programme Structure</option>
+      <option value="spacecraft_iat_article11.html">03 · Configuration Management</option>
+      <option value="spacecraft_iat_article16.html">04 · Quality Assurance</option>
+      <option value="spacecraft_iat_article02.html">05 · Cleanrooms & Contamination Control</option>
+      <option value="spacecraft_iat_article10.html">06 · EGSE & Test Harness</option>
+      <option value="spacecraft_iat_article03.html">07 · Functional Testing</option>
+      <option value="spacecraft_iat_article09.html">08 · Flight Software V&V</option>
+      <option value="spacecraft_iat_article14.html">09 · Mass Properties & Structural Loads</option>
+      <option value="spacecraft_iat_article04.html">10 · Vibration, Acoustics & Shock</option>
+      <option value="spacecraft_iat_article05.html">11 · Thermal-Vacuum Testing</option>
+      <option value="spacecraft_iat_article12.html" selected disabled>▶ 12 · EMC Testing</option>
+      <option value="spacecraft_iat_article07.html">13 · Instrument Integration & Calibration</option>
+      <option value="spacecraft_iat_article13.html">14 · Propulsion Testing</option>
+      <option value="spacecraft_iat_article06.html">15 · Anomaly Management</option>
+      <option value="spacecraft_iat_article15.html">16 · Launch Vehicle Integration</option>
+      <option value="spacecraft_iat_article08.html">17 · Launch Readiness & Commissioning</option>
+    </optgroup>
+    <optgroup label="── Supplementary ──────────────────────────">
+      <option value="spacecraft_iat_smallsat.html">Supp · Small Satellites</option>
+      <option value="spacecraft_iat_case_studies.html">Supp · Case Studies</option>
+    </optgroup>
+      </select>
+    </div>
+    <button class="art-nav-go" disabled
+            onclick="var s=this.previousElementSibling.querySelector('select'); if(s.value && !s.options[s.selectedIndex].disabled) window.location.href=s.value;">
+      Open →
+    </button>
+  </div>
+</div>
+
+<footer class="article-footer">
+  <div class="footer-inner">
+    <div class="footer-col"><div class="footer-label">Series</div><div class="footer-text">Spacecraft Integration &amp; Test<br>Article 12 — Supplementary</div></div>
+    <div class="footer-col"><div class="footer-label">Topics</div><div class="tags"><span class="tag">EMC</span><span class="tag">Radiated Emissions</span><span class="tag">Conducted Emissions</span><span class="tag">Bonding</span><span class="tag">Shielding</span><span class="tag">Susceptibility</span></div></div>
+    <div class="footer-col"><div class="footer-label">Audience</div><div class="footer-text">Spacecraft engineers and I&amp;T practitioners who need to understand the EMC test discipline without specialising in it.</div></div>
+  </div>
+</footer>

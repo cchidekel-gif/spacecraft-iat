@@ -1,0 +1,588 @@
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://raw.githubusercontent.com/cchidekel-gif/spacecraft-iat-styles/refs/heads/main/styles.css">
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <span class="masthead-series">Spacecraft Engineering Series · Integration &amp; Test</span>
+  <span class="masthead-right">Article 10 of 17</span>
+</div>
+
+<!-- SERIES NAV -->
+<div class="series-nav">
+  <span>Series:</span>
+  <span class="sep">·</span>
+  <span>Intro</span>
+  <span class="sep">·</span>
+  <span>01</span>
+  <span class="sep">·</span>
+  <span>02</span>
+  <span class="sep">·</span>
+  <span>03</span>
+  <span class="sep">·</span>
+  <span>04</span>
+  <span class="sep">·</span>
+  <span>05</span>
+  <span class="sep">·</span>
+  <span>06</span>
+  <span class="sep">·</span>
+  <span>07</span>
+  <span class="sep">·</span>
+  <span>08</span>
+  <span class="sep">·</span>
+  <span class="current">09</span>
+  <span class="sep">·</span>
+  <span>10</span>
+  <span class="sep">·</span>
+  <span>11</span>
+  <span class="sep">·</span>
+  <span>12</span>
+  <span class="sep">·</span>
+  <span>13</span>
+  <span class="sep">·</span>
+  <span>14</span>
+  <span class="sep">·</span>
+  <span>15</span>
+  <span class="sep">·</span>
+  <span>16</span>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Spacecraft Integration &amp; Test · Article 10 of 17</div>
+    <h1>Environmental Testing:<br>Vibration, Acoustics,<br>and Shock</h1>
+    <p class="hero-sub">The violence of launch compressed into minutes on the test floor — how spacecraft are exposed to, and proven to survive, the most severe mechanical environment they will ever experience.</p>
+    <div class="byline">
+      <div class="byline-avatar">🛰️</div>
+      <div>
+        <div class="byline-name">Charles Chidekel</div>
+        <div class="byline-title">Integration &amp; Test Guru · 40 Years of I&amp;T Experience</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ARTICLE -->
+<div class="container">
+<article class="article-body">
+
+  <!-- TOC -->
+  <div class="toc-wrap">
+    <div class="toc-label">In This Article</div>
+    <ul class="toc-list">
+      <li><a href="#s1"><span>1. The Launch Environment: Why It Is So Demanding</span><span class="toc-num">§1</span></a></li>
+      <li><a href="#s2"><span>2. The Three Mechanical Environments</span><span class="toc-num">§2</span></a></li>
+      <li><a href="#s3"><span>3. Qualification vs. Acceptance: The Two Philosophies of Environmental Test</span><span class="toc-num">§3</span></a></li>
+      <li><a href="#s4"><span>4. Sine Vibration Testing</span><span class="toc-num">§4</span></a></li>
+      <li><a href="#s5"><span>5. Random Vibration Testing</span><span class="toc-num">§5</span></a></li>
+      <li><a href="#s6"><span>6. Acoustic Testing</span><span class="toc-num">§6</span></a></li>
+      <li><a href="#s7"><span>7. Shock Testing</span><span class="toc-num">§7</span></a></li>
+      <li><a href="#s8"><span>8. Test Fixturing and the Boundary Condition Problem</span><span class="toc-num">§8</span></a></li>
+      <li><a href="#s9"><span>9. Instrumentation, Data Acquisition, and Monitoring</span><span class="toc-num">§9</span></a></li>
+      <li><a href="#s10"><span>10. Notching, Over-Testing, and the Art of the Correct Input</span><span class="toc-num">§10</span></a></li>
+      <li><a href="#s11"><span>11. Post-Test Assessment and Anomaly Response</span><span class="toc-num">§11</span></a></li>
+      <li><a href="#glossary"><span>Key Terms Glossary</span><span class="toc-num">GL</span></a></li>
+    </ul>
+  </div>
+
+  <!-- INTRO -->
+  <p class="lead">A rocket launch is, by any measure, a violent event. In the first few minutes after ignition, a spacecraft is subjected to broadband vibration from engine thrust and structural resonances, intense acoustic energy from the rocket exhaust reflecting off the launch pad and propagating through the payload fairing, and a series of discrete mechanical shock events as pyrotechnic separation systems fire. The spacecraft must survive all of this — not merely structurally intact, but fully functional, with all alignment-sensitive instruments still aligned, all connector interfaces still mated, all mechanisms ready to deploy, and all electronics operating within specification.</p>
+
+  <p>The purpose of mechanical environmental testing is to demonstrate, on the ground and before launch, that the spacecraft and all its components will survive the launch environment and emerge from it in their required functional condition. It is the most physically dramatic element of the I&amp;T program — hydraulic shakers large enough to drive a car, acoustic chambers loud enough to cause permanent hearing damage in seconds, pyrotechnic shock tests that sound like rifle shots — and it carries more risk of hardware damage than any other test activity.</p>
+
+  <p>Done correctly, environmental testing builds justified confidence that the spacecraft will survive launch. Done incorrectly — with wrong input levels, inadequate fixturing, missing instrumentation, or insufficient pre/post functional testing — it can damage the very hardware it is intended to validate, or worse, provide false assurance that hardware is flight-ready when critical failure modes have not been exercised.</p>
+
+  <div class="pull-quote">
+    <p>"The launch environment does not care about your schedule. It does not care about your budget. It applies its full spectrum of energy to every component in your spacecraft simultaneously, without mercy and without warning. Environmental testing is the closest we can get to asking: are you ready?"</p>
+  </div>
+
+  <!-- SECTION 1 -->
+  <h2 class="sh" id="s1">1. The Launch Environment: Why It Is So Demanding</h2>
+
+  <p>To understand why mechanical environmental testing is so demanding, it helps to understand where the energy comes from during a launch.</p>
+
+  <div class="launch-env">
+    <div class="launch-env-header">Launch Event Timeline — Dominant Mechanical Environments</div>
+    <div class="launch-phases">
+      <div class="launch-phase">
+        <span class="lp-time">T−0</span>
+        <div class="lp-event">Engine Ignition</div>
+        <div class="lp-env">Engine ignition transient and hold-down release shock propagate through the vehicle</div>
+        <span class="lp-dom shk">Shock</span>
+      </div>
+      <div class="launch-phase">
+        <span class="lp-time">T+0 to T+30s</span>
+        <div class="lp-event">Liftoff &amp; Max-Q</div>
+        <div class="lp-env">Maximum aerodynamic pressure; intense acoustic loading from exhaust; structural vibration</div>
+        <span class="lp-dom mult">Acoustic + Vib</span>
+      </div>
+      <div class="launch-phase">
+        <span class="lp-time">T+60–180s</span>
+        <div class="lp-event">Ascent</div>
+        <div class="lp-env">Engine-induced broadband vibration; structural resonances excited by throttle variations</div>
+        <span class="lp-dom vib">Vibration</span>
+      </div>
+      <div class="launch-phase">
+        <span class="lp-time">Stage Sep.</span>
+        <div class="lp-event">Stage Separation</div>
+        <div class="lp-env">Pyrotechnic firing; high-amplitude short-duration shock wave propagates through structure</div>
+        <span class="lp-dom shk">Shock</span>
+      </div>
+      <div class="launch-phase">
+        <span class="lp-time">Fairing Sep.</span>
+        <div class="lp-event">Fairing Jettison</div>
+        <div class="lp-env">Pyrotechnic separation of payload fairing; acoustic relief as fairing opens; shock pulse</div>
+        <span class="lp-dom shk">Shock</span>
+      </div>
+      <div class="launch-phase">
+        <span class="lp-time">S/C Sep.</span>
+        <div class="lp-event">Spacecraft Separation</div>
+        <div class="lp-env">Final pyrotechnic event separating spacecraft from launch vehicle; spring-loaded deployment</div>
+        <span class="lp-dom shk">Shock</span>
+      </div>
+    </div>
+  </div>
+
+  <p>Each of these events produces mechanical energy with different characteristics — different frequency content, different duration, different spatial distribution across the spacecraft structure. A spacecraft that survives Max-Q acoustic loading may fail during stage separation shock. A component that survives sinusoidal vibration may fail under broadband random vibration because different frequency ranges excite different structural resonances. The complete mechanical environmental test program must address all of these regimes.</p>
+
+  <p>An important additional consideration is the interaction between these environments. The launch vehicle does not apply them sequentially with recovery time in between — they overlap, combine, and build on each other in ways that ground tests can only approximate individually. This is one of the fundamental limitations of ground environmental testing: we can apply each environment separately, and we can do so at levels that bound the expected flight environment with margin, but we cannot perfectly replicate the combined simultaneous loading of an actual launch. Structural analysis and similarity with previously flown hardware must bridge the remaining gap.</p>
+
+  <!-- SECTION 2 -->
+  <h2 class="sh" id="s2">2. The Three Mechanical Environments</h2>
+
+  <div class="env-grid">
+    <div class="env-card vib">
+      <div class="env-card-header">
+        <span class="env-card-icon">📳</span>
+        <div class="env-card-title">Structural Vibration</div>
+        <div class="env-card-freq">2 Hz — 2,000 Hz · Sinusoidal &amp; Random</div>
+      </div>
+      <div class="env-card-body">
+        <p>Vibration is oscillatory mechanical motion transmitted through the spacecraft structure from engine thrust, structural resonances, and aerodynamic buffeting. It is characterised by its frequency content, amplitude, and duration. Two distinct types are tested: <strong>sine vibration</strong> (single-frequency excitation, swept across a frequency range) and <strong>random vibration</strong> (broadband simultaneous excitation across the full frequency spectrum). Both are relevant to different aspects of the launch environment and reveal different failure modes in hardware. Vibration is the most broadly damaging mechanical environment for electronic assemblies, harnesses, and structural joints.</p>
+      </div>
+    </div>
+    <div class="env-card acou">
+      <div class="env-card-header">
+        <span class="env-card-icon">🔊</span>
+        <div class="env-card-title">Acoustics</div>
+        <div class="env-card-freq">20 Hz — 10,000 Hz · Sound Pressure Level</div>
+      </div>
+      <div class="env-card-body">
+        <p>Acoustic loading arises from the intense sound field generated by rocket exhaust and reflected off the launch pad and fairing interior. Sound pressure levels inside the payload fairing at liftoff can reach 140–145 dB OASPL — comparable in intensity to standing next to a jet engine at full thrust. This energy excites the spacecraft structure and lightweight panels (solar arrays, antenna reflectors, instrument aperture covers) through acoustic pressure fluctuations rather than direct mechanical contact. Large, lightweight structures that are relatively immune to direct base-driven vibration can be highly susceptible to acoustic loading.</p>
+      </div>
+    </div>
+    <div class="env-card shk">
+      <div class="env-card-header">
+        <span class="env-card-icon">💥</span>
+        <div class="env-card-title">Mechanical Shock</div>
+        <div class="env-card-freq">100 Hz — 10,000 Hz · Shock Response Spectrum</div>
+      </div>
+      <div class="env-card-body">
+        <p>Shock events are high-amplitude, short-duration transients generated by pyrotechnic devices — the explosive bolts, separation nuts, and linear cutting charges used to separate launch vehicle stages, jettison the payload fairing, and separate the spacecraft from the launch vehicle. A typical pyrotechnic shock event lasts only a few milliseconds but reaches peak accelerations of thousands of g at frequencies up to 10,000 Hz. Shock is particularly damaging to crystal oscillators, relays, ceramic capacitors, optical mounts, and any component with a resonant frequency in the affected range. It is the most difficult environment to fully test and to fully analyse.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3 -->
+  <h2 class="sh" id="s3">3. Qualification vs. Acceptance: The Two Philosophies of Environmental Test</h2>
+
+  <p>Every mechanical environmental test on a spacecraft program falls into one of two categories: a <span class="kt">qualification test</span> or an <span class="kt">acceptance test</span>. These are not simply different names for the same activity at different levels — they represent fundamentally different purposes, and the distinction has profound consequences for how tests are designed, what hardware they are performed on, and what conclusions can be drawn from them.</p>
+
+  <table class="qa-table">
+    <thead>
+      <tr>
+        <th>Parameter</th>
+        <th class="col-qual">Qualification Test</th>
+        <th class="col-acc">Acceptance Test</th>
+        <th>Rationale</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Purpose</td>
+        <td>Demonstrate that the design has adequate margin over the flight environment</td>
+        <td>Screen flight hardware for workmanship defects; verify no gross non-conformances</td>
+        <td>Qual tests the design; acceptance tests the individual article</td>
+      </tr>
+      <tr>
+        <td>Hardware used</td>
+        <td>Dedicated qualification unit; not flown. May be a structural model or a full-performance engineering model</td>
+        <td>Every flight unit; the article that will be launched</td>
+        <td>Qual hardware may be tested to failure; flight hardware must survive</td>
+      </tr>
+      <tr>
+        <td>Input levels</td>
+        <td>Typically 3–6 dB above flight acceptance levels; test durations are longer (3× minimum duration rule)</td>
+        <td>At the predicted flight environment level, plus a margin factor (typically +3 dB)</td>
+        <td>Qual must demonstrate margin; acceptance must not over-test and consume life</td>
+      </tr>
+      <tr>
+        <td>Duration</td>
+        <td>Typically 3× the acceptance test duration; for random vibration, 3 minutes per axis vs. 1 minute</td>
+        <td>Minimum duration to screen for workmanship defects; typically 1 minute per axis for random vibe</td>
+        <td>Longer duration amplifies fatigue damage; over-testing acceptance hardware consumes fatigue life</td>
+      </tr>
+      <tr>
+        <td>Axes tested</td>
+        <td>All three orthogonal axes</td>
+        <td>All three orthogonal axes</td>
+        <td>Launch environment is multi-axial; single-axis testing is insufficient for either category</td>
+      </tr>
+      <tr>
+        <td>Pass criterion</td>
+        <td>Hardware survives; no structural failure; functional test passes post-qual</td>
+        <td>Hardware survives; no structural failure; functional test passes post-acceptance; performance within spec</td>
+        <td>Both require post-test functional verification; qual allows more extensive post-test analysis</td>
+      </tr>
+      <tr>
+        <td>Life consumption</td>
+        <td>Qualification hardware is typically retired after testing; it has consumed significant fatigue life</td>
+        <td>Must be designed to consume as little fatigue life as possible while still screening defects</td>
+        <td>Over-testing flight hardware reduces its on-orbit reliability margin</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>A critical practical consequence of this distinction: <strong>flight hardware must never be qualification-tested.</strong> If a program has only one unit — one flight unit and no separate qualification unit — it faces the choice between qualifying the design (at the cost of potentially consuming the flight hardware's fatigue life or revealing design deficiencies in the only article available) or accepting a higher risk posture with acceptance testing only. This is a known risk driver on programmes with limited budgets, and it must be explicitly evaluated and accepted by the programme's technical authority, not assumed away.</p>
+
+  <div class="callout gold">
+    <div class="callout-label">✦ Protoflight Testing — The Compromise</div>
+    <p>On many spacecraft programs — particularly smaller missions where building a dedicated qualification unit is not affordable — a <strong>protoflight</strong> approach is used. A protoflight test applies qualification-level input amplitudes but acceptance-duration test times. This approach provides more design margin verification than pure acceptance testing, while consuming less fatigue life than full qualification testing on the flight hardware.</p>
+    <p>The protoflight approach is a formal risk acceptance, not a free lunch. It provides less confidence in design margins than full qualification testing, and any unexpected anomaly during protoflight testing may affect the only flight article available. Programs that choose protoflight testing do so with full awareness of these trade-offs, documented in the program's risk register and approved by the technical authority.</p>
+  </div>
+
+  <!-- SECTION 4 -->
+  <h2 class="sh" id="s4">4. Sine Vibration Testing</h2>
+
+  <p>Sine vibration testing applies a sinusoidal (single-frequency) excitation force to the base of the test article, sweeping that frequency slowly from low to high (and sometimes back) while monitoring the structural response. It is the most controlled form of vibration testing — because only one frequency is excited at a time, the test is highly repeatable and its results are straightforward to interpret.</p>
+
+  <h3 class="ssh">What Sine Vibration Reveals</h3>
+  <p>The primary objective of a sine sweep is to identify the <span class="kt">resonant frequencies</span> of the test article — the frequencies at which structural response is amplified relative to the base input. At resonance, a structure vibrates at high amplitude with relatively low input force; internal stresses and deflections are maximised. Sine vibration testing reveals:</p>
+
+  <ul class="body-list">
+    <li><strong>Structural resonances:</strong> The natural frequencies of the assembly, which determine how it will respond to broadband excitation during launch. A resonance at a frequency that coincides with a launch vehicle forcing frequency is a potential design problem.</li>
+    <li><strong>Structural integrity under low-frequency loads:</strong> Launch vehicle guidance corrections and engine thrust variations produce low-frequency quasi-sinusoidal loads. Sine vibration at these frequencies verifies that the structure has adequate stiffness and strength.</li>
+    <li><strong>Comparison to finite element model predictions:</strong> The measured resonant frequencies and mode shapes are compared to the structural finite element model (FEM). Significant discrepancies between test and model indicate that the FEM is not correctly capturing the structural behaviour — a concern for any load analysis that relies on the model.</li>
+    <li><strong>Workmanship defects in structural joints:</strong> Loose fasteners, improperly bonded joints, and incorrectly assembled mechanisms often manifest as anomalous response during sine sweep — unusual frequency shifts, unexpected damping, or non-linear behaviour that is not predicted by analysis.</li>
+  </ul>
+
+  <h3 class="ssh">The Low-Level Survey Sweep</h3>
+  <p>Before any environmental test at full input level, a <span class="kt">low-level survey sweep</span> is performed at a fraction of the full test level — typically 0.1g — to characterise the structural response without risk of damage. The survey sweep is repeated at full test level, and again after the test. Comparison of the three sweeps — pre-test low-level, post-test low-level — is a primary tool for detecting structural changes caused by the test. A shift in a resonant frequency of more than 5% between the pre- and post-test sweeps is typically considered a potential anomaly requiring investigation.</p>
+
+  <!-- SECTION 5 -->
+  <h2 class="sh" id="s5">5. Random Vibration Testing</h2>
+
+  <p>Random vibration testing applies broadband excitation simultaneously across the full test frequency range — not at a single frequency, but at all frequencies at once, with amplitudes defined by a <span class="kt">Power Spectral Density (PSD)</span> specification. The PSD describes how the vibration energy is distributed across frequency — units are g²/Hz — and the <span class="kt">overall grms level</span> (the square root of the area under the PSD curve) gives the total RMS acceleration.</p>
+
+  <p>Random vibration is a better simulation of the actual launch environment than sine vibration for most frequency ranges, because the real launch environment is broadband and stochastic — it does not apply energy at one frequency at a time. Rocket engine combustion noise, aerodynamic turbulence, and structural resonance coupling all contribute to a vibration environment that is better characterised statistically than deterministically.</p>
+
+  <h3 class="ssh">What Random Vibration Reveals</h3>
+  <ul class="body-list">
+    <li><strong>Workmanship defects in electronics:</strong> Random vibration is the primary workmanship screen for electronic assemblies. Marginal solder joints, improperly seated connectors, undertorqued fasteners, and inadequately supported components are revealed by random vibration at levels that may not be sufficient to cause structural failure in a well-built assembly, but are sufficient to propagate a pre-existing crack or pop a partially seated connector.</li>
+    <li><strong>Harness and cable management issues:</strong> Cables and harnesses that are not adequately supported can resonate at frequencies within the random vibration spectrum and chafe against structure, causing insulation damage. Harness routing and support adequacy is often best evaluated by observation during random vibration testing.</li>
+    <li><strong>Bearing and mechanism condition:</strong> Mechanisms with marginal bearing preload, inadequate lubrication, or incorrect assembly may exhibit anomalous noise or response signatures during random vibration that reveal the condition before launch.</li>
+    <li><strong>Structural fatigue assessment:</strong> Random vibration test duration is chosen to represent a specified multiple of the flight fatigue exposure. The duration and level together define the fatigue damage equivalent — the test must inflict enough fatigue cycles to represent the launch environment, but not so many that it consumes an unacceptable fraction of the hardware's total fatigue life.</li>
+  </ul>
+
+  <div class="callout steel">
+    <div class="callout-label">⚙ The grms Number and What It Means</div>
+    <p>New engineers encountering random vibration test specifications for the first time often fixate on the overall grms level — "this test is 8.5 grms" — without appreciating that this number alone is not sufficient to characterise the test. Two PSD specifications can have the same overall grms level but very different frequency content, and the structural response of a given hardware item to those two specifications can be completely different, depending on where its resonant frequencies fall.</p>
+    <p>What matters is the PSD shape — the distribution of energy across frequency — and how it interacts with the structural resonances of the test article. A resonance that falls at a frequency where the PSD has high energy density will be significantly more severely excited than a resonance at a frequency where the PSD has low energy. The test engineer must understand both the test input specification and the hardware's structural response when designing and evaluating the test.</p>
+  </div>
+
+  <!-- SECTION 6 -->
+  <h2 class="sh" id="s6">6. Acoustic Testing</h2>
+
+  <p>Acoustic testing subjects the spacecraft to a high-intensity sound field in a specialised facility — a <span class="kt">reverberant acoustic chamber</span> (also called a reverberation room or acoustic test facility). These chambers are large concrete or steel enclosures lined with hard, reflective surfaces to create a diffuse sound field: a three-dimensional pattern of sound energy in which the level is approximately uniform throughout the space, regardless of direction. High-power acoustic horns or nitrogen gas modulators driven to very high pressure inject acoustic energy into the chamber.</p>
+
+  <p>The acoustic test environment is specified in terms of <span class="kt">Overall Sound Pressure Level (OASPL)</span> in decibels, and a <span class="kt">one-third octave spectrum</span> that defines the distribution of energy across frequency bands. A typical spacecraft system-level acoustic test might specify 140–142 dB OASPL with a spectrum that peaks in the 125–250 Hz range — the frequency content of launch vehicle exhaust noise.</p>
+
+  <h3 class="ssh">Who Needs Acoustic Testing?</h3>
+  <p>Not all hardware requires acoustic testing. The susceptibility of a hardware item to acoustic loading is primarily a function of its size and surface area — large, lightweight structures that present a large acoustic cross-section (solar array panels, large antenna reflectors, instrument aperture baffles) are most susceptible. Small, dense electronics boxes are relatively insensitive to acoustic loading and are better addressed by random vibration. The decision about which items require acoustic testing, and at what level, is made during the test planning phase based on structural analysis and launch vehicle acoustic environment data.</p>
+
+  <p>At the system level, a spacecraft must be acoustic-tested as a complete vehicle in its launch configuration — with all solar arrays, antennas, and appendages in their stowed (or deployed, if deployed configuration is the one present during acoustic loading) positions. Component-level acoustic testing is typically not cost-effective; the acoustic environment is a system-level phenomenon driven by the interaction of the full acoustic field with the spacecraft's total external surface.</p>
+
+  <div class="callout rust">
+    <div class="callout-label">⚠ The Genesis of an Acoustic Test Anomaly</div>
+    <p>On one program I worked, a large deployable solar array panel that had passed all its vibration tests without issue exhibited a resonance at approximately 180 Hz — squarely in the peak of the acoustic spectrum — that caused a bonded joint between the panel substrate and the deployment hinge fitting to crack during the acoustic test. The panel had been analytically assessed as adequate; the FEM had predicted the resonance at a slightly different frequency. The shift was enough to move the resonance from a low-energy region of the acoustic spectrum to a high-energy one.</p>
+    <p>The panel was redesigned and the joint strengthened. It flew successfully. But this anomaly illustrates a consistent lesson: acoustic testing on large structures reveals failures that neither analysis nor component vibration testing reliably predicts. There is no substitute for the system-level acoustic test.</p>
+  </div>
+
+  <!-- SECTION 7 -->
+  <h2 class="sh" id="s7">7. Shock Testing</h2>
+
+  <p>Mechanical shock testing is arguably the most technically challenging element of the mechanical environmental test program — and the one most frequently handled inadequately on programs under schedule pressure. Shock events in the real launch environment are produced by pyrotechnic devices: explosive bolts, linear cutting charges, separation nuts, and pin-pullers that fire in sequence throughout the launch. Each produces a sharp, high-amplitude, short-duration transient that propagates through the spacecraft structure as a stress wave.</p>
+
+  <p>The shock environment is characterised by the <span class="kt">Shock Response Spectrum (SRS)</span> — a representation of the peak response of a set of single-degree-of-freedom oscillators to the shock transient, plotted as a function of frequency. The SRS provides a way to compare shock environments of different character (a long-duration low-amplitude shock versus a short-duration high-amplitude shock may produce similar damage to a sensitive component) and to derive shock test specifications that are equivalent in their damage potential to the flight environment.</p>
+
+  <h3 class="ssh">Methods of Shock Testing</h3>
+  <table class="gen-table">
+    <thead>
+      <tr>
+        <th>Method</th>
+        <th>Mechanism</th>
+        <th>Application</th>
+        <th>Limitations</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Pyrotechnic Shock Test</td>
+        <td>Actual pyrotechnic devices (or representative devices) fired at or near the test article to replicate the flight shock event</td>
+        <td>Qualification of separation interfaces; testing hardware that will be in close proximity to pyrotechnic devices in flight</td>
+        <td>Requires specialised range safety controls; difficult to adjust level; not repeatable on the same hardware</td>
+      </tr>
+      <tr>
+        <td>Mechanical Impact Test</td>
+        <td>A tuned mechanical impactor (resonant beam, drop table, or pendulum) strikes a fixture attached to the test article to generate a shock pulse with a specified SRS</td>
+        <td>Component-level and subsystem-level shock testing; more controllable than pyrotechnic testing</td>
+        <td>Difficult to replicate high-frequency content (&gt;2,000 Hz) of true pyrotechnic events; fixture design is critical</td>
+      </tr>
+      <tr>
+        <td>Electrodynamic Shaker Shock</td>
+        <td>A standard vibration shaker driven by a specially shaped transient waveform to produce a defined SRS</td>
+        <td>Low-level shock testing; hardware that is too sensitive for mechanical impact testing</td>
+        <td>Limited to relatively low shock levels; cannot replicate high-frequency pyrotechnic content; shaker stroke limitations</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="ssh">Shock-Sensitive Hardware</h3>
+  <p>Not all hardware is equally susceptible to shock. Shock is particularly damaging to components whose resonant frequencies fall within the high-amplitude region of the SRS — typically 500–5,000 Hz for pyrotechnic events. Components known to be shock-sensitive include:</p>
+
+  <ul class="body-list">
+    <li><strong>Crystal oscillators and quartz resonators</strong> — frequently cracked or permanently frequency-shifted by high-frequency shock inputs at resonance</li>
+    <li><strong>Ceramic capacitors</strong> — brittle; crack under transient bending loads induced by shock propagation through circuit boards</li>
+    <li><strong>Optical mounts and alignment-critical assemblies</strong> — even small relative displacements during a shock event can permanently shift optical alignment beyond recovery range</li>
+    <li><strong>Relays and switches</strong> — mechanical contacts can transiently open or close during shock; critical for safe/arm circuits and for any command path that must be stable during launch</li>
+    <li><strong>Hard disk drives and magnetic storage</strong> — (less common on modern spacecraft, which use solid-state storage, but present on legacy designs) read/write heads can contact the disk platter during shock</li>
+    <li><strong>Propellant valves</strong> — valve seats and spool positions can be altered by shock; tested and characterised to ensure no inadvertent valve actuation during the launch shock environment</li>
+  </ul>
+
+  <!-- SECTION 8 -->
+  <h2 class="sh" id="s8">8. Test Fixturing and the Boundary Condition Problem</h2>
+
+  <p>No discussion of mechanical environmental testing is complete without addressing the fixture — the mechanical structure that connects the test article to the shaker table or acoustic chamber mounting point. The fixture is not a neutral component. Its mass, stiffness, and resonant frequencies directly influence the mechanical environment experienced by the test article, and a poorly designed fixture can invalidate a test entirely.</p>
+
+  <div class="fixture-grid">
+    <div class="fixture-card">
+      <span class="fixture-icon">⬜</span>
+      <div class="fixture-title">Stiff Cube / Head Expander</div>
+      <div class="fixture-desc">A rigid, lightweight structure that distributes the shaker force over a larger attachment interface. Used when the test article has multiple attachment points that must all be driven simultaneously at the same level. Must be stiff enough that its own resonant frequencies fall outside the test frequency range.</div>
+    </div>
+    <div class="fixture-card">
+      <span class="fixture-icon">📐</span>
+      <div class="fixture-title">Axis-Change Fixture</div>
+      <div class="fixture-desc">Allows the test article to be tested in an axis perpendicular to the shaker's natural drive direction. Must be carefully designed to minimise mass while maintaining stiffness — added fixture mass reduces the available force at the test article interface and can introduce fixture resonances into the test frequency range.</div>
+    </div>
+    <div class="fixture-card">
+      <span class="fixture-icon">🔗</span>
+      <div class="fixture-title">Interface Simulation Fixture</div>
+      <div class="fixture-desc">Replicates the structural compliance and mass distribution of the flight hardware to which the test article will be attached. Used when the boundary stiffness at the test interface significantly affects the structural response of the test article — common for instruments tested independently of the spacecraft bus they will mount to.</div>
+    </div>
+    <div class="fixture-card">
+      <span class="fixture-icon">🪝</span>
+      <div class="fixture-title">Free-Free Suspension</div>
+      <div class="fixture-desc">The test article is suspended from elastic cords or bungees to simulate a free boundary condition (no structural attachment). Used for modal survey tests where clean measurement of free-body natural frequencies is needed for FEM correlation. Not used for qualification or acceptance environmental testing.</div>
+    </div>
+  </div>
+
+  <p>The <span class="kt">boundary condition problem</span> is the fundamental challenge of environmental testing: the test article's structural response depends critically on the stiffness and mass of the structure it is attached to. In flight, the spacecraft is attached to the launch vehicle adapter, which has a specific stiffness and mass. On the test floor, the spacecraft is attached to a fixture that approximates that boundary but is never identical to it. The test engineer must understand the consequences of this difference and ensure that the fixture does not introduce resonances or stiffness changes that cause the test article to be tested in a manner unrepresentative of its flight condition.</p>
+
+  <!-- SECTION 9 -->
+  <h2 class="sh" id="s9">9. Instrumentation, Data Acquisition, and Monitoring</h2>
+
+  <p>The measurements taken during an environmental test are not incidental — they are the primary engineering product of the test. Without adequate instrumentation, a test can tell you only whether the hardware survived; with adequate instrumentation, it tells you what loads and responses occurred, whether those loads were consistent with predictions, and exactly what changed if the post-test functional test reveals a degradation.</p>
+
+  <p>The standard instrument suite for a spacecraft mechanical environmental test includes:</p>
+
+  <ul class="body-list">
+    <li><span class="kt">Accelerometers</span> — the primary measurement instrument for vibration and shock. Piezoelectric accelerometers measure acceleration as a function of time and frequency, mounted on the test article structure, the test fixture, and the shaker table. Strategic placement of accelerometers — at all major structural interfaces, at the attachment points of heavy components, and at locations of predicted high response — is a critical part of test planning.</li>
+    <li><span class="kt">Control accelerometers</span> — a subset of accelerometers used by the test facility's closed-loop control system to maintain the specified input level at the spacecraft interface. The choice of control accelerometer location — and whether to average multiple control points — significantly affects the test input spectrum actually experienced by the hardware.</li>
+    <li><span class="kt">Response accelerometers</span> — additional accelerometers that monitor the structural response of the test article without influencing the control. Response data is used to verify that response predictions from FEM analysis were correct, and to compute actual loads experienced by specific components.</li>
+    <li><span class="kt">Force gauges</span> — measure the force transmitted through the test article interface. Used in conjunction with accelerometers for <span class="kt">force-limiting</span> (discussed in Section 10).</li>
+    <li><span class="kt">Microphones</span> — used in acoustic testing to monitor the sound pressure level at multiple locations within the acoustic chamber and at the spacecraft surface.</li>
+    <li><span class="kt">Telemetry monitoring</span> — spacecraft electronic systems are typically powered and monitored during vibration testing to detect functional anomalies in real time. Critical telemetry channels are monitored with limit-checking active so that any out-of-limit condition can trigger an immediate test abort.</li>
+  </ul>
+
+  <div class="severity-strip">
+    <div class="sev-cell">
+      <span class="sev-num">50+</span>
+      <p>Typical number of accelerometers on a spacecraft system-level vibration test</p>
+    </div>
+    <div class="sev-cell">
+      <span class="sev-num">3</span>
+      <p>Orthogonal test axes — every spacecraft must be tested in all three directions</p>
+    </div>
+    <div class="sev-cell">
+      <span class="sev-num">24 hrs</span>
+      <p>Typical post-environmental functional test window — comparison to pre-test baseline must be completed promptly</p>
+    </div>
+    <div class="sev-cell">
+      <span class="sev-num">&lt;5%</span>
+      <p>Resonant frequency shift threshold that triggers investigation after pre/post low-level survey comparison</p>
+    </div>
+  </div>
+
+  <!-- SECTION 10 -->
+  <h2 class="sh" id="s10">10. Notching, Over-Testing, and the Art of the Correct Input</h2>
+
+  <p>One of the most technically nuanced decisions in mechanical environmental testing is the treatment of structural resonances in the test input specification — a practice called <span class="kt">notching</span>. Understanding notching requires understanding why the naive approach to environmental testing — simply applying the specified input level across the full frequency range — can be incorrect and even damaging.</p>
+
+  <h3 class="ssh">The Over-Testing Problem</h3>
+  <p>When a shaker drives the base of a test article at a specified acceleration level, and that frequency happens to coincide with a structural resonance of the test article, the structural response at that resonance can be many times the base input level. The internal loads experienced by the spacecraft at that resonance may be far higher than would ever occur in flight — not because the flight input level is lower, but because in flight the launch vehicle adapter has finite stiffness that limits the force that can be transmitted through the interface at resonance.</p>
+
+  <p>A shaker with a rigid (high-stiffness) fixture can apply forces at a resonant frequency that are physically impossible for the flight launch vehicle to generate. This constitutes over-testing — subjecting the hardware to loads that are more severe than the flight environment in ways that are not conservative but simply unrealistic.</p>
+
+  <h3 class="ssh">Notching</h3>
+  <p>Notching is the practice of reducing the test input specification at specific frequency bands — typically at or near structural resonances — to limit the interface force (or the structural response) to a level that is physically consistent with the flight environment. It is performed by modifying the drive signal in the test control system to produce a specified PSD shape with reduced amplitude ("notches") at the resonant frequencies.</p>
+
+  <p>Notching requires justification — the amount of notching must be shown to be consistent with the actual force limits imposed by the flight structure — and it must be approved before the test. Ad-hoc notching during a test to "protect the hardware" without proper analysis and approval is a test integrity violation: it may inadvertently under-test the hardware in regions where the actual flight loads are high.</p>
+
+  <div class="callout blue">
+    <div class="callout-label">📐 Force Limiting — The Engineering Alternative</div>
+    <p><strong>Force limiting</strong> is a more rigorous alternative to notching. Force gauges are placed at the test article interface and are incorporated into the closed-loop control of the test. When the measured interface force at any frequency exceeds a defined limit — derived from analysis of the flight environment — the control system automatically reduces the drive level at that frequency, in real time, to hold the interface force at the limit.</p>
+    <p>Force limiting is more technically demanding than notching (it requires force measurement instrumentation and a control system capable of real-time force-level limiting), but it provides a more physically accurate test environment and removes the need for pre-test decisions about where and how much to notch. For large, expensive spacecraft where the consequences of over-testing are severe, force limiting is the preferred approach and is recommended by NASA's general environmental verification standards (GEVS).</p>
+  </div>
+
+  <!-- SECTION 11 -->
+  <h2 class="sh" id="s11">11. Post-Test Assessment and Anomaly Response</h2>
+
+  <p>The work of a mechanical environmental test does not end when the shaker stops. The post-test assessment is in many respects the most important phase of the test — it is where the engineering value of the test is realised, and where the consequences of any anomaly must be determined.</p>
+
+  <h3 class="ssh">The Post-Test Assessment Sequence</h3>
+  <ul class="body-list">
+    <li><strong>Low-level survey sweep (vibration):</strong> Immediately after completion of the full-level test, a second low-level survey sweep at 0.1g is performed. The resonant frequencies and damping values measured in this sweep are compared to the pre-test sweep. Any frequency shift &gt;5% or damping change &gt;20% is considered a potential structural change requiring investigation.</li>
+    <li><strong>Visual inspection:</strong> A thorough visual inspection of the test article — with special attention to structural joints, connector interfaces, harness support points, and any areas identified as potentially susceptible during the test planning phase — is performed before any electrical connections are re-established. New damage, displaced hardware, or unexpected marks are photographed and documented before any disturbing activity.</li>
+    <li><strong>Post-test functional test:</strong> The comprehensive post-environmental functional test described in Article 03 is executed, comparing all measured performance parameters to the pre-test baseline. Any parameter outside its pre-test values — even within specification — is documented and investigated.</li>
+    <li><strong>Data review:</strong> The full accelerometer dataset from the test is reviewed against predictions. Unexpected high-response locations, anomalous frequency content, or evidence of structural non-linearity during the test (response that does not scale proportionally with input level) are all potential indicators of structural issues that may not be visible externally.</li>
+  </ul>
+
+  <h3 class="ssh">When the Test Reveals a Problem</h3>
+  <p>Environmental tests find problems. That is, in part, their purpose. When a test reveals a structural failure, a functional anomaly, or a measured response that exceeds predictions, the program faces a series of decisions that must be made carefully and in the right order:</p>
+
+  <ul class="body-list">
+    <li><strong>Characterise the anomaly fully before any repair activity.</strong> The post-failure state of the hardware contains information about the failure mode. Any repair or disassembly that disturbs this state before a thorough investigation destroys evidence that cannot be recovered.</li>
+    <li><strong>Determine whether the test itself was correctly conducted.</strong> Before concluding that the hardware failed, verify that the test was performed in accordance with the approved procedure, at the correct input levels, with the correct fixturing, with calibrated instrumentation, and with the control system operating correctly. A test anomaly — shaker malfunction, fixture resonance, control system error — that produced an incorrect test input must be evaluated before the hardware failure can be correctly characterised.</li>
+    <li><strong>Root-cause the failure, not just the symptom.</strong> A cracked solder joint after random vibration is a symptom. The root cause may be a design inadequacy (component not adequately supported for the vibration environment), a workmanship deficiency (marginal solder quality that survived component acceptance but failed at system level), or a test anomaly (over-test due to fixture resonance). Each of these root causes requires a different corrective action.</li>
+    <li><strong>Assess the impact on the test program and flight readiness.</strong> Does the failure require redesign? Rework? A retest? Does it affect only the specific article tested, or does it indicate a fleet-wide design issue affecting other flight units? These questions must be answered by the program's technical authority, not by the test team alone.</li>
+  </ul>
+
+  <div class="callout green">
+    <div class="callout-label">✓ The Unexpected Success</div>
+    <p>Not every anomaly found during environmental testing is a failure. Sometimes, environmental testing reveals an unexpected mode of behaviour — an anomalous structural response, an unusual telemetry signature during vibration, a component that behaves differently than predicted — that turns out, after investigation, to be benign and actually informative.</p>
+    <p>On one program I worked, a random vibration test revealed a previously unknown structural resonance at 340 Hz in a solar array drive assembly — not at the frequency predicted by the FEM. Investigation traced the discrepancy to an incorrect stiffness assumption for the bearing preload. The FEM was corrected, and the corrected model revealed that the solar array had substantially less structural margin under acoustic loading than previously calculated. This led to a design modification that significantly improved the flight configuration. The test found a problem that analysis had missed — which is exactly what it was supposed to do.</p>
+  </div>
+
+  <!-- SUMMARY -->
+  <h2 class="sh">Summary</h2>
+
+  <p>Mechanical environmental testing — vibration, acoustic, and shock — is the element of the spacecraft I&amp;T program that most directly confronts the violent reality of the launch environment. Its three test environments address different physical phenomena at different frequency ranges and by different mechanisms, but they share a common purpose: to demonstrate, before launch, that the spacecraft and all its components will survive the transition from the ground to space and emerge in their required functional condition.</p>
+
+  <p>The key disciplines of mechanical environmental testing are: correctly characterising the test environments to bound the flight environments with appropriate margin; distinguishing between qualification testing (proving design margins) and acceptance testing (screening workmanship); designing fixtures that represent the flight boundary conditions without over-constraining or under-constraining the test article; instrumenting the test adequately to capture both the inputs and the structural responses; and managing the complex technical judgment calls around notching, force limiting, and over-test avoidance.</p>
+
+  <p>Above all: every environmental test must be bracketed by functional tests. The environmental test demonstrates survival; the functional tests demonstrate continued performance. Both are necessary, and neither is sufficient alone.</p>
+
+  <p>The next article addresses the other great domain of spacecraft environmental testing: thermal-vacuum testing — the simulation of the extreme thermal environment of space, and the verification that the spacecraft's thermal design keeps every component within its operating range throughout the mission.</p>
+  </div>
+
+
+  <!-- NEXT LESSON -->
+  <div class="next-article">
+    <div class="next-article-content">
+      <div class="next-label">Next Lesson · L11 of 17 · Article 11</div>
+      <div class="next-title">Thermal-Vacuum Testing</div>
+      <div class="next-desc">The space thermal environment, thermal balance testing, thermal cycling, and the verification that every component stays within its temperature limits</div>
+    </div>
+  </div>
+
+  <!-- GLOSSARY -->
+  <h2 class="sh" id="glossary">Key Terms Used in This Article</h2>
+
+  <table class="gloss-table">
+    <thead>
+      <tr><th>Term</th><th>Definition</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Acceptance Test</td><td>Environmental test performed on every flight unit at flight environment levels to screen for workmanship defects. Distinct from qualification testing in level, duration, and purpose.</td></tr>
+      <tr><td>Boundary Condition Problem</td><td>The challenge that the structural response of a test article depends on the stiffness of its attachment boundary, which differs between the test fixture and the flight structure.</td></tr>
+      <tr><td>Force Limiting</td><td>A test technique in which force gauges at the test article interface are used in closed-loop control to prevent the shaker from applying interface forces that exceed the flight environment. Preferred alternative to notching.</td></tr>
+      <tr><td>grms</td><td>The root-mean-square (RMS) overall vibration level in units of g, calculated as the square root of the area under the PSD curve. The single-number summary of a random vibration spectrum.</td></tr>
+      <tr><td>Low-Level Survey Sweep</td><td>A sine sweep performed at a low input level (typically 0.1g) before and after environmental testing to characterise structural resonances and detect any structural changes caused by the test.</td></tr>
+      <tr><td>Notching</td><td>The reduction of the test input specification at specific frequency bands — typically at or near structural resonances — to prevent unrealistic over-test at those frequencies. Must be justified by analysis and approved before execution.</td></tr>
+      <tr><td>OASPL</td><td>Overall Sound Pressure Level. The total acoustic energy integrated across all frequencies, expressed in decibels. The primary descriptor of the overall severity of an acoustic test environment.</td></tr>
+      <tr><td>Protoflight Test</td><td>A test approach that applies qualification-level input amplitudes but acceptance-duration test times. A formal risk-acceptance compromise used when a dedicated qualification unit is not available.</td></tr>
+      <tr><td>PSD</td><td>Power Spectral Density. Describes the distribution of random vibration energy across frequency, in units of g²/Hz. The primary specification format for random vibration tests.</td></tr>
+      <tr><td>Qualification Test</td><td>Environmental test performed on a dedicated qualification unit at levels more severe than the flight acceptance environment, to demonstrate design margins. The qualification unit is not flown.</td></tr>
+      <tr><td>Reverberant Acoustic Chamber</td><td>A specialised test facility with hard, reflective walls that create a diffuse sound field for acoustic testing. High-power horns generate the required sound pressure levels.</td></tr>
+      <tr><td>Shock Response Spectrum (SRS)</td><td>A representation of the peak response of single-degree-of-freedom oscillators across a range of frequencies to a shock transient. The standard format for characterising and specifying shock environments.</td></tr>
+    </tbody>
+  </table>
+
+</article>
+</div>
+
+<!-- FOOTER -->
+
+<!-- ARTICLE NAVIGATOR -->
+<div class="art-nav">
+  <div class="art-nav-inner">
+    <span class="art-nav-label">Go to article</span>
+    <div class="art-nav-select-wrap">
+      <select id="artNav_spacecraft_iat_article04_html" onchange="this.nextElementSibling.disabled = !this.value || this.options[this.selectedIndex].disabled">
+        <option value="">— Select any article in the series —</option>
+        <optgroup label="── Main Series ──────────────────────────">
+      <option value="spacecraft_iat_intro.html">01 · Introduction to Spacecraft I&T</option>
+      <option value="spacecraft_iat_article01.html">02 · I&T Programme Structure</option>
+      <option value="spacecraft_iat_article11.html">03 · Configuration Management</option>
+      <option value="spacecraft_iat_article16.html">04 · Quality Assurance</option>
+      <option value="spacecraft_iat_article02.html">05 · Cleanrooms & Contamination Control</option>
+      <option value="spacecraft_iat_article10.html">06 · EGSE & Test Harness</option>
+      <option value="spacecraft_iat_article03.html">07 · Functional Testing</option>
+      <option value="spacecraft_iat_article09.html">08 · Flight Software V&V</option>
+      <option value="spacecraft_iat_article14.html">09 · Mass Properties & Structural Loads</option>
+      <option value="spacecraft_iat_article04.html" selected disabled>▶ 10 · Vibration, Acoustics & Shock</option>
+      <option value="spacecraft_iat_article05.html">11 · Thermal-Vacuum Testing</option>
+      <option value="spacecraft_iat_article12.html">12 · EMC Testing</option>
+      <option value="spacecraft_iat_article07.html">13 · Instrument Integration & Calibration</option>
+      <option value="spacecraft_iat_article13.html">14 · Propulsion Testing</option>
+      <option value="spacecraft_iat_article06.html">15 · Anomaly Management</option>
+      <option value="spacecraft_iat_article15.html">16 · Launch Vehicle Integration</option>
+      <option value="spacecraft_iat_article08.html">17 · Launch Readiness & Commissioning</option>
+    </optgroup>
+    <optgroup label="── Supplementary ──────────────────────────">
+      <option value="spacecraft_iat_smallsat.html">Supp · Small Satellites</option>
+      <option value="spacecraft_iat_case_studies.html">Supp · Case Studies</option>
+    </optgroup>
+      </select>
+    </div>
+    <button class="art-nav-go" disabled
+            onclick="var s=this.previousElementSibling.querySelector('select'); if(s.value && !s.options[s.selectedIndex].disabled) window.location.href=s.value;">
+      Open →
+    </button>
+  </div>
+</div>
+
+<footer class="article-footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <div class="footer-label">Series</div>
+      <div class="footer-text">Spacecraft Integration &amp; Test<br>Article 04 of 08</div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-label">Topics</div>
+      <div class="tags">
+        <span class="tag">Vibration</span>
+        <span class="tag">Acoustics</span>
+        <span class="tag">Shock</span>
+        <span class="tag">Environmental Test</span>
+        <span class="tag">Qual vs Acceptance</span>
+        <span class="tag">Notching</span>
+      </div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-label">Audience</div>
+      <div class="footer-text">New and early-career spacecraft engineers, aerospace students, and anyone with a serious interest in how spacecraft are built and tested.</div>
+    </div>
+  </div>
+</footer>

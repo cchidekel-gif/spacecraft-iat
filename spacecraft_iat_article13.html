@@ -1,0 +1,265 @@
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://raw.githubusercontent.com/cchidekel-gif/spacecraft-iat-styles/refs/heads/main/styles.css">
+
+<div class="masthead">
+  <span class="masthead-series">Spacecraft Engineering Series · Integration &amp; Test</span>
+  <span class="masthead-right">Article 14 of 17</span>
+</div>
+
+<div class="series-nav">
+  <span>Series:</span>
+  <span class="sep">·</span>
+  <span>Intro</span>
+  <span class="sep">·</span>
+  <span>01</span>
+  <span class="sep">·</span>
+  <span>02</span>
+  <span class="sep">·</span>
+  <span>03</span>
+  <span class="sep">·</span>
+  <span>04</span>
+  <span class="sep">·</span>
+  <span>05</span>
+  <span class="sep">·</span>
+  <span>06</span>
+  <span class="sep">·</span>
+  <span>07</span>
+  <span class="sep">·</span>
+  <span>08</span>
+  <span class="sep">·</span>
+  <span>09</span>
+  <span class="sep">·</span>
+  <span>10</span>
+  <span class="sep">·</span>
+  <span>11</span>
+  <span class="sep">·</span>
+  <span>12</span>
+  <span class="sep">·</span>
+  <span class="current">13</span>
+  <span class="sep">·</span>
+  <span>14</span>
+  <span class="sep">·</span>
+  <span>15</span>
+  <span class="sep">·</span>
+  <span>16</span>
+</div>
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Spacecraft Integration &amp; Test · Article 14 of 17</div>
+    <h1>Propulsion System<br>Test and Verification</h1>
+    <p class="hero-sub">The most physically hazardous I&T activity in the programme — the verification of the system that will change the spacecraft's orbit, maintain its attitude, and in many cases determine whether the mission succeeds or fails entirely.</p>
+    <div class="byline">
+      <div class="byline-avatar">🔥</div>
+      <div>
+        <div class="byline-name">Charles Chidekel</div>
+        <div class="byline-title">Integration &amp; Test Guru · 40 Years of I&amp;T Experience</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+<article class="article-body">
+
+  <div class="toc-wrap">
+    <div class="toc-label">In This Article</div>
+    <ul class="toc-list">
+      <li><a href="#s1"><span>1. The Propulsion System in the Spacecraft Context</span><span class="toc-num">§1</span></a></li>
+      <li><a href="#s2"><span>2. Propulsion System Architectures and Their Test Implications</span><span class="toc-num">§2</span></a></li>
+      <li><a href="#s3"><span>3. Hazardous Operations — The Safety Framework</span><span class="toc-num">§3</span></a></li>
+      <li><a href="#s4"><span>4. Component-Level Testing Before Integration</span><span class="toc-num">§4</span></a></li>
+      <li><a href="#s5"><span>5. Propulsion Subsystem Integration — Sequence and Leak Testing</span><span class="toc-num">§5</span></a></li>
+      <li><a href="#s6"><span>6. The Propellant Load and Its Verification</span><span class="toc-num">§6</span></a></li>
+      <li><a href="#s7"><span>7. Functional Verification Without Firing</span><span class="toc-num">§7</span></a></li>
+      <li><a href="#s8"><span>8. The Test-as-You-Fly Boundary and Where It Breaks Down</span><span class="toc-num">§8</span></a></li>
+      <li><a href="#s9"><span>9. Thruster Firing Tests — When, Where, and What They Prove</span><span class="toc-num">§9</span></a></li>
+      <li><a href="#s10"><span>10. Historical Propulsion Failures and Their Lessons</span><span class="toc-num">§10</span></a></li>
+      <li><a href="#s11"><span>11. Launch Site Propellant Loading</span><span class="toc-num">§11</span></a></li>
+      <li><a href="#glossary"><span>Key Terms Glossary</span><span class="toc-num">GL</span></a></li>
+    </ul>
+  </div>
+
+  <p class="lead">Propulsion is the one spacecraft system for which the test-as-you-fly principle breaks down most dramatically and most consequentially. You cannot fire the main engine in the cleanroom. You cannot load hydrazine in the integration facility. You cannot perform an orbit insertion burn on the ground. The propulsion system that will determine the spacecraft's final orbit, extend its mission life, and execute every attitude manoeuvre must be verified largely by inspection, analysis, and functional testing that stops well short of the operational firing conditions it will eventually experience. Understanding where that boundary falls — and what risks it leaves unverified — is the most important propulsion I&T concept in this article.</p>
+
+  <div class="pull-quote">
+    <p>"Propulsion is the system that keeps you up at night. Not because the engineering is mysterious — it isn't — but because the consequences of a failure are immediate, irreversible, and total. A leaking valve may be a slow catastrophe or a fast one, but it is a catastrophe either way. Verify everything you can verify. Understand everything you cannot."</p>
+  </div>
+
+  <h2 class="sh" id="s1">1. The Propulsion System in the Spacecraft Context</h2>
+  <p>The spacecraft propulsion system provides the forces and torques needed to change the spacecraft's orbit (delta-V manoeuvres), maintain its attitude (attitude control), and perform station-keeping (counteracting orbital perturbations). For most science missions, the propulsion system is safety-critical in a very specific sense: a single failure — a stuck-closed thruster valve, a propellant line leak, an incorrect impulse during orbit insertion — can result in immediate, permanent loss of the spacecraft. There is no redundancy in the laws of orbital mechanics, and there is no recovery from a missed orbit insertion burn.</p>
+  <p>Propulsion systems are also the most physically dangerous systems aboard the spacecraft during ground processing. The propellants — whether hypergolic bipropellants like hydrazine and nitrogen tetroxide, monopropellants like hydrazine alone, or inert cold-gas systems — are toxic, flammable, or both. The pressurised tanks and feed lines contain stored energy that can cause mechanical injury and equipment damage if released uncontrolled. The procedures governing propulsion operations during ground processing are the most restrictive in the I&T programme, and for good reason.</p>
+
+  <h2 class="sh" id="s2">2. Propulsion System Architectures and Their Test Implications</h2>
+  <table class="prop-table">
+    <thead><tr><th>Architecture</th><th>Propellants</th><th>Primary Application</th><th>Key Test Considerations</th></tr></thead>
+    <tbody>
+      <tr><td>Monopropellant (hydrazine)</td><td>Hydrazine (N₂H₄) over iridium catalyst</td><td>Attitude control, small delta-V, station-keeping on LEO missions</td><td>Catalyst bed conditioning required before first firing; service valve contamination sensitivity; decomposition temperature verification; leak testing critical given toxicity</td></tr>
+      <tr><td>Bipropellant (hypergolic)</td><td>Hydrazine + NTO, or MMH + NTO</td><td>Large delta-V (orbit insertion, deep-space manoeuvres), attitude control on large platforms</td><td>Hypergolic ignition — no igniter, spontaneous reaction on contact; both propellants toxic; fill-and-drain valve leak testing paramount; oxidiser compatibility with all wetted materials must be verified pre-loading</td></tr>
+      <tr><td>Cold gas</td><td>Nitrogen (N₂) or helium (He)</td><td>Fine attitude control, very small delta-V, initial acquisition manoeuvres</td><td>Lowest hazard; inert, non-toxic; primary risks are high-pressure mechanical — stored energy in tanks and lines; thrust level verification; total impulse budget verification</td></tr>
+      <tr><td>Electric (ion / Hall)</td><td>Xenon (Xe) propellant, electrically ionised</td><td>High-efficiency deep-space propulsion, station-keeping on GEO platforms</td><td>High-voltage power processing unit hazards during test; plume impingement verification; long firing duration requirements for full performance characterisation; xenon propellant loading is lower hazard than chemical propellants</td></tr>
+      <tr><td>Solid rocket motor</td><td>Solid propellant grain (mixed during manufacture)</td><td>Orbit insertion, perigee kick, de-orbit; non-restartable</td><td>One-shot device — cannot be tested operationally on flight hardware; qualification by test of identical units; extremely high energy density; classified as ordnance; handling and safing procedures are range-safety driven</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sh" id="s3">3. Hazardous Operations — The Safety Framework</h2>
+
+  <div class="hazard-band">
+    <div class="hazard-icon">⚠️</div>
+    <div class="hazard-body">
+      <div class="hazard-title">Hazardous Operations Designation</div>
+      <p>Any propulsion operation involving toxic propellants, high-pressure systems above defined thresholds, pyrotechnic devices, or ordnance is classified as a Hazardous Operation. Hazardous operations are governed by the programme's Hazardous Operations Plan, which specifies: personnel training and certification requirements; minimum crew composition (typically a Safety Officer, a Test Conductor, a Propulsion Engineer, and trained technicians); exclusion zones; personal protective equipment; emergency procedures; and required EGSE safety interlocks.</p>
+      <p>No hazardous operation proceeds without a signed safety briefing, a current Hazardous Operations Approval, and confirmation that all required safety controls are in place. The test conductor has unilateral authority to halt any hazardous operation at any time without requiring concurrence from programme management. This authority is not procedural formality — it is the safety framework's most important enforcement mechanism.</p>
+    </div>
+  </div>
+
+  <p>The propulsion safety framework is built around the concept of <span class="kt">inhibits</span> — physical or electrical safeguards that prevent inadvertent propellant flow or pyrotechnic actuation. Every propellant path to a thruster requires a minimum of two independent inhibits — typically a combination of closed valves, safing plugs, and electrical disconnects — before work can proceed in proximity to the system. Inhibit verification is documented in the traveller before every propulsion-adjacent operation and confirmed by an independent inspector. The removal of any inhibit is a change to the spacecraft's safety state and requires formal authorisation.</p>
+
+  <h2 class="sh" id="s4">4. Component-Level Testing Before Integration</h2>
+  <p>Every propulsion component — tanks, valves, filters, regulators, transducers, fill-and-drain valves, latch valves, and thruster assemblies — undergoes acceptance testing before delivery to the integration facility. This is the last opportunity to verify component performance before integration, after which individual component access becomes progressively more restricted as the system is assembled and pressurised.</p>
+  <ul class="body-list">
+    <li><strong>Proof pressure testing</strong> verifies that tanks and pressure vessels can sustain their rated proof pressure — typically 1.5 times the maximum expected operating pressure — without permanent deformation. Proof testing is a qualification activity for the design and an acceptance activity for each flight vessel. A vessel that cannot sustain proof pressure without deformation does not fly.</li>
+    <li><strong>Leak testing</strong> at the component level uses helium as a tracer gas — helium's small molecular size makes it the most sensitive leak-detection medium available — to verify that every pressure boundary meets its specified leak rate. The leak rate specification for flight propulsion components is typically expressed in standard cubic centimetres per second (scc/s) at a level well below any operationally significant flow. A component that meets its component-level leak rate specification may still fail at the system level if assembly introduces new leak paths at joints and interfaces.</li>
+    <li><strong>Valve characterisation</strong> measures the flow coefficient and leakage rate of every valve in the propulsion system. The flow coefficient determines the relationship between valve position, pressure drop, and propellant flow rate — the fundamental parameter in the propellant budget. A valve with a flow coefficient outside its specification can cause under- or over-delivery of propellant, with mission-threatening consequences for manoeuvre accuracy and propellant budget.</li>
+    <li><strong>Thruster qualification and acceptance firing</strong> is performed at the component level on a test stand using the actual propellant. The acceptance firing characterises the thruster's specific impulse, thrust level, and valve timing under the actual propellant and pressure conditions it will experience in flight. This is the only opportunity to verify that the thruster produces the required impulse under representative conditions — and it is done on a test stand, not on the integrated spacecraft.</li>
+  </ul>
+
+  <h2 class="sh" id="s5">5. Propulsion Subsystem Integration — Sequence and Leak Testing</h2>
+  <p>Propulsion subsystem integration — the assembly of tanks, lines, valves, filters, and regulators into the flight propulsion system — proceeds in a defined sequence designed to maintain inhibits throughout assembly and to enable progressive leak verification at each stage. The sequence is driven by access constraints: once a component is installed in the spacecraft interior and the surrounding structure is closed out, access for leak testing, inspection, and rework is severely restricted.</p>
+
+  <div class="phase-flow">
+    <div class="pf-header">Propulsion Integration and Leak Verification Sequence</div>
+    <div class="pf-step"><div class="pf-num">1</div><div class="pf-content"><div class="pf-title">Mechanical Integration and Torque Verification</div><div class="pf-desc">All propulsion components installed and mechanical interfaces verified. Tubing connections torqued to specification and recorded in traveller. All fittings inspected for proper engagement. No pressurisation at this stage.</div></div></div>
+    <div class="pf-step"><div class="pf-num">2</div><div class="pf-content"><div class="pf-title">Low-Pressure Leak Test (GN₂ or GHe)</div><div class="pf-desc">System pressurised to a low test pressure (typically 50–100 psi) with inert gas. All external joints and connections checked with leak-detection solution or helium mass spectrometer. Any leak found must be repaired and the test repeated — no waivers for leaks at this stage. This is the last opportunity for easy access rework.</div></div></div>
+    <div class="pf-step"><div class="pf-num">3</div><div class="pf-content"><div class="pf-title">High-Pressure Leak Test (GHe at MEOP)</div><div class="pf-desc">System pressurised to Maximum Expected Operating Pressure with helium. Soak period held while all joints are inspected. Mass spectrometer leak detection on critical joints. Pressure decay monitored — any measurable pressure drop in a closed system indicates a leak. This test verifies the system at its operational pressure envelope.</div></div></div>
+    <div class="pf-step"><div class="pf-num">4</div><div class="pf-content"><div class="pf-title">Internal Valve Leak Test</div><div class="pf-desc">With the system pressurised, valves are closed and the downstream side is monitored for pressure rise (indicating internal valve leakage past the seat). Each valve in the system is tested in the closed position. Internal leak rates are compared against specification — a valve that leaks internally at twice its specification rate is a fuel budget problem and potentially a mission hazard.</div></div></div>
+    <div class="pf-step"><div class="pf-num">5</div><div class="pf-content"><div class="pf-title">Functional Checkout — Valve Actuation with Inert Gas</div><div class="pf-desc">Thruster valves are commanded open and closed by the flight software through the propulsion drive electronics, with inert gas flowing. Valve response timing is measured and compared to specification. Flow through each thruster measured and compared to propellant budget calculations. This is the last fully functional test before propellant loading.</div></div></div>
+    <div class="pf-step"><div class="pf-num">6</div><div class="pf-content"><div class="pf-title">Closeout Inspection and Inhibit Verification</div><div class="pf-desc">Final visual inspection of all propulsion components before structural closeout. Inhibit status verified and documented. Safing plugs confirmed in place where required. From this point, access to the interior propulsion lines is restricted or impossible without major disassembly.</div></div></div>
+  </div>
+
+  <h2 class="sh" id="s6">6. The Propellant Load and Its Verification</h2>
+  <p>Propellant loading — the transfer of flight propellant from ground storage into the spacecraft's propellant tanks — is the most hazardous operation in the I&T programme. It is performed at a specially equipped facility (either the integration facility for programmes loading before environmental testing, or the launch site for programmes loading at the pad), with a full hazardous operations crew, complete exclusion zones, and full emergency response support on standby.</p>
+  <p>The mass of propellant loaded is one of the most precisely measured quantities in the entire programme. The propellant mass determines the spacecraft's total mass (which affects the launch vehicle performance margin), its centre of mass (which affects attitude control authority), and its total delta-V capability (which determines how long the mission can operate and how large a manoeuvre it can perform). Propellant mass is measured by weighing the spacecraft before and after loading — which requires a precision balance system with calibration traceable to national standards, located at the loading facility, capable of weighing the spacecraft to better than 0.1% of the total propellant mass.</p>
+
+  <div class="callout rust">
+    <div class="callout-label">⚠ Mars Observer — A Propulsion Cautionary Tale</div>
+    <p>Mars Observer, launched in 1992, was lost in August 1993 — three days before its planned Mars orbit insertion. The most probable cause, determined by the failure investigation board, was a rupture of the propellant pressurisation system caused by nitrogen tetroxide vapour entering the helium pressurisation lines during the propellant isolation sequence before orbit insertion. The sequence — designed to prevent propellant from damaging the pressurisation hardware — had never been tested in flight with actual propellants under actual flight conditions.</p>
+    <p>The test-as-you-fly principle was violated in a specific and consequential way: the propellant isolation sequence that was executed just before orbit insertion had never been performed during ground testing with actual propellants and at the actual propellant temperatures encountered after the long cruise phase. The investigation concluded that a small amount of NTO had leaked past a check valve into the helium pressurisation system during the cruise, and that when the pressurisation sequence was initiated, the NTO vapour reacted violently with fuel residue in the pressurisation lines. The root cause was an operational sequence that was not tested in the conditions under which it would be executed.</p>
+  </div>
+
+  <h2 class="sh" id="s7">7. Functional Verification Without Firing</h2>
+  <p>With propellant loaded, the programme's options for functional propulsion testing contract sharply. The spacecraft cannot be taken to a vacuum chamber and fired — both because firing a chemical thruster in an enclosed facility is dangerous and because the plume products would contaminate the spacecraft's optics, solar arrays, and thermal surfaces. Instead, functional verification of the loaded propulsion system relies on a combination of electrical checkout, pressure monitoring, and careful analysis.</p>
+  <ul class="body-list">
+    <li><strong>Electrical continuity and impedance tests</strong> on every thruster valve confirm that the valve coil is intact and properly connected. These tests are performed with the propellant loaded and the thruster inhibited — confirming the electrical path without opening the valve.</li>
+    <li><strong>Pressure stabilisation monitoring</strong> after propellant loading confirms that the loaded system is holding pressure — that no internal leaks are occurring that would deplete propellant or allow propellant to migrate to unintended locations in the system.</li>
+    <li><strong>Regulator set-point verification</strong> confirms that the pressure regulators in the system are maintaining the correct feed pressure to the thrusters. This is performed by briefly opening a downstream valve (with appropriate inhibits on the thrusters themselves) and observing the regulated pressure, confirming it matches the propellant budget assumption.</li>
+    <li><strong>Temperature monitoring</strong> confirms that the propellant is being maintained within its allowable temperature range by the spacecraft's thermal control system. Hydrazine freezes at 2°C — a propellant temperature below the freeze point would cause immediate loss of propulsion capability and potentially rupture propellant lines.</li>
+  </ul>
+
+  <h2 class="sh" id="s8">8. The Test-as-You-Fly Boundary and Where It Breaks Down</h2>
+  <p>Article 03 introduced the test-as-you-fly principle — that tests should be performed in the conditions under which the tested function will be performed in flight. For propulsion, the test-as-you-fly principle identifies a hard boundary: the I&T programme can verify every electrical interface, every valve timing, every pressure measurement, and every software command sequence. It cannot verify the actual production of thrust by the flight thrusters operating at flight propellant pressures and temperatures, in vacuum, on the flight spacecraft.</p>
+  <p>The residual risk this creates is managed through three complementary approaches. Qualification testing on dedicated qualification hardware — identical thrusters, valves, and regulators tested to destruction at levels exceeding flight conditions — establishes the design margin. Component acceptance testing verifies that each flight article meets its individual performance specification. And analysis — propellant budget calculations, thrust alignment analysis, manoeuvre simulation — converts the verified component-level data into predictions of system-level on-orbit performance with quantified uncertainty bounds.</p>
+  <p>What this approach cannot do is reveal system-level interactions that were not captured in the component-level models. Mars Observer is the canonical example. The lesson is not that the approach is wrong — it is the only approach physically available — but that it requires explicit identification of every assumption in the analysis chain and explicit assessment of the consequences if any assumption is violated.</p>
+
+  <h2 class="sh" id="s9">9. Thruster Firing Tests — When, Where, and What They Prove</h2>
+  <p>For some spacecraft programmes — particularly those with electric propulsion systems, large monopropellant systems, or novel thruster designs — thruster firing tests at the system level are performed in vacuum chambers capable of handling the thruster's exhaust products. These tests are conducted on the spacecraft (or on a functional equivalent flight simulator) in a vacuum chamber that can maintain the required background pressure, with the thruster firing into the chamber's exhaust handling system.</p>
+  <p>System-level thruster firing tests verify several things that component-level firing tests cannot: the interaction between the propulsion system and the attitude control system during thruster firing (does the thruster produce the expected torque on the spacecraft?); the thermal interaction between the thruster plume and adjacent spacecraft surfaces; and the effect of thruster firing on the spacecraft's sensors — attitude sensors, science instruments, and star trackers that may be exposed to plume impingement, contamination, or backscatter.</p>
+
+  <div class="callout green">
+    <div class="callout-label">✓ Electric Propulsion — A Different Test Challenge</div>
+    <p>Electric propulsion systems — ion engines and Hall-effect thrusters — operate by accelerating ionised propellant (typically xenon) using high-voltage electric fields, producing thrust levels far lower than chemical systems but at dramatically higher specific impulse. This combination makes them ideal for deep-space missions and GEO station-keeping, but creates a distinctive test challenge: a Hall thruster may require hundreds or thousands of hours of continuous firing to expend the propellant needed for a mission, and that firing must occur in a facility that can maintain the required vacuum environment and handle the exhaust flow without contaminating the thruster or the facility.</p>
+    <p>System-level testing of electric propulsion in vacuum facilities is thus both necessary and logistically demanding. The spacecraft-level plume-spacecraft interaction test — confirming that the ion beam does not impinge on solar arrays, antennas, or optics at levels that cause damage or performance degradation — is a critical test that cannot be replaced by analysis alone. The Hayabusa mission's solar array degradation from thruster plume impingement, which was more severe than pre-launch analysis predicted, illustrates the consequence of insufficient system-level plume characterisation.</p>
+  </div>
+
+  <h2 class="sh" id="s10">10. Historical Propulsion Failures and Their Lessons</h2>
+  <p>The history of spacecraft propulsion failures in the operational phase is disproportionately large relative to the number of spacecraft flown — because propulsion is the system with the highest consequence of failure and the largest gap between what ground testing verifies and what on-orbit conditions demand.</p>
+  <ul class="body-list">
+    <li><strong>Mars Observer (1993)</strong> — lost at Mars orbit insertion due to probable propellant line rupture during a propellant isolation sequence that had never been tested with actual propellants. The specific operational sequence was not in the ground test programme. Lesson: every operational sequence, not just nominal ones, must be either tested or subjected to exhaustive failure mode analysis.</li>
+    <li><strong>Mars Polar Lander (1999)</strong> — lost at Mars descent; probable cause was a software fault that interpreted vibrations during leg deployment as a touchdown signal, shutting down the descent engines 40 metres above the surface. The specific test gap was the failure to perform an end-to-end test of the landing sequence with the landing legs deployed — the deployment vibration signature was not present in the software test environment. Lesson: system-level integration tests must exercise every sensor and actuator combination that will be active during critical mission events.</li>
+    <li><strong>SMART-1 anomaly (2004)</strong> — ESA's lunar mission experienced an unexpected plasma discharge in the Hall thruster plume that interfered with star tracker attitude determination, temporarily disabling attitude control. The interaction between the thruster plume plasma and the star tracker's detector had not been characterised in ground testing. Lesson: plasma environment interactions of electric propulsion systems require dedicated system-level characterisation that single-point analyses may not capture.</li>
+    <li><strong>Dawn xenon leak (2016)</strong> — Dawn's reaction control system experienced a thruster valve leak that consumed xenon propellant at a rate that would have ended the mission early. Careful propellant budget management, including mission replanning to reduce propellant consumption, extended the mission. Lesson: propellant budget margins are not luxuries — they are the programme's reserve against propulsion system anomalies that testing cannot fully prevent.</li>
+  </ul>
+
+  <h2 class="sh" id="s11">11. Launch Site Propellant Loading</h2>
+  <p>For most programmes, propellant is loaded at the launch site rather than at the integration facility — both because the launch site has purpose-built facilities and emergency response infrastructure for hazardous propellant operations, and because loading early means carrying propellant through environmental testing, transport, and launch site processing with all of the associated leak, thermal, and mechanical risks.</p>
+  <p>Launch site propellant loading is performed in a dedicated hazardous processing facility separate from the main spacecraft processing building, using a trained propellant team operating under the launch site's safety management system. The spacecraft's flight propulsion team provides technical support and oversight, but the launch site's safety rules govern all operations. This interface — between the programme's propulsion engineers and the launch site's propellant operations team — requires careful pre-launch coordination to ensure that the loading procedures are compatible with both the spacecraft's requirements and the launch site's operating constraints.</p>
+
+  <div class="stat-strip">
+    <div class="stat-cell"><span class="stat-num">0.1%</span><p>Typical required accuracy of propellant mass measurement — for a 1000 kg propellant load, this is ±1 kg</p></div>
+    <div class="stat-cell"><span class="stat-num">2°C</span><p>Freeze point of hydrazine monopropellant — the lower bound of the required thermal control range for a hydrazine propulsion system</p></div>
+    <div class="stat-cell"><span class="stat-num">≥2</span><p>Minimum number of independent inhibits required between a propellant source and any thruster during ground operations</p></div>
+    <div class="stat-cell"><span class="stat-num">1.5×</span><p>Typical proof pressure factor — proof test pressure as a multiple of Maximum Expected Operating Pressure</p></div>
+  </div>
+
+
+  <!-- NEXT LESSON -->
+  <div class="next-article">
+    <div class="next-article-content">
+      <div class="next-label">Next Lesson · L15 of 17 · Module 6 — Anomaly Management · Article 15</div>
+      <div class="next-title">Anomalies, Discrepancies, and Problem Resolution</div>
+      <div class="next-desc">The DR lifecycle, root cause analysis, corrective action, and the normalisation of deviance that has preceded every major spaceflight failure</div>
+    </div>
+  </div>
+
+  <h2 class="sh" id="glossary">Key Terms Used in This Article</h2>
+  <table class="gloss-table">
+    <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+    <tbody>
+      <tr><td>Delta-V (ΔV)</td><td>The change in velocity imparted to the spacecraft by a propulsion manoeuvre, expressed in metres per second. The fundamental currency of orbital mechanics — the total mission delta-V budget determines the propellant mass required.</td></tr>
+      <tr><td>Hazardous Operation</td><td>Any propulsion operation involving toxic propellants, high-pressure systems above defined thresholds, pyrotechnic devices, or ordnance. Requires formal approval, trained crew, safety controls, and a designated Safety Officer with authority to halt the operation.</td></tr>
+      <tr><td>Hypergolic Propellants</td><td>Propellant combinations that ignite spontaneously on contact with each other, requiring no ignition system. Hydrazine / nitrogen tetroxide (NTO) is the most common spacecraft hypergolic combination. Both components are toxic and require full protective equipment handling.</td></tr>
+      <tr><td>Inhibit</td><td>A physical or electrical safeguard that prevents inadvertent propellant flow or pyrotechnic actuation. A minimum of two independent inhibits is required in any propellant flow path during ground operations.</td></tr>
+      <tr><td>MEOP (Maximum Expected Operating Pressure)</td><td>The highest pressure the propulsion system is expected to experience during normal flight operations. Used as the basis for proof pressure testing (typically at 1.5× MEOP) and system-level leak testing.</td></tr>
+      <tr><td>Proof Pressure Test</td><td>A one-time structural verification test in which a pressure vessel is pressurised to a defined multiple of MEOP to confirm structural integrity without permanent deformation. A qualification activity for the design, performed on each flight vessel as an acceptance test.</td></tr>
+      <tr><td>Specific Impulse (Isp)</td><td>The measure of propulsion system efficiency — thrust produced per unit of propellant mass consumed per second, expressed in seconds. Higher Isp means more delta-V from the same propellant mass. Chemical thrusters: 200–450 s. Ion thrusters: 1500–10,000 s.</td></tr>
+    </tbody>
+  </table>
+</article>
+</div>
+
+
+<!-- ARTICLE NAVIGATOR -->
+<div class="art-nav">
+  <div class="art-nav-inner">
+    <span class="art-nav-label">Go to article</span>
+    <div class="art-nav-select-wrap">
+      <select id="artNav_spacecraft_iat_article13_html" onchange="this.nextElementSibling.disabled = !this.value || this.options[this.selectedIndex].disabled">
+        <option value="">— Select any article in the series —</option>
+        <optgroup label="── Main Series ──────────────────────────">
+      <option value="spacecraft_iat_intro.html">01 · Introduction to Spacecraft I&T</option>
+      <option value="spacecraft_iat_article01.html">02 · I&T Programme Structure</option>
+      <option value="spacecraft_iat_article11.html">03 · Configuration Management</option>
+      <option value="spacecraft_iat_article16.html">04 · Quality Assurance</option>
+      <option value="spacecraft_iat_article02.html">05 · Cleanrooms & Contamination Control</option>
+      <option value="spacecraft_iat_article10.html">06 · EGSE & Test Harness</option>
+      <option value="spacecraft_iat_article03.html">07 · Functional Testing</option>
+      <option value="spacecraft_iat_article09.html">08 · Flight Software V&V</option>
+      <option value="spacecraft_iat_article14.html">09 · Mass Properties & Structural Loads</option>
+      <option value="spacecraft_iat_article04.html">10 · Vibration, Acoustics & Shock</option>
+      <option value="spacecraft_iat_article05.html">11 · Thermal-Vacuum Testing</option>
+      <option value="spacecraft_iat_article12.html">12 · EMC Testing</option>
+      <option value="spacecraft_iat_article07.html">13 · Instrument Integration & Calibration</option>
+      <option value="spacecraft_iat_article13.html" selected disabled>▶ 14 · Propulsion Testing</option>
+      <option value="spacecraft_iat_article06.html">15 · Anomaly Management</option>
+      <option value="spacecraft_iat_article15.html">16 · Launch Vehicle Integration</option>
+      <option value="spacecraft_iat_article08.html">17 · Launch Readiness & Commissioning</option>
+    </optgroup>
+    <optgroup label="── Supplementary ──────────────────────────">
+      <option value="spacecraft_iat_smallsat.html">Supp · Small Satellites</option>
+      <option value="spacecraft_iat_case_studies.html">Supp · Case Studies</option>
+    </optgroup>
+      </select>
+    </div>
+    <button class="art-nav-go" disabled
+            onclick="var s=this.previousElementSibling.querySelector('select'); if(s.value && !s.options[s.selectedIndex].disabled) window.location.href=s.value;">
+      Open →
+    </button>
+  </div>
+</div>
+
+<footer class="article-footer">
+  <div class="footer-inner">
+    <div class="footer-col"><div class="footer-label">Series</div><div class="footer-text">Spacecraft Integration &amp; Test<br>Article 13 — Supplementary</div></div>
+    <div class="footer-col"><div class="footer-label">Topics</div><div class="tags"><span class="tag">Propulsion</span><span class="tag">Hazardous Ops</span><span class="tag">Leak Testing</span><span class="tag">Propellant Loading</span><span class="tag">Thruster Testing</span></div></div>
+    <div class="footer-col"><div class="footer-label">Audience</div><div class="footer-text">I&amp;T engineers and programme staff who work around propulsion operations and need to understand the test discipline, safety framework, and fundamental limitations of propulsion ground verification.</div></div>
+  </div>
+</footer>

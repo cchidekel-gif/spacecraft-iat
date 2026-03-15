@@ -1,0 +1,266 @@
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://raw.githubusercontent.com/cchidekel-gif/spacecraft-iat-styles/refs/heads/main/styles.css">
+
+<div class="masthead">
+  <span class="masthead-series">Spacecraft Engineering Series · Integration &amp; Test</span>
+  <span class="masthead-right">Article 09 of 17</span>
+</div>
+
+<div class="series-nav">
+  <span>Series:</span>
+  <span class="sep">·</span>
+  <span>Intro</span>
+  <span class="sep">·</span>
+  <span>01</span>
+  <span class="sep">·</span>
+  <span>02</span>
+  <span class="sep">·</span>
+  <span>03</span>
+  <span class="sep">·</span>
+  <span>04</span>
+  <span class="sep">·</span>
+  <span>05</span>
+  <span class="sep">·</span>
+  <span>06</span>
+  <span class="sep">·</span>
+  <span>07</span>
+  <span class="sep">·</span>
+  <span class="current">08</span>
+  <span class="sep">·</span>
+  <span>09</span>
+  <span class="sep">·</span>
+  <span>10</span>
+  <span class="sep">·</span>
+  <span>11</span>
+  <span class="sep">·</span>
+  <span>12</span>
+  <span class="sep">·</span>
+  <span>13</span>
+  <span class="sep">·</span>
+  <span>14</span>
+  <span class="sep">·</span>
+  <span>15</span>
+  <span class="sep">·</span>
+  <span>16</span>
+</div>
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Spacecraft Integration &amp; Test · Article 09 of 17</div>
+    <h1>Mass Properties,<br>Structural Analysis,<br>and Load Verification</h1>
+    <p class="hero-sub">The discipline of knowing precisely how heavy the spacecraft is, where its mass is concentrated, how its structure responds to dynamic loading, and whether the analysis that said it would survive launch is confirmed by measurement.</p>
+    <div class="byline">
+      <div class="byline-avatar">⚖️</div>
+      <div>
+        <div class="byline-name">Charles Chidekel</div>
+        <div class="byline-title">Integration &amp; Test Guru · 40 Years of I&amp;T Experience</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+<article class="article-body">
+
+  <div class="toc-wrap">
+    <div class="toc-label">In This Article</div>
+    <ul class="toc-list">
+      <li><a href="#s1"><span>1. Why Mass Properties Matter from Day One</span><span class="toc-num">§1</span></a></li>
+      <li><a href="#s2"><span>2. The Mass Properties Hierarchy — What Is Measured and When</span><span class="toc-num">§2</span></a></li>
+      <li><a href="#s3"><span>3. Mass Measurement — Methods and Uncertainty</span><span class="toc-num">§3</span></a></li>
+      <li><a href="#s4"><span>4. Centre of Mass and Its Consequences</span><span class="toc-num">§4</span></a></li>
+      <li><a href="#s5"><span>5. Moments of Inertia and Attitude Control</span><span class="toc-num">§5</span></a></li>
+      <li><a href="#s6"><span>6. The Launch Load Environment</span><span class="toc-num">§6</span></a></li>
+      <li><a href="#s7"><span>7. The Finite Element Model — Its Role and Its Limits</span><span class="toc-num">§7</span></a></li>
+      <li><a href="#s8"><span>8. Modal Survey Testing — Correlating the FEM</span><span class="toc-num">§8</span></a></li>
+      <li><a href="#s9"><span>9. Coupled Loads Analysis</span><span class="toc-num">§9</span></a></li>
+      <li><a href="#s10"><span>10. Structural Margin and the Factor of Safety</span><span class="toc-num">§10</span></a></li>
+      <li><a href="#s11"><span>11. Mass Properties at Launch — The Final Accounting</span><span class="toc-num">§11</span></a></li>
+      <li><a href="#glossary"><span>Key Terms Glossary</span><span class="toc-num">GL</span></a></li>
+    </ul>
+  </div>
+
+  <p class="lead">Mass properties — the mass, centre of mass, and moments of inertia of the spacecraft — are not merely bookkeeping quantities. They are engineering parameters that determine whether the launch vehicle can deliver the spacecraft to its target orbit, whether the attitude control system can point the spacecraft accurately enough to meet science requirements, and whether the structure will survive the loads it will experience during launch. They must be tracked continuously throughout the I&T programme, measured precisely at the integrated spacecraft level, and delivered to the launch authority as launch inputs. An error in the mass properties database is not a paperwork problem — it is a mission risk.</p>
+
+  <div class="pull-quote">
+    <p>"Mass is the programme's most visible number. Everyone watches it. But the centre of mass and the moments of inertia are equally important and far less watched. I have seen programmes where the mass budget was under control and the centre of mass was 15 millimetres from where the attitude control system expected it to be. That 15 millimetres required a propellant budget re-analysis, a reaction wheel torque re-evaluation, and a six-week schedule delay."</p>
+  </div>
+
+  <h2 class="sh" id="s1">1. Why Mass Properties Matter from Day One</h2>
+  <p>The spacecraft's mass is not a single number — it is a collection of numbers, each defined for a specific mission phase, each with a different impact on a different aspect of the mission. The <span class="kt">launch mass</span> includes the spacecraft bus, all instruments, all propellant, all pressurant, and all ordnance — everything that leaves the ground. It determines whether the selected launch vehicle can deliver the spacecraft to its target orbit with adequate margin. The <span class="kt">beginning-of-life (BOL) dry mass</span> is the spacecraft after propellant is expended but before mission operations begin, and it determines the attitude control authority available at the start of the science phase. The <span class="kt">end-of-life (EOL) mass</span>, after all propellant has been consumed, determines the final orbital parameters of the spacecraft and whether any deorbit requirement can be met.</p>
+  <p>Mass properties tracking begins at programme inception, when the initial mass budget is established. From that point, every design change that affects mass — every component substitution, every harness addition, every bracket redesign — must be captured in the mass properties database. The mass properties engineer is responsible for maintaining this database throughout the programme, and for producing a current mass roll-up — the summed mass from components to subsystems to the integrated spacecraft — at every major programme review.</p>
+
+  <h2 class="sh" id="s2">2. The Mass Properties Hierarchy — What Is Measured and When</h2>
+  <table class="mp-table">
+    <thead><tr><th>Level</th><th>What Is Measured</th><th>Primary Method</th><th>Key Output</th></tr></thead>
+    <tbody>
+      <tr><td>Component / Unit</td><td>Individual components delivered to the integration facility — electronics boxes, mechanisms, instruments, brackets, cables</td><td>Precision scale; components weighed individually before installation. Dimensions measured for centre-of-mass estimation if full CoM measurement is not performed.</td><td>Measured mass of each component for mass roll-up. Deviations from mass budget tracked and dispositioned by mass properties engineer.</td></tr>
+      <tr><td>Subsystem Assembly</td><td>Integrated subsystems — propulsion module, structure + harness, antenna assembly — before installation in the spacecraft</td><td>Platform scale with calibrated load cells; some assemblies may require a purpose-built fixture to present the assembly for measurement in a defined orientation.</td><td>Subsystem mass and preliminary centre of mass for tracking against subsystem mass budget. Cumulative mass roll-up updated.</td></tr>
+      <tr><td>Spacecraft (dry)</td><td>Fully integrated spacecraft without propellant — at the conclusion of the I&T programme, before propellant loading</td><td>Precision weighing system: multiple load cells under the spacecraft support fixture, calibrated to ±0.1% or better. Or a dedicated spacecraft weighing platform with calibrated instrumentation.</td><td>Measured dry mass for comparison to mass budget. Centre of mass location in three axes. Moments of inertia measured by swing test or spin balance.</td></tr>
+      <tr><td>Spacecraft (wet)</td><td>Spacecraft after propellant loading — the launch configuration</td><td>Spacecraft is weighed before and after propellant loading. The difference is the loaded propellant mass. Total wet mass is the dry mass plus propellant.</td><td>Launch mass for launch vehicle performance calculation. Updated centre of mass reflecting propellant distribution. Propellant budget verification.</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sh" id="s3">3. Mass Measurement — Methods and Uncertainty</h2>
+  <p>At the component level, mass measurement is straightforward: a precision scale calibrated to the required accuracy, used in an environment without significant air currents, with the component allowed to stabilise thermally before measurement. The challenge is not the measurement itself but the bookkeeping — ensuring that every component is weighed and that its measured mass is entered in the mass properties database with its part number, serial number, and measured date.</p>
+  <p>At the spacecraft level, the measurement is more complex. The spacecraft cannot simply be placed on a scale — it is too large, too fragile, and too valuable to risk on an unsupported weighing platform. Instead, the spacecraft is suspended or supported on a purpose-built <span class="kt">weighing fixture</span> with calibrated load cells at defined support points. The mass is calculated from the sum of the load cell readings, corrected for the fixture mass (tared before the spacecraft is installed). The uncertainty of the measurement is determined by the calibration accuracy of the load cells, the tare accuracy, and the temperature stability of the environment during measurement.</p>
+
+  <h2 class="sh" id="s4">4. Centre of Mass and Its Consequences</h2>
+  <p>The <span class="kt">centre of mass (CoM)</span> — the point about which the spacecraft's mass is evenly distributed in all directions — is the reference point for all attitude dynamics calculations. The attitude control system applies torques about the spacecraft's actual centre of mass. If the CoM is not at the location the attitude control software assumes, the relationship between applied torque and resulting angular acceleration is incorrect, and the pointing accuracy and stability of the spacecraft will be degraded.</p>
+  <p>CoM measurement at the spacecraft level is performed by measuring the spacecraft's mass with the spacecraft supported at known points, then shifting the support points and remeasuring. The change in load distribution between support points, combined with the known geometry of the support points, allows the CoM location to be calculated in all three axes. The precision required — typically a few millimetres for a science spacecraft — requires very precise knowledge of the support point geometry and very stable load cell readings.</p>
+
+  <div class="callout amber">
+    <div class="callout-label">◆ The Propellant Mass CoM Shift</div>
+    <p>One of the most important and most frequently underestimated mass properties effects is the shift in the spacecraft's centre of mass as propellant is consumed during the mission. A spacecraft loaded with several hundred kilograms of propellant has a significantly different centre of mass from the same spacecraft with its tanks nearly empty — because the propellant is distributed in specific tank locations that may not be coincident with the spacecraft's overall centre of mass.</p>
+    <p>This CoM shift must be explicitly modelled in the attitude control system's performance analysis for every mission phase. A bipropellant system that draws fuel and oxidiser at a fixed mixture ratio will shift the CoM in a predictable way. A system with multiple tanks and multiple thruster clusters, with different tanks used at different mission phases, may have a more complex CoM evolution that requires explicit propellant management planning to keep the CoM within the attitude control system's operating envelope throughout the mission.</p>
+  </div>
+
+  <h2 class="sh" id="s5">5. Moments of Inertia and Attitude Control</h2>
+  <p>The <span class="kt">moments of inertia</span> — the rotational equivalents of mass, representing the resistance of the spacecraft to angular acceleration about each of its three principal axes — are as important to attitude control performance as the CoM location. The attitude control system is designed to produce a specified pointing accuracy using reaction wheels, thrusters, or control moment gyros sized to produce torques adequate for the spacecraft's expected moment of inertia. If the actual moments differ significantly from the design values, the control system performance will be degraded.</p>
+  <p>Moments of inertia are measured using a <span class="kt">torsional pendulum</span> or <span class="kt">spin balance</span> facility. In a torsional pendulum measurement, the spacecraft is suspended from a torsion rod and allowed to oscillate; the oscillation period is a function of the moment of inertia and the torsion rod stiffness, from which the moment of inertia can be calculated. The measurement must be performed with the spacecraft in the appropriate configuration for each mission phase — with solar arrays deployed, antennas deployed, and instruments in their operating positions — because the deployed configuration differs substantially from the launch configuration.</p>
+
+  <h2 class="sh" id="s6">6. The Launch Load Environment</h2>
+  <p>The spacecraft's structure must survive the mechanical loads imposed during launch — and those loads are among the most demanding the spacecraft will ever experience. Understanding the character of those loads is prerequisite to understanding why structural analysis and testing are conducted the way they are.</p>
+
+  <div class="load-grid">
+    <div class="load-card">
+      <div class="load-header"><span class="load-icon">📈</span><div class="load-title">Quasi-Static Loads</div></div>
+      <div class="load-body"><p>Sustained accelerations during ascent, typically 3–6g axial and 0.5–2g lateral. Drive sizing of primary structure in simple bending and compression. Characterised as "static" because they vary slowly relative to structural natural frequencies. Defined in the launch vehicle's payload user guide as design limit loads.</p></div>
+    </div>
+    <div class="load-card">
+      <div class="load-header"><span class="load-icon">🌊</span><div class="load-title">Random Vibration</div></div>
+      <div class="load-body"><p>Broadband, stochastic vibration from acoustic excitation of the fairing and engine combustion noise transmitted through the structure. Particularly damaging to electronic assemblies, connectors, and components with resonant frequencies in the excitation band. See Article 04 for test methodology.</p></div>
+    </div>
+    <div class="load-card">
+      <div class="load-header"><span class="load-icon">🔔</span><div class="load-title">Sine / Resonant Loads</div></div>
+      <div class="load-body"><p>Periodic forcing at or near structural resonant frequencies — from engine thrust oscillations, aerodynamic buffeting, and coupled launch vehicle-spacecraft oscillations. Potentially the highest-amplitude loads experienced by the spacecraft. Managed through coupled loads analysis and, where necessary, structural isolation systems.</p></div>
+    </div>
+    <div class="load-card">
+      <div class="load-header"><span class="load-icon">💥</span><div class="load-title">Pyrotechnic Shock</div></div>
+      <div class="load-body"><p>High-frequency, high-amplitude transients from pyrotechnic separation events — fairing jettison, stage separation, spacecraft separation. Propagate through the structure as stress waves with frequency content extending to tens of kilohertz. See Article 04 for the shock response spectrum test methodology.</p></div>
+    </div>
+  </div>
+
+  <h2 class="sh" id="s7">7. The Finite Element Model — Its Role and Its Limits</h2>
+  <p>The <span class="kt">Finite Element Model (FEM)</span> is the mathematical model of the spacecraft's structural behaviour — a discretisation of the spacecraft's geometry and material properties into a mesh of finite elements, each with defined stiffness, mass, and damping properties, that together approximate the continuous structure's dynamic and static behaviour. The FEM is the primary tool for predicting the spacecraft's natural frequencies, mode shapes, and stress distribution under the launch load environment.</p>
+  <p>A spacecraft FEM for a large mission may contain hundreds of thousands to millions of degrees of freedom — individual coordinate values at each node of the element mesh. Solving this model for the full frequency range of interest requires substantial computing resources and careful numerical conditioning. The model is built, verified, and updated throughout the design phase, and is the basis for all structural margin calculations and all coupled loads analyses.</p>
+  <p>The FEM's predictions are only as good as the model's fidelity to the actual structure. Every simplification in the model — every joint treated as rigid that is actually flexible, every material property taken from a handbook rather than measured, every structural element modelled as its nominal geometry rather than its as-built geometry — introduces uncertainty between the model's predictions and the structure's actual behaviour. The purpose of modal survey testing is to measure the actual structure's behaviour and compare it to the FEM's predictions, quantifying this uncertainty.</p>
+
+  <div class="callout steel">
+    <div class="callout-label">⚙ The Model Is Not the Spacecraft</div>
+    <p>One of the most important conceptual habits in structural analysis is maintaining clarity about the distinction between the finite element model and the actual spacecraft. The FEM predicts what the spacecraft's structure should do if the model's assumptions are correct. The spacecraft does what it does. These two things may agree closely or they may differ, and the degree of agreement is determined by the quality of the model, not by wishful thinking.</p>
+    <p>A structural analysis that shows margin-positive results is not a guarantee of survival — it is a prediction, with uncertainty, that the structure will survive if the model assumptions are valid. Modal survey testing is the mechanism by which those assumptions are validated (or shown to require correction). Programmes that treat the FEM predictions as verified results — without performing modal survey testing to confirm them — are accepting unknown structural risk at launch.</p>
+  </div>
+
+  <h2 class="sh" id="s8">8. Modal Survey Testing — Correlating the FEM</h2>
+  <p>A <span class="kt">modal survey test</span> — also called a modal test or structural dynamics test — measures the spacecraft's actual natural frequencies, mode shapes, and damping ratios by exciting the structure with a controlled force input and measuring the resulting vibration response at a large number of locations simultaneously. The measured modal parameters are then compared to the FEM predictions, and the model is updated — its material properties, joint stiffnesses, and boundary conditions adjusted — until it reproduces the measured behaviour to within defined correlation criteria.</p>
+  <p>The correlation criteria are typically expressed as frequency agreement (the measured and predicted natural frequencies must agree to within a defined percentage — commonly 5% for the dominant modes) and mode shape agreement (the measured and predicted mode shapes must agree to within a defined cross-orthogonality criterion — typically the Modal Assurance Criterion (MAC) above 0.9 for paired modes). A model that meets these criteria has been validated against measured data and can be used with increased confidence for coupled loads analysis.</p>
+
+  <table class="fem-table">
+    <thead><tr><th>Test Activity</th><th>What It Measures</th><th>How It Informs the FEM</th></tr></thead>
+    <tbody>
+      <tr><td>Sine Sweep Survey</td><td>Frequency response functions at multiple measurement points from a low-level sine sweep across the frequency range of interest. Identifies natural frequencies and damping ratios.</td><td>Natural frequency predictions compared to measurements. Frequencies not predicted by model identify missing structural stiffness paths or modelling errors.</td></tr>
+      <tr><td>Mode Shape Extraction</td><td>The spatial pattern of motion at each natural frequency — which parts of the structure move how much and in what direction relative to each other.</td><td>Mode shapes compared to FEM predictions using MAC. Low MAC values identify modes where the FEM misrepresents the structural dynamics — often at joint or attachment interfaces.</td></tr>
+      <tr><td>Effective Mass Measurement</td><td>The fraction of the spacecraft's total mass that participates in each mode. Low-frequency modes with high effective mass are the most important for coupled loads.</td><td>FEM effective mass predictions compared to measurements. Discrepancies indicate errors in the mass distribution model or in the mode shape prediction.</td></tr>
+      <tr><td>Component Mode Synthesis</td><td>For spacecraft assembled from separately delivered and tested subsystems, the component modes of each subsystem are measured individually and synthesised to predict the system-level modes.</td><td>Component mode synthesis allows the FEM to be validated progressively as each subsystem is delivered, reducing the risk of large discrepancies at the system-level test.</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sh" id="s9">9. Coupled Loads Analysis</h2>
+  <p><span class="kt">Coupled Loads Analysis (CLA)</span> is the formal process by which the spacecraft's structural response to the launch load environment is predicted using the combined model of the spacecraft and the launch vehicle. It is called "coupled" because the spacecraft and launch vehicle are dynamically coupled — the spacecraft's structural response depends on the launch vehicle's dynamics, and vice versa. An analysis that treats the spacecraft in isolation — without the launch vehicle's dynamic model — is not a coupled loads analysis and will not accurately predict the loads the spacecraft actually experiences.</p>
+  <p>CLA is performed by the launch vehicle provider using the launch vehicle's structural dynamic model and a reduced-order version of the spacecraft's FEM — the <span class="kt">Coupled Loads Analysis model (CLA model)</span> — provided by the spacecraft programme. The interface between the spacecraft programme and the launch vehicle provider for CLA is one of the most technically complex I&T interfaces in any programme, requiring careful coordination of model formats, boundary conditions, and load case definitions.</p>
+
+  <div class="callout blue">
+    <div class="callout-label">◆ The CLA Cycle and Its Schedule Implications</div>
+    <p>CLA is not a one-time activity. It is a cycle: the spacecraft programme provides the CLA model; the launch vehicle provider runs the coupled loads analysis; the resulting loads are compared to the structural design margins; if the loads exceed the margins, either the structure is redesigned (changing the CLA model) or the analysis assumptions are revisited; and the cycle repeats. The number of cycles required before the loads close within the margins determines how much schedule CLA consumes.</p>
+    <p>The first CLA cycle is performed relatively early in the design phase, with a preliminary FEM and preliminary structural design. The final CLA cycle — the one that provides the launch commit inputs — is performed with the correlated FEM from the modal survey test and the final structural design. The schedule between the modal survey test and the final CLA closure can be a critical path item for programmes with structural margin challenges.</p>
+  </div>
+
+  <h2 class="sh" id="s10">10. Structural Margin and the Factor of Safety</h2>
+  <p>Structural <span class="kt">margin of safety</span> is the quantitative measure of the structure's capability relative to the loads it must sustain. It is defined as (Allowable Load / Design Load) − 1, where a positive margin indicates capability exceeds demand and a negative margin indicates failure. The design load incorporates a <span class="kt">factor of safety</span> — a multiplier applied to the predicted limit load that accounts for uncertainties in the load prediction, the material properties, and the manufacturing variability of the structure.</p>
+  <p>For spacecraft structures, NASA and ESA programmes typically require a factor of safety of 1.25 to 2.0, depending on the design heritage, the test programme scope, and the consequence of failure. A structure that is tested to the qualification load (limit load × factor of safety) without failure has demonstrated positive margin. A structure with positive analytical margin but no test verification has only analysis confidence — a meaningfully different thing.</p>
+
+  <div class="stat-strip">
+    <div class="stat-cell"><span class="stat-num">1.25–2.0</span><p>Typical factor of safety applied to limit loads for spacecraft primary structure, depending on heritage and test programme scope</p></div>
+    <div class="stat-cell"><span class="stat-num">5%</span><p>Typical maximum allowable discrepancy between measured and predicted natural frequencies for FEM correlation acceptance</p></div>
+    <div class="stat-cell"><span class="stat-num">0.9</span><p>Minimum Modal Assurance Criterion (MAC) value typically required for paired mode shapes to be considered correlated</p></div>
+    <div class="stat-cell"><span class="stat-num">±0.1%</span><p>Typical required accuracy for spacecraft-level mass measurement — critical for launch vehicle performance and propellant budget calculations</p></div>
+  </div>
+
+  <h2 class="sh" id="s11">11. Mass Properties at Launch — The Final Accounting</h2>
+  <p>The launch authority requires, as one of its Launch Readiness Review inputs, a complete mass properties statement for the spacecraft in its launch configuration — the wet mass, the centre of mass location in all three axes, and the moments of inertia about all three principal axes. These values are used by the launch vehicle provider to confirm that the spacecraft is within the payload envelope specified in the launch vehicle's payload user guide, and to set the launch vehicle's flight control system parameters for the specific launch.</p>
+  <p>The launch mass properties statement is compiled from the measured dry mass (from the spacecraft-level weighing), the measured propellant mass (from the propellant loading operation), the calculated propellant CoM contribution (from the known tank geometry and fill level), and the measured dry CoM and moments of inertia. The uncertainty of each input is propagated through the calculation to produce an uncertainty on the final launch mass properties values — and the programme must demonstrate that even the worst-case combination of uncertainties leaves the spacecraft within the launch vehicle's payload envelope and within the attitude control system's operating assumptions.</p>
+
+
+  <!-- NEXT LESSON -->
+  <div class="next-article">
+    <div class="next-article-content">
+      <div class="next-label">Next Lesson · L10 of 17 · Article 10</div>
+      <div class="next-title">Environmental Testing: Vibration, Acoustics, and Shock</div>
+      <div class="next-desc">The physical tests that verify the spacecraft against the launch load predictions — sine, random, acoustic, and shock testing</div>
+    </div>
+  </div>
+
+  <h2 class="sh" id="glossary">Key Terms Used in This Article</h2>
+  <table class="gloss-table">
+    <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+    <tbody>
+      <tr><td>Centre of Mass (CoM)</td><td>The point about which the spacecraft's mass is evenly distributed — the reference point for attitude dynamics. A CoM not at its expected location degrades attitude control performance.</td></tr>
+      <tr><td>Coupled Loads Analysis (CLA)</td><td>The prediction of spacecraft structural loads using a combined model of the spacecraft and launch vehicle, accounting for the dynamic coupling between them. Required input to the launch vehicle compatibility verification.</td></tr>
+      <tr><td>Factor of Safety</td><td>A multiplier applied to predicted limit loads to account for uncertainties in loads, material properties, and manufacturing variability. Typically 1.25–2.0 for spacecraft primary structure.</td></tr>
+      <tr><td>Finite Element Model (FEM)</td><td>A mathematical model of the spacecraft's structural behaviour, discretised into finite elements with defined stiffness and mass properties. The primary tool for predicting natural frequencies, mode shapes, and stress under launch loads.</td></tr>
+      <tr><td>MAC (Modal Assurance Criterion)</td><td>A scalar measure (0 to 1) of the degree of correlation between two mode shapes. Values above 0.9 for paired modes are typically required for FEM correlation acceptance.</td></tr>
+      <tr><td>Margin of Safety</td><td>A quantitative measure of structural capability relative to demand: (Allowable Load / Design Load) − 1. Positive margin indicates capability exceeds demand; negative margin indicates predicted failure.</td></tr>
+      <tr><td>Modal Survey Test</td><td>A test that measures the spacecraft's actual natural frequencies, mode shapes, and damping ratios by exciting the structure and measuring the response. Used to validate and update the FEM.</td></tr>
+      <tr><td>Moments of Inertia</td><td>The rotational equivalents of mass — the resistance of the spacecraft to angular acceleration about each of its three principal axes. Critical inputs to attitude control system sizing and performance analysis.</td></tr>
+    </tbody>
+  </table>
+</article>
+</div>
+
+
+<!-- ARTICLE NAVIGATOR -->
+<div class="art-nav">
+  <div class="art-nav-inner">
+    <span class="art-nav-label">Go to article</span>
+    <div class="art-nav-select-wrap">
+      <select id="artNav_spacecraft_iat_article14_html" onchange="this.nextElementSibling.disabled = !this.value || this.options[this.selectedIndex].disabled">
+        <option value="">— Select any article in the series —</option>
+        <optgroup label="── Main Series ──────────────────────────">
+      <option value="spacecraft_iat_intro.html">01 · Introduction to Spacecraft I&T</option>
+      <option value="spacecraft_iat_article01.html">02 · I&T Programme Structure</option>
+      <option value="spacecraft_iat_article11.html">03 · Configuration Management</option>
+      <option value="spacecraft_iat_article16.html">04 · Quality Assurance</option>
+      <option value="spacecraft_iat_article02.html">05 · Cleanrooms & Contamination Control</option>
+      <option value="spacecraft_iat_article10.html">06 · EGSE & Test Harness</option>
+      <option value="spacecraft_iat_article03.html">07 · Functional Testing</option>
+      <option value="spacecraft_iat_article09.html">08 · Flight Software V&V</option>
+      <option value="spacecraft_iat_article14.html" selected disabled>▶ 09 · Mass Properties & Structural Loads</option>
+      <option value="spacecraft_iat_article04.html">10 · Vibration, Acoustics & Shock</option>
+      <option value="spacecraft_iat_article05.html">11 · Thermal-Vacuum Testing</option>
+      <option value="spacecraft_iat_article12.html">12 · EMC Testing</option>
+      <option value="spacecraft_iat_article07.html">13 · Instrument Integration & Calibration</option>
+      <option value="spacecraft_iat_article13.html">14 · Propulsion Testing</option>
+      <option value="spacecraft_iat_article06.html">15 · Anomaly Management</option>
+      <option value="spacecraft_iat_article15.html">16 · Launch Vehicle Integration</option>
+      <option value="spacecraft_iat_article08.html">17 · Launch Readiness & Commissioning</option>
+    </optgroup>
+    <optgroup label="── Supplementary ──────────────────────────">
+      <option value="spacecraft_iat_smallsat.html">Supp · Small Satellites</option>
+      <option value="spacecraft_iat_case_studies.html">Supp · Case Studies</option>
+    </optgroup>
+      </select>
+    </div>
+    <button class="art-nav-go" disabled
+            onclick="var s=this.previousElementSibling.querySelector('select'); if(s.value && !s.options[s.selectedIndex].disabled) window.location.href=s.value;">
+      Open →
+    </button>
+  </div>
+</div>
+
+<footer class="article-footer">
+  <div class="footer-inner">
+    <div class="footer-col"><div class="footer-label">Series</div><div class="footer-text">Spacecraft Integration &amp; Test<br>Article 14 — Supplementary</div></div>
+    <div class="footer-col"><div class="footer-label">Topics</div><div class="tags"><span class="tag">Mass Properties</span><span class="tag">Structural Analysis</span><span class="tag">FEM</span><span class="tag">Coupled Loads</span><span class="tag">Modal Survey</span><span class="tag">Factor of Safety</span></div></div>
+    <div class="footer-col"><div class="footer-label">Audience</div><div class="footer-text">I&amp;T engineers and programme staff who interact with structural and mass properties data and need to understand how it is generated, what it means, and why it matters for launch readiness.</div></div>
+  </div>
+</footer>

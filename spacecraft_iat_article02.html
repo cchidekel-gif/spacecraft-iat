@@ -1,0 +1,672 @@
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://raw.githubusercontent.com/cchidekel-gif/spacecraft-iat-styles/refs/heads/main/styles.css">
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <span class="masthead-series">Spacecraft Engineering Series · Integration &amp; Test</span>
+  <span class="masthead-right">Article 05 of 17</span>
+</div>
+
+<!-- SERIES NAV -->
+<div class="series-nav">
+  <span>Series:</span>
+  <span class="sep">·</span>
+  <span>Intro</span>
+  <span class="sep">·</span>
+  <span>01</span>
+  <span class="sep">·</span>
+  <span>02</span>
+  <span class="sep">·</span>
+  <span>03</span>
+  <span class="sep">·</span>
+  <span class="current">04</span>
+  <span class="sep">·</span>
+  <span>05</span>
+  <span class="sep">·</span>
+  <span>06</span>
+  <span class="sep">·</span>
+  <span>07</span>
+  <span class="sep">·</span>
+  <span>08</span>
+  <span class="sep">·</span>
+  <span>09</span>
+  <span class="sep">·</span>
+  <span>10</span>
+  <span class="sep">·</span>
+  <span>11</span>
+  <span class="sep">·</span>
+  <span>12</span>
+  <span class="sep">·</span>
+  <span>13</span>
+  <span class="sep">·</span>
+  <span>14</span>
+  <span class="sep">·</span>
+  <span>15</span>
+  <span class="sep">·</span>
+  <span>16</span>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Spacecraft Integration &amp; Test · Article 05 of 17</div>
+    <h1>The Cleanroom:<br>Environment, Protocol,<br>and Practice</h1>
+    <p class="hero-sub">Contamination control, electrostatic discharge, foreign object debris, and the uncompromising disciplines of working with flight hardware.</p>
+    <div class="byline">
+      <div class="byline-avatar">🛰️</div>
+      <div>
+        <div class="byline-name">Charles Chidekel</div>
+        <div class="byline-title">Integration &amp; Test Guru · 40 Years of I&amp;T Experience</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ARTICLE -->
+<div class="container">
+<article class="article-body">
+
+  <!-- TOC -->
+  <div class="toc-wrap">
+    <div class="toc-label">In This Article</div>
+    <ul class="toc-list">
+      <li><a href="#s1"><span>1. Why the Cleanroom Exists</span><span class="toc-num">§1</span></a></li>
+      <li><a href="#s2"><span>2. Cleanroom Classification — ISO Standards</span><span class="toc-num">§2</span></a></li>
+      <li><a href="#s3"><span>3. The Cleanroom Environment: Temperature, Humidity, and Airflow</span><span class="toc-num">§3</span></a></li>
+      <li><a href="#s4"><span>4. Gowning: The Ritual of Entry</span><span class="toc-num">§4</span></a></li>
+      <li><a href="#s5"><span>5. The Four Threats: Contamination, ESD, FOD, and Workmanship</span><span class="toc-num">§5</span></a></li>
+      <li><a href="#s6"><span>6. Contamination Control: Sources, Monitoring, and Mitigation</span><span class="toc-num">§6</span></a></li>
+      <li><a href="#s7"><span>7. Electrostatic Discharge (ESD): The Invisible Killer</span><span class="toc-num">§7</span></a></li>
+      <li><a href="#s8"><span>8. Foreign Object Debris (FOD): The Preventable Catastrophe</span><span class="toc-num">§8</span></a></li>
+      <li><a href="#s9"><span>9. Documentation and Cleanroom Records</span><span class="toc-num">§9</span></a></li>
+      <li><a href="#s10"><span>10. Cleanroom Culture: What Makes It Work</span><span class="toc-num">§10</span></a></li>
+      <li><a href="#glossary"><span>Key Terms Glossary</span><span class="toc-num">GL</span></a></li>
+    </ul>
+  </div>
+
+  <!-- INTRO -->
+  <p class="lead">Before a single bolt is torqued, before a single harness connector is mated, before the spacecraft begins to take shape on the integration stand — a spacecraft engineer must understand the environment in which all of that work will take place. That environment is the cleanroom, and the disciplines it imposes are not optional embellishments to good engineering practice. They are foundational requirements without which flight hardware cannot be safely handled.</p>
+
+  <p>I have spent the better part of four decades working in cleanrooms of every classification, on every type of hardware from tiny detector arrays to primary mirror assemblies the size of a dining room table. In that time I have seen what contamination, electrostatic discharge, and foreign object debris can do to hardware that took years to build. The damage is not always dramatic. Sometimes it is invisible until the instrument fails on orbit, or until a calibration campaign reveals an inexplicable throughput loss, or until an anomaly investigation traces back to a scratch on an optical surface that nobody remembers making.</p>
+
+  <p>This article covers the cleanroom environment: what it is, why it exists, how it is classified and controlled, and — most importantly — the disciplines and protocols that govern how engineers and technicians work within it. These are not rules for their own sake. Every protocol described here exists because, somewhere in the history of spaceflight, something went wrong in its absence.</p>
+
+  <div class="pull-quote">
+    <p>"The cleanroom is the only place in the entire program where a single human hair — or a single uncontrolled static discharge — can silently destroy years of engineering work. Respect for the environment is not timidity. It is professionalism."</p>
+  </div>
+
+  <!-- SECTION 1 -->
+  <h2 class="sh" id="s1">1. Why the Cleanroom Exists</h2>
+
+  <p>Spacecraft hardware fails in ways that ground-based engineering hardware does not. The reasons are environmental: the space environment imposes stresses — vacuum, radiation, extreme thermal cycling, microgravity — that have no terrestrial analog. But many of the failure modes that manifest in space are initiated on the ground, during integration, by contamination and handling damage that is entirely preventable.</p>
+
+  <p>Consider the operating environment of a typical science instrument. Its optical surfaces must be free of particulate contamination at the sub-micron level. Its detector arrays must never be exposed to electrostatic charge differences that would be imperceptible to a human but catastrophic to a junction-isolated semiconductor device. Its mechanical interfaces must be free of any loose debris that could migrate into a bearing or a deployment mechanism during launch vibration.</p>
+
+  <p>None of these requirements can be met on a normal factory floor, or in a standard laboratory, or in any environment where human beings work without extraordinary precautions. The cleanroom is the engineered response to this reality. It is a controlled environment designed to minimize the introduction and retention of particulate and molecular contamination, to manage electrostatic charge, and to provide a physical and procedural framework within which delicate flight hardware can be safely handled.</p>
+
+  <div class="callout steel">
+    <div class="callout-label">📡 The Stakes of Contamination</div>
+    <p>A single particle of 10-micron diameter deposited on a detector array can permanently degrade the response of the affected pixel. A molecular film — invisible to the naked eye — on an optical surface can reduce system throughput by several percent, directly impacting science return. Hydrocarbon outgassing from an improperly screened adhesive, trapped and then redistributed by on-orbit thermal cycling, has caused the degradation of optical coatings on multiple flight instruments.</p>
+    <p>These are not hypothetical risks. They are documented failure modes from real programs. The cleanroom exists to prevent them.</p>
+  </div>
+
+  <!-- SECTION 2 -->
+  <h2 class="sh" id="s2">2. Cleanroom Classification — ISO Standards</h2>
+
+  <p>Cleanrooms are classified by the concentration of airborne particles permitted within them. The international standard governing cleanroom classification is <span class="kt">ISO 14644-1</span>, which defines cleanroom classes based on the maximum permitted concentration of particles of 0.1 µm or larger per cubic metre of air. This standard superseded the older US Federal Standard 209E (which used particle counts per cubic foot), though FS-209E terminology remains in common use in the aerospace industry — you will encounter both systems on any real program.</p>
+
+  <table class="iso-table">
+    <thead>
+      <tr>
+        <th>ISO Class</th>
+        <th>Old Fed. Std.</th>
+        <th>Max Particles ≥0.5µm per m³</th>
+        <th>Typical Spacecraft Application</th>
+        <th>Characteristic Environment</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>ISO 4</td>
+        <td>Class 10</td>
+        <td>352</td>
+        <td>Detector assembly, cryogenic optical surfaces, focal plane integration</td>
+        <td>Laminar-flow benches only; full gowning with face masks</td>
+      </tr>
+      <tr>
+        <td>ISO 5</td>
+        <td>Class 100</td>
+        <td>3,520</td>
+        <td>Telescope mirror assembly, precision optical integration, sensor alignment</td>
+        <td>High-bay cleanroom; full gowning; restricted materials list</td>
+      </tr>
+      <tr>
+        <td>ISO 6</td>
+        <td>Class 1,000</td>
+        <td>35,200</td>
+        <td>Instrument-level integration, detector housing assembly</td>
+        <td>Cleanroom with positive pressure; full gowning</td>
+      </tr>
+      <tr>
+        <td>ISO 7</td>
+        <td>Class 10,000</td>
+        <td>352,000</td>
+        <td>Spacecraft bus integration, subsystem assembly, structural integration</td>
+        <td>Standard spacecraft cleanroom; full gowning; HEPA-filtered air</td>
+      </tr>
+      <tr>
+        <td>ISO 8</td>
+        <td>Class 100,000</td>
+        <td>3,520,000</td>
+        <td>Large structure integration, propulsion system work, non-contamination-sensitive ops</td>
+        <td>Gowning with smock and hat; controlled access</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>For most spacecraft system-level integration work, an <span class="kt">ISO 7 (Class 10,000)</span> cleanroom is the baseline. Work involving exposed optical surfaces, detector arrays, or cryogenic components typically requires <span class="kt">ISO 5 (Class 100)</span> or better, often achieved within a larger ISO 7 space using local laminar-flow workstations that provide a cleaner microenvironment at the work surface.</p>
+
+  <div class="callout gold">
+    <div class="callout-label">✦ Beyond Particle Count: The Molecular Contamination Problem</div>
+    <p>ISO 14644-1 addresses particulate contamination. It does not address <strong>molecular contamination</strong> — the deposition of volatile organic compounds, silicones, and other chemical species onto surfaces. Molecular contamination is often the more insidious threat for optical systems: it is invisible, it builds up over time, and it can be redistributed and polymerized by ultraviolet radiation or elevated temperatures in ways that make it extremely difficult to remove.</p>
+    <p>Control of molecular contamination requires material screening (all materials used in or near the cleanroom must be evaluated for outgassing), temperature control, careful selection of cleaning solvents, and monitoring using witness mirrors and quartz crystal microbalance (QCM) sensors. A cleanroom that controls particles but ignores molecular contamination is not adequate for optical spacecraft integration.</p>
+  </div>
+
+  <!-- SECTION 3 -->
+  <h2 class="sh" id="s3">3. The Cleanroom Environment: Temperature, Humidity, and Airflow</h2>
+
+  <p>The physical environment of a spacecraft cleanroom is controlled along three primary axes: airflow, temperature, and humidity. Each of these parameters is controlled for a specific reason, and deviations from specification must be documented and evaluated for their potential impact on hardware.</p>
+
+  <h3 class="ssh">Airflow and Pressurization</h3>
+  <p>Cleanroom air is continuously recirculated through <span class="kt">HEPA (High-Efficiency Particulate Air)</span> or <span class="kt">ULPA (Ultra-Low Particulate Air)</span> filters that remove particles to the required classification level. The airflow pattern is designed to sweep particles away from work surfaces and toward return air vents, typically flowing from the ceiling downward. Cleanrooms are maintained at <strong>positive pressure</strong> relative to adjacent spaces, so that when a door is opened, air flows outward rather than inward, preventing unfiltered air from entering.</p>
+  <p>The number of air changes per hour (ACH) is a key parameter: a typical ISO 7 cleanroom operates at 60–150 air changes per hour. Higher-class cleanrooms require more air changes. The practical implication for engineers: activities that generate particles — grinding, cutting, sanding, or even vigorous physical movement — are prohibited or tightly controlled, because the air handling system can only remove particles at the rate defined by its design; it cannot instantaneously recover from a major contamination event.</p>
+
+  <h3 class="ssh">Temperature Control</h3>
+  <p>Spacecraft cleanrooms are typically maintained at 68±2°F (20±1°C). This is not primarily for human comfort. Temperature stability matters for several engineering reasons: dimensional stability of precision hardware (temperature changes cause thermal expansion that can affect alignments), moisture content control (relative humidity varies with temperature), and prevention of condensation on cold hardware surfaces. Temperature logging is typically required as part of the cleanroom's environmental monitoring record, and any significant temperature excursion must be evaluated against hardware requirements.</p>
+
+  <h3 class="ssh">Humidity Control</h3>
+  <p>Relative humidity in spacecraft cleanrooms is typically controlled to 45±10% RH. Low humidity promotes electrostatic buildup — a critical concern for ESD-sensitive hardware. High humidity risks condensation on cold surfaces and can promote corrosion on metallic components. Humidity excursions are particularly concerning for hygroscopic optical coatings and for propulsion system components that contain moisture-sensitive materials. Like temperature, humidity is logged continuously, and excursions are dispositioned through the program's anomaly management process.</p>
+
+  <!-- SECTION 4 -->
+  <h2 class="sh" id="s4">4. Gowning: The Ritual of Entry</h2>
+
+  <p>The single largest source of contamination in a cleanroom is the human body. A person going about normal activity sheds roughly 100,000 particles per minute from skin and clothing. At rest, that figure drops substantially, but it never reaches zero. Gowning — the process of donning cleanroom garments before entry — is the primary barrier between the human body and the cleanroom environment.</p>
+
+  <p>Gowning requirements vary with cleanroom class. The sequence below reflects a full ISO 7 gowning protocol, the standard for spacecraft system-level integration. ISO 5 work may require additional steps, including full-face respirators and nitrogen-purged enclosures.</p>
+
+  <div class="gowning-steps">
+    <div class="gown-step">
+      <div class="gown-num">1</div>
+      <div class="gown-content">
+        <div class="gown-title">Air Shower / Tacky Mat Entry</div>
+        <div class="gown-desc">Before entering the gowning area, personnel pass through an air shower (high-velocity air jets that dislodge surface particles) and step onto a tacky mat that removes particles from shoe soles. This occurs before any cleanroom garments are donned.</div>
+      </div>
+    </div>
+    <div class="gown-step">
+      <div class="gown-num">2</div>
+      <div class="gown-content">
+        <div class="gown-title">Remove Street Clothes Items &amp; Jewellery</div>
+        <div class="gown-desc">Watches, rings, bracelets, and any jewellery must be removed — they are particle generators and present ESD and FOD risks. Cosmetics, perfumes, and lotions are prohibited; they are sources of molecular contamination and can interact with optical coatings and sensitive materials.</div>
+      </div>
+    </div>
+    <div class="gown-step">
+      <div class="gown-num">3</div>
+      <div class="gown-content">
+        <div class="gown-title">Don Hood / Hair Cover</div>
+        <div class="gown-desc">A cleanroom hood covers all hair and, in higher-class rooms, the neck and shoulders. Human hair is a significant particle and fibre source. The hood is donned first so that any particles shed during its application fall onto garments not yet worn.</div>
+      </div>
+    </div>
+    <div class="gown-step">
+      <div class="gown-num">4</div>
+      <div class="gown-content">
+        <div class="gown-title">Don Cleanroom Suit (Bunny Suit)</div>
+        <div class="gown-desc">The full-body cleanroom suit — colloquially the "bunny suit" — is a low-linting garment typically made of polyester with a tight weave that traps particles shed by the body. Suits must be donned without allowing the exterior to contact the floor. The suit is sealed at all openings before the next step.</div>
+      </div>
+    </div>
+    <div class="gown-step">
+      <div class="gown-num">5</div>
+      <div class="gown-content">
+        <div class="gown-title">Don Cleanroom Gloves (Inner Layer)</div>
+        <div class="gown-desc">Latex or nitrile gloves are the first glove layer. Hands are the most contamination-active part of the body during integration work. Inner gloves are donned before the suit cuffs are sealed over them to prevent gaps at the wrist.</div>
+      </div>
+    </div>
+    <div class="gown-step">
+      <div class="gown-num">6</div>
+      <div class="gown-content">
+        <div class="gown-title">Don Cleanroom Boots / Boot Covers</div>
+        <div class="gown-desc">Cleanroom boot covers are sealed over the suit legs. In high-class environments, separate cleanroom shoes kept permanently inside the room may replace boot covers. The boot/floor interface is the highest-traffic contamination pathway in the room.</div>
+      </div>
+    </div>
+    <div class="gown-step">
+      <div class="gown-num">7</div>
+      <div class="gown-content">
+        <div class="gown-title">Don Face Mask</div>
+        <div class="gown-desc">A surgical-style or higher-filtration mask covers the mouth and nose. Breath aerosols are a significant contamination source, particularly relevant for optical surfaces. In ISO 5 and cleaner environments, full-face respirators or supplied-air hoods may be required.</div>
+      </div>
+    </div>
+    <div class="gown-step">
+      <div class="gown-num">8</div>
+      <div class="gown-content">
+        <div class="gown-title">Don Outer Gloves &amp; ESD Wrist Strap</div>
+        <div class="gown-desc">A second pair of gloves — ESD-dissipative for most integration work — is donned over the inner gloves. The ESD wrist strap is connected to the grounded work surface before any ESD-sensitive hardware is touched. The wrist strap is functionally tested every time it is donned.</div>
+      </div>
+    </div>
+    <div class="gown-step">
+      <div class="gown-num">9</div>
+      <div class="gown-content">
+        <div class="gown-title">Final Inspection &amp; Buddy Check</div>
+        <div class="gown-desc">Before entering the cleanroom proper, gowning is inspected — ideally by a second person (buddy check). All seams are sealed, the wrist strap tester confirms continuity, no personal items are being carried, and no contaminating materials (pens with caps, non-cleanroom-approved notebooks) are present.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout rust">
+    <div class="callout-label">⚠ Common Gowning Violations and Their Consequences</div>
+    <p><strong>Wearing cosmetics or lotions:</strong> Silicone-based products can deposit on optical surfaces as a molecular film; the effect is cumulative and not easily reversed. Many programs require personnel to shower before entering Class 100 environments for optical work.</p>
+    <p><strong>Touching the outside of gloves to non-cleanroom surfaces:</strong> The outside of a cleanroom glove is immediately compromised if it contacts uncontrolled surfaces. Touching a face, adjusting glasses, or picking up a non-cleanroom object with gloved hands requires an immediate glove change.</p>
+    <p><strong>Failing to test the ESD wrist strap:</strong> A failed wrist strap provides no protection and no indication of failure at the point of use. The test takes ten seconds. Skipping it is indefensible on a program with ESD-sensitive flight hardware.</p>
+  </div>
+
+  <!-- SECTION 5 -->
+  <h2 class="sh" id="s5">5. The Four Threats: Contamination, ESD, FOD, and Workmanship</h2>
+
+  <p>Every protocol in a spacecraft cleanroom addresses one or more of four categories of threat to flight hardware. Understanding these categories — and the specific failure modes they represent — is the foundation of cleanroom discipline.</p>
+
+  <div class="protocol-grid">
+
+    <div class="protocol-card cont">
+      <div class="protocol-card-header">
+        <div class="protocol-icon">🌫️</div>
+        <div>
+          <div class="protocol-title">Particulate &amp; Molecular Contamination</div>
+          <div class="protocol-subtitle">Invisible — cumulative — often irreversible</div>
+        </div>
+      </div>
+      <div class="protocol-body">
+        <p>Contamination encompasses both particulate matter (particles of any material deposited on hardware surfaces) and molecular species (chemical films deposited by outgassing, solvent residue, or physical contact). Particulate contamination degrades optical throughput, can cause electrical shorts, and can migrate into mechanisms. Molecular contamination on optical surfaces can be polymerized by UV radiation into permanent films that cannot be removed without damaging the surface itself.</p>
+        <ul class="protocol-rules">
+          <li>All materials in or near the cleanroom must be on the approved materials list</li>
+          <li>Only cleanroom-approved tools, supplies, and documentation may enter</li>
+          <li>Exposed optical surfaces are covered whenever not actively being worked</li>
+          <li>Witness mirrors and QCM sensors monitor deposition levels continuously</li>
+          <li>Cleaning is performed only with approved solvents and approved wipes using approved techniques</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="protocol-card esd">
+      <div class="protocol-card-header">
+        <div class="protocol-icon">⚡</div>
+        <div>
+          <div class="protocol-title">Electrostatic Discharge (ESD)</div>
+          <div class="protocol-subtitle">Imperceptible — immediate — potentially latent</div>
+        </div>
+      </div>
+      <div class="protocol-body">
+        <p>Electrostatic discharge occurs when a charge difference between two objects is equalized through a sudden current flow. A human body can accumulate charges of several thousand volts that are completely imperceptible; the threshold of human perception for ESD is approximately 3,500V. Many electronic components are damaged by discharges below 100V. This means that a technician who cannot feel any charge on their body may already be at a voltage that will destroy a sensitive device on contact.</p>
+        <ul class="protocol-rules">
+          <li>All personnel handling ESD-sensitive hardware must wear tested, grounded wrist straps</li>
+          <li>ESD-sensitive hardware is handled only at grounded, dissipative work surfaces</li>
+          <li>ESD-sensitive items are stored in shielded, antistatic packaging when not being worked</li>
+          <li>Insulating materials (standard plastic bags, Styrofoam) are prohibited near ESD-sensitive hardware</li>
+          <li>All personnel are trained and annually recertified in ESD awareness and control</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="protocol-card fod">
+      <div class="protocol-card-header">
+        <div class="protocol-icon">🔩</div>
+        <div>
+          <div class="protocol-title">Foreign Object Debris (FOD)</div>
+          <div class="protocol-subtitle">Mechanical — preventable — mission-ending</div>
+        </div>
+      </div>
+      <div class="protocol-body">
+        <p>Foreign Object Debris is any item — a fastener, a piece of wire insulation, a tool, a fragment of solder, a pen cap, a screw that was dropped and not recovered — that is present in or on the spacecraft where it should not be. FOD that is loose within a spacecraft can migrate during launch vibration into bearings, valve seats, electrical connectors, or optical paths. FOD-related failures have caused the loss of launch vehicles, the permanent failure of science instruments, and on-orbit anomalies that required years of careful operations to work around.</p>
+        <ul class="protocol-rules">
+          <li>All tools and hardware entering the integration area are logged in and counted out</li>
+          <li>Fasteners are controlled by count; any discrepancy triggers a search before work continues</li>
+          <li>All openings in the spacecraft are capped or covered whenever not actively being worked</li>
+          <li>No personal items — pens, notebooks, phone chargers — enter without approval</li>
+          <li>End-of-shift and end-of-access FOD sweeps are documented and signed</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="protocol-card ppe">
+      <div class="protocol-card-header">
+        <div class="protocol-icon">🔧</div>
+        <div>
+          <div class="protocol-title">Workmanship</div>
+          <div class="protocol-subtitle">Human skill — process — verification</div>
+        </div>
+      </div>
+      <div class="protocol-body">
+        <p>Workmanship refers to the quality of the manual skills and processes used to assemble flight hardware. Poor workmanship — an incorrectly torqued fastener, a cold solder joint, a harness connector not fully seated, a bonded joint with voids — can create failure modes that are invisible on inspection but catastrophic in the launch environment or in service. Workmanship quality is controlled through technician certification, approved procedures, and independent inspection at key steps.</p>
+        <ul class="protocol-rules">
+          <li>All technicians are certified for the specific operations they perform on flight hardware</li>
+          <li>Critical operations are independently inspected before work proceeds</li>
+          <li>Torque is applied with calibrated tools; critical fasteners are torque-stripe marked</li>
+          <li>All wire/harness connections are inspected under magnification before closeout</li>
+          <li>Any rework of flight hardware requires formal approval and documentation</li>
+        </ul>
+      </div>
+    </div>
+
+  </div><!-- /protocol-grid -->
+
+  <!-- SECTION 6 -->
+  <h2 class="sh" id="s6">6. Contamination Control: Sources, Monitoring, and Mitigation</h2>
+
+  <p>Contamination control in spacecraft I&amp;T is a continuous, program-wide discipline — not an activity confined to the cleanroom floor. It spans the entire lifecycle of hardware from piece part procurement through launch, and it requires coordination between design, materials engineering, procurement, manufacturing, and I&amp;T teams.</p>
+
+  <h3 class="ssh">Contamination Sources</h3>
+
+  <table class="cont-table">
+    <thead>
+      <tr>
+        <th>Source</th>
+        <th>Mechanism</th>
+        <th>Risk Level</th>
+        <th>Primary Control</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Personnel</td>
+        <td>Skin cells, hair, breath aerosols, cosmetics, clothing fibres</td>
+        <td><span class="risk-badge risk-high">High</span></td>
+        <td>Gowning, access control, behaviour protocols</td>
+      </tr>
+      <tr>
+        <td>Materials Outgassing</td>
+        <td>Volatile organic compounds (VOCs), silicones, plasticisers released from adhesives, coatings, cable insulation</td>
+        <td><span class="risk-badge risk-high">High</span></td>
+        <td>Materials screening (ASTM E595), approved materials list, bake-out</td>
+      </tr>
+      <tr>
+        <td>Cleaning Solvents</td>
+        <td>Residue from improper cleaning; reaction products from incompatible solvent/surface combinations</td>
+        <td><span class="risk-badge risk-med">Medium</span></td>
+        <td>Approved solvent list; approved cleaning procedures; verification wipes</td>
+      </tr>
+      <tr>
+        <td>Tools and Fixtures</td>
+        <td>Lubricants, cutting fluids, metallic particles from machined surfaces, rubber particles from O-rings</td>
+        <td><span class="risk-badge risk-med">Medium</span></td>
+        <td>Cleanroom-approved tools; pre-cleaning of fixtures entering the room</td>
+      </tr>
+      <tr>
+        <td>Facility Infiltration</td>
+        <td>Particles entering through doors, HVAC systems, construction activity in adjacent spaces</td>
+        <td><span class="risk-badge risk-med">Medium</span></td>
+        <td>Positive pressure; HEPA filtration; access control; particle monitoring</td>
+      </tr>
+      <tr>
+        <td>Hardware Itself</td>
+        <td>Particle generation from mechanisms in motion (bearings, gears), connector mate/demate operations</td>
+        <td><span class="risk-badge risk-low">Lower</span></td>
+        <td>Covers during mechanism operation; directed flow from sensitive surfaces during connector work</td>
+      </tr>
+      <tr>
+        <td>Propellants &amp; Pressurants</td>
+        <td>Chemical contamination from propulsion system fluids; residue after propellant loading</td>
+        <td><span class="risk-badge risk-high">High</span></td>
+        <td>Strict sequencing (propulsion work after optical/electrical closeout); purge and verify procedures</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="ssh">Material Screening and Bake-Out</h3>
+  <p>Before any material — adhesive, coating, lubricant, foam, cable insulation — is approved for use in or near spacecraft hardware, it must be screened for outgassing. The standard test is <span class="kt">ASTM E595</span>, which measures total mass loss (TML) and collected volatile condensable material (CVCM) when a sample is heated in vacuum. The typical acceptance criterion for spacecraft materials is TML &lt; 1.0% and CVCM &lt; 0.1%. Materials that fail these criteria may be usable after a controlled <strong>bake-out</strong> — a period of heating in vacuum to drive off volatiles before installation — but bake-out effectiveness must be verified.</p>
+  <p>The approved materials list (AML) is a living program document that records every material evaluated and its disposition. Using any material not on the AML without explicit approval is a workmanship violation on most programs. The temptation to "just use what's available" — a tube of adhesive from the shelf, a piece of foam for padding — is one of the most common sources of contamination on spacecraft programs and one of the most difficult to trace after the fact.</p>
+
+  <h3 class="ssh">Contamination Monitoring</h3>
+  <table class="mon-table">
+    <thead>
+      <tr>
+        <th>Method</th>
+        <th>What It Measures</th>
+        <th>Frequency / Application</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Particle Counters</td>
+        <td>Airborne particle concentration; used to verify and maintain cleanroom classification</td>
+        <td>Continuous in operational cleanrooms; periodic certification per ISO 14644-2</td>
+      </tr>
+      <tr>
+        <td>Witness Mirrors</td>
+        <td>Particulate and molecular deposition on polished optical-quality surfaces placed near flight hardware</td>
+        <td>Placed during all activities near optical hardware; inspected at defined intervals and after any anomaly</td>
+      </tr>
+      <tr>
+        <td>Quartz Crystal Microbalance (QCM)</td>
+        <td>Molecular deposition rates; extremely sensitive to thin-film deposition on a resonant crystal surface</td>
+        <td>Used during thermal-vacuum testing and during high-risk contamination operations; continuous readout</td>
+      </tr>
+      <tr>
+        <td>Surface Particle Counts</td>
+        <td>Particles on specific hardware surfaces using optical microscopy or laser scatter; measured in particles per unit area</td>
+        <td>Performed before and after major operations on optical surfaces; before optical closeout</td>
+      </tr>
+      <tr>
+        <td>Witness Coupons</td>
+        <td>Chemically analysed coupons that capture both particulate and molecular contamination for post-facto analysis</td>
+        <td>Co-located with sensitive hardware during long-duration storage or shipping</td>
+      </tr>
+      <tr>
+        <td>TQCM (Temperature-Controlled QCM)</td>
+        <td>Molecular contamination flux as a function of temperature; identifies outgassing sources by thermal signature</td>
+        <td>During thermal-vacuum testing; during bake-out operations</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- SECTION 7 -->
+  <h2 class="sh" id="s7">7. Electrostatic Discharge (ESD): The Invisible Killer</h2>
+
+  <p>Of all the threats to flight hardware in the cleanroom, ESD is perhaps the most insidious precisely because it is imperceptible. A technician who picks up an ESD-sensitive circuit card without proper grounding may deliver a discharge of several thousand volts to a device rated for protection only to a few hundred. The technician feels nothing. The circuit card shows no visible damage. But internally, a junction may have been partially damaged — not destroyed outright, but degraded in a way that will cause failure under the operating stresses of the space environment, perhaps months or years after launch.</p>
+
+  <p>This category of damage is called <strong>ESD latent failure</strong>, and it is among the most difficult failure modes to detect in a test program. The device passes functional tests on the ground — because the damage is not yet sufficient to cause a gross failure — but fails on orbit, where it can no longer be accessed or replaced.</p>
+
+  <h3 class="ssh">ESD Control — The Grounding Chain</h3>
+  <p>The fundamental principle of ESD control is to ensure that all objects in the work environment — personnel, tools, work surfaces, storage containers, and the hardware itself — are at the same electrical potential. When everything is at the same potential, there is no charge difference and no discharge can occur.</p>
+
+  <p>This is achieved through a <strong>grounding chain</strong>: the ESD-dissipative work surface is connected to earth ground through a resistor that limits current flow (preventing shock hazard while allowing charge equalization). The technician's wrist strap connects them to the same ground point through a similar resistor. All tools on the work surface are dissipative or conductive. ESD-sensitive hardware is connected to ground through the work surface or through its own ground reference.</p>
+
+  <ul class="body-list">
+    <li><strong>Wrist straps</strong> must be tested at the start of every work session. A continuous wrist strap monitor is preferred for sustained operations. Failed wrist straps must be replaced immediately and the previous work session's activities evaluated.</li>
+    <li><strong>Heel straps and ESD footwear</strong> are required when personnel must move with ESD-sensitive hardware — the wrist strap alone is insufficient for ambulatory work.</li>
+    <li><strong>Ionisers</strong> (air ionisers that generate balanced positive and negative ions) are used to neutralise charge on surfaces and items that cannot be directly grounded — including some optical components and assembled hardware where direct ground connections are impractical.</li>
+    <li><strong>ESD packaging</strong> — shielded bags, dissipative foam, and conductive trays — protects hardware during transport, storage, and handling when it is not on the ESD-controlled work surface.</li>
+    <li><strong>Prohibited materials</strong> include any standard plastic bags, Styrofoam, common packaging tape, and any other highly insulating material that could charge and then discharge onto sensitive hardware. These are among the most frequently violated rules by personnel new to cleanroom work.</li>
+  </ul>
+
+  <div class="callout gold">
+    <div class="callout-label">✦ ESD Sensitivity Classes</div>
+    <p>Electronic devices are classified by their ESD sensitivity under the JEDEC/ESDA standards. Class 0 devices may be damaged by discharges below 250V; Class 3A devices tolerate up to 4,000V. Many modern semiconductor devices — particularly those used in detector arrays and signal processing chains — are Class 0 or Class 1 (250–500V tolerance). The human body model (HBM) discharge, representing the charge on a human body, can reach 1,000–4,000V in a dry environment, meaning that even a gloved technician with a failed wrist strap in a dry cleanroom may carry enough charge to damage the most sensitive devices.</p>
+    <p>ESD sensitivity class information must be documented on the program's equipment list and communicated to all personnel handling each unit. "This unit is ESD-sensitive" is not sufficient — the class and the required handling precautions must be specified.</p>
+  </div>
+
+  <!-- SECTION 8 -->
+  <h2 class="sh" id="s8">8. Foreign Object Debris (FOD): The Preventable Catastrophe</h2>
+
+  <p>Every spacecraft integration program generates FOD — the question is whether it is controlled and accounted for, or whether it is loose inside the vehicle. FOD control is not a complicated discipline intellectually: it consists of knowing what is in the spacecraft at all times, ensuring that everything that goes in also comes out (unless it is supposed to be there), and verifying this through documented processes. What makes FOD control challenging is the sheer volume of operations — thousands of fasteners, hundreds of connector mates and demates, dozens of access operations, over a multi-year integration campaign.</p>
+
+  <h3 class="ssh">The FOD Control Program</h3>
+  <p>A formal FOD control program typically includes the following elements:</p>
+
+  <ul class="body-list">
+    <li><strong>Tool and hardware accountability:</strong> All tools and small hardware items (fasteners, connector backshells, cable ties) are inventoried before and after each access. Discrepancies are resolved before the spacecraft is closed up. On many programs, critical tools are tethered to prevent accidental drops into the vehicle.</li>
+    <li><strong>Cavity inspections:</strong> Before any structural closeout, internal cavities are inspected using borescopes, mirrors, and illumination to verify the absence of FOD. Closeouts require a sign-off from an independent inspector, not just the technician performing the work.</li>
+    <li><strong>No-foreign-material (NFM) procedures:</strong> Specific operations — particularly those near open propulsion system ports, optical apertures, or mechanism housings — require NFM procedures, which enumerate every tool and fastener that will be used and require post-operation verification that all items are accounted for.</li>
+    <li><strong>End-of-shift FOD sweeps:</strong> At the end of every work shift, a documented sweep of the integration area is performed. All items are accounted for, work surfaces are cleared, and open hardware is covered. The sweep is signed by the shift lead.</li>
+    <li><strong>FOD amnesty:</strong> Most programs maintain a FOD amnesty policy: any personnel who find or inadvertently introduce FOD can report it without disciplinary consequence. The goal is to know about the FOD so it can be removed, not to assign blame. Programs without amnesty policies create an incentive to conceal FOD — which is far more dangerous than the FOD itself.</li>
+  </ul>
+
+  <div class="callout rust">
+    <div class="callout-label">⚠ The Cost of a Missing Fastener</div>
+    <p>On one program I worked early in my career, a single M3 fastener was found loose inside a structure during a pre-launch cavity inspection — found because the inspector was thorough, because the procedure required the inspection, and because the program had a culture that made it safe to stop the work and look carefully. The fastener was recovered and the root cause traced to an incomplete assembly procedure that had been followed correctly for every previous operation.</p>
+    <p>That fastener, had it migrated into the attitude control system during launch vibration, would have been the last fastener that program ever flew. FOD control is not paranoia. It is the acknowledgment that humans make mistakes, and that systematic controls are the only reliable defence against the consequences.</p>
+  </div>
+
+  <!-- SECTION 9 -->
+  <h2 class="sh" id="s9">9. Documentation and Cleanroom Records</h2>
+
+  <p>Everything that happens in the cleanroom to flight hardware must be documented. This principle — which sounds bureaucratic but is, in practice, an engineering imperative — underpins the entire cleanroom operation. The documentation system serves three functions: it provides a contemporaneous record that procedures were followed correctly, it enables anomaly investigation when something unexpected occurs, and it creates the traceability chain that a launch readiness review will examine to determine whether the spacecraft is ready to fly.</p>
+
+  <p>The core documents in a cleanroom operation are:</p>
+
+  <ul class="body-list">
+    <li><strong>Travellers / Route Cards:</strong> A traveller is a controlled document that accompanies a piece of hardware through its integration flow. Each step in the assembly sequence is listed; the technician performing the step initials and dates it; an independent inspector signs off on critical steps. A traveller that is incomplete or incorrectly executed is a nonconformance that must be formally resolved.</li>
+    <li><strong>Environmental Monitoring Logs:</strong> Temperature, humidity, particle counts, and (where applicable) molecular contamination monitoring data are logged continuously and archived. Any out-of-tolerance reading must be evaluated for its potential impact on hardware in the room at the time.</li>
+    <li><strong>Access Logs:</strong> Every person who enters the cleanroom, and every item that enters and exits, is logged. Access logs are the first resource consulted when tracing the source of a contamination event or a missing item.</li>
+    <li><strong>Discrepancy Reports (DRs):</strong> Any deviation from a procedure, any unexpected hardware condition, any observation that something is not as it should be, is documented in a Discrepancy Report. DRs are assigned, investigated, and closed by the appropriate engineering authority. No anomaly is too small to document — the cumulative pattern of small anomalies often reveals systemic issues that no individual event would surface.</li>
+    <li><strong>Photographic Records:</strong> For critical operations — connector mating, structural closeouts, harness routing — photographic records are taken before, during, and after the operation. Photographs provide evidence that procedures were followed and create a baseline for comparison if later inspection reveals an anomaly.</li>
+  </ul>
+
+  <p>The cleanroom documentation record is not just a compliance requirement — it is the program's institutional memory. On long-duration integration campaigns, engineers and technicians change. Hardware sits in storage for months before the next operation. Without a complete, accurate, contemporaneous record of what was done to every piece of hardware, the program cannot confidently characterise the state of the spacecraft at any given moment.</p>
+
+  <!-- SECTION 10 -->
+  <h2 class="sh" id="s10">10. Cleanroom Culture: What Makes It Work</h2>
+
+  <p>Every protocol described in this article can be written down, reviewed, and approved. None of it works unless the people in the cleanroom understand why it matters and have internalised the discipline to follow it under pressure, when there is schedule urgency, when a senior engineer is watching impatiently, when the "quick fix" seems obvious and the correct procedure seems slow.</p>
+
+  <p>Cleanroom culture is the set of shared values and behaviours that makes the protocols effective. It cannot be mandated by a procedure. It is built over time, by leadership behaviour, by the way anomalies are handled, and above all by the visible consequence — or lack of consequence — of violations.</p>
+
+  <div class="pull-quote">
+    <p>"The cleanroom protocol that gets bypassed once, without consequence, will be bypassed again — and eventually it will be bypassed at the moment when it mattered most. Culture is what determines whether that bypass ever happens."</p>
+  </div>
+
+  <p>The elements of a healthy cleanroom culture include:</p>
+
+  <ul class="body-list">
+    <li><strong>Stop-work authority:</strong> Any person in the cleanroom — technician, engineer, or visitor — has the authority and the obligation to call a stop-work if they observe a protocol violation, an unsafe condition, or an unexpected hardware anomaly. Stop-work authority is meaningless if the people who exercise it face social pressure or professional consequences for doing so.</li>
+    <li><strong>No-fault anomaly reporting:</strong> Anomalies are reported, not concealed. The program's interest is in knowing about problems so they can be resolved; the interest of the individual is not served by hiding a problem that will eventually be discovered. Leadership creates this culture by responding to anomaly reports with problem-solving, not blame.</li>
+    <li><strong>Visible leadership commitment:</strong> Senior engineers and program managers who enter the cleanroom and follow the gowning procedure completely, without shortcuts, send a signal about what the program values. Senior leaders who roll their eyes at the wrist strap tester, or who prop open the cleanroom door "just for a minute," communicate the opposite — and their example is followed.</li>
+    <li><strong>Training that explains the why:</strong> Technicians and engineers who understand why they are wearing a wrist strap — who have seen a photograph of ESD damage under a scanning electron microscope, who have been told the story of a FOD-related on-orbit failure — are far more reliable than those who have simply been told "wear the strap because it's required." Invest in training that creates understanding, not just compliance.</li>
+    <li><strong>Regular review and improvement:</strong> Cleanroom protocols are not static. New materials are developed, new hardware types present new challenges, and lessons learned from other programs accumulate. A program that reviews its cleanroom protocols periodically — and incorporates lessons from anomalies — continuously improves its contamination control posture.</li>
+  </ul>
+
+  <div class="callout green">
+    <div class="callout-label">✓ A Note on New Engineers in the Cleanroom</div>
+    <p>If you are entering a spacecraft cleanroom for the first time, the most important thing you can do is ask questions and follow instructions from the technicians who work there every day. These individuals have, in many cases, more practical knowledge of cleanroom discipline and flight hardware handling than engineers with advanced degrees. The hierarchy of the cleanroom floor is not the hierarchy of the org chart: it is the hierarchy of experience and demonstrated competence.</p>
+    <p>Watch what experienced technicians do. Ask why before assuming you understand. And if you are ever uncertain whether something is safe — a procedure step that seems ambiguous, a tool you are not sure belongs — stop and ask. The cost of a question is seconds. The cost of a mistake on flight hardware may be measured in years.</p>
+  </div>
+
+  <!-- SUMMARY -->
+  <h2 class="sh">Summary</h2>
+
+  <p>The cleanroom is not an inconvenience imposed on spacecraft engineers by quality assurance bureaucrats. It is the carefully engineered environment that makes spacecraft integration possible — the controlled space within which the painstaking assembly of hardware that must work perfectly, in an environment it cannot be tested in, can be performed with confidence.</p>
+
+  <p>The disciplines of the cleanroom — contamination control, ESD management, FOD accountability, and workmanship standards — are not independent rules but a coherent system, each element reinforcing the others. A program that is rigorous about particle control but careless about ESD has an incomplete contamination control posture. A program with excellent gowning discipline but poor FOD accounting will eventually put a loose fastener on orbit. The system must be applied in its entirety, by every person who enters the cleanroom, every time.</p>
+
+  <p>In the next article we move from the physical environment of integration to the functional test program — the structured series of tests that verify the spacecraft's performance across its operating range, and the principles that determine what constitutes a sufficient test.</p>
+  </div>
+
+
+  <!-- NEXT LESSON -->
+  <div class="next-article">
+    <div class="next-article-content">
+      <div class="next-label">Next Lesson · L06 of 17 · Article 6</div>
+      <div class="next-title">Electrical Ground Support Equipment and the Test Harness</div>
+      <div class="next-desc">The simulators, power systems, and wiring harnesses through which every spacecraft observation is mediated — and why EGSE fidelity determines test validity</div>
+    </div>
+  </div>
+
+  <!-- GLOSSARY -->
+  <h2 class="sh" id="glossary">Key Terms Used in This Article</h2>
+
+  <table class="gloss-table">
+    <thead>
+      <tr><th>Term</th><th>Definition</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>ASTM E595</td><td>Standard test method for total mass loss and collected volatile condensable material from outgassing in a vacuum environment. The standard acceptance criteria for spacecraft materials are TML &lt; 1.0% and CVCM &lt; 0.1%.</td></tr>
+      <tr><td>Bake-Out</td><td>A controlled heating of hardware or materials in vacuum to drive off volatile compounds before installation on or near flight hardware. Must be verified by post-bake outgassing measurement.</td></tr>
+      <tr><td>CVCM</td><td>Collected Volatile Condensable Material. The fraction of outgassed material from ASTM E595 that condenses on a collector plate at 25°C. The key metric for optical contamination risk.</td></tr>
+      <tr><td>ESD</td><td>Electrostatic Discharge. The sudden transfer of electrostatic charge between objects at different electrical potentials. Can permanently damage or degrade electronic components, often without visible evidence.</td></tr>
+      <tr><td>FOD</td><td>Foreign Object Debris. Any material — fastener, tool fragment, wire segment, contaminating particle — present in or on hardware where it does not belong and was not intentionally placed.</td></tr>
+      <tr><td>HEPA Filter</td><td>High-Efficiency Particulate Air filter. Removes at least 99.97% of particles 0.3 µm in diameter. The standard air filtration technology for spacecraft cleanrooms.</td></tr>
+      <tr><td>ISO 14644-1</td><td>International standard defining cleanroom classification based on airborne particle concentration. Replaces US Federal Standard 209E, though both systems remain in use in the industry.</td></tr>
+      <tr><td>ISO Class 7 (Class 10,000)</td><td>The baseline cleanroom class for most spacecraft system-level integration. Permits a maximum of 352,000 particles ≥0.5 µm per cubic metre.</td></tr>
+      <tr><td>Laminar Flow Workstation</td><td>A localised HEPA-filtered work enclosure that provides a higher cleanliness class (typically ISO 4 or 5) within a larger, lower-class cleanroom. Used for optical and detector work.</td></tr>
+      <tr><td>Molecular Contamination</td><td>Chemical film deposition on hardware surfaces from outgassing volatile organic compounds, silicones, or solvent residues. Not addressed by ISO 14644-1 particle classification.</td></tr>
+      <tr><td>QCM</td><td>Quartz Crystal Microbalance. A highly sensitive instrument that measures mass deposition rates on a piezoelectric crystal surface by detecting changes in resonant frequency. Used for molecular contamination monitoring.</td></tr>
+      <tr><td>TML</td><td>Total Mass Loss. The total fraction of a material's mass lost during ASTM E595 vacuum outgassing testing. Acceptance criterion is typically &lt; 1.0%.</td></tr>
+      <tr><td>Traveller / Route Card</td><td>A controlled document that accompanies flight hardware through its assembly and integration sequence. Documents each procedural step, who performed it, when, and who independently verified it.</td></tr>
+      <tr><td>Witness Mirror</td><td>A polished optical-quality surface placed near flight hardware to accumulate and document any particulate or molecular contamination deposited in the surrounding environment.</td></tr>
+      <tr><td>Wrist Strap</td><td>A grounded conductive band worn on the wrist during handling of ESD-sensitive hardware, providing a path for electrostatic charge to equalize safely to ground. Must be tested before each use.</td></tr>
+    </tbody>
+  </table>
+
+</article>
+</div>
+
+<!-- FOOTER -->
+
+<!-- ARTICLE NAVIGATOR -->
+<div class="art-nav">
+  <div class="art-nav-inner">
+    <span class="art-nav-label">Go to article</span>
+    <div class="art-nav-select-wrap">
+      <select id="artNav_spacecraft_iat_article02_html" onchange="this.nextElementSibling.disabled = !this.value || this.options[this.selectedIndex].disabled">
+        <option value="">— Select any article in the series —</option>
+        <optgroup label="── Main Series ──────────────────────────">
+      <option value="spacecraft_iat_intro.html">01 · Introduction to Spacecraft I&T</option>
+      <option value="spacecraft_iat_article01.html">02 · I&T Programme Structure</option>
+      <option value="spacecraft_iat_article11.html">03 · Configuration Management</option>
+      <option value="spacecraft_iat_article16.html">04 · Quality Assurance</option>
+      <option value="spacecraft_iat_article02.html" selected disabled>▶ 05 · Cleanrooms & Contamination Control</option>
+      <option value="spacecraft_iat_article10.html">06 · EGSE & Test Harness</option>
+      <option value="spacecraft_iat_article03.html">07 · Functional Testing</option>
+      <option value="spacecraft_iat_article09.html">08 · Flight Software V&V</option>
+      <option value="spacecraft_iat_article14.html">09 · Mass Properties & Structural Loads</option>
+      <option value="spacecraft_iat_article04.html">10 · Vibration, Acoustics & Shock</option>
+      <option value="spacecraft_iat_article05.html">11 · Thermal-Vacuum Testing</option>
+      <option value="spacecraft_iat_article12.html">12 · EMC Testing</option>
+      <option value="spacecraft_iat_article07.html">13 · Instrument Integration & Calibration</option>
+      <option value="spacecraft_iat_article13.html">14 · Propulsion Testing</option>
+      <option value="spacecraft_iat_article06.html">15 · Anomaly Management</option>
+      <option value="spacecraft_iat_article15.html">16 · Launch Vehicle Integration</option>
+      <option value="spacecraft_iat_article08.html">17 · Launch Readiness & Commissioning</option>
+    </optgroup>
+    <optgroup label="── Supplementary ──────────────────────────">
+      <option value="spacecraft_iat_smallsat.html">Supp · Small Satellites</option>
+      <option value="spacecraft_iat_case_studies.html">Supp · Case Studies</option>
+    </optgroup>
+      </select>
+    </div>
+    <button class="art-nav-go" disabled
+            onclick="var s=this.previousElementSibling.querySelector('select'); if(s.value && !s.options[s.selectedIndex].disabled) window.location.href=s.value;">
+      Open →
+    </button>
+  </div>
+</div>
+
+<footer class="article-footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <div class="footer-label">Series</div>
+      <div class="footer-text">Spacecraft Integration &amp; Test<br>Article 02 of 08</div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-label">Topics</div>
+      <div class="tags">
+        <span class="tag">Cleanroom</span>
+        <span class="tag">ESD</span>
+        <span class="tag">FOD</span>
+        <span class="tag">Contamination</span>
+        <span class="tag">ISO 14644</span>
+        <span class="tag">Workmanship</span>
+      </div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-label">Audience</div>
+      <div class="footer-text">New and early-career spacecraft engineers, aerospace students, and anyone with a serious interest in how spacecraft are built and tested.</div>
+    </div>
+  </div>
+</footer>

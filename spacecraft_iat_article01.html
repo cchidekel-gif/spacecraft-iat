@@ -1,0 +1,592 @@
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://raw.githubusercontent.com/cchidekel-gif/spacecraft-iat-styles/refs/heads/main/styles.css">
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <span class="masthead-series">Spacecraft Engineering Series · Integration &amp; Test</span>
+  <span class="masthead-right">Article 02 of 17</span>
+</div>
+
+<!-- SERIES NAV -->
+<div class="series-nav">
+  <span>Series:</span>
+  <span class="sep">·</span>
+  <span>Intro</span>
+  <span class="sep">·</span>
+  <span class="current">01</span>
+  <span class="sep">·</span>
+  <span>02</span>
+  <span class="sep">·</span>
+  <span>03</span>
+  <span class="sep">·</span>
+  <span>04</span>
+  <span class="sep">·</span>
+  <span>05</span>
+  <span class="sep">·</span>
+  <span>06</span>
+  <span class="sep">·</span>
+  <span>07</span>
+  <span class="sep">·</span>
+  <span>08</span>
+  <span class="sep">·</span>
+  <span>09</span>
+  <span class="sep">·</span>
+  <span>10</span>
+  <span class="sep">·</span>
+  <span>11</span>
+  <span class="sep">·</span>
+  <span>12</span>
+  <span class="sep">·</span>
+  <span>13</span>
+  <span class="sep">·</span>
+  <span>14</span>
+  <span class="sep">·</span>
+  <span>15</span>
+  <span class="sep">·</span>
+  <span>16</span>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Spacecraft Integration &amp; Test · Article 02 of 17</div>
+    <h1>The I&amp;T Plan and<br>Program Architecture</h1>
+    <p class="hero-sub">How to structure a spacecraft integration and test campaign — from first hardware to launch readiness, and from piece parts to observatory.</p>
+    <div class="byline">
+      <div class="byline-avatar">🛰️</div>
+      <div>
+        <div class="byline-name">Charles Chidekel</div>
+        <div class="byline-title">Integration &amp; Test Guru · 40 Years of I&amp;T Experience</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ARTICLE -->
+<div class="container">
+<article class="article-body">
+
+  <!-- TOC -->
+  <div class="toc-wrap">
+    <div class="toc-label">In This Article</div>
+    <ul class="toc-list">
+      <li><a href="#s1"><span>1. What the I&amp;T Plan Must Accomplish</span><span class="toc-num">§1</span></a></li>
+      <li><a href="#s2"><span>2. The Levels of Integration — From Parts to Observatory</span><span class="toc-num">§2</span></a></li>
+      <li><a href="#s3"><span>3. The Phases of an I&amp;T Campaign</span><span class="toc-num">§3</span></a></li>
+      <li><a href="#s4"><span>4. The Governing Documents</span><span class="toc-num">§4</span></a></li>
+      <li><a href="#s5"><span>5. The Technical Reviews</span><span class="toc-num">§5</span></a></li>
+      <li><a href="#s6"><span>6. Ground Support Equipment</span><span class="toc-num">§6</span></a></li>
+      <li><a href="#s7"><span>7. Building the I&amp;T Plan: Practical Guidance</span><span class="toc-num">§7</span></a></li>
+      <li><a href="#glossary"><span>Key Terms Glossary</span><span class="toc-num">GL</span></a></li>
+    </ul>
+  </div>
+
+  <!-- INTRO -->
+  <p class="lead">Every spacecraft I&amp;T campaign begins the same way: with a blank sheet of paper and a question. Given what this spacecraft has to do, given the environment it has to survive, given the schedule and budget available — what exactly do we need to build, integrate, and test, in what order, and how do we know when we're done?</p>
+
+  <p>The document that answers that question is the I&amp;T Plan. It is, in a very real sense, the constitution of the entire test program. It establishes the philosophy, defines the scope, describes the approach, and allocates responsibility. A good I&amp;T Plan anticipates the hard decisions before they become emergencies. A poor one — or the absence of one — means that every hard decision gets made under schedule pressure, without the benefit of prior deliberation.</p>
+
+  <p>This article explains how I&amp;T campaigns are structured: the phases of the program, the levels of integration from the smallest piece part to a complete observatory, the types of tests performed at each level, and the governing documents and reviews that hold the whole architecture together. Understanding this structure is a prerequisite for everything that follows in this series.</p>
+
+  <div class="pull-quote">
+    <p>"The I&amp;T Plan is not a schedule. It is not a procedure. It is the engineering argument for why your test program is sufficient to justify flight. It should be written — and challenged — with that standard in mind."</p>
+  </div>
+
+  <!-- SECTION 1 -->
+  <h2 class="sh" id="s1">1. What the I&amp;T Plan Must Accomplish</h2>
+
+  <p>Before examining what goes into an I&amp;T Plan, it is worth being precise about what the document must accomplish. An I&amp;T Plan is not a schedule, though it informs one. It is not a test procedure, though it defines the framework from which procedures are derived. It is an engineering argument — a structured case that the test program, taken as a whole, is sufficient to verify that the spacecraft meets its requirements and is ready to fly.</p>
+
+  <p>That argument must address four fundamental questions:</p>
+
+  <ul class="body-list">
+    <li><strong>What are we trying to prove?</strong> — The test program must be traceable to mission and system requirements. Every test must exist because something needs to be verified. Tests performed "because we always do this" without a clear requirement link are not necessarily wrong, but they cannot be justified when schedule pressure comes — and schedule pressure always comes.</li>
+    <li><strong>How will we prove it?</strong> — This covers the approach: which tests are performed at which integration levels, which test environments are used, what instrumentation is required, what constitutes a pass/fail criterion.</li>
+    <li><strong>What flight configuration will be tested?</strong> — The principle of test-as-you-fly demands that the configuration under test be as close as possible to the flight configuration. The I&amp;T Plan must identify and justify any deviations.</li>
+    <li><strong>How will we know we are done?</strong> — The Plan defines the completion criteria: what data must be collected, what anomalies must be resolved, what reviews must be held, before the spacecraft can be declared ready for launch.</li>
+  </ul>
+
+  <!-- SECTION 2 -->
+  <h2 class="sh" id="s2">2. The Levels of Integration — From Parts to Observatory</h2>
+
+  <p>The most important structural concept in any I&amp;T program is the integration level hierarchy. Spacecraft hardware is assembled in stages, and each stage has its own integration and test requirements. Understanding this hierarchy is not merely academic — it determines the sequence of the entire program, the allocation of test resources, and the strategy for finding problems early, when they are cheapest and easiest to fix.</p>
+
+  <p>The hierarchy described below reflects the full range of complexity, from a simple single-instrument spacecraft to a large multi-instrument observatory. Not every program has every level — a small CubeSat mission might compress several levels together. A flagship-class observatory like the James Webb Space Telescope has every level and more. The principle is the same regardless of scale: build upward from the simplest elements, verify at each level before proceeding to the next, and never assume that passing tests at a lower level guarantees performance at a higher one.</p>
+
+  <div class="callout steel">
+    <div class="callout-label">⚙ Why Levels Matter</div>
+    <p>Integration creates emergent behaviors. Two circuit boards that each pass their individual acceptance tests can still fail when connected, due to impedance mismatches, ground loops, or software timing issues that only appear in the combined system. Two subsystems that each pass thermal-vacuum testing in isolation can interact thermally in unexpected ways when mounted together on the spacecraft bus.</p>
+    <p>This is not a theoretical concern — it is the lived experience of every engineer who has worked a spacecraft I&amp;T program. Testing at each level is the only way to find these interactions before they become on-orbit anomalies.</p>
+  </div>
+
+  <!-- LEVEL CARDS -->
+  <div class="level-cards">
+
+    <!-- L0 -->
+    <div class="level-card">
+      <div class="level-badge">
+        <span class="lvl-num">L0</span>
+        <span class="lvl-icon">⚛️</span>
+      </div>
+      <div class="level-body">
+        <div class="level-name">Piece Parts &amp; Materials</div>
+        <div class="level-meta">
+          <span class="level-tag">Foundation</span>
+          <span class="level-tag">Parts Engineering</span>
+        </div>
+        <div class="level-desc">
+          At the base of the hierarchy are individual materials and piece parts: electronic components (resistors, capacitors, integrated circuits), fasteners, adhesives, coatings, lubricants, and raw structural materials. For flight programs, piece parts are typically subject to <strong>parts screening</strong> — a program of testing and inspection designed to identify early failures ("infant mortality") before parts are incorporated into assemblies.
+        </div>
+        <div class="level-desc" style="margin-top:8px;">
+          Electronic parts used on spacecraft are typically procured to controlled specifications (such as the MIL-PRF series) and may be subject to <strong>destructive physical analysis (DPA)</strong> on lot samples to verify internal construction. Problems found here — a bad lot of capacitors, a lubricant incompatible with the thermal environment — are infinitely cheaper to address at this level than after they have been incorporated into a flight assembly.
+        </div>
+        <div class="level-tests">
+          <strong>Typical I&amp;T Activities</strong>
+          Incoming inspection · Lot acceptance testing · Radiation testing · Destructive physical analysis (DPA) · Material certifications
+        </div>
+      </div>
+    </div>
+
+    <!-- L1 -->
+    <div class="level-card">
+      <div class="level-badge">
+        <span class="lvl-num">L1</span>
+        <span class="lvl-icon">🔧</span>
+      </div>
+      <div class="level-body">
+        <div class="level-name">Assemblies &amp; Circuit Card Assemblies (CCAs)</div>
+        <div class="level-meta">
+          <span class="level-tag">Manufacturing</span>
+          <span class="level-tag">Workmanship</span>
+        </div>
+        <div class="level-desc">
+          At Level 1, piece parts are assembled into functional units: populated circuit card assemblies (CCAs), bonded structural panels, small mechanisms, and harness segments. I&amp;T activities here focus on workmanship verification and basic functionality. Circuit cards are subjected to <strong>automated optical inspection (AOI)</strong> and <strong>X-ray inspection</strong> to verify solder joint quality and component placement.
+        </div>
+        <div class="level-desc" style="margin-top:8px;">
+          Spacecraft electronics are typically required to meet <span class="kt">IPC-A-610 Class 3</span> workmanship standards — the highest level defined by the IPC, intended for high-reliability electronics where continued performance is critical. For circuit cards destined for optical instruments or sensitive detectors, contamination control begins here.
+        </div>
+        <div class="level-tests">
+          <strong>Typical I&amp;T Activities</strong>
+          Automated optical inspection (AOI) · X-ray inspection · Electrical continuity · Dimensional inspection · Workmanship audit
+        </div>
+      </div>
+    </div>
+
+    <!-- L2 -->
+    <div class="level-card">
+      <div class="level-badge">
+        <span class="lvl-num">L2</span>
+        <span class="lvl-icon">📦</span>
+      </div>
+      <div class="level-body">
+        <div class="level-name">Components &amp; Electronics Units</div>
+        <div class="level-meta">
+          <span class="level-tag">Component I&amp;T</span>
+          <span class="level-tag">Environmental Test</span>
+          <span class="level-tag">Qual vs. Acceptance</span>
+        </div>
+        <div class="level-desc">
+          At Level 2, assemblies are integrated into complete electronic units, mechanisms, and structural assemblies: a flight computer, a power conditioning and distribution unit (PCDU), a reaction wheel assembly, a star tracker, a propulsion system component. This is the first level at which comprehensive environmental testing is typically performed.
+        </div>
+        <div class="level-desc" style="margin-top:8px;">
+          Component-level testing serves two purposes: it screens out latent workmanship defects (the burn-in function), and it verifies the unit can survive launch and the space environment (the qualification function). This is where the critical distinction between <span class="kt">qualification testing</span> (on a qual unit, at elevated levels) and <span class="kt">acceptance testing</span> (on every flight unit, at flight levels) is most sharply drawn — a distinction with profound implications for program cost and schedule.
+        </div>
+        <div class="level-tests">
+          <strong>Typical I&amp;T Activities</strong>
+          Comprehensive functional testing · Vibration testing · Thermal cycling &amp; thermal-vacuum · EMC testing · Mass properties verification
+        </div>
+      </div>
+    </div>
+
+    <!-- L3 -->
+    <div class="level-card">
+      <div class="level-badge">
+        <span class="lvl-num">L3</span>
+        <span class="lvl-icon">🔌</span>
+      </div>
+      <div class="level-body">
+        <div class="level-name">Subsystems</div>
+        <div class="level-meta">
+          <span class="level-tag">Interface Verification</span>
+          <span class="level-tag">Functional</span>
+        </div>
+        <div class="level-desc">
+          At Level 3, components are integrated into functional subsystems: the Electrical Power Subsystem (EPS), the Attitude Determination and Control Subsystem (ADCS), the Command and Data Handling subsystem (C&amp;DH), the Telecommunications subsystem, the Propulsion subsystem, and the Thermal Control subsystem.
+        </div>
+        <div class="level-desc" style="margin-top:8px;">
+          Subsystem-level I&amp;T is where <strong>interface verification between components</strong> becomes the primary focus. Individual components may have each passed their acceptance tests, but when connected — electrically, mechanically, and thermally — new behaviors emerge. The power subsystem must deliver clean, regulated power to all loads under all load conditions. The ADCS must close its control loops with the flight software. Programs that skip formal subsystem testing find these problems at the spacecraft level, under more pressure, in a more complex configuration.
+        </div>
+        <div class="level-tests">
+          <strong>Typical I&amp;T Activities</strong>
+          Interface verification · Closed-loop functional testing · Subsystem thermal-vacuum · Software integration testing
+        </div>
+      </div>
+    </div>
+
+    <!-- L4 -->
+    <div class="level-card">
+      <div class="level-badge">
+        <span class="lvl-num">L4</span>
+        <span class="lvl-icon">🔭</span>
+      </div>
+      <div class="level-body">
+        <div class="level-name">Instruments &amp; Payload</div>
+        <div class="level-meta">
+          <span class="level-tag">Science Payload</span>
+          <span class="level-tag">Calibration</span>
+          <span class="level-tag">Compatibility</span>
+        </div>
+        <div class="level-desc">
+          Science instruments, hosted payloads, and other mission-specific hardware occupy a parallel track in the integration hierarchy. An instrument is typically developed by a separate team — often at a different institution — and delivered to the spacecraft integrator as a completed, tested unit with its own I&amp;T heritage.
+        </div>
+        <div class="level-desc" style="margin-top:8px;">
+          The interface between instrument and spacecraft bus is one of the highest-risk interfaces in the entire program. Mechanical, electrical, thermal, and data interfaces must all be verified — ideally using a <span class="kt">fit check</span> (mechanical interface verification with a mass model) and a <span class="kt">compatibility test</span> (electrical interface verification) well before the instrument is delivered for spacecraft integration. Instrument <strong>calibration</strong> — the process by which science performance is characterized — is intimately linked to I&amp;T and must be planned as part of the overall program architecture.
+        </div>
+        <div class="level-tests">
+          <strong>Typical I&amp;T Activities</strong>
+          Instrument-level functional testing · Calibration campaigns · Fit checks · Electrical compatibility testing · Contamination monitoring
+        </div>
+      </div>
+    </div>
+
+    <div class="callout rust" style="margin: 0 0 18px 0;">
+      <div class="callout-label">⚠ The Instrument Delivery Problem</div>
+      <p>Late instrument delivery is one of the most common causes of spacecraft I&amp;T schedule compression. The pattern is familiar: the instrument slips, the spacecraft integration schedule is held, and then both are compressed together to hit the launch date — placing the program under maximum pressure at exactly the moment requiring maximum care.</p>
+      <p>The correct response is to identify early which I&amp;T activities are schedule-critical, which have float, and which can be deferred to the launch site. This planning must be done before the instrument slips — not after.</p>
+    </div>
+
+    <!-- L5 -->
+    <div class="level-card">
+      <div class="level-badge">
+        <span class="lvl-num">L5</span>
+        <span class="lvl-icon">🛸</span>
+      </div>
+      <div class="level-body">
+        <div class="level-name">Spacecraft</div>
+        <div class="level-meta">
+          <span class="level-tag">System-Level I&amp;T</span>
+          <span class="level-tag">Full Environmental Suite</span>
+        </div>
+        <div class="level-desc">
+          At Level 5, subsystems, instruments, and payload elements are integrated into the complete spacecraft — the vehicle on the test floor, surrounded by ground support equipment, with technicians in cleanroom garments at every access panel. Multiple subsystems must be assembled in a carefully controlled sequence determined by access requirements, contamination sensitivity, and interface dependencies.
+        </div>
+        <div class="level-desc" style="margin-top:8px;">
+          Spacecraft-level testing is where the payoff of the entire lower-level test program is realized — or where its gaps become apparent. Problems that escaped detection at component and subsystem level are found here, in the most time-consuming test environment of the campaign. Every problem found at the subsystem level is one that does not have to be found on the spacecraft.
+        </div>
+        <div class="level-tests">
+          <strong>Typical I&amp;T Activities</strong>
+          System functional testing · Mass properties measurement · System-level EMC · Vibration &amp; acoustic testing · Thermal-vacuum · End-to-end RF communications · Propulsion leak testing
+        </div>
+      </div>
+    </div>
+
+    <!-- L6 -->
+    <div class="level-card">
+      <div class="level-badge" style="background: var(--steel);">
+        <span class="lvl-num">L6</span>
+        <span class="lvl-icon">🌌</span>
+      </div>
+      <div class="level-body" style="background: #edf3f7;">
+        <div class="level-name" style="color: var(--steel);">Observatory</div>
+        <div class="level-meta">
+          <span class="level-tag">Flagship Class</span>
+          <span class="level-tag">Deployables</span>
+          <span class="level-tag">Cryo-Optical</span>
+        </div>
+        <div class="level-desc">
+          For the most complex space science missions — large observatories, flagship planetary spacecraft, and multi-element systems — there is a level above the spacecraft. An observatory typically consists of a spacecraft bus, multiple science instruments, a sunshield or mission-enabling structure, and deployable elements that <strong>cannot be fully tested in their flight configuration on the ground</strong>.
+        </div>
+        <div class="level-desc" style="margin-top:8px;">
+          The James Webb Space Telescope is the canonical example. JWST comprised an optical telescope assembly (OTA), an integrated science instrument module (ISIM) containing four science instruments, a spacecraft bus, and a sunshield roughly the size of a tennis court — all folded for launch and deployed in sequence at L2. No facility on Earth was large enough to test the fully deployed observatory in a flight-like thermal-vacuum environment. The I&amp;T program had to be designed around this fundamental constraint, using a combination of analysis, subsystem testing, and limited system-level testing to build confidence in flight performance. JWST launched in December 2021 and has exceeded its science performance requirements on orbit.
+        </div>
+        <div class="level-tests">
+          <strong>Typical I&amp;T Activities</strong>
+          Deployment testing with gravity offload · Cryo-optical testing · Observatory-level thermal-vacuum · Multi-element interface verification · Configuration management at maximum complexity
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /level-cards -->
+
+  <div class="callout gold">
+    <div class="callout-label">✦ Observatory-Level Challenges — The JWST Example</div>
+    <p><strong>Deployable structures:</strong> The sunshield and mirror deployment sequences could be tested on the ground, but only with gravity-offload systems that introduce their own uncertainties. The test program had to characterize and account for those uncertainties explicitly.</p>
+    <p><strong>Cryogenic testing:</strong> JWST's instruments operate at temperatures as low as 7 Kelvin. The only facility large enough to thermal-vacuum test the telescope and instruments in this configuration was Chamber A at NASA Johnson Space Center — requiring significant modification from its Apollo-era configuration.</p>
+    <p><strong>Configuration control:</strong> With a program spanning more than two decades of development, maintaining precise knowledge of the as-tested vs. as-flown configuration across thousands of components required extraordinary configuration management discipline — a lesson applicable to any long-duration program.</p>
+  </div>
+
+  <!-- SECTION 3 -->
+  <h2 class="sh" id="s3">3. The Phases of an I&amp;T Campaign</h2>
+
+  <p>An I&amp;T campaign does not begin when the first hardware arrives on the test floor. It begins during the design phase of the program, when the I&amp;T approach is first defined, and it ends — formally — at the launch readiness review that authorizes the spacecraft to fly. The campaign progresses through a sequence of phases corresponding to the NASA mission lifecycle; programs under other agencies follow essentially the same logical progression.</p>
+
+  <table class="phase-table">
+    <thead>
+      <tr>
+        <th>Phase</th>
+        <th>Name</th>
+        <th>Key I&amp;T Activities</th>
+        <th>Gate / Exit Criteria</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Phase A</td>
+        <td>Concept Study</td>
+        <td>I&amp;T concept defined; test philosophy established; top-level requirements derived from mission requirements; preliminary assessment of test facility needs</td>
+        <td>Preliminary I&amp;T Plan approved; philosophy reviewed at SRR/SDR</td>
+      </tr>
+      <tr>
+        <td>Phase B</td>
+        <td>Preliminary Design</td>
+        <td>I&amp;T Plan baselined; integration levels and test flow defined; EGSE concept developed; test facility selection initiated; long-lead test equipment identified</td>
+        <td>I&amp;T Plan baselined at PDR; EGSE procurement authorized</td>
+      </tr>
+      <tr>
+        <td>Phase C</td>
+        <td>Final Design</td>
+        <td>Detailed test procedures developed; EGSE fabricated and tested; test facility contracts awarded; component and subsystem test campaigns begin</td>
+        <td>Test procedures reviewed at CDR; EGSE qualification complete</td>
+      </tr>
+      <tr>
+        <td>Phase D</td>
+        <td>Integration &amp; Test</td>
+        <td>All integration activities; component, subsystem, and system-level environmental testing; anomaly resolution; launch campaign; launch site I&amp;T</td>
+        <td>System-level test complete; all anomalies dispositioned; LRR passed</td>
+      </tr>
+      <tr>
+        <td>Phase E</td>
+        <td>Operations</td>
+        <td>Launch and early operations (LEOP); initial on-orbit checkout; instrument commissioning; performance verification against pre-launch baseline</td>
+        <td>Mission operations readiness review; science commissioning complete</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Phase D is the heart of the I&amp;T campaign — the period when all the planning done in Phases A through C is executed. But the quality of Phase D is almost entirely determined by the quality of the planning that preceded it. Programs that arrive at Phase D with a well-developed I&amp;T Plan, mature EGSE, and thoroughly tested lower-level hardware move through system-level integration and test with manageable disruption. Programs that arrive with deferred problems and immature test infrastructure discover, painfully, that the test floor is a very expensive place to resolve issues that should have been addressed earlier.</p>
+
+  <!-- SECTION 4 -->
+  <h2 class="sh" id="s4">4. The Governing Documents</h2>
+
+  <p>A spacecraft I&amp;T campaign generates and consumes a substantial body of documentation. New engineers sometimes experience this as an overwhelming bureaucratic burden. With experience, it becomes clear that the documentation architecture is the engineering memory of the program — every test performed, every anomaly found, every configuration change made, captured in a way that supports traceability, retrievability, and institutional memory.</p>
+
+  <table class="doc-table">
+    <thead>
+      <tr><th>Document</th><th>Purpose</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>I&amp;T Plan</td>
+        <td>Top-level document defining the I&amp;T philosophy, scope, approach, and organization. The "constitution" of the test program.</td>
+      </tr>
+      <tr>
+        <td>Test Requirements Document (TRD)</td>
+        <td>Traces each test requirement to its source mission or system requirement. Provides the formal basis for the test program.</td>
+      </tr>
+      <tr>
+        <td>Interface Control Document (ICD)</td>
+        <td>Defines the mechanical, electrical, thermal, and data interfaces between subsystems and between the spacecraft and ground systems.</td>
+      </tr>
+      <tr>
+        <td>Test Procedures</td>
+        <td>Step-by-step instructions for performing each test. Must be reviewed and approved before execution; cannot be deviated from without a formal change process.</td>
+      </tr>
+      <tr>
+        <td>Test Reports</td>
+        <td>Formal record of each test campaign: objectives, configuration, results, anomalies, and disposition. The permanent record that a test occurred and what it showed.</td>
+      </tr>
+      <tr>
+        <td>Nonconformance Reports (NCRs)</td>
+        <td>Formal documentation of any hardware or software condition that does not meet its requirements. Every NCR must be formally closed before flight.</td>
+      </tr>
+      <tr>
+        <td>Discrepancy Reports (DRs)</td>
+        <td>Documentation of anomalies observed during test operations — unexpected behaviors, out-of-limit readings, test failures. The formal problem-tracking system.</td>
+      </tr>
+      <tr>
+        <td>Configuration Status Accounting (CSA)</td>
+        <td>The formal record of the as-built and as-tested configuration of every flight hardware item. Enables precise comparison of the test configuration to the flight configuration.</td>
+      </tr>
+      <tr>
+        <td>Launch Readiness Matrix (LRM)</td>
+        <td>The pre-launch checklist: every required test, every open NCR/DR, every open action item — tracked to closure as a condition of launch authorization.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="pull-quote">
+    <p>"An anomaly that is not written down does not exist in the program record. An anomaly that is written down but not formally closed is an open risk at launch. The documentation discipline of a test program is a direct reflection of its engineering culture."</p>
+  </div>
+
+  <!-- SECTION 5 -->
+  <h2 class="sh" id="s5">5. The Technical Reviews</h2>
+
+  <p>At each major transition in the I&amp;T campaign, a formal technical review is conducted. These reviews are not rubber stamps — they are structured examinations of readiness to proceed, conducted by a board that includes personnel independent of the performing team. The reviews serve two functions: they force the program to demonstrate readiness against defined criteria, and they provide an external check on the program's self-assessment.</p>
+
+  <ul class="body-list">
+    <li><strong>System Requirements Review (SRR)</strong> — Confirms mission requirements are understood and the top-level I&amp;T approach is consistent with them. Held in Phase A.</li>
+    <li><strong>Preliminary Design Review (PDR)</strong> — Reviews the preliminary I&amp;T Plan and the test requirements baseline. Authorizes development of detailed test procedures and EGSE. Held in Phase B.</li>
+    <li><strong>Critical Design Review (CDR)</strong> — Reviews the detailed I&amp;T Plan, test procedures, and EGSE design. Authorizes fabrication of flight hardware and procurement of test facilities. Held in Phase C.</li>
+    <li><strong>Test Readiness Review (TRR)</strong> — Conducted before each major test campaign to confirm the test configuration is correct, procedures are approved, the facility is certified, and the team is prepared. A TRR is a launch condition — you cannot start a major test without one.</li>
+    <li><strong>Pre-Ship Review (PSR)</strong> — Conducted before the spacecraft is shipped to the launch site. Confirms all home-facility I&amp;T activities are complete, all anomalies are dispositioned, and the spacecraft is in its approved flight configuration.</li>
+    <li><strong>Launch Readiness Review (LRR)</strong> — The final gate before launch. Reviews the complete I&amp;T campaign, confirms all open items are closed or dispositioned, and formally authorizes the launch. Covered in depth in Article 08.</li>
+  </ul>
+
+  <div class="callout steel">
+    <div class="callout-label">💡 On the Value of Independent Reviews</div>
+    <p>Every program believes it knows its own hardware better than any outside reviewer. This is correct, and it misses the point. The value of an independent review board is not that reviewers know the hardware better than the team. It is that they have not been living with the program long enough to have normalized its anomalies, rationalized its risks, or stopped questioning its assumptions.</p>
+    <p>Fresh eyes catch things that familiarity obscures. The programs that treat their review boards as adversaries to be managed are the ones that most need the reviews to work.</p>
+  </div>
+
+  <!-- SECTION 6 -->
+  <h2 class="sh" id="s6">6. Ground Support Equipment — The Invisible Infrastructure</h2>
+
+  <p>No discussion of I&amp;T program architecture is complete without addressing Ground Support Equipment (GSE). GSE is the infrastructure — mechanical, electrical, and software — that makes spacecraft integration and test possible. It includes fixtures that support the spacecraft during handling and test, electrical systems that simulate the space environment, and software systems that command the spacecraft, acquire its telemetry, and evaluate its performance during test.</p>
+
+  <p>GSE is divided into three categories:</p>
+
+  <ul class="body-list">
+    <li><span class="kt">Mechanical GSE (MGSE)</span> — Lifting fixtures, transportation containers, handling dollies, test stands, alignment fixtures, and specialized tooling required to assemble and disassemble flight hardware. MGSE must be designed to the same standard of care as flight hardware — a dropped spacecraft is not recoverable.</li>
+    <li><span class="kt">Electrical GSE (EGSE)</span> — The electrical systems that power, command, and monitor the spacecraft during ground testing. EGSE includes spacecraft simulators, power supplies, command and telemetry processors, and the software that runs them. EGSE is the "ground version" of the spacecraft's operational environment — it must simulate the spacecraft's interfaces with fidelity sufficient to make test results meaningful.</li>
+    <li><span class="kt">Software GSE (SWGSE)</span> — The software systems used to control test campaigns, process telemetry, evaluate performance against requirements, and manage test data. Modern SWGSE platforms provide automated test execution, real-time limit checking, and data archiving.</li>
+  </ul>
+
+  <p>EGSE deserves particular emphasis. The fidelity of EGSE directly determines the fidelity of the test program. <strong>An EGSE that does not accurately simulate the spacecraft's flight interfaces will produce test results that do not accurately predict flight performance.</strong> This is not a subtle point — it has been the root cause of major on-orbit anomalies on multiple programs. The design, development, and verification of EGSE must be treated as an engineering program in its own right, with the same rigor applied to it as to the flight hardware itself.</p>
+
+  <p>EGSE development must begin early — in Phase B — because EGSE must be ready before the first component-level tests begin. Programs that defer EGSE development discover that they are trying to test flight hardware with immature test equipment, which is exactly backwards from any rational risk posture.</p>
+
+  <!-- SECTION 7 -->
+  <h2 class="sh" id="s7">7. Building the I&amp;T Plan: Practical Guidance</h2>
+
+  <p>For an engineer writing or contributing to an I&amp;T Plan for the first time, the following guidance reflects lessons learned across multiple programs and multiple decades.</p>
+
+  <h3 class="ssh">Start With Requirements, Not Test Ideas</h3>
+  <p>The most common error in I&amp;T planning is starting with a list of tests and then trying to find requirements that justify them, rather than starting with requirements and deriving the tests that verify them. Requirements-driven test planning produces a test program with clear justification for every element. Test-idea-driven planning produces a test program that is hard to defend when schedule pressure demands cuts.</p>
+
+  <h3 class="ssh">Plan for Anomalies</h3>
+  <p>Every I&amp;T campaign will have anomalies. The question is not whether anomalies will occur, but whether the program has the process infrastructure to find them, document them, investigate them, and close them in a controlled way. The I&amp;T Plan must describe the anomaly management process: what constitutes an anomaly, how anomalies are classified, what investigation process applies to each class, and what authority is required to close each class of anomaly. Programs that do not plan for anomaly management find themselves improvising the process in the middle of a test campaign, under schedule pressure.</p>
+
+  <h3 class="ssh">Identify the Schedule-Critical Path</h3>
+  <p>The I&amp;T schedule has a critical path — a sequence of activities that determines the earliest possible completion date. The I&amp;T Plan must identify this path, because it is the path that must be protected. Every resource allocation decision, every risk management decision, every anomaly disposition decision will be made in the context of its impact on the critical path. If you do not know what the critical path is, you cannot manage to it.</p>
+
+  <h3 class="ssh">Configuration Control Is Not Optional</h3>
+  <p>The I&amp;T Plan must define how the as-built and as-tested configuration of the spacecraft will be controlled and documented. Configuration control is not a quality assurance function imposed on the engineering team — it is an engineering function performed by the engineering team. The ability to answer the question "what exactly is on this spacecraft right now?" is essential to anomaly investigation, to launch readiness assessment, and to on-orbit anomaly support. Programs that treat configuration control as a paperwork burden pay for that attitude when they need to answer that question under pressure.</p>
+
+  <div class="callout rust">
+    <div class="callout-label">⚡ A Word on Schedule Pressure</div>
+    <p>Every I&amp;T program experiences schedule pressure. It is not an aberration — it is the normal condition of spacecraft development. The question is not how to avoid it but how to respond to it without compromising flight safety.</p>
+    <p>The I&amp;T Plan should be written with this in mind: every element should be defensible under pressure. When a program manager asks "can we skip this test?", the answer should not be "the plan says we have to do it." The answer should be "yes, but here is what requirement goes unverified, here is the failure mode we would be accepting, and here is the margin we are consuming." That is an engineering conversation.</p>
+    <p>Engineers who can have that conversation — who understand the rationale for every element of their test program — are the ones who maintain the integrity of the I&amp;T campaign when it is under the most pressure.</p>
+  </div>
+
+  <!-- SUMMARY -->
+  <h2 class="sh">Summary</h2>
+
+  <p>The I&amp;T Plan and the program architecture it defines are the foundation of the entire spacecraft integration and test campaign. A well-constructed architecture — one that addresses every level of integration from piece parts to observatory, phases the work correctly against the program lifecycle, defines a complete suite of governing documents, and plans explicitly for anomalies and schedule pressure — is the single most important determinant of I&amp;T campaign success.</p>
+
+  <p>The levels of integration described in this article — piece parts, assemblies, components, subsystems, instruments, spacecraft, and observatory — are not administrative constructs. They reflect a fundamental physical reality: integration creates emergent behaviors that can only be found and resolved at the level where they emerge. Testing at every level is not redundancy. It is risk management.</p>
+
+  <p>In the articles that follow, we descend from this architectural overview into the specific environments, techniques, and practices of spacecraft I&amp;T. The next article takes us into the cleanroom — the controlled environment in which all flight hardware integration is performed, and where the first and most fundamental contamination control disciplines are established.</p>
+  </div>
+
+
+  <!-- NEXT LESSON -->
+  <div class="next-article">
+    <div class="next-article-content">
+      <div class="next-label">Next Lesson · L03 of 17 · Article 3</div>
+      <div class="next-title">Configuration Management and the As-Built Record</div>
+      <div class="next-desc">Baselines, the CCB, the traveller, and the as-built record — the mechanism that makes every subsequent test result interpretable</div>
+    </div>
+  </div>
+
+  <!-- GLOSSARY -->
+  <h2 class="sh" id="glossary">Key Terms Used in This Article</h2>
+
+  <table class="gloss-table">
+    <thead>
+      <tr><th>Term</th><th>Definition</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Acceptance Testing</td><td>Testing performed on every flight unit to verify it is free of workmanship defects. Compared to qualification testing, acceptance tests are performed at lower levels and shorter durations.</td></tr>
+      <tr><td>Configuration Status Accounting (CSA)</td><td>The formal system for tracking the as-built and as-tested configuration of all flight hardware items.</td></tr>
+      <tr><td>DPA (Destructive Physical Analysis)</td><td>Examination of sample parts by disassembly and inspection to verify internal construction quality. Performed on lot samples, not on flight parts.</td></tr>
+      <tr><td>EGSE</td><td>Electrical Ground Support Equipment. The electrical systems used to power, command, and monitor the spacecraft during ground test operations.</td></tr>
+      <tr><td>Fit Check</td><td>A mechanical interface verification, typically performed using a mass model or engineering model, before the flight instrument is delivered for integration.</td></tr>
+      <tr><td>I&amp;T Plan</td><td>The top-level document defining the philosophy, scope, approach, and organization of the integration and test campaign.</td></tr>
+      <tr><td>IPC-A-610 Class 3</td><td>The highest workmanship standard defined by the IPC (Institute for Printed Circuits), required for high-reliability electronics where continued performance is critical.</td></tr>
+      <tr><td>Launch Readiness Review (LRR)</td><td>The final formal review before launch, at which the program demonstrates that all I&amp;T activities are complete and the spacecraft is ready to fly.</td></tr>
+      <tr><td>Nonconformance Report (NCR)</td><td>Formal documentation of a hardware or software condition that does not meet its requirements. Must be formally closed before flight.</td></tr>
+      <tr><td>Qualification Testing</td><td>Testing performed on a qualification unit at levels more severe than flight, to demonstrate design margin. Not performed on flight hardware.</td></tr>
+      <tr><td>Test Readiness Review (TRR)</td><td>A formal review conducted before each major test campaign to confirm that the test configuration, procedures, facility, and team are ready to proceed.</td></tr>
+      <tr><td>Test-as-You-Fly / Fly-as-You-Test</td><td>The principle that test conditions should replicate flight conditions as closely as possible, and that the flight configuration should match the tested configuration.</td></tr>
+      <tr><td>TRD (Test Requirements Document)</td><td>Traces each test requirement to its source mission or system requirement. The formal basis for the test program.</td></tr>
+    </tbody>
+  </table>
+
+</article>
+</div>
+
+<!-- FOOTER -->
+
+<!-- ARTICLE NAVIGATOR -->
+<div class="art-nav">
+  <div class="art-nav-inner">
+    <span class="art-nav-label">Go to article</span>
+    <div class="art-nav-select-wrap">
+      <select id="artNav_spacecraft_iat_article01_html" onchange="this.nextElementSibling.disabled = !this.value || this.options[this.selectedIndex].disabled">
+        <option value="">— Select any article in the series —</option>
+        <optgroup label="── Main Series ──────────────────────────">
+      <option value="spacecraft_iat_intro.html">01 · Introduction to Spacecraft I&T</option>
+      <option value="spacecraft_iat_article01.html" selected disabled>▶ 02 · I&T Programme Structure</option>
+      <option value="spacecraft_iat_article11.html">03 · Configuration Management</option>
+      <option value="spacecraft_iat_article16.html">04 · Quality Assurance</option>
+      <option value="spacecraft_iat_article02.html">05 · Cleanrooms & Contamination Control</option>
+      <option value="spacecraft_iat_article10.html">06 · EGSE & Test Harness</option>
+      <option value="spacecraft_iat_article03.html">07 · Functional Testing</option>
+      <option value="spacecraft_iat_article09.html">08 · Flight Software V&V</option>
+      <option value="spacecraft_iat_article14.html">09 · Mass Properties & Structural Loads</option>
+      <option value="spacecraft_iat_article04.html">10 · Vibration, Acoustics & Shock</option>
+      <option value="spacecraft_iat_article05.html">11 · Thermal-Vacuum Testing</option>
+      <option value="spacecraft_iat_article12.html">12 · EMC Testing</option>
+      <option value="spacecraft_iat_article07.html">13 · Instrument Integration & Calibration</option>
+      <option value="spacecraft_iat_article13.html">14 · Propulsion Testing</option>
+      <option value="spacecraft_iat_article06.html">15 · Anomaly Management</option>
+      <option value="spacecraft_iat_article15.html">16 · Launch Vehicle Integration</option>
+      <option value="spacecraft_iat_article08.html">17 · Launch Readiness & Commissioning</option>
+    </optgroup>
+    <optgroup label="── Supplementary ──────────────────────────">
+      <option value="spacecraft_iat_smallsat.html">Supp · Small Satellites</option>
+      <option value="spacecraft_iat_case_studies.html">Supp · Case Studies</option>
+    </optgroup>
+      </select>
+    </div>
+    <button class="art-nav-go" disabled
+            onclick="var s=this.previousElementSibling.querySelector('select'); if(s.value && !s.options[s.selectedIndex].disabled) window.location.href=s.value;">
+      Open →
+    </button>
+  </div>
+</div>
+
+<footer class="article-footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <div class="footer-label">Series</div>
+      <div class="footer-text">Spacecraft Integration &amp; Test<br>Article 01 of 08</div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-label">Topics</div>
+      <div class="tags">
+        <span class="tag">I&amp;T</span>
+        <span class="tag">Systems Eng.</span>
+        <span class="tag">Verification</span>
+        <span class="tag">Observatory</span>
+        <span class="tag">EGSE</span>
+        <span class="tag">Test Planning</span>
+      </div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-label">Audience</div>
+      <div class="footer-text">New and early-career spacecraft engineers, aerospace students, and anyone with a serious interest in how spacecraft are built and tested.</div>
+    </div>
+  </div>
+</footer>

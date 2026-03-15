@@ -1,0 +1,511 @@
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://raw.githubusercontent.com/cchidekel-gif/spacecraft-iat-styles/refs/heads/main/styles.css">
+
+<div class="masthead">
+  <span class="masthead-series">Spacecraft Engineering Series · Integration &amp; Test</span>
+  <span class="masthead-right">Article 08 of 17</span>
+</div>
+
+
+<div class="series-nav">
+  <span>Series:</span>
+  <span class="sep">·</span>
+  <span>Intro</span>
+  <span class="sep">·</span>
+  <span>01</span>
+  <span class="sep">·</span>
+  <span>02</span>
+  <span class="sep">·</span>
+  <span>03</span>
+  <span class="sep">·</span>
+  <span>04</span>
+  <span class="sep">·</span>
+  <span>05</span>
+  <span class="sep">·</span>
+  <span>06</span>
+  <span class="sep">·</span>
+  <span class="current">07</span>
+  <span class="sep">·</span>
+  <span>08</span>
+  <span class="sep">·</span>
+  <span>09</span>
+  <span class="sep">·</span>
+  <span>10</span>
+  <span class="sep">·</span>
+  <span>11</span>
+  <span class="sep">·</span>
+  <span>12</span>
+  <span class="sep">·</span>
+  <span>13</span>
+  <span class="sep">·</span>
+  <span>14</span>
+  <span class="sep">·</span>
+  <span>15</span>
+  <span class="sep">·</span>
+  <span>16</span>
+</div>
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Spacecraft Integration &amp; Test · Article 08 of 17</div>
+    <h1>Flight Software<br>Verification and<br>Validation</h1>
+    <p class="hero-sub">The discipline that ensures the software controlling your spacecraft will behave correctly — at the right time, in the right conditions, with the right hardware — the first time it is asked to do so in space.</p>
+    <div class="byline">
+      <div class="byline-avatar">💻</div>
+      <div>
+        <div class="byline-name">Charles Chidekel</div>
+        <div class="byline-title">Integration &amp; Test Guru · 40 Years of I&amp;T Experience</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+<article class="article-body">
+
+  <div class="toc-wrap">
+    <div class="toc-label">In This Article</div>
+    <ul class="toc-list">
+      <li><a href="#s1"><span>1. Why Flight Software Is Different</span><span class="toc-num">§1</span></a></li>
+      <li><a href="#s2"><span>2. Verification vs. Validation — A Critical Distinction</span><span class="toc-num">§2</span></a></li>
+      <li><a href="#s3"><span>3. The Flight Software V&amp;V Hierarchy</span><span class="toc-num">§3</span></a></li>
+      <li><a href="#s4"><span>4. Unit Testing and Software Integration Testing</span><span class="toc-num">§4</span></a></li>
+      <li><a href="#s5"><span>5. Hardware-in-the-Loop Testing</span><span class="toc-num">§5</span></a></li>
+      <li><a href="#s6"><span>6. Fault Protection: Design, Verification, and the Limits of Testing</span><span class="toc-num">§6</span></a></li>
+      <li><a href="#s7"><span>7. The Flight Software Build and Configuration Control</span><span class="toc-num">§7</span></a></li>
+      <li><a href="#s8"><span>8. Software Anomalies During I&amp;T — What They Tell You</span><span class="toc-num">§8</span></a></li>
+      <li><a href="#s9"><span>9. Flight Software in the System-Level Test Campaign</span><span class="toc-num">§9</span></a></li>
+      <li><a href="#s10"><span>10. On-Orbit Software — Patches, Loads, and the Limits of Ground Verification</span><span class="toc-num">§10</span></a></li>
+      <li><a href="#s11"><span>11. What the I&amp;T Engineer Needs to Know About Flight Software</span><span class="toc-num">§11</span></a></li>
+      <li><a href="#glossary"><span>Key Terms Glossary</span><span class="toc-num">GL</span></a></li>
+    </ul>
+  </div>
+
+  <p class="lead">Every spacecraft that has been described in this series — the cleanroom procedures, the vibration tests, the thermal-vacuum campaigns, the anomaly reviews — is ultimately controlled by software. Flight software commands the thrusters, sequences the instrument observations, interprets the sensor data, manages the power bus, executes the fault protection logic, and formats the telemetry that tells the ground what the spacecraft is doing. When that software behaves incorrectly, nothing else the I&T programme has accomplished will save the mission.</p>
+
+  <p>And yet flight software verification and validation remains, in many programmes, the discipline that is least well understood outside the software team, most likely to be compressed when schedule pressure builds, and most likely to produce late-programme surprises of the kind that are hardest and most expensive to resolve. This article explains what the V&V process is, why it is structured the way it is, and what the non-software engineer working in I&T needs to understand about it to be an effective member of the test team.</p>
+
+  <div class="pull-quote">
+    <p>"Hardware fails in ways you can usually see — a cracked substrate, a burned component, a connector that didn't seat. Software fails in ways that are invisible until the exact combination of inputs that triggers the fault is encountered for the first time. In forty years, I have never seen a software failure that was not, in retrospect, detectable by a test that was either not in the plan or not executed as written."</p>
+  </div>
+
+  <!-- SECTION 1 -->
+  <h2 class="sh" id="s1">1. Why Flight Software Is Different</h2>
+
+  <p>Flight software is not simply embedded firmware. It is an integrated, real-time control system that manages the spacecraft's every function across a mission lifetime of years, operating in an environment that cannot be fully replicated on the ground, responding to hardware behaviour that changes as components age, and executing fault responses to conditions that may never have been observed during testing. It is almost always safety-critical — meaning that software failures can cause immediate, irreversible loss of mission or loss of spacecraft.</p>
+
+  <p>Several characteristics distinguish flight software verification from other forms of software testing:</p>
+
+  <ul class="body-list">
+    <li><strong>Real-time constraints are absolute.</strong> Flight software must complete its processing within defined timing budgets — missed deadlines in a real-time control system are not slowdowns, they are failures. A command that arrives 5 milliseconds late to a thruster firing sequence can produce an incorrect attitude manoeuvre. The timing behaviour of the software must be verified across all operating modes and loading conditions, not just in the nominal case.</li>
+    <li><strong>The hardware target is unique and irreplaceable.</strong> The software runs on a specific radiation-hardened processor that may have different timing characteristics, memory constraints, and compiler behaviour than the development hardware. Behaviour that is correct on the development workstation may be incorrect on the flight processor.</li>
+    <li><strong>The environment cannot be fully replicated.</strong> The software will operate in a radiation environment, a thermal environment, and an electromagnetic environment that no ground facility perfectly reproduces. Radiation-induced bit flips, single-event upsets, and latch-up events can alter software state in ways that are effectively impossible to test comprehensively on the ground.</li>
+    <li><strong>Patches are expensive and risky.</strong> Unlike software on a connected system, flight software cannot be updated continuously. An in-flight patch — a software load command sequence uplinked to the spacecraft — requires extensive validation before uplink, carries risk of transmission error, and may not be possible at all in some mission phases. Getting the software right before launch is incomparably cheaper than fixing it on orbit.</li>
+    <li><strong>Some faults cannot be demonstrated safely.</strong> Verifying certain fault protection responses requires creating the fault condition — low battery voltage, a hardware failure, an out-of-limit sensor reading — in a controlled way that is safe for the flight hardware. Some fault conditions cannot be created on flight hardware at all without risk of damage.</li>
+  </ul>
+
+  <!-- SECTION 2 -->
+  <h2 class="sh" id="s2">2. Verification vs. Validation — A Critical Distinction</h2>
+
+  <p>These two words are used interchangeably in casual conversation but describe fundamentally different activities with different purposes and different criteria for success.</p>
+
+  <p><span class="kt">Verification</span> answers the question: <em>does the software do what the specification says it should do?</em> It is the process of demonstrating that every requirement in the software requirements specification has been correctly implemented. Verification is objective — a requirement is either met or it is not — and it is traceable: every requirement must have an identified verification method, and every verification activity must be recorded and traceable back to the requirement it verifies.</p>
+
+  <p><span class="kt">Validation</span> answers a different question: <em>does the software do what the spacecraft actually needs it to do?</em> This is a more subtle and more difficult question. A software requirement can be perfectly implemented — the software does exactly what the requirement specifies — and the requirement can nonetheless be wrong, incomplete, or inconsistent with the actual operational need. Validation activities — typically higher-level system tests and operational simulations — reveal gaps between the requirement set and the real operational need.</p>
+
+  <div class="callout steel">
+    <div class="callout-label">⚙ Why the Distinction Matters in Practice</div>
+    <p>Consider a spacecraft fault protection requirement: "If the battery state of charge falls below 20%, the flight software shall transition the spacecraft to safe mode." The requirement is clear, and it can be verified by a unit test that injects a simulated battery SOC of 19% and confirms that the safe mode transition is initiated.</p>
+    <p>But validation asks: is this the right requirement? What if the battery SOC drops rapidly due to a transient load spike and recovers within one second? Should the spacecraft enter safe mode for a one-second transient? What if the spacecraft is in the middle of a critical orbit insertion burn when the transient occurs? The verification test confirmed that the software correctly implements the specified requirement. The validation question is whether the specified requirement correctly describes the desired behaviour across all the conditions in which it will be encountered. These are different questions, and both must be answered.</p>
+  </div>
+
+  <!-- SECTION 3 -->
+  <h2 class="sh" id="s3">3. The Flight Software V&V Hierarchy</h2>
+
+  <p>Flight software verification and validation is organised in a hierarchy of increasing integration and fidelity, paralleling the hardware integration hierarchy described in Article 01. Each level tests the software in a progressively more representative environment, with progressively more of the surrounding system present.</p>
+
+  <table class="vv-table">
+    <thead>
+      <tr>
+        <th>V&V Level</th>
+        <th>Environment</th>
+        <th>What Is Being Verified</th>
+        <th>Key Limitations</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Unit Testing</td>
+        <td>Development workstation; software simulator</td>
+        <td>Individual software modules and functions meet their interface requirements and produce correct outputs for all specified input conditions, including boundary and error cases.</td>
+        <td>No real-time constraints. No hardware interactions. Timing, interrupt handling, and hardware-dependent behaviour are not verified. Simulation fidelity limits what input conditions can be generated.</td>
+      </tr>
+      <tr>
+        <td>Software Integration Testing (SIT)</td>
+        <td>Development system; flight processor emulator or engineering model processor</td>
+        <td>Software modules interact correctly when integrated; interfaces between subsystems (ADCS, power, communications, payload) function as specified; timing budgets are met on representative hardware.</td>
+        <td>Hardware models may not fully represent flight hardware behaviour. Environmental effects (radiation, temperature) not present. Hardware fault conditions may be difficult to inject.</td>
+      </tr>
+      <tr>
+        <td>Hardware-in-the-Loop (HIL) Testing</td>
+        <td>Flight software on flight (or flight-like) processor; real hardware subsystems or high-fidelity simulators</td>
+        <td>Flight software operates correctly with real hardware interfaces. Timing-critical interactions verified. Mode transitions verified end-to-end. Fault protection responses verified with hardware-realistic stimuli.</td>
+        <td>Not all hardware may be available. Environmental test conditions (thermal, vacuum, radiation) may not be present. Some failure modes cannot be safely induced on flight hardware.</td>
+      </tr>
+      <tr>
+        <td>System-Level V&V (FLATSAT / Integrated Test)</td>
+        <td>Complete spacecraft software running on the integrated spacecraft or a high-fidelity functional test bed (FLATSAT)</td>
+        <td>Complete system behaviour verified across all mission modes. Spacecraft-level timing, resource utilisation, and cross-subsystem interactions verified. Mission scenario simulations executed. End-to-end functional test cases executed.</td>
+        <td>Environmental conditions (thermal, vacuum, radiation, launch dynamics) not present during software-focused testing. Some anomaly modes may require the combined spacecraft environment to manifest.</td>
+      </tr>
+      <tr>
+        <td>Environmental Test V&V</td>
+        <td>Flight software on integrated spacecraft during environmental tests (T-V, vibration, EMC)</td>
+        <td>Software behaviour verified in the environmental conditions that ground testing can reproduce. Timing anomalies that manifest only under thermal stress. EMC-induced software state changes. Vibration-induced sensor noise effects on control algorithms.</td>
+        <td>Cannot test all fault conditions during environmental tests. Environmental test priorities may limit software test objectives. Test anomalies must be carefully investigated to distinguish hardware from software root causes.</td>
+      </tr>
+      <tr>
+        <td>Operational Validation (Simulations)</td>
+        <td>High-fidelity spacecraft simulator in the Mission Operations Centre</td>
+        <td>Complete mission scenarios — including launch, LEOP, routine science operations, and contingency procedures — validated by the operations team against the flight software baseline. Operations procedures verified against actual software behaviour.</td>
+        <td>Simulator fidelity limits. Simulator and flight software may diverge over time if simulator is not kept current. Operations team training objectives may conflict with test objectives.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- SECTION 4 -->
+  <h2 class="sh" id="s4">4. Unit Testing and Software Integration Testing</h2>
+
+  <p>Unit testing and software integration testing are the domain of the software development team, conducted well before the software is loaded onto flight hardware. The I&T engineer is unlikely to be directly involved in these activities, but understanding what they cover — and what they do not — is essential for understanding the software's risk posture when it arrives at the integrated spacecraft level.</p>
+
+  <h3 class="ssh">What Good Unit Testing Looks Like</h3>
+  <p>A rigorous unit test programme systematically exercises every software module against its specification, including not just the nominal cases but the boundary conditions, the error conditions, and the "corner cases" — the combinations of inputs that individually are valid but together produce unexpected behaviour. Code coverage analysis — the measurement of which lines, branches, and logical paths in the code have been executed by the test suite — is the standard metric for unit test completeness. Most flight software standards require branch coverage of 100% or near-100% for safety-critical modules, meaning every logical branch in the code must be exercised by at least one test case.</p>
+
+  <p>The <span class="kt">DO-178C</span> standard (Software Considerations in Airborne Systems and Equipment Certification) is the most widely recognised standard for safety-critical software development and verification. It is derived from aviation but is applied to spacecraft software on many NASA and ESA programmes. Its five software levels — Level A through Level E, with Level A representing the most stringent requirements — define different degrees of rigour for requirements, design, coding, and verification based on the severity of the failure condition the software's incorrect operation could cause.</p>
+
+  <div class="callout gold">
+    <div class="callout-label">✦ Code Coverage Is Necessary But Not Sufficient</div>
+    <p>100% branch coverage means that every line of code has been executed by some test. It does not mean that every significant behaviour the software can exhibit has been tested. A code path can be exercised by a test that does not check whether the output was correct — coverage metrics measure execution, not correctness verification. And structural coverage analysis cannot reveal requirements that are missing from the code — it can only tell you about the code that was written, not about the behaviour that should have been written but wasn't.</p>
+    <p>This is why requirement-based testing — tests derived from the software requirements specification rather than from the code structure — is the primary test method, with coverage analysis as a completeness check. The combination of requirement-based tests (ensuring correctness against the specification) and structural coverage analysis (ensuring no unexercised code paths remain) is the minimum necessary for a rigorous unit test programme.</p>
+  </div>
+
+  <h3 class="ssh">Software Integration Testing on the Flight Processor</h3>
+  <p>When the integrated software is moved from the development workstation to the flight processor — or to an engineering model processor with the same instruction set and timing characteristics — a new category of anomalies becomes visible: timing anomalies, memory anomalies, and hardware-specific behaviour that the workstation simulation did not reproduce. The flight processor is typically a radiation-hardened component with significantly lower clock speed than modern commercial processors. Code that executes within its timing budget on the development system may fail its timing budget on the flight processor. Memory alignment issues that are silently handled by the development compiler may cause faults on the flight compiler. These anomalies are best discovered at this stage — before integration with flight hardware.</p>
+
+  <!-- SECTION 5 -->
+  <h2 class="sh" id="s5">5. Hardware-in-the-Loop Testing</h2>
+
+  <p><span class="kt">Hardware-in-the-Loop (HIL) testing</span> is the level of V&V at which flight software meets real hardware — where the software's commands produce real electrical signals that drive real hardware responses, and where the hardware's sensor outputs produce real inputs to the software's control algorithms. It is the most important single V&V activity in the entire programme for software that has complex, safety-critical interactions with hardware, and it is the level most likely to reveal anomalies that no amount of workstation simulation can find.</p>
+
+  <div class="hil-diagram">
+    <div class="hil-header">Hardware-in-the-Loop Test Configuration — Principal Elements</div>
+    <div class="hil-body">
+      <div class="hil-box flight">
+        <div class="hil-box-label">Flight Element</div>
+        <div class="hil-box-title">Flight Software on Flight Processor</div>
+        <div class="hil-box-sub">Real flight code, real timing constraints, real hardware interfaces. Configuration-controlled flight build.</div>
+      </div>
+      <div class="hil-arrow">⇄</div>
+      <div class="hil-box sim">
+        <div class="hil-box-label">Simulation / EGSE</div>
+        <div class="hil-box-title">Hardware Simulators &amp; Stimuli Generators</div>
+        <div class="hil-box-sub">High-fidelity models of sensors, actuators, and environment. Fault injection capability. Scripted scenario execution.</div>
+      </div>
+      <div class="hil-arrow">⇄</div>
+      <div class="hil-box ground">
+        <div class="hil-box-label">Ground Element</div>
+        <div class="hil-box-title">Mission Operations Software &amp; EGSE Monitor</div>
+        <div class="hil-box-sub">Real ground software commanding real flight software. Telemetry monitoring and anomaly detection in real time.</div>
+      </div>
+    </div>
+  </div>
+
+  <p>The critical design requirement for any HIL test configuration is <strong>fidelity at the interfaces</strong>. The simulators and stimulus generators that stand in for hardware not present in the HIL configuration must faithfully represent the electrical, timing, and data characteristics of the real hardware — not just in the nominal case, but at the extremes of the specification envelope. A simulator that represents the nominal sensor output accurately but does not faithfully reproduce the sensor's noise characteristics, its latency jitter, or its out-of-limit outputs will produce a HIL test that gives false confidence in the software's robustness.</p>
+
+  <h3 class="ssh">Mode Transition Testing</h3>
+  <p>One of the most important objectives of HIL testing is the verification of spacecraft mode transitions — the sequences by which the software transitions from one operating configuration to another in response to commands or fault conditions. Mode transitions are complex because they involve the coordinated state changes of multiple software subsystems, and because the transition itself is a period of maximum vulnerability: the spacecraft is neither in its previous safe state nor in its target state.</p>
+
+  <p>Mode transition testing must cover not only the nominal transitions — commanded transitions executed under nominal conditions — but the off-nominal cases: transitions initiated during degraded hardware conditions, transitions that are interrupted by new fault conditions, transitions that are attempted from initial states that are not the expected predecessor states. These off-nominal cases are disproportionately likely to reveal latent software defects that nominal testing misses.</p>
+
+  <!-- SECTION 6 -->
+  <h2 class="sh" id="s6">6. Fault Protection: Design, Verification, and the Limits of Testing</h2>
+
+  <p><span class="kt">Fault protection</span> — the autonomous software logic that detects anomalous conditions and responds to them without waiting for ground commands — is the most safety-critical component of the flight software suite. It is also the component that is hardest to verify comprehensively, because the conditions it must handle are by definition abnormal conditions that may be difficult or dangerous to reproduce on flight hardware.</p>
+
+  <p>Fault protection design begins with the <span class="kt">Failure Modes and Effects Analysis (FMEA)</span> and the <span class="kt">Fault Tree Analysis (FTA)</span> of the spacecraft — the systematic identification of every component failure mode that could threaten the spacecraft's safety or mission success, and the analysis of how each such failure would manifest in the spacecraft's observable behaviour. The fault protection software must detect each identified failure mode through one or more monitors, and must respond to each detected condition with a response action that returns the spacecraft to a known safe state.</p>
+
+  <table class="fp-table">
+    <thead>
+      <tr>
+        <th>Monitor Type</th>
+        <th>What It Watches</th>
+        <th>Typical Response</th>
+        <th>Key V&V Challenge</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Limit Monitor</td>
+        <td>Telemetry value above or below a defined threshold (e.g., battery voltage &lt; 28V, temperature &gt; 85°C)</td>
+        <td>Yellow limit: alert / log. Red limit: initiate safe mode or specific corrective action.</td>
+        <td>Limit values must be set correctly — too tight produces false alarms, too loose misses real anomalies. Time-averaging and persistence requirements must be verified for transient rejection.</td>
+      </tr>
+      <tr>
+        <td>Watchdog Timer</td>
+        <td>Software execution — confirms that a specific process completes within its timing budget</td>
+        <td>Resets the processor or initiates a software restart sequence if the watchdog is not cleared within the required interval.</td>
+        <td>Verifying that the watchdog fires correctly under a real software hang — which requires creating a real software hang safely — is difficult. Timing margin under worst-case computational load must be verified.</td>
+      </tr>
+      <tr>
+        <td>Hardware Health Monitor</td>
+        <td>Hardware component status bits, current draw anomalies, communication link failures</td>
+        <td>Component power cycle, switch to redundant unit, or escalation to safe mode depending on severity.</td>
+        <td>Hardware fault conditions must be injected at the interface level (not just simulated in software) to verify that the monitor correctly detects the real hardware failure signature rather than an idealized model of it.</td>
+      </tr>
+      <tr>
+        <td>Attitude Monitor</td>
+        <td>Spacecraft attitude rate, attitude error relative to commanded attitude, Sun sensor outputs</td>
+        <td>Gyro bias update, attitude reinitialization, switch to coarse Sun-pointing (safe mode).</td>
+        <td>The transition between navigation modes (e.g., star tracker to Sun sensor to gyro-only) must be tested under realistic sensor noise and failure scenarios, including simultaneous failures of multiple attitude sensors.</td>
+      </tr>
+      <tr>
+        <td>Sequence Monitor</td>
+        <td>Critical event sequences — confirms that expected events occur within required timing windows (e.g., solar array deployment confirmed within T+30 seconds of separation command)</td>
+        <td>Retry sequence, escalation to contingency mode, or safe mode if sequence does not complete correctly.</td>
+        <td>Time-critical sequences near mission-critical events (separation, orbit insertion) are difficult to test with full environmental fidelity. The interaction between sequence monitor logic and other simultaneously active fault monitors must be verified.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout rust">
+    <div class="callout-label">⚠ The Fault Protection Paradox</div>
+    <p>Fault protection is the software that protects the spacecraft when everything else goes wrong. Verifying it requires creating the conditions under which everything else goes wrong. Creating those conditions on irreplaceable flight hardware is dangerous. So fault protection is almost always verified on simulators and engineering model hardware — which means its verification is limited by the fidelity of those simulators.</p>
+    <p>This paradox is not resolvable — it is a fundamental constraint of the discipline. The mitigation is rigorous simulator fidelity analysis: explicitly identifying the discrepancies between the simulator's behaviour and the flight hardware's behaviour, and formally assessing whether those discrepancies could allow a fault protection error to escape detection. Every programme should have a documented simulator fidelity assessment as part of its flight software V&V closure evidence. The programmes that do not have this assessment have implicitly accepted an unknown risk in their fault protection coverage.</p>
+  </div>
+
+  <!-- SECTION 7 -->
+  <h2 class="sh" id="s7">7. The Flight Software Build and Configuration Control</h2>
+
+  <p>The <span class="kt">flight software build</span> — the specific, compiled, tested, configuration-controlled binary image that will be loaded into the spacecraft's memory and will execute throughout the mission — is itself a flight article. It must be subject to the same configuration management discipline as any other flight hardware component. The consequences of loading the wrong software version onto the spacecraft are as severe as installing the wrong component.</p>
+
+  <div class="process-flow">
+    <div class="pf-header">Flight Software Build — Release and Control Process</div>
+    <div class="pf-steps">
+      <div class="pf-step">
+        <div class="pf-num">1</div>
+        <div class="pf-content">
+          <div class="pf-title">Software Development Baseline</div>
+          <div class="pf-desc">Source code placed under version control. Each change formally reviewed and approved through the Software CCB. A unique version identifier is assigned to each baseline. No changes to the baseline without CCB approval — even "one-line fixes" during the I&T phase require full CCB review.</div>
+        </div>
+      </div>
+      <div class="pf-step">
+        <div class="pf-num">2</div>
+        <div class="pf-content">
+          <div class="pf-title">Build Verification — Compiler and Toolchain Qualification</div>
+          <div class="pf-desc">The flight code is compiled using the qualified flight compiler and build toolchain. The compiler itself must be qualified for flight use — compiler optimisations can produce code that behaves differently than the source code's logic implies. The build output is verified against the source using reproducible build procedures.</div>
+        </div>
+      </div>
+      <div class="pf-step">
+        <div class="pf-num">3</div>
+        <div class="pf-content">
+          <div class="pf-title">Software Acceptance Test (SAT)</div>
+          <div class="pf-desc">A defined, repeatable acceptance test suite is executed against the compiled flight binary on the flight processor (or flight-representative processor). The SAT is a subset of the full V&V test suite, selected to cover the highest-risk functions and the most recent changes. Every flight build must pass the SAT before it is released for loading onto flight hardware.</div>
+        </div>
+      </div>
+      <div class="pf-step">
+        <div class="pf-num">4</div>
+        <div class="pf-content">
+          <div class="pf-title">Flight Build Release and Formal Handoff</div>
+          <div class="pf-desc">The verified flight build is formally released under configuration control. A unique, cryptographically signed build identifier is generated. The build is stored in a controlled repository. A chain-of-custody record is established that tracks every subsequent loading of the build onto hardware, including the verification that the loaded image matches the released build by checksum comparison.</div>
+        </div>
+      </div>
+      <div class="pf-step">
+        <div class="pf-num">5</div>
+        <div class="pf-content">
+          <div class="pf-title">Load Verification on Flight Hardware</div>
+          <div class="pf-desc">After loading onto the spacecraft, the software image is verified by checksum comparison against the released build. A post-load functional test confirms that the software starts up, initialises correctly, and executes a basic health check. This verification is performed every time the software is loaded — including after power cycling, after memory anomalies, and at the launch site before final encapsulation.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="ssh">The Multiple-Build Problem</h3>
+  <p>Almost every programme runs multiple parallel software builds during the I&T phase: a development build under active development, a current test build loaded on the integrated spacecraft, and previous builds that were used for earlier test phases. The risk this creates is that test results are only valid for the specific build that was loaded when the test was performed. A test executed on Build 4.2 does not verify that Build 4.3 — which corrected a defect found in 4.2 — still correctly implements every other function that 4.2 implemented. Every new build requires regression testing — the re-execution of a defined subset of previous tests to confirm that the new build has not introduced regressions in previously verified functions.</p>
+
+  <!-- SECTION 8 -->
+  <h2 class="sh" id="s8">8. Software Anomalies During I&T — What They Tell You</h2>
+
+  <p>Software anomalies discovered during I&T — unexpected software behaviour observed during any phase of the ground test programme — are, like hardware anomalies, always investigated to root cause. But software anomalies have a distinctive character that makes their investigation particularly important: a software defect that produces an observable symptom in one test context can be silent under the slightly different conditions of another test context, and will then reappear — sometimes catastrophically — when the conditions of the first context recur in flight.</p>
+
+  <ul class="body-list">
+    <li><strong>Intermittent anomalies are the most dangerous.</strong> A software anomaly that occurs on one test execution and not on the next is not evidence of a benign or transient condition. It is evidence of a timing-dependent, state-dependent, or input-dependent behaviour that the test has not yet fully characterised. Intermittent software anomalies are never closed as "unexplained but not mission-threatening." They are investigated until the conditions that trigger them are fully understood, and they are not accepted at launch with their root cause unresolved.</li>
+    <li><strong>Software anomalies found late in I&T carry compound risk.</strong> A software defect found during the environmental test phase — during thermal-vacuum testing, for example — requires a software fix that must then be regression-tested, re-loaded, and re-verified before the environmental test can be closed. This is not simply a schedule risk; it is a V&V coverage risk. The fix must be introduced into a build that has already been tested, and the regression test must be sufficient to confirm that the fix has not introduced new defects into the already-tested functions.</li>
+    <li><strong>Understand which build is running before diagnosing an anomaly.</strong> When an anomaly is observed during a spacecraft test, the first step in the investigation is to confirm precisely which software build is loaded. This sounds elementary, but the combination of parallel build development, multiple test environments, and the practical reality of long test campaigns means that confirming the loaded build is a genuine diagnostic step. Anomalies that are reported against the wrong build version produce incorrect root cause analyses and potentially incorrect — and dangerous — conclusions about the anomaly's mission impact.</li>
+  </ul>
+
+  <div class="callout green">
+    <div class="callout-label">✓ The Software Anomaly as a Gift</div>
+    <p>Article 06 makes the argument that anomalies, properly investigated, are gifts — they reveal risk that would otherwise have remained hidden until flight. This is doubly true for software anomalies discovered during I&T. Every software defect found on the ground is a defect that will not be found on orbit. Every defect found on orbit is a defect that ground testing failed to catch.</p>
+    <p>The programmes that find the most software anomalies during I&T are not the programmes with the worst software — they are the programmes with the most rigorous test programmes. The correlation runs in the right direction: more anomalies found on the ground means fewer surprises on orbit. The appropriate response to a large ground-test anomaly count is not concern about the software quality — it is confidence that the test programme is doing its job. Concern is warranted when the anomaly count is suspiciously low and the test programme is known to have been compressed.</p>
+  </div>
+
+  <!-- SECTION 9 -->
+  <h2 class="sh" id="s9">9. Flight Software in the System-Level Test Campaign</h2>
+
+  <p>The system-level functional test campaign described in Article 03 is, from the software perspective, a large-scale integration test: the first time the flight software is exercised with all spacecraft hardware present, in all operating modes, with all cross-subsystem interactions active. What the software team learns during this phase cannot be learned at any earlier level of the V&V hierarchy.</p>
+
+  <p>Several categories of issues are disproportionately likely to emerge at the system level:</p>
+
+  <ul class="body-list">
+    <li><strong>Timing anomalies under real system load.</strong> When all subsystems are operating simultaneously — all instruments powered, all communication links active, all telemetry generation running — the computational and bus loading on the flight processor reaches levels that may not have been replicated in HIL testing with a partial hardware complement. Timing anomalies that were not present with a partial load become visible at full system load.</li>
+    <li><strong>Interface disagreements between subsystem software models and real hardware.</strong> The sensor and actuator models used in HIL testing approximate real hardware behaviour. The first time the software drives real hardware through real interfaces, discrepancies between the model and the hardware become apparent — incorrect scale factors, unexpected latencies, hardware response characteristics outside the modelled range. These are corrected by updating the software parameters (gains, scale factors, timing constants) that were previously set based on model predictions.</li>
+    <li><strong>Mode transition interactions.</strong> Mode transitions that were verified in isolation — in HIL testing with only the relevant subsystems present — can behave differently when all other subsystems are simultaneously active. A safe mode transition that correctly powers down the payload and commands the attitude control system to Sun acquisition can interact with simultaneously active fault monitors in unexpected ways when the full system is present.</li>
+    <li><strong>Telemetry format and ground system compatibility.</strong> The format of the telemetry stream — the frame structure, packet definitions, and parameter encodings — must be compatible with the mission operations ground system software. Incompatibilities that were not apparent in simulation become visible when real telemetry is processed by the real ground system for the first time. These are typically minor but occasionally significant, and they must be resolved before the spacecraft can be effectively monitored during testing.</li>
+  </ul>
+
+  <div class="stat-strip">
+    <div class="stat-cell">
+      <span class="stat-num">60–80%</span>
+      <p>Fraction of flight software anomalies typically found during system-level and operational testing, despite extensive earlier unit and integration testing</p>
+    </div>
+    <div class="stat-cell">
+      <span class="stat-num">10–30×</span>
+      <p>Estimated relative cost ratio of fixing a software defect found on orbit vs. found during development unit testing</p>
+    </div>
+    <div class="stat-cell">
+      <span class="stat-num">100%</span>
+      <p>Required branch coverage for safety-critical flight software modules under DO-178C Level A and equivalent standards</p>
+    </div>
+    <div class="stat-cell">
+      <span class="stat-num">3–5 yr</span>
+      <p>Typical duration of flight software development for a complex science mission — from initial requirements through system-level V&V completion</p>
+    </div>
+  </div>
+
+  <!-- SECTION 10 -->
+  <h2 class="sh" id="s10">10. On-Orbit Software — Patches, Loads, and the Limits of Ground Verification</h2>
+
+  <p>No flight software build survives first contact with the flight environment completely unchanged. On-orbit anomalies — behaviours that differ from the pre-launch verified baseline — may require software patches: modifications to the loaded flight software that correct defects, update parameters, or add new capabilities. Every flight programme should plan for the possibility of in-flight software modifications from the earliest stages of development.</p>
+
+  <p>An <span class="kt">in-flight software patch</span> is not simply a code change uploaded to the spacecraft. It is a full development and V&V cycle — requirements, design, coding, unit testing, integration testing, acceptance testing — compressed to fit the time available between anomaly identification and the operational need for the fix. It is one of the most demanding software engineering activities a programme will undertake, and it is conducted under time pressure, with limited hardware access, and with the full consequences of an error being immediate and potentially mission-ending.</p>
+
+  <div class="callout blue">
+    <div class="callout-label">◆ Case: Cassini Flight Software Patches</div>
+    <p>The Cassini-Huygens mission to Saturn, which operated from 1997 to 2017, received multiple in-flight software patches during its 20-year lifetime. The most significant addressed a memory bit flip anomaly that had been induced by the radiation environment near Jupiter during the spacecraft's gravity assist flyby in 2000. The anomaly produced a change in the software's table of parameters that altered the spacecraft's behaviour in a specific, detectable way.</p>
+    <p>The Cassini software team, using the pre-launch software baseline and the on-orbit telemetry record, was able to identify the precise memory location affected, understand the change in behaviour it had caused, and uplink a patch that corrected the parameter table. This successful recovery required precisely the things that a well-managed V&V programme provides: a complete, current record of the verified software baseline; a thorough understanding of the software's architecture and parameter dependencies; and a team that had maintained its knowledge of the software throughout the mission's operational life — not just through launch and commissioning.</p>
+  </div>
+
+  <!-- SECTION 11 -->
+  <h2 class="sh" id="s11">11. What the I&T Engineer Needs to Know About Flight Software</h2>
+
+  <p>If you are an I&T engineer whose primary expertise is in hardware testing — structural, thermal, electrical — you will work alongside flight software throughout the I&T campaign without necessarily being responsible for software V&V. Here is what you need to understand to work effectively with the software team and to recognise when a software issue requires escalation.</p>
+
+  <ul class="body-list">
+    <li><strong>Know which build is loaded.</strong> Before executing any test that involves the flight software — which is every test that involves the spacecraft — confirm with the software team which build is loaded. Record the build identifier in the test traveller. If the build changes during a test campaign, understand what changed and whether the change requires re-execution of any tests already completed.</li>
+    <li><strong>Treat software-induced anomalies with the same rigour as hardware anomalies.</strong> An unexpected spacecraft behaviour observed during testing is an anomaly regardless of whether its root cause turns out to be hardware or software. Do not close a test anomaly as "software issue, referred to FSW team" without understanding the root cause and its mission impact. Software anomalies must enter the formal DR process with the same completeness and rigour as hardware anomalies.</li>
+    <li><strong>Understand the fault protection implications of every hardware change.</strong> When a hardware change is made to the spacecraft — a component replacement, a wiring modification, a parameter update — ask the software team whether the change affects any fault protection monitors. Fault protection limits are set based on specific hardware characteristics. A hardware change that alters those characteristics without a corresponding fault protection limit review can leave the spacecraft either unprotected against real faults or subject to false alarms.</li>
+    <li><strong>The FLATSAT is a test asset, not a development platform.</strong> Many programmes maintain a <span class="kt">FLATSAT</span> — a functional equivalent of the spacecraft using engineering model or spare hardware — that the software team uses for development testing and that the I&T team uses as a rehearsal environment for spacecraft-level test procedures. The FLATSAT is invaluable, but its utility depends on it remaining representative of the flight spacecraft. When the flight spacecraft configuration changes, the FLATSAT must be updated accordingly. FLATSAT results against an unrepresentative configuration are not valid predictions of flight spacecraft behaviour.</li>
+    <li><strong>The initial acquisition sequence is sacred.</strong> The software that executes in the first minutes after spacecraft separation — the autonomous sequence that deploys arrays, acquires the Sun, and establishes communications — is the most critical software the spacecraft carries. It must work correctly, the first time, without any ground intervention, in the actual flight environment. Every planned modification to this software during the I&T phase deserves exceptional scrutiny, and the post-modification regression test must be comprehensive. No change to the initial acquisition sequence is minor.</li>
+  </ul>
+
+  <div class="pull-quote">
+    <p>"Hardware you can see. Software you cannot. The test you skip for a hardware component might catch a cracked substrate. The test you skip for a software function might catch the condition that, nine months from now, causes the spacecraft to shut down its engines 40 metres above the Martian surface."</p>
+  </div>
+
+
+  <!-- NEXT LESSON -->
+  <div class="next-article">
+    <div class="next-article-content">
+      <div class="next-label">Next Lesson · L09 of 17 · Module 4 — Structural & Mechanical Verification · Article 9</div>
+      <div class="next-title">Mass Properties, Structural Analysis, and Load Verification</div>
+      <div class="next-desc">The analytical foundation for environmental testing — mass budgets, finite element models, coupled loads analysis, and structural margin</div>
+    </div>
+  </div>
+
+  <!-- GLOSSARY -->
+  <h2 class="sh" id="glossary">Key Terms Used in This Article</h2>
+
+  <table class="gloss-table">
+    <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+    <tbody>
+      <tr><td>Branch Coverage</td><td>A code coverage metric measuring the fraction of logical branches (if/else, switch case) in the source code that have been executed by the test suite. 100% branch coverage is required for safety-critical modules under DO-178C Level A.</td></tr>
+      <tr><td>DO-178C</td><td>Software Considerations in Airborne Systems and Equipment Certification — the primary standard for safety-critical software development and verification in aviation and, by adoption, in spacecraft programmes. Defines five levels (A–E) of software criticality and the corresponding V&V rigour requirements.</td></tr>
+      <tr><td>Fault Protection</td><td>The autonomous flight software logic that detects anomalous spacecraft conditions through monitors and responds with corrective actions without waiting for ground commands. The last line of software defence against mission loss.</td></tr>
+      <tr><td>Flight Build</td><td>The specific, compiled, tested, configuration-controlled software binary loaded into the spacecraft's flight memory. A flight article, subject to the same configuration management discipline as hardware.</td></tr>
+      <tr><td>FLATSAT</td><td>A functional test bed — typically using engineering model hardware — that represents the complete spacecraft's functional configuration without the flight-quality hardware constraints. Used for software development testing, procedure rehearsal, and anomaly investigation.</td></tr>
+      <tr><td>Hardware-in-the-Loop (HIL)</td><td>A V&V test configuration in which flight software on a real processor is connected to real hardware subsystems or high-fidelity hardware simulators, allowing software behaviour to be verified in the context of real hardware interactions and timing constraints.</td></tr>
+      <tr><td>In-Flight Software Patch</td><td>A software modification uploaded to the spacecraft during the mission to correct a defect or update parameters. Requires a compressed but complete development and V&V cycle before uplink.</td></tr>
+      <tr><td>Regression Testing</td><td>Re-execution of a defined subset of previously passed tests after a software change, to confirm that the change has not introduced defects in previously verified functions.</td></tr>
+      <tr><td>Software Acceptance Test (SAT)</td><td>A defined, repeatable test suite executed against each new flight build to confirm baseline functional correctness before the build is released for loading onto flight hardware.</td></tr>
+      <tr><td>Validation</td><td>The process of demonstrating that the software does what the spacecraft actually needs it to do — that the requirements are correct and complete, not merely that the code correctly implements them.</td></tr>
+      <tr><td>Verification</td><td>The process of demonstrating that the software correctly implements its requirements — that every specified requirement has been correctly realised in the code.</td></tr>
+    </tbody>
+  </table>
+    <div class="na-arrow">→</div>
+  </div>
+
+</article>
+</div>
+
+
+<!-- ARTICLE NAVIGATOR -->
+<div class="art-nav">
+  <div class="art-nav-inner">
+    <span class="art-nav-label">Go to article</span>
+    <div class="art-nav-select-wrap">
+      <select id="artNav_spacecraft_iat_article09_html" onchange="this.nextElementSibling.disabled = !this.value || this.options[this.selectedIndex].disabled">
+        <option value="">— Select any article in the series —</option>
+        <optgroup label="── Main Series ──────────────────────────">
+      <option value="spacecraft_iat_intro.html">01 · Introduction to Spacecraft I&T</option>
+      <option value="spacecraft_iat_article01.html">02 · I&T Programme Structure</option>
+      <option value="spacecraft_iat_article11.html">03 · Configuration Management</option>
+      <option value="spacecraft_iat_article16.html">04 · Quality Assurance</option>
+      <option value="spacecraft_iat_article02.html">05 · Cleanrooms & Contamination Control</option>
+      <option value="spacecraft_iat_article10.html">06 · EGSE & Test Harness</option>
+      <option value="spacecraft_iat_article03.html">07 · Functional Testing</option>
+      <option value="spacecraft_iat_article09.html" selected disabled>▶ 08 · Flight Software V&V</option>
+      <option value="spacecraft_iat_article14.html">09 · Mass Properties & Structural Loads</option>
+      <option value="spacecraft_iat_article04.html">10 · Vibration, Acoustics & Shock</option>
+      <option value="spacecraft_iat_article05.html">11 · Thermal-Vacuum Testing</option>
+      <option value="spacecraft_iat_article12.html">12 · EMC Testing</option>
+      <option value="spacecraft_iat_article07.html">13 · Instrument Integration & Calibration</option>
+      <option value="spacecraft_iat_article13.html">14 · Propulsion Testing</option>
+      <option value="spacecraft_iat_article06.html">15 · Anomaly Management</option>
+      <option value="spacecraft_iat_article15.html">16 · Launch Vehicle Integration</option>
+      <option value="spacecraft_iat_article08.html">17 · Launch Readiness & Commissioning</option>
+    </optgroup>
+    <optgroup label="── Supplementary ──────────────────────────">
+      <option value="spacecraft_iat_smallsat.html">Supp · Small Satellites</option>
+      <option value="spacecraft_iat_case_studies.html">Supp · Case Studies</option>
+    </optgroup>
+      </select>
+    </div>
+    <button class="art-nav-go" disabled
+            onclick="var s=this.previousElementSibling.querySelector('select'); if(s.value && !s.options[s.selectedIndex].disabled) window.location.href=s.value;">
+      Open →
+    </button>
+  </div>
+</div>
+
+<footer class="article-footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <div class="footer-label">Series</div>
+      <div class="footer-text">Spacecraft Integration &amp; Test<br>Article 09 — Supplementary</div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-label">Topics</div>
+      <div class="tags">
+        <span class="tag">Flight Software</span>
+        <span class="tag">V&amp;V</span>
+        <span class="tag">DO-178C</span>
+        <span class="tag">Fault Protection</span>
+        <span class="tag">HIL Testing</span>
+        <span class="tag">FLATSAT</span>
+      </div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-label">Audience</div>
+      <div class="footer-text">New and early-career spacecraft engineers, aerospace students, and I&amp;T practitioners who need to understand flight software V&amp;V without specialising in it.</div>
+    </div>
+  </div>
+</footer>

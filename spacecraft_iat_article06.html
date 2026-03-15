@@ -1,0 +1,544 @@
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://raw.githubusercontent.com/cchidekel-gif/spacecraft-iat-styles/refs/heads/main/styles.css">
+
+<div class="masthead">
+  <span class="masthead-series">Spacecraft Engineering Series · Integration &amp; Test</span>
+  <span class="masthead-right">Article 15 of 17</span>
+</div>
+
+
+<div class="series-nav">
+  <span>Series:</span>
+  <span class="sep">·</span>
+  <span>Intro</span>
+  <span class="sep">·</span>
+  <span>01</span>
+  <span class="sep">·</span>
+  <span>02</span>
+  <span class="sep">·</span>
+  <span>03</span>
+  <span class="sep">·</span>
+  <span>04</span>
+  <span class="sep">·</span>
+  <span>05</span>
+  <span class="sep">·</span>
+  <span>06</span>
+  <span class="sep">·</span>
+  <span>07</span>
+  <span class="sep">·</span>
+  <span>08</span>
+  <span class="sep">·</span>
+  <span>09</span>
+  <span class="sep">·</span>
+  <span>10</span>
+  <span class="sep">·</span>
+  <span>11</span>
+  <span class="sep">·</span>
+  <span>12</span>
+  <span class="sep">·</span>
+  <span>13</span>
+  <span class="sep">·</span>
+  <span class="current">14</span>
+  <span class="sep">·</span>
+  <span>15</span>
+  <span class="sep">·</span>
+  <span>16</span>
+</div>
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Spacecraft Integration &amp; Test · Article 15 of 17</div>
+    <h1>Anomalies, Discrepancies,<br>and Problem Resolution</h1>
+    <p class="hero-sub">The formal discipline of finding, classifying, investigating, and closing the unexpected findings that every test programme generates — and the cultural conditions that determine whether that discipline works.</p>
+    <div class="byline">
+      <div class="byline-avatar">🛰️</div>
+      <div>
+        <div class="byline-name">Charles Chidekel</div>
+        <div class="byline-title">Integration &amp; Test Guru · 40 Years of I&amp;T Experience</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+<article class="article-body">
+
+  <div class="toc-wrap">
+    <div class="toc-label">In This Article</div>
+    <ul class="toc-list">
+      <li><a href="#s1"><span>1. Why Anomaly Management Is the Central Discipline of I&amp;T</span><span class="toc-num">§1</span></a></li>
+      <li><a href="#s2"><span>2. The Discrepancy Report: Anatomy and Purpose</span><span class="toc-num">§2</span></a></li>
+      <li><a href="#s3"><span>3. Anomaly Severity Classification</span><span class="toc-num">§3</span></a></li>
+      <li><a href="#s4"><span>4. Root Cause Analysis — Methods and Disciplines</span><span class="toc-num">§4</span></a></li>
+      <li><a href="#s5"><span>5. Corrective Action, Verification, and Closure</span><span class="toc-num">§5</span></a></li>
+      <li><a href="#s6"><span>6. The DR Board and Anomaly Review Process</span><span class="toc-num">§6</span></a></li>
+      <li><a href="#s7"><span>7. Waivers, Deviations, and the Acceptance of Non-Conformance</span><span class="toc-num">§7</span></a></li>
+      <li><a href="#s8"><span>8. The Open DR List — Managing the Residual Risk Ledger</span><span class="toc-num">§8</span></a></li>
+      <li><a href="#s9"><span>9. Normalisation of Deviance — The Most Dangerous Failure Mode</span><span class="toc-num">§9</span></a></li>
+      <li><a href="#s10"><span>10. Lessons from Flight Anomalies and Failures</span><span class="toc-num">§10</span></a></li>
+      <li><a href="#s11"><span>11. What Good Anomaly Management Looks Like</span><span class="toc-num">§11</span></a></li>
+      <li><a href="#glossary"><span>Key Terms Glossary</span><span class="toc-num">GL</span></a></li>
+    </ul>
+  </div>
+
+  <p class="lead">Every test programme generates anomalies. Not occasionally, not on poorly-managed programmes — every test programme, on every spacecraft, at every level of the integration hierarchy. The purpose of testing is precisely to find anomalies: unexpected behaviours, out-of-limit readings, hardware that does not perform as predicted. A test programme that generates no anomalies is not a well-executed test programme. It is a test programme that is not looking hard enough.</p>
+
+  <p>The question, therefore, is never whether anomalies will be found. The question is whether the programme has the discipline, the tools, and the culture to find all of them, document every one, investigate each to its true root cause, and resolve them in a way that justifies flight. Anomaly management is not a support function of the I&amp;T programme — it is its central engineering discipline. The test campaigns described in the previous articles generate the data. Anomaly management is how the programme converts that data into justified confidence.</p>
+
+  <div class="pull-quote">
+    <p>"The most dangerous anomaly is not the one that destroys hardware on the test floor. It is the one that is observed, briefly discussed, explained away as a test artefact — and never written down."</p>
+  </div>
+
+  <h2 class="sh" id="s1">1. Why Anomaly Management Is the Central Discipline of I&amp;T</h2>
+
+  <p>To understand why anomaly management is so central, consider what a spacecraft programme is trying to achieve. It is trying to send a complex, one-of-a-kind piece of hardware to an environment it cannot return from, operated by a team that cannot physically access it, required to perform reliably for years or decades without maintenance. The programme's only tool for building justified confidence that this is possible is its test programme — and the only thing that separates a test programme from a series of scheduled operations is the rigour with which its anomalies are found and closed.</p>
+
+  <p>An anomaly found on the test floor and properly investigated and corrected adds directly to flight confidence. An anomaly that occurs on the test floor but is not documented, not investigated, and not corrected represents a risk that has been accepted — not explicitly, through an engineering assessment, but implicitly, through inattention. The history of spaceflight is filled with missions that were lost to anomalies observed on the ground, noted by someone as "probably nothing," and never formally addressed.</p>
+
+  <p>Anomaly management is also the primary mechanism by which a programme's engineering knowledge accumulates. A properly written discrepancy report, with a full root-cause investigation and a documented corrective action, is a permanent engineering record. The engineer who investigates a solder joint failure and documents the failure mode, the stress analysis, and the corrective redesign has created a record that will protect every subsequent spacecraft that uses the same component. The engineer who notes "connector re-seated, passed retest, closed" has created no such record — and the same failure will occur again.</p>
+
+  <h2 class="sh" id="s2">2. The Discrepancy Report: Anatomy and Purpose</h2>
+
+  <p>The <span class="kt">Discrepancy Report (DR)</span> — also called a Non-Conformance Report (NCR), Problem Report (PR), or Anomaly Report (AR) depending on the programme — is the formal document by which every anomaly is captured, tracked, and resolved. It is the engineering record of a problem, its investigation, and its resolution, and it will be reviewed by launch readiness boards and, potentially, by accident investigation boards if something goes wrong after launch.</p>
+
+  <div class="dr-flow">
+    <div class="dr-flow-header">Discrepancy Report Lifecycle — From Observation to Closure</div>
+    <div class="dr-steps">
+      <div class="dr-step">
+        <span class="dr-step-num">Step 1</span>
+        <div class="dr-step-title">Observation &amp; Initiation</div>
+        <div class="dr-step-desc">Anomaly observed. Test hold called if required. DR opened immediately — never deferred. Initial observation recorded verbatim.</div>
+      </div>
+      <div class="dr-step">
+        <span class="dr-step-num">Step 2</span>
+        <div class="dr-step-title">Classification &amp; Assignment</div>
+        <div class="dr-step-desc">Severity category assigned. Responsible engineer assigned. Immediate containment actions identified if hardware is at risk.</div>
+      </div>
+      <div class="dr-step">
+        <span class="dr-step-num">Step 3</span>
+        <div class="dr-step-title">Root Cause Investigation</div>
+        <div class="dr-step-desc">Systematic investigation to identify the true root cause. Failed hardware is preserved. Analysis and testing performed as required.</div>
+      </div>
+      <div class="dr-step">
+        <span class="dr-step-num">Step 4</span>
+        <div class="dr-step-title">Corrective Action</div>
+        <div class="dr-step-desc">Corrective action identified and approved. May be repair, redesign, or formal acceptance. Fleet impact assessed and addressed.</div>
+      </div>
+      <div class="dr-step">
+        <span class="dr-step-num">Step 5</span>
+        <div class="dr-step-title">Verification &amp; Closure</div>
+        <div class="dr-step-desc">Action implemented and independently verified. Functional test confirms resolution. DR Board reviews and closes. Lessons learned captured.</div>
+      </div>
+    </div>
+  </div>
+
+  <p>The DR contains, at minimum: a precise, objective description of the observed anomaly; hardware identification and serial number; test procedure step at which the anomaly was observed; test configuration at the time; date, time, and names of personnel present; photographs or data plots; and the required resolution date. Vague initial descriptions — "anomalous reading on CH47" without context — are a common failure mode. The person who writes the initial entry must provide enough information for an engineer who was not present to understand exactly what was observed.</p>
+
+  <h3 class="ssh">The "Never Deferred" Rule</h3>
+  <p>The single most important procedural rule in DR management: a DR is opened at the time of observation, not later. "I'll write it up after the test" is the most common path to an undocumented anomaly. Test environments are busy, distracted environments; anomalies noted mentally and not written down are frequently forgotten, misremembered, or — under schedule pressure — rationalised away. The discipline is simple: if it was observed and it was unexpected, it gets a DR number before the test continues.</p>
+
+  <h2 class="sh" id="s3">3. Anomaly Severity Classification</h2>
+
+  <p>Not all anomalies carry equal risk, and the programme's response must be proportional to severity. A classification system ensures that critical anomalies receive the most immediate and thorough response, while routine workmanship issues do not consume engineering resources disproportionate to their risk.</p>
+
+  <div class="sev-matrix">
+    <div class="sev-matrix-header">Anomaly Severity Classification — Four-Category Framework</div>
+    <div class="sev-rows">
+      <div class="sev-row header-row">
+        <div class="sev-cell-label" style="background:var(--light);color:var(--muted);">CAT</div>
+        <div class="sev-col hdr">Definition</div>
+        <div class="sev-col hdr">Programme Response</div>
+        <div class="sev-col hdr">Closure Authority</div>
+      </div>
+      <div class="sev-row cat1">
+        <div class="sev-cell-label">CAT 1<br>Critical</div>
+        <div class="sev-col"><p>Anomaly that could result in mission loss or spacecraft loss. Includes any functional failure in a non-redundant critical system, any anomaly with an unresolved flight safety implication, or any observation that cannot be plausibly explained by current engineering understanding.</p></div>
+        <div class="sev-col"><p>Immediate test hold. All operations cease. Senior leadership notified. No further operations until root cause is understood and approved corrective action is in place. Independent review required.</p></div>
+        <div class="sev-col"><p>Chief Engineer and Programme Manager, with concurrence from Independent Technical Authority. Cannot be closed by the engineering team alone.</p></div>
+      </div>
+      <div class="sev-row cat2">
+        <div class="sev-cell-label">CAT 2<br>Major</div>
+        <div class="sev-col"><p>Significant departure from expected performance but without immediate mission risk. Includes out-of-limit readings in non-critical systems, functional anomalies with understood workarounds, and structural findings requiring analysis before flight impact can be assessed.</p></div>
+        <div class="sev-col"><p>Test hold until initial assessment complete. Test may resume if chief engineer determines the anomaly does not affect hardware integrity. Full root-cause investigation required before launch.</p></div>
+        <div class="sev-col"><p>Chief Engineer with DR Board concurrence. Resolution must be documented in the launch readiness matrix.</p></div>
+      </div>
+      <div class="sev-row cat3">
+        <div class="sev-cell-label">CAT 3<br>Minor</div>
+        <div class="sev-col"><p>Anomaly within the engineering team's experience base and clearly not a flight risk. Includes workmanship defects within rework standards, minor calibration offsets, procedure clarifications, and test artefact readings positively identified as non-representative of flight hardware condition.</p></div>
+        <div class="sev-col"><p>Test continues. Investigation assigned. Resolution required before the next major test milestone.</p></div>
+        <div class="sev-col"><p>Responsible Systems Engineer with DR Board review.</p></div>
+      </div>
+      <div class="sev-row cat4">
+        <div class="sev-cell-label">CAT 4<br>Observation</div>
+        <div class="sev-col"><p>An observation that is within specification but warrants documentation — for example, a component that consistently runs at the upper end of its temperature limit without exceeding it, or a connector that required more insertion force than expected.</p></div>
+        <div class="sev-col"><p>Test continues. Observation recorded. No corrective action required unless subsequent data changes the assessment.</p></div>
+        <div class="sev-col"><p>Responsible Systems Engineer. Reviewed at DR Board for trend analysis.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <p>The severity classification must be assigned by a qualified engineer — typically the Systems Engineer or Chief Engineer — not by the technician or test operator who observed the anomaly. Anomalies that appear minor at first glance can turn out to be critical upon investigation, and the classification process exists to apply engineering judgment to this assessment consistently.</p>
+
+  <h2 class="sh" id="s4">4. Root Cause Analysis — Methods and Disciplines</h2>
+
+  <p>Root cause analysis is the systematic process of determining the fundamental reason why an anomaly occurred — not the symptoms, not the proximate cause, but the underlying cause that, if corrected, will prevent recurrence. It is the most intellectually demanding activity in the anomaly management process, and the one most commonly done inadequately under schedule pressure.</p>
+
+  <p>The most important principle: <strong>distinguish between the symptom and the cause</strong>. A connector that tested open is a symptom. A solder bridge that failed during vibration is a proximate cause. A process control deficiency that allowed a non-standard solder alloy to be used in that connector's assembly is a root cause. Correcting only the symptom — replacing the connector — does nothing to prevent the same failure in other connectors made by the same process.</p>
+
+  <div class="rc-grid">
+    <div class="rc-card">
+      <div class="rc-card-header">
+        <span class="rc-icon">❓</span>
+        <div><div class="rc-title">Five Whys</div><div class="rc-sub">Iterative causal chain</div></div>
+      </div>
+      <div class="rc-body"><p>Ask "why?" iteratively at each level of the causal chain until the root cause is reached — typically after five iterations. Simple, powerful, and applicable without specialised tools. Risk: analysis can stop too early at a proximate cause, or diverge into multiple causal branches that require a more structured method to manage.</p></div>
+    </div>
+    <div class="rc-card">
+      <div class="rc-card-header">
+        <span class="rc-icon">🐟</span>
+        <div><div class="rc-title">Ishikawa Diagram</div><div class="rc-sub">Cause categories</div></div>
+      </div>
+      <div class="rc-body"><p>A structured diagram organising potential causes by category — Method, Machine, Material, Man, Measurement, Environment (the 6Ms). Useful for complex anomalies with multiple potential contributing causes, forcing the team to consider all cause categories rather than pursuing the most obvious explanation.</p></div>
+    </div>
+    <div class="rc-card">
+      <div class="rc-card-header">
+        <span class="rc-icon">🌳</span>
+        <div><div class="rc-title">Fault Tree Analysis</div><div class="rc-sub">Deductive top-down logic</div></div>
+      </div>
+      <div class="rc-body"><p>A logic tree using AND/OR gates traces backward from the observed failure through all possible causal pathways. Particularly useful when multiple independent failures could each have caused the anomaly and the investigation must determine which occurred, or when the system has complex redundancy architecture.</p></div>
+    </div>
+    <div class="rc-card">
+      <div class="rc-card-header">
+        <span class="rc-icon">🔬</span>
+        <div><div class="rc-title">Failure Analysis (FA)</div><div class="rc-sub">Physical evidence</div></div>
+      </div>
+      <div class="rc-body"><p>Physical laboratory analysis of the failed hardware — SEM/EDX, cross-section, X-ray, electrical characterisation — to identify the failure mechanism directly from evidence. The gold standard for hardware failures where the failed article is available. The failure analysis lab is the final arbiter when analytical methods produce conflicting theories.</p></div>
+    </div>
+    <div class="rc-card">
+      <div class="rc-card-header">
+        <span class="rc-icon">📊</span>
+        <div><div class="rc-title">Trend Analysis</div><div class="rc-sub">Pattern across the fleet</div></div>
+      </div>
+      <div class="rc-body"><p>Review of all DRs across the programme — and similar programmes — to identify patterns not visible when each anomaly is investigated in isolation. A single connector failure may be coincidence. Five connector failures on the same connector family across two programmes is a systemic issue. Trend analysis catches systemic issues before they become mission failures.</p></div>
+    </div>
+  </div>
+
+  <h3 class="ssh">Preserving the Evidence</h3>
+  <ul class="body-list">
+    <li>Do not touch, move, or disturb failed hardware before photographing it in situ and initiating a DR.</li>
+    <li>If hardware must be moved to prevent further damage, document its condition fully before moving and tag it clearly as anomalous hardware requiring failure analysis.</li>
+    <li>Do not perform any rework on failed hardware until the failure analysis is complete and the root cause is identified.</li>
+    <li>Preserve all test data from the period before and during the anomaly. Data recordings, operator logs, and environmental monitoring records must be archived and protected from accidental deletion.</li>
+  </ul>
+
+  <h2 class="sh" id="s5">5. Corrective Action, Verification, and Closure</h2>
+
+  <p>The output of a root cause investigation is a <span class="kt">corrective action</span> — the specific engineering action taken to address the root cause and prevent recurrence. The corrective action must be commensurate with the root cause: a workmanship defect on a single article requires rework of that article; a design deficiency requires redesign of all affected hardware; a process deficiency requires correction of the process and assessment of all hardware built under the deficient process.</p>
+
+  <table class="gen-table">
+    <thead>
+      <tr>
+        <th>Corrective Action Type</th>
+        <th>When Applied</th>
+        <th>Verification Method</th>
+        <th>Fleet Impact</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Hardware Rework</td>
+        <td>Workmanship defect on a specific article; design change is not required</td>
+        <td>Post-rework inspection to workmanship standards; functional retest through the affected test sequence</td>
+        <td>Assess other articles built under the same process for similar defects</td>
+      </tr>
+      <tr>
+        <td>Design Change</td>
+        <td>Root cause is a design deficiency that will produce the same failure regardless of workmanship quality</td>
+        <td>Analysis of revised design; environmental and functional retest of redesigned hardware</td>
+        <td>All flight articles using the affected design must be assessed; some or all may require retrofit</td>
+      </tr>
+      <tr>
+        <td>Process Change</td>
+        <td>Root cause is in the manufacturing, assembly, or test process rather than the hardware design</td>
+        <td>Process audit confirming changed process is correctly implemented; sample inspection of new hardware</td>
+        <td>All hardware built under the old process must be assessed; 100% inspection or retest may be required</td>
+      </tr>
+      <tr>
+        <td>Re-inspection / Re-test</td>
+        <td>Root cause is understood; hardware requires additional verification to confirm condition</td>
+        <td>The inspection or test that provides the required verification, performed to a defined acceptance criterion</td>
+        <td>May apply to all units of the same type if the concern is about inspection or test adequacy</td>
+      </tr>
+      <tr>
+        <td>Formal Accept As-Is</td>
+        <td>Non-conformance is understood and determined through engineering analysis to be acceptable for flight</td>
+        <td>Engineering analysis documented and approved through the formal waiver process</td>
+        <td>Documented in the flight discrepancy record and launch readiness matrix; monitored for recurrence</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Corrective action verification is not optional. The verification must demonstrate, through objective evidence, that the corrective action achieved its intended result. For a hardware rework, that means post-rework inspection followed by functional testing through the relevant test sequence. "We reworked it and it looked fine" is not a verification.</p>
+
+  <h2 class="sh" id="s6">6. The DR Board and Anomaly Review Process</h2>
+
+  <p>Individual DRs are managed by the responsible engineer, but the overall anomaly management programme is governed by the <span class="kt">Discrepancy Review Board (DRB)</span>. The DRB is a standing body that meets regularly — typically weekly during active test campaigns, more frequently when critical anomalies are open — to review the status of all open DRs, assess new DRs for severity classification, and approve closures.</p>
+
+  <p>The DRB membership must include the Chief Engineer or designated representative (who owns the classification and closure decisions), Systems Engineers for each major subsystem (the domain experts), a Quality Assurance representative (the independent audit function), and a Mission Assurance representative (for flight safety considerations). On government-funded programmes, the customer's technical authority typically has observer or voting status on significant dispositions and waivers.</p>
+
+  <p>The DRB must function as a technical body, not a schedule management body. The most common pathology of DRBs under programme schedule pressure is the gradual shift from "is this anomaly understood and resolved?" to "can we close this DR to keep the schedule on track?" These are different questions with different answers, and confusing them is the first step toward normalisation of deviance.</p>
+
+  <h2 class="sh" id="s7">7. Waivers, Deviations, and the Acceptance of Non-Conformance</h2>
+
+  <p>Not every anomaly can be corrected. Some non-conformances cannot be repaired without replacing hardware that is not replaceable, or redesigning systems with insufficient time before launch, or retesting hardware that has already consumed most of its fatigue life. In these cases, the programme must formally accept the non-conformance as a known, documented risk.</p>
+
+  <ul class="body-list">
+    <li>A <span class="kt">waiver</span> is a post-event formal acceptance that a specific piece of hardware does not meet a specified requirement, and that this non-conformance is acceptable for the intended mission. A waiver requires a technical justification, approved by the programme's technical authority and, typically, by the customer's independent technical authority. Waivers apply to specific hardware articles, not across the fleet.</li>
+    <li>A <span class="kt">deviation</span> is a pre-approved departure from a requirement, granted before hardware is built or a test is performed. Deviations address known limitations in the test environment or manufacturing process — a requirement that cannot be directly verified on the ground, for example — and must be approved before the fact with justification for why the programme can still meet its mission objectives.</li>
+  </ul>
+
+  <p>The critical discipline of waiver management is to assess the <strong>combined effect</strong> of all waivers on the programme's overall risk posture, not each waiver in isolation. Individually, each waiver may be justifiable. Collectively, ten waivers on different subsystems may represent an unacceptable accumulation of risk that no single waiver review captured. This is one of the primary responsibilities of the chief engineer: to maintain visibility of the total waiver burden and assess its integrated effect on flight confidence.</p>
+
+  <div class="callout rust">
+    <div class="callout-label">⚠ The Waiver Accumulation Problem</div>
+    <p>On one large programme, we reached the pre-ship review with seventeen open waivers across the various subsystems. Each had been individually reviewed and approved by the responsible subsystem engineer and the DR Board. Each had been individually assessed as acceptable for flight. But no one had looked at all seventeen together and asked: what does this collection of known departures from specification mean for the overall probability of mission success?</p>
+    <p>We spent three days at the pre-ship review doing that integrated assessment. Two of the seventeen waivers, when considered together, revealed a cold-case power budget shortfall during a specific orbital geometry that neither waiver analysis had addressed individually. We caught it. An operational change to the mission profile resolved it. The spacecraft flew successfully. But that was a close call that a proper waiver integration review conducted earlier would have caught months before the pre-ship review.</p>
+  </div>
+
+  <h2 class="sh" id="s8">8. The Open DR List — Managing the Residual Risk Ledger</h2>
+
+  <p>At any point during the I&amp;T programme, there will be a number of open DRs — anomalies identified but not yet fully resolved. This list is not a list of failures. It is the programme's residual risk ledger: a formal, tracked record of every known departure from expected performance, every open investigation, every corrective action not yet verified.</p>
+
+  <div class="status-board">
+    <div class="sb-cell open">
+      <span class="sb-label">Open</span>
+      <span class="sb-num">→</span>
+      <p>Anomaly documented, awaiting investigation or corrective action. Must have a responsible engineer and a required resolution date.</p>
+    </div>
+    <div class="sb-cell work">
+      <span class="sb-label">In Work</span>
+      <span class="sb-num">⚙</span>
+      <p>Root cause investigation actively in progress. Hardware may be in failure analysis. Interim corrective action may be in place.</p>
+    </div>
+    <div class="sb-cell closed">
+      <span class="sb-label">Closed</span>
+      <span class="sb-num">✓</span>
+      <p>Root cause identified, corrective action verified, DR Board approved. Part of the permanent test record; trended for pattern analysis.</p>
+    </div>
+    <div class="sb-cell waived">
+      <span class="sb-label">Waived</span>
+      <span class="sb-num">W</span>
+      <p>Non-conformance formally accepted through the waiver process. Root cause understood. Flight impact assessed and accepted by technical authority.</p>
+    </div>
+  </div>
+
+  <p>The open DR list is a launch readiness input. No spacecraft launches with unreviewed open DRs — every open DR must be formally presented to and accepted by the launch readiness review board, with documented technical rationale for why the open anomaly does not affect flight safety or mission success. This is the last formal checkpoint at which the entire open anomaly burden is reviewed by the programme's technical leadership with the explicit question: do we have enough confidence to commit this hardware to launch?</p>
+
+  <h2 class="sh" id="s9">9. Normalisation of Deviance — The Most Dangerous Failure Mode</h2>
+
+  <p>Of all the failure modes in anomaly management, the most insidious is what sociologist Diane Vaughan, in her analysis of the Space Shuttle Challenger accident, called the <span class="kt">normalisation of deviance</span>: the gradual process by which anomalous conditions come to be treated as normal and acceptable through repeated exposure without apparent consequence.</p>
+
+  <p>Normalisation of deviance does not happen through dishonesty or negligence. It happens through a sequence of individually reasonable decisions under conditions of incomplete information and schedule pressure. The mechanics are consistent across programmes:</p>
+
+  <table class="norm-table">
+    <thead>
+      <tr><th>Stage</th><th>What Happens</th><th>The Rationalisation</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>First Occurrence</td>
+        <td>An anomaly is observed that is outside expectations but within specification limits. The team investigates, does not find a clear root cause, and decides to proceed.</td>
+        <td>"It's within spec. We understand it well enough. The schedule doesn't allow for a deeper investigation right now."</td>
+      </tr>
+      <tr>
+        <td>Second Occurrence</td>
+        <td>The same anomaly recurs. Because the first was accepted without root cause, this second occurrence is treated as confirmation that the anomaly is "normal for this hardware."</td>
+        <td>"We saw this last time. It's just how this hardware behaves. We know it's safe because the previous unit was fine."</td>
+      </tr>
+      <tr>
+        <td>Institutionalisation</td>
+        <td>The anomaly is no longer documented as a DR. It is treated as an "expected behaviour," noted — if at all — as a comment in the test log.</td>
+        <td>"This is a known characteristic. Everyone knows about it. There's no point raising a DR — it just creates paperwork."</td>
+      </tr>
+      <tr>
+        <td>Boundary Expansion</td>
+        <td>A more severe occurrence is observed. The same rationalisation is applied: "we've seen worse and it was fine."</td>
+        <td>"This is slightly more than usual, but we know this hardware is robust. We've been living with this for months."</td>
+      </tr>
+      <tr>
+        <td>Failure</td>
+        <td>The anomaly, never understood because never formally investigated, produces a failure in test or in flight, traceable through years of records to the first occurrence accepted without root cause.</td>
+        <td>"We should have known. The signs were there. We just stopped seeing them."</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout steel">
+    <div class="callout-label">⚙ Countering Normalisation — Structural Protections</div>
+    <p><strong>Mandatory DR for every anomaly:</strong> No exceptions. Every anomaly gets a DR number. The act of writing it down prevents the gradual cognitive process by which it becomes invisible.</p>
+    <p><strong>Trend analysis across the DR database:</strong> Periodically, the QA team and chief engineer review the full DR history looking for repeated anomalies in the same hardware, same process, or same test campaign. Individually accepted anomalies may, in aggregate, reveal a pattern demanding deeper investigation.</p>
+    <p><strong>Independent technical review:</strong> A team that has been living with a set of anomalies for months cannot reliably identify which ones have been normalised. Periodic independent reviews by engineers who have not been part of the day-to-day test programme are a structural protection against team-level normalisation.</p>
+    <p><strong>Stop-work authority at every level:</strong> Every member of the test team — from the chief engineer to the most junior technician — must have the explicit authority and genuine cultural permission to stop a test when something does not look right. Environments where stopping work is implicitly punished through comments about schedule impact will produce normalised deviance.</p>
+  </div>
+
+  <h2 class="sh" id="s10">10. Lessons from Flight Anomalies and Failures</h2>
+
+  <p>The history of spacecraft I&amp;T anomaly management is a record of hard-won lessons. The following examples are selected not for their drama but for how clearly they illustrate the principles described in this article.</p>
+
+  <div class="history-timeline">
+    <div class="ht-item critical">
+      <div class="ht-year">1967</div>
+      <div class="ht-content">
+        <div class="ht-mission">Apollo 1</div>
+        <div class="ht-desc">Over 100 open DRs were documented during the Apollo 1 spacecraft test programme, many related to wire bundles and cabin materials. The programme proceeded to a launch pad test with the cabin pressurised in pure oxygen at above-ambient pressure — a configuration never formally risk-assessed as a test configuration. A cabin fire killed three astronauts. The investigation found that the normalisation of a growing workmanship defect count, and the failure to treat the pressurised pure-oxygen cabin as requiring specific hazard controls, were key contributing factors.</div>
+      </div>
+    </div>
+    <div class="ht-item critical">
+      <div class="ht-year">1986</div>
+      <div class="ht-content">
+        <div class="ht-mission">Space Shuttle Challenger</div>
+        <div class="ht-desc">O-ring erosion had been observed on multiple previous flights. Each occurrence was reviewed, accepted as within the engineering database, and used as justification for proceeding rather than as evidence of a design deficiency. The night before launch, engineers argued against launch in cold temperatures. The decision-making process had normalised O-ring erosion to the point where the absence of catastrophe in previous flights was interpreted as evidence of acceptable risk. The O-ring failed on the 25th mission.</div>
+      </div>
+    </div>
+    <div class="ht-item notable">
+      <div class="ht-year">1998</div>
+      <div class="ht-content">
+        <div class="ht-mission">Mars Climate Orbiter</div>
+        <div class="ht-desc">A navigation anomaly — unexpectedly large trajectory corrections — was flagged during cruise. The anomaly was investigated to an intermediate level; the root cause (a unit mismatch between a contractor software module using imperial units and the flight system expecting metric units) was not identified. The spacecraft entered the Mars atmosphere at the wrong angle and was lost. Multiple opportunities to identify and resolve the anomaly before arrival were available but not fully pursued.</div>
+      </div>
+    </div>
+    <div class="ht-item critical">
+      <div class="ht-year">2003</div>
+      <div class="ht-content">
+        <div class="ht-mission">Space Shuttle Columbia</div>
+        <div class="ht-desc">Foam shedding from the external tank had been observed on previous flights and progressively normalised over many years, documented but treated as "in-family" events not meeting the standard for formal corrective action. The Columbia Accident Investigation Board found that the shedding process was not understood — the wing leading edge was more vulnerable than analytically assessed — and that repeated acceptance without root cause had created a false baseline of safety.</div>
+      </div>
+    </div>
+    <div class="ht-item positive">
+      <div class="ht-year">2021</div>
+      <div class="ht-content">
+        <div class="ht-mission">James Webb Space Telescope</div>
+        <div class="ht-desc">JWST's I&amp;T programme is notable for sustained anomaly management rigour over more than two decades. Hundreds of DRs were generated, investigated, and formally resolved. Several significant anomalies — a sunshield membrane tear during deployment testing, a communications anomaly during launch site processing — were caught, investigated to root cause, and corrected. The open DR list at the launch readiness review contained zero unreviewed anomalies. JWST reached operational orbit and began science operations successfully.</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="sh" id="s11">11. What Good Anomaly Management Looks Like</h2>
+
+  <p>Good anomaly management tends to be invisible: the spacecraft launches and succeeds, and no one outside the programme knows how many anomalies were found, investigated, and resolved in the years leading up to that launch. But for those who work in I&amp;T, the characteristics are recognisable:</p>
+
+  <ul class="body-list">
+    <li><strong>A high DR count is a sign of health, not failure.</strong> Programmes with active, thorough test campaigns generate large numbers of DRs. The number of DRs is a measure of test thoroughness, not of programme quality. A programme generating very few DRs is either not testing rigorously enough, or not documenting what it finds, or both.</li>
+    <li><strong>The DR database is a knowledge repository, not a paperwork burden.</strong> In well-managed programmes, engineers routinely search the database to understand the failure history of a component or process before committing to a test or design decision. The database is treated as engineering intelligence.</li>
+    <li><strong>Anomalies are discussed in technical terms, not schedule terms.</strong> In the DRB meetings of well-managed programmes, the conversation is about root causes and failure mechanisms. Schedule implications are addressed after the technical assessment, not before. Programmes where every DRB meeting begins with "how does this affect the schedule?" have inverted the priority.</li>
+    <li><strong>Every anomaly gets a root cause.</strong> Not just the big ones. "Unknown" is not an acceptable root cause for a closed DR on a flight programme.</li>
+    <li><strong>The chief engineer knows the open DR list by heart.</strong> On well-managed programmes, the chief engineer can at any moment describe from memory the open DRs of concern — their status, the open questions, the resolution plans. This is a consequence of the level of technical engagement that good chief engineers maintain as a matter of professional discipline.</li>
+  </ul>
+
+  <div class="pull-quote">
+    <p>"Every anomaly you find on the test floor is a gift. It is a problem revealed at a point where you can still do something about it. Treat it with gratitude, with rigour, and with the full resources of the programme."</p>
+  </div>
+
+  <h2 class="sh">Summary</h2>
+
+  <p>Anomaly management is the discipline that gives the I&amp;T programme its engineering meaning. Tests generate data; anomaly management converts that data into justified confidence. The mechanisms — the Discrepancy Report, the severity classification system, root cause analysis, corrective action and verification, the DR Board, and the formal waiver process — are the instruments of that conversion. The pathology to guard against in every programme, at every phase, is the normalisation of deviance: the gradual drift from rigorous investigation to comfortable acceptance of the unexplained.</p>
+
+  <p>The next article turns from systems-level process to one of the most technically specialised domains in spacecraft I&amp;T: the integration and calibration of science instruments — the hardware that gives the mission its scientific purpose, and the testing that determines whether that purpose will be achieved.</p>
+  </div>
+
+
+  <!-- NEXT LESSON -->
+  <div class="next-article">
+    <div class="next-article-content">
+      <div class="next-label">Next Lesson · L16 of 17 · Module 7 — Launch Readiness & Launch Vehicle · Article 16</div>
+      <div class="next-title">Launch Vehicle Integration — The Spacecraft Perspective</div>
+      <div class="next-desc">The ICD, payload user's guide, coupled loads analysis, payload acceptance review, and physical integration at the launch site</div>
+    </div>
+  </div>
+
+  <h2 class="sh" id="glossary">Key Terms Used in This Article</h2>
+
+  <table class="gloss-table">
+    <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+    <tbody>
+      <tr><td>Anomaly Review Board (DRB)</td><td>The standing body responsible for classifying, reviewing, and approving the closure of all discrepancy reports. Also called the Discrepancy Review Board, Problem Review Board, or Material Review Board depending on programme convention.</td></tr>
+      <tr><td>Corrective Action</td><td>The specific engineering action taken to address the root cause of an anomaly and prevent recurrence. May be hardware rework, redesign, process change, re-inspection, or formal acceptance as a waiver.</td></tr>
+      <tr><td>Deviation</td><td>A pre-approved formal departure from a requirement, granted before hardware is built or a test is performed. Addresses known limitations in the test environment or manufacturing process.</td></tr>
+      <tr><td>Discrepancy Report (DR)</td><td>The formal document by which every anomaly is captured, tracked, investigated, and resolved. The primary instrument of anomaly management and a permanent engineering record.</td></tr>
+      <tr><td>Failure Analysis (FA)</td><td>Physical laboratory analysis of failed hardware — SEM/EDX, cross-section, X-ray, electrical characterisation — to identify the failure mechanism directly from physical evidence.</td></tr>
+      <tr><td>Fault Tree Analysis (FTA)</td><td>A deductive, top-down logic diagram that traces from an observed failure event backward through all possible causal pathways using AND/OR logic gates.</td></tr>
+      <tr><td>Five Whys</td><td>A root cause analysis method that iteratively asks "why?" at each level of the causal chain until the fundamental root cause is reached.</td></tr>
+      <tr><td>Ishikawa Diagram</td><td>A cause-and-effect diagram (fishbone diagram) organising potential causes of a failure by category — Method, Machine, Material, Man, Measurement, and Environment.</td></tr>
+      <tr><td>Normalisation of Deviance</td><td>The gradual process by which anomalous conditions come to be treated as normal through repeated acceptance without consequence. A primary causal factor in multiple major spaceflight failures including Challenger and Columbia.</td></tr>
+      <tr><td>Root Cause</td><td>The fundamental underlying cause of an anomaly — the cause that, if corrected, will prevent recurrence. Distinct from the symptom (observed manifestation) and the proximate cause (immediate physical mechanism).</td></tr>
+      <tr><td>Severity Classification</td><td>The formal categorisation of an anomaly by its potential impact on mission success, from Category 1 (Critical — potential mission loss) through Category 4 (Observation — within specification, noted for the record).</td></tr>
+      <tr><td>Trend Analysis</td><td>Review of the DR database across multiple anomalies or programmes to identify patterns not visible when each anomaly is investigated in isolation.</td></tr>
+      <tr><td>Waiver</td><td>A post-event formal acceptance that a specific piece of hardware does not meet a requirement, and that the non-conformance is acceptable for the intended mission. Approved by the programme's technical authority.</td></tr>
+    </tbody>
+  </table>
+
+</article>
+</div>
+
+
+<!-- ARTICLE NAVIGATOR -->
+<div class="art-nav">
+  <div class="art-nav-inner">
+    <span class="art-nav-label">Go to article</span>
+    <div class="art-nav-select-wrap">
+      <select id="artNav_spacecraft_iat_article06_html" onchange="this.nextElementSibling.disabled = !this.value || this.options[this.selectedIndex].disabled">
+        <option value="">— Select any article in the series —</option>
+        <optgroup label="── Main Series ──────────────────────────">
+      <option value="spacecraft_iat_intro.html">01 · Introduction to Spacecraft I&T</option>
+      <option value="spacecraft_iat_article01.html">02 · I&T Programme Structure</option>
+      <option value="spacecraft_iat_article11.html">03 · Configuration Management</option>
+      <option value="spacecraft_iat_article16.html">04 · Quality Assurance</option>
+      <option value="spacecraft_iat_article02.html">05 · Cleanrooms & Contamination Control</option>
+      <option value="spacecraft_iat_article10.html">06 · EGSE & Test Harness</option>
+      <option value="spacecraft_iat_article03.html">07 · Functional Testing</option>
+      <option value="spacecraft_iat_article09.html">08 · Flight Software V&V</option>
+      <option value="spacecraft_iat_article14.html">09 · Mass Properties & Structural Loads</option>
+      <option value="spacecraft_iat_article04.html">10 · Vibration, Acoustics & Shock</option>
+      <option value="spacecraft_iat_article05.html">11 · Thermal-Vacuum Testing</option>
+      <option value="spacecraft_iat_article12.html">12 · EMC Testing</option>
+      <option value="spacecraft_iat_article07.html">13 · Instrument Integration & Calibration</option>
+      <option value="spacecraft_iat_article13.html">14 · Propulsion Testing</option>
+      <option value="spacecraft_iat_article06.html" selected disabled>▶ 15 · Anomaly Management</option>
+      <option value="spacecraft_iat_article15.html">16 · Launch Vehicle Integration</option>
+      <option value="spacecraft_iat_article08.html">17 · Launch Readiness & Commissioning</option>
+    </optgroup>
+    <optgroup label="── Supplementary ──────────────────────────">
+      <option value="spacecraft_iat_smallsat.html">Supp · Small Satellites</option>
+      <option value="spacecraft_iat_case_studies.html">Supp · Case Studies</option>
+    </optgroup>
+      </select>
+    </div>
+    <button class="art-nav-go" disabled
+            onclick="var s=this.previousElementSibling.querySelector('select'); if(s.value && !s.options[s.selectedIndex].disabled) window.location.href=s.value;">
+      Open →
+    </button>
+  </div>
+</div>
+
+<footer class="article-footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <div class="footer-label">Series</div>
+      <div class="footer-text">Spacecraft Integration &amp; Test<br>Article 06 of 08</div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-label">Topics</div>
+      <div class="tags">
+        <span class="tag">Anomaly Management</span>
+        <span class="tag">Discrepancy Reports</span>
+        <span class="tag">Root Cause Analysis</span>
+        <span class="tag">Waivers</span>
+        <span class="tag">Deviance</span>
+        <span class="tag">Flight Safety</span>
+      </div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-label">Audience</div>
+      <div class="footer-text">New and early-career spacecraft engineers, aerospace students, and anyone with a serious interest in how spacecraft are built and tested.</div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,651 @@
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://raw.githubusercontent.com/cchidekel-gif/spacecraft-iat-styles/refs/heads/main/styles.css">
+
+<div class="masthead">
+  <span class="masthead-series">Spacecraft Engineering Series · Integration &amp; Test</span>
+  <span class="masthead-right">Article 13 of 17</span>
+</div>
+
+
+<div class="series-nav">
+  <span>Series:</span>
+  <span class="sep">·</span>
+  <span>Intro</span>
+  <span class="sep">·</span>
+  <span>01</span>
+  <span class="sep">·</span>
+  <span>02</span>
+  <span class="sep">·</span>
+  <span>03</span>
+  <span class="sep">·</span>
+  <span>04</span>
+  <span class="sep">·</span>
+  <span>05</span>
+  <span class="sep">·</span>
+  <span>06</span>
+  <span class="sep">·</span>
+  <span>07</span>
+  <span class="sep">·</span>
+  <span>08</span>
+  <span class="sep">·</span>
+  <span>09</span>
+  <span class="sep">·</span>
+  <span>10</span>
+  <span class="sep">·</span>
+  <span>11</span>
+  <span class="sep">·</span>
+  <span class="current">12</span>
+  <span class="sep">·</span>
+  <span>13</span>
+  <span class="sep">·</span>
+  <span>14</span>
+  <span class="sep">·</span>
+  <span>15</span>
+  <span class="sep">·</span>
+  <span>16</span>
+</div>
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Spacecraft Integration &amp; Test · Article 13 of 17</div>
+    <h1>Science Instrument<br>Integration and<br>Calibration</h1>
+    <p class="hero-sub">The payloads that give the mission its scientific purpose — the special challenges of instrument I&amp;T, the discipline of calibration, and the interface between the instrument team and the spacecraft bus.</p>
+    <div class="byline">
+      <div class="byline-avatar">🛰️</div>
+      <div>
+        <div class="byline-name">Charles Chidekel</div>
+        <div class="byline-title">Integration &amp; Test Guru · 40 Years of I&amp;T Experience</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+<article class="article-body">
+
+  <div class="toc-wrap">
+    <div class="toc-label">In This Article</div>
+    <ul class="toc-list">
+      <li><a href="#s1"><span>1. What Science Instruments Are — and Why They Are Different</span><span class="toc-num">§1</span></a></li>
+      <li><a href="#s2"><span>2. The Instrument Development Model and the I&amp;T Interface</span><span class="toc-num">§2</span></a></li>
+      <li><a href="#s3"><span>3. Instrument Delivery: The Most Dangerous Moment in Payload I&amp;T</span><span class="toc-num">§3</span></a></li>
+      <li><a href="#s4"><span>4. Mechanical and Structural Integration</span><span class="toc-num">§4</span></a></li>
+      <li><a href="#s5"><span>5. Electrical and Data Interface Verification</span><span class="toc-num">§5</span></a></li>
+      <li><a href="#s6"><span>6. Contamination Control for Optical Instruments</span><span class="toc-num">§6</span></a></li>
+      <li><a href="#s7"><span>7. What Is Calibration — and What It Is Not</span><span class="toc-num">§7</span></a></li>
+      <li><a href="#s8"><span>8. The Calibration Chain: From Primary Standard to Science Data</span><span class="toc-num">§8</span></a></li>
+      <li><a href="#s9"><span>9. Instrument-Specific Calibration Challenges</span><span class="toc-num">§9</span></a></li>
+      <li><a href="#s10"><span>10. On-Orbit Calibration and the Ground Calibration Legacy</span><span class="toc-num">§10</span></a></li>
+      <li><a href="#s11"><span>11. The Instrument Team — Structure, Culture, and the Spacecraft Interface</span><span class="toc-num">§11</span></a></li>
+      <li><a href="#glossary"><span>Key Terms Glossary</span><span class="toc-num">GL</span></a></li>
+    </ul>
+  </div>
+
+  <p class="lead">A spacecraft bus — the structure, power system, attitude control, communications, and data handling subsystems — is the enabling infrastructure of a space mission. It keeps the instruments alive, pointed, and communicating. But the bus is not the mission. The mission is the science: the measurements that the instruments make, the data that flows from their detectors to the ground, and ultimately the scientific knowledge that those measurements produce. Everything else in the programme exists to support that purpose.</p>
+
+  <p>Science instrument integration and calibration is where the mission's scientific purpose is most directly tested and characterised. It is technically distinct from spacecraft bus I&amp;T in ways that go far beyond the obvious differences in hardware — instruments operate on different physical principles, are built by different teams under different institutional cultures, have performance parameters that cannot be verified by the same methods used for bus components, and must be calibrated to a level of accuracy that the spacecraft bus hardware never requires. Understanding these differences — and the special challenges they create for the I&amp;T programme — is essential for any engineer working at the spacecraft-payload interface.</p>
+
+  <div class="pull-quote">
+    <p>"The spacecraft bus carries the instrument to orbit. The instrument is the reason you went."</p>
+  </div>
+
+  <!-- SECTION 1 -->
+  <h2 class="sh" id="s1">1. What Science Instruments Are — and Why They Are Different</h2>
+
+  <p>Science instruments are the measurement devices that collect the scientific data of a mission. They range from relatively simple photometric sensors to extraordinarily complex optical systems with sub-nanometre surface figure requirements, cryogenic detectors operating at temperatures approaching absolute zero, and precision mechanisms whose positional stability must be maintained to micrometre tolerances over years of on-orbit operation.</p>
+
+  <div class="instrument-grid">
+    <div class="inst-card">
+      <div class="inst-card-header">
+        <span class="inst-card-icon">🔭</span>
+        <div class="inst-card-title">Imaging Instruments</div>
+        <div class="inst-card-wave">Visible · Near-IR · UV</div>
+      </div>
+      <div class="inst-card-body">
+        <p>Cameras, imagers, and focal plane assemblies that form two-dimensional images of celestial targets. Calibration addresses dark current, flat field response uniformity, geometric distortion, and point spread function characterisation. The detector array — CCD or CMOS — is typically the most contamination-sensitive and radiation-sensitive element. Stray light rejection is a critical design and test parameter.</p>
+      </div>
+    </div>
+    <div class="inst-card">
+      <div class="inst-card-header">
+        <span class="inst-card-icon">📡</span>
+        <div class="inst-card-title">Spectrometers</div>
+        <div class="inst-card-wave">UV · Visible · IR · Sub-mm</div>
+      </div>
+      <div class="inst-card-body">
+        <p>Instruments that disperse electromagnetic radiation by wavelength to characterise the spectral content of a source. Calibration addresses wavelength scale accuracy, spectral resolution, instrument line shape, wavelength-dependent throughput (effective area or sensitivity), and scattered light within the spectrometer. The wavelength calibration must be traceable to laboratory atomic emission standards and stable over the mission lifetime.</p>
+      </div>
+    </div>
+    <div class="inst-card">
+      <div class="inst-card-header">
+        <span class="inst-card-icon">🌡️</span>
+        <div class="inst-card-title">Infrared &amp; Cryogenic Instruments</div>
+        <div class="inst-card-wave">Mid-IR · Far-IR · Sub-mm</div>
+      </div>
+      <div class="inst-card-body">
+        <p>Instruments operating at long infrared wavelengths where thermal emission from the instrument itself dominates over the faint astronomical signals being measured. Detectors must operate at cryogenic temperatures — 4 K to 80 K — to reduce their own thermal noise below the science signal level. Calibration requires cryogenic test facilities. Thermal stability is the dominant performance driver; temperature changes of millikelvin can measurably shift the instrument response.</p>
+      </div>
+    </div>
+    <div class="inst-card">
+      <div class="inst-card-header">
+        <span class="inst-card-icon">⚡</span>
+        <div class="inst-card-title">Particle &amp; Field Instruments</div>
+        <div class="inst-card-wave">Plasma · Magnetometry · Energetic Particles</div>
+      </div>
+      <div class="inst-card-body">
+        <p>Instruments that measure the charged particle environment, magnetic fields, plasma density, and energetic particle fluxes of the space environment. Calibration uses particle accelerators, Helmholtz coil systems, and radioactive calibration sources. The spacecraft bus itself is a source of magnetic contamination and charged particle noise that must be characterised and managed throughout the I&amp;T programme.</p>
+      </div>
+    </div>
+  </div>
+
+  <p>What makes science instruments fundamentally different from spacecraft bus components, from an I&amp;T perspective, is the nature of their performance requirements. A spacecraft attitude control system must maintain pointing knowledge to a specified accuracy — a functional requirement that can be verified by commanding the system and measuring the output. A science spectrometer must measure the spectrum of a faint astronomical source with a specified wavelength accuracy and sensitivity — a performance requirement that can only be verified by exposing the instrument to a calibrated source of known spectral content and comparing the instrument's output to the known input.</p>
+
+  <p>This distinction — between <em>functional verification</em> (does it do what it is supposed to do?) and <em>performance characterisation</em> (how accurately does it measure?) — is the root of most of the special challenges in science instrument I&amp;T. The tools, the facilities, the expertise, and the institutional cultures required for science instrument calibration are different from those of standard spacecraft I&amp;T, and programmes that fail to appreciate this difference early enough consistently underestimate the resources and schedule required to do it correctly.</p>
+
+  <!-- SECTION 2 -->
+  <h2 class="sh" id="s2">2. The Instrument Development Model and the I&amp;T Interface</h2>
+
+  <p>On most science missions, the science instruments are not developed by the same organisation that builds the spacecraft bus. NASA science missions, for example, typically use a <span class="kt">Principal Investigator (PI) instrument model</span> in which a science team — led by a PI, usually a university or research institution — is responsible for the design, development, and delivery of each instrument, while the spacecraft bus and overall mission management is the responsibility of a NASA centre or a prime contractor.</p>
+
+  <p>This institutional separation creates the most complex interface in the entire I&amp;T programme: the instrument-to-spacecraft interface. The interface spans multiple domains simultaneously — mechanical (mounting, alignment), thermal (heat dissipation, temperature stability), electrical (power, grounding, signal interfaces), software (commanding, data formatting, health monitoring), and contamination (cleanliness, outgassing). Each domain has its own Interface Control Document (ICD), its own verification requirements, and its own potential for late-discovered incompatibilities.</p>
+
+  <div class="callout rust">
+    <div class="callout-label">⚠ The PI Model's Inherent Tension</div>
+    <p>The PI instrument model creates a structural tension that every mission must actively manage. The PI team is scientifically driven: their institutional incentive is to maximise the scientific performance of their instrument, and they will push, right up to the moment of delivery, for design changes that improve science return — a slightly larger aperture, a tighter thermal stability requirement, an additional calibration mode. The spacecraft bus team is mission-systems-driven: their incentive is to deliver a spacecraft that works within its mass, power, volume, and schedule constraints.</p>
+    <p>These incentives are not incompatible, but they are in tension. The history of large science missions is full of instruments that grew in mass after the mass budget was frozen, that required more power than their allocation, that demanded thermal stability tighter than the bus was designed to provide, and that arrived at spacecraft integration later than planned — each change individually justified in scientific terms, but collectively representing a management challenge for the mission systems engineer.</p>
+    <p>The solution is not to suppress scientific ambition but to establish clear, contractual interface constraints early in the mission and to enforce them through the programme's change control process with the same rigour applied to bus hardware changes. An instrument that exceeds its mass allocation by five kilograms is not a small problem — it is a spacecraft-level problem that may require a launch vehicle change or the removal of propellant.</p>
+  </div>
+
+  <!-- SECTION 3 -->
+  <h2 class="sh" id="s3">3. Instrument Delivery: The Most Dangerous Moment in Payload I&amp;T</h2>
+
+  <p>The delivery of an instrument from the PI institution to the spacecraft integration facility is, in my experience, the single highest-risk event in a science mission's I&amp;T programme. It concentrates several independent risks at a single point in the schedule: the instrument arrives in a condition that cannot be fully verified until it is powered up in the spacecraft environment; any problem found at delivery has immediate schedule consequences because integration cannot proceed until it is resolved; and the instrument — which may represent years of work by a dedicated team — is at its most vulnerable during shipping and handling.</p>
+
+  <p>Instrument delivery readiness requires, at minimum:</p>
+
+  <ul class="body-list">
+    <li><strong>Acceptance testing complete at the PI facility.</strong> The instrument must have passed its full acceptance test programme before it leaves the PI facility. This includes functional performance verification, environmental testing (vibration, thermal-vacuum), and calibration to the extent achievable at the component level. Instruments delivered with open test actions or incomplete calibration create immediate problems at spacecraft integration.</li>
+    <li><strong>Delivery data package complete and reviewed.</strong> The delivery data package — the test reports, calibration data, anomaly reports, waivers, and configuration documentation — must be complete, reviewed by the spacecraft integration team, and accepted before the instrument is shipped. Instruments that arrive ahead of their data packages cannot be formally accepted.</li>
+    <li><strong>Shipping container qualified and verified.</strong> The shipping container must be designed and qualified to protect the instrument from the vibration, shock, humidity, and temperature changes of ground transport. The container environment — temperature, humidity, pressure, particulate level — must be monitored throughout shipping.</li>
+    <li><strong>Receiving inspection procedure in place.</strong> The receiving team must have an approved procedure for inspecting and receiving the instrument, including a post-shipping functional verification that confirms the instrument survived transport without damage. This inspection must be completed before the instrument is connected to any spacecraft interface.</li>
+  </ul>
+
+  <div class="delivery-flow">
+    <div class="delivery-flow-header">Instrument Delivery Milestone Framework</div>
+    <div class="delivery-milestones">
+      <div class="dm">
+        <span class="dm-phase">Phase 1</span>
+        <div class="dm-title">Delivery Readiness Review</div>
+        <div class="dm-items">Acceptance testing complete · Data package submitted · Waivers approved · Shipping plan reviewed · ICD compliance confirmed</div>
+      </div>
+      <div class="dm">
+        <span class="dm-phase">Phase 2</span>
+        <div class="dm-title">Shipping &amp; Transport</div>
+        <div class="dm-items">Environmental monitoring throughout · Shock recorders active · Humidity and particulate logging · Chain of custody documented</div>
+      </div>
+      <div class="dm">
+        <span class="dm-phase">Phase 3</span>
+        <div class="dm-title">Receiving Inspection</div>
+        <div class="dm-items">Visual inspection · Shipping data review · Contamination survey · Post-ship functional check · Formal acceptance sign-off</div>
+      </div>
+      <div class="dm">
+        <span class="dm-phase">Phase 4</span>
+        <div class="dm-title">Storage &amp; Staging</div>
+        <div class="dm-items">Cleanroom storage · Environmental controls maintained · Access log · Purge gas (if required) · Integration schedule confirmed</div>
+      </div>
+      <div class="dm">
+        <span class="dm-phase">Phase 5</span>
+        <div class="dm-title">Pre-Integration Functional</div>
+        <div class="dm-items">Full functional test at spacecraft facility · Comparison to delivery baseline · All anomalies resolved before interface connection</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4 -->
+  <h2 class="sh" id="s4">4. Mechanical and Structural Integration</h2>
+
+  <p>The mechanical integration of a science instrument onto a spacecraft is governed by three requirements that are simultaneously critical and potentially conflicting: the instrument must be mechanically attached to the spacecraft with sufficient strength and stiffness to survive launch vibration; it must be thermally isolated from the spacecraft structure to the extent required by its thermal design; and it must be aligned to its required pointing direction with sufficient accuracy and stability to meet its science performance requirements.</p>
+
+  <h3 class="ssh">Alignment: The Most Demanding Mechanical Requirement</h3>
+  <p>For most science instruments, <span class="kt">line-of-sight alignment</span> — the angular relationship between the instrument's optical axis and the spacecraft's attitude reference frame — is the most demanding and most carefully controlled mechanical requirement. The alignment must be established during integration, measured to a specified accuracy, and shown to be stable throughout the environmental test programme and the mission lifetime.</p>
+
+  <p>Alignment is typically established using a combination of mechanical precision machining of the instrument mounting interface, kinematic mounts or precision-machined alignment interfaces, and optical alignment techniques using theodolites, alignment telescopes, autocollimators, and laser trackers. The measured alignment is compared to the requirement and documented in the alignment record, which becomes part of the permanent spacecraft configuration documentation.</p>
+
+  <p>Alignment stability — the ability of the alignment to remain within its required tolerance across the operating temperature range and over the mission lifetime — is often a more difficult requirement than the initial alignment accuracy. Differential thermal expansion between the instrument structure and the spacecraft structure produces alignment shifts that must be characterised during thermal-vacuum testing and bounded by analysis for the full on-orbit thermal cycling environment. Instruments with tight alignment stability requirements sometimes require active alignment correction systems — motorised adjusters that compensate for thermally-induced shifts — or passive athermalisation designs that minimise the temperature sensitivity of the alignment.</p>
+
+  <div class="callout gold">
+    <div class="callout-label">✦ The Kinematic Mount — Engineering Elegance</div>
+    <p>A <strong>kinematic mount</strong> constrains a structure in exactly six degrees of freedom — three translational and three rotational — with exactly six contact points, each providing one constraint. This is engineering elegance in practice: the mount is statically determinate, meaning the load and the contact forces are fully predictable from the mounting conditions, and thermal expansion of either the instrument or the spacecraft structure produces no internal stress in either, because the mounting interface has no redundant constraints to generate stress.</p>
+    <p>The kinematic principle means that removing and reinstalling an instrument on a kinematic mount returns it to exactly the same position — within the machining tolerances of the contact surfaces. For instruments that must be removed from the spacecraft for rework or calibration and reinstalled with known alignment, the kinematic mount is the enabling technology. The Hubble Space Telescope's instruments, designed for on-orbit replacement by astronauts, used kinematic mounting principles for precisely this reason.</p>
+  </div>
+
+  <!-- SECTION 5 -->
+  <h2 class="sh" id="s5">5. Electrical and Data Interface Verification</h2>
+
+  <p>The electrical and data interface between a science instrument and the spacecraft bus encompasses power delivery, command reception, telemetry transmission, timing synchronisation, and grounding. Each of these interfaces has a formal specification in the ICD, and each must be verified — first by the instrument team at the component level, and then by the spacecraft integration team at the system level when the physical connection is first made.</p>
+
+  <table class="iface-table">
+    <thead>
+      <tr>
+        <th>Interface Type</th>
+        <th>Key Verification Requirements</th>
+        <th>Common First-Time Interface Findings</th>
+        <th>Risk Level</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Primary Power</td>
+        <td>Voltage level and regulation, current draw vs. mode, inrush current at power-on, transient response to load steps, over-current protection operation</td>
+        <td>Inrush current exceeds bus protection limits; instrument draws more current in a specific mode than the ICD allocated; grounding incompatibility causes ripple on bus</td>
+        <td><span class="risk-badge high">High</span></td>
+      </tr>
+      <tr>
+        <td>Command Interface</td>
+        <td>Command format and encoding, timing margins at maximum data rate, error detection and correction operation, command acknowledgement protocol, response latency</td>
+        <td>Timing margin violations at edge operating temperatures; command format discrepancy between ICD version used by instrument team and current flight software</td>
+        <td><span class="risk-badge high">High</span></td>
+      </tr>
+      <tr>
+        <td>Telemetry Interface</td>
+        <td>Data format and packetisation, bandwidth allocation vs. actual science data rate, compression algorithm compatibility, synchronisation word and frame structure</td>
+        <td>Science data rate in high-data-rate mode exceeds allocated bandwidth; packet format mismatch between instrument firmware and ground data system</td>
+        <td><span class="risk-badge high">High</span></td>
+      </tr>
+      <tr>
+        <td>Timing / Synchronisation</td>
+        <td>Timing reference distribution, exposure trigger latency and jitter, science data timestamp accuracy, spacecraft time correlation</td>
+        <td>Timestamp latency larger than specified; jitter on timing signals exceeds instrument trigger tolerance; loss of synchronisation recovery behaviour untested</td>
+        <td><span class="risk-badge med">Medium</span></td>
+      </tr>
+      <tr>
+        <td>Grounding / EMC</td>
+        <td>Ground plane continuity, isolation between chassis and signal grounds, electromagnetic compatibility with other instruments and bus electronics, radiated emission levels</td>
+        <td>Ground loop currents introduced by chassis ground connections; instrument electronics radiate at frequencies that saturate sensitive detector read-out electronics in adjacent instrument</td>
+        <td><span class="risk-badge high">High</span></td>
+      </tr>
+      <tr>
+        <td>Thermal Interface</td>
+        <td>Interface conductance vs. ICD specification, contact pressure adequacy, thermal resistance measurement, heater circuit continuity and setpoint verification</td>
+        <td>Interface conductance lower than specified due to surface finish discrepancy; heater setpoint offset between instrument and bus controllers causes temperature hunting</td>
+        <td><span class="risk-badge med">Medium</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>The first time a science instrument is electrically connected to the spacecraft bus — with both sides powered and communicating through flight hardware interfaces rather than simulators — is one of the highest-risk operations in the I&amp;T programme. The risk is not primarily that the hardware will be damaged (though that is possible), but that interface incompatibilities that were not visible in component-level testing will manifest and require resolution. Experienced I&amp;T teams approach first-time interface connections conservatively: power is applied incrementally, current is monitored against predictions, the interface is verified at low data rate before high data rate, and the test conductor has explicit authority to halt the test at any anomaly.</p>
+
+  <!-- SECTION 6 -->
+  <h2 class="sh" id="s6">6. Contamination Control for Optical Instruments</h2>
+
+  <p>For instruments with optical surfaces — telescopes, cameras, spectrometers, and any instrument with a detector that must observe through an optical chain — contamination is the most persistent and in some ways the most insidious threat in the entire I&amp;T programme. Molecular contamination depositing on optical surfaces reduces transmission, increases scatter, and degrades the instrument's sensitivity and image quality in ways that are difficult to reverse on orbit and impossible to reverse for ground-sealed optics.</p>
+
+  <div class="contam-grid">
+    <div class="contam-card">
+      <div class="contam-card-top">
+        <span class="contam-icon">🔬</span>
+        <div>
+          <div class="contam-title">Molecular Contamination</div>
+          <div class="contam-sub">The invisible threat</div>
+        </div>
+      </div>
+      <div class="contam-body">
+        <p>Organic molecules outgassing from spacecraft materials deposit on optical surfaces as a thin molecular film that reduces reflectance and transmittance. The film is typically invisible to the eye but measurable by reflectance or transmittance test. Polymerisation of the deposited layer under UV illumination can make the contamination permanent and essentially irreversible. All materials within line-of-sight of optical surfaces must pass ASTM E595 outgassing screening before use near instruments.</p>
+      </div>
+    </div>
+    <div class="contam-card">
+      <div class="contam-card-top">
+        <span class="contam-icon">✨</span>
+        <div>
+          <div class="contam-title">Particulate Contamination</div>
+          <div class="contam-sub">Scatter and obscuration</div>
+        </div>
+      </div>
+      <div class="contam-body">
+        <p>Particles on optical surfaces scatter light — reducing the signal-to-noise ratio for faint targets and degrading spatial resolution. The scatter contribution is a function of particle size distribution and areal density on the affected surface. Optical surfaces are typically maintained at ISO Class 5 or better cleanliness, with post-integration cleanliness verified by witness mirror measurement and optical surface inspection under raking light illumination.</p>
+      </div>
+    </div>
+    <div class="contam-card">
+      <div class="contam-card-top">
+        <span class="contam-icon">🌡️</span>
+        <div>
+          <div class="contam-title">Water Ice Contamination</div>
+          <div class="contam-sub">The cryogenic trap</div>
+        </div>
+      </div>
+      <div class="contam-body">
+        <p>Cryogenic detectors and cold optics act as cryogenic condensation traps, concentrating water vapour and other condensable volatiles on their cold surfaces. Ice contamination on cryogenic surfaces can significantly degrade detector quantum efficiency and optical surface reflectance. Bake-out procedures during the early phases of T-V testing are specifically designed to drive off condensable volatiles before the cryogenic system reaches operating temperature.</p>
+      </div>
+    </div>
+    <div class="contam-card">
+      <div class="contam-card-top">
+        <span class="contam-icon">🔧</span>
+        <div>
+          <div class="contam-title">Lubricant Migration</div>
+          <div class="contam-sub">Mechanism-to-optics pathway</div>
+        </div>
+      </div>
+      <div class="contam-body">
+        <p>Lubricants from mechanisms — bearings, gears, actuators — can migrate to optical surfaces through vapour phase transport or surface creep. Lubricant contamination of optical surfaces is particularly problematic because many lubricants are resistant to the standard cleaning methods used on precision optics. Mechanisms near optical instruments must use space-qualified lubricants with demonstrated low vapour pressure, or must be physically isolated from optical surfaces by baffling or cold traps.</p>
+      </div>
+    </div>
+  </div>
+
+  <p>Contamination control for optical instruments requires a programme that extends from materials selection through the entire I&amp;T campaign and includes formal contamination monitoring, instrument purge gas systems (typically dry nitrogen or clean dry air), aperture covers maintained until the last possible moment, and a contamination budget that tracks the predicted molecular and particulate contamination levels against the instrument's allowable contamination specification.</p>
+
+  <!-- SECTION 7 -->
+  <h2 class="sh" id="s7">7. What Is Calibration — and What It Is Not</h2>
+
+  <p><span class="kt">Calibration</span> is the process of characterising the quantitative relationship between the instrument's input (the physical quantity being measured — photon flux, particle energy, magnetic field strength) and its output (the digital number produced by the detector or read-out electronics). A calibrated instrument is one whose output can be converted to a physical measurement with a known accuracy and a known uncertainty.</p>
+
+  <p>This definition immediately clarifies what calibration is not:</p>
+
+  <ul class="body-list">
+    <li><strong>Calibration is not the same as functional testing.</strong> A functional test verifies that the instrument operates — that it powers on, responds to commands, and produces output. A calibration characterises how accurately and how completely that output represents the physical input. An instrument can pass all its functional tests and be completely uncalibrated.</li>
+    <li><strong>Calibration is not the same as alignment.</strong> Alignment establishes the geometric relationship between the instrument's field of view and the spacecraft's pointing reference. Calibration establishes the photometric or radiometric accuracy of the instrument's measurements within that field of view. Both are required; neither substitutes for the other.</li>
+    <li><strong>Calibration is not a one-time activity.</strong> Instrument response changes with temperature, with radiation exposure, with time, and with the space environment. A calibration performed at room temperature on the ground must be extended by on-orbit calibration observations to remain accurate over the mission lifetime. Ground calibration provides the baseline; on-orbit calibration tracks and corrects for changes from that baseline.</li>
+    <li><strong>Calibration is not a guarantee of science accuracy.</strong> Calibration establishes the relationship between instrument output and physical input under controlled laboratory conditions. Whether that calibrated relationship applies accurately to the real science observations — which occur in an environment that is never perfectly controlled — depends on how well the calibration conditions represent the science observation conditions. Systematic errors that are not covered by the calibration programme do not disappear; they propagate into the science data as uncharacterised uncertainties.</li>
+  </ul>
+
+  <div class="pull-quote">
+    <p>"Calibration is the act of admitting uncertainty and quantifying it. An instrument without calibration data is not an instrument that has zero uncertainty — it is an instrument whose uncertainty is unknown. And unknown uncertainty is the most dangerous kind."</p>
+  </div>
+
+  <!-- SECTION 8 -->
+  <h2 class="sh" id="s8">8. The Calibration Chain: From Primary Standard to Science Data</h2>
+
+  <p>A valid calibration is one that is traceable — through a documented chain of measurements, each with a known uncertainty — to a primary measurement standard. The traceability chain connects the instrument's measured output to an internationally recognised measurement standard maintained by a national metrology institute, ensuring that the instrument's measurements are comparable to measurements made by any other instrument calibrated through the same chain.</p>
+
+  <div class="cal-chain">
+    <div class="cal-chain-header">The Calibration Traceability Chain — From National Standard to Science Archive</div>
+    <div class="cal-chain-rows">
+      <div class="cal-row">
+        <div class="cal-badge l1">
+          <span class="cal-badge-icon">🏛️</span>
+          <span class="cal-badge-num">PRIMARY<br>STANDARD</span>
+        </div>
+        <div class="cal-body">
+          <div class="cal-title">National Metrology Institute Standard</div>
+          <div class="cal-desc">The fundamental measurement reference — for photometric calibration, this is typically an absolutely calibrated radiation source traceable to NIST (National Institute of Standards and Technology) or its international equivalents. The primary standard defines the unit of measurement (photons/s/cm²/Å for a spectrometer, for example) with the lowest achievable measurement uncertainty. The primary standard is maintained by the metrology institute and is never directly used in instrument calibration — it is too fragile and too valuable.</div>
+        </div>
+      </div>
+      <div class="cal-row">
+        <div class="cal-badge l2">
+          <span class="cal-badge-icon">⚗️</span>
+          <span class="cal-badge-num">TRANSFER<br>STANDARD</span>
+        </div>
+        <div class="cal-body">
+          <div class="cal-title">Laboratory Transfer Standard</div>
+          <div class="cal-desc">A calibrated source or detector that has been compared directly to the primary standard at the metrology institute and carries a calibration certificate with traceable uncertainties. Examples include absolutely calibrated photodiodes, spectral irradiance standard lamps, and blackbody radiation sources. The transfer standard is used in the instrument calibration laboratory to calibrate working standards and calibration sources. Each comparison in the chain adds measurement uncertainty to the total.</div>
+        </div>
+      </div>
+      <div class="cal-row">
+        <div class="cal-badge l3">
+          <span class="cal-badge-icon">🔧</span>
+          <span class="cal-badge-num">WORKING<br>STANDARD</span>
+        </div>
+        <div class="cal-body">
+          <div class="cal-title">Calibration Facility Working Standard</div>
+          <div class="cal-desc">The calibration sources, detectors, and measurement systems used directly in instrument calibration testing. These are calibrated against the transfer standard on a defined schedule and carry calibration certificates with known uncertainties. Working standards are the tools of the calibration laboratory — the sources used to illuminate the instrument during calibration measurements, the reference detectors used to characterise those sources, and the measurement systems used to record the calibration data.</div>
+        </div>
+      </div>
+      <div class="cal-row">
+        <div class="cal-badge l4">
+          <span class="cal-badge-icon">🔭</span>
+          <span class="cal-badge-num">INSTRUMENT<br>CALIBRATION</span>
+        </div>
+        <div class="cal-body">
+          <div class="cal-title">Ground Calibration of the Flight Instrument</div>
+          <div class="cal-desc">The calibration measurements performed on the flight instrument using the calibration facility's working standards. The instrument is illuminated with sources of known spectral content and flux, and its output is measured and compared to the known input. The result is the instrument's calibration database — the set of conversion factors, correction algorithms, and characterisation data that allow the instrument's raw digital output to be converted to calibrated physical measurements. This database accompanies the instrument data for the life of the mission.</div>
+        </div>
+      </div>
+      <div class="cal-row">
+        <div class="cal-badge l5">
+          <span class="cal-badge-icon">📊</span>
+          <span class="cal-badge-num">SCIENCE<br>DATA</span>
+        </div>
+        <div class="cal-body">
+          <div class="cal-title">Calibrated Science Data Product</div>
+          <div class="cal-desc">The ground-processed science data in which raw instrument counts have been converted to physical units using the calibration database, with corrections applied for dark current, flat field non-uniformity, geometric distortion, wavelength solution, throughput, and all other characterised systematic effects. Each calibrated measurement carries an associated uncertainty that reflects the quadrature sum of the uncertainties at every step of the calibration chain. This uncertainty budget is the mission's scientific commitment to accuracy.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 9 -->
+  <h2 class="sh" id="s9">9. Instrument-Specific Calibration Challenges</h2>
+
+  <h3 class="ssh">Photometric Calibration: Absolute Accuracy and Flat Field</h3>
+  <p>For imaging instruments, the two foundational calibration products are the <span class="kt">absolute photometric calibration</span> (what flux produces what digital number?) and the <span class="kt">flat field</span> (how does sensitivity vary across the detector area?). The flat field is essential because no detector array has perfectly uniform pixel-to-pixel sensitivity; every pixel has a slightly different quantum efficiency, dark current, and read noise. Without a flat field correction, images of a uniform source would show pixel-to-pixel variations that are artefacts of detector non-uniformity rather than real features of the source.</p>
+
+  <p>Flat field calibration requires a uniform illumination source — typically an integrating sphere with an internal lamp — that can illuminate the entire focal plane array simultaneously and uniformly. The uniformity of the calibration source must be known to better accuracy than the required flat field calibration accuracy. This is a non-trivial requirement: achieving a source uniformity of 0.1% across the field of view of a large detector array requires careful optical design of the calibration source system.</p>
+
+  <h3 class="ssh">Wavelength Calibration for Spectrometers</h3>
+  <p>A spectrometer's wavelength calibration establishes the mapping between detector pixel position and wavelength — the function that translates a detector column number to an absolute wavelength in nanometres or ångströms. This calibration requires emission line sources (hollow cathode lamps or gas discharge lamps) that produce known spectral lines at precisely measured wavelengths. The position of each known spectral line on the detector is measured, and a wavelength solution — a polynomial or other functional fit — is derived that maps pixel position to wavelength across the full spectral range.</p>
+
+  <p>The wavelength solution must be stable over the mission lifetime and over the operating temperature range. Temperature-induced changes in the spectrometer's dispersing element (grating or prism), detector array, and structural dimensions all shift the wavelength solution. On-orbit wavelength calibration observations — using stellar emission lines, onboard calibration lamps, or atmospheric airglow lines — are required to track and correct for wavelength solution drift during the mission.</p>
+
+  <h3 class="ssh">Sensitivity: Effective Area and Throughput</h3>
+  <p>For any telescope and instrument combination, the <span class="kt">effective area</span> — also called the collecting area or throughput curve — describes the efficiency with which the system converts a physical photon flux at the telescope aperture into a detector count rate. It is the product of the geometric collecting area, all mirror reflectances, all optical element transmittances, the grating or disperser efficiency, the detector quantum efficiency, and all other throughput losses in the optical path. Measuring effective area requires either an absolutely calibrated photon source of known flux, or observations of a celestial calibration source whose flux is known from prior measurements.</p>
+
+  <div class="callout violet">
+    <div class="callout-label">◈ The Calibration Source Problem</div>
+    <p>The most difficult aspect of instrument calibration is finding — or creating — a calibration source that accurately represents the conditions under which science measurements will be made. A spectrometer calibrated with a well-characterised emission line lamp at room temperature must be used to measure the spectra of faint galaxies in the near-vacuum of space at cryogenic temperatures. The calibration must span all of these differences.</p>
+    <p>On-orbit calibration sources — isolated stellar spectrophotometric standards whose spectral energy distributions are precisely known from decades of ground-based measurement — provide the most reliable absolute calibration anchor, because they are observed under the same conditions as the science targets. Every major space telescope includes a programme of regular observations of photometric and spectroscopic standard stars for precisely this reason. The ground calibration establishes the initial calibration; the standard star observations maintain and refine it over the mission lifetime.</p>
+  </div>
+
+  <h3 class="ssh">Cryogenic Calibration: Special Challenges</h3>
+  <p>Infrared and submillimetre instruments that operate at cryogenic temperatures present calibration challenges that are qualitatively different from room-temperature optical instruments. The instrument's own thermal emission — from its structure, baffles, and optical elements — contributes a background signal to the detector that must be characterised and subtracted from the science signal. This background varies with the instrument's internal temperature distribution, making thermal stability a direct science performance parameter.</p>
+
+  <p>Cryogenic calibration requires test facilities capable of achieving and sustaining the instrument's operating temperature while providing calibrated infrared sources and access for calibration beam delivery. These facilities are rare, expensive, and heavily scheduled. The calibration time available in such a facility is typically the most schedule-critical element of an infrared instrument's ground test programme, and the loss of calibration facility time — through equipment malfunction, instrument anomalies, or schedule overruns in preceding test phases — has caused serious calibration data gaps on real programmes.</p>
+
+  <!-- SECTION 10 -->
+  <h2 class="sh" id="s10">10. On-Orbit Calibration and the Ground Calibration Legacy</h2>
+
+  <p>Ground calibration, however thorough, is always an incomplete characterisation of the instrument's on-orbit performance. The transition from the ground calibration environment to the space environment introduces changes that the ground calibration cannot fully anticipate:</p>
+
+  <ul class="body-list">
+    <li><strong>Outgassing effects:</strong> Materials that outgass residual volatiles during early on-orbit operations can deposit contamination on optical surfaces, shifting the throughput from the ground-calibrated value. The initial on-orbit calibration observations almost always reveal a throughput offset from the ground calibration that is attributable to outgassing — typically decreasing throughput as contamination accumulates, then partially recovering as outgassing diminishes.</li>
+    <li><strong>Radiation damage to detectors:</strong> CCD and infrared detector arrays suffer cumulative radiation damage from energetic protons and electrons in the space environment. Radiation damage creates new pixel defects (hot pixels, dead pixels, traps), increases dark current, and reduces charge transfer efficiency — all of which must be tracked and corrected for by the on-orbit calibration programme.</li>
+    <li><strong>Thermal environment differences:</strong> The on-orbit thermal environment is never perfectly represented by the ground thermal-vacuum test. Instrument temperatures in flight — particularly for passively cooled systems — may differ slightly from the ground calibration temperatures, shifting the detector quantum efficiency, the optical element transmittances, and the wavelength solution.</li>
+    <li><strong>Gravity release effects:</strong> Optical elements, detector arrays, and mounting structures that were under gravitational loading on the ground are in a microgravity environment in orbit. The release of gravity-induced deformation can shift the alignment and focus of optical systems by amounts that, while typically small, are measurable and must be accounted for in the on-orbit calibration.</li>
+  </ul>
+
+  <p>The on-orbit calibration programme — the planned series of calibration observations that will be made during commissioning and throughout the mission — must be designed before launch, as part of the instrument's calibration plan. It must include regular observations of standard sources (photometric standard stars, spectroscopic standard stars, calibration planets such as Mars and Uranus for infrared calibration), as well as specific calibration observations designed to track time-varying effects such as radiation damage and optical surface contamination.</p>
+
+  <div class="callout green">
+    <div class="callout-label">✓ Calibration as a Continuing Obligation</div>
+    <p>The calibration programme does not end at launch. For missions with lifetimes of five to ten years or more, the calibration programme is a continuing activity throughout the mission, maintained by the instrument calibration teams and the mission science team. The calibration database is updated regularly as new on-orbit calibration observations are processed, and the science data archive is typically reprocessed with improved calibration periodically over the mission lifetime.</p>
+    <p>The Hubble Space Telescope's calibration programme, maintained by the Space Telescope Science Institute, is the most extensive in the history of space astronomy — a continuous effort spanning more than three decades that has characterised every instrument flown on the telescope, tracked and corrected for their degradation and change, and delivered science data whose photometric accuracy has improved with every iteration of the calibration database. The investment in calibration is not wasted after launch. It compounds throughout the mission.</p>
+  </div>
+
+  <!-- CALIBRATION PRODUCTS TABLE -->
+  <h2 class="sh">Principal Calibration Data Products</h2>
+
+  <table class="cal-prod-table">
+    <thead>
+      <tr>
+        <th>Calibration Product</th>
+        <th>Description and Purpose</th>
+        <th>Typical Update Frequency</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Dark Frame</td>
+        <td>Measurement of detector output with no illumination — characterises dark current, read noise, and the bias level of each pixel. Applied to every science frame to remove the detector's own signal contribution.</td>
+        <td>Monthly on-orbit; temperature-dependent families established in ground calibration</td>
+      </tr>
+      <tr>
+        <td>Flat Field</td>
+        <td>Measurement of the spatially varying pixel-to-pixel sensitivity of the detector array. Used to correct all science images for detector non-uniformity. Separate flat fields are required at each filter or wavelength setting.</td>
+        <td>Annually on-orbit for stability check; initial ground calibration is primary reference</td>
+      </tr>
+      <tr>
+        <td>Wavelength Solution</td>
+        <td>The polynomial or spline function mapping detector pixel position to physical wavelength. Derived from emission line lamp exposures. Must be stable over the mission lifetime; tracked by on-orbit stellar emission line measurements.</td>
+        <td>Per observation or per visit for high-precision spectroscopy; regularly updated from standard star observations</td>
+      </tr>
+      <tr>
+        <td>Effective Area / Sensitivity Curve</td>
+        <td>The end-to-end system throughput as a function of wavelength — the conversion factor between physical photon flux and detector count rate. The primary absolute calibration product. Must be tracked for degradation over the mission lifetime.</td>
+        <td>Quarterly on-orbit from standard star observations; updated at each instrument health check</td>
+      </tr>
+      <tr>
+        <td>Point Spread Function (PSF)</td>
+        <td>The spatial response of the optical system to a point source — the shape and size of the image of an ideal point source as formed by the telescope and instrument. Required for source extraction, deconvolution, and astrometric calibration. Varies with wavelength, field position, and focus.</td>
+        <td>Modelled from stellar observations; updated following focus adjustments or when model-data discrepancies are identified</td>
+      </tr>
+      <tr>
+        <td>Geometric Distortion Map</td>
+        <td>The mapping between physical position on the detector and position in the true sky coordinate system — corrects for optical distortions that make the pixel grid non-uniform on the sky. Required for astrometry and for mosaicking multiple exposures.</td>
+        <td>Established in ground calibration; verified and refined from on-orbit stellar field observations</td>
+      </tr>
+      <tr>
+        <td>Radiation Damage Characterisation</td>
+        <td>Tracking of new pixel defects, changes in charge transfer efficiency, and dark current increase caused by radiation damage over the mission lifetime. Required for science data quality flagging and for corrections to charge transfer efficiency in CCD detectors.</td>
+        <td>Continuously updated from hot pixel monitoring programmes; periodic dedicated calibration observations</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- SECTION 11 -->
+  <h2 class="sh" id="s11">11. The Instrument Team — Structure, Culture, and the Spacecraft Interface</h2>
+
+  <p>Science instrument teams are unlike spacecraft bus engineering teams in ways that go beyond the technical. The instrument team is typically led by a scientist — the Principal Investigator — who is accountable for the scientific productivity of the mission, not just the engineering performance of the hardware. The team includes engineers, but their work is driven by science requirements that are specified by scientists in terms of sensitivity, spectral resolution, spatial resolution, and measurement accuracy rather than in the engineering terms of power, mass, data rate, and interface voltage.</p>
+
+  <p>This cultural difference is productive — science-driven instrument teams produce scientifically ambitious, technically innovative hardware that a pure engineering team might not attempt. But it creates specific challenges at the spacecraft integration interface:</p>
+
+  <ul class="body-list">
+    <li><strong>Requirement volatility:</strong> Science requirements evolve as scientific understanding advances. An instrument that was baselined to observe at wavelengths from 0.3 to 1.0 microns may be extended to 1.2 microns when a new science case emerges — after the optical design is frozen. The engineering team must manage these late requirements changes through the programme's formal change control process, with full assessment of their impact on mass, power, thermal design, and schedule.</li>
+    <li><strong>Calibration schedule underestimation:</strong> Instrument teams, driven by scientific ambition, consistently underestimate the time required for ground calibration. Calibration is perceived as a test activity that can be compressed under schedule pressure, whereas in reality calibration is a scientific activity that cannot be rushed without compromising the science return. Calibration schedule underestimation is the most common single source of instrument delivery delays on science missions.</li>
+    <li><strong>Protective instinct toward the instrument:</strong> PI teams are deeply invested in their instruments — in many cases, an instrument represents a decade or more of a team's scientific career. This investment creates a protective instinct that can manifest as reluctance to accept the environmental test programme ("the vibration levels are too conservative for our instrument"), resistance to sharing access to the instrument for spacecraft-level tests, and caution about any operation that might risk the instrument's science performance. This instinct is understandable and its concerns are sometimes correct — but it must be balanced against the programme's need to verify that the instrument can survive launch and operate correctly in the spacecraft context.</li>
+    <li><strong>Data rights and publication pressure:</strong> Science instrument teams are under pressure to publish their calibration results and their early science data. This creates a schedule pressure that is orthogonal to the spacecraft programme schedule and that can drive instrument teams to complete calibration activities faster than the spacecraft programme schedule requires — or, conversely, to extend calibration activities beyond the spacecraft programme's allocated time when the science data is richer than anticipated.</li>
+  </ul>
+
+  <div class="stat-strip">
+    <div class="stat-cell">
+      <span class="stat-num">30–40%</span>
+      <p>Typical fraction of mission I&amp;T schedule consumed by instrument integration and calibration activities</p>
+    </div>
+    <div class="stat-cell">
+      <span class="stat-num">2–5×</span>
+      <p>Typical ratio by which initial instrument calibration time estimates are exceeded on large science missions</p>
+    </div>
+    <div class="stat-cell">
+      <span class="stat-num">5–15 yr</span>
+      <p>Operational life of major space observatories, over which the calibration programme must remain current</p>
+    </div>
+    <div class="stat-cell">
+      <span class="stat-num">~1%</span>
+      <p>Typical photometric accuracy goal for absolute calibration of a well-calibrated space telescope instrument</p>
+    </div>
+  </div>
+
+  <p>Managing the spacecraft-instrument interface well — technically, schedularly, and organisationally — is one of the most demanding tasks in spacecraft systems engineering. It requires technical knowledge that spans both the spacecraft bus and the instrument domains, interpersonal skills that can bridge engineering and science cultures, and the authority and willingness to enforce interface constraints when the instrument team's scientific ambitions threaten programme success.</p>
+
+  <!-- SUMMARY -->
+  <h2 class="sh">Summary</h2>
+
+  <p>Science instrument integration and calibration is the element of the I&amp;T programme that is most directly connected to the mission's scientific purpose. It demands engineering skills — precision mechanical integration, contamination control, electrical interface verification — applied in a context driven by scientific performance requirements and characterised by the institutional complexities of the PI instrument model.</p>
+
+  <p>The central discipline is calibration: the systematic, traceable characterisation of the quantitative relationship between physical input and instrument output, performed with standards traceable to primary measurement references and maintained throughout the mission by an on-orbit calibration programme. A spacecraft that is mechanically integrated, functionally verified, and environmentally tested but not properly calibrated cannot fulfil its science mission — its data cannot be translated into reliable physical measurements.</p>
+
+  <p>The final article in this series addresses the culmination of the entire I&amp;T programme: launch readiness — the formal reviews and processes that evaluate all of the preceding work and arrive at the most consequential engineering decision of a mission's ground programme: launch, or not.</p>
+  </div>
+
+
+  <!-- NEXT LESSON -->
+  <div class="next-article">
+    <div class="next-article-content">
+      <div class="next-label">Next Lesson · L14 of 17 · Article 14</div>
+      <div class="next-title">Propulsion System Test and Verification</div>
+      <div class="next-desc">The most hazardous I&T activity in the programme — leak testing, functional verification, and the test-as-you-fly boundary that propulsion crosses</div>
+    </div>
+  </div>
+
+  <!-- GLOSSARY -->
+  <h2 class="sh" id="glossary">Key Terms Used in This Article</h2>
+
+  <table class="gloss-table">
+    <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+    <tbody>
+      <tr><td>Absolute Photometric Calibration</td><td>Calibration that establishes the quantitative relationship between a physical photon flux (in physical units, e.g., photons/s/cm²/Å) and the instrument's digital output, traceable to a primary measurement standard.</td></tr>
+      <tr><td>Calibration Traceability Chain</td><td>The documented series of comparisons connecting an instrument's calibration to a primary measurement standard at a national metrology institute. Each link in the chain adds uncertainty; the total uncertainty budget reflects all links.</td></tr>
+      <tr><td>Dark Frame</td><td>A calibration measurement made with no illumination, characterising the detector's intrinsic signal (dark current, read noise, bias) that must be subtracted from every science exposure.</td></tr>
+      <tr><td>Effective Area</td><td>The wavelength-dependent efficiency of the telescope and instrument system — the product of collecting area and all throughput factors — converting physical photon flux to detector count rate. Also called collecting area or throughput curve.</td></tr>
+      <tr><td>Flat Field</td><td>A calibration image of a spatially uniform illumination source that characterises pixel-to-pixel sensitivity variations across the detector. Applied to science images to correct for detector non-uniformity.</td></tr>
+      <tr><td>Geometric Distortion Map</td><td>The correction function mapping detector pixel coordinates to true sky coordinates, correcting for optical distortions in the imaging system. Required for astrometry and mosaic image construction.</td></tr>
+      <tr><td>Kinematic Mount</td><td>A mechanical mount that constrains a structure in exactly six degrees of freedom with exactly six contact points, producing a statically determinate, stress-free interface. Enables precise, repeatable positioning of instruments.</td></tr>
+      <tr><td>Line-of-Sight Alignment</td><td>The angular relationship between an instrument's optical axis and the spacecraft's attitude reference frame. Must be measured, documented, and shown to be stable across the thermal operating range and mission lifetime.</td></tr>
+      <tr><td>PI Instrument Model</td><td>A mission development approach in which science instruments are developed and delivered by Principal Investigator teams (typically university or research institution groups) independent of the spacecraft bus contractor.</td></tr>
+      <tr><td>Point Spread Function (PSF)</td><td>The spatial response of the optical system to a point source — the shape and size of the image of an ideal point source. Characterises the imaging quality of the telescope and instrument and is required for source extraction and photometry.</td></tr>
+      <tr><td>Spectrophotometric Standard Star</td><td>A star whose spectral energy distribution has been precisely measured and published, used as a calibration reference for on-orbit absolute photometric and spectroscopic calibration of space telescope instruments.</td></tr>
+      <tr><td>Wavelength Solution</td><td>The mathematical function (typically a polynomial) mapping detector pixel position to physical wavelength for a spectrometer. Derived from emission line lamp calibration exposures and updated from on-orbit calibration observations.</td></tr>
+    </tbody>
+  </table>
+
+</article>
+</div>
+
+
+<!-- ARTICLE NAVIGATOR -->
+<div class="art-nav">
+  <div class="art-nav-inner">
+    <span class="art-nav-label">Go to article</span>
+    <div class="art-nav-select-wrap">
+      <select id="artNav_spacecraft_iat_article07_html" onchange="this.nextElementSibling.disabled = !this.value || this.options[this.selectedIndex].disabled">
+        <option value="">— Select any article in the series —</option>
+        <optgroup label="── Main Series ──────────────────────────">
+      <option value="spacecraft_iat_intro.html">01 · Introduction to Spacecraft I&T</option>
+      <option value="spacecraft_iat_article01.html">02 · I&T Programme Structure</option>
+      <option value="spacecraft_iat_article11.html">03 · Configuration Management</option>
+      <option value="spacecraft_iat_article16.html">04 · Quality Assurance</option>
+      <option value="spacecraft_iat_article02.html">05 · Cleanrooms & Contamination Control</option>
+      <option value="spacecraft_iat_article10.html">06 · EGSE & Test Harness</option>
+      <option value="spacecraft_iat_article03.html">07 · Functional Testing</option>
+      <option value="spacecraft_iat_article09.html">08 · Flight Software V&V</option>
+      <option value="spacecraft_iat_article14.html">09 · Mass Properties & Structural Loads</option>
+      <option value="spacecraft_iat_article04.html">10 · Vibration, Acoustics & Shock</option>
+      <option value="spacecraft_iat_article05.html">11 · Thermal-Vacuum Testing</option>
+      <option value="spacecraft_iat_article12.html">12 · EMC Testing</option>
+      <option value="spacecraft_iat_article07.html" selected disabled>▶ 13 · Instrument Integration & Calibration</option>
+      <option value="spacecraft_iat_article13.html">14 · Propulsion Testing</option>
+      <option value="spacecraft_iat_article06.html">15 · Anomaly Management</option>
+      <option value="spacecraft_iat_article15.html">16 · Launch Vehicle Integration</option>
+      <option value="spacecraft_iat_article08.html">17 · Launch Readiness & Commissioning</option>
+    </optgroup>
+    <optgroup label="── Supplementary ──────────────────────────">
+      <option value="spacecraft_iat_smallsat.html">Supp · Small Satellites</option>
+      <option value="spacecraft_iat_case_studies.html">Supp · Case Studies</option>
+    </optgroup>
+      </select>
+    </div>
+    <button class="art-nav-go" disabled
+            onclick="var s=this.previousElementSibling.querySelector('select'); if(s.value && !s.options[s.selectedIndex].disabled) window.location.href=s.value;">
+      Open →
+    </button>
+  </div>
+</div>
+
+<footer class="article-footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <div class="footer-label">Series</div>
+      <div class="footer-text">Spacecraft Integration &amp; Test<br>Article 07 of 08</div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-label">Topics</div>
+      <div class="tags">
+        <span class="tag">Instruments</span>
+        <span class="tag">Calibration</span>
+        <span class="tag">Optical I&amp;T</span>
+        <span class="tag">Traceability</span>
+        <span class="tag">PI Model</span>
+        <span class="tag">Contamination</span>
+      </div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-label">Audience</div>
+      <div class="footer-text">New and early-career spacecraft engineers, aerospace students, and anyone with a serious interest in how spacecraft are built and tested.</div>
+    </div>
+  </div>
+</footer>

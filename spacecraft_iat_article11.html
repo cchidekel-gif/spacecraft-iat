@@ -1,0 +1,560 @@
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://raw.githubusercontent.com/cchidekel-gif/spacecraft-iat-styles/refs/heads/main/styles.css">
+
+<div class="masthead">
+  <span class="masthead-series">Spacecraft Engineering Series · Integration &amp; Test</span>
+  <span class="masthead-right">Article 03 of 17</span>
+</div>
+
+
+<div class="series-nav">
+  <span>Series:</span>
+  <span class="sep">·</span>
+  <span>Intro</span>
+  <span class="sep">·</span>
+  <span>01</span>
+  <span class="sep">·</span>
+  <span class="current">02</span>
+  <span class="sep">·</span>
+  <span>03</span>
+  <span class="sep">·</span>
+  <span>04</span>
+  <span class="sep">·</span>
+  <span>05</span>
+  <span class="sep">·</span>
+  <span>06</span>
+  <span class="sep">·</span>
+  <span>07</span>
+  <span class="sep">·</span>
+  <span>08</span>
+  <span class="sep">·</span>
+  <span>09</span>
+  <span class="sep">·</span>
+  <span>10</span>
+  <span class="sep">·</span>
+  <span>11</span>
+  <span class="sep">·</span>
+  <span>12</span>
+  <span class="sep">·</span>
+  <span>13</span>
+  <span class="sep">·</span>
+  <span>14</span>
+  <span class="sep">·</span>
+  <span>15</span>
+  <span class="sep">·</span>
+  <span>16</span>
+</div>
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Spacecraft Integration &amp; Test · Article 03 of 17</div>
+    <h1>Configuration<br>Management and<br>the As-Built Record</h1>
+    <p class="hero-sub">How a programme tracks exactly what it has built, controls every change made to it, and arrives at launch knowing — not believing, not assuming, but knowing — precisely what is aboard the spacecraft.</p>
+    <div class="byline">
+      <div class="byline-avatar">📁</div>
+      <div>
+        <div class="byline-name">Charles Chidekel</div>
+        <div class="byline-title">Integration &amp; Test Guru · 40 Years of I&amp;T Experience</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+<article class="article-body">
+
+  <div class="toc-wrap">
+    <div class="toc-label">In This Article</div>
+    <ul class="toc-list">
+      <li><a href="#s1"><span>1. What Configuration Management Actually Is</span><span class="toc-num">§1</span></a></li>
+      <li><a href="#s2"><span>2. The Configuration Baseline Sequence</span><span class="toc-num">§2</span></a></li>
+      <li><a href="#s3"><span>3. Configuration Identification — Naming, Numbering, and Serialisation</span><span class="toc-num">§3</span></a></li>
+      <li><a href="#s4"><span>4. The Configuration Control Board</span><span class="toc-num">§4</span></a></li>
+      <li><a href="#s5"><span>5. Configuration Status Accounting — The Living Record</span><span class="toc-num">§5</span></a></li>
+      <li><a href="#s6"><span>6. The Traveller — Documenting Every Hand That Touches the Hardware</span><span class="toc-num">§6</span></a></li>
+      <li><a href="#s7"><span>7. Configuration Audits — FCA and PCA</span><span class="toc-num">§7</span></a></li>
+      <li><a href="#s8"><span>8. Software Configuration Management</span><span class="toc-num">§8</span></a></li>
+      <li><a href="#s9"><span>9. When CM Breaks Down — The Failure Modes</span><span class="toc-num">§9</span></a></li>
+      <li><a href="#s10"><span>10. The As-Built Record — What It Contains and Why It Lasts</span><span class="toc-num">§10</span></a></li>
+      <li><a href="#s11"><span>11. Configuration Management as Engineering Discipline</span><span class="toc-num">§11</span></a></li>
+      <li><a href="#glossary"><span>Key Terms Glossary</span><span class="toc-num">GL</span></a></li>
+    </ul>
+  </div>
+
+  <p class="lead">Ask an engineer what is aboard a spacecraft at any point during integration and test, and the answer should be immediate, precise, and verifiable: this part number, this serial number, at this location, installed per this drawing revision, verified by this inspection record, changed from the previous configuration by this approved Engineering Change Notice. If the answer is "I think it's the latest version" or "we changed that out last week, I believe," the programme has a configuration management problem — and configuration management problems have a way of becoming anomaly investigation problems, and sometimes mission-loss problems, at the worst possible moment.</p>
+
+  <p>Configuration management is among the least glamorous disciplines in spacecraft I&T. It does not require the technical depth of thermal analysis or the precision of optical calibration. Its tools are largely administrative. And yet it is the discipline that makes every other discipline's work meaningful: the test result is only interpretable if you know exactly what configuration of hardware was under test. The anomaly investigation can only identify root cause if you know exactly what changed between the last good test and the first bad one. The Launch Readiness Review can only close its verification matrix if you know exactly what was launched.</p>
+
+  <div class="pull-quote">
+    <p>"Configuration management is the answer to a question that never stops being asked: what, exactly, is this thing? The question is asked when you start a test, when you find an anomaly, when you ship to the launch site, and when something goes wrong on orbit. If you cannot answer it quickly, precisely, and with documented evidence, you are not managing your spacecraft — you are hoping about it."</p>
+  </div>
+
+  <!-- SECTION 1 -->
+  <h2 class="sh" id="s1">1. What Configuration Management Actually Is</h2>
+
+  <p>Configuration management (CM) is the technical and administrative discipline that establishes and maintains the consistency between a product's documented description and its physical realisation. For a spacecraft, it encompasses four interrelated activities, each of which is essential and none of which can substitute for the others.</p>
+
+  <ul class="body-list">
+    <li><strong>Configuration identification</strong> — the definition and documentation of the spacecraft's configuration at each stage of its development: what the design requires, what was actually built, and how the two relate. This includes the part numbering and serialisation system, the drawing tree, the bill of materials, and the specification hierarchy.</li>
+    <li><strong>Configuration control</strong> — the process by which changes to the established configuration are proposed, evaluated, approved or rejected, implemented, and verified. No change to the spacecraft's design, hardware, or software is made outside this process. The Configuration Control Board (CCB) is the governing authority for configuration control.</li>
+    <li><strong>Configuration status accounting (CSA)</strong> — the continuous recording and reporting of the current status of configuration items: which version of each component is installed, which changes have been approved and implemented, which are pending, and which are planned. CSA is the living record of the spacecraft's current configuration at any given moment.</li>
+    <li><strong>Configuration audits</strong> — the formal verifications, conducted at defined programme milestones, that the physical hardware and software are consistent with the documented configuration and that the documentation is complete, accurate, and current. The Functional Configuration Audit (FCA) and Physical Configuration Audit (PCA) are the two primary audit types for spacecraft programmes.</li>
+  </ul>
+
+  <div class="callout steel">
+    <div class="callout-label">⚙ CM Is Not Bureaucracy</div>
+    <p>Configuration management is frequently perceived — particularly by early-career engineers and by engineers trained primarily in technical disciplines — as administrative overhead: paperwork that slows things down without adding engineering value. This perception is understandable and completely wrong.</p>
+    <p>The purpose of CM is to ensure that the programme always knows what it has. The value of that knowledge is invisible when everything goes right. It becomes acutely visible when something goes wrong. When an anomaly is found during a functional test, the first question the investigation asks is: what changed since the last good test? That question is only answerable if the CM record is current, complete, and accurate. When a spacecraft anomaly is observed on orbit, the same question is asked of the pre-launch configuration record. Every anomaly investigation in this series' history — every one — began with a configuration question. The programmes with rigorous CM answered it in hours. The programmes without it answered it in days, if they answered it at all.</p>
+  </div>
+
+  <!-- SECTION 2 -->
+  <h2 class="sh" id="s2">2. The Configuration Baseline Sequence</h2>
+
+  <p>A <span class="kt">configuration baseline</span> is a formally approved description of the spacecraft's configuration at a specific point in the programme — a snapshot that serves as the reference against which subsequent changes are measured and controlled. Baselines are established at formal programme reviews and represent the programme's collective agreement that the configuration as documented at that point is technically correct and approved for the next phase of development. Once established, a baseline can only be changed through the formal change control process.</p>
+
+  <div class="baseline-timeline">
+
+    <div class="bt-item functional">
+      <div class="bt-dot"></div>
+      <div class="bt-phase">Phase A/B</div>
+      <div class="bt-title">Functional Baseline</div>
+      <div class="bt-desc">The highest-level description of what the spacecraft must do — the mission requirements and system-level performance specifications. Established at System Requirements Review (SRR). Defines the "what" without yet specifying the "how." All subsequent design work flows from this baseline. Changes to the functional baseline require the highest level of CCB authority and have the broadest downstream impact.</div>
+      <div class="bt-review">Established at: SRR</div>
+    </div>
+
+    <div class="bt-item allocated">
+      <div class="bt-dot"></div>
+      <div class="bt-phase">Phase B/C</div>
+      <div class="bt-title">Allocated Baseline</div>
+      <div class="bt-desc">The decomposition of system-level requirements into subsystem and component specifications — the allocation of performance requirements to specific hardware elements. Established at Preliminary Design Review (PDR). Defines what each subsystem must do and how its performance is verified. Changes to the allocated baseline require CCB review and may require re-analysis of requirement margins across multiple subsystems.</div>
+      <div class="bt-review">Established at: PDR</div>
+    </div>
+
+    <div class="bt-item product">
+      <div class="bt-dot"></div>
+      <div class="bt-phase">Phase C/D</div>
+      <div class="bt-title">Product Baseline</div>
+      <div class="bt-desc">The complete design documentation for the spacecraft as it is to be built — detailed drawings, specifications, software design documents, interface control documents. Established at Critical Design Review (CDR). This is the "build-to" baseline: the complete set of instructions for fabricating and assembling the spacecraft. After CDR, every drawing change, every specification update, every ICD revision is a formal change requiring CCB approval and may require re-verification of affected requirements.</div>
+      <div class="bt-review">Established at: CDR</div>
+    </div>
+
+    <div class="bt-item as-built">
+      <div class="bt-dot"></div>
+      <div class="bt-phase">Phase D (I&T)</div>
+      <div class="bt-title">As-Built Baseline</div>
+      <div class="bt-desc">The documented record of the spacecraft as it was actually built — every component installed, every serial number recorded, every drawing revision verified as the basis for the physical hardware, every post-CDR change incorporated and documented. Built progressively throughout the I&T phase and formally audited at the Physical Configuration Audit before launch. This is what was launched. It is the primary reference for anomaly investigation throughout the mission lifetime.</div>
+      <div class="bt-review">Audited at: PCA / Pre-Ship Review</div>
+    </div>
+
+    <div class="bt-item ops">
+      <div class="bt-dot"></div>
+      <div class="bt-phase">Phase E (Operations)</div>
+      <div class="bt-title">Operational Baseline</div>
+      <div class="bt-desc">The as-built baseline as modified by on-orbit changes — software patches, parameter updates, operational procedure changes — accumulated over the mission lifetime. Every in-flight change is documented against the as-built baseline to maintain an accurate current-configuration record. The operational baseline is the reference for on-orbit anomaly investigation and for mission extension planning.</div>
+      <div class="bt-review">Maintained throughout mission</div>
+    </div>
+
+  </div>
+
+  <!-- SECTION 3 -->
+  <h2 class="sh" id="s3">3. Configuration Identification — Naming, Numbering, and Serialisation</h2>
+
+  <p>Before any component can be controlled, it must be uniquely identified. Configuration identification is the system of part numbers, drawing numbers, serial numbers, revision levels, and lot codes that uniquely identifies every configuration item in the spacecraft from the top-level assembly down to individual fasteners and connectors.</p>
+
+  <h3 class="ssh">The Part Numbering System</h3>
+  <p>A <span class="kt">part number</span> identifies a design — a specific item with a specific drawing and a specific specification. All hardware built to the same part number must be physically interchangeable. A part number change is required whenever the design changes in any way that affects form, fit, or function. The distinction between a change that requires a part number change and a change that does not is one of the most consequential judgements in CM: an incorrectly classified change — one that changes the hardware's performance but is not reflected in a part number change — makes it impossible to determine from the CM record alone whether a given installation has the old or new version of the part.</p>
+
+  <p>A <span class="kt">serial number</span> identifies a specific physical instance of a part — a specific piece of hardware built to a specific part number. Two components with the same part number are design-equivalent but physically distinct; their serial numbers distinguish them. The serial number is the hook on which the component's entire life history is hung: its acceptance test data, its handling history, its installation records, its anomaly history. Losing track of a serial number means losing track of that history.</p>
+
+  <h3 class="ssh">Revision Control</h3>
+  <p>Every drawing and specification in the product baseline is issued at a specific revision level. When the document is changed, its revision level advances. The CM record must associate every installed component not just with its part number but with the drawing revision to which it was fabricated and inspected. A component fabricated to drawing revision B may differ from a component fabricated to drawing revision C even if the part number is the same — drawing revisions below a part-number-change threshold represent clarifications, tolerance refinements, or manufacturing process changes that do not affect interchangeability but do affect the exact physical characteristics of the part.</p>
+
+  <div class="callout amber">
+    <div class="callout-label">◆ The "It's Just a Minor Change" Problem</div>
+    <p>The most dangerous words in configuration management are "it's just a minor change." A change that appears minor from a design perspective — a wire re-route, a connector substitution, a software parameter update — may have consequences that are not apparent from the change description alone. The CM process exists precisely to ensure that every change, however minor it appears, is reviewed by people with the breadth of knowledge to assess its full impact.</p>
+    <p>One programme I worked on had a "minor" change to a harness connector type — the original connector was going end-of-life and was replaced with an electrically equivalent part from a different manufacturer. The replacement was electrically correct. What the change assessment had not evaluated was the shell diameter of the new connector: it was 1.2 mm larger than the original. In the spacecraft's closeout configuration, with thermal blankets and adjacent brackets, there was precisely enough clearance for the original connector but not for the replacement. The interference was discovered during closeout — after the connector was installed on flight hardware. The resulting rework cost six weeks and several thousand dollars. The change assessment that approved the connector substitution had not included a physical clearance check. "It's just a connector change" had been assumed to be benign.</p>
+  </div>
+
+  <!-- SECTION 4 -->
+  <h2 class="sh" id="s4">4. The Configuration Control Board</h2>
+
+  <p>The <span class="kt">Configuration Control Board (CCB)</span> is the formal governance body responsible for evaluating and approving — or rejecting — all proposed changes to the configuration baseline. It is not an advisory committee. Its decisions are programme-binding: no change to a baseline document or to flight hardware proceeds without CCB approval, and the CCB record is part of the configuration audit trail. The CCB's membership, authority levels, and decision process are defined in the programme's CM plan.</p>
+
+  <div class="ccb-flow">
+    <div class="ccb-header">Engineering Change Request — CCB Process Flow</div>
+    <div class="ccb-steps">
+      <div class="ccb-step">
+        <div class="ccb-num">1</div>
+        <div class="ccb-content">
+          <div class="ccb-title">Engineering Change Request (ECR) Initiated</div>
+          <div class="ccb-desc">Any programme member may initiate an ECR to propose a change to a baselined document or to flight hardware. The ECR must identify: the specific item being changed (part number, document number, revision); the reason for the change (anomaly correction, improvement, supplier issue, test finding); the proposed change description; and an initial assessment of the change's impact on interfaces, mass, power, and verification status.</div>
+        </div>
+      </div>
+      <div class="ccb-step">
+        <div class="ccb-num">2</div>
+        <div class="ccb-content">
+          <div class="ccb-title">Impact Assessment</div>
+          <div class="ccb-desc">The CCB assigns the ECR for technical impact assessment. The assessment must cover: all documents affected by the change; all hardware items affected; all requirements whose verification may be affected; mass, power, link budget, and thermal margin impacts; schedule impact; cost impact; and the effect on any currently open DRs. The assessment is performed by the affected engineering disciplines, not by the person who originated the ECR.</div>
+        </div>
+      </div>
+      <div class="ccb-step">
+        <div class="ccb-num">3</div>
+        <div class="ccb-content">
+          <div class="ccb-title">CCB Review and Decision</div>
+          <div class="ccb-desc">The CCB reviews the ECR and its impact assessment at a formal board meeting. The board may approve, reject, or request additional information. Approval requires that the change is technically sound, that all impacts have been adequately assessed, that any required re-verification is identified and planned, and that the change is within the board's authority level. Changes above the board's authority level are escalated to the next-higher CCB tier.</div>
+        </div>
+      </div>
+      <div class="ccb-step">
+        <div class="ccb-num">4</div>
+        <div class="ccb-content">
+          <div class="ccb-title">Engineering Change Notice (ECN) Released</div>
+          <div class="ccb-desc">An approved ECR is released as an Engineering Change Notice — the formal authorisation to implement the change. The ECN is the work order for the change: it specifies exactly what is to be done, which documents are to be revised, which hardware items are to be modified, and what verification is required to close the change. No implementation of the change begins before the ECN is released. Implementing a change before CCB approval is a serious CM violation regardless of how technically straightforward the change appears.</div>
+        </div>
+      </div>
+      <div class="ccb-step">
+        <div class="ccb-num">5</div>
+        <div class="ccb-content">
+          <div class="ccb-title">Implementation and Verification</div>
+          <div class="ccb-desc">The change is implemented per the ECN. Required re-verification activities are executed and their results documented. All affected documents are updated to their new revision levels. The hardware traveller records the ECN number, the work performed, and the verification results. The CSA database is updated to reflect the new configuration.</div>
+        </div>
+      </div>
+      <div class="ccb-step">
+        <div class="ccb-num">6</div>
+        <div class="ccb-content">
+          <div class="ccb-title">ECN Closure and CSA Update</div>
+          <div class="ccb-desc">The ECN is formally closed when all required implementation and verification actions are complete and documented. The CCB confirms closure. The as-built configuration record is updated. The change is now part of the established baseline. Any future changes to the same item start a new ECR — they do not informally reopen the closed ECN.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="ssh">CCB Authority Levels</h3>
+  <p>Not every change requires the full programme-level CCB. Most programmes use a tiered authority structure: subsystem-level CCBs have authority to approve changes within their subsystem that have no impact outside it; the system-level CCB has authority for changes with cross-subsystem or interface impacts; changes that affect the mission baseline, a customer-controlled document, or a safety-critical requirement require escalation to the highest authority level — typically the chief engineer and programme manager, with customer concurrence for NASA and ESA missions.</p>
+
+  <p>The tiered structure is efficient but carries a risk: a change that appears to be within a subsystem's authority may have impacts outside that subsystem that the subsystem team does not see. The impact assessment process — which must explicitly evaluate cross-system impacts — is the safeguard against this risk. A subsystem-level CCB that approves a change without verifying that it has no interface impacts is not performing adequate CM — it is merely performing expedient CM.</p>
+
+  <!-- SECTION 5 -->
+  <h2 class="sh" id="s5">5. Configuration Status Accounting — The Living Record</h2>
+
+  <p><span class="kt">Configuration Status Accounting (CSA)</span> is the ongoing record of the spacecraft's current configuration: a continuously updated inventory of every configuration item, documenting its current part number, serial number, drawing revision, installation location, and the complete history of changes that brought it to its current state. CSA is not a one-time document — it is a database that must be updated with every change, every installation, every removal, and every verification activity.</p>
+
+  <table class="csa-table">
+    <thead>
+      <tr>
+        <th>CSA Element</th>
+        <th>What It Records</th>
+        <th>Why It Is Essential</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Bill of Materials (BOM)</td>
+        <td>Every component in the spacecraft assembly — part number, quantity, reference designator, installation location — for every assembly level from top to bottom. The BOM links the design drawing tree to the physical hardware inventory.</td>
+        <td>The BOM is the map of the spacecraft. Without it, there is no systematic way to confirm that the physical hardware matches the design intent or to identify every item affected by a specific design change.</td>
+      </tr>
+      <tr>
+        <td>Serialised Part Record</td>
+        <td>For every serialised component — every component with a unique serial number — the record of its part number, serial number, acceptance test status, installation location, handling history, and anomaly history.</td>
+        <td>Enables tracking of every specific physical part from manufacture through integration to launch. Essential for anomaly investigations that require identifying which specific hardware instance was involved, and for fleet-wide anomaly assessment when a defect is found in one serial number that may affect others.</td>
+      </tr>
+      <tr>
+        <td>Drawing and Document Revision Status</td>
+        <td>The current revision level of every drawing, specification, ICD, and procedure in the product baseline. Updated whenever a document is revised through the CCB process.</td>
+        <td>Ensures that anyone using a document to perform work, verify hardware, or plan a change is using the current approved version. A technician working from a superseded drawing revision is building or inspecting to the wrong specification.</td>
+      </tr>
+      <tr>
+        <td>Open and Closed ECN Log</td>
+        <td>Every Engineering Change Notice — approved, in work, or closed — with its status, implementation record, and verification closure evidence.</td>
+        <td>The ECN log is the complete change history of the spacecraft from the product baseline forward. Without it, there is no way to determine, for any given item, what the original baseline configuration was and what changes have been made since.</td>
+      </tr>
+      <tr>
+        <td>Verification Matrix Status</td>
+        <td>The current status of every requirement verification — open, in work, or closed — and the identity of the specific test, analysis, inspection, or demonstration that provides the closure evidence.</td>
+        <td>The verification matrix status is the live record of the programme's progress toward launch readiness. Every change that reopens a previously closed requirement must be reflected immediately in the matrix status.</td>
+      </tr>
+      <tr>
+        <td>DR/ECN Linkage</td>
+        <td>The explicit association between Discrepancy Reports and the ECNs that address them — ensuring that every DR that requires a hardware or software change has an associated, approved ECN, and that every ECN that was initiated to close a DR has the DR formally closed in the DR system upon ECN implementation.</td>
+        <td>Prevents DRs from being closed by reference to ECNs that were never fully implemented, and prevents ECNs from being implemented without their associated DRs being formally closed. The linkage is the structural connection between the anomaly management system and the configuration management system.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- SECTION 6 -->
+  <h2 class="sh" id="s6">6. The Traveller — Documenting Every Hand That Touches the Hardware</h2>
+
+  <p>The <span class="kt">traveller</span> — also called a router, a work order packet, or a build record depending on the programme — is the document that accompanies a specific piece of hardware through every step of its assembly, test, and inspection history. It is the operational heart of the as-built configuration record: the place where the action of building and testing the spacecraft is recorded in real time, by the people performing the work, with signatures and timestamps that create a legally and technically auditable chain of custody.</p>
+
+  <div class="traveller">
+    <div class="traveller-header">Anatomy of a Hardware Traveller — Key Elements</div>
+    <div class="traveller-rows">
+      <div class="traveller-row">
+        <div class="traveller-field">Hardware Identity</div>
+        <div class="traveller-content"><strong>Part number, serial number, drawing revision, and lot code</strong> of the item being built or tested. Verified at the start of every operation. If the hardware identity on the traveller does not match the hardware in hand, work stops immediately pending resolution.</div>
+      </div>
+      <div class="traveller-row">
+        <div class="traveller-field">Work Instructions</div>
+        <div class="traveller-content">Reference to the <strong>specific procedure, drawing, and revision</strong> that governs each step. Not paraphrased — referenced by document number and revision so that the exact instructions are traceable. Steps are marked complete only when the specified procedure has been executed as written, not as interpreted.</div>
+      </div>
+      <div class="traveller-row">
+        <div class="traveller-field">Step Sign-Off</div>
+        <div class="traveller-content">Each step is signed and dated by the <strong>person who performed it</strong>. For critical or irreversible steps, a second signature from an independent inspector or QA representative is required. No step may be retroactively signed — signatures are contemporaneous with the work. Blank signature blocks at a final review indicate incomplete work.</div>
+      </div>
+      <div class="traveller-row">
+        <div class="traveller-field">Torque Records</div>
+        <div class="traveller-content">For fasteners with specified torque requirements — structural fasteners, electrical connector retaining screws — <strong>the actual torque applied is recorded</strong>, not simply "torque applied per drawing." The calibration certificate number of the torque tool used is recorded. Untorqued connectors and fasteners have caused anomalies in flight; the torque record is the evidence that the specified torque was applied.</div>
+      </div>
+      <div class="traveller-row">
+        <div class="traveller-field">Materials Used</div>
+        <div class="traveller-content"><strong>Lot numbers and expiry dates</strong> of all materials — adhesives, potting compounds, lubricants, conformal coatings — used during assembly. Expired or out-of-certification materials may not be used on flight hardware. Recording the lot number enables traceability if a material later shows a quality issue.</div>
+      </div>
+      <div class="traveller-row">
+        <div class="traveller-field">Anomaly Notation</div>
+        <div class="traveller-content">Any observation that deviates from the expected — a connector that is harder to seat than normal, a torque value that is at the low end of the specified range, a visual indication that is different from the acceptance standard photograph — is <strong>documented in the traveller and entered as a DR</strong>. The traveller is not the place to decide that an anomaly is acceptable; it is the place to record that it was observed.</div>
+      </div>
+      <div class="traveller-row">
+        <div class="traveller-field">Test Data Reference</div>
+        <div class="traveller-content">References to <strong>test data files and test reports</strong> generated during testing of the item. The traveller does not contain the test data itself — it contains pointers to where it is stored, with document numbers sufficient to retrieve the data. The test report reference, combined with the serial number, creates the link between the physical item and its performance record.</div>
+      </div>
+      <div class="traveller-row">
+        <div class="traveller-field">Cleanliness and ESD</div>
+        <div class="traveller-content"><strong>Cleanroom class, contamination survey results, and ESD precaution compliance</strong> recorded for every operation conducted in a controlled environment. The contamination record is the evidence that the cleanroom protocol was followed; it is also the first reference when a contamination anomaly is discovered later in the programme.</div>
+      </div>
+    </div>
+  </div>
+
+  <p>The traveller's authority derives entirely from the accuracy and completeness with which it is maintained. A traveller with blank fields, retroactive entries, or pencilled corrections is a traveller that cannot be trusted — and a traveller that cannot be trusted is a gap in the as-built record that must be resolved, not accepted. Programmes that treat traveller maintenance as a formality to be completed after the fact rather than a discipline to be performed concurrent with the work produce as-built records that are reconstructions rather than records.</p>
+
+  <!-- SECTION 7 -->
+  <h2 class="sh" id="s7">7. Configuration Audits — FCA and PCA</h2>
+
+  <p>Configuration audits are the formal verification events at which the programme confirms that its documentation accurately describes what it has built. There are two primary audits for spacecraft programmes, each with a distinct scope and purpose.</p>
+
+  <h3 class="ssh">Functional Configuration Audit (FCA)</h3>
+  <p>The <span class="kt">Functional Configuration Audit (FCA)</span> verifies that the spacecraft's performance has been demonstrated to meet every requirement in the functional and allocated baselines — that the verification matrix is complete and that every requirement has been closed by a passing test result, analysis, inspection, or demonstration. The FCA is essentially an audit of the verification record: it confirms that the test programme was executed as planned, that the results are documented and traceable, and that any requirements verified by analysis are supported by approved analysis documentation with sufficient detail to reproduce the analysis.</p>
+
+  <p>The FCA is typically conducted at or near the Pre-Ship Review — after all primary test activities are complete but while there is still time to address any deficiencies identified during the audit. An FCA finding that a requirement has no verified closure evidence is a serious programme issue: it means the programme cannot formally demonstrate that the spacecraft meets that requirement. The finding must either be resolved by executing the required verification activity or by formally re-baselining the requirement as acceptable at its current verified state — neither of which is a quick or simple resolution.</p>
+
+  <h3 class="ssh">Physical Configuration Audit (PCA)</h3>
+  <p>The <span class="kt">Physical Configuration Audit (PCA)</span> verifies that the physical spacecraft matches its documented design — that every component installed in the spacecraft corresponds to an approved part number and revision, that the serial numbers match the CSA database records, that all approved ECNs have been implemented and closed, and that no unapproved changes have been made to the flight configuration. The PCA is the formal closing of the as-built record.</p>
+
+  <p>A PCA is conducted by physically comparing the spacecraft to its documentation — the BOM, the drawing tree, the ECN log — item by item. For a large spacecraft, this is a substantial activity: the audit may cover hundreds of line-replaceable units, thousands of individually tracked components, and dozens of ECNs from the I&T phase. The PCA team typically includes the CM lead, the quality assurance lead, the systems engineer, and representatives from each major subsystem. The audit produces a PCA report that documents any discrepancies found and their disposition — resolved before launch or formally accepted with documented rationale.</p>
+
+  <div class="callout rust">
+    <div class="callout-label">⚠ The PCA Finding That Changes the Launch Date</div>
+    <p>The PCA is scheduled before the Pre-Ship Review, which is itself weeks before launch. This timing is not coincidental — it is designed to give the programme time to resolve PCA findings before the launch countdown begins. A PCA finding that reveals an unapproved change, an incorrect serial number, or an unimplemented ECN requires investigation and resolution. In the worst case, it requires physical disassembly of the spacecraft to access and correct the affected component.</p>
+    <p>PCA findings that affect the launch date are not programme failures of the PCA process — they are exactly what the PCA process is designed to produce. The failure mode the PCA prevents is launching a spacecraft whose physical configuration is unknown or differs from the approved design. A PCA finding that is resolved before launch — even at the cost of schedule — is far less costly than the equivalent uncertainty discovered during an on-orbit anomaly investigation.</p>
+  </div>
+
+  <!-- SECTION 8 -->
+  <h2 class="sh" id="s8">8. Software Configuration Management</h2>
+
+  <p>Flight software is a configuration item with its own CM requirements that parallel, and in some respects exceed, the requirements for hardware CM. The flight software build — the specific compiled binary that executes aboard the spacecraft — is the software equivalent of the as-built hardware record, and it must be managed with corresponding rigour.</p>
+
+  <p>The principles of software CM are the same as hardware CM: every change requires CCB approval; the current version is always known and accessible; a complete history of all versions and changes is maintained; and the version loaded on flight hardware is verified against the released build by checksum comparison. Article 09 covers the software build and version control process in detail. What belongs here is the integration between software CM and hardware CM — the requirement that the software configuration record and the hardware configuration record together constitute a complete and consistent description of the flight system.</p>
+
+  <ul class="body-list">
+    <li><strong>Software version is a required element of the as-built record.</strong> The as-built configuration of the spacecraft is not complete unless it records the specific software build loaded into every processor aboard the spacecraft — the flight computer, the attitude control processor, each instrument's microcontroller, the solid-state recorder, the RF subsystem's firmware. Each of these is a software configuration item with its own version identifier that must appear in the CSA database alongside the hardware serial numbers.</li>
+    <li><strong>Software changes during I&T require the same CCB process as hardware changes.</strong> A software update — even a "parameter update" that only changes a coefficient in a table — is a change to the flight configuration. It requires an ECR, an impact assessment, CCB approval, an ECN, implementation verification, and CSA update. The instinct to treat software changes as inherently less consequential than hardware changes is one of the most reliable predictors of software-related anomalies in the late I&T phase.</li>
+    <li><strong>The as-built software configuration must be verified immediately before launch.</strong> The last act of the pre-launch functional test is to read back the software version identifiers and checksums from every processor and compare them to the approved flight build. This verification is not a formality — software can be inadvertently overwritten, corrupted, or replaced with an incorrect version at any point in the launch site processing sequence. The pre-launch verification is the confirmation that what is loaded is what was approved.</li>
+  </ul>
+
+  <!-- SECTION 9 -->
+  <h2 class="sh" id="s9">9. When CM Breaks Down — The Failure Modes</h2>
+
+  <div class="cm-risk-grid">
+    <div class="cmr-card">
+      <div class="cmr-header">
+        <span class="cmr-icon">🔀</span>
+        <div class="cmr-title">The Unapproved Change</div>
+      </div>
+      <div class="cmr-body">
+        <p>An engineer or technician makes a change to the hardware or software without going through the CCB process — a wire re-route "to make integration easier," a connector substitution "because the original is out of stock," a software parameter update "to fix an obvious bug." The change may be technically correct. But it is not in the CM record. It will not appear in the PCA. It will not be visible when the anomaly investigation asks "what changed?" The unapproved change is the most common CM failure mode and the one most likely to directly cause investigation delays and incorrect root cause conclusions.</p>
+      </div>
+    </div>
+    <div class="cmr-card">
+      <div class="cmr-header">
+        <span class="cmr-icon">📦</span>
+        <div class="cmr-title">Serial Number Confusion</div>
+      </div>
+      <div class="cmr-body">
+        <p>Two components of the same part number are interchanged during a maintenance operation, and the serialised part records are not updated. The CSA database now records the wrong serial number at each location. When one of the components is later found to have a performance anomaly in its test history, the investigation cannot determine from the CSA record whether the anomalous component is the one in location A or location B. Resolution requires physical inspection and potentially disassembly. In programmes with many serialised components, serial number confusion during rework is a persistent source of CSA errors that requires disciplined incoming and outgoing inspections at every maintenance operation.</p>
+      </div>
+    </div>
+    <div class="cmr-card">
+      <div class="cmr-header">
+        <span class="cmr-icon">📝</span>
+        <div class="cmr-title">The Retroactive Traveller</div>
+      </div>
+      <div class="cmr-body">
+        <p>Work is performed without contemporaneous traveller sign-off — technicians complete multiple steps and sign them all at the end of the work session, or a week after the work was done. The traveller record no longer reflects what was done; it reflects what the technician remembers or believes was done. This is indistinguishable in the record from correct practice unless the timestamps reveal the anomaly. A traveller that was signed in bulk at the end of a day provides no evidence that each step was actually performed when and as specified. Some programmes have found, during PCA, that traveller entries were backdated — a discovery that invalidates the entire as-built record for the affected hardware.</p>
+      </div>
+    </div>
+    <div class="cmr-card">
+      <div class="cmr-header">
+        <span class="cmr-icon">🏃</span>
+        <div class="cmr-title">The "Obvious" Change</div>
+      </div>
+      <div class="cmr-body">
+        <p>A change that appears so obviously correct, so trivially minor, that the engineer implementing it judges it unnecessary to go through the CCB process. This failure mode is correlated with schedule pressure: when the programme is behind, the CCB process is perceived as a bottleneck, and small changes begin to be implemented without CCB review. Each individual bypass may be technically defensible. Collectively, they erode the integrity of the configuration record and remove the oversight mechanism that catches the occasional change that is not as obviously benign as it appears. The connector substitution story in §3 is a canonical example.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="stat-strip">
+    <div class="stat-cell">
+      <span class="stat-num">&gt;30%</span>
+      <p>Fraction of on-orbit anomaly investigations that are complicated or delayed by an incomplete or inaccurate pre-launch configuration record, in programmes without rigorous CM</p>
+    </div>
+    <div class="stat-cell">
+      <span class="stat-num">100%</span>
+      <p>Of changes to flight hardware and software that should go through CCB — no exceptions for "minor" changes</p>
+    </div>
+    <div class="stat-cell">
+      <span class="stat-num">3–6 mo</span>
+      <p>Typical duration of a thorough Physical Configuration Audit for a large, complex spacecraft — a significant I&T phase milestone in its own right</p>
+    </div>
+    <div class="stat-cell">
+      <span class="stat-num">20+ yr</span>
+      <p>Period for which the as-built record must remain accessible — the full mission life plus archive period, covering all possible anomaly investigations</p>
+    </div>
+  </div>
+
+  <!-- SECTION 10 -->
+  <h2 class="sh" id="s10">10. The As-Built Record — What It Contains and Why It Lasts</h2>
+
+  <p>The <span class="kt">as-built record</span> — the complete, audited documentation of the spacecraft's configuration at the time of launch — is one of the most valuable and most permanent products of the I&T programme. It does not stop being useful at launch. It is the primary reference for anomaly investigation throughout the entire mission lifetime, for mission extension planning, and for the design of future missions that will inherit technology or lessons from this one.</p>
+
+  <p>A complete as-built record contains:</p>
+
+  <ul class="body-list">
+    <li><strong>The final BOM</strong> at every assembly level, with part numbers, serial numbers, drawing revisions, and installation locations — a complete map of what is aboard the spacecraft.</li>
+    <li><strong>The complete ECN log</strong> from the product baseline forward — every change that was made during development and I&T, with its technical rationale, impact assessment, and implementation verification record.</li>
+    <li><strong>The closed verification matrix</strong> — the formal record that every requirement was verified, with references to the specific test reports, analysis documents, or inspection records that provide the closure evidence.</li>
+    <li><strong>All test reports and test data</strong> from the complete I&T programme — unit test reports, environmental test reports, functional test reports, calibration data — indexed and retrievable by configuration item and test date.</li>
+    <li><strong>The closed DR log</strong> — every anomaly observed during I&T, its root cause, corrective action, and formal closure, including the waivers and deviations that were accepted. This is the anomaly history of the spacecraft; it is the first reference when an on-orbit behaviour resembles something that was seen on the ground.</li>
+    <li><strong>Software configuration records</strong> — the specific build identifiers and checksums of every software item loaded aboard the spacecraft at launch, with their V&V records.</li>
+    <li><strong>The PCA and FCA reports</strong> — the formal audit records that confirm the as-built record was reviewed, found consistent, and accepted by the programme's technical authority.</li>
+  </ul>
+
+  <div class="callout green">
+    <div class="callout-label">✓ The As-Built Record in Action — On-Orbit Anomaly Investigation</div>
+    <p>A spacecraft experiences an unexpected thermal anomaly during its second eclipse season — a component temperature that is 8°C higher than the thermal model predicted. The operations team's first call is to the I&T archive: what did this component read during the thermal-vacuum test? What was the thermal model prediction at that time? Were there any DRs against this component during T-V testing? Was there an ECN that changed anything in the thermal path near this component?</p>
+    <p>The answers to all of these questions are in the as-built record — but only if the record was maintained with the discipline the article describes. A programme with a complete, searchable, accurate as-built record answers these questions in hours. A programme without one answers them in weeks, if at all, and may never achieve the diagnostic certainty needed to confidently resolve the anomaly. The thermal anomaly is a hypothetical. The diagnostic process is not — it is the actual process used in every on-orbit anomaly investigation for every mission currently operating.</p>
+  </div>
+
+  <!-- SECTION 11 -->
+  <h2 class="sh" id="s11">11. Configuration Management as Engineering Discipline</h2>
+
+  <p>Configuration management is not a quality assurance function imposed on the engineering team from outside. It is an engineering discipline — a set of practices that the engineering team applies to its own work because those practices are necessary to know what has been built, to trust the test results, and to investigate anomalies effectively. The CM plan is not the quality manager's document; it is the engineering team's plan for maintaining the integrity of the information on which every technical decision depends.</p>
+
+  <p>The early-career engineer who treats CM as paperwork to be completed after the real engineering work is done will, eventually, be the engineer trying to reconstruct the configuration history of a spacecraft component whose anomaly has no apparent explanation — and discovering that the explanation is buried in a change that was made without CCB review, implemented without a traveller entry, and accepted without a verification signature. That engineer will learn, at that moment, what configuration management is for. The purpose of this article is to make that lesson available without the discovery cost.</p>
+
+  <p>Four principles, concisely:</p>
+
+  <ul class="body-list">
+    <li><strong>If it isn't written down, it didn't happen.</strong> The traveller entry, the ECN, the DR, the test report — these are not descriptions of what happened. They are what happened, in the only form that is accessible to anyone who was not physically present and to you yourself six months from now when your memory of the detail has faded. The discipline of documentation is the discipline of creating a reliable institutional memory.</li>
+    <li><strong>Every change goes through the CCB, without exception.</strong> The CCB is not a bureaucratic obstacle between the engineering team and the right answer. It is the mechanism that ensures people with the relevant knowledge — systems engineers, interface owners, safety representatives — have the opportunity to identify impacts that the person making the change may not have considered. Every bypass of the CCB process, however well-intentioned, removes that opportunity.</li>
+    <li><strong>The CM record is only as good as the most recent audit.</strong> A configuration record that has not been audited against the physical hardware is a record of intent, not of fact. Regular audits — not only the formal PCA but interim configuration audits during the I&T campaign — are the mechanism by which the CM record is kept honest. An audit that finds discrepancies is performing its function. An audit that finds none should prompt the question: was this audit thorough enough?</li>
+    <li><strong>The as-built record is a mission-lifetime investment, not a launch-day deliverable.</strong> The effort to create and maintain a complete, accurate, retrievable as-built record is an investment that pays returns throughout the spacecraft's operational life. It is not complete at launch — it is a living record that continues to be extended with on-orbit changes. The programme that maintains this record faithfully provides its operations team with an asset that is, in the long run, as valuable as any instrument aboard the spacecraft.</li>
+  </ul>
+
+
+  <!-- NEXT LESSON -->
+  <div class="next-article">
+    <div class="next-article-content">
+      <div class="next-label">Next Lesson · L04 of 17 · Article 4</div>
+      <div class="next-title">Quality Assurance, Inspection, and Oversight</div>
+      <div class="next-desc">Workmanship standards, inspection types, stop-work authority, and the quality culture that makes all formal QA systems meaningful</div>
+    </div>
+  </div>
+
+  <!-- GLOSSARY -->
+  <h2 class="sh" id="glossary">Key Terms Used in This Article</h2>
+
+  <table class="gloss-table">
+    <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+    <tbody>
+      <tr><td>Allocated Baseline</td><td>The approved decomposition of system-level requirements into subsystem and component specifications. Established at PDR. Changes require CCB review and may require re-analysis across multiple subsystems.</td></tr>
+      <tr><td>As-Built Record</td><td>The complete, audited documentation of the spacecraft's physical and software configuration at the time of launch — including BOM, ECN log, verification matrix, test records, DR log, and software configuration records.</td></tr>
+      <tr><td>Configuration Baseline</td><td>A formally approved description of the spacecraft's configuration at a specific programme milestone, serving as the reference against which subsequent changes are measured and controlled.</td></tr>
+      <tr><td>Configuration Control Board (CCB)</td><td>The formal governance body responsible for evaluating and approving or rejecting all proposed changes to a configuration baseline. Its decisions are programme-binding; no change proceeds without CCB approval.</td></tr>
+      <tr><td>Configuration Status Accounting (CSA)</td><td>The continuously updated record of the spacecraft's current configuration — part numbers, serial numbers, drawing revisions, ECN status, and verification matrix status — for every configuration item.</td></tr>
+      <tr><td>Engineering Change Notice (ECN)</td><td>The formal authorisation to implement an approved change, released by the CCB after ECR approval. Specifies exactly what is to be done, which documents are to be revised, and what verification is required.</td></tr>
+      <tr><td>Engineering Change Request (ECR)</td><td>The formal proposal to change a baselined document or flight hardware configuration item. Initiates the CCB review process. Must include identification of the item being changed, reason for change, change description, and initial impact assessment.</td></tr>
+      <tr><td>Functional Configuration Audit (FCA)</td><td>The formal audit that verifies the spacecraft's performance has been demonstrated to meet every requirement in the functional and allocated baselines — that the verification matrix is complete and all requirements are closed.</td></tr>
+      <tr><td>Functional Baseline</td><td>The highest-level description of what the spacecraft must do — the mission requirements and system-level performance specifications. Established at SRR.</td></tr>
+      <tr><td>Part Number</td><td>The identifier for a design — a specific item with a specific drawing and specification. All hardware built to the same part number must be physically interchangeable. Changes that affect form, fit, or function require a part number change.</td></tr>
+      <tr><td>Physical Configuration Audit (PCA)</td><td>The formal audit that verifies the physical spacecraft matches its documented design — every component corresponds to an approved part number and revision, all serial numbers match the CSA database, and all approved ECNs have been implemented.</td></tr>
+      <tr><td>Product Baseline</td><td>The complete design documentation for the spacecraft as it is to be built. Established at CDR. Every drawing change after CDR requires CCB approval and may require re-verification.</td></tr>
+      <tr><td>Serial Number</td><td>The identifier for a specific physical instance of a part — a specific piece of hardware built to a specific part number. The hook on which the component's entire life history — test data, handling, installation, anomalies — is hung.</td></tr>
+      <tr><td>Traveller</td><td>The document that accompanies a specific piece of hardware through every step of its assembly, test, and inspection history. Signed contemporaneously by the person performing each step. The operational core of the as-built configuration record.</td></tr>
+    </tbody>
+  </table>
+
+</article>
+</div>
+
+
+<!-- ARTICLE NAVIGATOR -->
+<div class="art-nav">
+  <div class="art-nav-inner">
+    <span class="art-nav-label">Go to article</span>
+    <div class="art-nav-select-wrap">
+      <select id="artNav_spacecraft_iat_article11_html" onchange="this.nextElementSibling.disabled = !this.value || this.options[this.selectedIndex].disabled">
+        <option value="">— Select any article in the series —</option>
+        <optgroup label="── Main Series ──────────────────────────">
+      <option value="spacecraft_iat_intro.html">01 · Introduction to Spacecraft I&T</option>
+      <option value="spacecraft_iat_article01.html">02 · I&T Programme Structure</option>
+      <option value="spacecraft_iat_article11.html" selected disabled>▶ 03 · Configuration Management</option>
+      <option value="spacecraft_iat_article16.html">04 · Quality Assurance</option>
+      <option value="spacecraft_iat_article02.html">05 · Cleanrooms & Contamination Control</option>
+      <option value="spacecraft_iat_article10.html">06 · EGSE & Test Harness</option>
+      <option value="spacecraft_iat_article03.html">07 · Functional Testing</option>
+      <option value="spacecraft_iat_article09.html">08 · Flight Software V&V</option>
+      <option value="spacecraft_iat_article14.html">09 · Mass Properties & Structural Loads</option>
+      <option value="spacecraft_iat_article04.html">10 · Vibration, Acoustics & Shock</option>
+      <option value="spacecraft_iat_article05.html">11 · Thermal-Vacuum Testing</option>
+      <option value="spacecraft_iat_article12.html">12 · EMC Testing</option>
+      <option value="spacecraft_iat_article07.html">13 · Instrument Integration & Calibration</option>
+      <option value="spacecraft_iat_article13.html">14 · Propulsion Testing</option>
+      <option value="spacecraft_iat_article06.html">15 · Anomaly Management</option>
+      <option value="spacecraft_iat_article15.html">16 · Launch Vehicle Integration</option>
+      <option value="spacecraft_iat_article08.html">17 · Launch Readiness & Commissioning</option>
+    </optgroup>
+    <optgroup label="── Supplementary ──────────────────────────">
+      <option value="spacecraft_iat_smallsat.html">Supp · Small Satellites</option>
+      <option value="spacecraft_iat_case_studies.html">Supp · Case Studies</option>
+    </optgroup>
+      </select>
+    </div>
+    <button class="art-nav-go" disabled
+            onclick="var s=this.previousElementSibling.querySelector('select'); if(s.value && !s.options[s.selectedIndex].disabled) window.location.href=s.value;">
+      Open →
+    </button>
+  </div>
+</div>
+
+<footer class="article-footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <div class="footer-label">Series</div>
+      <div class="footer-text">Spacecraft Integration &amp; Test<br>Article 11 — Supplementary</div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-label">Topics</div>
+      <div class="tags">
+        <span class="tag">Configuration Management</span>
+        <span class="tag">CCB</span>
+        <span class="tag">As-Built Record</span>
+        <span class="tag">Traveller</span>
+        <span class="tag">PCA</span>
+        <span class="tag">FCA</span>
+        <span class="tag">CSA</span>
+      </div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-label">Audience</div>
+      <div class="footer-text">New and early-career spacecraft engineers and technicians who work with flight hardware and need to understand why the documentation discipline surrounding that work is as important as the technical work itself.</div>
+    </div>
+  </div>
+</footer>

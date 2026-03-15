@@ -1,0 +1,581 @@
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://raw.githubusercontent.com/cchidekel-gif/spacecraft-iat-styles/refs/heads/main/styles.css">
+
+<div class="masthead">
+  <span class="masthead-series">Spacecraft Engineering Series · Integration &amp; Test</span>
+  <span class="masthead-right">Article 17 of 17 · Final</span>
+</div>
+
+<div class="series-nav">
+  <span>Series:</span>
+  <span class="sep">·</span>
+  <span>Intro</span>
+  <span class="sep">·</span>
+  <span>01</span>
+  <span class="sep">·</span>
+  <span>02</span>
+  <span class="sep">·</span>
+  <span>03</span>
+  <span class="sep">·</span>
+  <span>04</span>
+  <span class="sep">·</span>
+  <span>05</span>
+  <span class="sep">·</span>
+  <span>06</span>
+  <span class="sep">·</span>
+  <span>07</span>
+  <span class="sep">·</span>
+  <span>08</span>
+  <span class="sep">·</span>
+  <span>09</span>
+  <span class="sep">·</span>
+  <span>10</span>
+  <span class="sep">·</span>
+  <span>11</span>
+  <span class="sep">·</span>
+  <span>12</span>
+  <span class="sep">·</span>
+  <span>13</span>
+  <span class="sep">·</span>
+  <span>14</span>
+  <span class="sep">·</span>
+  <span>15</span>
+  <span class="sep">·</span>
+  <span class="current">16</span>
+</div>
+
+<!-- HERO — darker, gold-accented for the finale -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Spacecraft Integration &amp; Test · Article 17 of 17 · Final Article</div>
+    <h1>Launch Readiness:<br>The Final Review and<br>What Comes After</h1>
+    <p class="hero-sub">The review boards, the countdown, the separation, and the first critical hours on orbit — where years of integration and test are confronted by the reality of flight.</p>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-bottom:8px;">
+      <div class="hero-final-badge">
+        <span class="hero-final-label">Series Complete</span>
+      </div>
+    </div>
+    <div class="byline" style="margin-top:16px;">
+      <div class="byline-avatar">🛰️</div>
+      <div>
+        <div class="byline-name">Charles Chidekel</div>
+        <div class="byline-title">Integration &amp; Test Guru · 40 Years of I&amp;T Experience</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+<article class="article-body">
+
+  <div class="toc-wrap">
+    <div class="toc-label">In This Article</div>
+    <ul class="toc-list">
+      <li><a href="#s1"><span>1. What Launch Readiness Actually Means</span><span class="toc-num">§1</span></a></li>
+      <li><a href="#s2"><span>2. The Review Hierarchy: From Pre-Ship to Launch</span><span class="toc-num">§2</span></a></li>
+      <li><a href="#s3"><span>3. The Launch Readiness Review — Structure and Inputs</span><span class="toc-num">§3</span></a></li>
+      <li><a href="#s4"><span>4. The Launch Decision: Who Decides, and How</span><span class="toc-num">§4</span></a></li>
+      <li><a href="#s5"><span>5. Launch Site Operations and Final Countdown</span><span class="toc-num">§5</span></a></li>
+      <li><a href="#s6"><span>6. Separation: The Moment Everything Changes</span><span class="toc-num">§6</span></a></li>
+      <li><a href="#s7"><span>7. Initial Acquisition and Early Orbit Operations</span><span class="toc-num">§7</span></a></li>
+      <li><a href="#s8"><span>8. On-Orbit Commissioning — The Final Phase of I&amp;T</span><span class="toc-num">§8</span></a></li>
+      <li><a href="#s9"><span>9. When Things Go Wrong: Anomaly Response on Orbit</span><span class="toc-num">§9</span></a></li>
+      <li><a href="#s10"><span>10. What the I&amp;T Programme Leaves Behind</span><span class="toc-num">§10</span></a></li>
+      <li><a href="#s11"><span>11. A Note to the Engineer Beginning This Work</span><span class="toc-num">§11</span></a></li>
+      <li><a href="#glossary"><span>Key Terms Glossary</span><span class="toc-num">GL</span></a></li>
+    </ul>
+  </div>
+
+  <p class="lead">Everything described in the preceding seven articles — the planning, the cleanroom discipline, the functional test campaigns, the vibration runs, the weeks of thermal-vacuum, the anomaly investigations, the instrument calibration — exists to reach a single moment: the decision that the spacecraft is ready to launch. That decision, and everything that follows it, is the subject of this final article.</p>
+
+  <p>Launch readiness is not a point in time. It is a state of justified confidence — the accumulated engineering judgement that the spacecraft has been tested as thoroughly as the programme's resources allowed, that all known anomalies have been understood and appropriately dispositioned, that the test results support the conclusion that the spacecraft can perform its mission, and that the organisation is prepared to operate it from the moment of separation onward. Building that confidence is the entire purpose of the I&amp;T programme. Formally assessing whether it has been achieved is the purpose of the Launch Readiness Review.</p>
+
+  <div class="pull-quote">
+    <p>"Launch readiness is not the absence of open issues. It is the engineering community's collective judgement that the issues which remain open do not prevent the mission from succeeding — and that judgement must be made explicitly, by accountable people, before the countdown begins."</p>
+  </div>
+
+  <!-- SECTION 1 -->
+  <h2 class="sh" id="s1">1. What Launch Readiness Actually Means</h2>
+
+  <p>A spacecraft is never perfectly ready. No programme, however well-funded and well-managed, produces a spacecraft with zero open anomalies, zero accepted risk, and zero residual uncertainty. The question that the Launch Readiness Review must answer is not "is this spacecraft perfect?" but rather "is this spacecraft ready enough?" — and the engineering and programmatic community must be able to answer that question with specific, objective evidence, not with optimism.</p>
+
+  <p>Launch readiness has several distinct dimensions that must each be assessed and confirmed:</p>
+
+  <ul class="body-list">
+    <li><strong>Technical readiness:</strong> The spacecraft has been tested in accordance with the approved test programme, all requirements have been verified by test, analysis, inspection, or demonstration, all environmental tests have been completed with no unresolved anomalies, and the verification matrix is closed. Open items are understood, formally accepted, and documented with rationale.</li>
+    <li><strong>Configuration readiness:</strong> The spacecraft is in its approved flight configuration. The configuration control record is complete and matches the as-built hardware. All post-test changes have been assessed, approved through the Configuration Control Board, and verified. The flight software build is the authorised flight build and has been loaded and verified on the flight hardware.</li>
+    <li><strong>Operations readiness:</strong> The mission operations centre is staffed, trained, and equipped to operate the spacecraft from separation through commissioning and into normal science operations. The mission operations procedures are approved, rehearsed, and ready for execution. Ground station contacts have been verified. The operations team has conducted integrated simulations that cover the nominal first-contact sequence and the most critical contingency scenarios.</li>
+    <li><strong>Range readiness:</strong> The launch range has confirmed that all range safety requirements are met, the launch vehicle is ready, the launch window is available, and the range safety system is verified. The launch vehicle-to-spacecraft electrical and mechanical interfaces have been verified. The launch vehicle telemetry has been verified to the launch range.</li>
+    <li><strong>Organisation readiness:</strong> The programme's leadership has confirmed that all required approvals have been obtained, all required reviews have been satisfactorily completed, and all required personnel are in place and prepared for their launch-day roles.</li>
+  </ul>
+
+  <!-- SECTION 2 -->
+  <h2 class="sh" id="s2">2. The Review Hierarchy: From Pre-Ship to Launch</h2>
+
+  <p>The Launch Readiness Review is the final and most comprehensive of a sequence of formal reviews that gate the spacecraft's progress through the final phases of the I&amp;T programme. Each review assesses a specific phase of the programme and provides either a formal authorisation to proceed to the next phase or a hold pending resolution of identified issues. Together, they form a progressive narrowing of the scope of outstanding work until only the specific actions required in the final launch countdown remain open.</p>
+
+  <h3 class="ssh">The Final Review Sequence</h3>
+  <ul class="body-list">
+    <li><strong>Pre-Ship Review (PSR) / Pre-Delivery Review:</strong> Conducted at the spacecraft integration facility before the spacecraft is packaged and shipped to the launch site. The PSR confirms that the I&amp;T programme at the integration facility is complete — all environmental testing done, all functional tests passed, all DRs dispositioned, all calibration data collected. The PSR also reviews the shipping plan, the shipping container qualification, and the receiving inspection plan at the launch site. Formal PSR closure authorises the spacecraft to be prepared for shipment.</li>
+    <li><strong>Launch Site Receiving Review:</strong> Conducted after the spacecraft arrives at the launch site, following the receiving inspection and post-ship functional test. Confirms that the spacecraft survived transport in its pre-ship condition. Any new anomalies found during the post-ship functional test — discrepancies from the pre-ship baseline — must be investigated and resolved before launch site operations can begin.</li>
+    <li><strong>Mission Readiness Review (MRR):</strong> A mid-launch-site review that assesses the readiness of all elements of the mission — not just the spacecraft, but the launch vehicle, the ground segment, the operations team, and the mission design. The MRR is the last review at which major concerns can be surfaced and addressed before the final launch readiness assessment. At the MRR, the operations team typically presents its readiness, the launch vehicle team presents theirs, and any outstanding technical issues are reviewed.</li>
+    <li><strong>Launch Readiness Review (LRR):</strong> The final formal review before launch authorisation. Described in detail in Section 3.</li>
+    <li><strong>Launch Commit Criteria (LCC) Review:</strong> Conducted in the final hours before launch — typically T-4 hours to T-2 hours — by the launch director and launch team. Reviews the status of all launch commit criteria: the specific, pre-defined set of conditions that must all be met before the launch director can authorise launch. The LCC review is the last formal go/no-go checkpoint before the automated or manual launch sequence begins.</li>
+  </ul>
+
+  <!-- SECTION 3 -->
+  <h2 class="sh" id="s3">3. The Launch Readiness Review — Structure and Inputs</h2>
+
+  <p>The <span class="kt">Launch Readiness Review (LRR)</span> is the formal engineering and programmatic review that confirms launch readiness and authorises the launch countdown to proceed to its final phase. It is typically conducted three to fourteen days before the targeted launch date — early enough to address any significant findings before launch, but late enough that all pre-launch processing is complete and the spacecraft is in its final launch configuration.</p>
+
+  <div class="lrr-matrix">
+    <div class="lrr-matrix-header">Launch Readiness Review — Principal Input Packages</div>
+    <div class="lrr-rows">
+      <div class="lrr-row header-row">
+        <div class="lrr-icon"></div>
+        <div class="lrr-col hdr">Input Package and Content</div>
+        <div class="lrr-col hdr owner">Responsible Organisation</div>
+      </div>
+      <div class="lrr-row">
+        <div class="lrr-icon">📋</div>
+        <div class="lrr-col"><p><strong>Verification Closure Report.</strong> Confirmation that every requirement in the verification matrix has been formally closed — by test, analysis, inspection, or demonstration. All open requirements identified, with formal rationale for their acceptance.</p></div>
+        <div class="lrr-col owner">Systems Engineering / Chief Engineer</div>
+      </div>
+      <div class="lrr-row">
+        <div class="lrr-icon">🔎</div>
+        <div class="lrr-col"><p><strong>Open DR Summary.</strong> The complete list of all open and waived Discrepancy Reports, with severity category, current status, and the technical rationale for why each open item does not preclude launch. Cat 1 DRs must be zero or explicitly accepted by the independent technical authority.</p></div>
+        <div class="lrr-col owner">Quality Assurance / Systems Engineering</div>
+      </div>
+      <div class="lrr-row">
+        <div class="lrr-icon">⚙</div>
+        <div class="lrr-col"><p><strong>Configuration Status Accounting (CSA).</strong> The complete, audited record of the spacecraft's hardware and software configuration — every component, every serial number, every software version — confirmed to match the as-tested, as-approved flight configuration baseline. All post-test changes assessed and accepted through CCB.</p></div>
+        <div class="lrr-col owner">Configuration Management / Systems Engineering</div>
+      </div>
+      <div class="lrr-row">
+        <div class="lrr-icon">🌡️</div>
+        <div class="lrr-col"><p><strong>Mass Properties Report.</strong> The final as-measured spacecraft mass, centre of mass, and moments of inertia — critical inputs to the launch vehicle trajectory analysis and to the spacecraft attitude control system's inertia estimates. Any deviation from the budgeted values must be assessed for impact on both launch vehicle performance and mission design.</p></div>
+        <div class="lrr-col owner">Mass Properties Engineer / Structures</div>
+      </div>
+      <div class="lrr-row">
+        <div class="lrr-icon">📊</div>
+        <div class="lrr-col"><p><strong>Pre-Launch Functional Test Report.</strong> Results of the final functional test performed at the launch site before final encapsulation. Confirmation that all measured performance parameters are within specification and consistent with the pre-ship baseline. Any deviations documented and dispositioned.</p></div>
+        <div class="lrr-col owner">I&amp;T Lead / Systems Engineering</div>
+      </div>
+      <div class="lrr-row">
+        <div class="lrr-icon">🔋</div>
+        <div class="lrr-col"><p><strong>Power, Mass, and Link Budget Margins.</strong> Final margins across all mission-critical resources: power (at worst-case orbital geometry), mass (vs. launch vehicle capability), and communications link margin (at maximum range, minimum antenna gain). All margins must be positive; any margin below the programme-defined minimum must be formally accepted.</p></div>
+        <div class="lrr-col owner">Power / RF / Systems Engineering</div>
+      </div>
+      <div class="lrr-row">
+        <div class="lrr-icon">📡</div>
+        <div class="lrr-col"><p><strong>Operations Readiness Assessment.</strong> Confirmation from the Mission Operations team that the ground system, operations procedures, staffing, and training are ready to support the launch and early orbit phase. Simulation results documented. Contingency procedures verified and ready. Ground station contacts confirmed.</p></div>
+        <div class="lrr-col owner">Mission Operations Director</div>
+      </div>
+      <div class="lrr-row">
+        <div class="lrr-icon">🚀</div>
+        <div class="lrr-col"><p><strong>Launch Vehicle Readiness.</strong> Confirmation from the launch vehicle provider that the launch vehicle is ready in all respects — vehicle processing complete, trajectory validated with the final spacecraft mass properties, launch window confirmed, range safety system verified, and all launch vehicle anomalies from processing resolved.</p></div>
+        <div class="lrr-col owner">Launch Vehicle Provider</div>
+      </div>
+      <div class="lrr-row">
+        <div class="lrr-icon">🌤</div>
+        <div class="lrr-col"><p><strong>Launch Commit Criteria (LCC) Status.</strong> Presentation of all pre-defined launch commit criteria and their current status. Any LCC that cannot be confirmed green must be either resolved or formally waived by the launch director with documented rationale before launch authorisation is granted.</p></div>
+        <div class="lrr-col owner">Launch Director / Range Safety</div>
+      </div>
+      <div class="lrr-row">
+        <div class="lrr-icon">⚠</div>
+        <div class="lrr-col"><p><strong>Risk Register and Residual Risk Summary.</strong> A summary of all accepted technical, schedule, and programmatic risks, including the mitigation strategies and contingency plans in place for each. The risk register is the honest acknowledgement that launch readiness is not perfection — it is a known and bounded risk posture.</p></div>
+        <div class="lrr-col owner">Chief Engineer / Programme Manager</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4 -->
+  <h2 class="sh" id="s4">4. The Launch Decision: Who Decides, and How</h2>
+
+  <p>The final launch authorisation is made by the <span class="kt">launch director</span> — the person with the formal authority and responsibility to authorise the countdown to proceed to launch. On NASA missions, this authority typically sits with the NASA mission programme manager in consultation with the launch vehicle provider; on commercial missions, the authority is defined by the mission's contractual and regulatory framework. But the formal decision is grounded in the formal outputs of the LRR, in which every responsible engineering and programmatic authority has either confirmed readiness or formally identified and accepted outstanding issues.</p>
+
+  <p>The LRR formally ends with a poll: each board member is asked to give a "go" or "no-go" assessment for launch. "No-go" votes must be accompanied by specific, actionable technical concerns. A "no-go" from any board member does not automatically stop the countdown — but it requires a formal response from the chief engineer or programme manager that specifically addresses the concern and explains why it does not preclude launch. The launch director makes the final call.</p>
+
+  <div class="callout rust">
+    <div class="callout-label">⚠ The Pressure to Say Go</div>
+    <p>The organisational pressure at a Launch Readiness Review is always in the direction of "go." Hundreds of people have worked for years toward this moment. The launch window has been scheduled months in advance. The launch vehicle is fuelled. Schedular and financial consequences of a launch delay are real and visible to everyone in the room.</p>
+    <p>This pressure is the most dangerous aspect of the launch decision process — not because it produces dishonest decisions, but because it creates an environment in which legitimate technical concerns are subtly more difficult to raise and are more easily rationalised away than they would be in a neutral context. The lesson of Challenger, Columbia, and numerous mission failures is consistent: the technical concerns that would have prevented the failure were present and were raised — but they were not given sufficient weight in the face of schedule and institutional pressure.</p>
+    <p>The structural protection against this pressure is the formal "go/no-go" poll, which requires each board member to commit explicitly to a position and to defend any "no-go" with specific technical rationale. A culture in which "no-go" votes are treated as legitimate technical contributions — rather than as career risks or as obstructions to the programme's success — is a culture in which the Launch Readiness Review can perform its intended function.</p>
+  </div>
+
+  <!-- SECTION 5 -->
+  <h2 class="sh" id="s5">5. Launch Site Operations and Final Countdown</h2>
+
+  <p>Launch site operations — the processing of the spacecraft at the launch facility from arrival through encapsulation, integration with the launch vehicle, and the final countdown — is itself a complex engineering activity that constitutes the final phase of the spacecraft I&amp;T programme. It is carried out under the authority of the launch range, subject to range safety requirements that are as stringent as any in the programme.</p>
+
+  <div class="countdown">
+    <div class="countdown-header">Representative Spacecraft Launch Site Processing and Countdown Timeline</div>
+    <div class="cd-rows">
+      <div class="cd-row">
+        <div class="cd-time">L − 6 wk</div>
+        <div class="cd-body">
+          <div class="cd-event">Spacecraft Arrival and Receiving Inspection</div>
+          <div class="cd-desc">Spacecraft arrives at the launch site facility. Receiving inspection performed. Post-ship functional test confirms no damage during transport. Any anomalies investigated and resolved before processing continues.</div>
+        </div>
+      </div>
+      <div class="cd-row">
+        <div class="cd-time">L − 4 wk</div>
+        <div class="cd-body">
+          <div class="cd-event">Propellant Loading and Hazardous Operations</div>
+          <div class="cd-desc">Propellant loading (hydrazine, bipropellant, or cold gas) performed under range safety authority. Pyrotechnic device installation and testing. Battery final charge and conditioning. These are the hazardous operations phase — all non-essential personnel are excluded from the facility during operations with energetic or toxic materials.</div>
+        </div>
+      </div>
+      <div class="cd-row">
+        <div class="cd-time">L − 3 wk</div>
+        <div class="cd-body">
+          <div class="cd-event">Pre-Launch Functional Test and Final Configuration</div>
+          <div class="cd-desc">Comprehensive functional test of all spacecraft systems in their final launch configuration. Flight software version confirmed. All deployable mechanisms in their launch-inhibited states verified. Thermal blanket (MLI) installation completed. Contamination covers maintained on all optical apertures until launch.</div>
+        </div>
+      </div>
+      <div class="cd-row">
+        <div class="cd-time">L − 2 wk</div>
+        <div class="cd-body">
+          <div class="cd-event">Launch Readiness Review</div>
+          <div class="cd-desc">The formal LRR. All input packages presented and reviewed. Go/no-go poll conducted. Launch authorisation granted (or launch hold imposed pending resolution of identified issues). Following a successful LRR, all changes to the spacecraft are controlled by launch commit criteria — no changes are permitted without the formal approval of the launch director.</div>
+        </div>
+      </div>
+      <div class="cd-row">
+        <div class="cd-time">L − 1 wk</div>
+        <div class="cd-body">
+          <div class="cd-event">Spacecraft Encapsulation</div>
+          <div class="cd-desc">The spacecraft is installed within the payload fairing. This is the last access to the spacecraft. After fairing closure, no further physical access to the spacecraft is possible. Final contamination survey confirms all optical apertures are clean and covered. Final visual inspection confirms all flight hardware is correctly installed and no tools or foreign objects remain.</div>
+        </div>
+      </div>
+      <div class="cd-row">
+        <div class="cd-time">L − 3 days</div>
+        <div class="cd-body">
+          <div class="cd-event">Integrated Vehicle Rollout</div>
+          <div class="cd-desc">The encapsulated spacecraft is integrated with the launch vehicle. Vehicle rollout to the launch pad. Final electrical interface verifications between spacecraft and launch vehicle through the umbilical connections. Launch vehicle telemetry verified to launch range. Spacecraft power supplied from ground through umbilical.</div>
+        </div>
+      </div>
+      <div class="cd-row">
+        <div class="cd-time">L − 4 hr</div>
+        <div class="cd-body">
+          <div class="cd-event">Launch Commit Criteria Review / Terminal Count</div>
+          <div class="cd-desc">Final review of all launch commit criteria. Weather assessment. Launch vehicle fuelling completed. Spacecraft transitions to internal battery power. Range safety system armed. All non-essential personnel evacuated from the launch pad. The launch director authorises the terminal countdown.</div>
+        </div>
+      </div>
+      <div class="cd-row launch">
+        <div class="cd-time">T − 0</div>
+        <div class="cd-body">
+          <div class="cd-event">Launch</div>
+          <div class="cd-desc">Engine ignition. Hold-down release. Liftoff. The spacecraft enters the environment that the entire I&amp;T programme was designed to prepare it for.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 6 -->
+  <h2 class="sh" id="s6">6. Separation: The Moment Everything Changes</h2>
+
+  <p>Spacecraft separation — the pyrotechnic event that physically disconnects the spacecraft from the launch vehicle and sends it into its own orbit — is the most consequential single moment in the spacecraft's life. In the seconds before separation, the spacecraft is a passive payload, supplied with power and communications through the launch vehicle umbilical, mechanically constrained by the separation system, with all deployable mechanisms held in their launch-inhibited states. In the seconds after separation, it is an autonomous space vehicle that must immediately begin generating its own power, establish its own attitude control, and begin communicating with the ground.</p>
+
+  <p>The spacecraft's autonomous <span class="kt">initial acquisition sequence</span> — the software-driven sequence of actions that the spacecraft executes in the first minutes after separation without any command from the ground — is the most thoroughly verified and most conservatively designed software sequence in the entire flight software. It must:</p>
+
+  <ul class="body-list">
+    <li>Detect separation from the launch vehicle (typically through a separation switch or an accelerometer threshold) and begin the post-separation sequence</li>
+    <li>Deploy any appendages whose deployment is required before power-positive operation — typically solar arrays, and sometimes antennas</li>
+    <li>Acquire the Sun to establish a power-positive attitude using coarse Sun sensors and rate-damping control</li>
+    <li>Establish the primary communications link to the ground — transmitting a beacon or a health telemetry downlink that the ground stations can acquire</li>
+    <li>Transition to a safe, power-positive, ground-commandable state and await the first ground contact</li>
+  </ul>
+
+  <p>The initial acquisition sequence is designed to be robust to all reasonably anticipated anomalies: attitude sensor failures, software exceptions, partial solar array deployments. The sequence executes from a protected, read-only memory area that cannot be corrupted by software anomalies. It is the last resort — the behaviour the spacecraft falls back to if everything else goes wrong. And it must work, the first time, without testing in the actual flight environment.</p>
+
+  <div class="callout steel">
+    <div class="callout-label">⚙ The First Contact Simulation</div>
+    <p>Every operations team runs a full simulation of the initial acquisition sequence — the launch, the separation, the autonomous deployment, the Sun acquisition, and the first ground station contact — as a complete integrated exercise in the mission operations centre before launch. These simulations use the highest-fidelity spacecraft simulator available and inject a range of anomaly scenarios: late separation, partial solar array deployment, loss of a ground station contact.</p>
+    <p>The purpose is not only to train the operators. It is to verify that the operations procedures are correct and complete, that the ground system can process and display the spacecraft telemetry in the correct format, and that the team's anomaly response procedures are understood and executable under the time pressure of real-time operations. A simulation that reveals a gap in the operations procedures before launch is one of the most valuable test activities in the programme. A gap discovered during actual initial acquisition, with a real spacecraft over the horizon, is infinitely more expensive to address.</p>
+  </div>
+
+  <!-- SECTION 7 -->
+  <h2 class="sh" id="s7">7. Initial Acquisition and Early Orbit Operations</h2>
+
+  <p>The first contact between the ground and the newly separated spacecraft — typically 20 to 90 minutes after launch, depending on the orbit and the ground station network geometry — is the moment the operations team has been preparing for throughout the I&amp;T programme. What the ground sees in the first telemetry frame tells the team whether the separation, solar array deployment, and Sun acquisition went as designed.</p>
+
+  <p>The first telemetry frame is parsed against predictions with extreme care. Every value is compared to its expected range — the range derived from the pre-launch functional test baseline and adjusted for the expected changes in the flight environment. Out-of-range values are immediately flagged for assessment. The assessment question is always the same: is this a genuine anomaly, or is it an expected consequence of the transition to flight that is within the predicted range?</p>
+
+  <div class="first-hours-grid">
+    <div class="fh-card">
+      <div class="fh-card-header">
+        <span class="fh-icon">⚡</span>
+        <div>
+          <div class="fh-title">Power System</div>
+          <div class="fh-sub">The first check</div>
+        </div>
+      </div>
+      <div class="fh-body">
+        <p>Battery state of charge, solar array output voltage and current, bus voltage regulation — these are the first values examined after first contact. A spacecraft that is not power-positive within the first orbit is in immediate danger. The solar array deployment state is confirmed by mechanical switches or by comparing measured solar array current to the expected current at the spacecraft's Sun angle and orbital position.</p>
+      </div>
+    </div>
+    <div class="fh-card">
+      <div class="fh-card-header">
+        <span class="fh-icon">🧭</span>
+        <div>
+          <div class="fh-title">Attitude and Pointing</div>
+          <div class="fh-sub">Sun acquisition confirmed</div>
+        </div>
+      </div>
+      <div class="fh-body">
+        <p>Attitude sensor outputs — coarse Sun sensors, magnetometers, star trackers — are reviewed to confirm that the spacecraft has achieved its planned initial Sun-pointing attitude. The attitude control system's initial rate-damping performance is assessed. Any unexpected attitude state — spin rate that is too high or too low, Sun pointing that is off by more than expected — triggers immediate assessment of whether the fault protection response is appropriate.</p>
+      </div>
+    </div>
+    <div class="fh-card">
+      <div class="fh-card-header">
+        <span class="fh-icon">🌡️</span>
+        <div>
+          <div class="fh-title">Thermal State</div>
+          <div class="fh-sub">First thermal check</div>
+        </div>
+      </div>
+      <div class="fh-body">
+        <p>Component temperatures in the first orbit are compared to the thermal model predictions for the initial Sun-pointing attitude and orbital geometry. The first eclipse transition — the first time the spacecraft passes through Earth's shadow — is closely monitored to verify that temperatures do not fall below cold survival limits. Heater circuits are confirmed active. Any component significantly above or below its predicted temperature is assessed against the thermal model.</p>
+      </div>
+    </div>
+    <div class="fh-card">
+      <div class="fh-card-header">
+        <span class="fh-icon">📡</span>
+        <div>
+          <div class="fh-title">Communications</div>
+          <div class="fh-sub">Link performance confirmed</div>
+        </div>
+      </div>
+      <div class="fh-body">
+        <p>The RF link is assessed: measured signal-to-noise ratio at the ground station is compared to the link budget prediction. Uplink commanding is verified by sending a benign command and confirming receipt and execution. Transponder performance — frequency, power output, ranging performance — is assessed. The first opportunity to command the spacecraft to a non-safe-mode configuration is taken only after the link has been confirmed adequate and the spacecraft's health has been verified.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 8 -->
+  <h2 class="sh" id="s8">8. On-Orbit Commissioning — The Final Phase of I&amp;T</h2>
+
+  <p>On-orbit commissioning is the phase of spacecraft operations that begins with separation and ends when the spacecraft has been verified in the flight environment as ready to begin its science mission. It is, in engineering terms, the final phase of the I&amp;T programme — the phase in which the flight environment itself provides the test environment that no ground facility could fully replicate.</p>
+
+  <table class="comm-table">
+    <thead>
+      <tr>
+        <th>Commissioning Phase</th>
+        <th>Activities and Objectives</th>
+        <th>Duration / Key Dependencies</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Launch and Early Orbit Phase (LEOP)</td>
+        <td>Initial acquisition; solar array deployment and power system stabilisation; attitude acquisition and transition to normal Sun-pointing; initial health assessment of all subsystems; first communications link verification; transition from safe mode to normal mode.</td>
+        <td>First 24–72 hours after launch. Intensive continuous ground coverage required. All anomalies assessed in real time. No non-essential activities until the spacecraft is in stable, power-positive, communications-capable state.</td>
+      </tr>
+      <tr>
+        <td>Deployable Mechanism Deployment</td>
+        <td>Sequential deployment of all stowed appendages: antennas, booms, scientific instrument aperture covers, and any deployable structural elements. Each deployment confirmed by telemetry before the next proceeds. Deployment anomalies assessed and resolved before continuation.</td>
+        <td>Typically first week. Sequence and timing driven by power budget, communications constraints, and fault protection logic. For complex deploying observatories (JWST), this phase alone can last weeks.</td>
+      </tr>
+      <tr>
+        <td>Subsystem Checkout and Performance Verification</td>
+        <td>Systematic checkout of each spacecraft subsystem — attitude control, propulsion, communications, command and data handling, power, thermal — against the pre-launch functional test baseline. The flight environment performance is compared to predictions. Any deviation from pre-launch baseline is investigated.</td>
+        <td>First two to four weeks. Each subsystem checkout must be completed and assessed before instruments begin operation, to ensure that the bus can support instrument operations.</td>
+      </tr>
+      <tr>
+        <td>Instrument Initial Activation</td>
+        <td>Science instruments are powered on for the first time in the flight environment. Initial health check performed. Outgassing bake-out period observed for optical instruments before aperture covers are opened. Detector noise and dark current characterised in the flight radiation environment before first light observations.</td>
+        <td>Typically weeks three to eight, depending on instrument type. Cryogenic instruments require cooldown time. Each instrument activated sequentially to limit power demand and allow anomaly isolation.</td>
+      </tr>
+      <tr>
+        <td>First Light and Initial Calibration</td>
+        <td>First science observations — first light — demonstrate that the instrument can acquire and detect astronomical sources. Initial calibration observations of standard stars or solar system bodies begin the process of characterising the instrument's on-orbit performance against the ground calibration baseline.</td>
+        <td>Typically weeks four through twelve. First light is a mission milestone and typically generates significant public interest. Initial calibration data is used to update the calibration database before normal science operations begin.</td>
+      </tr>
+      <tr>
+        <td>Orbit Manoeuvres and Attitude Verification</td>
+        <td>For missions requiring orbit raising or transfer manoeuvres: propulsion system checkout, attitude control verification in thrust configuration, and execution of planned manoeuvres. Mission orbit achieved and confirmed. Final attitude control system tuning in flight.</td>
+        <td>Mission-dependent. GEO missions typically require two to four weeks for geostationary transfer orbit operations. Deep-space missions may require months for cruise and orbit insertion phases.</td>
+      </tr>
+      <tr>
+        <td>Science Mission Readiness Review</td>
+        <td>A formal review that confirms all subsystems and instruments are performing within specification in the flight environment, all commissioning anomalies have been resolved or formally accepted, the on-orbit calibration baseline has been established, and the mission is ready to begin normal science operations.</td>
+        <td>Typically one to six months after launch, depending on mission complexity. The Science Mission Readiness Review is the formal end of commissioning and the beginning of the prime science mission.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="stat-strip">
+    <div class="stat-cell">
+      <span class="stat-num">1–6 mo</span>
+      <p>Typical duration of on-orbit commissioning for a medium-to-large science mission</p>
+    </div>
+    <div class="stat-cell">
+      <span class="stat-num">T+20 min</span>
+      <p>Typical time of first ground contact after launch for a low-Earth-orbit spacecraft</p>
+    </div>
+    <div class="stat-cell">
+      <span class="stat-num">~344</span>
+      <p>Number of single-point failures that were identified and mitigated in JWST's I&amp;T programme before launch</p>
+    </div>
+    <div class="stat-cell">
+      <span class="stat-num">6 mo</span>
+      <p>Duration of JWST's commissioning phase, ending with the release of first science images in July 2022</p>
+    </div>
+  </div>
+
+  <!-- SECTION 9 -->
+  <h2 class="sh" id="s9">9. When Things Go Wrong: Anomaly Response on Orbit</h2>
+
+  <p>Even the most thoroughly tested spacecraft will experience anomalies on orbit. The question is not whether anomalies will occur, but whether the programme has prepared adequately to diagnose and respond to them. On-orbit anomaly response draws directly on the engineering knowledge accumulated during the I&amp;T programme — the test reports, the DR database, the characterisation data, the thermal model, the structural model — and on the calibration of the engineering team's intuition about the spacecraft's behaviour built through years of testing.</p>
+
+  <ul class="body-list">
+    <li><strong>Safe mode entries:</strong> The most common early mission anomaly is an unplanned safe mode entry — a transition to the spacecraft's minimum-risk autonomous configuration, triggered by the fault protection logic detecting an out-of-limit condition. Safe mode entries must be investigated to root cause before the spacecraft can be returned to normal operations. The investigation uses the same disciplines as the DR investigation process: what was the triggering condition, is it genuine or a false positive, what is the corrective action, and is the spacecraft safe to return to normal mode?</li>
+    <li><strong>Telemetry anomalies:</strong> On-orbit telemetry values that differ from pre-launch predictions — temperatures higher than modelled, currents outside expected ranges, attitude sensor outputs that show an unexpected offset — must be assessed against the pre-launch characterisation data. The question is always: is this a genuine spacecraft anomaly, or is it an expected consequence of the flight environment that the ground test could not perfectly replicate? The pre-launch test data is the baseline against which this assessment is made.</li>
+    <li><strong>Mechanism deployment anomalies:</strong> Deployment anomalies — mechanisms that do not deploy fully, that deploy with unexpected signatures, or that produce anomalous telemetry during deployment — are among the most critical early mission anomalies because they are often irreversible. The response options are constrained by what is physically accessible from the ground: commanding retry attempts, commanding alternative deployment modes, or accepting a partial deployment and assessing its impact on mission capability.</li>
+    <li><strong>Software anomalies:</strong> Flight software anomalies that were not detected in the ground test programme can manifest on orbit due to timing conditions, hardware interactions, or environmental conditions that the test programme did not fully replicate. Software patches — flight software updates uploaded to the spacecraft — are the primary corrective tool for software anomalies, but they require careful validation before uplink to ensure the patch does not introduce new anomalies in attempting to correct the original one.</li>
+  </ul>
+
+  <div class="callout green">
+    <div class="callout-label">✓ The Value of the Test Record</div>
+    <p>In the weeks and months after launch, when the operations team is investigating on-orbit anomalies and validating on-orbit performance, the engineering team's most valuable resource is the complete, well-organised test record from the I&amp;T programme. Every anomaly investigation on orbit begins with the same question: what did the hardware do on the ground under similar conditions?</p>
+    <p>Programmes that maintained rigorous test records — that documented not only pass/fail results but the actual measured values, the anomaly history, the thermal model correlation data, and the calibration characterisation — can answer that question quickly and with confidence. Programmes that did not may find themselves unable to determine, from the ground, whether an on-orbit reading represents a new flight anomaly or is simply consistent with the hardware's known ground behaviour that was never formally documented.</p>
+    <p>The test record is not bureaucratic overhead. It is the engineering memory of the spacecraft. It begins to pay for itself the moment something unexpected happens on orbit — and something unexpected always happens.</p>
+  </div>
+
+  <!-- SECTION 10 -->
+  <h2 class="sh" id="s10">10. What the I&amp;T Programme Leaves Behind</h2>
+
+  <p>When the spacecraft separates from the launch vehicle and the I&amp;T team's direct responsibility for the hardware ends, what remains is not simply a working spacecraft in orbit. What remains is the engineering legacy of the programme — the sum of the knowledge created during the years of building and testing, encoded in the documentation, the test records, the anomaly database, and the institutional memory of the team.</p>
+
+  <p>This legacy has several tangible forms:</p>
+
+  <ul class="body-list">
+    <li><strong>The verification matrix:</strong> The complete, closed record of every requirement verification — the engineering argument that the spacecraft meets its requirements. This document is the programme's formal claim that the spacecraft is fit for its mission, and it supports every future decision about mission extensions, capability changes, and anomaly assessment.</li>
+    <li><strong>The test database:</strong> Every test report, every data record, every anomaly report from the entire I&amp;T campaign. This is the primary reference for on-orbit anomaly investigation, and it is the foundation of the thermal, structural, and performance models that will be used throughout the mission lifetime.</li>
+    <li><strong>The calibration database:</strong> For science missions, the instrument calibration data — the traceability records, the characterisation data, the calibration model — is the foundation of every science result the mission will produce. Without it, the science data cannot be converted to reliable physical measurements.</li>
+    <li><strong>The anomaly record:</strong> The complete DR database, including all closed and waived DRs, is a permanent record of every problem encountered and resolved during development and testing. It is the corporate memory that prevents future programmes from rediscovering the same failure modes — provided it is kept accessible and is actively consulted when subsequent programmes are designed.</li>
+    <li><strong>The human knowledge:</strong> The engineers who built and tested the spacecraft carry knowledge that cannot be fully captured in documentation — intuitions about the hardware's behaviour, understanding of its anomaly history, familiarity with its quirks and sensitivities. This knowledge is the most perishable legacy of the programme, and it is the one most at risk as people move to new programmes, retire, or leave the field. Retaining the core engineering team through the early mission phase — when that knowledge is most needed — is one of the most important planning decisions any programme makes.</li>
+  </ul>
+
+  <!-- SECTION 11 -->
+  <h2 class="sh" id="s11">11. A Note to the Engineer Beginning This Work</h2>
+
+  <p>If you are new to spacecraft I&amp;T — if you are reading this series as an early-career engineer or as a student preparing to enter this field — I want to leave you with a few observations from four decades in this work that will not appear in any standard text.</p>
+
+  <p><strong>The most important thing you will do is write things down.</strong> Every observation, every anomaly, every unexpected reading, every concern — documented. Not in the margin of a notebook that will be lost when you move to the next assignment, but in the programme's formal documentation system. The culture that says "oh, that's just this hardware being quirky, no need to write it up" is the culture that produces, eventually, an accident investigation board reading through years of test records trying to find the first time anyone noticed what ultimately became the failure mode. You will notice things. Write them down.</p>
+
+  <p><strong>The schedule is not your responsibility to protect at the cost of the mission.</strong> You will encounter, repeatedly, situations in which raising a technical concern means holding up the schedule. You will feel the weight of that. You will know that a hundred people are waiting for your team to finish. You will understand the cost of a delay. Raise the concern anyway. If it turns out to be nothing, you will have a slightly awkward conversation and the schedule will proceed. If it turns out to be something, you will have protected the mission. The asymmetry is absolute.</p>
+
+  <p><strong>Respect the hardware.</strong> You are working with objects that represent billions of dollars of investment and years of effort by hundreds of people. More importantly, you are working with objects that many people will depend on — for their science, for their communications, for their understanding of the world. Treat every operation on flight hardware with the deliberateness and care that this warrants. The cleanroom discipline, the ESD protocols, the traveller steps, the two-person verification — these exist because experience has shown, again and again, that inattention to hardware causes damage that schedule cannot fix.</p>
+
+  <p><strong>The spacecraft is your colleague, not your adversary.</strong> It will not always behave as you expect. It will surprise you, frustrate you, and occasionally delight you with an anomaly that teaches you something new about physics or engineering or the limits of your models. Approach every anomaly with genuine curiosity about what the hardware is trying to tell you. The spacecraft is always right; if the data disagrees with the model, the data is right. Your job is to figure out why.</p>
+
+  <div class="pull-quote">
+    <p>"We test so that we can fly. We fly so that we can learn. And we document everything we learn so that the next programme is slightly less likely to repeat the mistakes of this one. This is how the field advances — not in giant leaps, but in the accumulated lessons of a thousand test campaigns, each one leaving behind a slightly better-understood universe."</p>
+  </div>
+
+  <!-- SERIES COMPLETE -->
+  <div class="series-complete">
+    <div class="sc-inner">
+      <div class="sc-eyebrow">Series Complete — Spacecraft Integration &amp; Test</div>
+      <div class="sc-title">Eight Articles on How Spacecraft Are Built and Proven</div>
+      <div class="sc-body">From the I&amp;T Plan to the Launch Readiness Review — the complete arc of the spacecraft I&amp;T programme, written from the perspective of four decades on the test floor.</div>
+      <div class="sc-series-list">
+        <div class="sc-article"><span class="sc-art-num">Intro</span><span class="sc-art-title">The Art of Building Things That Cannot Fail</span></div>
+        <div class="sc-article"><span class="sc-art-num">01</span><span class="sc-art-title">The I&amp;T Plan and Programme Architecture</span></div>
+        <div class="sc-article"><span class="sc-art-num">02</span><span class="sc-art-title">The Cleanroom: Environment, Protocol, and Practice</span></div>
+        <div class="sc-article"><span class="sc-art-num">03</span><span class="sc-art-title">Functional Testing and the Test-as-You-Fly Principle</span></div>
+        <div class="sc-article"><span class="sc-art-num">04</span><span class="sc-art-title">Environmental Testing: Vibration, Acoustics, and Shock</span></div>
+        <div class="sc-article"><span class="sc-art-num">05</span><span class="sc-art-title">Thermal-Vacuum Testing</span></div>
+        <div class="sc-article"><span class="sc-art-num">06</span><span class="sc-art-title">Anomalies, Discrepancies, and Problem Resolution</span></div>
+        <div class="sc-article"><span class="sc-art-num">07</span><span class="sc-art-title">Science Instrument Integration and Calibration</span></div>
+        <div class="sc-article"><span class="sc-art-num">08</span><span class="sc-art-title">Launch Readiness: The Final Review and What Comes After</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GLOSSARY -->
+  <h2 class="sh" id="glossary">Key Terms Used in This Article</h2>
+
+  <table class="gloss-table">
+    <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+    <tbody>
+      <tr><td>Configuration Status Accounting (CSA)</td><td>The complete, audited record of the spacecraft's hardware and software configuration as delivered for launch — every component, serial number, and software version — confirming it matches the approved flight configuration baseline.</td></tr>
+      <tr><td>Initial Acquisition Sequence</td><td>The autonomous, software-driven sequence of actions the spacecraft executes in the first minutes after separation — without ground commands — to achieve a stable, power-positive, communicating state. Executed from protected read-only memory.</td></tr>
+      <tr><td>Launch Commit Criteria (LCC)</td><td>The pre-defined, specific set of conditions that must all be met before the launch director can authorise launch. Reviewed formally at T-4 hours and continuously monitored through the terminal countdown.</td></tr>
+      <tr><td>Launch Director</td><td>The person with formal authority and responsibility to authorise the launch countdown to proceed to launch. Makes the final go/no-go launch decision based on the LRR outputs and the terminal countdown LCC review.</td></tr>
+      <tr><td>Launch Readiness Review (LRR)</td><td>The final formal engineering and programmatic review that confirms launch readiness and authorises the launch countdown to proceed to its final phase. Typically conducted one to two weeks before launch. Concludes with a formal go/no-go poll.</td></tr>
+      <tr><td>LEOP (Launch and Early Orbit Phase)</td><td>The first 24–72 hours of flight, from launch through initial acquisition, solar array deployment, Sun acquisition, and transition to stable normal operations. The most critical and intensively staffed phase of mission operations.</td></tr>
+      <tr><td>Mission Readiness Review (MRR)</td><td>A formal review conducted at the launch site, preceding the LRR, that assesses the readiness of all mission elements — spacecraft, launch vehicle, ground segment, and operations team. The last review at which major concerns can be surfaced before the final launch readiness assessment.</td></tr>
+      <tr><td>Pre-Ship Review (PSR)</td><td>A formal review conducted at the spacecraft integration facility confirming that all I&amp;T at that facility is complete and authorising the spacecraft to be prepared for shipment to the launch site.</td></tr>
+      <tr><td>Safe Mode</td><td>The spacecraft's minimum-risk autonomous configuration — typically Sun-pointing, minimum power consumption, maximum fault protection active — entered autonomously in response to detected fault conditions. Requires ground assessment and explicit commanding to exit.</td></tr>
+      <tr><td>Science Mission Readiness Review</td><td>The formal review at the end of on-orbit commissioning that confirms all systems are performing within specification in the flight environment and authorises the transition from commissioning to the prime science mission.</td></tr>
+      <tr><td>Separation</td><td>The pyrotechnic event that physically disconnects the spacecraft from the launch vehicle. The moment of spacecraft separation is the transition from ground-controlled payload to autonomous space vehicle.</td></tr>
+    </tbody>
+  </table>
+
+</article>
+</div>
+
+
+<!-- ARTICLE NAVIGATOR -->
+<div class="art-nav">
+  <div class="art-nav-inner">
+    <span class="art-nav-label">Go to article</span>
+    <div class="art-nav-select-wrap">
+      <select id="artNav_spacecraft_iat_article08_html" onchange="this.nextElementSibling.disabled = !this.value || this.options[this.selectedIndex].disabled">
+        <option value="">— Select any article in the series —</option>
+        <optgroup label="── Main Series ──────────────────────────">
+      <option value="spacecraft_iat_intro.html">01 · Introduction to Spacecraft I&T</option>
+      <option value="spacecraft_iat_article01.html">02 · I&T Programme Structure</option>
+      <option value="spacecraft_iat_article11.html">03 · Configuration Management</option>
+      <option value="spacecraft_iat_article16.html">04 · Quality Assurance</option>
+      <option value="spacecraft_iat_article02.html">05 · Cleanrooms & Contamination Control</option>
+      <option value="spacecraft_iat_article10.html">06 · EGSE & Test Harness</option>
+      <option value="spacecraft_iat_article03.html">07 · Functional Testing</option>
+      <option value="spacecraft_iat_article09.html">08 · Flight Software V&V</option>
+      <option value="spacecraft_iat_article14.html">09 · Mass Properties & Structural Loads</option>
+      <option value="spacecraft_iat_article04.html">10 · Vibration, Acoustics & Shock</option>
+      <option value="spacecraft_iat_article05.html">11 · Thermal-Vacuum Testing</option>
+      <option value="spacecraft_iat_article12.html">12 · EMC Testing</option>
+      <option value="spacecraft_iat_article07.html">13 · Instrument Integration & Calibration</option>
+      <option value="spacecraft_iat_article13.html">14 · Propulsion Testing</option>
+      <option value="spacecraft_iat_article06.html">15 · Anomaly Management</option>
+      <option value="spacecraft_iat_article15.html">16 · Launch Vehicle Integration</option>
+      <option value="spacecraft_iat_article08.html" selected disabled>▶ 17 · Launch Readiness & Commissioning</option>
+    </optgroup>
+    <optgroup label="── Supplementary ──────────────────────────">
+      <option value="spacecraft_iat_smallsat.html">Supp · Small Satellites</option>
+      <option value="spacecraft_iat_case_studies.html">Supp · Case Studies</option>
+    </optgroup>
+      </select>
+    </div>
+    <button class="art-nav-go" disabled
+            onclick="var s=this.previousElementSibling.querySelector('select'); if(s.value && !s.options[s.selectedIndex].disabled) window.location.href=s.value;">
+      Open →
+    </button>
+  </div>
+</div>
+
+<footer class="article-footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <div class="footer-label">Series</div>
+      <div class="footer-text">Spacecraft Integration &amp; Test<br>Article 08 of 08 — Series Complete</div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-label">Topics</div>
+      <div class="tags">
+        <span class="tag">Launch Readiness</span>
+        <span class="tag">LRR</span>
+        <span class="tag">Commissioning</span>
+        <span class="tag">Separation</span>
+        <span class="tag">LEOP</span>
+        <span class="tag">Go/No-Go</span>
+      </div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-label">Audience</div>
+      <div class="footer-text">New and early-career spacecraft engineers, aerospace students, and anyone with a serious interest in how spacecraft are built and tested.</div>
+    </div>
+  </div>
+</footer>

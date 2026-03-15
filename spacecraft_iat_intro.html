@@ -1,0 +1,416 @@
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://raw.githubusercontent.com/cchidekel-gif/spacecraft-iat-styles/refs/heads/main/styles.css">
+
+<div class="masthead">
+  <span class="masthead-series">Spacecraft Engineering Series · Integration &amp; Test</span>
+  <span class="masthead-right">Article 01 of 17 · Introduction</span>
+</div>
+
+
+<div class="series-nav">
+  <span>Series:</span>
+  <span class="sep">·</span>
+  <span class="current">Intro</span>
+  <span class="sep">·</span>
+  <span>01</span>
+  <span class="sep">·</span>
+  <span>02</span>
+  <span class="sep">·</span>
+  <span>03</span>
+  <span class="sep">·</span>
+  <span>04</span>
+  <span class="sep">·</span>
+  <span>05</span>
+  <span class="sep">·</span>
+  <span>06</span>
+  <span class="sep">·</span>
+  <span>07</span>
+  <span class="sep">·</span>
+  <span>08</span>
+  <span class="sep">·</span>
+  <span>09</span>
+  <span class="sep">·</span>
+  <span>10</span>
+  <span class="sep">·</span>
+  <span>11</span>
+  <span class="sep">·</span>
+  <span>12</span>
+  <span class="sep">·</span>
+  <span>13</span>
+  <span class="sep">·</span>
+  <span>14</span>
+  <span class="sep">·</span>
+  <span>15</span>
+  <span class="sep">·</span>
+  <span>16</span>
+</div>
+<div class="hero">
+  <div class="hero-eyebrow">Spacecraft Integration &amp; Test · Article 01 of 17</div>
+  <h1>The Art of Building Things<br>That <em>Cannot</em> Fail</h1>
+  <p class="hero-sub">An introduction to spacecraft integration and test — why it matters, how it works, and what happens when it doesn't.</p>
+  <div class="byline">
+    <div class="byline-avatar">🛰️</div>
+    <div class="byline-text">
+      <div class="byline-name">Charles Chidekel</div>
+      <div class="byline-title">Integration &amp; Test Guru · 40 Years of I&amp;T Experience</div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+<article class="article-body">
+
+<p>
+  In the autumn of 1998, the Mars Climate Orbiter approached its destination after a nine-month journey through interplanetary space. The mission controllers watched their displays with quiet anticipation. Then, in the span of a few minutes, a $327 million spacecraft and years of human effort simply ceased to exist — not because of some unknowable cosmic hazard, but because one engineering team had used metric units while another had used imperial ones. The two systems were never properly integrated and tested together before launch.
+</p>
+
+<p>
+  I have spent four decades in the business of making sure that kind of thing doesn't happen. I've integrated tiny science instruments the size of a shoebox and entire observatories the size of a city bus. I've worked on spacecraft that have gone to the Moon, to Mars, to the outer planets, and into the deep cold of Earth orbit. In all that time, I have never once seen a spacecraft fail because the engineering was too careful. I have seen spacecraft fail — and programs nearly fail — because the integration and test process was not treated with the seriousness it deserved.
+</p>
+
+<p>
+  This series of articles is written for new engineers, for students, and for anyone curious about what really happens between the moment a spacecraft is designed on paper and the moment it launches on a rocket. Integration and Test — universally abbreviated <span class="key-term">I&amp;T</span> in the industry — is one of the most demanding, intellectually rigorous, and deeply consequential fields in all of engineering. It is also, frankly, one of the least taught and least understood.
+</p>
+
+<div class="pull-quote">
+  <p>"You can design the most beautiful spacecraft in the history of space exploration. But if you can't prove it works — in the right environment, with all its parts talking to each other — it might as well be a drawing."</p>
+</div>
+
+<h2 class="section-heading">What Is Integration and Test?</h2>
+
+<p>
+  At its simplest, spacecraft Integration and Test is the process by which individual components, subsystems, and instruments are assembled into a complete spacecraft and then subjected to a rigorous program of testing to verify that the assembled system will survive launch and perform its mission in space. But that description barely scratches the surface.
+</p>
+
+<p>
+  Consider what a spacecraft actually is. It is a collection of thousands — sometimes tens of thousands — of individual parts: structural panels, electronics boxes, solar arrays, propulsion components, scientific instruments, harnesses carrying hundreds of individual wire connections, software systems that must all communicate precisely. Each of these parts was designed by different engineers, often at different companies, sometimes in different countries, over a span of years. Each was tested in isolation. The question that I&amp;T must answer is devastatingly simple and brutally hard: <strong>do they all work together, as a system, the way they need to?</strong>
+</p>
+
+<div class="mission-graphic">
+  <div class="mission-icon">🔬</div>
+  <div class="mission-content">
+    <strong>The Central Problem of Spacecraft I&amp;T</strong>
+    <p>A spacecraft will operate in an environment that cannot be fully recreated on the ground — vacuum, extreme temperatures, microgravity, radiation. Yet it must be proven flight-worthy on Earth, before it ever leaves the ground. Every I&amp;T program is fundamentally an exercise in confidence-building under constraint.</p>
+  </div>
+</div>
+
+<p>
+  The <span class="key-term">integration</span> part of I&amp;T refers to the physical and electrical assembly of the spacecraft — connecting subsystems, routing harnesses, mating interfaces, loading and configuring flight software. It is painstaking mechanical and electrical work, performed in some of the cleanest rooms ever built, by technicians wearing full-body bunny suits to prevent even a single human hair from contaminating an optical surface.
+</p>
+
+<p>
+  The <span class="key-term">test</span> part refers to the structured program of analyses and experiments designed to verify that the integrated system meets its requirements and will survive the rigors of launch and the space environment. This includes functional testing — does it turn on and do what it's supposed to do? — and environmental testing — can it survive the vibration, acoustics, thermal extremes, and vacuum of launch and space?
+</p>
+
+<div class="stat-grid">
+  <div class="stat-cell">
+    <span class="number-accent">~30%</span>
+    <p>Typical fraction of total spacecraft program cost spent on I&amp;T</p>
+  </div>
+  <div class="stat-cell">
+    <span class="number-accent">80%+</span>
+    <p>Of spacecraft anomalies that are discovered and resolved during I&amp;T, not on orbit</p>
+  </div>
+  <div class="stat-cell">
+    <span class="number-accent">1 shot</span>
+    <p>The number of chances a spacecraft gets to survive launch. There are no second tries.</p>
+  </div>
+</div>
+
+<h2 class="section-heading">Why Does It Matter So Much?</h2>
+
+<p>
+  Ask any experienced program manager what keeps them up at night, and a surprising number will say something like: "I'm not worried about the design. I'm worried about I&amp;T." That might seem strange. Surely the design is the hard part? In fact, the design phase is where problems are created. I&amp;T is where they are found — or not found, which is very much worse.
+</p>
+
+<p>
+  Spacecraft operate in an environment that is, in almost every measurable way, hostile to the things humans build. The launch itself subjects a vehicle to intense vibration, acoustic energy, and structural loads that can shake loose a connector, crack a solder joint, or shift an optical alignment by a fraction of a millimeter — which, for a telescope or science instrument, might as well be a mile. Once in space, the spacecraft experiences thermal cycling as it moves in and out of eclipse, radiation that degrades electronics over time, and a vacuum environment that causes materials to outgas in ways that can contaminate sensitive surfaces.
+</p>
+
+<p>
+  None of these phenomena can be fully simulated on the ground. But all of them must be accounted for — which is why the I&amp;T program is built around a philosophy of <strong>verify what you can, analyze what you can't, and understand the margin between flight and failure.</strong>
+</p>
+
+<div class="callout">
+  <div class="callout-label">⚡ Lessons Written in Fire</div>
+  <p>Several of the most costly lessons in spaceflight history trace directly to failures in the integration and test process: the Mars Climate Orbiter's unit mismatch; the initial spherical aberration in the Hubble Space Telescope's primary mirror, which was correctly manufactured to the wrong specification — a metrology error that survived multiple verification opportunities; the Genesis sample return capsule's accelerometers installed upside down due to a design drawing error that I&amp;T testing never exposed.</p>
+  <p>In each case, the failure was not a mystery. It was a process gap — a place where integration, verification, or test did not do what it was supposed to do. Understanding these cases is as important as understanding what good I&amp;T looks like.</p>
+</div>
+
+<h2 class="section-heading">The Hierarchy of Hardware</h2>
+
+<p>
+  To understand how I&amp;T is structured, you first need to understand how spacecraft hardware is organized. This is not arbitrary — it directly determines the order and approach of the entire test program.
+</p>
+
+<p>
+  At the bottom of the hierarchy are <span class="key-term">piece parts</span> — individual electronic components, fasteners, adhesives. Above those are <span class="key-term">assemblies</span> — circuit boards, structural panels, small mechanisms. Assemblies combine into <span class="key-term">subassemblies</span>, which become <span class="key-term">components</span> or <span class="key-term">boxes</span> — the flight electronics units and mechanisms that are recognizable as discrete items. Components combine into <span class="key-term">subsystems</span> — the power subsystem, the attitude control subsystem, the communications subsystem. And subsystems, together with the science instruments or mission payload, are integrated into the complete <span class="key-term">spacecraft</span>.
+</p>
+
+<p>
+  Each level of this hierarchy has its own integration and test campaign, because some problems can only be found at certain levels. A solder joint defect may reveal itself during component-level vibration. An electrical interface mismatch may only show up when two subsystems are connected for the first time. A software timing error may only manifest when the entire spacecraft is operating in a flight-like thermal environment. This is why you cannot simply test the parts and assume the whole will work: <strong>integration creates emergent behaviors that testing parts alone will never reveal.</strong>
+</p>
+
+<div class="ornament">— ✦ —</div>
+
+<h2 class="section-heading">The Philosophy Behind the Process</h2>
+
+<p>
+  In four decades, I've seen many engineers arrive in I&amp;T who view it as a bureaucratic hurdle between design and launch. I've watched those same engineers, after one serious anomaly discovered on the test floor, transform into the most committed advocates for rigorous testing you'll ever meet. The philosophy of I&amp;T is not bureaucracy. It is <strong>epistemic discipline</strong> — the systematic, methodical building of justified confidence that a system will work.
+</p>
+
+<p>
+  Central to this philosophy is the concept of <span class="key-term">test-as-you-fly, fly-as-you-test</span>. This means that the conditions under which you test a spacecraft should be as close as possible to the conditions it will experience in flight — and conversely, the spacecraft you fly should be as close as possible to the one you tested. Any deviation from the tested configuration, no matter how seemingly trivial, must be carefully evaluated. The flight heritage of a tested configuration is among the most valuable things in spaceflight.
+</p>
+
+<p>
+  Another foundational principle is <strong>traceability</strong>: every test requirement must trace to a mission requirement, and every test result must be formally documented and dispositioned. This is not paperwork for its own sake. It is the only way to answer, with confidence, the question that every launch readiness review ultimately asks: <em>have we done everything necessary to justify putting this spacecraft on a rocket?</em>
+</p>
+
+<div class="pull-quote">
+  <p>"The test floor is the last place on Earth where you can find a problem and still fix it. After launch, the only tool you have left is ingenuity — and ingenuity has limits."</p>
+</div>
+
+<h2 class="section-heading">About This Series</h2>
+
+<p>
+  What follows is a series of articles that together form a comprehensive introduction to the spacecraft integration and test process. Each article stands alone and can be read independently, but they are designed as a progression — building a complete picture from first principles to the launch readiness review.
+</p>
+
+<p>
+  The articles draw on real experience across a range of mission types: small science instruments, hosted payloads, dedicated science spacecraft, and large observatories. Where possible, I will use real examples — both successes and failures — because the field's lessons are written in both kinds of ink.
+</p>
+
+<table class="series-table">
+  <thead>
+    <tr>
+      <th>Article</th>
+      <th>Title</th>
+      <th>What You'll Learn</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background: var(--ink); color: var(--gold);">
+      <td colspan="3" style="font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; padding: 8px 14px; color: var(--gold);">Module 1 — Foundations</td>
+    </tr>
+    <tr>
+      <td>01</td>
+      <td>Introduction to Spacecraft Integration &amp; Test</td>
+      <td>Why I&amp;T exists, what it costs when it fails, and the philosophy behind every test campaign</td>
+    </tr>
+    <tr>
+      <td>02</td>
+      <td>The I&amp;T Programme — Structure, Documents, and Reviews</td>
+      <td>Integration levels, programme phases, governing documents, and the I&amp;T plan</td>
+    </tr>
+    <tr>
+      <td>03</td>
+      <td>Configuration Management and the As-Built Record</td>
+      <td>Tracking what was built, controlling every change, and knowing precisely what was launched</td>
+    </tr>
+    <tr>
+      <td>04</td>
+      <td>Quality Assurance — The Engineering Discipline of Trust</td>
+      <td>QA roles, inspection types, technician certification, and stop-work authority</td>
+    </tr>
+    <tr style="background: var(--ink); color: var(--gold);">
+      <td colspan="3" style="font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; padding: 8px 14px; color: var(--gold);">Module 2 — The Work Environment</td>
+    </tr>
+    <tr>
+      <td>05</td>
+      <td>The Controlled Environment — Cleanrooms, Contamination, and ESD</td>
+      <td>ISO cleanroom classification, molecular contamination, gowning protocol, and the four threats</td>
+    </tr>
+    <tr>
+      <td>06</td>
+      <td>Electrical Ground Support Equipment and the Test Harness</td>
+      <td>EGSE categories, test harness design, ground loops, and simulator fidelity</td>
+    </tr>
+    <tr style="background: var(--ink); color: var(--gold);">
+      <td colspan="3" style="font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; padding: 8px 14px; color: var(--gold);">Module 3 — Functional Testing</td>
+    </tr>
+    <tr>
+      <td>07</td>
+      <td>Functional Testing — Verifying What the Spacecraft Does</td>
+      <td>TAYF principle, requirement traceability, six test types, and seven formal test campaigns</td>
+    </tr>
+    <tr>
+      <td>08</td>
+      <td>Flight Software Verification and Validation</td>
+      <td>V&amp;V hierarchy, hardware-in-the-loop testing, fault protection, and FSW build process</td>
+    </tr>
+    <tr style="background: var(--ink); color: var(--gold);">
+      <td colspan="3" style="font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; padding: 8px 14px; color: var(--gold);">Module 4 — Structural &amp; Mechanical Verification</td>
+    </tr>
+    <tr>
+      <td>09</td>
+      <td>Mass Properties, Structural Analysis, and Load Verification</td>
+      <td>Mass measurement, centre-of-mass consequences, FEM role, and modal survey testing</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Environmental Testing — Vibration, Acoustics, and Shock</td>
+      <td>Launch environment simulation, qualification vs. acceptance, and force limiting</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Thermal-Vacuum and Thermal Balance Testing</td>
+      <td>Space thermal environment, T-V test objectives, and the eight-phase campaign sequence</td>
+    </tr>
+    <tr style="background: var(--ink); color: var(--gold);">
+      <td colspan="3" style="font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; padding: 8px 14px; color: var(--gold);">Module 5 — Specialist Systems</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>Electromagnetic Compatibility Testing</td>
+      <td>Coupling paths, MIL-STD-461, EMC test campaign, bonding, and interference diagnosis</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Science Instrument Integration and Calibration</td>
+      <td>Instrument classes, PI model, delivery framework, and calibration traceability chain</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Propulsion System Test and Verification</td>
+      <td>Hazardous operations, leak verification, propellant loading, and TAYF boundary analysis</td>
+    </tr>
+    <tr style="background: var(--ink); color: var(--gold);">
+      <td colspan="3" style="font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; padding: 8px 14px; color: var(--gold);">Module 6 — Anomaly Management</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Anomaly Management — From Discrepancy Report to Root Cause</td>
+      <td>DR lifecycle, severity matrix, root cause analysis, waivers, and normalisation of deviance</td>
+    </tr>
+    <tr style="background: var(--ink); color: var(--gold);">
+      <td colspan="3" style="font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; padding: 8px 14px; color: var(--gold);">Module 7 — Launch Readiness &amp; Launch Vehicle</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Launch Vehicle Integration — The Spacecraft's Perspective</td>
+      <td>Payload User's Guide, ICD domains, CLA obligations, and launch site integration sequence</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>Launch Readiness — From Pre-Ship Review to On-Orbit Commissioning</td>
+      <td>Review hierarchy, LRR structure, go/no-go poll, countdown, and commissioning phases</td>
+    </tr>
+    <tr style="background: var(--ink); color: var(--gold);">
+      <td colspan="3" style="font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; padding: 8px 14px; color: var(--gold);">Supplementary Articles</td>
+    </tr>
+    <tr>
+      <td>Supp</td>
+      <td>Small Satellites and the Limits of the Test Pyramid</td>
+      <td>Which I&amp;T principles scale down, which break, and the five non-negotiables for smallsat programmes</td>
+    </tr>
+    <tr>
+      <td>Supp</td>
+      <td>Case Studies — Nine Missions That Changed How We Test</td>
+      <td>Mars Climate Orbiter, Apollo 1, Challenger, Hubble, JWST, Columbia, and more</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>
+  A note on scope: this series focuses on the hardware and systems side of I&amp;T. Software integration and verification, while deeply connected, is a discipline of its own and will be addressed in a companion series. Flight software will appear throughout these articles where it intersects with hardware verification — because it always does.
+</p>
+
+<h2 class="section-heading">A Word to New Engineers</h2>
+
+<p>
+  If you are coming into I&amp;T for the first time — whether as a fresh graduate, an intern, or an engineer transitioning from another discipline — there are a few things I want you to know before you read another word.
+</p>
+
+<p>
+  First: <strong>no question is too basic.</strong> The I&amp;T floor is one of the few places in engineering where the consequences of a misunderstood procedure can be immediate, physical, and irreversible. The engineer who asks "why do we do it this way?" is far more valuable than the one who follows procedure by rote without understanding. Ask. Always ask.
+</p>
+
+<p>
+  Second: <strong>the documentation matters as much as the hardware.</strong> New engineers often chafe at the paperwork burden in I&amp;T. It feels like it slows everything down. It does. That is the point. A test that isn't documented didn't happen. An anomaly that isn't formally captured and dispositioned is a bomb with an unknown timer. The discipline of written records is not a holdover from a less enlightened age — it is one of the primary mechanisms by which flight programs maintain institutional memory and traceability under pressure.
+</p>
+
+<p>
+  Third, and most important: <strong>spacecraft I&amp;T is one of the most meaningful things you can do as an engineer.</strong> At the end of a successful I&amp;T campaign, a spacecraft that did not exist a few years ago is ready to fly. Somewhere in its structure are thousands of decisions made by you and your colleagues — connections verified, tests passed, problems found and fixed. When it launches and performs its mission — when it returns images of a distant planet, or measures a gravitational wave, or delivers a crew safely to orbit — some small fraction of that success belongs to everyone who worked the I&amp;T program.
+</p>
+
+<p>
+  That is not a small thing. Let's begin.
+</p>
+
+
+  <!-- NEXT LESSON -->
+  <div class="next-article">
+    <div class="next-article-content">
+      <div class="next-label">Next Lesson · L02 of 17 · Article 2</div>
+      <div class="next-title">The I&T Plan and Programme Architecture</div>
+      <div class="next-desc">Integration level hierarchy, programme phases, governing documents, and the I&T plan that ties them together</div>
+    </div>
+  </div>
+
+</article>
+</div>
+
+
+<!-- ARTICLE NAVIGATOR -->
+<div class="art-nav">
+  <div class="art-nav-inner">
+    <span class="art-nav-label">Go to article</span>
+    <div class="art-nav-select-wrap">
+      <select id="artNav_spacecraft_iat_intro_html" onchange="this.nextElementSibling.disabled = !this.value || this.options[this.selectedIndex].disabled">
+        <option value="">— Select any article in the series —</option>
+        <optgroup label="── Main Series ──────────────────────────">
+      <option value="spacecraft_iat_intro.html" selected disabled>▶ 01 · Introduction to Spacecraft I&T</option>
+      <option value="spacecraft_iat_article01.html">02 · I&T Programme Structure</option>
+      <option value="spacecraft_iat_article11.html">03 · Configuration Management</option>
+      <option value="spacecraft_iat_article16.html">04 · Quality Assurance</option>
+      <option value="spacecraft_iat_article02.html">05 · Cleanrooms & Contamination Control</option>
+      <option value="spacecraft_iat_article10.html">06 · EGSE & Test Harness</option>
+      <option value="spacecraft_iat_article03.html">07 · Functional Testing</option>
+      <option value="spacecraft_iat_article09.html">08 · Flight Software V&V</option>
+      <option value="spacecraft_iat_article14.html">09 · Mass Properties & Structural Loads</option>
+      <option value="spacecraft_iat_article04.html">10 · Vibration, Acoustics & Shock</option>
+      <option value="spacecraft_iat_article05.html">11 · Thermal-Vacuum Testing</option>
+      <option value="spacecraft_iat_article12.html">12 · EMC Testing</option>
+      <option value="spacecraft_iat_article07.html">13 · Instrument Integration & Calibration</option>
+      <option value="spacecraft_iat_article13.html">14 · Propulsion Testing</option>
+      <option value="spacecraft_iat_article06.html">15 · Anomaly Management</option>
+      <option value="spacecraft_iat_article15.html">16 · Launch Vehicle Integration</option>
+      <option value="spacecraft_iat_article08.html">17 · Launch Readiness & Commissioning</option>
+    </optgroup>
+    <optgroup label="── Supplementary ──────────────────────────">
+      <option value="spacecraft_iat_smallsat.html">Supp · Small Satellites</option>
+      <option value="spacecraft_iat_case_studies.html">Supp · Case Studies</option>
+    </optgroup>
+      </select>
+    </div>
+    <button class="art-nav-go" disabled
+            onclick="var s=this.previousElementSibling.querySelector('select'); if(s.value && !s.options[s.selectedIndex].disabled) window.location.href=s.value;">
+      Open →
+    </button>
+  </div>
+</div>
+
+<footer class="article-footer">
+  <div class="footer-inner">
+    <div style="flex: 1; min-width: 220px;">
+      <div class="footer-label">Series</div>
+      <div class="footer-text">Spacecraft Integration &amp; Test — A Complete Course<br>17 Articles · 7 Modules · 2 Supplementary</div>
+    </div>
+    <div style="flex: 1; min-width: 220px;">
+      <div class="footer-label">Topics</div>
+      <div class="footer-tags">
+        <span class="tag">I&amp;T</span>
+        <span class="tag">Spacecraft</span>
+        <span class="tag">Systems Engineering</span>
+        <span class="tag">Verification</span>
+        <span class="tag">Environmental Test</span>
+        <span class="tag">Space Science</span>
+      </div>
+    </div>
+    <div style="flex: 1; min-width: 220px;">
+      <div class="footer-label">Intended Audience</div>
+      <div class="footer-text">New and early-career spacecraft engineers, aerospace students, and anyone with a serious interest in how spacecraft are built and tested.</div>
+    </div>
+  </div>
+</footer>

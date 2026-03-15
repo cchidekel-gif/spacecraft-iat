@@ -1,0 +1,604 @@
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://raw.githubusercontent.com/cchidekel-gif/spacecraft-iat-styles/refs/heads/main/styles.css">
+
+<div class="masthead">
+  <span class="masthead-series">Spacecraft Engineering Series · Integration &amp; Test</span>
+  <span class="masthead-right">Supplementary · Small Satellites</span>
+</div>
+
+<div class="series-nav">
+  <span>Series:</span>
+  <span class="sep">·</span>
+  <span>Intro</span>
+  <span class="sep">·</span>
+  <span>01</span>
+  <span class="sep">·</span>
+  <span>02</span>
+  <span class="sep">·</span>
+  <span>03</span>
+  <span class="sep">·</span>
+  <span>04</span>
+  <span class="sep">·</span>
+  <span>05</span>
+  <span class="sep">·</span>
+  <span>06</span>
+  <span class="sep">·</span>
+  <span>07</span>
+  <span class="sep">·</span>
+  <span>08</span>
+  <span class="sep">·</span>
+  <span>09</span>
+  <span class="sep">·</span>
+  <span>10</span>
+  <span class="sep">·</span>
+  <span>11</span>
+  <span class="sep">·</span>
+  <span>12</span>
+  <span class="sep">·</span>
+  <span>13</span>
+  <span class="sep">·</span>
+  <span>14</span>
+  <span class="sep">·</span>
+  <span>15</span>
+  <span class="sep">·</span>
+  <span>16</span>
+  <span class="sep">·</span>
+  <span class="current">Supp — SmallSat</span>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Spacecraft Integration &amp; Test · Supplementary Article · Small Satellites</div>
+    <h1>Small Satellites and<br>the Limits of the<br>Test Pyramid</h1>
+    <p class="hero-sub">The smallsat revolution has compressed spacecraft development from years to months and kilograms to grams — but physics does not compress. Which I&T principles scale down faithfully, which ones break, and what the industry has learned, sometimes painfully, about what you cannot skip.</p>
+    <div class="byline">
+      <div class="byline-avatar">🛰️</div>
+      <div>
+        <div class="byline-name">Charles Chidekel</div>
+        <div class="byline-title">Integration &amp; Test Guru · 40 Years of I&amp;T Experience</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+<article class="article-body">
+
+  <div class="toc-wrap">
+    <div class="toc-label">In This Article</div>
+    <ul class="toc-list">
+      <li><a href="#s1"><span>1. The Smallsat Landscape — A Taxonomy of Scale</span><span class="toc-num">§1</span></a></li>
+      <li><a href="#s2"><span>2. What the Series Assumes — and What Changes</span><span class="toc-num">§2</span></a></li>
+      <li><a href="#s3"><span>3. What Scales Down Faithfully</span><span class="toc-num">§3</span></a></li>
+      <li><a href="#s4"><span>4. What Does Not Scale — The Physics You Cannot Compress</span><span class="toc-num">§4</span></a></li>
+      <li><a href="#s5"><span>5. The Test Compression Problem</span><span class="toc-num">§5</span></a></li>
+      <li><a href="#s6"><span>6. Environmental Testing at Small Scale</span><span class="toc-num">§6</span></a></li>
+      <li><a href="#s7"><span>7. Functional Testing, EGSE, and the COTS Component Problem</span><span class="toc-num">§7</span></a></li>
+      <li><a href="#s8"><span>8. The Constellation Wrinkle — Testing at Volume</span><span class="toc-num">§8</span></a></li>
+      <li><a href="#s9"><span>9. What the Industry Has Learned — A Failure Digest</span><span class="toc-num">§9</span></a></li>
+      <li><a href="#s10"><span>10. The Right I&T Programme for a Small Mission</span><span class="toc-num">§10</span></a></li>
+      <li><a href="#s11"><span>11. Closing Argument — Small Spacecraft, Not Small Standards</span><span class="toc-num">§11</span></a></li>
+      <li><a href="#glossary"><span>Key Terms Glossary</span><span class="toc-num">GL</span></a></li>
+    </ul>
+  </div>
+
+  <p class="lead">The small satellite industry is built on a premise that is mostly true and dangerously incomplete: that modern commercial-off-the-shelf components, agile development practices, and the economics of low-cost rideshare launches make it possible to fly useful spacecraft faster and cheaper than the traditional programme model allows. Mostly true. But the part that is incomplete concerns testing — and the consequences of the incomplete part have been written into orbit as dead or degraded missions, misfired thrusters, undeployed solar arrays, and silent spacecraft that never phoned home.</p>
+
+  <p>This article is written for engineers entering the small satellite industry — or engineers from traditional programmes who are moving into it — who need to understand both what the smallsat model has genuinely improved and what it has borrowed against. It is also written for experienced smallsat practitioners who have seen enough anomalies to wonder whether the industry's testing shortcuts are being properly assessed or merely normalised.</p>
+
+  <div class="pull-quote">
+    <p>"The spacecraft being small does not make the space environment smaller. The vacuum is still hard. The radiation is still there. The launch loads do not scale with the satellite's mass. And the consequences of failure — a mission that never works — are the same regardless of whether the spacecraft cost a hundred million dollars or a hundred thousand."</p>
+  </div>
+
+  <!-- SECTION 1 -->
+  <h2 class="sh" id="s1">1. The Smallsat Landscape — A Taxonomy of Scale</h2>
+
+  <p>The term <span class="kt">small satellite</span> covers an enormous range — from spacecraft that are genuinely small relative to a conventional bus but still sophisticated engineering programmes in their own right, down to devices the size of a loaf of bread built by a university team in a year. Each tier of the taxonomy carries different I&T implications.</p>
+
+  <div class="size-grid">
+    <div class="size-card">
+      <div class="size-card-header">
+        <div class="size-card-class">Minisatellite</div>
+        <span class="size-card-mass">100–500 kg</span>
+        <div class="size-card-name">Small conventional</div>
+      </div>
+      <div class="size-card-body">
+        <p>Capable of carrying meaningful science or commercial payloads. Sophisticated avionics, deployables, and propulsion systems. I&T programmes are streamlined but still recognisably descend from the traditional model. Environmental test campaigns are typically complete. Examples: ICESAT-2 instruments, Planet SuperDove precursors, many commercial radar satellites.</p>
+      </div>
+    </div>
+    <div class="size-card">
+      <div class="size-card-header">
+        <div class="size-card-class">Microsatellite</div>
+        <span class="size-card-mass">10–100 kg</span>
+        <div class="size-card-name">True smallsat</div>
+      </div>
+      <div class="size-card-body">
+        <p>The operational heart of the commercial smallsat industry. Capable of substantial capability; deployable solar arrays and propulsion systems are common. I&T is compressed but all major environmental categories are achievable. Examples: Capella SAR satellites, ICEYE, Spire constellation units, many university research satellites with heritage.</p>
+      </div>
+    </div>
+    <div class="size-card">
+      <div class="size-card-header">
+        <div class="size-card-class">Nanosatellite</div>
+        <span class="size-card-mass">1–10 kg</span>
+        <div class="size-card-name">CubeSat heritage</div>
+      </div>
+      <div class="size-card-body">
+        <p>Dominated by CubeSat form factors (1U through 12U). Severe mass, volume, and power constraints drive heavy COTS component use and significant I&T compression. Many missions in this class operate on launch schedules of 12–18 months. Environmental testing is often partial — vibration yes, thermal-vacuum sometimes, acoustics rarely. This is where most I&T failures originate.</p>
+      </div>
+    </div>
+    <div class="size-card">
+      <div class="size-card-header">
+        <div class="size-card-class">Picosatellite</div>
+        <span class="size-card-mass">&lt;1 kg</span>
+        <div class="size-card-name">Experimental / educational</div>
+      </div>
+      <div class="size-card-body">
+        <p>Primarily educational and technology demonstration missions. Extremely limited capability. I&T is minimal by design and by resource — environmental testing is frequently limited to vibration and functional checkout. Failure rates are high and expected by the community; these missions trade reliability for accessibility and learning value. Not the focus of this article's engineering guidance.</p>
+      </div>
+    </div>
+  </div>
+
+  <p>The tier boundaries are not precise, and more importantly, the appropriate I&T programme for a given mission is determined by its requirements — mission criticality, consequence of failure, and what it will do on orbit — not by its mass alone. A 6U CubeSat carrying a classified government payload requires a more rigorous I&T programme than a 6U CubeSat carrying a student attitude-control experiment. The guidance in this article applies most directly to the microsatellite and nanosatellite tiers, where the tension between capability and testing is sharpest.</p>
+
+  <!-- SECTION 2 -->
+  <h2 class="sh" id="s2">2. What the Series Assumes — and What Changes</h2>
+
+  <p>The preceding articles in this series were written with a conventional spacecraft programme as their implicit reference: a spacecraft of several hundred kilograms to several tonnes, developed over three to seven years, with a formal programme structure that includes a chief engineer, dedicated subsystem leads, a quality assurance function, a dedicated I&T team, and access to spacecraft-class environmental test facilities. Many of these assumptions do not hold for smallsat programmes.</p>
+
+  <table class="comp-table">
+    <thead>
+      <tr>
+        <th>Programme Dimension</th>
+        <th>Traditional Programme</th>
+        <th>Typical SmallSat Programme</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Development schedule</td>
+        <td>3–7 years from Phase A to launch</td>
+        <td class="warn">6 months to 2 years — often less than 18 months for CubeSat class</td>
+      </tr>
+      <tr>
+        <td>Team size</td>
+        <td>Dozens to hundreds of engineers across dedicated subsystem teams</td>
+        <td class="warn">Frequently 5–20 people, often wearing multiple hats; I&T not a separate function</td>
+      </tr>
+      <tr>
+        <td>Environmental testing</td>
+        <td>Full campaigns: vibration, acoustics, T-V, EMC, shock — all to GEVS or equivalent</td>
+        <td class="warn">Often selective: vibration standard, T-V sometimes, acoustics and EMC frequently omitted</td>
+      </tr>
+      <tr>
+        <td>Component heritage</td>
+        <td>Qualified spacecraft components with full test histories; COTS tightly controlled</td>
+        <td class="warn">Heavy COTS use from terrestrial supply chains; qualification data often unavailable or inapplicable</td>
+      </tr>
+      <tr>
+        <td>Configuration management</td>
+        <td>Formal CM plan, CCB, travellers, as-built record</td>
+        <td class="warn">Often informal or tool-based (Git for software, spreadsheets for hardware); CCB rare</td>
+      </tr>
+      <tr>
+        <td>Redundancy architecture</td>
+        <td>Single-fault tolerant in most critical paths; dual-string in many</td>
+        <td class="warn">Often no redundancy — mass and volume prohibit it; single-point failures accepted by design</td>
+      </tr>
+      <tr>
+        <td>GSE / EGSE</td>
+        <td>Dedicated, qualified ground support equipment; separate I&T harness</td>
+        <td class="warn">Often development laptops, commercial power supplies, and minimal custom EGSE</td>
+      </tr>
+      <tr>
+        <td>Quality assurance</td>
+        <td>Dedicated QA function with independent authority; QA plan, NCR system</td>
+        <td class="warn">Often no dedicated QA; peer review substitutes for formal inspection; DR systems informal</td>
+      </tr>
+      <tr>
+        <td>Launch vehicle interface</td>
+        <td>Dedicated adapter, extensive ICD, formal PAR process</td>
+        <td class="ok">Standardised deployers (PPOD, ISIpod) simplify interface — genuine advantage of the CubeSat standard</td>
+      </tr>
+      <tr>
+        <td>Mission acceptance of failure</td>
+        <td>Single mission, mission loss is a programme-ending event</td>
+        <td class="warn">Often accepted at 30–50% first-mission success; constellation model tolerates unit loss</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>The contrast is stark in several dimensions — and it is worth being clear-eyed about which differences represent genuine innovation and which represent borrowed risk. The standardised deployer interface is a real engineering achievement that eliminated an entire category of spacecraft-launch vehicle integration problems. The compressed schedule and small team are facts of the smallsat environment, not always choices. The lack of formal environmental testing, however, is frequently a choice — made under schedule pressure or cost pressure — whose consequences arrive on orbit.</p>
+
+  <!-- SECTION 3 -->
+  <h2 class="sh" id="s3">3. What Scales Down Faithfully</h2>
+
+  <p>Before cataloguing what goes wrong, it is important to be precise about what the smallsat community has gotten right. Several of the core I&T principles described in this series are not only applicable at small scale — they are applied successfully by the best smallsat programmes, and their absence is reliably correlated with mission failure.</p>
+
+  <div class="scale-grid">
+    <div class="scale-col scales">
+      <div class="scale-header">
+        <div class="scale-header-label">Scales down faithfully</div>
+        <div class="scale-header-title">Works at any size</div>
+      </div>
+      <div class="scale-items">
+        <div class="scale-item">
+          <strong>Test As You Fly (TAYF)</strong>
+          The principle that the spacecraft must be tested in the configuration it will fly, powered as it will fly, interfaced as it will fly, is as valid for a 3U CubeSat as for a 3,000 kg observatory. The electrical ground loops, connector substitutions, and software-hardware mismatches that the TAYF principle guards against do not care how large the spacecraft is.
+        </div>
+        <div class="scale-item">
+          <strong>Functional test before environmental test</strong>
+          The sequencing principle — verify that the spacecraft works before subjecting it to environmental stress — applies identically at small scale. A CubeSat that has not passed a complete functional checkout before vibration testing will produce ambiguous results: did the post-test anomaly exist before the test or was it induced by it?
+        </div>
+        <div class="scale-item">
+          <strong>Written procedures with sign-off</strong>
+          The discipline of working from written, step-by-step procedures with contemporaneous sign-off — the traveller discipline — is equally important for a small team building a CubeSat. Small teams are, if anything, more vulnerable to undocumented informal changes because there is less institutional oversight to catch them.
+        </div>
+        <div class="scale-item">
+          <strong>Version control for flight software</strong>
+          The requirement to know exactly which software build is loaded on the flight unit, to verify it before launch, and to load it from a controlled repository rather than a development workstation is non-negotiable regardless of satellite size. Flight software is flight software.
+        </div>
+        <div class="scale-item">
+          <strong>Anomaly documentation and closure</strong>
+          Every observation that deviates from expected must be documented, investigated, and formally closed — even in a programme too small for a formal DR system. A spreadsheet or issue tracker used consistently is far better than nothing. The discipline of not shipping anomalies without formal disposition is independent of scale.
+        </div>
+        <div class="scale-item">
+          <strong>Deployment mechanism verification</strong>
+          Solar array deployments, antenna deployments, and separation system actuations that are irreversible and mission-critical must be verified by test on a representative unit. The physical mechanism of deployment — the hinge, the spring, the burn wire — does not become more reliable by virtue of the spacecraft being small.
+        </div>
+      </div>
+    </div>
+    <div class="scale-col noscales">
+      <div class="scale-header">
+        <div class="scale-header-label">Does not compress gracefully</div>
+        <div class="scale-header-title">Where shortcuts cost missions</div>
+      </div>
+      <div class="scale-items">
+        <div class="scale-item">
+          <strong>Full environmental qualification</strong>
+          The launch and space environment does not scale. Omitting thermal-vacuum testing because it is expensive and time-consuming removes the verification that COTS components actually survive the thermal cycling of low Earth orbit — which they may not. Many smallsat anomalies root-cause to components that were never tested in vacuum.
+        </div>
+        <div class="scale-item">
+          <strong>Formal redundancy architecture</strong>
+          Mass and volume constraints at small scale legitimately preclude dual-string architectures. But accepting single-point failures without explicitly mapping them, understanding their probability, and accepting the mission risk they represent is not engineering — it is hope. The risk acceptance must be conscious and documented.
+        </div>
+        <div class="scale-item">
+          <strong>COTS component qualification</strong>
+          Terrestrial commercial components have been designed and tested for terrestrial environments. The assumption that a smartphone processor, a commercial MEMS gyro, or a consumer-grade battery management IC will survive five years of radiation and thermal cycling in LEO is not supportable without testing. The smallsat industry has lost missions to this assumption.
+        </div>
+        <div class="scale-item">
+          <strong>Dedicated I&T team</strong>
+          Engineers who designed and built the spacecraft are not the right primary I&T team. The independence of the test team — its ability to approach the spacecraft as an unknown and to be surprised by what it finds — is compromised when the testers are the designers. Small programmes must find ways to create at least partial independence.
+        </div>
+        <div class="scale-item">
+          <strong>EMC verification</strong>
+          Electromagnetic compatibility testing is almost universally omitted in smallsat programmes for cost and time reasons. In a tightly packaged spacecraft where RF systems, power electronics, and sensitive sensors coexist at centimetre distances, intra-system interference is a real and recurring anomaly driver. The omission is understood; the risk should not be unacknowledged.
+        </div>
+        <div class="scale-item">
+          <strong>Margin verification</strong>
+          Link budget margin, power margin, thermal margin, and propellant margin all require verification analysis at specific levels. Smallsat programmes under schedule pressure frequently accept analysis at insufficient margins or do not close the analysis before launch. Margin erosion on orbit has ended many smallsat missions prematurely.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4 -->
+  <h2 class="sh" id="s4">4. What Does Not Scale — The Physics You Cannot Compress</h2>
+
+  <p>The physics of space is the same for a 3U CubeSat and for the Hubble Space Telescope. This seems obvious stated plainly, but it is violated implicitly by the reasoning that underpins many smallsat I&T shortcuts. The following categories represent hard physical realities that do not yield to schedule pressure or cost reduction.</p>
+
+  <h3 class="ssh">Thermal Cycling in Vacuum</h3>
+  <p>A spacecraft in low Earth orbit experiences roughly 15 to 16 thermal cycles per day — 15 to 16 transitions from eclipse to sunlight and back, each representing a temperature swing that for an unregulated structure can be 60°C to 120°C depending on orbit altitude, spacecraft geometry, and thermal control architecture. Over a three-year mission, this represents more than 16,000 thermal cycles. Commercial components designed for terrestrial use are tested to hundreds or at most a few thousand thermal cycles, in air, over much smaller temperature ranges. The relevant question is not whether a COTS component can survive one thermal cycle in vacuum — it can, almost certainly. The question is whether it can survive 16,000. The only way to develop confidence in the answer is to test it.</p>
+
+  <p>Outgassing in vacuum is the companion problem. Materials that are stable at atmospheric pressure release volatile compounds in vacuum. Printed circuit board laminates, conformal coatings, adhesives, wire insulation, and lubricants all outgas to varying degrees. The outgassed material deposits on cold surfaces — including optical elements, solar cells, and sensor windows. A spacecraft that was clean at the time of launch can be contaminated by its own outgassing within weeks of on-orbit operation if the materials were not characterised and controlled. The thermal-vacuum test chamber is the tool for assessing this risk before launch; omitting T-V testing leaves it unassessed.</p>
+
+  <h3 class="ssh">Radiation</h3>
+  <p>The ionising radiation environment of low Earth orbit — trapped protons and electrons in the Van Allen belts, galactic cosmic rays, and solar energetic particles — degrades electronic components over time through total ionising dose (TID) and single-event effects (SEE). Commercial components have no radiation qualification, and many modern processes — deep-submicron CMOS in particular — are significantly more sensitive to single-event upsets than the older processes they replaced. The performance degradation of solar cells, the threshold shifts in CMOS logic, the potential for latch-up in unprotected circuits: these are not hypothetical risks. They are the measured reality of commercial component behaviour in the LEO radiation environment. At low altitudes and short mission durations, the radiation risk is lower than at GEO — but it is not zero, and it increases nonlinearly with altitude and mission duration.</p>
+
+  <h3 class="ssh">Launch Loads</h3>
+  <p>The launch environment — described in Articles 04 and 09 of this series — is set by the launch vehicle and is independent of payload mass. A CubeSat launched on a Falcon 9 rideshare experiences the same acoustic field, the same sine vibration environment, and the same shock events as the primary payload. The CubeSat deployer provides some attenuation and load path management, but it is not a vibration isolator. The critical distinction at small scale is that the ratio of surface area to structural mass is high, making the acoustic response proportionally more significant than for larger spacecraft. Lightweight structures with printed circuit boards, connectors, and deployable mechanisms can be very sensitive to acoustic excitation — and acoustic testing is one of the first tests omitted from smallsat I&T programmes.</p>
+
+  <!-- SECTION 5 -->
+  <h2 class="sh" id="s5">5. The Test Compression Problem</h2>
+
+  <p>The central I&T tension in smallsat programmes is not, in itself, that the programmes test less than traditional programmes. It is that the testing shortfall is often not explicitly characterised as risk, acknowledged by the programme decision-makers, or reflected in the mission's expected performance claims. A programme that consciously accepts a 30% probability of first-unit failure in exchange for an 18-month schedule is making a legitimate business decision — if it is actually conscious and the probability estimate is actually grounded in data. The problem is that many programmes accept the same probability of failure without realising it, because no one has assessed what omitting the T-V test actually means for mission reliability.</p>
+
+  <div class="callout rust">
+    <div class="callout-label">⚠ The Normalisation of Test Omission</div>
+    <p>One of the most persistent and damaging phenomena in the smallsat industry is the normalisation of test omission — the gradual transformation of a shortcut taken once under exceptional schedule pressure into standard practice, and then into received wisdom. "We don't do acoustic testing on CubeSats" becomes, through repetition, an industry norm rather than a risk acceptance decision. The test that was omitted because there was no time on one mission is not performed on the next mission because it wasn't done on the last one. The absence of a specific failure directly attributable to the missing test is taken as evidence that the test is unnecessary — rather than as a sample of the distribution of outcomes that will eventually produce the failure.</p>
+    <p>This is exactly the normalisation of deviance dynamic described in the anomaly management article (Article 14 in the series) in the context of the Challenger accident. The mechanism is the same. The scale is different. The outcome — missions lost to causes that testing would have found — follows the same logic.</p>
+  </div>
+
+  <p>The appropriate framework for test compression decisions is not "what can we skip?" but "what risk does skipping this test create, and is that risk explicitly accepted at the right level of programme authority?" That framework requires three things that are often absent in smallsat programmes: a systematic mapping of which failures each test type is designed to catch, a probability estimate (even a rough one) of those failures in the untested population, and a formal risk acceptance decision documented before launch rather than reconstructed after anomaly.</p>
+
+  <div class="stat-strip">
+    <div class="stat-cell">
+      <span class="stat-num">40–60%</span>
+      <p>Estimated first-unit success rate for CubeSat-class missions that omit T-V testing, based on historical on-orbit anomaly reporting</p>
+    </div>
+    <div class="stat-cell">
+      <span class="stat-num">~80%</span>
+      <p>Estimated first-unit success rate for microsatellite missions with complete environmental test campaigns, at comparable mission complexity</p>
+    </div>
+    <div class="stat-cell">
+      <span class="stat-num">70%</span>
+      <p>Fraction of CubeSat on-orbit anomalies attributable to causes that environmental testing would have been likely to detect, in studies of first-generation missions</p>
+    </div>
+    <div class="stat-cell">
+      <span class="stat-num">3–5×</span>
+      <p>Cost multiplier for on-orbit anomaly mitigation versus ground-based anomaly resolution — the ratio that makes thorough testing economically rational even for low-cost missions</p>
+    </div>
+  </div>
+
+  <!-- SECTION 6 -->
+  <h2 class="sh" id="s6">6. Environmental Testing at Small Scale</h2>
+
+  <p>The practical question for a smallsat programme is not whether to test — it is which tests, at what level, and in what sequence, given real constraints on time, budget, and facility access. The following guidance is calibrated to the microsatellite and nanosatellite tiers.</p>
+
+  <h3 class="ssh">Vibration Testing — Non-Negotiable</h3>
+  <p>Structural integrity under launch vibration is the one environmental test that virtually no programme can responsibly omit. The failure modes it detects — connector failure, solder joint cracking, loose hardware, structural resonances at problematic frequencies — are real, common, and difficult or impossible to detect by inspection or analysis. The test hardware required is modest: a vibration table capable of handling the mass of a small satellite is available at many university facilities and most small test houses. There is no credible cost or schedule argument for omitting vibration testing on a mission expected to survive launch.</p>
+
+  <p>For CubeSat-class missions launched in standardised deployers, the relevant vibration specification is typically provided by the deployer manufacturer, who has derived it from launch vehicle environment data. The deployer itself attenuates some loads, but the attenuation is not sufficient to eliminate the need for vibration testing. The CubeSat must be tested in the deployer or with an equivalent interface fixture that represents the actual boundary conditions.</p>
+
+  <h3 class="ssh">Thermal-Vacuum Testing — The Most Valuable Test You Can Do</h3>
+  <p>Thermal-vacuum testing is the single test most frequently omitted from smallsat programmes and the one whose omission most consistently correlates with on-orbit failure. The combination of thermal cycling and hard vacuum that T-V testing provides reveals failures that no other test finds: outgassing-driven contamination, vacuum-induced phase changes in lubricants, thermal expansion coefficient mismatches at bonded interfaces, connector contact resistance increases at temperature extremes, and the derating behaviour of COTS components at temperatures outside their commercial operating range.</p>
+
+  <p>Small T-V chambers capable of handling CubeSat-class hardware are now widely available at university space labs, small commercial test houses, and some NASA centres with smallsat support programmes. The cost is meaningful but not prohibitive relative to the cost of the mission. A 48-hour T-V test with four to six thermal cycles, conducted on the integrated spacecraft at flight temperatures, is achievable within a two-week test schedule and will find more anomalies than all other tests combined in a typical nanosatellite programme.</p>
+
+  <div class="callout teal">
+    <div class="callout-label">✓ Minimum Viable T-V Programme for a Nanosatellite</div>
+    <p>If the programme can only afford one T-V campaign, it should be structured as follows: temperature range from −20°C to +60°C (or the component derating limits, whichever is more conservative); minimum four complete hot-cold cycles; hard vacuum throughout (below 10⁻⁵ torr); full functional test at hot and cold soak extremes; communication link active during cycling to detect intermittent RF or data bus anomalies; and a post-test functional test at ambient to confirm no permanent damage. This is a 72-hour test. It will find connector outgassing, component temperature sensitivities, thermally-induced mechanical binding, and radiation-induced latch-up precursors. The investment is two weeks of schedule and modest facility cost. The return is a meaningful increase in mission confidence that no analysis can substitute for.</p>
+  </div>
+
+  <h3 class="ssh">Acoustic Testing — Undervalued for Small Spacecraft</h3>
+  <p>Acoustic testing is the most commonly omitted environmental test for smallsat programmes and, as noted in section four, one of the most physically relevant given the high surface-area-to-mass ratio of small spacecraft. The argument against acoustic testing — that it requires large, expensive horn speaker facilities — was valid for a previous generation of facility infrastructure but is less so today. Several rideshare launch integrators now offer acoustic testing as part of their payload preparation services, and commercial test houses with small acoustic chambers have emerged specifically to serve the nanosatellite market.</p>
+
+  <p>For programmes that cannot access acoustic testing, the alternative is to perform a higher-level random vibration test — accepting that the acoustic and vibration environments are not identical — and to augment it with careful post-test inspection of all connectors, solder joints, and deployable mechanisms. This is an imperfect substitute. It should be understood as risk reduction, not risk elimination.</p>
+
+  <h3 class="ssh">EMC Testing — Acknowledged Risk, Not Excused Risk</h3>
+  <p>Electromagnetic compatibility testing remains impractical for most nanosatellite programmes given the cost and schedule of certified EMC test chambers. The risk this creates is real: in a tightly packaged nanosatellite, the power electronics, radio transmitter, ADCS magnetometers, and attitude sensors may be separated by centimetres. Intra-system interference — the reaction wheel drive circuit coupling into the magnetometer, the transmitter desensitising the GPS receiver — is a documented failure mode in the smallsat community. The practical mitigation is not EMC testing (which remains hard to access) but rigorous ground test characterisation of interference at the system level: running all subsystems simultaneously and verifying that the combination does not produce anomalous behaviour. This is not a substitute for formal EMC testing, but it catches the most severe inter-system interference issues before launch.</p>
+
+  <!-- SECTION 7 -->
+  <h2 class="sh" id="s7">7. Functional Testing, EGSE, and the COTS Component Problem</h2>
+
+  <p>The functional testing principles described in Article 03 of this series apply directly to smallsat programmes. The additional complexity that small spacecraft introduce is in the nature of the components under test and the adequacy of the ground support equipment used to test them.</p>
+
+  <h3 class="ssh">Commercial-Off-The-Shelf Components</h3>
+  <p>The use of COTS components — processors, sensors, power management ICs, gyros, magnetometers, cameras — is one of the defining characteristics of the smallsat industry and one of its most genuine technical achievements. The performance-per-dollar of modern commercial components vastly exceeds what was achievable with radiation-hardened space-grade parts a decade ago, and for missions in low-radiation environments (low-altitude LEO) with short design lifetimes, COTS components can be entirely appropriate.</p>
+
+  <p>The I&T problem with COTS components is not their performance — it is the absence of qualification data relevant to the space environment. A COTS component ships with a datasheet specifying performance over a commercial temperature range (typically 0°C to 70°C, or −40°C to 85°C for industrial grade). It may have a quoted MTBF. It has been functionally tested by the manufacturer. What it does not have is: characterised single-event latch-up threshold, total ionising dose degradation curve, vacuum outgassing data, characterised performance at −40°C in vacuum, or long-duration accelerated life data.</p>
+
+  <div class="callout amber">
+    <div class="callout-label">◆ The COTS Qualification Gap — A Practical Approach</div>
+    <p>Full space qualification of COTS components is beyond the resource reach of most smallsat programmes. But characterisation testing of the critical COTS components — the ones whose failure would end the mission — is achievable and important. A practical approach for a resource-constrained programme: identify the top five to ten components whose failure would cause mission loss; obtain representative samples (three to five units per component) from the same lot as the flight units; and subject them to temperature cycling over the expected mission range, extended duration vacuum exposure, and basic latch-up screening at elevated supply voltage. This is not qualification. It is characterisation. It will not prevent all COTS-related failures. But it will find the ones where the commercial component's behaviour outside its datasheet range is dramatically different from what the datasheet extrapolation would predict — and those are the failures that destroy missions.</p>
+  </div>
+
+  <h3 class="ssh">EGSE for Small Programmes</h3>
+  <p>Article 10 describes the role of Electrical Ground Support Equipment in detail. Smallsat programmes almost universally use minimal, informal EGSE — a development laptop running a terminal programme, a commercial bench power supply, a logic analyser. This is not inherently wrong; the key disciplines from the EGSE article apply regardless of how sophisticated the equipment is.</p>
+
+  <p>The most important EGSE discipline for smallsat programmes is the flight/ground interface boundary. The flight computer's I²C bus, SPI bus, or RS-422 interface is a flight interface. The cable used to connect it to the development laptop during ground test is a ground interface. The two must not be confused: ground test wiring should not be left connected to flight hardware during launch or post-integration test, connectors used only for ground test should be physically capped before environmental testing, and the software running on the flight computer during ground test must be the flight software (or a clearly identified test version), not development code that uses the same build toolchain but has never been formally released.</p>
+
+  <!-- SECTION 8 -->
+  <h2 class="sh" id="s8">8. The Constellation Wrinkle — Testing at Volume</h2>
+
+  <p>The commercial smallsat industry has been shaped by the economics of constellations — large numbers of identical or near-identical spacecraft, produced at high volume, launched in batches, and replaced as they degrade or fail. This business model changes the I&T calculus in important ways that do not apply to single-mission programmes.</p>
+
+  <h3 class="ssh">Qualification by Fleet Statistics</h3>
+  <p>When a constellation operator launches hundreds of units, on-orbit failure data accumulates rapidly. The operator can characterise the failure rate of each component, each subsystem, and each failure mode with statistical confidence that is impossible to develop from a handful of single missions. This changes the role of pre-launch testing: rather than testing each unit to eliminate all uncertainty before launch, the programme can test to a threshold that is cost-effective and let the fleet statistics refine the understanding of actual reliability. Failed units are replaced at the next launch opportunity. The test programme is calibrated not to the individual unit but to the fleet.</p>
+
+  <p>This is a legitimate engineering approach — but it requires that the constellation economics actually support it. If a unit costs $50,000 and a launch slot costs $10,000, the economics of accepting a 15% early-failure rate may be rational. If the unit provides a service whose degradation affects customers before the next replacement batch arrives, the calculation changes. The key discipline is that this be an explicit calculation, made with real numbers, not an implicit assumption that "the constellation model tolerates failure."</p>
+
+  <h3 class="ssh">Production Acceptance Testing</h3>
+  <p>High-volume production introduces a class of testing that does not exist in single-mission programmes: production acceptance testing, in which every unit that comes off the production line is subjected to a standardised acceptance test designed to catch manufacturing variations that would cause early on-orbit failure. This is analogous to the acceptance testing described in Article 04 but applied at high volume and optimised for test time and throughput.</p>
+
+  <p>The critical discipline in production acceptance testing is maintaining test integrity as production rates increase. The pressures that erode acceptance test thoroughness in production environments are the same ones that affect all I&T programmes: schedule, cost, and the absence of recent failures creating a false sense of confidence. A production line that maintained rigorous acceptance testing when it was producing five units per month and relaxed the standards when it scaled to fifty units per month has not improved its quality assurance — it has traded one form of risk for another.</p>
+
+  <div class="callout violet">
+    <div class="callout-label">▷ The Lot Qualification Model</div>
+    <p>For constellation operators producing large numbers of identical units, a practical model is lot qualification rather than individual unit qualification: a subset of units from each production batch — typically 10 to 20% — undergoes full environmental testing, while the remainder undergo functional acceptance testing only. The lot qualification units verify that the production process for that batch has not introduced systematic variations that affect environmental performance; the acceptance-tested units verify that each individual unit is electrically functional at delivery. This approach, borrowed from terrestrial high-reliability electronics production, is used by several mature constellation operators and represents a reasonable balance between test thoroughness and production throughput — provided the lot qualification fraction is maintained and the sample selection is genuinely random rather than convenience-based.</p>
+  </div>
+
+  <!-- SECTION 9 -->
+  <h2 class="sh" id="s9">9. What the Industry Has Learned — A Failure Digest</h2>
+
+  <p>The smallsat community has been accumulating on-orbit anomaly data since the first CubeSats flew in 2003. The pattern that emerges from this data is consistent and instructive. The following cases are representative, not comprehensive; they are selected to illustrate specific I&T-related failure modes rather than to be a complete historical record.</p>
+
+  <div class="lessons-timeline">
+
+    <div class="lt-item loss">
+      <div class="lt-dot"></div>
+      <div class="lt-era">Early CubeSat era · 2003–2008</div>
+      <div class="lt-mission">First Generation CubeSats — Silent On Separation</div>
+      <div class="lt-desc">Of the first cohort of educational CubeSats flown on ROKOT and similar rideshare vehicles, a significant fraction never established radio contact after deployment. Root causes, reconstructed post-facto, included: connector failures induced by the acoustic environment (units had been vibration-tested but not acoustically tested); solar array deployment failures caused by burn wire mechanisms that had not been functionally tested after vibration; and software lock-up caused by radiation-induced single-event upsets that the flight software had no watchdog or recovery mechanism to handle. Each of these failure modes was well-understood in the traditional spacecraft community. Each was new to the CubeSat community because the community had not yet inherited the traditional programme's institutional memory.</div>
+      <div class="lt-lesson">Lesson: the I&T knowledge base does not transfer automatically</div>
+    </div>
+
+    <div class="lt-item partial">
+      <div class="lt-dot"></div>
+      <div class="lt-era">Second generation · 2009–2014</div>
+      <div class="lt-mission">Nanosatellite Thermal Failures — COTS Components Out of Range</div>
+      <div class="lt-desc">As CubeSat missions became more capable, a class of thermal anomalies emerged in which subsystems that worked correctly at room temperature failed at the cold end of the orbital thermal cycle. Battery management ICs rated to 0°C failed at −15°C in eclipse. Microcontrollers with commercial-temperature ratings exhibited oscillator instability below −10°C. In several cases, the failure was only detected because the mission had sufficient telemetry to observe the correlation between eclipse entry and anomaly onset. Units without this telemetry simply appeared to fail randomly. The root cause was always the same: COTS components tested and characterised only within their commercial temperature range, deployed into an environment that exceeded that range regularly and predictably. Thermal-vacuum testing of the integrated spacecraft would have found these anomalies in every case.</div>
+      <div class="lt-lesson">Lesson: COTS datasheets do not bound space environment behaviour</div>
+    </div>
+
+    <div class="lt-item loss">
+      <div class="lt-dot"></div>
+      <div class="lt-era">Commercial era · 2015–2019</div>
+      <div class="lt-mission">Commercial Constellation Early Failures — Software and Configuration</div>
+      <div class="lt-desc">As venture-backed smallsat companies began launching first-generation constellation units, a pattern emerged that was qualitatively different from the educational CubeSat failures: sophisticated, capable spacecraft failing due to software configuration errors and integration anomalies that rigorous functional testing should have caught. Flight software built from a development branch rather than the release branch — because the schedule did not permit a final release cycle. Configuration parameters left at development values rather than flight values. EGSE interface cables left connected in the deployer, causing a short that drained the battery before deployment. In each case, the failure mode was not a novel space-environment interaction — it was a ground integration error that pre-launch testing was designed to prevent, and which pre-launch testing would have found had it been performed with the same rigor expected in traditional programmes.</div>
+      <div class="lt-lesson">Lesson: schedule pressure in commercial programmes produces the same failure modes as schedule pressure in traditional programmes</div>
+    </div>
+
+    <div class="lt-item success">
+      <div class="lt-dot"></div>
+      <div class="lt-era">Mature commercial era · 2019–present</div>
+      <div class="lt-mission">Planet, Spire, Capella — Improved Reliability Through Systematic Testing</div>
+      <div class="lt-desc">The commercial constellation operators that achieved the best long-term reliability track records — Planet Labs (Dove imaging constellation), Spire Global (LEMUR atmospheric sensing), Capella Space (SAR imaging) — are distinguished from their peers by having invested earlier and more consistently in environmental test infrastructure, COTS component characterisation, and formal configuration management. Planet's evolution from university CubeSat roots to a professional programme with dedicated T-V test chambers, acoustic test capability, and fleet-level statistical reliability monitoring is a documented case study in how the smallsat community can inherit the I&T disciplines of the traditional programme model without losing the speed and cost advantages that define the smallsat value proposition. The investment in testing did not slow these programmes down over the long run — it reduced the rework and anomaly investigation cycles that consume more schedule than the testing itself.</div>
+      <div class="lt-lesson">Lesson: systematic testing is not incompatible with the smallsat model</div>
+    </div>
+
+  </div>
+
+  <!-- SECTION 10 -->
+  <h2 class="sh" id="s10">10. The Right I&T Programme for a Small Mission</h2>
+
+  <p>There is no single correct I&T programme for a small satellite — the right programme depends on mission objectives, consequence of failure, budget, schedule, team capability, and the specific components and mechanisms involved. What follows is a framework for making those decisions explicitly rather than by default.</p>
+
+  <table class="gen-table">
+    <thead>
+      <tr>
+        <th>Decision</th>
+        <th>Questions to answer explicitly</th>
+        <th>Risk if omitted without analysis</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Thermal-vacuum testing</td>
+        <td>What is the mission thermal environment? What COTS components are used and what are their rated temperature ranges? Has any lot-representative T-V testing been done on critical components? What is the mission lifetime relative to the expected thermal cycle count?</td>
+        <td>COTS component failures at temperature extremes; vacuum-induced outgassing contamination; thermally-driven mechanical binding in deployables. High probability of early mission anomaly for missions &gt;6 months.</td>
+      </tr>
+      <tr>
+        <td>Vibration testing</td>
+        <td>What is the launch vehicle environment at the deployer interface? What is the CubeSat's structural natural frequency, and does it fall in a problematic range for the launch profile?</td>
+        <td>Structural failure, connector failure, solder joint cracking, deployable mechanism interference. This is the minimum test; its omission is very rarely defensible.</td>
+      </tr>
+      <tr>
+        <td>Acoustic testing</td>
+        <td>What is the acoustic environment at the deployer location? Does the spacecraft contain deployables with burn-wire or shape-memory mechanisms sensitive to acoustic fatigue? What is the structural natural frequency in the acoustic range?</td>
+        <td>Deployable failures; connector failures not caught by vibration; acoustic fatigue in lightweight structures.</td>
+      </tr>
+      <tr>
+        <td>COTS component characterisation</td>
+        <td>Which components are mission-critical (failure = mission loss)? What are their rated temperature and radiation ranges? What is the expected mission radiation dose and thermal environment?</td>
+        <td>Silent failures at environmental extremes; radiation-induced latch-up; battery management failures in deep eclipse.</td>
+      </tr>
+      <tr>
+        <td>Functional test completeness</td>
+        <td>Has every mode the spacecraft will use on orbit been verified on the integrated flight unit? Has every deployable been actuated on a mechanical model or engineering unit? Has the full commissioning sequence been rehearsed end-to-end on the ground?</td>
+        <td>Undetected software bugs, interface errors, incorrect mode behaviour. These are cheap to find on the ground and expensive to manage on orbit.</td>
+      </tr>
+      <tr>
+        <td>Software version control</td>
+        <td>Is the flight software build controlled in a versioned repository separate from the development branch? Has it been formally tagged and released? Can the exact build loaded on the flight unit be verified by checksum?</td>
+        <td>Flight software loaded from a development state rather than the release state; configuration parameters at development values; software behavior on orbit that was never tested.</td>
+      </tr>
+      <tr>
+        <td>Pre-launch functional test</td>
+        <td>What is the complete functional test performed on the flight unit in the deployer or launch configuration? Does it cover all communication links, all mode transitions, all deployment arming states?</td>
+        <td>Launch with a fault condition that was introduced during final integration; EGSE interface cables left connected; deployment system armed incorrectly.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>The framework for each decision should follow the same structure: identify the failure mode the test addresses; estimate the probability of that failure mode in the untested population, using the best available data (component specifications, similar mission history, heritage from related designs); and compare the expected cost of the failure mode (probability multiplied by consequence) to the cost of the test. For most missions, this calculation will favour performing the test. When it does not — when the mission truly cannot support the test cost and schedule — the decision not to test should be formally documented as a risk acceptance decision, with the probability estimate, consequence assessment, and decision authority recorded before launch.</p>
+
+  <!-- SECTION 11 -->
+  <h2 class="sh" id="s11">11. Closing Argument — Small Spacecraft, Not Small Standards</h2>
+
+  <p>The small satellite industry has produced remarkable things in a short time. It has democratised access to space in ways that were genuinely not possible fifteen years ago. It has driven down the cost of Earth observation, communications, and scientific data collection by orders of magnitude. It has created a generation of engineers with hands-on spacecraft development experience that did not exist before CubeSats. These are real accomplishments, and nothing in this article should be read as diminishing them.</p>
+
+  <p>But the industry is now mature enough, and its failure database large enough, to draw clear conclusions about the relationship between I&T rigour and mission success. The data is not ambiguous: programmes that invest in systematic testing — even at the compressed, resource-constrained level appropriate to small spacecraft — succeed at higher rates than programmes that do not. The investment does not need to look like a NASA flagship programme's test campaign. It does need to be systematic, explicit about what risks it is accepting, and honest about what the omission of any given test actually means for mission reliability.</p>
+
+  <div class="pull-quote">
+    <p>"The goal is not to build small versions of large spacecraft programmes. The goal is to test small spacecraft with the same disciplined thinking that makes large spacecraft programmes reliable — applied at the scale and resource level that small spacecraft actually have. That is harder than doing it at large scale with large budgets. It is not impossible."</p>
+  </div>
+
+  <p>The I&T principles in this series — test as you fly, test before you stress, document everything, investigate every anomaly, know what configuration was tested — did not originate because traditional programmes had abundant time and money. They originated because spacecraft that were built and tested without those principles failed, and the failures were expensive, public, and avoidable. The smallsat industry is now old enough to be repeating some of those lessons from first principles. The purpose of this article is to make that repetition unnecessary.</p>
+
+  <div class="callout green">
+    <div class="callout-label">✓ The Five Non-Negotiables for Any Smallsat Programme</div>
+    <p>If a resource-constrained programme can only establish five disciplines with any rigour, these are the five that most consistently separate missions that work from missions that do not.</p>
+    <p><strong>1. Vibration test the flight unit before launch</strong> — no exceptions. The facility exists, the cost is bounded, and the failure modes it prevents are real and common.</p>
+    <p><strong>2. Perform a thermal-vacuum test</strong> — even a limited one, on the integrated unit, with a full functional test at hot and cold extremes. If a full campaign is impossible, a 72-hour test with four cycles is vastly better than no test.</p>
+    <p><strong>3. Control the flight software build</strong> — release it from a version-controlled repository, tag it, and verify the build loaded on the flight unit by checksum before encapsulation.</p>
+    <p><strong>4. Test all deployable mechanisms on a mechanical model</strong> — before the flight unit is assembled if possible, after assembly if not. An undeployed solar array or antenna is the most common mission-ending failure mode in the nanosatellite community, and it is the one most directly preventable by functional testing.</p>
+    <p><strong>5. Perform a complete functional test in the launch configuration</strong> — the spacecraft in its deployer or launch adapter, connected only through the umbilical it will use before separation, running the full commissioning sequence. The last thing that happens before the unit is delivered to the launch provider should be confirmation that it does what it is supposed to do.</p>
+  </div>
+
+  <!-- GLOSSARY -->
+  <h2 class="sh" id="glossary">Key Terms Used in This Article</h2>
+
+  <table class="gloss-table">
+    <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+    <tbody>
+      <tr><td>COTS</td><td>Commercial Off-The-Shelf — components designed and qualified for terrestrial commercial applications, used in spacecraft applications without full space qualification. Offers significant cost and performance advantages; requires characterisation to understand behaviour outside commercial-rated environment.</td></tr>
+      <tr><td>CubeSat</td><td>A standardised small spacecraft form factor defined by the CubeSat Design Specification (CDS): 1U = 10×10×10 cm, approximately 1.33 kg. CubeSats fly in multiples (3U, 6U, 12U, etc.) and are deployed from standardised deployers such as the Poly-Picosatellite Orbital Deployer (PPOD).</td></tr>
+      <tr><td>Lot Qualification</td><td>A production testing approach in which a sample fraction of each production batch undergoes full environmental qualification testing, verifying that the production process for that batch has not introduced systematic variations. The remainder of the batch undergoes functional acceptance testing only.</td></tr>
+      <tr><td>Microsatellite</td><td>Spacecraft in the 10–100 kg mass class. The primary tier of the commercial smallsat industry. Capable of meaningful science and commercial payloads; I&T programmes are compressed but typically include the major environmental test categories.</td></tr>
+      <tr><td>Nanosatellite</td><td>Spacecraft in the 1–10 kg mass class, dominated by CubeSat form factors (1U through 12U). Severe constraints drive heavy COTS component use and significant I&T compression. Highest failure rate tier of the small satellite classification.</td></tr>
+      <tr><td>Normalisation of Deviance</td><td>The gradual acceptance of test shortcuts or anomalous conditions as normal practice through repeated exposure without immediate adverse consequences. A risk management failure mode in which absence of recent failure is mistaken for evidence of acceptability. Described in detail in Article 06 (Anomaly Management).</td></tr>
+      <tr><td>Production Acceptance Testing</td><td>Standardised test applied to every unit coming off a production line to detect manufacturing variations that would cause early failure. Distinct from qualification testing (which characterises the design) and environmental testing (which screens for manufacturing defects in more depth). Optimised for throughput.</td></tr>
+      <tr><td>Single-Event Latch-up (SEL)</td><td>A radiation-induced failure mode in CMOS electronics in which a heavy ion or proton creates a parasitic thyristor structure that latches the circuit into a low-resistance state, drawing excessive current. May be recoverable by power cycling; may cause permanent damage. COTS components have no characterised SEL threshold for space radiation environments.</td></tr>
+      <tr><td>Single-Event Upset (SEU)</td><td>A radiation-induced bit flip in a memory cell or register, caused by ionising particle passage through the sensitive volume of a transistor. May cause incorrect computation, corrupted stored data, or software state errors. Recoverable if the software has watchdog and recovery mechanisms; catastrophic if it does not.</td></tr>
+      <tr><td>Total Ionising Dose (TID)</td><td>Cumulative ionising radiation energy absorbed by a semiconductor device over its mission lifetime. Causes threshold shifts, increased leakage current, and eventual parametric or functional failure. COTS components are not tested to TID levels relevant to multi-year space missions.</td></tr>
+    </tbody>
+  </table>
+
+</article>
+</div>
+
+
+<!-- ARTICLE NAVIGATOR -->
+<div class="art-nav">
+  <div class="art-nav-inner">
+    <span class="art-nav-label">Go to article</span>
+    <div class="art-nav-select-wrap">
+      <select id="artNav_spacecraft_iat_smallsat_html" onchange="this.nextElementSibling.disabled = !this.value || this.options[this.selectedIndex].disabled">
+        <option value="">— Select any article in the series —</option>
+        <optgroup label="── Main Series ──────────────────────────">
+      <option value="spacecraft_iat_intro.html">01 · Introduction to Spacecraft I&T</option>
+      <option value="spacecraft_iat_article01.html">02 · I&T Programme Structure</option>
+      <option value="spacecraft_iat_article11.html">03 · Configuration Management</option>
+      <option value="spacecraft_iat_article16.html">04 · Quality Assurance</option>
+      <option value="spacecraft_iat_article02.html">05 · Cleanrooms & Contamination Control</option>
+      <option value="spacecraft_iat_article10.html">06 · EGSE & Test Harness</option>
+      <option value="spacecraft_iat_article03.html">07 · Functional Testing</option>
+      <option value="spacecraft_iat_article09.html">08 · Flight Software V&V</option>
+      <option value="spacecraft_iat_article14.html">09 · Mass Properties & Structural Loads</option>
+      <option value="spacecraft_iat_article04.html">10 · Vibration, Acoustics & Shock</option>
+      <option value="spacecraft_iat_article05.html">11 · Thermal-Vacuum Testing</option>
+      <option value="spacecraft_iat_article12.html">12 · EMC Testing</option>
+      <option value="spacecraft_iat_article07.html">13 · Instrument Integration & Calibration</option>
+      <option value="spacecraft_iat_article13.html">14 · Propulsion Testing</option>
+      <option value="spacecraft_iat_article06.html">15 · Anomaly Management</option>
+      <option value="spacecraft_iat_article15.html">16 · Launch Vehicle Integration</option>
+      <option value="spacecraft_iat_article08.html">17 · Launch Readiness & Commissioning</option>
+    </optgroup>
+    <optgroup label="── Supplementary ──────────────────────────">
+      <option value="spacecraft_iat_smallsat.html" selected disabled>▶ Supp · Small Satellites</option>
+      <option value="spacecraft_iat_case_studies.html">Supp · Case Studies</option>
+    </optgroup>
+      </select>
+    </div>
+    <button class="art-nav-go" disabled
+            onclick="var s=this.previousElementSibling.querySelector('select'); if(s.value && !s.options[s.selectedIndex].disabled) window.location.href=s.value;">
+      Open →
+    </button>
+  </div>
+</div>
+
+<footer class="article-footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <div class="footer-label">Series</div>
+      <div class="footer-text">Spacecraft Integration &amp; Test<br>Supplementary Article — Small Satellites</div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-label">Topics</div>
+      <div class="tags">
+        <span class="tag">SmallSat</span>
+        <span class="tag">CubeSat</span>
+        <span class="tag">COTS</span>
+        <span class="tag">Test Compression</span>
+        <span class="tag">Thermal Vacuum</span>
+        <span class="tag">Constellations</span>
+        <span class="tag">Risk Acceptance</span>
+      </div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-label">Audience</div>
+      <div class="footer-text">Engineers entering the small satellite industry, engineers from traditional programmes transitioning to smallsat development, and programme managers who need to make explicit risk acceptance decisions about compressed test programmes.</div>
+    </div>
+  </div>
+</footer>

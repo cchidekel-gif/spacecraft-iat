@@ -1,0 +1,249 @@
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://raw.githubusercontent.com/cchidekel-gif/spacecraft-iat-styles/refs/heads/main/styles.css">
+
+<div class="masthead">
+  <span class="masthead-series">Spacecraft Engineering Series · Integration &amp; Test</span>
+  <span class="masthead-right">Article 16 of 17</span>
+</div>
+
+<div class="series-nav">
+  <span>Series:</span>
+  <span class="sep">·</span>
+  <span>Intro</span>
+  <span class="sep">·</span>
+  <span>01</span>
+  <span class="sep">·</span>
+  <span>02</span>
+  <span class="sep">·</span>
+  <span>03</span>
+  <span class="sep">·</span>
+  <span>04</span>
+  <span class="sep">·</span>
+  <span>05</span>
+  <span class="sep">·</span>
+  <span>06</span>
+  <span class="sep">·</span>
+  <span>07</span>
+  <span class="sep">·</span>
+  <span>08</span>
+  <span class="sep">·</span>
+  <span>09</span>
+  <span class="sep">·</span>
+  <span>10</span>
+  <span class="sep">·</span>
+  <span>11</span>
+  <span class="sep">·</span>
+  <span>12</span>
+  <span class="sep">·</span>
+  <span>13</span>
+  <span class="sep">·</span>
+  <span>14</span>
+  <span class="sep">·</span>
+  <span class="current">15</span>
+  <span class="sep">·</span>
+  <span>16</span>
+</div>
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Spacecraft Integration &amp; Test · Article 16 of 17</div>
+    <h1>Launch Vehicle<br>Integration — The<br>Spacecraft Perspective</h1>
+    <p class="hero-sub">The ICD process, coupled loads analysis, payload acceptance, and everything the spacecraft team must understand about how their vehicle relates to the machine that will carry it to orbit.</p>
+    <div class="byline">
+      <div class="byline-avatar">🚀</div>
+      <div>
+        <div class="byline-name">Charles Chidekel</div>
+        <div class="byline-title">Integration &amp; Test Guru · 40 Years of I&amp;T Experience</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+<article class="article-body">
+
+  <div class="toc-wrap">
+    <div class="toc-label">In This Article</div>
+    <ul class="toc-list">
+      <li><a href="#s1"><span>1. Two Programmes, One Launch</span><span class="toc-num">§1</span></a></li>
+      <li><a href="#s2"><span>2. The Payload User's Guide</span><span class="toc-num">§2</span></a></li>
+      <li><a href="#s3"><span>3. The Interface Control Document</span><span class="toc-num">§3</span></a></li>
+      <li><a href="#s4"><span>4. The Mechanical Interface — Adapter, Separation, and Clamp Band</span><span class="toc-num">§4</span></a></li>
+      <li><a href="#s5"><span>5. The Electrical Interface — Umbilical, Power, and Ordnance Circuits</span><span class="toc-num">§5</span></a></li>
+      <li><a href="#s6"><span>6. The Launch Environment — What the LV Imposes on the Spacecraft</span><span class="toc-num">§6</span></a></li>
+      <li><a href="#s7"><span>7. Coupled Loads Analysis — The Spacecraft's Role</span><span class="toc-num">§7</span></a></li>
+      <li><a href="#s8"><span>8. Payload Acceptance Review</span><span class="toc-num">§8</span></a></li>
+      <li><a href="#s9"><span>9. Physical Integration at the Launch Site</span><span class="toc-num">§9</span></a></li>
+      <li><a href="#s10"><span>10. The Encapsulation Decision</span><span class="toc-num">§10</span></a></li>
+      <li><a href="#s11"><span>11. What the Launch Vehicle Does Not Owe You</span><span class="toc-num">§11</span></a></li>
+      <li><a href="#glossary"><span>Key Terms Glossary</span><span class="toc-num">GL</span></a></li>
+    </ul>
+  </div>
+
+  <p class="lead">The launch vehicle is not part of the spacecraft programme — it is a separate programme, with its own schedule, its own priorities, and its own constraints, that the spacecraft must satisfy in order to use it. From the spacecraft team's perspective, the launch vehicle is a service provider: it provides the mechanical support, the electrical power, and the ascent trajectory that delivers the spacecraft to its initial orbit. In return, it requires that the spacecraft meets specific mechanical, electrical, and environmental compatibility requirements, provides accurate mass properties data, and completes all pre-launch operations within the allocated processing timeline. Understanding this relationship — and the obligations it creates — is the subject of this article.</p>
+
+  <div class="pull-quote">
+    <p>"The launch vehicle team does not work for you. They work for the launch. You are one of possibly dozens of customers they will serve this year. Your spacecraft is important to you. To the pad crew, it is a payload — one of many. Approach the relationship with professional respect, read the payload user's guide, comply with its requirements completely, and you will get the launch you need. Show up with surprises, and you will not."</p>
+  </div>
+
+  <h2 class="sh" id="s1">1. Two Programmes, One Launch</h2>
+  <p>Launch vehicle integration is the management of the interface between two independently developed systems — the spacecraft and the launch vehicle — that have never previously flown together and never will again after this mission. Each programme has its own engineering standards, its own configuration management discipline, its own safety procedures, and its own schedule constraints. The technical and programmatic interface between them must be managed with the same rigour as any other critical programme interface, and its management begins well before the spacecraft arrives at the launch site.</p>
+  <p>The spacecraft team typically selects its launch vehicle early in the programme — often during Phase A or early Phase B — and the selection establishes a cascade of design constraints that propagate throughout the spacecraft's development: the payload fairing diameter constrains the spacecraft's launch configuration envelope; the launch vehicle's launch environment specifies the structural loads the spacecraft must survive; the separation system defines the spacecraft's separation interface; and the payload user's guide defines the timeline, the processing facilities, and the operational procedures the spacecraft team must conform to.</p>
+
+  <h2 class="sh" id="s2">2. The Payload User's Guide</h2>
+  <p>Every launch vehicle family publishes a <span class="kt">Payload User's Guide (PUG)</span> — a comprehensive technical document that defines everything a spacecraft programme needs to know to design for and operate with that launch vehicle. It is the launch vehicle's primary customer-facing technical document, and it is the spacecraft team's primary reference for all launch vehicle interface requirements.</p>
+  <p>The PUG covers the mechanical envelope constraints (the maximum dimensions and mass properties the fairing can accommodate), the launch environment specifications (the quasi-static loads, random vibration spectrum, acoustic environment, shock levels, and thermal environment that the spacecraft must survive), the electrical interface specifications (the power provided through the umbilical, the ordnance bus characteristics, the separation signal), the payload processing procedures (the timeline for operations at the launch site, the permitted facility access, the environmental control specifications for the payload processing facility), and the mission design parameters (the target orbit, the injection accuracy, and the fairing jettison conditions).</p>
+  <p>The spacecraft programme must read the PUG carefully and completely at the time of launch vehicle selection — not after CDR. Every PUG constraint that has a spacecraft design implication must be identified, captured in the spacecraft requirements, and carried through the design process. PUG constraints discovered late in the design phase are expensive. PUG constraints discovered at the launch site are catastrophic.</p>
+
+  <h2 class="sh" id="s3">3. The Interface Control Document</h2>
+  <p>The <span class="kt">Interface Control Document (ICD)</span> between the spacecraft and the launch vehicle is the legally binding, bilaterally approved document that defines the specific interface between this spacecraft and this launch vehicle on this mission. Where the PUG provides the general envelope within which all customers must operate, the ICD defines the specific implementation for the particular spacecraft — the exact bolt pattern and torque specification of the separation interface, the exact pin assignments of the umbilical connector, the exact mass properties values that the launch vehicle's flight control system will use.</p>
+  <p>The ICD is a living document throughout the programme. It is first issued early in the programme at a preliminary level, updated at each major review milestone, and finalised before the launch site integration campaign begins. Every change to the spacecraft's design that affects a parameter in the ICD requires a formal ICD change, approved by both the spacecraft programme and the launch vehicle provider. The ICD change process is slower and more bureaucratic than the spacecraft programme's own CCB process, because it requires concurrence from an external organisation with its own schedule and priorities.</p>
+
+  <table class="icd-table">
+    <thead><tr><th>ICD Domain</th><th>Key Parameters</th><th>Spacecraft Design Impact</th><th>Verification Method</th></tr></thead>
+    <tbody>
+      <tr><td>Mechanical</td><td>Separation interface diameter and bolt pattern; clamp band type; adapter geometry; centre of mass envelope; moment of inertia limits; static balance requirements</td><td>Drives spacecraft primary structure interface flange design; CoM management throughout integration; balance mass provisions if required</td><td>Mechanical fit check with launch vehicle adapter; mass properties measurement and delivery to LV provider</td></tr>
+      <tr><td>Electrical — Umbilical</td><td>Umbilical connector type and pin assignments; power provided to spacecraft through umbilical; umbilical disconnect sequence; time from umbilical disconnect to separation</td><td>Spacecraft umbilical connector selection; power system design to bridge umbilical disconnect gap; software to manage disconnect transition</td><td>Umbilical compatibility test at launch site; electrical functional test through launch vehicle umbilical connector</td></tr>
+      <tr><td>Electrical — Ordnance</td><td>Separation ordnance device type; firing circuit specifications; inhibit requirements; arming sequence</td><td>Separation system design; ordnance device selection; inhibit circuit design to meet LV safety requirements</td><td>Ordnance circuit continuity tests; inhibit verification; clamp band separation test (typically on qualification hardware)</td></tr>
+      <tr><td>RF Environment</td><td>RF environments within the fairing during processing and on the pad; any RF signals transmitted by the LV that the spacecraft must tolerate; any RF silence requirements during fuelling</td><td>Spacecraft RF susceptibility design; any required RF shielding within the fairing; scheduling of spacecraft RF operations around LV RF constraints</td><td>RF compatibility assessment; electromagnetic environment measurements at the launch site if required</td></tr>
+      <tr><td>Environments</td><td>Quasi-static load levels; random vibration spectrum; acoustic environment; shock levels at separation; thermal environment during ascent and within the fairing</td><td>Structural design sizing; environmental test levels (Article 04); propellant thermal control during ascent</td><td>Environmental test campaign at levels derived from PUG; coupled loads analysis confirming structural margins</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sh" id="s4">4. The Mechanical Interface — Adapter, Separation, and Clamp Band</h2>
+  <p>The mechanical interface between spacecraft and launch vehicle is the most safety-critical interface in the programme: it is the structural path through which all launch loads are transferred from the launch vehicle to the spacecraft, and it is the mechanism by which the spacecraft is released at separation. A failure of either function — structural failure during ascent, or separation failure at orbit injection — is immediately mission-fatal.</p>
+  <p>Most spacecraft attach to the launch vehicle through a <span class="kt">payload adapter</span> — a structural cone or cylinder that transitions between the spacecraft's separation interface flange and the launch vehicle's forward skirt interface. The adapter is provided by the launch vehicle provider (or designed jointly), and the spacecraft is bolted to it through a defined bolt pattern. The adapter may include the separation system — typically a pyrotechnic clamp band that, when fired, releases the spacecraft — or the separation system may be part of the spacecraft.</p>
+  <p>The <span class="kt">clamp band separation system</span> works by applying a radial clamping force through a band tensioned by a bolt. When the pyrotechnic bolt (or nut) is fired, the tension is released, the band opens, and the spacecraft separates. The spacecraft receives a small separation impulse from the spring-loaded plunger or marman band that helps it clear the adapter. The direction and magnitude of this separation impulse are defined in the ICD — the spacecraft's attitude control system must be designed to acquire a stable attitude from whatever initial rates the separation impulse produces.</p>
+
+  <div class="callout rust">
+    <div class="callout-label">⚠ The Clamp Band Test — A Test You Can Only Get Wrong Once</div>
+    <p>Separation system qualification testing — demonstrating that the clamp band releases the spacecraft cleanly, with the required separation velocity and within the required angular rate limits — is performed on qualification hardware at a structural test facility. The flight clamp band is not fired during ground testing; firing it would require replacing it, and the flight replacement would need to be re-qualified. What is tested is the functional equivalent of the flight system, to the same specifications.</p>
+    <p>This is one of the clearest examples in the entire I&T programme of a function that cannot be tested on flight hardware under flight conditions. The qualification test tells you that a system of that design, built to that specification, separated correctly when tested. The flight system will be built to the same specification, inspected to confirm, and trusted to perform the same way. There is no more direct verification available. The design margin, the manufacturing inspection, and the qualification test data are the totality of the evidence that the separation will succeed.</p>
+  </div>
+
+  <h2 class="sh" id="s5">5. The Electrical Interface — Umbilical, Power, and Ordnance Circuits</h2>
+  <p>The launch vehicle provides electrical power to the spacecraft through the umbilical connection during pre-launch processing and countdown, typically until a defined time before liftoff. The spacecraft must be designed to operate on launch vehicle umbilical power during the countdown phase, and to transition seamlessly to its own internal power (batteries and, eventually, solar arrays) at umbilical disconnect — which occurs before liftoff to allow for the physical disconnect of the umbilical.</p>
+  <p>The umbilical also carries ordnance firing circuits — the electrical paths through which the launch vehicle fires the spacecraft's separation ordnance at the appropriate time in the separation sequence. These circuits are controlled by the launch vehicle's flight computer; the spacecraft has no authority over when they fire. The spacecraft's inhibit design must ensure that the ordnance cannot be inadvertently fired by any other stimulus, but must be capable of firing when the launch vehicle provides the firing signal.</p>
+  <p>The electrical compatibility between the spacecraft's umbilical interface and the launch vehicle's umbilical connector is verified at the launch site during a formal <span class="kt">umbilical compatibility test</span> — a functional test that confirms the correct signals are present at the correct pins, the correct voltage levels are provided by the launch vehicle power bus, and the spacecraft's response to umbilical disconnect is correct.</p>
+
+  <h2 class="sh" id="s6">6. The Launch Environment — What the LV Imposes on the Spacecraft</h2>
+  <p>Article 04 covered the environmental test programme that verifies the spacecraft can survive the launch environment. This section addresses the source of that environment — where the load specifications come from, how they are derived from the launch vehicle's operating parameters, and what the spacecraft team must understand about their relationship to the actual flight environment.</p>
+  <p>The launch environment specifications in the PUG are <span class="kt">envelope specifications</span> — they represent the maximum environments that any payload will experience across all launch scenarios (all payloads, all trajectories, all weather conditions) that the launch vehicle supports. A specific spacecraft on a specific mission may experience a less severe environment than the PUG envelope — because the actual trajectory is less demanding, or because the payload mass changes the vehicle's structural response. The Coupled Loads Analysis (Article 14) is the mechanism by which the mission-specific environment is determined. Until the CLA is complete, the spacecraft must be designed to survive the PUG envelope.</p>
+
+  <h2 class="sh" id="s7">7. Coupled Loads Analysis — The Spacecraft's Role</h2>
+  <p>As described in Article 14, the CLA requires the spacecraft to provide a reduced-order structural model — the CLA model — to the launch vehicle provider. The spacecraft's responsibilities in the CLA process go beyond simply providing this model. The spacecraft team must:</p>
+  <ul class="body-list">
+    <li><strong>Verify the CLA model</strong> against the full spacecraft FEM to confirm that it accurately represents the spacecraft's dynamic behaviour at the interface and at the critical load points within the spacecraft. A CLA model that misrepresents the spacecraft's mass distribution or primary structural stiffness will produce incorrect load predictions — potentially non-conservative ones that allow structural margin to be consumed by analysis error.</li>
+    <li><strong>Review the CLA results</strong> for each load case identified in the analysis plan, and compare the resulting loads to the structural margins in the spacecraft's design. Any load case that consumes margin beyond the accepted level requires either a structural design change or a formal assessment demonstrating that the actual environment for the specific mission will be less severe than the analysed case.</li>
+    <li><strong>Provide comments and corrections</strong> to the launch vehicle provider's CLA team on any aspect of the analysis that appears incorrect or inconsistent with the spacecraft's design. The CLA is a bilateral technical activity — the spacecraft team is not a passive recipient of the results but an active participant in verifying that the analysis correctly represents both the spacecraft and the launch vehicle.</li>
+    <li><strong>Update the CLA model</strong> after the modal survey test to reflect the correlated FEM, and request a re-run of the CLA if the updated model produces materially different predictions from the preliminary model. The correlated CLA is the definitive structural verification input to the LRR.</li>
+  </ul>
+
+  <h2 class="sh" id="s8">8. Payload Acceptance Review</h2>
+  <p>The <span class="kt">Payload Acceptance Review (PAR)</span> is the launch vehicle provider's formal review of the spacecraft programme's readiness to begin launch site integration — the launch vehicle provider's equivalent of the spacecraft programme's Pre-Ship Review. The PAR confirms that the spacecraft has completed its pre-ship test programme, that the ICD is finalised and all interface requirements are met, that the mass properties are within the payload envelope, that the CLA is complete and margins are positive, and that all required data products (drawings, test reports, safety data sheets for hazardous materials) have been delivered to the launch site.</p>
+  <p>The PAR is the formal gateway to launch site integration. A spacecraft that does not pass the PAR cannot begin integration with the launch vehicle. PAR findings — discrepancies between the programme's delivered data and the launch vehicle provider's requirements — must be resolved before integration begins, or formally accepted with agreed disposition plans before the PAR is approved. Approaching the PAR with confidence requires that the spacecraft programme has been tracking ICD compliance throughout the I&T campaign, not discovering deficiencies in the final weeks before the PAR date.</p>
+
+  <div class="int-flow">
+    <div class="if-header">Launch Site Integration Sequence — Spacecraft Perspective</div>
+    <div class="if-step"><div class="if-num">1</div><div class="if-content"><div class="if-title">Spacecraft Arrival and Receiving Inspection</div><div class="if-desc">Spacecraft arrives at the launch site in its shipping container. Receiving inspection confirms container integrity, shock recorder data within limits, and shipping environment within specification. Container opened in controlled environment. Spacecraft visual inspection. Functional test to confirm no shipping damage.</div></div></div>
+    <div class="if-step"><div class="if-num">2</div><div class="if-content"><div class="if-title">Launch Site Functional Test</div><div class="if-desc">Abbreviated functional test using launch site EGSE to verify spacecraft health after transport. Results compared to pre-ship functional test baseline. Any deviations investigated immediately — this is the data that confirms the spacecraft survived shipping undamaged.</div></div></div>
+    <div class="if-step"><div class="if-num">3</div><div class="if-content"><div class="if-title">Propellant Loading (if applicable)</div><div class="if-desc">Hazardous operations per Article 13. Performed in dedicated propellant loading facility with full safety crew. Mass measurements before and after to verify loaded propellant mass.</div></div></div>
+    <div class="if-step"><div class="if-num">4</div><div class="if-content"><div class="if-title">Ordnance Installation and Safing Verification</div><div class="if-desc">Flight pyrotechnic devices installed. Inhibit configuration verified. Ordnance safety documentation completed. Range Safety Officer concurrence obtained before proceeding to integration.</div></div></div>
+    <div class="if-step"><div class="if-num">5</div><div class="if-content"><div class="if-title">Spacecraft-to-Adapter Mechanical Integration</div><div class="if-desc">Spacecraft lowered onto payload adapter. Separation interface bolted to specification torque — every fastener torqued and recorded in traveller. Clamp band (if used) installed and tensioned. Electrical umbilical connected and umbilical compatibility test performed.</div></div></div>
+    <div class="if-step"><div class="if-num">6</div><div class="if-content"><div class="if-title">Encapsulation</div><div class="if-desc">Fairing halves mated around the spacecraft. Last physical access to the spacecraft. Final contamination inspection. Final inhibit status verification. Fairing closed — spacecraft is now inaccessible until separation on orbit.</div></div></div>
+    <div class="if-step"><div class="if-num">7</div><div class="if-content"><div class="if-title">Payload-to-Launch Vehicle Integration</div><div class="if-desc">Encapsulated payload (spacecraft + fairing) mated to the launch vehicle. Electrical connections between payload and launch vehicle made and verified. Final mass properties confirmation. Countdown begins.</div></div></div>
+  </div>
+
+  <h2 class="sh" id="s9">9. Physical Integration at the Launch Site</h2>
+  <p>Physical integration of the spacecraft to the launch vehicle adapter is one of the highest-stakes mechanical operations in the entire programme. It is performed by a team that includes both the spacecraft programme's integration engineers and the launch vehicle provider's payload integration team, working to procedures that are jointly reviewed and approved before the operation begins. The spacecraft engineer's role during this operation is not to direct the work — the launch site's procedures and authority govern — but to be present, attentive, and ready to raise concerns if anything observed is inconsistent with the ICD or the spacecraft's design intent.</p>
+
+  <h2 class="sh" id="s10">10. The Encapsulation Decision</h2>
+  <p>Fairing encapsulation is the most consequential decision the spacecraft programme makes at the launch site. Once the fairing is closed, the spacecraft is inaccessible. Any anomaly that is discovered after encapsulation cannot be resolved by physical access to the spacecraft — only by fairing de-mating and re-opening, which is a major operation that requires the approval of both the spacecraft programme and the launch vehicle provider, and which costs significant schedule.</p>
+  <p>The encapsulation decision must be preceded by a formal readiness assessment that confirms: all pre-encapsulation functional tests are complete with acceptable results; all anomalies from launch site processing are closed or have accepted dispositions; all inhibits are in their required pre-encapsulation configuration; the contamination record for the spacecraft is within specification; and all required data products and documentation are complete. The encapsulation readiness review is a formal milestone with the authority to hold — and has held — programmes for hours or days while outstanding items were resolved.</p>
+
+  <h2 class="sh" id="s11">11. What the Launch Vehicle Does Not Owe You</h2>
+  <p>The spacecraft team, understandably, spends years focused on its own spacecraft. The launch vehicle is something that appears at the end of the programme and takes the spacecraft to orbit. This perspective, however natural, produces a dangerous blind spot: it encourages the assumption that the launch vehicle's job is simply to deliver the spacecraft safely, and that any failure of that delivery is the launch vehicle's problem.</p>
+  <p>The launch vehicle provider owes you a flight that meets the specifications in the PUG and the ICD. It does not owe you accommodation for a spacecraft that exceeds the mass envelope, a CLA model delivered six months late, a separation interface that does not match the ICD-specified geometry, or ordnance circuits with inhibit designs that do not meet range safety requirements. Every one of these situations creates a problem that both programmes must solve — and in each case, the spacecraft programme created the problem. The launch vehicle provider will work to resolve it, at a cost in schedule and in the relationship that is entirely avoidable.</p>
+  <p>The spacecraft team that reads the payload user's guide at programme inception, tracks ICD compliance throughout development, delivers the CLA model on schedule, and arrives at the launch site with a spacecraft that meets every requirement in every ICD domain will have a productive, professional integration campaign and will launch on schedule. This is not idealism — it is the engineering standard that the discipline demands and that the mission requires.</p>
+
+  <div class="stat-strip">
+    <div class="stat-cell"><span class="stat-num">2–5 yr</span><p>Typical lead time between launch vehicle selection and launch — the period during which ICD compliance must be tracked and maintained</p></div>
+    <div class="stat-cell"><span class="stat-num">6–12 wk</span><p>Typical spacecraft processing time at the launch site — from arrival through encapsulation and pad integration</p></div>
+    <div class="stat-cell"><span class="stat-num">30–60 s</span><p>Typical time from umbilical disconnect to liftoff — the period during which the spacecraft must operate entirely on internal power</p></div>
+    <div class="stat-cell"><span class="stat-num">T+0</span><p>Separation from the launch vehicle — the moment at which the spacecraft becomes responsible for its own existence, with no further physical connection to anything built on Earth</p></div>
+  </div>
+
+
+  <!-- NEXT LESSON -->
+  <div class="next-article">
+    <div class="next-article-content">
+      <div class="next-label">Next Lesson · L17 of 17 · Article 17</div>
+      <div class="next-title">Launch Readiness: The Final Review and What Comes After</div>
+      <div class="next-desc">The Launch Readiness Review, launch countdown, separation, and the critical first hours of on-orbit commissioning</div>
+    </div>
+  </div>
+
+  <h2 class="sh" id="glossary">Key Terms Used in This Article</h2>
+  <table class="gloss-table">
+    <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+    <tbody>
+      <tr><td>Clamp Band</td><td>A circumferential tension band that provides the clamping force securing the spacecraft to the payload adapter. Released by firing a pyrotechnic bolt or nut, allowing the spacecraft to separate.</td></tr>
+      <tr><td>Encapsulation</td><td>The mating of the payload fairing halves around the integrated spacecraft, sealing the spacecraft from further physical access until separation on orbit.</td></tr>
+      <tr><td>ICD (Interface Control Document)</td><td>The bilaterally approved document defining the specific mechanical, electrical, and environmental interface between a specific spacecraft and its launch vehicle. Legally binding on both programmes.</td></tr>
+      <tr><td>Payload Acceptance Review (PAR)</td><td>The launch vehicle provider's formal review of the spacecraft programme's readiness to begin launch site integration. The gateway to physical integration.</td></tr>
+      <tr><td>Payload Adapter</td><td>The structural element, provided by the launch vehicle or designed jointly, that transitions between the spacecraft's separation interface flange and the launch vehicle's forward skirt. Carries all launch loads between spacecraft and vehicle.</td></tr>
+      <tr><td>Payload User's Guide (PUG)</td><td>The launch vehicle provider's comprehensive technical document defining all interface requirements, environmental specifications, processing procedures, and mission design parameters for customers of the launch vehicle.</td></tr>
+      <tr><td>Separation Impulse</td><td>The small velocity change imparted to the spacecraft at separation by spring-loaded mechanisms or the clamp band release energy. Its direction and magnitude are defined in the ICD and must be within the attitude control system's acquisition envelope.</td></tr>
+      <tr><td>Umbilical</td><td>The multi-conductor electrical cable connecting the spacecraft to the launch vehicle during ground processing and countdown, providing power and carrying ordnance firing signals. Disconnected at a defined time before liftoff.</td></tr>
+      <tr><td>Umbilical Compatibility Test</td><td>A functional test at the launch site confirming that the spacecraft's umbilical interface connector is compatible with the launch vehicle's umbilical, with correct signal assignments, voltage levels, and spacecraft response to disconnect.</td></tr>
+    </tbody>
+  </table>
+</article>
+</div>
+
+
+<!-- ARTICLE NAVIGATOR -->
+<div class="art-nav">
+  <div class="art-nav-inner">
+    <span class="art-nav-label">Go to article</span>
+    <div class="art-nav-select-wrap">
+      <select id="artNav_spacecraft_iat_article15_html" onchange="this.nextElementSibling.disabled = !this.value || this.options[this.selectedIndex].disabled">
+        <option value="">— Select any article in the series —</option>
+        <optgroup label="── Main Series ──────────────────────────">
+      <option value="spacecraft_iat_intro.html">01 · Introduction to Spacecraft I&T</option>
+      <option value="spacecraft_iat_article01.html">02 · I&T Programme Structure</option>
+      <option value="spacecraft_iat_article11.html">03 · Configuration Management</option>
+      <option value="spacecraft_iat_article16.html">04 · Quality Assurance</option>
+      <option value="spacecraft_iat_article02.html">05 · Cleanrooms & Contamination Control</option>
+      <option value="spacecraft_iat_article10.html">06 · EGSE & Test Harness</option>
+      <option value="spacecraft_iat_article03.html">07 · Functional Testing</option>
+      <option value="spacecraft_iat_article09.html">08 · Flight Software V&V</option>
+      <option value="spacecraft_iat_article14.html">09 · Mass Properties & Structural Loads</option>
+      <option value="spacecraft_iat_article04.html">10 · Vibration, Acoustics & Shock</option>
+      <option value="spacecraft_iat_article05.html">11 · Thermal-Vacuum Testing</option>
+      <option value="spacecraft_iat_article12.html">12 · EMC Testing</option>
+      <option value="spacecraft_iat_article07.html">13 · Instrument Integration & Calibration</option>
+      <option value="spacecraft_iat_article13.html">14 · Propulsion Testing</option>
+      <option value="spacecraft_iat_article06.html">15 · Anomaly Management</option>
+      <option value="spacecraft_iat_article15.html" selected disabled>▶ 16 · Launch Vehicle Integration</option>
+      <option value="spacecraft_iat_article08.html">17 · Launch Readiness & Commissioning</option>
+    </optgroup>
+    <optgroup label="── Supplementary ──────────────────────────">
+      <option value="spacecraft_iat_smallsat.html">Supp · Small Satellites</option>
+      <option value="spacecraft_iat_case_studies.html">Supp · Case Studies</option>
+    </optgroup>
+      </select>
+    </div>
+    <button class="art-nav-go" disabled
+            onclick="var s=this.previousElementSibling.querySelector('select'); if(s.value && !s.options[s.selectedIndex].disabled) window.location.href=s.value;">
+      Open →
+    </button>
+  </div>
+</div>
+
+<footer class="article-footer">
+  <div class="footer-inner">
+    <div class="footer-col"><div class="footer-label">Series</div><div class="footer-text">Spacecraft Integration &amp; Test<br>Article 15 — Supplementary</div></div>
+    <div class="footer-col"><div class="footer-label">Topics</div><div class="tags"><span class="tag">Launch Vehicle</span><span class="tag">ICD</span><span class="tag">Payload Adapter</span><span class="tag">Encapsulation</span><span class="tag">CLA</span><span class="tag">Separation</span></div></div>
+    <div class="footer-col"><div class="footer-label">Audience</div><div class="footer-text">Spacecraft programme engineers and managers who need to understand the launch vehicle interface and their obligations within it — without specialising in launch operations.</div></div>
+  </div>
+</footer>
