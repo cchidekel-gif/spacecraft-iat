@@ -819,7 +819,7 @@
       
       </select>
     </div>
-    <button class="art-nav-go" id="artNavBtn_spacecraft_iat_case_studies_html" disabled onclick="var v=document.getElementById('artNav_spacecraft_iat_case_studies_html').value; if(v) window.location.href=v;">
+    <button class="art-nav-go" id="artNavBtn_spacecraft_iat_case_studies_html" disabled onclick="var v=document.getElementById('artNav_spacecraft_iat_case_studies_html').value; if(v) window.location.href=v+'#top';">
       Open &#8594;
     </button>
   </div>
@@ -832,4 +832,4 @@ document.getElementById('artNav_spacecraft_iat_case_studies_html').addEventListe
 });
 </script>
 </div>
-<script>window.addEventListener("load",function(){window.scrollTo(0,0);});</script>
+<script>if(window.location.hash=="#top"||!window.location.hash){document.addEventListener("DOMContentLoaded",function(){window.scrollTo(0,0);});window.addEventListener("load",function(){window.scrollTo(0,0);});}</script>
