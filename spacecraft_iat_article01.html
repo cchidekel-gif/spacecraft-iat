@@ -273,7 +273,7 @@
           <span class="level-tag">Parts Engineering</span>
         </div>
         <div class="level-desc">At the base of the hierarchy are individual materials and piece parts: electronic components (resistors, capacitors, integrated circuits), fasteners, adhesives, coatings, lubricants, and raw structural materials. For flight programs, piece parts are typically subject to <strong>parts screening</strong> — a program of testing and inspection designed to identify early failures ("infant mortality") before parts are incorporated into assemblies.</div>
-        <div class="level-desc">Electronic parts used on spacecraft are typically procured to controlled specifications (such as the MIL-PRF series) and may be subject to <strong>destructive physical analysis (DPA)</strong> on lot samples to verify internal construction. Problems found here — a bad lot of capacitors, a lubricant incompatible with the thermal environment — are infinitely cheaper to address at this level than after they have been incorporated into a flight assembly.</div>
+        <div class="level-desc">Electronic parts used on spacecraft are typically procured to controlled specifications (such as the MIL-PRF series) and may be subject to <strong>destructive physical analysis (DPA)</strong> on lot samples to verify internal construction. Problems found here — a bad lot of capacitors, a counterfeit material, a lubricant incompatible with the thermal environment — are infinitely cheaper to address at this level than after they have been incorporated into a flight assembly.</div>
         <div class="level-tests">
           <strong>Typical I&amp;T Activities</strong>
           Incoming inspection · Lot acceptance testing · Radiation testing · Destructive physical analysis (DPA) · Material certifications
@@ -293,11 +293,11 @@
           <span class="level-tag">Manufacturing</span>
           <span class="level-tag">Workmanship</span>
         </div>
-        <div class="level-desc">At Level 1, piece parts are assembled into functional units: populated circuit card assemblies (CCAs), bonded structural panels, small mechanisms, and harness segments. I&amp;T activities here focus on workmanship verification and basic functionality. Circuit cards are subjected to <strong>automated optical inspection (AOI)</strong> and <strong>X-ray inspection</strong> to verify solder joint quality and component placement.</div>
-        <div class="level-desc">Spacecraft electronics are typically required to meet <span class="kt">IPC-A-610 Class 3</span> workmanship standards — the highest level defined by the IPC, intended for high-reliability electronics where continued performance is critical. For circuit cards destined for optical instruments or sensitive detectors, contamination control begins here.</div>
+        <div class="level-desc">At Level 1, piece parts are assembled into functional units: populated circuit card assemblies (CCAs), bonded structural panels, small mechanisms, and harness segments. I&amp;T activities here focus on workmanship verification and basic functionality. Circuit cards are subjected to optical and often <strong>X-ray inspection</strong> to verify solder joint quality and component placement.</div>
+        <div class="level-desc">Spacecraft electronics are typically required to meet NASA, Military or International standards such as <span class="kt">IPC-A-610 Class 3</span> workmanship standards, intended for high-reliability electronics where continued performance is critical. For circuit cards destined for optical instruments or sensitive detectors, contamination control begins here.</div>
         <div class="level-tests">
           <strong>Typical I&amp;T Activities</strong>
-          Automated optical inspection (AOI) · X-ray inspection · Electrical continuity · Dimensional inspection · Workmanship audit
+          X-ray inspection · Electrical continuity · Dimensional inspection · Workmanship audit
         </div>
       </div>
     </div>
@@ -358,17 +358,17 @@
           <span class="level-tag">Calibration</span>
           <span class="level-tag">Compatibility</span>
         </div>
-        <div class="level-desc">Science instruments, hosted payloads, and other mission-specific hardware occupy a parallel track in the integration hierarchy. An instrument is typically developed by a separate team — often at a different institution — and delivered to the spacecraft integrator as a completed, tested unit with its own I&amp;T heritage.</div>
-        <div class="level-desc">The interface between instrument and spacecraft bus is one of the highest-risk interfaces in the entire program. Mechanical, electrical, thermal, and data interfaces must all be verified — ideally using a <span class="kt">fit check</span> (mechanical interface verification with a mass model) and a <span class="kt">compatibility test</span> (electrical interface verification) well before the instrument is delivered for spacecraft integration. Instrument <strong>calibration</strong> — the process by which science performance is characterized — is intimately linked to I&amp;T and must be planned as part of the overall program architecture.</div>
+        <div class="level-desc">Science instruments, hosted payloads, and other mission-specific hardware occupy a parallel track in the integration hierarchy. An instrument or payload is typically developed by a separate team — often at a different institution — and delivered to the spacecraft integrator as a completed, tested unit with its own I&amp;T heritage.</div>
+        <div class="level-desc">The interface between instrument and spacecraft bus is one of the highest-risk interfaces in the entire program. Mechanical, electrical, thermal, and data interfaces must all be verified — ideally using a <span class="kt">fit check</span> (mechanical interface verification with a mass model) and a <span class="kt">compatibility test</span> (electrical interface verification) well before the instrument is delivered for spacecraft integration. Instrument/payload <strong>calibration</strong> — the process by which required performance is characterized — is intimately linked to I&amp;T and must be planned as part of the overall program architecture.</div>
         <div class="level-tests">
           <strong>Typical I&amp;T Activities</strong>
-          Instrument-level functional testing · Calibration campaigns · Fit checks · Electrical compatibility testing · Contamination monitoring
+          Instrument/Payload-level functional testing · Calibration campaigns · Fit checks · Electrical compatibility testing · Contamination monitoring
         </div>
       </div>
     </div>
 
     <div class="callout rust" style="margin: 0 0 2px 0;">
-      <div class="callout-label">⚠ The Instrument Delivery Problem</div>
+      <div class="callout-label">⚠ The Instrument/Payload Delivery Problem</div>
       <p>Late instrument delivery is one of the most common causes of spacecraft I&amp;T schedule compression. The pattern is familiar: the instrument slips, the spacecraft integration schedule is held, and then both are compressed together to hit the launch date — placing the program under maximum pressure at exactly the moment requiring maximum care.</p>
       <p>The correct response is to identify early which I&amp;T activities are schedule-critical, which have float, and which can be deferred to the launch site. This planning must be done before the instrument slips — not after.</p>
     </div>
@@ -407,7 +407,7 @@
           <span class="level-tag">Deployables</span>
           <span class="level-tag">Cryo-Optical</span>
         </div>
-        <div class="level-desc">For the most complex space science missions — large observatories, flagship planetary spacecraft, and multi-element systems — there is a level above the spacecraft. An observatory typically consists of a spacecraft bus, multiple science instruments, a sunshield or mission-enabling structure, and deployable elements that <strong>cannot be fully tested in their flight configuration on the ground</strong>.</div>
+        <div class="level-desc">For the most complex space science missions — large observatories, flagship planetary spacecraft, and multi-element systems — there is a level above the spacecraft. An observatory typically consists of a spacecraft bus, multiple science instruments/payloads, perhaps a sunshield or mission-enabling structure, and deployable elements that <strong>cannot be fully tested in their flight configuration on the ground</strong>.</div>
         <div class="level-desc">The James Webb Space Telescope is the canonical example. JWST comprised an optical telescope assembly (OTA), an integrated science instrument module (ISIM) containing four science instruments, a spacecraft bus, and a sunshield roughly the size of a tennis court — all folded for launch and deployed in sequence at L2. No facility on Earth was large enough to test the fully deployed observatory in a flight-like thermal-vacuum environment. The I&amp;T program had to be designed around this fundamental constraint, using a combination of analysis, subsystem testing, and limited system-level testing to build confidence in flight performance. JWST launched in December 2021 and has exceeded its science performance requirements on orbit.</div>
         <div class="level-tests">
           <strong>Typical I&amp;T Activities</strong>
@@ -430,6 +430,14 @@
 
   <p>An I&amp;T campaign does not begin when the first hardware arrives on the test floor. It begins during the design phase of the program, when the I&amp;T approach is first defined, and it ends — formally — at the launch readiness review that authorizes the spacecraft to fly. The campaign progresses through a sequence of phases corresponding to the NASA mission lifecycle; programs under other agencies follow essentially the same logical progression.</p>
 
+  <p>A common and costly misreading of the phase structure is to treat I&amp;T  as a Phase D activity — to staff the function late, to defer the planning, and to assume that experienced test personnel can be recruited and made effective on short notice once hardware begins to arrive. Forty years of experience says otherwise. The decisions that determine the quality of a Phase D campaign are made in Phases A, B, and C: the test philosophy, the EGSE architecture, the verification approach, the facility selections, the staffing of a team with genuine I&amp;T expertise. </p>
+  
+  <p>In my experience, when that expertise is absent in the early phases, one of two things happens. Decisions get made anyway — by subsystem and component engineers who are excellent at what they do but whose perspective is necessarily bounded by their piece of the system, not by the integrated whole. Or decisions don't get made at all, because no one in the room has the cross-program visibility to recognize that a decision is required. Both failure modes are invisible at the time and expensive to discover on the test floor. </p></p>
+
+  <div class="pull-quote">
+    <p>A program that defers I&amp;T investment does not save time or money — it borrows against Phase D at a very high rate of interest. By the time hardware arrives on the test floor, it is too late to correct the consequences of decisions that should have been made at the design table.</p>
+  </div>
+
   <table class="phase-table">
     <thead>
       <tr>
@@ -437,6 +445,7 @@
         <th>Name</th>
         <th>Key I&amp;T Activities</th>
         <th>Gate / Exit Criteria</th>
+        <th>If Deferred to Phase D</th>
       </tr>
     </thead>
     <tbody>
@@ -445,34 +454,39 @@
         <td>Concept Study</td>
         <td>I&amp;T concept defined; test philosophy established; top-level requirements derived from mission requirements; preliminary assessment of test facility needs</td>
         <td>Preliminary I&amp;T Plan approved; philosophy reviewed at SRR/SDR</td>
+        <td>Test philosophy undefined; requirements written without regard to how they will be verified; unverifiable requirements discovered too late to change</td>
       </tr>
       <tr>
         <td>Phase B</td>
         <td>Preliminary Design</td>
         <td>I&amp;T Plan baselined; integration levels and test flow defined; EGSE concept developed; test facility selection initiated; long-lead test equipment identified</td>
         <td>I&amp;T Plan baselined at PDR; EGSE procurement authorized</td>
+        <td>EGSE not ready when hardware arrives; test facility contracts placed too late; long-lead items unavailable; integration sequence not defined until hardware is already on the floor</td>
       </tr>
       <tr>
         <td>Phase C</td>
         <td>Final Design</td>
         <td>Detailed test procedures developed; EGSE fabricated and tested; test facility contracts awarded; component and subsystem test campaigns begin</td>
         <td>Test procedures reviewed at CDR; EGSE qualification complete</td>
+        <td>Test procedures written under schedule pressure with no margin for review; designs frozen with untestable features; subsystem problems not found until system-level integration</td>
       </tr>
       <tr class="phase-d">
         <td>Phase D</td>
         <td>Integration &amp; Test</td>
         <td>All integration activities; component, subsystem, and system-level environmental testing; anomaly resolution; launch campaign; launch site I&amp;T</td>
         <td>System-level test complete; all anomalies dispositioned; LRR passed</td>
+        <td>The bill comes due. Every deferred decision, every absent expert, every untested interface becomes an anomaly, a schedule slip, or a launch risk — at the worst possible time and the highest possible cost</td>
       </tr>
       <tr>
         <td>Phase E</td>
         <td>Operations</td>
         <td>Launch and early operations (LEOP); initial on-orbit checkout; instrument commissioning; performance verification against pre-launch baseline</td>
         <td>Mission operations readiness review; science commissioning complete</td>
+        <td>On-orbit anomalies with no ground test baseline to compare against; commissioning surprises that thorough I&amp;T would have found; compressed margin for recovery</td>
       </tr>
     </tbody>
   </table>
-
+  
   <p>Phase D is the heart of the I&amp;T campaign — the period when all the planning done in Phases A through C is executed. But the quality of Phase D is almost entirely determined by the quality of the planning that preceded it. Programs that arrive at Phase D with a well-developed I&amp;T Plan, mature EGSE, and thoroughly tested lower-level hardware move through system-level integration and test with manageable disruption. Programs that arrive with deferred problems and immature test infrastructure discover, painfully, that the test floor is a very expensive place to resolve issues that should have been addressed earlier.</p>
 
   <!-- SECTION 4 -->
