@@ -69,11 +69,15 @@
 </p>
 
 <p>
-  I have spent four decades in the business of making sure that kind of thing doesn't happen. I've integrated tiny science instruments the size of a shoebox and entire observatories the size of a city bus. I've worked on spacecraft that have gone to the Moon, to Mars, to the outer planets, and into the deep cold of Earth orbit. In all that time, I have never once seen a spacecraft fail because the engineering was too careful. I have seen spacecraft fail — and programs nearly fail — because the integration and test process was not treated with the seriousness it deserved.
+  I have spent four decades in the business of making sure that kind of thing doesn't happen. I've integrated space hardware from the size of a shoebox through the size of a city bus. My missions have flown on the Space Shuttle, orbited the sun and earth and flown into deep space. Fortunately only one of those programs failed to fulfill all of its mission objective and function successfully for years past its initial plannned life. In all that time, I have never once seen a spacecraft or payload fail because the engineering was too careful. They most often fail because the integration and test process was not treated with the seriousness it deserved. Processes were not rigorously followed, budget or schedule pressures led to shortcuts, the team didn't completly understand unexpected behaviors, management accepted risks that seemed minor which later became cripling realities. The result is always the same: a spacecraft that doesn't work, a mission that fails, and a loss of opportunity that can never be recovered.
 </p>
 
 <p>
-  This series of articles is written for new engineers, for students, and for anyone curious about what really happens between the moment a spacecraft is designed on paper and the moment it launches on a rocket. Integration and Test — universally abbreviated <span class="key-term">I&amp;T</span> in the industry — is one of the most demanding, intellectually rigorous, and deeply consequential fields in all of engineering. It is also, frankly, one of the least taught and least understood.
+  This series of articles is written for new engineers, for students, and for anyone curious about what really happens between the moment a spacecraft is designed on paper and the moment it launches on a rocket. Integration and Test <span class="key-term">I&amp;T</span> (sometimes also referred to as Assembly Integration and test <span class="key-term">AI&amp;T</span>) is one of the most demanding, intellectually rigorous, and deeply consequential fields in all of aerospace engineering. It is also, frankly, one of the least taught and least understood.
+</p>
+
+<p>
+  Throughout this series I will typically refer to spacecraft and science instruments because that represents the majority of my experience. However, the principles of I&amp;T apply to any space system — a crewed vehicle, a launcher or a small satellite constellation, regardless of the payload or mission (scientific, communications, military, exploration). 
 </p>
 
 <div class="pull-quote">
@@ -87,7 +91,7 @@
 </p>
 
 <p>
-  Consider what a spacecraft actually is. It is a collection of thousands — sometimes tens of thousands — of individual parts: structural panels, electronics boxes, solar arrays, propulsion components, scientific instruments, harnesses carrying hundreds of individual wire connections, software systems that must all communicate precisely. Each of these parts was designed by different engineers, often at different companies, sometimes in different countries, over a span of years. Each was tested in isolation. The question that I&amp;T must answer is devastatingly simple and brutally hard: <strong>do they all work together, as a system, the way they need to?</strong>
+  Consider what a spacecraft actually is. It is a collection of thousands — sometimes tens of thousands — of individual parts: structural panels, electronics boxes, solar arrays, propulsion components, scientific instruments, harnesses carrying hundreds of individual wire connections, software systems that must all work in concert and communicate precisely. Each of these parts was designed by different engineers, often at different companies, sometimes in different countries, over a span of years. Each was tested in isolation. The question that I&amp;T must answer is devastatingly simple and brutally hard: <strong>do they all work together, as a system, the way they need to?</strong>
 </p>
 
 <div class="mission-graphic">
@@ -99,7 +103,7 @@
 </div>
 
 <p>
-  The <span class="key-term">integration</span> part of I&amp;T refers to the physical and electrical assembly of the spacecraft — connecting subsystems, routing harnesses, mating interfaces, loading and configuring flight software. It is painstaking mechanical and electrical work, performed in some of the cleanest rooms ever built, by technicians wearing full-body bunny suits to prevent even a single human hair from contaminating an optical surface.
+  The <span class="key-term">integration</span> part of I&amp;T refers to the physical and electrical assembly of the spacecraft — connecting subsystems, routing harnesses, mating interfaces, loading and configuring flight software. It is painstaking mechanical and electrical work, often performed in some of the cleanest rooms ever built, by engineers and technicians wearing full-body "bunny" suits to prevent even a single human hair from contaminating a thermal or optical surface or mechanism.
 </p>
 
 <p>
@@ -163,6 +167,10 @@
   In four decades, I've seen many engineers arrive in I&amp;T who view it as a bureaucratic hurdle between design and launch. I've watched those same engineers, after one serious anomaly discovered on the test floor, transform into the most committed advocates for rigorous testing you'll ever meet. The philosophy of I&amp;T is not bureaucracy. It is <strong>epistemic discipline</strong> — the systematic, methodical building of justified confidence that a system will work.
 </p>
 
+<div class="pull-quote">
+  <p>Know what you know, know what you don't know, and never confuse the two.</p>
+</div>
+
 <p>
   Central to this philosophy is the concept of <span class="key-term">test-as-you-fly, fly-as-you-test</span>. This means that the conditions under which you test a spacecraft should be as close as possible to the conditions it will experience in flight — and conversely, the spacecraft you fly should be as close as possible to the one you tested. Any deviation from the tested configuration, no matter how seemingly trivial, must be carefully evaluated. The flight heritage of a tested configuration is among the most valuable things in spaceflight.
 </p>
@@ -182,7 +190,7 @@
 </p>
 
 <p>
-  The articles draw on real experience across a range of mission types: small science instruments, hosted payloads, dedicated science spacecraft, and large observatories. Where possible, I will use real examples — both successes and failures — because the field's lessons are written in both kinds of ink.
+  The articles draw on real experience across a range of mission types: small science instruments, hosted payloads, dedicated science spacecraft, and large observatories. Where possible, I will use real examples — both successes and failures. Keep in mind that publically available, non-proprietary, non-classified real world examples are hard to come by and so may be limited.
 </p>
 
 <table class="series-table">
@@ -317,7 +325,7 @@
 </table>
 
 <p>
-  A note on scope: this series focuses on the hardware and systems side of I&amp;T. Software integration and verification, while deeply connected, is a discipline of its own and will be addressed in a companion series. Flight software will appear throughout these articles where it intersects with hardware verification — because it always does.
+  A note on scope: this series focuses on the hardware and systems side of I&amp;T. Software integration and verification, while deeply connected, is a discipline of its own and my expertise in this area is limited. Flight software will appear throughout these articles where it intersects with hardware verification — because it always does.
 </p>
 
 <h2 class="section-heading">A Word to New Engineers</h2>
@@ -327,7 +335,7 @@
 </p>
 
 <p>
-  First: <strong>no question is too basic.</strong> The I&amp;T floor is one of the few places in engineering where the consequences of a misunderstood procedure can be immediate, physical, and irreversible. The engineer who asks "why do we do it this way?" is far more valuable than the one who follows procedure by rote without understanding. Ask. Always ask.
+  First: <strong>no question is too basic.</strong> The I&amp;T floor is one of the few places in engineering where the consequences of a misunderstood procedure can be immediate, physical, and irreversible. The engineer or technican who asks "why do we do it this way?" is far more valuable than the one who follows procedure by rote without understanding. Ask. Always ask.
 </p>
 
 <p>
@@ -347,8 +355,8 @@
   <div class="next-article">
     <div class="next-article-content">
       <div class="next-label">Next Lesson · L02 of 17 · Article 2</div>
-      <div class="next-title">The I&T Plan and Programme Architecture</div>
-      <div class="next-desc">Integration level hierarchy, programme phases, governing documents, and the I&T plan that ties them together</div>
+      <div class="next-title">The I&T Plan and Program Architecture</div>
+      <div class="next-desc">Integration level hierarchy, program phases, governing documents, and the I&T plan that ties them together</div>
     </div>
   </div>
 
@@ -365,7 +373,7 @@
         <option value="">— Select any article in the series —</option>
         <optgroup label="── Main Series ──────────────────────────">
           <option value="spacecraft_iat_intro.html" selected disabled>&#9654; 01 · Introduction to Spacecraft I&T</option>
-          <option value="spacecraft_iat_article01.html">02 · I&T Programme Structure</option>
+          <option value="spacecraft_iat_article01.html">02 · I&T Program Structure</option>
           <option value="" disabled>03 · Configuration Management (Coming Soon)</option>
           <option value="" disabled>04 · Quality Assurance (Coming Soon)</option>
           <option value="" disabled>05 · Cleanrooms & Contamination Control (Coming Soon)</option>
