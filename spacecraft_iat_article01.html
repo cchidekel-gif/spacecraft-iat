@@ -486,7 +486,7 @@
       </tr>
     </tbody>
   </table>
-  
+
   <p>Phase D is the heart of the I&amp;T campaign — the period when all the planning done in Phases A through C is executed. But the quality of Phase D is almost entirely determined by the quality of the planning that preceded it. Programs that arrive at Phase D with a well-developed I&amp;T Plan, mature EGSE, and thoroughly tested lower-level hardware move through system-level integration and test with manageable disruption. Programs that arrive with deferred problems and immature test infrastructure discover, painfully, that the test floor is a very expensive place to resolve issues that should have been addressed earlier.</p>
 
   <!-- SECTION 4 -->
@@ -545,15 +545,15 @@
   <!-- SECTION 5 -->
   <h2 class="sh" id="s5">5. The Technical Reviews</h2>
 
-  <p>At each major transition in the I&amp;T campaign, a formal technical review is conducted. These reviews are not rubber stamps — they are structured examinations of readiness to proceed, conducted by a board that includes personnel independent of the performing team. The reviews serve two functions: they force the program to demonstrate readiness against defined criteria, and they provide an external check on the program's self-assessment.</p>
+  <p>At each major transition in the I&amp;T campaign, a formal technical review is conducted. These reviews are not rubber stamps — they are structured examinations of readiness to proceed, conducted by a board that includes personnel <strong><u>independent</u></strong> of the performing team. The reviews serve two functions: they force the program to demonstrate readiness against defined criteria, and they provide an external check on the program's self-assessment.</p>
 
   <ul class="body-list">
     <li><strong>System Requirements Review (SRR)</strong> — Confirms mission requirements are understood and the top-level I&amp;T approach is consistent with them. Held in Phase A.</li>
     <li><strong>Preliminary Design Review (PDR)</strong> — Reviews the preliminary I&amp;T Plan and the test requirements baseline. Authorizes development of detailed test procedures and EGSE. Held in Phase B.</li>
     <li><strong>Critical Design Review (CDR)</strong> — Reviews the detailed I&amp;T Plan, test procedures, and EGSE design. Authorizes fabrication of flight hardware and procurement of test facilities. Held in Phase C.</li>
     <li><strong>Test Readiness Review (TRR)</strong> — Conducted before each major test campaign to confirm the test configuration is correct, procedures are approved, the facility is certified, and the team is prepared. A TRR is a launch condition — you cannot start a major test without one.</li>
-    <li><strong>Pre-Ship Review (PSR)</strong> — Conducted before the spacecraft is shipped to the launch site. Confirms all home-facility I&amp;T activities are complete, all anomalies are dispositioned, and the spacecraft is in its approved flight configuration.</li>
-    <li><strong>Launch Readiness Review (LRR)</strong> — The final gate before launch. Reviews the complete I&amp;T campaign, confirms all open items are closed or dispositioned, and formally authorizes the launch. Covered in depth in Article 08.</li>
+    <li><strong>Pre-Ship Review (PSR)</strong> — Conducted before the spacecraft is shipped to the launch site. Confirms all home-facility I&amp;T activities are complete, all anomalies are dispositioned, and the spacecraft is in its approved flight/shipping configuration.</li>
+    <li><strong>Launch Readiness Review (LRR)</strong> — The final gate before launch. Reviews the complete I&amp;T campaign, confirms all open items are closed or dispositioned, and formally authorizes the launch. Covered in depth in Article 16.</li>
   </ul>
 
   <div class="callout steel">
@@ -567,15 +567,16 @@
 
   <p>No discussion of I&amp;T program architecture is complete without addressing Ground Support Equipment (GSE). GSE is the infrastructure — mechanical, electrical, and software — that makes spacecraft integration and test possible. It includes fixtures that support the spacecraft during handling and test, electrical systems that simulate the space environment, and software systems that command the spacecraft, acquire its telemetry, and evaluate its performance during test.</p>
 
-  <p>GSE is divided into three categories:</p>
+  <p>GSE can bedivided into four main categories:</p>
 
   <ul class="body-list">
     <li><span class="kt">Mechanical GSE (MGSE)</span> — Lifting fixtures, transportation containers, handling dollies, test stands, alignment fixtures, and specialized tooling required to assemble and disassemble flight hardware. MGSE must be designed to the same standard of care as flight hardware — a dropped spacecraft is not recoverable.</li>
     <li><span class="kt">Electrical GSE (EGSE)</span> — The electrical systems that power, command, and monitor the spacecraft during ground testing. EGSE includes spacecraft simulators, power supplies, command and telemetry processors, and the software that runs them. EGSE is the "ground version" of the spacecraft's operational environment — it must simulate the spacecraft's interfaces with fidelity sufficient to make test results meaningful.</li>
     <li><span class="kt">Software GSE (SWGSE)</span> — The software systems used to control test campaigns, process telemetry, evaluate performance against requirements, and manage test data. Modern SWGSE platforms provide automated test execution, real-time limit checking, and data archiving.</li>
+    <li><span class="kt">Special Purpose GSE </span> — Depending on the mission, additional specialized equipment may be needed. For example, simulators designed to replicate signal inputs (X-rays for a detector, targets for a weapon, grappling fixtures for a robot, star field simulators for attitude control sensors)</li>
   </ul>
 
-  <p>EGSE deserves particular emphasis. The fidelity of EGSE directly determines the fidelity of the test program. <strong>An EGSE that does not accurately simulate the spacecraft's flight interfaces will produce test results that do not accurately predict flight performance.</strong> This is not a subtle point — it has been the root cause of major on-orbit anomalies on multiple programs. The design, development, and verification of EGSE must be treated as an engineering program in its own right, with the same rigor applied to it as to the flight hardware itself.</p>
+  <p>EGSE deserves particular emphasis. The fidelity of EGSE directly determines the fidelity of the test program. <strong>An EGSE that does not accurately simulate/stimulate the spacecraft's flight interfaces will produce test results that do not accurately predict flight performance.</strong> This is not a subtle point — it has been the root cause of major on-orbit anomalies on multiple programs. The design, development, and verification of EGSE must be treated as an engineering program in its own right, with the same rigor applied to it as to the flight hardware itself.</p>
 
   <p>EGSE development must begin early — in Phase B — because EGSE must be ready before the first component-level tests begin. Programs that defer EGSE development discover that they are trying to test flight hardware with immature test equipment, which is exactly backwards from any rational risk posture.</p>
 
@@ -585,7 +586,8 @@
   <p>For an engineer writing or contributing to an I&amp;T Plan for the first time, the following guidance reflects lessons learned across multiple programs and multiple decades.</p>
 
   <h3 class="ssh">Start With Requirements, Not Test Ideas</h3>
-  <p>The most common error in I&amp;T planning is starting with a list of tests and then trying to find requirements that justify them, rather than starting with requirements and deriving the tests that verify them. Requirements-driven test planning produces a test program with clear justification for every element. Test-idea-driven planning produces a test program that is hard to defend when schedule pressure demands cuts.</p>
+  <p>The most common error in I&amp;T planning is starting with a list of tests and then trying to find requirements that justify them, rather than starting with requirements and deriving the tests that verify them. Requirements-driven test planning produces a test program with clear justification for every element, unambiguous pass/fail criteria and complee supporting evidence abd data. Test-idea-driven planning produces a test program that is hard to defend when schedule pressure demands cuts.</p>
+
 
   <h3 class="ssh">Plan for Anomalies</h3>
   <p>Every I&amp;T campaign will have anomalies. The question is not whether anomalies will occur, but whether the program has the process infrastructure to find them, document them, investigate them, and close them in a controlled way. The I&amp;T Plan must describe the anomaly management process: what constitutes an anomaly, how anomalies are classified, what investigation process applies to each class, and what authority is required to close each class of anomaly. Programs that do not plan for anomaly management find themselves improvising the process in the middle of a test campaign, under schedule pressure.</p>
@@ -594,7 +596,7 @@
   <p>The I&amp;T schedule has a critical path — a sequence of activities that determines the earliest possible completion date. The I&amp;T Plan must identify this path, because it is the path that must be protected. Every resource allocation decision, every risk management decision, every anomaly disposition decision will be made in the context of its impact on the critical path. If you do not know what the critical path is, you cannot manage to it.</p>
 
   <h3 class="ssh">Configuration Control Is Not Optional</h3>
-  <p>The I&amp;T Plan must define how the as-built and as-tested configuration of the spacecraft will be controlled and documented. Configuration control is not a quality assurance function imposed on the engineering team — it is an engineering function performed by the engineering team. The ability to answer the question "what exactly is on this spacecraft right now?" is essential to anomaly investigation, to launch readiness assessment, and to on-orbit anomaly support. Programs that treat configuration control as a paperwork burden pay for that attitude when they need to answer that question under pressure.</p>
+  <p>The I&amp;T Plan must define how the as-built and as-tested configuration of the spacecraft will be controlled and documented. Configuration control is not a quality assurance function imposed on the engineering team — it is an engineering function performed by the engineering team. The ability to answer the question "what <strong>exactly</strong> are we testing right now?" is essential to anomaly investigation, to launch readiness assessment, and to on-orbit anomaly support. Programs that treat configuration control as a paperwork burden pay for that attitude when they need to answer that question under pressure.</p>
 
   <div class="callout rust">
     <div class="callout-label">⚡ A Word on Schedule Pressure</div>
