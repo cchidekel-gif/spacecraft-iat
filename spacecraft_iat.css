@@ -1251,6 +1251,394 @@ ul.cs-list li::before {
 .cs-callout.gold .cs-callout-label { color: #a07c28; }
 
 
+/* ── ARTICLE 05 (Thermal-Vacuum): THERMAL RANGE ── */
+.thermal-range { margin: 2.2em 0; border: 1px solid var(--rule); overflow: hidden; }
+.thermal-range-header {
+  background: var(--ink); color: var(--paper); padding: 12px 20px;
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+}
+.thermal-zones { display: grid; grid-template-columns: repeat(5, 1fr); background: var(--white); }
+.tz { padding: 16px 12px; text-align: center; border-right: 1px solid var(--rule); }
+.tz:last-child { border-right: none; }
+.tz.cold-deep { background: #0a1a2a; }
+.tz.cold { background: #1a3a5a; }
+.tz.nominal { background: #2a4a3a; }
+.tz.hot { background: #5a3a1a; }
+.tz.hot-deep { background: #5a1a0a; }
+.tz-temp {
+  font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700;
+  color: #fff; display: block; margin-bottom: 4px; line-height: 1.1;
+}
+.tz-label { font-size: 0.75rem; color: rgba(255,255,255,0.6); font-style: italic; line-height: 1.4; }
+.tz-example {
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  color: rgba(255,255,255,0.35); letter-spacing: 0.06em;
+  text-transform: uppercase; margin-top: 6px; display: block;
+}
+
+/* ── ARTICLE 05 (Thermal-Vacuum): CHAMBER DIAGRAM ── */
+.chamber-diagram {
+  margin: 2.2em 0; background: var(--ink); color: var(--paper);
+  border: 1px solid var(--rule); overflow: hidden;
+}
+.chamber-header {
+  padding: 12px 20px; border-bottom: 1px solid rgba(255,255,255,0.1);
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold);
+}
+.chamber-content { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+.chamber-col { padding: 20px 22px; }
+.chamber-col + .chamber-col { border-left: 1px solid rgba(255,255,255,0.1); }
+.chamber-col-title {
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px;
+}
+.chamber-feature {
+  padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.07);
+  display: flex; gap: 10px; align-items: flex-start;
+}
+.chamber-feature:last-child { border-bottom: none; }
+.cf-label {
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  color: rgba(200,154,58,0.8); flex-shrink: 0; width: 80px; padding-top: 2px;
+}
+.cf-desc { font-size: 0.83rem; color: rgba(255,255,255,0.65); line-height: 1.55; font-weight: 300; }
+
+/* ── ARTICLE 05 (Thermal-Vacuum): TV PHASES ── */
+.tv-phases { margin: 2.2em 0; border: 1px solid var(--rule); overflow: hidden; }
+.tv-phases-header {
+  background: var(--steel); color: #fff; padding: 12px 20px;
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+}
+.tv-phase-row {
+  display: grid; grid-template-columns: 160px 1fr;
+  border-bottom: 1px solid var(--rule); background: var(--white);
+}
+.tv-phase-row:nth-child(even) { background: var(--light); }
+.tv-phase-row:last-child { border-bottom: none; }
+.tvp-badge {
+  display: flex; align-items: center; justify-content: center;
+  padding: 14px 12px; border-right: 2px solid var(--rule);
+  flex-direction: column; text-align: center; gap: 4px;
+}
+.tvp-num {
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  font-weight: 600; letter-spacing: 0.1em;
+}
+.tvp-badge.tb .tvp-num { color: var(--steel); }
+.tvp-badge.hot .tvp-num { color: #b84a2e; }
+.tvp-badge.cold .tvp-num { color: #2a6080; }
+.tvp-badge.cyc .tvp-num { color: var(--gold); }
+.tvp-badge.vac .tvp-num { color: var(--green); }
+.tvp-badge.func .tvp-num { color: var(--muted); }
+.tvp-icon { font-size: 1.3rem; }
+.tvp-body { padding: 14px 18px; }
+.tvp-title { font-weight: 700; font-size: 0.95rem; color: var(--ink); margin-bottom: 4px; }
+.tvp-desc { font-size: 0.87rem; color: #444; line-height: 1.65; font-weight: 300; }
+
+/* ── ARTICLE 05 (Thermal-Vacuum): TEMP TABLE ── */
+.temp-table { width: 100%; border-collapse: collapse; margin: 1.8em 0; font-size: 0.87rem; }
+.temp-table thead tr { background: var(--ink); color: #fff; }
+.temp-table thead th {
+  padding: 11px 14px; text-align: left;
+  font-family: 'JetBrains Mono', monospace; font-size: 9.5px;
+  letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500;
+}
+.temp-table tbody tr { border-bottom: 1px solid var(--rule); }
+.temp-table tbody tr:nth-child(even) { background: var(--light); }
+.temp-table td { padding: 11px 14px; vertical-align: top; }
+.temp-table td:first-child { font-weight: 700; color: var(--ink); width: 24%; }
+.temp-table td:nth-child(2) { color: #2a6080; font-weight: 600; width: 16%; }
+.temp-table td:nth-child(3) { color: #b84a2e; font-weight: 600; width: 16%; }
+.temp-table td:nth-child(4) { color: #2a6080; width: 14%; }
+.temp-table td:nth-child(5) { color: #b84a2e; width: 14%; }
+.temp-table td:last-child { color: var(--muted); font-style: italic; width: 16%; }
+.temp-hdr-cold { color: #7ab8d8 !important; }
+.temp-hdr-hot { color: #e8907a !important; }
+
+/* ── ARTICLE 05 (Thermal-Vacuum): FAILURE GRID ── */
+.failure-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px; margin: 1.8em 0;
+}
+.failure-card { border: 1px solid var(--rule); overflow: hidden; }
+.failure-card-top { padding: 13px 16px; display: flex; align-items: center; gap: 10px; }
+.failure-card.cold-fail .failure-card-top { background: var(--cold); }
+.failure-card.hot-fail .failure-card-top { background: var(--hot); }
+.failure-card.cycle-fail .failure-card-top { background: #2a1a2e; }
+.fc-icon { font-size: 1.5rem; }
+.fc-title { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700; color: #fff; }
+.fc-sub { font-size: 0.75rem; color: rgba(255,255,255,0.5); font-style: italic; }
+.failure-card-body { padding: 14px 16px; background: var(--white); }
+.failure-card:nth-child(even) .failure-card-body { background: var(--light); }
+.failure-card-body p { font-size: 0.88rem; color: #333; line-height: 1.65; font-weight: 300; }
+
+/* ── ARTICLE 05 (Thermal-Vacuum): INST GRID (T-V instrumentation) ── */
+.inst-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px; margin: 1.8em 0;
+}
+
+/* ── ARTICLE 06 (Anomaly Management): DR FLOW ── */
+.dr-flow { margin: 2.2em 0; border: 1px solid var(--rule); overflow: hidden; }
+.dr-flow-header {
+  background: var(--ink); color: var(--paper); padding: 12px 20px;
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+}
+.dr-steps { display: flex; background: var(--white); }
+.dr-step {
+  flex: 1; padding: 16px 12px; border-right: 1px solid var(--rule);
+  text-align: center; position: relative;
+}
+.dr-step:last-child { border-right: none; }
+.dr-step-num {
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--rust);
+  display: block; margin-bottom: 6px;
+}
+.dr-step-title { font-weight: 700; font-size: 0.88rem; color: var(--ink); margin-bottom: 5px; }
+.dr-step-desc { font-size: 0.78rem; color: var(--muted); font-style: italic; line-height: 1.5; }
+
+/* ── ARTICLE 06 (Anomaly Management): SEVERITY MATRIX ── */
+.sev-matrix { margin: 2.2em 0; border: 1px solid var(--rule); overflow: hidden; }
+.sev-matrix-header {
+  background: var(--ink); color: var(--paper); padding: 12px 20px;
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+}
+.sev-rows { background: var(--white); }
+.sev-row {
+  display: grid; grid-template-columns: 100px 1fr 1fr 1fr;
+  border-bottom: 1px solid var(--rule);
+}
+.sev-row:last-child { border-bottom: none; }
+.sev-row.header-row { background: var(--light); }
+.sev-cell-label {
+  padding: 13px 14px; border-right: 1px solid var(--rule);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; text-align: center;
+}
+.sev-row.cat1 .sev-cell-label { background: #fdf0ee; color: #8b0000; }
+.sev-row.cat2 .sev-cell-label { background: #fdf7ec; color: var(--amber); }
+.sev-row.cat3 .sev-cell-label { background: #f0f7f2; color: var(--green); }
+.sev-row.cat4 .sev-cell-label { background: #f0f4f8; color: var(--steel); }
+.sev-col {
+  padding: 13px 14px; border-right: 1px solid var(--rule);
+  font-size: 0.85rem; vertical-align: top;
+}
+.sev-col:last-child { border-right: none; }
+.sev-col.hdr {
+  font-family: 'JetBrains Mono', monospace; font-size: 9.5px;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 500;
+}
+.sev-col p { font-size: 0.85rem; color: #333; line-height: 1.6; }
+
+/* ── ARTICLE 06 (Anomaly Management): ROOT CAUSE GRID ── */
+.rc-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 14px; margin: 1.8em 0;
+}
+.rc-card { border: 1px solid var(--rule); overflow: hidden; background: var(--white); }
+.rc-card-header { padding: 13px 16px; display: flex; align-items: center; gap: 10px; }
+.rc-card:nth-child(1) .rc-card-header { background: #0f2030; }
+.rc-card:nth-child(2) .rc-card-header { background: #1a2010; }
+.rc-card:nth-child(3) .rc-card-header { background: #2a1000; }
+.rc-card:nth-child(4) .rc-card-header { background: #10102a; }
+.rc-card:nth-child(5) .rc-card-header { background: #1a1020; }
+.rc-icon { font-size: 1.4rem; flex-shrink: 0; }
+.rc-title { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700; color: #fff; }
+.rc-sub { font-size: 0.75rem; color: rgba(255,255,255,0.45); font-style: italic; }
+.rc-body { padding: 14px 16px; }
+.rc-body p { font-size: 0.87rem; color: #333; line-height: 1.65; font-weight: 300; }
+
+/* ── ARTICLE 06 (Anomaly Management): NORMALIZATION TABLE ── */
+.norm-table { width: 100%; border-collapse: collapse; margin: 1.8em 0; font-size: 0.87rem; }
+.norm-table thead tr { background: var(--rust); color: #fff; }
+.norm-table thead th {
+  padding: 11px 14px; text-align: left;
+  font-family: 'JetBrains Mono', monospace; font-size: 9.5px;
+  letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500;
+}
+.norm-table tbody tr { border-bottom: 1px solid var(--rule); }
+.norm-table tbody tr:nth-child(even) { background: var(--light); }
+.norm-table td { padding: 11px 14px; vertical-align: top; }
+.norm-table td:first-child { font-weight: 600; color: var(--ink); width: 22%; }
+.norm-table td:nth-child(2) { color: #444; width: 40%; }
+.norm-table td:last-child { color: var(--muted); font-style: italic; }
+
+/* ── ARTICLE 06 (Anomaly Management): STATUS BOARD ── */
+.status-board {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin: 2.2em 0;
+}
+.sb-cell { background: var(--white); padding: 18px 14px; text-align: center; }
+.sb-num {
+  font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700;
+  line-height: 1.1; display: block; margin-bottom: 4px;
+}
+.sb-cell.open .sb-num { color: var(--rust); }
+.sb-cell.work .sb-num { color: var(--amber); }
+.sb-cell.closed .sb-num { color: var(--green); }
+.sb-cell.waived .sb-num { color: var(--steel); }
+.sb-label {
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
+  margin-bottom: 4px; display: block;
+}
+.sb-cell p { font-size: 0.79rem; color: var(--muted); font-style: italic; line-height: 1.4; }
+
+/* ── ARTICLE 06 (Anomaly Management): HISTORY TIMELINE ── */
+.history-timeline { margin: 2.2em 0; }
+.ht-item {
+  display: grid; grid-template-columns: 120px 1fr;
+  border-left: 3px solid var(--rule); margin-bottom: 0; position: relative;
+}
+.ht-item::before {
+  content: ''; position: absolute; left: -7px; top: 20px;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--rule); border: 2px solid var(--paper);
+}
+.ht-item.critical::before { background: var(--rust); }
+.ht-item.notable::before { background: var(--gold); }
+.ht-item.positive::before { background: var(--green); }
+.ht-year {
+  padding: 14px 16px 14px 20px;
+  font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  font-weight: 600; color: var(--rust); white-space: nowrap;
+}
+.ht-content { padding: 14px 0 14px 8px; border-left: 1px solid var(--rule); }
+.ht-mission { font-weight: 700; font-size: 0.92rem; color: var(--ink); margin-bottom: 3px; }
+.ht-desc { font-size: 0.86rem; color: #444; line-height: 1.6; font-weight: 300; }
+
+/* ── ARTICLE 07 (Instruments): INSTRUMENT GRID ── */
+.instrument-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0; margin: 2em 0; border: 1px solid var(--rule); overflow: hidden;
+}
+.inst-card-header { padding: 16px 16px 12px; text-align: center; }
+.inst-card:nth-child(1) .inst-card-header { background: #0a1a2e; }
+.inst-card:nth-child(2) .inst-card-header { background: #1e0a2e; }
+.inst-card:nth-child(3) .inst-card-header { background: #0a2010; }
+.inst-card:nth-child(4) .inst-card-header { background: #2a1a08; }
+.inst-card-icon { font-size: 2rem; display: block; margin-bottom: 8px; }
+.inst-card-title {
+  font-family: 'Playfair Display', serif; font-size: 0.98rem;
+  font-weight: 700; color: #fff; margin-bottom: 4px;
+}
+.inst-card-wave {
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4);
+}
+.inst-card-body { padding: 16px; flex: 1; background: var(--white); }
+.inst-card:nth-child(even) .inst-card-body { background: var(--light); }
+.inst-card-body p { font-size: 0.87rem; color: #333; line-height: 1.65; font-weight: 300; }
+
+/* ── ARTICLE 07 (Instruments): CALIBRATION CHAIN ── */
+.cal-chain { margin: 2.2em 0; border: 1px solid var(--rule); overflow: hidden; }
+.cal-chain-header {
+  background: var(--ink); color: var(--paper); padding: 12px 20px;
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+}
+.cal-chain-rows { background: var(--white); }
+.cal-row {
+  display: grid; grid-template-columns: 160px 1fr;
+  border-bottom: 1px solid var(--rule);
+}
+.cal-row:last-child { border-bottom: none; }
+.cal-row:nth-child(even) { background: var(--light); }
+.cal-badge {
+  padding: 14px 12px; border-right: 2px solid var(--rule);
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; text-align: center; gap: 4px;
+}
+.cal-badge-num {
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+}
+.cal-badge.l1 .cal-badge-num { color: var(--rust); }
+.cal-badge.l2 .cal-badge-num { color: var(--amber); }
+.cal-badge.l3 .cal-badge-num { color: var(--steel); }
+.cal-badge.l4 .cal-badge-num { color: var(--green); }
+.cal-badge.l5 .cal-badge-num { color: var(--violet); }
+.cal-badge-icon { font-size: 1.3rem; }
+.cal-body { padding: 14px 18px; }
+.cal-title { font-weight: 700; font-size: 0.95rem; color: var(--ink); margin-bottom: 4px; }
+.cal-desc { font-size: 0.87rem; color: #444; line-height: 1.65; font-weight: 300; }
+
+/* ── ARTICLE 07 (Instruments): INTERFACE TABLE ── */
+.iface-table { width: 100%; border-collapse: collapse; margin: 1.8em 0; font-size: 0.87rem; }
+.iface-table thead tr { background: var(--deep-blue); color: #fff; }
+.iface-table thead th {
+  padding: 11px 14px; text-align: left;
+  font-family: 'JetBrains Mono', monospace; font-size: 9.5px;
+  letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500;
+}
+.iface-table tbody tr { border-bottom: 1px solid var(--rule); }
+.iface-table tbody tr:nth-child(even) { background: var(--light); }
+.iface-table tbody tr:hover { background: var(--cream); }
+.iface-table td { padding: 11px 14px; vertical-align: top; }
+.iface-table td:first-child { font-weight: 700; color: var(--ink); width: 20%; }
+.iface-table td:nth-child(2) { color: #333; width: 36%; }
+.iface-table td:nth-child(3) { color: var(--muted); font-style: italic; width: 26%; }
+.iface-table td:last-child { width: 18%; }
+
+/* ── ARTICLE 07 (Instruments): CALIBRATION PRODUCTS TABLE ── */
+.cal-prod-table { width: 100%; border-collapse: collapse; margin: 1.8em 0; font-size: 0.87rem; }
+.cal-prod-table thead tr { background: var(--violet); color: #fff; }
+.cal-prod-table thead th {
+  padding: 11px 14px; text-align: left;
+  font-family: 'JetBrains Mono', monospace; font-size: 9.5px;
+  letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500;
+}
+.cal-prod-table tbody tr { border-bottom: 1px solid var(--rule); }
+.cal-prod-table tbody tr:nth-child(even) { background: var(--light); }
+.cal-prod-table td { padding: 11px 14px; vertical-align: top; }
+.cal-prod-table td:first-child { font-weight: 700; color: var(--ink); width: 24%; }
+.cal-prod-table td:nth-child(2) { color: #333; width: 42%; }
+.cal-prod-table td:last-child { color: var(--muted); font-style: italic; }
+
+/* ── ARTICLE 07 (Instruments): DELIVERY FLOW ── */
+.delivery-flow { margin: 2.2em 0; border: 1px solid var(--rule); overflow: hidden; }
+.delivery-flow-header {
+  background: var(--steel); color: #fff; padding: 12px 20px;
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+}
+.delivery-milestones { display: flex; background: var(--white); }
+.dm { flex: 1; padding: 16px 12px; border-right: 1px solid var(--rule); text-align: center; }
+.dm:last-child { border-right: none; }
+.dm-phase {
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--rust);
+  display: block; margin-bottom: 5px;
+}
+.dm-title { font-weight: 700; font-size: 0.85rem; color: var(--ink); margin-bottom: 4px; }
+.dm-items { font-size: 0.76rem; color: var(--muted); font-style: italic; line-height: 1.55; }
+
+/* ── ARTICLE 07 (Instruments): CONTAMINATION GRID ── */
+.contam-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px; margin: 1.8em 0;
+}
+.contam-card { border: 1px solid var(--rule); overflow: hidden; }
+.contam-card-top { padding: 12px 16px; display: flex; align-items: center; gap: 10px; }
+.contam-card:nth-child(1) .contam-card-top { background: #1a1a0a; }
+.contam-card:nth-child(2) .contam-card-top { background: #0a1a1a; }
+.contam-card:nth-child(3) .contam-card-top { background: #1a0a1a; }
+.contam-card:nth-child(4) .contam-card-top { background: #1a0a0a; }
+.contam-icon { font-size: 1.4rem; flex-shrink: 0; }
+.contam-title { font-family: 'Playfair Display', serif; font-size: 0.93rem; font-weight: 700; color: #fff; }
+.contam-sub { font-size: 0.74rem; color: rgba(255,255,255,0.45); font-style: italic; }
+.contam-body { padding: 13px 16px; background: var(--white); }
+.contam-card:nth-child(even) .contam-body { background: var(--light); }
+.contam-body p { font-size: 0.87rem; color: #333; line-height: 1.6; font-weight: 300; }
+
+
 /* ── RESPONSIVE ── */
 @media (max-width: 680px) {
   .masthead { flex-direction: column; text-align: center; }
@@ -1258,8 +1646,25 @@ ul.cs-list li::before {
   .container { padding: 0 18px; }
   h2.sh, h2.section-heading { font-size: 1.4rem; }
   .stat-grid { grid-template-columns: repeat(2, 1fr); }
+  .stat-strip { grid-template-columns: repeat(2, 1fr); }
   .level-card { grid-template-columns: 56px 1fr; }
   .lvl-num { font-size: 0.95rem; }
   .test-type-grid { grid-template-columns: 1fr; }
   .trace-row { grid-template-columns: 1fr; }
+  .env-grid { grid-template-columns: 1fr; }
+  .env-card + .env-card { border-left: none; border-top: 1px solid var(--rule); }
+  .launch-phases { flex-direction: column; }
+  .launch-phase { border-right: none; border-bottom: 1px solid var(--rule); }
+  .severity-strip { grid-template-columns: repeat(2, 1fr); }
+  .thermal-zones { grid-template-columns: 1fr 1fr; }
+  .chamber-content { grid-template-columns: 1fr; }
+  .chamber-col + .chamber-col { border-left: none; border-top: 1px solid rgba(255,255,255,0.1); }
+  .tv-phase-row { grid-template-columns: 100px 1fr; }
+  .dr-steps { flex-direction: column; }
+  .dr-step { border-right: none; border-bottom: 1px solid var(--rule); }
+  .sev-row { grid-template-columns: 80px 1fr; }
+  .sev-row .sev-col:nth-child(3), .sev-row .sev-col:nth-child(4) { display: none; }
+  .ht-item { grid-template-columns: 80px 1fr; }
+  .delivery-milestones { flex-direction: column; }
+  .dm { border-right: none; border-bottom: 1px solid var(--rule); }
 }
