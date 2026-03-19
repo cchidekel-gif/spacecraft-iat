@@ -90,6 +90,7 @@ body {
   padding: 72px 40px 64px;
   position: relative;
   overflow: hidden;
+  text-align: center;
 }
 .hero::before {
   content: '';
@@ -141,7 +142,7 @@ body {
   font-weight: 300;
   color: #9a9080;
   max-width: 660px;
-  margin-bottom: 36px;
+  margin: 0 auto 36px;
   line-height: 1.6;
 }
 
