@@ -1,147 +1,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<div><style>:root{--ink:#1a1814;--paper:#f5f0e8;--cream:#ede7d5;--light:#f0ede6;--rust:#b84a2e;--gold:#c89a3a;--steel:#4a6274;--steel-light:#6e8fa3;--muted:#6b6459;--rule:#c8bfae;--white:#ffffff;--green:#2e7d52;--deep-blue:#1e3a5f;--charcoal:#2c2c2c;} *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;} html{scroll-behavior:smooth;} body{background:var(--paper);color:var(--ink);font-family:'Source Serif 4',Georgia,serif;font-size:18px;line-height:1.78;} .masthead{background:var(--ink);color:var(--paper);display:flex;justify-content:space-between;align-items:center;padding:11px 32px;border-bottom:3px solid var(--gold);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;flex-wrap:wrap;gap:6px;} .masthead-series{color:var(--gold);} .masthead-right{color:#666;} .series-nav{background:var(--steel);padding:9px 32px;display:flex;align-items:center;gap:14px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#b8cdd8;flex-wrap:wrap;} .series-nav .current{color:#fff;font-weight:500;} .series-nav .sep{color:#4a6a7a;} .hero{background:var(--ink);padding:72px 40px 64px;position:relative;overflow:hidden;} .hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 38px,rgba(200,154,58,0.035) 38px,rgba(200,154,58,0.035) 39px);} .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--rust) 0%,var(--gold) 50%,var(--steel) 100%);} .hero-inner{max-width:820px;margin:0 auto;position:relative;} .hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:22px;} .hero h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2rem,5vw,3.4rem);font-weight:700;line-height:1.12;color:var(--paper);margin-bottom:18px;} .hero-sub{font-size:1.1rem;font-style:italic;font-weight:300;color:#9a9080;max-width:660px;margin-bottom:36px;line-height:1.6;} .byline{display:inline-flex;align-items:center;gap:14px;border:1px solid rgba(200,154,58,0.28);padding:11px 22px;background:rgba(255,255,255,0.04);} .byline-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--steel) 0%,var(--gold) 100%);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;} .byline-name{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--paper);letter-spacing:0.05em;} .byline-title{font-size:11px;color:#7a7060;font-style:italic;} .toc-wrap{background:var(--cream);border-left:4px solid var(--steel);padding:24px 28px;margin:2.6em 0;} .toc-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--steel);margin-bottom:12px;} .toc-list{list-style:none;} .toc-list li{padding:3px 0;border-bottom:1px dashed var(--rule);font-size:0.92rem;} .toc-list li:last-child{border-bottom:none;} .toc-list a{color:var(--steel);text-decoration:none;display:flex;justify-content:space-between;align-items:baseline;gap:8px;} .toc-list a:hover{color:var(--rust);} .toc-num{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--rust);flex-shrink:0;} .container{max-width:800px;margin:0 auto;padding:0 28px;} .article-body{padding:60px 0 80px;} .article-body > p{margin-bottom:1.55em;font-weight:300;} .lead{font-size:1.08rem;color:var(--muted);font-style:italic;border-left:3px solid var(--rule);padding-left:18px;margin-bottom:2em;} h2.sh{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;color:var(--ink);margin:3em 0 0.7em;padding-bottom:10px;border-bottom:2px solid var(--rule);position:relative;scroll-margin-top:80px;} h2.sh::after{content:'';position:absolute;bottom:-2px;left:0;width:56px;height:2px;background:var(--rust);} h3.ssh{font-family:'Playfair Display',serif;font-size:1.22rem;font-weight:700;color:var(--steel);margin:2.2em 0 0.6em;scroll-margin-top:80px;} .pull-quote{border-left:4px solid var(--gold);margin:2.6em 0 2.6em -4px;padding:6px 0 6px 28px;} .pull-quote p{font-family:'Playfair Display',serif;font-style:italic;font-size:1.28rem;line-height:1.55;color:var(--steel);} .callout{border:1px solid var(--rule);border-top-width:3px;padding:22px 26px;margin:2.4em 0;background:var(--cream);} .callout.steel{border-top-color:var(--steel);} .callout.gold{border-top-color:var(--gold);} .callout.rust{border-top-color:var(--rust);} .callout.green{border-top-color:var(--green);} .callout.blue{border-top-color:var(--deep-blue);} .callout-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:10px;} .callout.steel .callout-label{color:var(--steel);} .callout.gold .callout-label{color:#a07c28;} .callout.rust .callout-label{color:var(--rust);} .callout.green .callout-label{color:var(--green);} .callout.blue .callout-label{color:var(--deep-blue);} .callout p{font-size:0.93rem;color:#444;margin-bottom:0.7em;line-height:1.7;} .callout p:last-child{margin-bottom:0;} ul.body-list{margin:0.4em 0 1.4em;padding-left:0;list-style:none;} ul.body-list li{padding:5px 0 5px 22px;position:relative;font-size:0.96rem;font-weight:300;} ul.body-list li + li{border-top:1px dashed rgba(200,191,174,0.4);} ul.body-list li::before{content:'›';position:absolute;left:0;color:var(--rust);font-weight:700;font-size:1.1rem;line-height:1.55;} .kt{font-family:'JetBrains Mono',monospace;font-size:0.83em;color:var(--steel);background:rgba(74,98,116,0.09);padding:1px 6px;border-radius:2px;} .gloss-table{width:100%;border-collapse:collapse;margin:1.6em 0;font-size:0.88rem;} .gloss-table thead tr{background:var(--ink);color:#fff;} .gloss-table thead th{padding:10px 14px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.12em;text-transform:uppercase;font-weight:500;} .gloss-table tbody tr{border-bottom:1px solid var(--rule);} .gloss-table tbody tr:nth-child(even){background:var(--light);} .gloss-table td{padding:10px 14px;vertical-align:top;} .gloss-table td:first-child{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--steel);width:26%;font-weight:500;} .next-article{background:var(--ink);color:var(--paper);padding:28px 32px;margin-top:3em;position:relative;overflow:hidden;} .next-article::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 30px,rgba(200,154,58,0.04) 30px,rgba(200,154,58,0.04) 31px);} .next-article-content{position:relative;} .next-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;} .next-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--paper);} .next-desc{font-size:0.88rem;color:#888;font-style:italic;margin-top:4px;} .article-footer{background:var(--cream);border-top:2px solid var(--rule);padding:32px 28px;} .footer-inner{max-width:800px;margin:0 auto;display:flex;gap:28px;flex-wrap:wrap;} .footer-col{flex:1;min-width:180px;} .footer-label{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-bottom:7px;} .footer-text{font-size:0.84rem;color:var(--muted);font-style:italic;line-height:1.6;} .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;} .tag{background:var(--ink);color:var(--paper);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.08em;padding:3px 9px;text-transform:uppercase;} @media (max-width:680px){.masthead{flex-direction:column;text-align:center;}.hero{padding:48px 24px 44px;}.container{padding:0 18px;}h2.sh{font-size:1.4rem;}.env-grid{grid-template-columns:1fr;}.env-card + .env-card{border-left:none;border-top:1px solid var(--rule);}.launch-phases{flex-direction:column;}.launch-phase{border-right:none;border-bottom:1px solid var(--rule);}.severity-strip{grid-template-columns:repeat(2,1fr);}} .art-nav{background:var(--ink);padding:24px 32px;margin-top:3em;position:relative;overflow:hidden;} .art-nav::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 28px,rgba(200,154,58,0.04) 28px,rgba(200,154,58,0.04) 29px);pointer-events:none;} .art-nav-inner{position:relative;display:flex;align-items:center;gap:16px;flex-wrap:wrap;} .art-nav-label{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);white-space:nowrap;flex-shrink:0;} .art-nav-select-wrap{position:relative;flex:1;min-width:200px;} .art-nav-select-wrap::after{content:'▾';position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:13px;color:var(--gold);pointer-events:none;} .art-nav select{width:100%;appearance:none;-webkit-appearance:none;background:rgba(255,255,255,0.07);border:1px solid rgba(200,154,58,0.3);padding:9px 36px 9px 12px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#d8d0c0;cursor:pointer;outline:none;transition:border-color 0.15s,background 0.15s;} .art-nav select:hover{border-color:var(--gold);background:rgba(255,255,255,0.11);} .art-nav select option{background:#1a1814;color:#d8d0c0;} .art-nav select optgroup{background:#1a1814;color:rgba(200,154,58,0.7);font-style:normal;} .art-nav-go{background:var(--rust);color:var(--paper);border:none;padding:9px 20px;cursor:pointer;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;transition:background 0.15s;white-space:nowrap;} .art-nav-go:hover{background:var(--gold);color:var(--ink);} .art-nav-go:disabled{background:rgba(255,255,255,0.1);color:#666;cursor:default;} :root{--ink:#1a1814;--paper:#f5f0e8;--cream:#ede7d5;--light:#f0ede6;--rust:#b84a2e;--gold:#c89a3a;--steel:#4a6274;--muted:#6b6459;--rule:#c8bfae;--white:#ffffff;--green:#2e7d52;--deep-blue:#1e3a5f;--cold:#1a3a4e;--hot:#5e1a08;} .masthead{background:var(--ink);color:var(--paper);display:flex;justify-content:space-between;align-items:center;padding:11px 32px;border-bottom:3px solid var(--gold);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;flex-wrap:wrap;gap:6px;} .series-nav{background:var(--steel);padding:9px 32px;display:flex;align-items:center;gap:14px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#b8cdd8;flex-wrap:wrap;} .hero{background:var(--ink);padding:72px 40px 64px;position:relative;overflow:hidden;} .toc-wrap{background:var(--cream);border-left:4px solid var(--steel);padding:24px 28px;margin:2.6em 0;} .toc-list a{color:var(--steel);text-decoration:none;display:flex;justify-content:space-between;align-items:baseline;gap:8px;} .container{max-width:800px;margin:0 auto;padding:0 28px;} h2.sh{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;color:var(--ink);margin:3em 0 0.7em;padding-bottom:10px;border-bottom:2px solid var(--rule);position:relative;scroll-margin-top:80px;} .pull-quote{border-left:4px solid var(--gold);margin:2.6em 0 2.6em -4px;padding:6px 0 6px 28px;} .callout{border:1px solid var(--rule);border-top-width:3px;padding:22px 26px;margin:2.4em 0;background:var(--cream);} ul.body-list{margin:0.4em 0 1.4em;padding-left:0;list-style:none;} ul.body-list li{padding:5px 0 5px 22px;position:relative;font-size:0.96rem;font-weight:300;} ul.body-list li::before{content:'›';position:absolute;left:0;color:var(--rust);font-weight:700;font-size:1.1rem;line-height:1.55;} .kt{font-family:'JetBrains Mono',monospace;font-size:0.83em;color:var(--steel);background:rgba(74,98,116,0.09);padding:1px 6px;border-radius:2px;} .gloss-table{width:100%;border-collapse:collapse;margin:1.6em 0;font-size:0.88rem;} .gloss-table thead th{padding:10px 14px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.12em;text-transform:uppercase;font-weight:500;} .next-article{background:var(--ink);color:var(--paper);padding:28px 32px;margin-top:3em;position:relative;overflow:hidden;} .article-footer{background:var(--cream);border-top:2px solid var(--rule);padding:32px 28px;} @media (max-width:680px){.masthead{flex-direction:column;text-align:center;}.hero{padding:48px 24px 44px;}.container{padding:0 18px;}h2.sh{font-size:1.4rem;}.thermal-zones{grid-template-columns:1fr 1fr;}.chamber-content{grid-template-columns:1fr;}.chamber-col + .chamber-col{border-left:none;border-top:1px solid rgba(255,255,255,0.1);}.tv-phase-row{grid-template-columns:100px 1fr;}.stat-strip{grid-template-columns:repeat(2,1fr);}} :root{--ink:#1a1814;--paper:#f5f0e8;--cream:#ede7d5;--light:#f0ede6;--rust:#b84a2e;--gold:#c89a3a;--steel:#4a6274;--muted:#6b6459;--rule:#c8bfae;--white:#ffffff;--green:#2e7d52;--deep-blue:#1e3a5f;--amber:#b87420;--red-dark:#8b0000;} *,*::before,*::after{margin:0;padding:0;box-sizing:border-box} html{scroll-behavior:smooth} body{background:var(--paper);color:var(--ink);font-family:'Source Serif 4',Georgia,serif;font-size:18px;line-height:1.78} .masthead{background:var(--ink);color:var(--paper);display:flex;justify-content:space-between;align-items:center;padding:11px 32px;border-bottom:3px solid var(--gold);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;flex-wrap:wrap;gap:6px} .masthead-series{color:var(--gold)} .masthead-right{color:#666} .series-nav{background:var(--steel);padding:9px 32px;display:flex;align-items:center;gap:14px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#b8cdd8;flex-wrap:wrap} .series-nav .current{color:#fff;font-weight:500} .series-nav .sep{color:#4a6a7a} .hero{background:var(--ink);padding:72px 40px 64px;position:relative;overflow:hidden} .hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 38px,rgba(200,154,58,.035) 38px,rgba(200,154,58,.035) 39px)} .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--rust) 0%,var(--gold) 50%,var(--steel) 100%)} .hero-inner{max-width:820px;margin:0 auto;position:relative} .hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:22px} .hero h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2rem,5vw,3.4rem);font-weight:700;line-height:1.12;color:var(--paper);margin-bottom:18px} .hero-sub{font-size:1.1rem;font-style:italic;font-weight:300;color:#9a9080;max-width:660px;margin-bottom:36px;line-height:1.6} .byline{display:inline-flex;align-items:center;gap:14px;border:1px solid rgba(200,154,58,.28);padding:11px 22px;background:rgba(255,255,255,.04)} .byline-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--steel) 0%,var(--gold) 100%);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0} .byline-name{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--paper);letter-spacing:.05em} .byline-title{font-size:11px;color:#7a7060;font-style:italic} .toc-wrap{background:var(--cream);border-left:4px solid var(--steel);padding:24px 28px;margin:2.6em 0} .toc-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--steel);margin-bottom:12px} .toc-list{list-style:none} .toc-list li{padding:3px 0;border-bottom:1px dashed var(--rule);font-size:.92rem} .toc-list li:last-child{border-bottom:none} .toc-list a{color:var(--steel);text-decoration:none;display:flex;justify-content:space-between;align-items:baseline;gap:8px} .toc-list a:hover{color:var(--rust)} .toc-num{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--rust);flex-shrink:0} .container{max-width:800px;margin:0 auto;padding:0 28px} .article-body{padding:60px 0 80px} .article-body>p{margin-bottom:1.55em;font-weight:300} .lead{font-size:1.08rem;color:var(--muted);font-style:italic;border-left:3px solid var(--rule);padding-left:18px;margin-bottom:2em} h2.sh{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;color:var(--ink);margin:3em 0 .7em;padding-bottom:10px;border-bottom:2px solid var(--rule);position:relative;scroll-margin-top:80px} h2.sh::after{content:'';position:absolute;bottom:-2px;left:0;width:56px;height:2px;background:var(--rust)} h3.ssh{font-family:'Playfair Display',serif;font-size:1.22rem;font-weight:700;color:var(--steel);margin:2.2em 0 .6em;scroll-margin-top:80px} .pull-quote{border-left:4px solid var(--gold);margin:2.6em 0 2.6em -4px;padding:6px 0 6px 28px} .pull-quote p{font-family:'Playfair Display',serif;font-style:italic;font-size:1.28rem;line-height:1.55;color:var(--steel)} .callout{border:1px solid var(--rule);border-top-width:3px;padding:22px 26px;margin:2.4em 0;background:var(--cream)} .callout.steel{border-top-color:var(--steel)} .callout.gold{border-top-color:var(--gold)} .callout.rust{border-top-color:var(--rust)} .callout.green{border-top-color:var(--green)} .callout-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:10px} .callout.steel .callout-label{color:var(--steel)} .callout.gold .callout-label{color:#a07c28} .callout.rust .callout-label{color:var(--rust)} .callout.green .callout-label{color:var(--green)} .callout p{font-size:.93rem;color:#444;margin-bottom:.7em;line-height:1.7} .callout p:last-child{margin-bottom:0} ul.body-list{margin:.4em 0 1.4em;padding-left:0;list-style:none} ul.body-list li{padding:5px 0 5px 22px;position:relative;font-size:.96rem;font-weight:300} ul.body-list li+li{border-top:1px dashed rgba(200,191,174,.4)} ul.body-list li::before{content:'›';position:absolute;left:0;color:var(--rust);font-weight:700;font-size:1.1rem;line-height:1.55} .kt{font-family:'JetBrains Mono',monospace;font-size:.83em;color:var(--steel);background:rgba(74,98,116,.09);padding:1px 6px;border-radius:2px} .gloss-table{width:100%;border-collapse:collapse;margin:1.6em 0;font-size:.88rem} .gloss-table thead tr{background:var(--ink);color:#fff} .gloss-table thead th{padding:10px 14px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:500} .gloss-table tbody tr{border-bottom:1px solid var(--rule)} .gloss-table tbody tr:nth-child(even){background:var(--light)} .gloss-table td{padding:10px 14px;vertical-align:top} .gloss-table td:first-child{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--steel);width:26%;font-weight:500} .next-article{background:var(--ink);color:var(--paper);padding:28px 32px;margin-top:3em;position:relative;overflow:hidden} .next-article::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 30px,rgba(200,154,58,.04) 30px,rgba(200,154,58,.04) 31px)} .next-article-content{position:relative} .next-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:6px} .next-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--paper)} .next-desc{font-size:.88rem;color:#888;font-style:italic;margin-top:4px} .article-footer{background:var(--cream);border-top:2px solid var(--rule);padding:32px 28px} .footer-inner{max-width:800px;margin:0 auto;display:flex;gap:28px;flex-wrap:wrap} .footer-col{flex:1;min-width:180px} .footer-label{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:7px} .footer-text{font-size:.84rem;color:var(--muted);font-style:italic;line-height:1.6} .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px} .tag{background:var(--ink);color:var(--paper);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;padding:3px 9px;text-transform:uppercase} @media(max-width:680px){.masthead{flex-direction:column;text-align:center}.hero{padding:48px 24px 44px}.container{padding:0 18px}h2.sh{font-size:1.4rem}.dr-steps{flex-direction:column}.dr-step{border-right:none;border-bottom:1px solid var(--rule)}.sev-row{grid-template-columns:80px 1fr}.sev-row .sev-col:nth-child(3),.sev-row .sev-col:nth-child(4){display:none}.ht-item{grid-template-columns:80px 1fr}} body{background:var(--paper);color:var(--ink);font-family:'Source Serif 4',Georgia,serif;font-size:18px;line-height:1.78;} .series-nav .sep{color:#4a6a7a;} .callout.gold{border-top-color:var(--gold);} .callout.rust{border-top-color:var(--rust);} .callout.violet{border-top-color:var(--violet);} .callout.steel .callout-label{color:var(--steel);} .callout.gold .callout-label{color:#a07c28;} .callout.rust .callout-label{color:var(--rust);} .callout.green .callout-label{color:var(--green);} .callout.blue .callout-label{color:var(--deep-blue);} .callout.violet .callout-label{color:var(--violet);} .callout p{font-size:.93rem;color:#444;margin-bottom:.7em;line-height:1.7;} ul.body-list{margin:.4em 0 1.4em;padding-left:0;list-style:none;} .next-desc{font-size:.88rem;color:#888;font-style:italic;margin-top:4px;} .footer-text{font-size:.84rem;color:var(--muted);font-style:italic;line-height:1.6;} .hero{background:var(--near-black);padding:72px 40px 64px;position:relative;overflow:hidden;} .callout.steel{border-top-color:var(--steel);} .callout.gold{border-top-color:var(--gold);} .callout.rust{border-top-color:var(--rust);} .callout.green{border-top-color:var(--green);} .callout.blue{border-top-color:var(--deep-blue);} .callout.violet{border-top-color:var(--violet);} .gloss-table{width:100%;border-collapse:collapse;margin:1.6em 0;font-size:.88rem;} :root{--ink:#1a1814;--paper:#f5f0e8;--cream:#ede7d5;--light:#f0ede6;--rust:#b84a2e;--gold:#c89a3a;--steel:#4a6274;--muted:#6b6459;--rule:#c8bfae;--white:#ffffff;--green:#2e7d52;--deep-blue:#1e3a5f;--amber:#b87420;--violet:#5a3a7a;--near-black:#0e0e0e;} .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.4rem);font-weight:700;line-height:1.12;color:var(--paper);margin-bottom:18px;} .next-article{background:var(--ink);color:var(--paper);padding:28px 32px;margin-top:3em;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:3px solid var(--gold);} .callout.amber{border-top-color:var(--amber);} .callout.amber .callout-label{color:var(--amber);} :root{--ink:#1a1814;--paper:#f5f0e8;--cream:#ede7d5;--light:#f0ede6;--rust:#b84a2e;--gold:#c89a3a;--steel:#4a6274;--muted:#6b6459;--rule:#c8bfae;--white:#ffffff;--green:#2e7d52;--deep-blue:#1e3a5f;--amber:#b87420;--violet:#5a3a7a;--near-black:#0e0e0e;} body{background:var(--paper);color:var(--ink);font-family:'Source Serif 4',Georgia,serif;font-size:18px;line-height:1.78;} .masthead{background:var(--ink);color:var(--paper);display:flex;justify-content:space-between;align-items:center;padding:11px 32px;border-bottom:3px solid var(--gold);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;flex-wrap:wrap;gap:6px;} .masthead-right{color:#666;} .series-nav{background:var(--steel);padding:9px 32px;display:flex;align-items:center;gap:14px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#b8cdd8;flex-wrap:wrap;} .hero{background:var(--near-black);padding:72px 40px 64px;position:relative;overflow:hidden;} .hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 38px,rgba(200,154,58,.035) 38px,rgba(200,154,58,.035) 39px);} .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--green) 0%,var(--steel) 50%,var(--gold) 100%);} .hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:22px;} .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.4rem);font-weight:700;line-height:1.12;color:var(--paper);margin-bottom:18px;} .hero-sub{font-size:1.1rem;font-style:italic;font-weight:300;color:#9a9080;max-width:660px;margin-bottom:36px;line-height:1.6;} .byline{display:inline-flex;align-items:center;gap:14px;border:1px solid rgba(200,154,58,.28);padding:11px 22px;background:rgba(255,255,255,.04);} .byline-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--green) 0%,var(--gold) 100%);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;} .byline-name{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--paper);letter-spacing:.05em;} .toc-wrap{background:var(--cream);border-left:4px solid var(--steel);padding:24px 28px;margin:2.6em 0;} .toc-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--steel);margin-bottom:12px;} .lead{font-size:1.08rem;color:var(--muted);font-style:italic;border-left:3px solid var(--rule);padding-left:18px;margin-bottom:2em;} h2.sh{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;color:var(--ink);margin:3em 0 .7em;padding-bottom:10px;border-bottom:2px solid var(--rule);position:relative;scroll-margin-top:80px;} h2.sh::after{content:'';position:absolute;bottom:-2px;left:0;width:56px;height:2px;background:var(--rust);} h3.ssh{font-family:'Playfair Display',serif;font-size:1.22rem;font-weight:700;color:var(--steel);margin:2.2em 0 .6em;} .pull-quote{border-left:4px solid var(--gold);margin:2.6em 0 2.6em -4px;padding:6px 0 6px 28px;} .pull-quote p{font-family:'Playfair Display',serif;font-style:italic;font-size:1.28rem;line-height:1.55;color:var(--steel);} .callout{border:1px solid var(--rule);border-top-width:3px;padding:22px 26px;margin:2.4em 0;background:var(--cream);} .callout.gold{border-top-color:var(--gold);} .callout.rust{border-top-color:var(--rust);} .callout.blue{border-top-color:var(--deep-blue);} .callout.amber{border-top-color:var(--amber);} .callout-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:10px;} .callout.gold .callout-label{color:#a07c28;} .callout.rust .callout-label{color:var(--rust);} .callout.blue .callout-label{color:var(--deep-blue);} .callout.amber .callout-label{color:var(--amber);} .kt{font-family:'JetBrains Mono',monospace;font-size:.83em;color:var(--steel);background:rgba(74,98,116,.09);padding:1px 6px;border-radius:2px;} .gloss-table{width:100%;border-collapse:collapse;margin:1.6em 0;font-size:.88rem;} .footer-inner{max-width:800px;margin:0 auto;display:flex;gap:28px;flex-wrap:wrap;} .footer-col{flex:1;min-width:180px;} .footer-label{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:7px;} .footer-text{font-size:.84rem;color:var(--muted);font-style:italic;line-height:1.6;} .tag{background:var(--ink);color:var(--paper);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;padding:3px 9px;text-transform:uppercase;} @media (max-width:680px){.masthead{flex-direction:column;text-align:center;}.hero{padding:48px 24px 44px;}.container{padding:0 18px;}h2.sh{font-size:1.4rem;}.stat-strip{grid-template-columns:repeat(2,1fr);}} :root{--ink:#1a1814;--paper:#f5f0e8;--cream:#ede7d5;--rust:#b84a2e;--gold:#c89a3a;--steel:#4a6274;--steel-light:#6e8fa3;--muted:#6b6459;--rule:#c8bfae;} *{margin:0;padding:0;box-sizing:border-box;} .masthead span{color:var(--gold);} .hero{background:var(--ink);padding:70px 40px 60px;text-align:center;position:relative;overflow:hidden;} .hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient( -45deg,transparent,transparent 40px,rgba(200,154,58,0.04) 40px,rgba(200,154,58,0.04) 41px );} .hero h1 em{font-style:italic;color:var(--gold);} .hero-sub{font-family:'Source Serif 4',serif;font-size:1.15rem;font-weight:300;font-style:italic;color:#a09880;max-width:580px;margin:0 auto 36px;position:relative;} .byline{display:inline-flex;align-items:center;gap:14px;background:rgba(255,255,255,0.06);border:1px solid rgba(200,154,58,0.3);padding:12px 24px;position:relative;} .byline-avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--steel) 0%,var(--gold) 100%);display:flex;align-items:center;justify-content:center;font-size:18px;} .byline-name{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--paper);letter-spacing:0.06em;} .byline-title{font-size:11px;color:#857e70;font-style:italic;} .container{max-width:780px;margin:0 auto;padding:0 28px;} .article-body{padding:60px 0 80px;} .article-body p{margin-bottom:1.6em;font-weight:300;} .article-body p:first-child::first-letter{font-family:'Playfair Display',serif;font-size:4.2em;font-weight:700;float:left;line-height:0.82;margin:0.06em 0.1em 0 0;color:var(--rust);} .callout{background:var(--cream);border:1px solid var(--rule);border-top:3px solid var(--steel);padding:24px 28px;margin:2.4em 0;} .callout p{font-size:0.95rem;margin-bottom:0.7em !important;color:var(--muted);} .callout p:last-child{margin-bottom:0 !important;} .article-footer{background:var(--cream);border-top:2px solid var(--rule);padding:36px 28px;margin-top:60px;} .footer-inner{max-width:780px;margin:0 auto;display:flex;gap:32px;align-items:flex-start;flex-wrap:wrap;} .footer-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;} .footer-text{font-size:0.88rem;color:var(--muted);font-style:italic;line-height:1.6;} .tag{background:var(--ink);color:var(--paper);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;padding:4px 10px;text-transform:uppercase;} .hero{background:var(--teal);padding:72px 40px 64px;position:relative;overflow:hidden;} .byline-title{font-size:11px;color:rgba(240,235,220,0.55);font-style:italic;} .callout.gold{border-top-color:var(--gold);} .callout.rust{border-top-color:var(--rust);} .callout.teal{border-top-color:var(--teal);} .callout.violet{border-top-color:var(--violet);} .callout.teal .callout-label{color:var(--teal);} .hero{background:var(--near-black);padding:72px 40px 64px;position:relative;overflow:hidden;} .hero-inner{max-width:860px;margin:0 auto;position:relative;} .container{max-width:860px;margin:0 auto;padding:0 28px;} h3.cs-sh{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--steel);margin:2em 0 .55em;padding-bottom:6px;border-bottom:1px solid var(--rule);} h3.cs-sh:first-child{margin-top:0;} ul.cs-list{margin:.4em 0 1.4em;padding-left:0;list-style:none;} ul.cs-list li{padding:5px 0 5px 22px;position:relative;font-size:.96rem;font-weight:300;border-top:1px dashed rgba(200,191,174,.4);} ul.cs-list li:first-child{border-top:none;} ul.cs-list li::before{content:'›';position:absolute;left:0;color:var(--rust);font-weight:700;font-size:1.1rem;line-height:1.55;} .cs-callout.gold{border-left-color:var(--gold);} .cs-callout.gold .cs-callout-label{color:#a07c28;}
-  /* ── INTEGRATION LEVEL CARDS ── */
-  .level-cards { margin: 2em 0; }
-  .level-card {
-    display: grid;
-    grid-template-columns: 72px 1fr;
-    gap: 0;
-    margin-bottom: 2px;
-    border: 1px solid var(--rule);
-    overflow: hidden;
-  }
-  .level-badge {
-    background: var(--ink);
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    padding: 16px 8px; gap: 6px;
-    border-right: 3px solid var(--rust);
-  }
-  .level-card.l1 .level-badge { border-right-color: #7a5a2a; }
-  .level-card.l2 .level-badge { border-right-color: var(--steel); }
-  .level-card.l3 .level-badge { border-right-color: var(--green); }
-  .level-card.l4 .level-badge { border-right-color: var(--gold); }
-  .level-card.l5 .level-badge { border-right-color: var(--rust); }
-  .level-card.l6 .level-badge { background: var(--steel); border-right-color: var(--gold); }
-  .lvl-num {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 1.1rem; font-weight: 700;
-    color: var(--paper); letter-spacing: 0.05em;
-  }
-  .lvl-icon { font-size: 1.2rem; line-height: 1; }
-  .level-body {
-    background: var(--white);
-    padding: 14px 18px;
-  }
-  .level-card:nth-child(even) .level-body { background: var(--light); }
-  .level-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1rem; font-weight: 700;
-    color: var(--ink); margin-bottom: 5px;
-  }
-  .level-meta { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
-  .level-tag {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
-    background: var(--ink); color: var(--paper);
-    padding: 2px 7px;
-  }
-  .level-card.l6 .level-tag { background: var(--steel); }
-  .level-desc {
-    font-size: 0.88rem; color: #333;
-    line-height: 1.65; font-weight: 300;
-    margin-bottom: 8px;
-  }
-  .level-desc:last-of-type { margin-bottom: 10px; }
-  .level-tests {
-    background: var(--cream);
-    border-left: 3px solid var(--rule);
-    padding: 8px 12px;
-    font-size: 0.82rem; color: var(--muted);
-    line-height: 1.6;
-  }
-  .level-tests strong {
-    display: block;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 9px; letter-spacing: 0.14em;
-    text-transform: uppercase; color: var(--steel);
-    margin-bottom: 3px; font-weight: 500;
-  }
-  @media (max-width: 680px) {
-    .level-card { grid-template-columns: 56px 1fr; }
-    .lvl-num { font-size: 0.95rem; }
-  }
-
-  /* ── PHASE TABLE (Section 3) ── */
-  .phase-table {
-    width: 100%; border-collapse: collapse; margin: 1.8em 0;
-    font-size: 0.86rem;
-  }
-  .phase-table thead tr { background: var(--ink); color: var(--paper); }
-  .phase-table thead th {
-    padding: 11px 14px; text-align: left;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 9.5px; letter-spacing: 0.12em;
-    text-transform: uppercase; font-weight: 500;
-  }
-  .phase-table thead th:first-child { width: 10%; color: var(--gold); }
-  .phase-table thead th:nth-child(2) { width: 16%; }
-  .phase-table thead th:nth-child(3) { width: 44%; }
-  .phase-table thead th:last-child   { width: 30%; }
-  .phase-table tbody tr { border-bottom: 1px solid var(--rule); }
-  .phase-table tbody tr:nth-child(even) { background: var(--light); }
-  .phase-table tbody tr:hover { background: var(--cream); }
-  .phase-table td { padding: 11px 14px; vertical-align: top; line-height: 1.6; color: #333; }
-  .phase-table td:first-child {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; font-weight: 700;
-    color: var(--rust); white-space: nowrap;
-  }
-  .phase-table td:nth-child(2) {
-    font-weight: 700; color: var(--ink); font-size: 0.88rem;
-  }
-  .phase-table td:last-child {
-    font-style: italic; color: var(--muted); font-size: 0.84rem;
-    border-left: 2px solid var(--rule);
-  }
-  /* Phase D highlight — the main event */
-  .phase-table tbody tr.phase-d { background: rgba(26,24,20,0.04); }
-  .phase-table tbody tr.phase-d td:first-child { color: var(--ink); }
-  .phase-table tbody tr.phase-d td:nth-child(2) { color: var(--rust); }
-
-  /* ── DOC TABLE (Section 4) ── */
-  .doc-table {
-    width: 100%; border-collapse: collapse; margin: 1.8em 0;
-    font-size: 0.86rem;
-  }
-  .doc-table thead tr { background: var(--steel); color: var(--paper); }
-  .doc-table thead th {
-    padding: 11px 14px; text-align: left;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 9.5px; letter-spacing: 0.12em;
-    text-transform: uppercase; font-weight: 500;
-  }
-  .doc-table thead th:first-child { width: 28%; }
-  .doc-table tbody tr { border-bottom: 1px solid var(--rule); }
-  .doc-table tbody tr:nth-child(even) { background: var(--light); }
-  .doc-table tbody tr:hover { background: var(--cream); }
-  .doc-table td { padding: 11px 14px; vertical-align: top; line-height: 1.65; }
-  .doc-table td:first-child {
-    font-weight: 700; color: var(--ink);
-    font-size: 0.88rem; border-right: 3px solid var(--rule);
-  }
-  .doc-table td:last-child { color: #444; font-size: 0.86rem; font-weight: 300; }
-</style>
+<link href="spacecraft_iat.css" rel="stylesheet">
+<div>
 <!-- MASTHEAD -->
 <div class="masthead" id="top">
   <span class="masthead-series">Spacecraft Engineering Series · Integration &amp; Test</span>
-  <span class="masthead-right">Article 02 of 17</span>
+  <span class="masthead-right">Article 01 of 19</span>
 </div>
 
-<!-- SERIES NAV --><!-- SERIES NAV BAR
-     Published articles are clickable links.
-     Unpublished articles are greyed-out plain text.
-     To publish: set True in ARTICLES list above and re-run script. -->
+<!-- SERIES NAV -->
 <div class="series-nav">
   <span>Series:</span>
   <span class="sep">·</span>
@@ -187,7 +53,7 @@
 <!-- HERO -->
 <div class="hero">
   <div class="hero-inner">
-    <div class="hero-eyebrow">Spacecraft Integration &amp; Test · Article 02 of 17</div>
+    <div class="hero-eyebrow">Spacecraft Integration &amp; Test · Article 01 of 16</div>
     <h1>The I&amp;T Plan and<br>Program Architecture</h1>
     <p class="hero-sub">How to structure a spacecraft integration and test campaign — from first hardware to launch readiness, and from piece parts to observatory.</p>
     <div class="byline">
@@ -430,9 +296,9 @@
 
   <p>An I&amp;T campaign does not begin when the first hardware arrives on the test floor. It begins during the design phase of the program, when the I&amp;T approach is first defined, and it ends — formally — at the launch readiness review that authorizes the spacecraft to fly. The campaign progresses through a sequence of phases corresponding to the NASA mission lifecycle; programs under other agencies follow essentially the same logical progression.</p>
 
-  <p>A common and costly misreading of the phase structure is to treat I&amp;T  as a Phase D activity — to staff the function late, to defer the planning, and to assume that experienced test personnel can be recruited and made effective on short notice once hardware begins to arrive. Forty years of experience says otherwise. The decisions that determine the quality of a Phase D campaign are made in Phases A, B, and C: the test philosophy, the EGSE architecture, the verification approach, the facility selections, the staffing of a team with genuine I&amp;T expertise. </p>
+  <p>A common and costly misreading of the phase structure is to treat I&amp;T as a Phase D activity — to staff the function late, to defer the planning, and to assume that experienced test personnel can be recruited and made effective on short notice once hardware begins to arrive. Forty years of experience says otherwise. The decisions that determine the quality of a Phase D campaign are made in Phases A, B, and C: the test philosophy, the EGSE architecture, the verification approach, the facility selections, the staffing of a team with genuine I&amp;T expertise.</p>
   
-  <p>In my experience, when that expertise is absent in the early phases, one of two things happens. Decisions get made anyway — by subsystem and component engineers who are excellent at what they do but whose perspective is necessarily bounded by their piece of the system, not by the integrated whole. Or decisions don't get made at all, because no one in the room has the cross-program visibility to recognize that a decision is required. Both failure modes are invisible at the time and expensive to discover on the test floor. </p></p>
+  <p>In my experience, when that expertise is absent in the early phases, one of two things happens. Decisions get made anyway — by subsystem and component engineers who are excellent at what they do but whose perspective is necessarily bounded by their piece of the system, not by the integrated whole. Or decisions don't get made at all, because no one in the room has the cross-program visibility to recognize that a decision is required. Both failure modes are invisible at the time and expensive to discover on the test floor.</p>
 
   <div class="pull-quote">
     <p>A program that defers I&amp;T investment does not save time or money — it borrows against Phase D at a very high rate of interest. By the time hardware arrives on the test floor, it is too late to correct the consequences of decisions that should have been made at the design table.</p>
@@ -567,7 +433,7 @@
 
   <p>No discussion of I&amp;T program architecture is complete without addressing Ground Support Equipment (GSE). GSE is the infrastructure — mechanical, electrical, and software — that makes spacecraft integration and test possible. It includes fixtures that support the spacecraft during handling and test, electrical systems that simulate the space environment, and software systems that command the spacecraft, acquire its telemetry, and evaluate its performance during test.</p>
 
-  <p>GSE can bedivided into four main categories:</p>
+  <p>GSE can be divided into four main categories:</p>
 
   <ul class="body-list">
     <li><span class="kt">Mechanical GSE (MGSE)</span> — Lifting fixtures, transportation containers, handling dollies, test stands, alignment fixtures, and specialized tooling required to assemble and disassemble flight hardware. MGSE must be designed to the same standard of care as flight hardware — a dropped spacecraft is not recoverable.</li>
@@ -586,8 +452,7 @@
   <p>For an engineer writing or contributing to an I&amp;T Plan for the first time, the following guidance reflects lessons learned across multiple programs and multiple decades.</p>
 
   <h3 class="ssh">Start With Requirements, Not Test Ideas</h3>
-  <p>The most common error in I&amp;T planning is starting with a list of tests and then trying to find requirements that justify them, rather than starting with requirements and deriving the tests that verify them. Requirements-driven test planning produces a test program with clear justification for every element, unambiguous pass/fail criteria and complee supporting evidence abd data. Test-idea-driven planning produces a test program that is hard to defend when schedule pressure demands cuts.</p>
-
+  <p>The most common error in I&amp;T planning is starting with a list of tests and then trying to find requirements that justify them, rather than starting with requirements and deriving the tests that verify them. Requirements-driven test planning produces a test program with clear justification for every element, unambiguous pass/fail criteria, and complete supporting evidence and data. Test-idea-driven planning produces a test program that is hard to defend when schedule pressure demands cuts.</p>
 
   <h3 class="ssh">Plan for Anomalies</h3>
   <p>Every I&amp;T campaign will have anomalies. The question is not whether anomalies will occur, but whether the program has the process infrastructure to find them, document them, investigate them, and close them in a controlled way. The I&amp;T Plan must describe the anomaly management process: what constitutes an anomaly, how anomalies are classified, what investigation process applies to each class, and what authority is required to close each class of anomaly. Programs that do not plan for anomaly management find themselves improvising the process in the middle of a test campaign, under schedule pressure.</p>
@@ -612,16 +477,15 @@
 
   <p>The levels of integration described in this article — piece parts, assemblies, components, subsystems, instruments, spacecraft, and observatory — are not administrative constructs. They reflect a fundamental physical reality: integration creates emergent behaviors that can only be found and resolved at the level where they emerge. Testing at every level is not redundancy. It is risk management.</p>
 
-  <p>In the articles that follow, we descend from this architectural overview into the specific environments, techniques, and practices of spacecraft I&amp;T. The next article takes us into the cleanroom — the controlled environment in which all flight hardware integration is performed, and where the first and most fundamental contamination control disciplines are established.</p>
+  <p>In the articles that follow, we descend from this architectural overview into the specific environments, techniques, and practices of spacecraft I&amp;T. The next article takes us into configuration management — the discipline that ensures we always know exactly what we built, what we tested, and what we flew.</p>
   </div>
 
-
-  <!-- NEXT LESSON -->
+  <!-- NEXT ARTICLE -->
   <div class="next-article">
     <div class="next-article-content">
-      <div class="next-label">Next Lesson · L03 of 17 · Article 3</div>
+      <div class="next-label">Next Article · Article 02 of 16</div>
       <div class="next-title">Configuration Management and the As-Built Record</div>
-      <div class="next-desc">Baselines, the CCB, the traveller, and the as-built record — the mechanism that makes every subsequent test result interpretable</div>
+      <div class="next-desc">Baselines, the CCB, the traveler, and the as-built record — the mechanism that makes every subsequent test result interpretable</div>
     </div>
   </div>
 
@@ -652,8 +516,6 @@
 </article>
 </div>
 
-<!-- FOOTER -->
-
 <!-- ARTICLE NAVIGATOR -->
 <div class="art-nav">
   <div class="art-nav-inner">
@@ -662,27 +524,27 @@
       <select id="artNav_spacecraft_iat_article01_html">
         <option value="">— Select any article in the series —</option>
         <optgroup label="── Main Series ──────────────────────────">
-          <option value="spacecraft_iat_intro.html">01 · Introduction to Spacecraft I&T</option>
-          <option value="spacecraft_iat_article01.html" selected disabled>&#9654; 02 · I&T Programme Structure</option>
-          <option value="" disabled>03 · Configuration Management (Coming Soon)</option>
-          <option value="" disabled>04 · Quality Assurance (Coming Soon)</option>
-          <option value="" disabled>05 · Cleanrooms & Contamination Control (Coming Soon)</option>
-          <option value="" disabled>06 · EGSE & Test Harness (Coming Soon)</option>
-          <option value="" disabled>07 · Functional Testing (Coming Soon)</option>
-          <option value="" disabled>08 · Flight Software V&V (Coming Soon)</option>
-          <option value="" disabled>09 · Mass Properties & Structural Loads (Coming Soon)</option>
-          <option value="" disabled>10 · Vibration, Acoustics & Shock (Coming Soon)</option>
-          <option value="" disabled>11 · Thermal-Vacuum Testing (Coming Soon)</option>
-          <option value="" disabled>12 · EMC Testing (Coming Soon)</option>
-          <option value="" disabled>13 · Instrument Integration & Calibration (Coming Soon)</option>
-          <option value="" disabled>14 · Propulsion Testing (Coming Soon)</option>
-          <option value="" disabled>15 · Anomaly Management (Coming Soon)</option>
-          <option value="" disabled>16 · Launch Vehicle Integration (Coming Soon)</option>
-          <option value="" disabled>17 · Launch Readiness & Commissioning (Coming Soon)</option>
+          <option value="spacecraft_iat_intro.html">Intro · Introduction to Spacecraft I&amp;T</option>
+          <option value="spacecraft_iat_article01.html" selected disabled>&#9654; 01 · I&amp;T Program Structure</option>
+          <option value="" disabled>02 · Configuration Management (Coming Soon)</option>
+          <option value="" disabled>03 · Quality Assurance (Coming Soon)</option>
+          <option value="" disabled>04 · Cleanrooms &amp; Contamination Control (Coming Soon)</option>
+          <option value="" disabled>05 · EGSE &amp; Test Harness (Coming Soon)</option>
+          <option value="" disabled>06 · Functional Testing (Coming Soon)</option>
+          <option value="" disabled>07 · Flight Software V&amp;V (Coming Soon)</option>
+          <option value="" disabled>08 · Mass Properties &amp; Structural Loads (Coming Soon)</option>
+          <option value="" disabled>09 · Vibration, Acoustics &amp; Shock (Coming Soon)</option>
+          <option value="" disabled>10 · Thermal-Vacuum Testing (Coming Soon)</option>
+          <option value="" disabled>11 · EMC Testing (Coming Soon)</option>
+          <option value="" disabled>12 · Instrument Integration &amp; Calibration (Coming Soon)</option>
+          <option value="" disabled>13 · Propulsion Testing (Coming Soon)</option>
+          <option value="" disabled>14 · Anomaly Management (Coming Soon)</option>
+          <option value="" disabled>15 · Launch Vehicle Integration (Coming Soon)</option>
+          <option value="" disabled>16 · Launch Readiness &amp; Commissioning (Coming Soon)</option>
         </optgroup>
         <optgroup label="── Supplementary ──────────────────────────">
-          <option value="" disabled>Supp · Small Satellites (Coming Soon)</option>
-          <option value="" disabled>Supp · Case Studies (Coming Soon)</option>
+          <option value="" disabled>S1 · Small Satellites (Coming Soon)</option>
+          <option value="" disabled>S2 · Case Studies (Coming Soon)</option>
         </optgroup>
       </select>
     </div>
@@ -703,7 +565,7 @@ document.getElementById('artNav_spacecraft_iat_article01_html').addEventListener
   <div class="footer-inner">
     <div class="footer-col">
       <div class="footer-label">Series</div>
-      <div class="footer-text">Spacecraft Integration &amp; Test<br>Article 01 of 08</div>
+      <div class="footer-text">Spacecraft Integration &amp; Test<br>Article 01 of 19</div>
     </div>
     <div class="footer-col">
       <div class="footer-label">Topics</div>
