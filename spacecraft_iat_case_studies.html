@@ -1,35 +1,50 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<div><style>:root{--ink:#1a1814;--paper:#f5f0e8;--cream:#ede7d5;--light:#f0ede6;--rust:#b84a2e;--gold:#c89a3a;--steel:#4a6274;--steel-light:#6e8fa3;--muted:#6b6459;--rule:#c8bfae;--white:#ffffff;--green:#2e7d52;--deep-blue:#1e3a5f;--charcoal:#2c2c2c;} *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;} html{scroll-behavior:smooth;} body{background:var(--paper);color:var(--ink);font-family:'Source Serif 4',Georgia,serif;font-size:18px;line-height:1.78;} .masthead{background:var(--ink);color:var(--paper);display:flex;justify-content:space-between;align-items:center;padding:11px 32px;border-bottom:3px solid var(--gold);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;flex-wrap:wrap;gap:6px;} .masthead-series{color:var(--gold);} .masthead-right{color:#666;} .hero{background:var(--ink);padding:72px 40px 64px;position:relative;overflow:hidden;} .hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 38px,rgba(200,154,58,0.035) 38px,rgba(200,154,58,0.035) 39px);} .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--rust) 0%,var(--gold) 50%,var(--steel) 100%);} .hero-inner{max-width:820px;margin:0 auto;position:relative;} .hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:22px;} .hero h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2rem,5vw,3.4rem);font-weight:700;line-height:1.12;color:var(--paper);margin-bottom:18px;} .hero-sub{font-size:1.1rem;font-style:italic;font-weight:300;color:#9a9080;max-width:660px;margin-bottom:36px;line-height:1.6;} .container{max-width:800px;margin:0 auto;padding:0 28px;} h3.ssh{font-family:'Playfair Display',serif;font-size:1.22rem;font-weight:700;color:var(--steel);margin:2.2em 0 0.6em;scroll-margin-top:80px;} .callout.gold{border-top-color:var(--gold);} .callout.gold .callout-label{color:#a07c28;} .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;} .tag{background:var(--ink);color:var(--paper);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.08em;padding:3px 9px;text-transform:uppercase;} @media (max-width:680px){.masthead{flex-direction:column;text-align:center;}.hero{padding:48px 24px 44px;}.container{padding:0 18px;}h2.sh{font-size:1.4rem;}.env-grid{grid-template-columns:1fr;}.env-card + .env-card{border-left:none;border-top:1px solid var(--rule);}.launch-phases{flex-direction:column;}.launch-phase{border-right:none;border-bottom:1px solid var(--rule);}.severity-strip{grid-template-columns:repeat(2,1fr);}} .art-nav{background:var(--ink);padding:24px 32px;margin-top:3em;position:relative;overflow:hidden;} .art-nav::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 28px,rgba(200,154,58,0.04) 28px,rgba(200,154,58,0.04) 29px);pointer-events:none;} .art-nav-inner{position:relative;display:flex;align-items:center;gap:16px;flex-wrap:wrap;} .art-nav-label{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);white-space:nowrap;flex-shrink:0;} .art-nav-select-wrap{position:relative;flex:1;min-width:200px;} .art-nav-select-wrap::after{content:'▾';position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:13px;color:var(--gold);pointer-events:none;} .art-nav select{width:100%;appearance:none;-webkit-appearance:none;background:rgba(255,255,255,0.07);border:1px solid rgba(200,154,58,0.3);padding:9px 36px 9px 12px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#d8d0c0;cursor:pointer;outline:none;transition:border-color 0.15s,background 0.15s;} .art-nav select:hover{border-color:var(--gold);background:rgba(255,255,255,0.11);} .art-nav select option{background:#1a1814;color:#d8d0c0;} .art-nav select optgroup{background:#1a1814;color:rgba(200,154,58,0.7);font-style:normal;} .art-nav-go{background:var(--rust);color:var(--paper);border:none;padding:9px 20px;cursor:pointer;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;transition:background 0.15s;white-space:nowrap;} .art-nav-go:hover{background:var(--gold);color:var(--ink);} .art-nav-go:disabled{background:rgba(255,255,255,0.1);color:#666;cursor:default;} :root{--ink:#1a1814;--paper:#f5f0e8;--cream:#ede7d5;--light:#f0ede6;--rust:#b84a2e;--gold:#c89a3a;--steel:#4a6274;--muted:#6b6459;--rule:#c8bfae;--white:#ffffff;--green:#2e7d52;--deep-blue:#1e3a5f;--cold:#1a3a4e;--hot:#5e1a08;} .masthead{background:var(--ink);color:var(--paper);display:flex;justify-content:space-between;align-items:center;padding:11px 32px;border-bottom:3px solid var(--gold);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;flex-wrap:wrap;gap:6px;} .hero{background:var(--ink);padding:72px 40px 64px;position:relative;overflow:hidden;} .container{max-width:800px;margin:0 auto;padding:0 28px;} @media (max-width:680px){.masthead{flex-direction:column;text-align:center;}.hero{padding:48px 24px 44px;}.container{padding:0 18px;}h2.sh{font-size:1.4rem;}.thermal-zones{grid-template-columns:1fr 1fr;}.chamber-content{grid-template-columns:1fr;}.chamber-col + .chamber-col{border-left:none;border-top:1px solid rgba(255,255,255,0.1);}.tv-phase-row{grid-template-columns:100px 1fr;}.stat-strip{grid-template-columns:repeat(2,1fr);}} :root{--ink:#1a1814;--paper:#f5f0e8;--cream:#ede7d5;--light:#f0ede6;--rust:#b84a2e;--gold:#c89a3a;--steel:#4a6274;--muted:#6b6459;--rule:#c8bfae;--white:#ffffff;--green:#2e7d52;--deep-blue:#1e3a5f;--amber:#b87420;--red-dark:#8b0000;} *,*::before,*::after{margin:0;padding:0;box-sizing:border-box} html{scroll-behavior:smooth} body{background:var(--paper);color:var(--ink);font-family:'Source Serif 4',Georgia,serif;font-size:18px;line-height:1.78} .masthead{background:var(--ink);color:var(--paper);display:flex;justify-content:space-between;align-items:center;padding:11px 32px;border-bottom:3px solid var(--gold);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;flex-wrap:wrap;gap:6px} .masthead-series{color:var(--gold)} .masthead-right{color:#666} .hero{background:var(--ink);padding:72px 40px 64px;position:relative;overflow:hidden} .hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 38px,rgba(200,154,58,.035) 38px,rgba(200,154,58,.035) 39px)} .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--rust) 0%,var(--gold) 50%,var(--steel) 100%)} .hero-inner{max-width:820px;margin:0 auto;position:relative} .hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:22px} .hero h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2rem,5vw,3.4rem);font-weight:700;line-height:1.12;color:var(--paper);margin-bottom:18px} .hero-sub{font-size:1.1rem;font-style:italic;font-weight:300;color:#9a9080;max-width:660px;margin-bottom:36px;line-height:1.6} .container{max-width:800px;margin:0 auto;padding:0 28px} h3.ssh{font-family:'Playfair Display',serif;font-size:1.22rem;font-weight:700;color:var(--steel);margin:2.2em 0 .6em;scroll-margin-top:80px} .callout.gold{border-top-color:var(--gold)} .callout.gold .callout-label{color:#a07c28} .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px} .tag{background:var(--ink);color:var(--paper);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;padding:3px 9px;text-transform:uppercase} @media(max-width:680px){.masthead{flex-direction:column;text-align:center}.hero{padding:48px 24px 44px}.container{padding:0 18px}h2.sh{font-size:1.4rem}.dr-steps{flex-direction:column}.dr-step{border-right:none;border-bottom:1px solid var(--rule)}.sev-row{grid-template-columns:80px 1fr}.sev-row .sev-col:nth-child(3),.sev-row .sev-col:nth-child(4){display:none}.ht-item{grid-template-columns:80px 1fr}} body{background:var(--paper);color:var(--ink);font-family:'Source Serif 4',Georgia,serif;font-size:18px;line-height:1.78;} .callout.gold{border-top-color:var(--gold);} .callout.gold .callout-label{color:#a07c28;} .hero{background:var(--near-black);padding:72px 40px 64px;position:relative;overflow:hidden;} .callout.gold{border-top-color:var(--gold);} :root{--ink:#1a1814;--paper:#f5f0e8;--cream:#ede7d5;--light:#f0ede6;--rust:#b84a2e;--gold:#c89a3a;--steel:#4a6274;--muted:#6b6459;--rule:#c8bfae;--white:#ffffff;--green:#2e7d52;--deep-blue:#1e3a5f;--amber:#b87420;--violet:#5a3a7a;--near-black:#0e0e0e;} .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.4rem);font-weight:700;line-height:1.12;color:var(--paper);margin-bottom:18px;} :root{--ink:#1a1814;--paper:#f5f0e8;--cream:#ede7d5;--light:#f0ede6;--rust:#b84a2e;--gold:#c89a3a;--steel:#4a6274;--muted:#6b6459;--rule:#c8bfae;--white:#ffffff;--green:#2e7d52;--deep-blue:#1e3a5f;--amber:#b87420;--violet:#5a3a7a;--near-black:#0e0e0e;} body{background:var(--paper);color:var(--ink);font-family:'Source Serif 4',Georgia,serif;font-size:18px;line-height:1.78;} .masthead{background:var(--ink);color:var(--paper);display:flex;justify-content:space-between;align-items:center;padding:11px 32px;border-bottom:3px solid var(--gold);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;flex-wrap:wrap;gap:6px;} .masthead-right{color:#666;} .hero{background:var(--near-black);padding:72px 40px 64px;position:relative;overflow:hidden;} .hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 38px,rgba(200,154,58,.035) 38px,rgba(200,154,58,.035) 39px);} .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--green) 0%,var(--steel) 50%,var(--gold) 100%);} .hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:22px;} .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.4rem);font-weight:700;line-height:1.12;color:var(--paper);margin-bottom:18px;} .hero-sub{font-size:1.1rem;font-style:italic;font-weight:300;color:#9a9080;max-width:660px;margin-bottom:36px;line-height:1.6;} h3.ssh{font-family:'Playfair Display',serif;font-size:1.22rem;font-weight:700;color:var(--steel);margin:2.2em 0 .6em;} .callout.gold{border-top-color:var(--gold);} .callout.gold .callout-label{color:#a07c28;} .tag{background:var(--ink);color:var(--paper);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;padding:3px 9px;text-transform:uppercase;} @media (max-width:680px){.masthead{flex-direction:column;text-align:center;}.hero{padding:48px 24px 44px;}.container{padding:0 18px;}h2.sh{font-size:1.4rem;}.stat-strip{grid-template-columns:repeat(2,1fr);}} :root{--ink:#1a1814;--paper:#f5f0e8;--cream:#ede7d5;--rust:#b84a2e;--gold:#c89a3a;--steel:#4a6274;--steel-light:#6e8fa3;--muted:#6b6459;--rule:#c8bfae;} *{margin:0;padding:0;box-sizing:border-box;} .masthead span{color:var(--gold);} .hero{background:var(--ink);padding:70px 40px 60px;text-align:center;position:relative;overflow:hidden;} .hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient( -45deg,transparent,transparent 40px,rgba(200,154,58,0.04) 40px,rgba(200,154,58,0.04) 41px );} .hero h1 em{font-style:italic;color:var(--gold);} .hero-sub{font-family:'Source Serif 4',serif;font-size:1.15rem;font-weight:300;font-style:italic;color:#a09880;max-width:580px;margin:0 auto 36px;position:relative;} .container{max-width:780px;margin:0 auto;padding:0 28px;} .tag{background:var(--ink);color:var(--paper);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;padding:4px 10px;text-transform:uppercase;} .hero{background:var(--teal);padding:72px 40px 64px;position:relative;overflow:hidden;} .callout.gold{border-top-color:var(--gold);} .comp-table .warn{color:var(--rust);font-weight:600;} .hero{background:var(--near-black);padding:72px 40px 64px;position:relative;overflow:hidden;} .hero-inner{max-width:860px;margin:0 auto;position:relative;} .cs-index{background:var(--cream);border:1px solid var(--rule);margin:2.6em 0;overflow:hidden;} .cs-index-header{background:var(--steel);color:#fff;padding:12px 20px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;} .cs-index-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0;} .cs-index-item{padding:14px 20px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);text-decoration:none;display:block;transition:background .15s;} .cs-index-item:hover{background:rgba(74,98,116,.06);} .cs-index-num{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--rust);margin-bottom:3px;} .cs-index-title{font-weight:700;font-size:.92rem;color:var(--ink);line-height:1.3;} .cs-index-tag{font-size:.78rem;color:var(--muted);font-style:italic;margin-top:2px;} .container{max-width:860px;margin:0 auto;padding:0 28px;} .doc-body{padding:60px 0 80px;} .doc-body > p{margin-bottom:1.55em;font-weight:300;} .case-study{margin:0 0 5em;border:1px solid var(--rule);overflow:hidden;} .case-study.cs-mco{border-top:4px solid var(--amber);} .case-study.cs-apollo{border-top:4px solid var(--rust);} .case-study.cs-challenger{border-top:4px solid var(--red-dark);} .case-study.cs-observer{border-top:4px solid var(--steel);} .case-study.cs-columbia{border-top:4px solid var(--red-dark);} .case-study.cs-hubble{border-top:4px solid var(--violet);} .case-study.cs-jwst{border-top:4px solid var(--deep-blue);} .case-study.cs-sa-acoustic{border-top:4px solid var(--green);} .case-study.cs-mpo{border-top:4px solid var(--amber);} .cs-header{padding:28px 32px 22px;background:var(--ink);color:var(--paper);position:relative;overflow:hidden;} .cs-header::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 28px,rgba(255,255,255,.015) 28px,rgba(255,255,255,.015) 29px);} .cs-header-inner{position:relative;} .cs-tag{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:8px;display:flex;gap:14px;flex-wrap:wrap;} .cs-tag .article-ref{color:var(--gold);} .cs-tag .lesson-cat{color:#888;} .cs-title{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2.1rem);font-weight:700;color:var(--paper);line-height:1.15;margin-bottom:8px;} .cs-subtitle{font-size:.98rem;color:#888;font-style:italic;font-weight:300;} .cs-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));border-bottom:1px solid var(--rule);background:var(--light);} .cs-meta-cell{padding:13px 18px;border-right:1px solid var(--rule);} .cs-meta-cell:last-child{border-right:none;} .cs-meta-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;} .cs-meta-value{font-size:.87rem;font-weight:600;color:var(--ink);line-height:1.4;} .cs-body{padding:32px 32px 28px;background:var(--white);} h3.cs-sh{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--steel);margin:2em 0 .55em;padding-bottom:6px;border-bottom:1px solid var(--rule);} h3.cs-sh:first-child{margin-top:0;} .cs-body p{margin-bottom:1.4em;font-weight:300;line-height:1.8;} .cs-body p:last-child{margin-bottom:0;} .cs-pull{border-left:4px solid var(--gold);margin:2em 0;padding:4px 0 4px 22px;} .cs-pull p{font-family:'Playfair Display',serif;font-style:italic;font-size:1.15rem;line-height:1.55;color:var(--steel);margin-bottom:0;} .cs-callout{border:1px solid var(--rule);border-left-width:4px;padding:18px 22px;margin:1.8em 0;background:var(--cream);font-size:.92rem;} .cs-callout.lesson{border-left-color:var(--green);} .cs-callout.warn{border-left-color:var(--rust);} .cs-callout.note{border-left-color:var(--steel);} .cs-callout.gold{border-left-color:var(--gold);} .cs-callout-label{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:9px;} .cs-callout.lesson .cs-callout-label{color:var(--green);} .cs-callout.warn .cs-callout-label{color:var(--rust);} .cs-callout.note .cs-callout-label{color:var(--steel);} .cs-callout.gold .cs-callout-label{color:#a07c28;} .cs-callout p{color:#333;line-height:1.7;margin-bottom:.65em;} .cs-callout p:last-child{margin-bottom:0;} .cs-timeline{margin:1.8em 0;} .ct-item{display:grid;grid-template-columns:110px 1fr;border-left:3px solid var(--rule);position:relative;margin-bottom:0;} .ct-item::before{content:'';position:absolute;left:-7px;top:18px;width:12px;height:12px;border-radius:50%;background:var(--rule);border:2px solid var(--paper);} .ct-item.bad::before{background:var(--rust);} .ct-item.warn::before{background:var(--amber);} .ct-item.good::before{background:var(--green);} .ct-item.key::before{background:var(--gold);} .ct-date{padding:12px 14px 12px 20px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--rust);white-space:nowrap;} .ct-content{padding:12px 0 12px 10px;border-left:1px solid var(--rule);} .ct-event{font-weight:700;font-size:.9rem;color:var(--ink);margin-bottom:2px;} .ct-desc{font-size:.85rem;color:#444;line-height:1.6;font-weight:300;} .fact-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:1.8em 0;} .fact-cell{background:var(--white);padding:16px 14px;text-align:center;} .fact-num{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;color:var(--rust);line-height:1.1;display:block;margin-bottom:3px;} .fact-cell p{font-size:.77rem;color:var(--muted);font-style:italic;line-height:1.4;} .cs-xref{padding:16px 32px;background:var(--cream);border-top:1px solid var(--rule);display:flex;align-items:center;gap:14px;flex-wrap:wrap;} .cs-xref-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);flex-shrink:0;} .cs-xref-links{display:flex;gap:8px;flex-wrap:wrap;} .cs-xref-link{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.06em;background:var(--ink);color:var(--gold);padding:3px 10px;text-transform:uppercase;} .section-divider{margin:4em 0 2em;display:flex;align-items:center;gap:16px;} .sd-rule{flex:1;height:1px;background:var(--rule);} .sd-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);flex-shrink:0;} .closing{background:var(--ink);color:var(--paper);padding:40px 32px;margin-top:3em;position:relative;overflow:hidden;} .closing::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 36px,rgba(200,154,58,.03) 36px,rgba(200,154,58,.03) 37px);} .closing-inner{position:relative;max-width:640px;} .closing-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;} .closing-text{font-size:.98rem;color:#9a9080;line-height:1.8;font-style:italic;font-weight:300;} .doc-footer{background:var(--cream);border-top:2px solid var(--rule);padding:28px;} .df-inner{max-width:860px;margin:0 auto;display:flex;gap:28px;flex-wrap:wrap;} .df-col{flex:1;min-width:180px;} .df-label{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;} .df-text{font-size:.84rem;color:var(--muted);font-style:italic;line-height:1.6;}
-  /* ── PRIMARY SOURCES BLOCK ── */
-  .cs-sources {
-    padding: 16px 32px;
-    background: var(--white);
-    border-top: 1px solid var(--rule);
-  }
-  .cs-sources-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 9px; letter-spacing: 0.14em;
-    text-transform: uppercase; color: var(--steel);
-    margin-bottom: 8px;
-  }
-  .cs-sources-list {
-    list-style: none; padding: 0; margin: 0;
-    display: flex; flex-direction: column; gap: 4px;
-  }
-  .cs-sources-list li {
-    font-size: 0.8rem; color: var(--muted);
-    font-weight: 300; line-height: 1.5;
-    padding-left: 12px; position: relative;
-  }
-  .cs-sources-list li::before {
-    content: '›'; position: absolute; left: 0;
-    color: var(--steel); font-weight: 700;
-  }
-  .cs-sources-list li em { font-style: italic; color: var(--ink); }
-</style>
+<link href="spacecraft_iat.css" rel="stylesheet">
+<div>
 <div class="masthead" id="top">
   <span class="masthead-series">Spacecraft Engineering Series · Integration &amp; Test</span>
   <span class="masthead-right">Case Studies Companion</span>
+</div>
+<div class="series-nav">
+  <span>Series:</span>
+  <span class="sep">·</span>
+  <a href="https://cchidekel-gif.github.io/spacecraft-iat/spacecraft_iat_intro.html#top" style="color:#b8cdd8;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#b8cdd8'">Intro</a>
+  <span class="sep">·</span>
+  <a href="https://cchidekel-gif.github.io/spacecraft-iat/spacecraft_iat_article01.html#top" style="color:#b8cdd8;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#b8cdd8'">01</a>
+  <span class="sep">·</span>
+  <a href="https://cchidekel-gif.github.io/spacecraft-iat/spacecraft_iat_article11.html#top" style="color:#b8cdd8;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#b8cdd8'">02</a>
+  <span class="sep">·</span>
+  <a href="https://cchidekel-gif.github.io/spacecraft-iat/spacecraft_iat_article16.html#top" style="color:#b8cdd8;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#b8cdd8'">03</a>
+  <span class="sep">·</span>
+  <a href="https://cchidekel-gif.github.io/spacecraft-iat/spacecraft_iat_article02.html#top" style="color:#b8cdd8;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#b8cdd8'">04</a>
+  <span class="sep">·</span>
+  <a href="https://cchidekel-gif.github.io/spacecraft-iat/spacecraft_iat_article10.html#top" style="color:#b8cdd8;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#b8cdd8'">05</a>
+  <span class="sep">·</span>
+  <a href="https://cchidekel-gif.github.io/spacecraft-iat/spacecraft_iat_article03.html#top" style="color:#b8cdd8;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#b8cdd8'">06</a>
+  <span class="sep">·</span>
+  <a href="https://cchidekel-gif.github.io/spacecraft-iat/spacecraft_iat_article09.html#top" style="color:#b8cdd8;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#b8cdd8'">07</a>
+  <span class="sep">·</span>
+  <a href="https://cchidekel-gif.github.io/spacecraft-iat/spacecraft_iat_article14.html#top" style="color:#b8cdd8;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#b8cdd8'">08</a>
+  <span class="sep">·</span>
+  <a href="https://cchidekel-gif.github.io/spacecraft-iat/spacecraft_iat_article04.html#top" style="color:#b8cdd8;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#b8cdd8'">09</a>
+  <span class="sep">·</span>
+  <a href="https://cchidekel-gif.github.io/spacecraft-iat/spacecraft_iat_article05.html#top" style="color:#b8cdd8;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#b8cdd8'">10</a>
+  <span class="sep">·</span>
+  <a href="https://cchidekel-gif.github.io/spacecraft-iat/spacecraft_iat_article12.html#top" style="color:#b8cdd8;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#b8cdd8'">11</a>
+  <span class="sep">·</span>
+  <a href="https://cchidekel-gif.github.io/spacecraft-iat/spacecraft_iat_article07.html#top" style="color:#b8cdd8;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#b8cdd8'">12</a>
+  <span class="sep">·</span>
+  <a href="https://cchidekel-gif.github.io/spacecraft-iat/spacecraft_iat_article13.html#top" style="color:#b8cdd8;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#b8cdd8'">13</a>
+  <span class="sep">·</span>
+  <a href="https://cchidekel-gif.github.io/spacecraft-iat/spacecraft_iat_article06.html#top" style="color:#b8cdd8;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#b8cdd8'">14</a>
+  <span class="sep">·</span>
+  <a href="https://cchidekel-gif.github.io/spacecraft-iat/spacecraft_iat_article15.html#top" style="color:#b8cdd8;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#b8cdd8'">15</a>
+  <span class="sep">·</span>
+  <a href="https://cchidekel-gif.github.io/spacecraft-iat/spacecraft_iat_article08.html#top" style="color:#b8cdd8;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#b8cdd8'">16</a>
+  <span class="sep">·</span>
+  <a href="https://cchidekel-gif.github.io/spacecraft-iat/spacecraft_iat_smallsat.html#top" style="color:#b8cdd8;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#b8cdd8'">S1</a>
+  <span class="sep">·</span>
+  <span class="current">S2</span>
 </div>
 
 <div class="hero">
@@ -43,55 +58,55 @@
 <div class="container">
 <div class="doc-body">
 
-  <p>The eight articles in this series referenced a number of real missions and real failures as illustrations of the principles under discussion. Those references were necessarily brief — a paragraph, sometimes less — in service of the article's primary argument. This companion document takes each referenced case and examines it in the depth it deserves: what happened, why it happened, what the I&amp;T programme did or failed to do, and what the engineering community learned from it.</p>
+  <p>The eight articles in this series referenced a number of real missions and real failures as illustrations of the principles under discussion. Those references were necessarily brief — a paragraph, sometimes less — in service of the article's primary argument. This companion document takes each referenced case and examines it in the depth it deserves: what happened, why it happened, what the I&amp;T program did or failed to do, and what the engineering community learned from it.</p>
 
-  <p>These are not simply historical curiosities. The lessons they encode are active, living lessons that are relevant to every programme in operation today. The failures are studied not to assign blame but because they are, as the accident investigation boards consistently observe, the clearest windows into the failure modes of complex engineering organisations under real conditions. The successes are studied because they demonstrate, concretely, what rigorous I&amp;T discipline looks like in practice.</p>
+  <p>These are not simply historical curiosities. The lessons they encode are active, living lessons that are relevant to every program in operation today. The failures are studied not to assign blame but because they are, as the accident investigation boards consistently observe, the clearest windows into the failure modes of complex engineering organizations under real conditions. The successes are studied because they demonstrate, concretely, what rigorous I&amp;T discipline looks like in practice.</p>
 
   <div class="cs-index">
     <div class="cs-index-header">Case Studies in This Document — Index</div>
     <div class="cs-index-grid">
       <a href="#cs-mco" class="cs-index-item">
-        <div class="cs-index-num">Case 01 · Articles Intro &amp; 06</div>
+        <div class="cs-index-num">Case 01 · Articles Intro &amp; 14</div>
         <div class="cs-index-title">Mars Climate Orbiter</div>
         <div class="cs-index-tag">Unit mismatch · Interface verification failure · 1999</div>
       </a>
       <a href="#cs-apollo" class="cs-index-item">
-        <div class="cs-index-num">Case 02 · Article 06</div>
+        <div class="cs-index-num">Case 02 · Article 14</div>
         <div class="cs-index-title">Apollo 1</div>
         <div class="cs-index-tag">Hazardous test configuration · DR accumulation · 1967</div>
       </a>
       <a href="#cs-challenger" class="cs-index-item">
-        <div class="cs-index-num">Case 03 · Article 06</div>
+        <div class="cs-index-num">Case 03 · Article 14</div>
         <div class="cs-index-title">Space Shuttle Challenger</div>
-        <div class="cs-index-tag">Normalisation of deviance · O-ring erosion · 1986</div>
+        <div class="cs-index-tag">Normalization of deviance · O-ring erosion · 1986</div>
       </a>
       <a href="#cs-observer" class="cs-index-item">
-        <div class="cs-index-num">Case 04 · Article 03</div>
+        <div class="cs-index-num">Case 04 · Article 06</div>
         <div class="cs-index-title">Mars Observer</div>
-        <div class="cs-index-tag">Test-as-you-fly violation · Propellant pressurisation · 1993</div>
+        <div class="cs-index-tag">Test-as-you-fly violation · Propellant pressurization · 1993</div>
       </a>
       <a href="#cs-columbia" class="cs-index-item">
-        <div class="cs-index-num">Case 05 · Article 06</div>
+        <div class="cs-index-num">Case 05 · Article 14</div>
         <div class="cs-index-title">Space Shuttle Columbia</div>
-        <div class="cs-index-tag">Foam debris · Normalisation · 2003</div>
+        <div class="cs-index-tag">Foam debris · Normalization · 2003</div>
       </a>
       <a href="#cs-hubble" class="cs-index-item">
-        <div class="cs-index-num">Case 06 · Articles 05 &amp; 07</div>
+        <div class="cs-index-num">Case 06 · Articles 10 &amp; 12</div>
         <div class="cs-index-title">Hubble Space Telescope</div>
-        <div class="cs-index-tag">Mirror figure error · Calibration programme · Servicing missions</div>
+        <div class="cs-index-tag">Mirror figure error · Calibration program · Servicing missions</div>
       </a>
       <a href="#cs-jwst" class="cs-index-item">
-        <div class="cs-index-num">Case 07 · Articles 06 &amp; 08</div>
+        <div class="cs-index-num">Case 07 · Articles 14 &amp; 16</div>
         <div class="cs-index-title">James Webb Space Telescope</div>
         <div class="cs-index-tag">Anomaly management · Commissioning · Single-point failures</div>
       </a>
       <a href="#cs-sa-acoustic" class="cs-index-item">
-        <div class="cs-index-num">Case 08 · Article 04</div>
+        <div class="cs-index-num">Case 08 · Article 09</div>
         <div class="cs-index-title">Solar Array Acoustic Failure</div>
         <div class="cs-index-tag">Acoustic boundary condition · First-person account · Lessons learned</div>
       </a>
       <a href="#cs-mpo" class="cs-index-item">
-        <div class="cs-index-num">Case 09 · Article 04</div>
+        <div class="cs-index-num">Case 09 · Article 09</div>
         <div class="cs-index-title">Mars Polar Lander</div>
         <div class="cs-index-tag">Spurious landing signal · Software fault · 1999</div>
       </a>
@@ -107,7 +122,7 @@
     <div class="cs-header">
       <div class="cs-header-inner">
         <div class="cs-tag">
-          <span class="article-ref">Articles: Introduction · Article 06 (Anomaly Management)</span>
+          <span class="article-ref">Articles: Introduction · Article 14 (Anomaly Management)</span>
           <span class="lesson-cat">Interface Verification · Unit Consistency · Anomaly Investigation</span>
         </div>
         <div class="cs-title">Mars Climate Orbiter</div>
@@ -126,12 +141,12 @@
 
     <div class="cs-body">
       <h3 class="cs-sh">What Was the Mission?</h3>
-      <p>Mars Climate Orbiter (MCO) was a NASA Mars Scout mission designed to study the Martian climate, atmosphere, and surface changes over a full Martian year. It was the first interplanetary weather satellite, intended to characterise dust storms, water vapour distribution, and the seasonal exchange of carbon dioxide between the atmosphere and the polar ice caps. Scientifically, it was a well-conceived and potentially very productive mission. It was also part of the "faster, better, cheaper" era of NASA planetary exploration — a programme philosophy that pursued reduced cost and development time, with consequences that became apparent over several missions in the late 1990s.</p>
+      <p>Mars Climate Orbiter (MCO) was a NASA Mars Scout mission designed to study the Martian climate, atmosphere, and surface changes over a full Martian year. It was the first interplanetary weather satellite, intended to characterize dust storms, water vapor distribution, and the seasonal exchange of carbon dioxide between the atmosphere and the polar ice caps. Scientifically, it was a well-conceived and potentially very productive mission. It was also part of the "faster, better, cheaper" era of NASA planetary exploration — a program philosophy that pursued reduced cost and development time, with consequences that became apparent over several missions in the late 1990s.</p>
 
       <h3 class="cs-sh">The Engineering Failure</h3>
       <p>The root cause of the MCO loss was a software interface error of almost embarrassing simplicity: a software module on the ground — the Small Forces software in the Attitude Control System software package — was written by a Lockheed Martin subcontractor and produced thruster force outputs in pound-force-seconds (a non-SI, imperial unit). The JPL navigation software that consumed these outputs assumed they were in newton-seconds (the SI unit). One pound-force-second equals approximately 4.45 newton-seconds. The difference accumulated over nine months of cruise to Mars.</p>
 
-      <p>The navigation team tracked the trajectory continuously during the cruise phase. The spacecraft's actual trajectory — derived from Doppler tracking of the spacecraft's radio signal — diverged from the predicted trajectory by a growing amount that was not explainable by the planned trajectory correction manoeuvres. The deviation was real, significant, and persistent. Navigation engineers raised concerns repeatedly through the cruise phase. The anomalies were investigated but the root cause — buried in the interface between the contractor's ground software and the JPL navigation system — was not identified.</p>
+      <p>The navigation team tracked the trajectory continuously during the cruise phase. The spacecraft's actual trajectory — derived from Doppler tracking of the spacecraft's radio signal — diverged from the predicted trajectory by a growing amount that was not explainable by the planned trajectory correction maneuvers. The deviation was real, significant, and persistent. Navigation engineers raised concerns repeatedly through the cruise phase. The anomalies were investigated but the root cause — buried in the interface between the contractor's ground software and the JPL navigation system — was not identified.</p>
 
       <div class="fact-strip">
         <div class="fact-cell"><span class="fact-num">9 mo</span><p>Duration of cruise phase over which unit error accumulated</p></div>
@@ -148,14 +163,14 @@
           <div class="ct-date">Jan–Sep 1999</div>
           <div class="ct-content">
             <div class="ct-event">Persistent navigation anomalies observed</div>
-            <div class="ct-desc">Navigation engineers note that trajectory correction manoeuvres are consistently producing larger-than-predicted velocity changes. Concerns raised to project management multiple times. Investigations initiated but do not identify root cause.</div>
+            <div class="ct-desc">Navigation engineers note that trajectory correction maneuvers are consistently producing larger-than-predicted velocity changes. Concerns raised to project management multiple times. Investigations initiated but do not identify root cause.</div>
           </div>
         </div>
         <div class="ct-item warn">
           <div class="ct-date">August 1999</div>
           <div class="ct-content">
-            <div class="ct-event">Final trajectory correction manoeuvre (TCM-5) cancelled</div>
-            <div class="ct-desc">The fifth and final planned trajectory correction manoeuvre is cancelled. In retrospect, this manoeuvre would have partially corrected the accumulated trajectory error. The cancellation removes the last opportunity to bring the spacecraft into the correct approach trajectory before Mars arrival.</div>
+            <div class="ct-event">Final trajectory correction maneuver (TCM-5) cancelled</div>
+            <div class="ct-desc">The fifth and final planned trajectory correction maneuver is cancelled. In retrospect, this maneuver would have partially corrected the accumulated trajectory error. The cancellation removes the last opportunity to bring the spacecraft into the correct approach trajectory before Mars arrival.</div>
           </div>
         </div>
         <div class="ct-item bad">
@@ -180,7 +195,7 @@
       <div class="cs-callout warn">
         <div class="cs-callout-label">⚠ The Anomaly That Was Seen</div>
         <p>The crucial fact about the MCO failure is that the evidence of the unit error was present in the telemetry throughout the nine-month cruise. The AMD angular momentum data — the corrupted outputs from the contractor software — was available on the ground. The trajectory anomalies it produced were measured and flagged. The failure was not a failure to detect a symptom. It was a failure to investigate the symptom with sufficient depth and persistence to find its cause.</p>
-        <p>The MCO investigation board found that the project's anomaly resolution process did not have adequate provisions for forcing the investigation of "out-of-family" navigation data to root cause within a defined timeframe. An anomaly was raised, an investigation was initiated, the investigation did not find a root cause, and the anomaly was eventually closed as "unexplained but not mission-threatening" — the classic precursor pattern to normalisation of deviance.</p>
+        <p>The MCO investigation board found that the project's anomaly resolution process did not have adequate provisions for forcing the investigation of "out-of-family" navigation data to root cause within a defined timeframe. An anomaly was raised, an investigation was initiated, the investigation did not find a root cause, and the anomaly was eventually closed as "unexplained but not mission-threatening" — the classic precursor pattern to normalization of deviance.</p>
       </div>
 
       <p>The second and equally important lesson is interface control. The unit mismatch was not a bug in the traditional sense — no one wrote incorrect code. The contractor wrote code that correctly produced its output in the units it was designed to use. JPL wrote navigation software that correctly consumed its inputs in the units it expected. The failure was in the interface specification: the ICD either did not specify the units for the AMD output, or the requirement was specified but never formally verified at the system level.</p>
@@ -204,7 +219,7 @@
       <span class="cs-xref-label">Referenced In</span>
       <div class="cs-xref-links">
         <span class="cs-xref-link">Introduction</span>
-        <span class="cs-xref-link">Article 06 — Anomaly Management</span>
+        <span class="cs-xref-link">Article 14 — Anomaly Management</span>
       </div>
     </div>
   </div>
@@ -218,7 +233,7 @@
     <div class="cs-header">
       <div class="cs-header-inner">
         <div class="cs-tag">
-          <span class="article-ref">Article 06 (Anomaly Management)</span>
+          <span class="article-ref">Article 14 (Anomaly Management)</span>
           <span class="lesson-cat">DR Accumulation · Hazardous Configuration · Safety Culture</span>
         </div>
         <div class="cs-title">Apollo 1</div>
@@ -236,20 +251,20 @@
     </div>
 
     <div class="cs-body">
-      <h3 class="cs-sh">The Programme Context</h3>
-      <p>By January 1967, the Apollo programme was under severe schedule pressure. NASA had committed to President Kennedy's end-of-decade lunar landing goal. The Apollo spacecraft, built by North American Aviation, had experienced numerous development difficulties — it was late, over budget, and its test programme had accumulated a substantial backlog of open discrepancy reports. The prime contractor's relationship with NASA management was strained. The programme's leadership knew about the quality problems; they had been the subject of internal memos and management reviews. The pressure to catch up on schedule was intense and unrelenting.</p>
+      <h3 class="cs-sh">The Program Context</h3>
+      <p>By January 1967, the Apollo program was under severe schedule pressure. NASA had committed to President Kennedy's end-of-decade lunar landing goal. The Apollo spacecraft, built by North American Aviation, had experienced numerous development difficulties — it was late, over budget, and its test program had accumulated a substantial backlog of open discrepancy reports. The prime contractor's relationship with NASA management was strained. The program's leadership knew about the quality problems; they had been the subject of internal memos and management reviews. The pressure to catch up on schedule was intense and unrelenting.</p>
 
       <p>The spacecraft that would fly Apollo 1 — Command Module 012 — had been delivered to Kennedy Space Center with a significant number of open DRs and workmanship concerns. The astronaut crew, led by veteran commander Gus Grissom, was famously frustrated with the spacecraft's state of readiness. Grissom had hung a lemon on the spacecraft's mockup in a well-documented act of protest. He told his wife the night before the plugs-out test that he did not fully trust the spacecraft.</p>
 
       <h3 class="cs-sh">The Test Configuration — The Critical Failure</h3>
-      <p>The January 27 test was a "plugs-out" test — a full simulation of the spacecraft's operation on internal power, with all umbilical connections to the launch vehicle disconnected. The test was not considered particularly high-risk; it had no propellants loaded and no pyrotechnic devices armed. But the test configuration included a detail that had never been formally assessed as a hazardous configuration: the cabin was pressurised with 100% pure oxygen at approximately 16.7 psi — above sea-level atmospheric pressure of 14.7 psi.</p>
+      <p>The January 27 test was a "plugs-out" test — a full simulation of the spacecraft's operation on internal power, with all umbilical connections to the launch vehicle disconnected. The test was not considered particularly high-risk; it had no propellants loaded and no pyrotechnic devices armed. But the test configuration included a detail that had never been formally assessed as a hazardous configuration: the cabin was pressurized with 100% pure oxygen at approximately 16.7 psi — above sea-level atmospheric pressure of 14.7 psi.</p>
 
-      <p>Pure oxygen at over-ambient pressure is an extraordinarily flammable environment. In this atmosphere, materials that are essentially fireproof in normal air — aluminium wire insulation, Velcro patches, nylon webbing — burn readily and intensely. The Apollo cabin contained an estimated 5 kilograms of combustible material per cubic metre of volume. No one had formally assessed whether a "plugs-out" test, which did not involve propellants or pyrotechnics, nonetheless required hazardous operations procedures because of its pure-oxygen pressurisation.</p>
+      <p>Pure oxygen at over-ambient pressure is an extraordinarily flammable environment. In this atmosphere, materials that are essentially fireproof in normal air — aluminium wire insulation, Velcro patches, nylon webbing — burn readily and intensely. The Apollo cabin contained an estimated 5 kilograms of combustible material per cubic metre of volume. No one had formally assessed whether a "plugs-out" test, which did not involve propellants or pyrotechnics, nonetheless required hazardous operations procedures because of its pure-oxygen pressurization.</p>
 
       <div class="cs-callout warn">
         <div class="cs-callout-label">⚠ The Hazard That Was Invisible</div>
         <p>The pure-oxygen atmosphere had been used in Mercury and Gemini spacecraft without incident and was a well-established part of the American crewed spaceflight design. Its hazards in the ground testing environment — where the cabin pressure was above ambient rather than at the near-vacuum of space — had been noted by some engineers, but the concern had not been elevated to the level of a formal hazard analysis or a specific hazard control requirement for ground operations.</p>
-        <p>This is a textbook example of a risk that was known in principle but not formally characterised and not formally managed: the pure-oxygen over-pressure configuration was not on anyone's hazardous operations checklist because it had never been explicitly classified as a hazardous configuration for ground testing purposes. The absence of a formal hazard classification meant the absence of formal hazard controls. The formal controls — eliminating combustible materials, requiring escape provisions, establishing fire response procedures — were not in place because the hazard they would have addressed was not formally recognised.</p>
+        <p>This is a textbook example of a risk that was known in principle but not formally characterized and not formally managed: the pure-oxygen over-pressure configuration was not on anyone's hazardous operations checklist because it had never been explicitly classified as a hazardous configuration for ground testing purposes. The absence of a formal hazard classification meant the absence of formal hazard controls. The formal controls — eliminating combustible materials, requiring escape provisions, establishing fire response procedures — were not in place because the hazard they would have addressed was not formally recognized.</p>
       </div>
 
       <h3 class="cs-sh">The Fire</h3>
@@ -265,30 +280,30 @@
       <h3 class="cs-sh">What the Investigation Found</h3>
       <p>The Apollo 204 Review Board's investigation identified three categories of contributing causes. First, the cabin contained far too much combustible material — Velcro, Raschel netting, foam padding, and plumbing sleeves had been installed without adequate analysis of the fire risk they represented in a pure-oxygen environment. Second, the wiring in the spacecraft had extensive defects — chafed insulation, improper routing through sharp-edged bundles, and inadequate connector seating — that created multiple potential ignition sources. Third, the test configuration — pure oxygen at over-ambient pressure — had never been formally designated as a hazardous configuration requiring hazard controls commensurate with its actual risk.</p>
 
-      <p>Underlying all three was the accumulated effect of schedule pressure on quality. The open DR count on the spacecraft was not a secret. The workmanship defects were not invisible. The programme's engineering leadership knew that the quality of the spacecraft was below what it should have been. The pressure to meet the schedule had allowed the accumulation of unresolved quality issues to reach a level that a different programme culture would have treated as a stop-work condition.</p>
+      <p>Underlying all three was the accumulated effect of schedule pressure on quality. The open DR count on the spacecraft was not a secret. The workmanship defects were not invisible. The program's engineering leadership knew that the quality of the spacecraft was below what it should have been. The pressure to meet the schedule had allowed the accumulation of unresolved quality issues to reach a level that a different program culture would have treated as a stop-work condition.</p>
 
       <h3 class="cs-sh">The Transformation</h3>
       <p>Apollo 1 transformed NASA's approach to spacecraft design, materials selection, cabin atmosphere management, and test hazard control. The changes implemented in the redesigned Block II Apollo Command Module were fundamental: the cabin atmosphere was changed to a 60/40 oxygen/nitrogen mix at launch and transitioned to pure oxygen only after reaching orbital altitude; flammable materials were systematically identified and replaced or restricted; wiring was redesigned, re-routed, and re-inspected; the hatch was redesigned to open outward; and the definition of hazardous configurations in ground testing was expanded to include any configuration involving pure-oxygen pressure above 30% partial pressure.</p>
 
       <div class="cs-callout lesson">
         <div class="cs-callout-label">✓ Lessons Applied</div>
-        <p><strong>1. The open DR count is a programme health indicator.</strong> A spacecraft delivered with over 100 open DRs is a spacecraft that has not completed its quality review programme. The number of open DRs alone does not determine whether a spacecraft is safe to test — the content of those DRs does. But an unmanageably large open DR count is a signal that the quality management process has lost control, and it should trigger a formal programme-level assessment rather than a decision to proceed on schedule.</p>
+        <p><strong>1. The open DR count is a program health indicator.</strong> A spacecraft delivered with over 100 open DRs is a spacecraft that has not completed its quality review program. The number of open DRs alone does not determine whether a spacecraft is safe to test — the content of those DRs does. But an unmanageably large open DR count is a signal that the quality management process has lost control, and it should trigger a formal program-level assessment rather than a decision to proceed on schedule.</p>
         <p><strong>2. Hazard analysis must cover test configurations, not just flight configurations.</strong> The pure-oxygen over-pressure cabin was not a flight configuration — it was a ground test configuration that was never formally assessed as a hazardous operation. Hazard analysis must explicitly cover the test configurations used during I&T, not only the flight configurations the spacecraft will experience in space. A configuration that is safe in flight may be hazardous on the ground, and vice versa.</p>
-        <p><strong>3. Known quality problems must stop the programme.</strong> The crew and the programme leadership knew the spacecraft had serious quality problems. The decision to proceed with a full-up test on a spacecraft with an unresolved quality backlog was a decision to accept risk that had not been formally characterised. Risk acceptance that is implicit — driven by schedule pressure rather than by formal engineering assessment — is not risk management. It is risk deferral until the consequences become unavoidable.</p>
+        <p><strong>3. Known quality problems must stop the program.</strong> The crew and the program leadership knew the spacecraft had serious quality problems. The decision to proceed with a full-up test on a spacecraft with an unresolved quality backlog was a decision to accept risk that had not been formally characterized. Risk acceptance that is implicit — driven by schedule pressure rather than by formal engineering assessment — is not risk management. It is risk deferral until the consequences become unavoidable.</p>
       </div>
     </div>
   <div class="cs-sources">
       <div class="cs-sources-label">Primary Sources</div>
       <ul class="cs-sources-list">
         <li><em>Report of the Apollo 204 Review Board</em> — NASA, April 1967. The official investigation report into the Apollo 1 fire, including findings on the spacecraft's design, the test configuration, and the programmatic environment that produced both.</li>
-        <li>Murray, C. and Cox, C.B., <em>Apollo: The Race to the Moon</em> — Simon & Schuster, 1989. Authoritative account drawing on extensive interviews with programme participants.</li>
-        <li>Brooks, C.G., Grimwood, J.M., and Swenson, L.S., <em>Chariots for Apollo: A History of Manned Lunar Spacecraft</em> — NASA SP-4205, 1979. NASA's official programme history.</li>
+        <li>Murray, C. and Cox, C.B., <em>Apollo: The Race to the Moon</em> — Simon & Schuster, 1989. Authoritative account drawing on extensive interviews with program participants.</li>
+        <li>Brooks, C.G., Grimwood, J.M., and Swenson, L.S., <em>Chariots for Apollo: A History of Manned Lunar Spacecraft</em> — NASA SP-4205, 1979. NASA's official program history.</li>
       </ul>
     </div>
       <div class="cs-xref">
       <span class="cs-xref-label">Referenced In</span>
       <div class="cs-xref-links">
-        <span class="cs-xref-link">Article 06 — Anomaly Management</span>
+        <span class="cs-xref-link">Article 14 — Anomaly Management</span>
       </div>
     </div>
   </div>
@@ -302,8 +317,8 @@
     <div class="cs-header">
       <div class="cs-header-inner">
         <div class="cs-tag">
-          <span class="article-ref">Article 06 (Anomaly Management)</span>
-          <span class="lesson-cat">Normalisation of Deviance · Launch Decision Authority · O-Ring Temperature Sensitivity</span>
+          <span class="article-ref">Article 14 (Anomaly Management)</span>
+          <span class="lesson-cat">Normalization of Deviance · Launch Decision Authority · O-Ring Temperature Sensitivity</span>
         </div>
         <div class="cs-title">Space Shuttle Challenger</div>
         <div class="cs-subtitle">How twenty-four successful flights turned a known engineering deficiency into an acceptable operational condition — and what it cost</div>
@@ -316,7 +331,7 @@
       <div class="cs-meta-cell"><div class="cs-meta-label">Loss</div><div class="cs-meta-value">January 28, 1986</div></div>
       <div class="cs-meta-cell"><div class="cs-meta-label">Crew</div><div class="cs-meta-value">Seven astronauts</div></div>
       <div class="cs-meta-cell"><div class="cs-meta-label">Root Cause</div><div class="cs-meta-value">O-ring seal failure in cold temperatures, SRB field joint</div></div>
-      <div class="cs-meta-cell"><div class="cs-meta-label">Contributing</div><div class="cs-meta-value">Normalisation of erosion pattern; flawed launch decision process</div></div>
+      <div class="cs-meta-cell"><div class="cs-meta-label">Contributing</div><div class="cs-meta-value">Normalization of erosion pattern; flawed launch decision process</div></div>
     </div>
 
     <div class="cs-body">
@@ -344,15 +359,15 @@
         <div class="fact-cell"><span class="fact-num">73 sec</span><p>Time from launch to Challenger breakup</p></div>
       </div>
 
-      <h3 class="cs-sh">The Normalisation Process — In Detail</h3>
-      <p>Diane Vaughan's sociological analysis of the Challenger decision, published in her 1996 book <em>The Challenger Launch Decision</em>, provides the most detailed account of how the O-ring erosion anomaly became normalised over the course of 24 flights. Her account is worth understanding in some depth, because it shows that normalisation of deviance is not a simple story of dishonesty or neglect — it is a story of how well-intentioned, competent engineers and managers, working within a complex institutional system, can collectively construct a rationale for accepting risk that none of them individually would have accepted if they could have seen the complete picture.</p>
+      <h3 class="cs-sh">The Normalization Process — In Detail</h3>
+      <p>Diane Vaughan's sociological analysis of the Challenger decision, published in her 1996 book <em>The Challenger Launch Decision</em>, provides the most detailed account of how the O-ring erosion anomaly became normalized over the course of 24 flights. Her account is worth understanding in some depth, because it shows that normalization of deviance is not a simple story of dishonesty or neglect — it is a story of how well-intentioned, competent engineers and managers, working within a complex institutional system, can collectively construct a rationale for accepting risk that none of them individually would have accepted if they could have seen the complete picture.</p>
 
       <p>After each flight in which O-ring erosion was observed, the joint task force responsible for the SRB design reviewed the data and made a determination. Each determination followed a consistent pattern: the observed erosion was within the previous data range; the design had safety margins that had not been exhausted; the flight had succeeded despite the erosion; therefore the joint was acceptable for continued flight. Each determination was technically defensible in isolation. Collectively, they constructed a false baseline — a definition of "acceptable" that was not grounded in an understanding of the failure mechanism but in the absence of previous catastrophic failure.</p>
 
       <div class="cs-callout warn">
         <div class="cs-callout-label">⚠ The Most Important Lesson of Challenger</div>
         <p>The Rogers Commission's finding was stark: the decision to launch Challenger was flawed. The commission found that the joint's design was never fully adequate, that the O-ring erosion was not an acceptable risk condition but a sign of a design deficiency that required correction, and that the launch decision process had been compromised by schedule pressure and the reversal of management and engineer roles.</p>
-        <p>But the deeper lesson — the one that Vaughan's analysis illuminates — is that the normalisation of the O-ring erosion was not primarily caused by dishonesty or incompetence. It was caused by the accumulation of individually reasonable decisions, each made within an institutional framework that systematically weighted schedule over safety, that treated the absence of previous catastrophe as evidence of acceptable risk, and that made it structurally difficult for engineers to maintain a safety objection in the face of management pressure. The lesson is not simply "listen to your engineers." It is: examine the institutional structures that determine whether engineering concerns can be raised, heard, and acted upon — and change the ones that suppress them.</p>
+        <p>But the deeper lesson — the one that Vaughan's analysis illuminates — is that the normalization of the O-ring erosion was not primarily caused by dishonesty or incompetence. It was caused by the accumulation of individually reasonable decisions, each made within an institutional framework that systematically weighted schedule over safety, that treated the absence of previous catastrophe as evidence of acceptable risk, and that made it structurally difficult for engineers to maintain a safety objection in the face of management pressure. The lesson is not simply "listen to your engineers." It is: examine the institutional structures that determine whether engineering concerns can be raised, heard, and acted upon — and change the ones that suppress them.</p>
       </div>
 
       <div class="cs-callout lesson">
@@ -367,14 +382,14 @@
       <ul class="cs-sources-list">
         <li><em>Report of the Presidential Commission on the Space Shuttle Challenger Accident</em> (Rogers Commission) — NASA, June 1986. Five volumes; the definitive account of the accident, the O-ring failure history, and the decision-making culture at NASA and Morton Thiokol.</li>
         <li>Feynman, R.P., <em>Personal Observations on the Reliability of the Shuttle</em> — Appendix F to the Rogers Commission Report, 1986. Feynman's independent analysis of NASA's risk estimation practices.</li>
-        <li>Vaughan, D., <em>The Challenger Launch Decision: Risky Technology, Culture, and Deviance at NASA</em> — University of Chicago Press, 1996. The definitive sociological analysis of normalisation of deviance in the Shuttle programme.</li>
+        <li>Vaughan, D., <em>The Challenger Launch Decision: Risky Technology, Culture, and Deviance at NASA</em> — University of Chicago Press, 1996. The definitive sociological analysis of normalization of deviance in the Shuttle program.</li>
       </ul>
     </div>
       <div class="cs-xref">
       <span class="cs-xref-label">Referenced In</span>
       <div class="cs-xref-links">
-        <span class="cs-xref-link">Article 06 — Anomaly Management</span>
-        <span class="cs-xref-link">Article 08 — Launch Readiness</span>
+        <span class="cs-xref-link">Article 14 — Anomaly Management</span>
+        <span class="cs-xref-link">Article 16 — Launch Readiness</span>
       </div>
     </div>
   </div>
@@ -388,7 +403,7 @@
     <div class="cs-header">
       <div class="cs-header-inner">
         <div class="cs-tag">
-          <span class="article-ref">Article 03 (Functional Testing — Test-as-You-Fly)</span>
+          <span class="article-ref">Article 06 (Functional Testing — Test-as-You-Fly)</span>
           <span class="lesson-cat">Test Configuration Fidelity · Propulsion System Testing · Mission-Phase Sequencing</span>
         </div>
         <div class="cs-title">Mars Observer</div>
@@ -402,7 +417,7 @@
       <div class="cs-meta-cell"><div class="cs-meta-label">Launch</div><div class="cs-meta-value">September 1992</div></div>
       <div class="cs-meta-cell"><div class="cs-meta-label">Loss</div><div class="cs-meta-value">August 21, 1993</div></div>
       <div class="cs-meta-cell"><div class="cs-meta-label">Cost</div><div class="cs-meta-value">$813 million</div></div>
-      <div class="cs-meta-cell"><div class="cs-meta-label">Probable Cause</div><div class="cs-meta-value">Propellant line rupture during pressurisation sequence; contamination-induced failure</div></div>
+      <div class="cs-meta-cell"><div class="cs-meta-label">Probable Cause</div><div class="cs-meta-value">Propellant line rupture during pressurization sequence; contamination-induced failure</div></div>
     </div>
 
     <div class="cs-body">
@@ -410,43 +425,43 @@
       <p>Mars Observer was NASA's first mission to Mars since the Viking landers of 1975/1976. It carried a comprehensive instrument suite designed to study the Martian surface, atmosphere, gravity field, and magnetic field from orbit. The spacecraft was based on an Earth-orbiting commercial communications satellite bus — the GE Series 7000 — adapted for planetary use. This heritage brought with it both proven technology and constraints that would become significant: the propulsion system design was inherited from the commercial bus without full re-qualification for the particular sequence of operations required by the Mars mission.</p>
 
       <h3 class="cs-sh">The Test-as-You-Fly Violation</h3>
-      <p>The article series introduces Mars Observer in the context of the test-as-you-fly principle: the requirement that the spacecraft be tested in the configurations it will actually operate in, in the sequence it will actually operate them. The specific violation in Mars Observer's case concerned its propulsion system pressurisation sequence.</p>
+      <p>The article series introduces Mars Observer in the context of the test-as-you-fly principle: the requirement that the spacecraft be tested in the configurations it will actually operate in, in the sequence it will actually operate them. The specific violation in Mars Observer's case concerned its propulsion system pressurization sequence.</p>
 
-      <p>Mars Observer used a bipropellant propulsion system (monomethyl hydrazine fuel and nitrogen tetroxide oxidiser) pressurised by a regulated helium pressurant. The mission profile required the propulsion system to be operated for trajectory correction manoeuvres during the eleven-month cruise to Mars, and then to be placed in a non-operating condition for the final approach — with the pressurisation system depressurised — before being re-pressurised for Mars Orbit Insertion. This depressurisation-and-re-pressurisation sequence was a specific operational event that had no exact parallel in the Earth-orbiting commercial mission profile the bus had been designed and qualified for.</p>
+      <p>Mars Observer used a bipropellant propulsion system (monomethyl hydrazine fuel and nitrogen tetroxide oxidizer) pressurized by a regulated helium pressurant. The mission profile required the propulsion system to be operated for trajectory correction maneuvers during the eleven-month cruise to Mars, and then to be placed in a non-operating condition for the final approach — with the pressurization system depressurized — before being re-pressurized for Mars Orbit Insertion. This depressurization-and-re-pressurization sequence was a specific operational event that had no exact parallel in the Earth-orbiting commercial mission profile the bus had been designed and qualified for.</p>
 
       <div class="cs-callout warn">
         <div class="cs-callout-label">⚠ The Sequence That Was Never Tested</div>
-        <p>The investigation board determined that the most probable cause of loss was a rupture of the fuel pressurisation line during the re-pressurisation event three days before Mars arrival — the event that would have prepared the propulsion system for the orbit insertion burn. The rupture is believed to have been caused by a combination of factors: residual oxidiser contamination in the fuel pressurisation line from a check valve that did not fully isolate the lines, and the sudden pressure transient of re-pressurisation after an extended depressurised period.</p>
-        <p>The crucial point is that this specific operational sequence — the cruise depressurisation, the extended depressurised period, and the re-pressurisation immediately before MOI — was never tested in ground testing. The propulsion system had been tested in its normal operating configuration, and the check valve design had been qualified for Earth-orbit applications. But the specific combination of conditions that occurred during the Mars mission — extended depressurised storage with possible oxidiser migration through the check valve, followed by high-rate re-pressurisation in the cold environment of interplanetary space — was outside the test database.</p>
+        <p>The investigation board determined that the most probable cause of loss was a rupture of the fuel pressurization line during the re-pressurization event three days before Mars arrival — the event that would have prepared the propulsion system for the orbit insertion burn. The rupture is believed to have been caused by a combination of factors: residual oxidizer contamination in the fuel pressurization line from a check valve that did not fully isolate the lines, and the sudden pressure transient of re-pressurization after an extended depressurized period.</p>
+        <p>The crucial point is that this specific operational sequence — the cruise depressurization, the extended depressurized period, and the re-pressurization immediately before MOI — was never tested in ground testing. The propulsion system had been tested in its normal operating configuration, and the check valve design had been qualified for Earth-orbit applications. But the specific combination of conditions that occurred during the Mars mission — extended depressurized storage with possible oxidizer migration through the check valve, followed by high-rate re-pressurization in the cold environment of interplanetary space — was outside the test database.</p>
       </div>
 
       <h3 class="cs-sh">The Communication Loss</h3>
-      <p>On August 21, 1993, three days before Mars arrival, mission controllers at JPL commanded the spacecraft to begin the pre-arrival pressurisation sequence. Contact was lost approximately 90 seconds after the pressurisation command was sent. The spacecraft was never heard from again. No telemetry was received that confirmed what had happened — the investigation board's finding of probable cause was based on analysis of the spacecraft's design, the operational sequence, and the physical chemistry of the propellant system, not on direct telemetry evidence of the failure mode.</p>
+      <p>On August 21, 1993, three days before Mars arrival, mission controllers at JPL commanded the spacecraft to begin the pre-arrival pressurization sequence. Contact was lost approximately 90 seconds after the pressurization command was sent. The spacecraft was never heard from again. No telemetry was received that confirmed what had happened — the investigation board's finding of probable cause was based on analysis of the spacecraft's design, the operational sequence, and the physical chemistry of the propellant system, not on direct telemetry evidence of the failure mode.</p>
 
       <h3 class="cs-sh">The I&T Lesson</h3>
-      <p>Mars Observer illustrates one of the most subtle and difficult aspects of the test-as-you-fly principle: it is not sufficient to test the hardware in its nominal operating configuration. The test programme must cover the full sequence of configurations the hardware will experience over the mission lifetime, in the order it will experience them, including configurations that are transitional rather than steady-state. A component that has been qualified for its operating state and for its non-operating state has not necessarily been qualified for the transition between them, particularly if that transition involves a specific sequence of physical conditions that creates a non-obvious failure pathway.</p>
+      <p>Mars Observer illustrates one of the most subtle and difficult aspects of the test-as-you-fly principle: it is not sufficient to test the hardware in its nominal operating configuration. The test program must cover the full sequence of configurations the hardware will experience over the mission lifetime, in the order it will experience them, including configurations that are transitional rather than steady-state. A component that has been qualified for its operating state and for its non-operating state has not necessarily been qualified for the transition between them, particularly if that transition involves a specific sequence of physical conditions that creates a non-obvious failure pathway.</p>
 
-      <p>The inheritance of the commercial bus design created a false sense of qualification coverage. The bus had a flight heritage on commercial communications satellites. But that heritage did not cover the specific mission profile of a planetary spacecraft — and the specific sequence of propulsion system operations required by the Mars mission was not, in fact, within the commercial bus's qualification boundary. Adapting a proven commercial design for a new application requires a careful gap analysis between the original qualification envelope and the new mission's operational requirements, followed by additional testing to close any identified gaps. That gap analysis, in the case of Mars Observer's propulsion system re-pressurisation sequence, was either not conducted or not conducted with sufficient depth.</p>
+      <p>The inheritance of the commercial bus design created a false sense of qualification coverage. The bus had a flight heritage on commercial communications satellites. But that heritage did not cover the specific mission profile of a planetary spacecraft — and the specific sequence of propulsion system operations required by the Mars mission was not, in fact, within the commercial bus's qualification boundary. Adapting a proven commercial design for a new application requires a careful gap analysis between the original qualification envelope and the new mission's operational requirements, followed by additional testing to close any identified gaps. That gap analysis, in the case of Mars Observer's propulsion system re-pressurization sequence, was either not conducted or not conducted with sufficient depth.</p>
 
       <div class="cs-callout lesson">
         <div class="cs-callout-label">✓ Lessons Applied</div>
-        <p><strong>1. Test the sequence, not just the states.</strong> Hardware that has been tested in each of its operating states has not necessarily been tested in the transitions between those states. The test programme must explicitly identify all significant state transitions and verify that each has been adequately tested — particularly when the transition involves physical conditions (pressure transients, temperature gradients, chemical equilibration) that may not be captured by steady-state testing.</p>
+        <p><strong>1. Test the sequence, not just the states.</strong> Hardware that has been tested in each of its operating states has not necessarily been tested in the transitions between those states. The test program must explicitly identify all significant state transitions and verify that each has been adequately tested — particularly when the transition involves physical conditions (pressure transients, temperature gradients, chemical equilibration) that may not be captured by steady-state testing.</p>
         <p><strong>2. Heritage qualification has boundaries.</strong> Commercial off-the-shelf and adapted heritage designs bring real qualification value. But that value is bounded by the conditions under which the original qualification was conducted. Adapting any design for a new application requires explicit comparison of the new operational profile against the original qualification envelope — and additional testing wherever gaps exist.</p>
-        <p><strong>3. Mission-specific operational sequences must be mission-specifically tested.</strong> The Mars orbit insertion re-pressurisation sequence was unique to the Mars Observer mission. Any operational sequence that is unique to the specific mission — that was not part of the qualification heritage of the adapted design — is a test gap that must be explicitly addressed in the mission's test programme.</p>
+        <p><strong>3. Mission-specific operational sequences must be mission-specifically tested.</strong> The Mars orbit insertion re-pressurization sequence was unique to the Mars Observer mission. Any operational sequence that is unique to the specific mission — that was not part of the qualification heritage of the adapted design — is a test gap that must be explicitly addressed in the mission's test program.</p>
       </div>
     </div>
   <div class="cs-sources">
       <div class="cs-sources-label">Primary Sources</div>
       <ul class="cs-sources-list">
-        <li><em>Report on the Loss of Mars Observer</em> — NASA, January 1994. The Mars Observer Special Review Board report establishing the probable cause as rupture of the fuel pressurisation system during pressurisation for orbit insertion.</li>
+        <li><em>Report on the Loss of Mars Observer</em> — NASA, January 1994. The Mars Observer Special Review Board report establishing the probable cause as rupture of the fuel pressurization system during pressurization for orbit insertion.</li>
         <li>Savage, D., <em>Mars Observer Lost</em> — NASA press materials and investigation documentation, 1993–1994.</li>
-        <li>Mishkin, A., <em>Sojourner: An Insider's View of the Mars Pathfinder Mission</em> — Berkley Books, 2003. Provides programme context for the faster-better-cheaper era and lessons drawn from Mars Observer.</li>
+        <li>Mishkin, A., <em>Sojourner: An Insider's View of the Mars Pathfinder Mission</em> — Berkley Books, 2003. Provides program context for the faster-better-cheaper era and lessons drawn from Mars Observer.</li>
       </ul>
     </div>
       <div class="cs-xref">
       <span class="cs-xref-label">Referenced In</span>
       <div class="cs-xref-links">
-        <span class="cs-xref-link">Article 03 — Functional Testing</span>
+        <span class="cs-xref-link">Article 06 — Functional Testing</span>
       </div>
     </div>
   </div>
@@ -460,11 +475,11 @@
     <div class="cs-header">
       <div class="cs-header-inner">
         <div class="cs-tag">
-          <span class="article-ref">Article 06 (Anomaly Management)</span>
-          <span class="lesson-cat">Normalisation of Deviance · Foam Shedding · Organisational Culture</span>
+          <span class="article-ref">Article 14 (Anomaly Management)</span>
+          <span class="lesson-cat">Normalization of Deviance · Foam Shedding · Organizational Culture</span>
         </div>
         <div class="cs-title">Space Shuttle Columbia</div>
-        <div class="cs-subtitle">Sixteen years of foam shedding, a normalised anomaly, and the structural analysis that was never performed</div>
+        <div class="cs-subtitle">Sixteen years of foam shedding, a normalized anomaly, and the structural analysis that was never performed</div>
       </div>
     </div>
 
@@ -474,22 +489,22 @@
       <div class="cs-meta-cell"><div class="cs-meta-label">Loss</div><div class="cs-meta-value">February 1, 2003</div></div>
       <div class="cs-meta-cell"><div class="cs-meta-label">Crew</div><div class="cs-meta-value">Seven astronauts</div></div>
       <div class="cs-meta-cell"><div class="cs-meta-label">Root Cause</div><div class="cs-meta-value">Foam impact damage to wing leading edge RCC panel</div></div>
-      <div class="cs-meta-cell"><div class="cs-meta-label">Contributing</div><div class="cs-meta-value">16 years of normalised foam shedding; missing structural analysis</div></div>
+      <div class="cs-meta-cell"><div class="cs-meta-label">Contributing</div><div class="cs-meta-value">16 years of normalized foam shedding; missing structural analysis</div></div>
     </div>
 
     <div class="cs-body">
       <h3 class="cs-sh">The Foam Shedding History</h3>
       <p>External tank foam shedding — the loss of chunks of insulating foam from the Shuttle's External Tank during the high-dynamic-pressure phase of ascent — had been observed and documented from the very first Shuttle flight in 1981. Foam was lost on essentially every Shuttle mission. On some missions it struck the orbiter. On some missions it caused tile damage. On most missions, the damage was minor — small gouges, surface nicks — that was repaired before the next flight.</p>
 
-      <p>The normalisation process proceeded exactly as Diane Vaughan's model predicts. After each mission with foam loss and impact damage, the engineering review determined that the damage was within acceptable limits, that the structure had adequate margin, and that the mission was safe. After each such determination, the threshold of "acceptable" was implicitly reset to include the damage just observed. By the time of STS-107 in January 2003, foam shedding was not simply accepted — it was expected. It was not a DR trigger anymore. It was a "known anomaly" that was listed in the programme's risk documentation as an "accepted risk."</p>
+      <p>The normalization process proceeded exactly as Diane Vaughan's model predicts. After each mission with foam loss and impact damage, the engineering review determined that the damage was within acceptable limits, that the structure had adequate margin, and that the mission was safe. After each such determination, the threshold of "acceptable" was implicitly reset to include the damage just observed. By the time of STS-107 in January 2003, foam shedding was not simply accepted — it was expected. It was not a DR trigger anymore. It was a "known anomaly" that was listed in the program's risk documentation as an "accepted risk."</p>
 
       <h3 class="cs-sh">The STS-107 Launch and Impact</h3>
       <p>Columbia launched on January 16, 2003. Approximately 81.7 seconds after launch, a piece of foam from the bipod ramp area of the External Tank — estimated at approximately 1.67 pounds and 0.07 cubic feet — struck the leading edge of Columbia's left wing. Post-accident analysis determined that the foam struck at approximately 545 mph relative velocity, impacting Reinforced Carbon-Carbon (RCC) panel number 8. The impact created a hole in the panel approximately 6 to 10 inches in diameter.</p>
 
       <div class="cs-callout warn">
         <div class="cs-callout-label">⚠ The Analysis That Wasn't Performed</div>
-        <p>The foam impact was captured on launch video and reviewed by the Mission Management Team (MMT) and engineering teams during the mission. The impact was significantly larger than any previously recorded bipod ramp foam loss. Engineers at Boeing — the Shuttle contractor — used the existing damage assessment tool (Crater) to analyse the potential damage. Crater's models were calibrated against data for small foam impacts; the STS-107 impact was outside the model's validated range.</p>
-        <p>An independent team of engineers — the Debris Assessment Team — requested Department of Defense imaging of the orbiter during the mission to visually assess the potential damage. The request was not approved through programme management channels; the MMT determined that even if significant damage existed, no repair was possible, and so imaging would serve no purpose. This determination — that knowledge of the damage was not worth acquiring because the known response options were inadequate — represents one of the most consequential failures of engineering management in the programme's history. The response options might have included a rescue mission or a repair attempt using materials already on board. These options were never assessed because the damage was never confirmed.</p>
+        <p>The foam impact was captured on launch video and reviewed by the Mission Management Team (MMT) and engineering teams during the mission. The impact was significantly larger than any previously recorded bipod ramp foam loss. Engineers at Boeing — the Shuttle contractor — used the existing damage assessment tool (Crater) to analyze the potential damage. Crater's models were calibrated against data for small foam impacts; the STS-107 impact was outside the model's validated range.</p>
+        <p>An independent team of engineers — the Debris Assessment Team — requested Department of Defense imaging of the orbiter during the mission to visually assess the potential damage. The request was not approved through program management channels; the MMT determined that even if significant damage existed, no repair was possible, and so imaging would serve no purpose. This determination — that knowledge of the damage was not worth acquiring because the known response options were inadequate — represents one of the most consequential failures of engineering management in the program's history. The response options might have included a rescue mission or a repair attempt using materials already on board. These options were never assessed because the damage was never confirmed.</p>
       </div>
 
       <div class="fact-strip">
@@ -503,29 +518,29 @@
       <p>On February 1, 2003, Columbia began re-entry over the Pacific coast. Within minutes, abnormal heating was recorded in sensors on the left wing. The data showed progressive heating anomalies consistent with super-heated atmospheric gas entering through a damaged RCC panel and progressively destroying the wing structure from within. Columbia broke up over Texas and Louisiana at approximately 9:00 AM local time. All seven crew members were lost.</p>
 
       <h3 class="cs-sh">What the CAIB Found</h3>
-      <p>The Columbia Accident Investigation Board's report is one of the most thorough and clear-eyed analyses of organisational failure in the history of engineering. Its central finding was that Columbia's loss was the result of both a physical cause (foam impact damage) and an organisational cause (the failure to properly assess the risk the damage represented). The CAIB found that NASA's safety culture had deteriorated since the lessons of Challenger — that the same patterns of schedule pressure, normalisation of deviance, and suppression of engineering concern had re-emerged in the years between the two accidents.</p>
+      <p>The Columbia Accident Investigation Board's report is one of the most thorough and clear-eyed analyzes of organizational failure in the history of engineering. Its central finding was that Columbia's loss was the result of both a physical cause (foam impact damage) and an organizational cause (the failure to properly assess the risk the damage represented). The CAIB found that NASA's safety culture had deteriorated since the lessons of Challenger — that the same patterns of schedule pressure, normalization of deviance, and suppression of engineering concern had re-emerged in the years between the two accidents.</p>
 
-      <p>The CAIB specifically identified the foam shedding normalisation as a structural failure of the anomaly management process: an anomaly that should have been classified as a Design Non-Conformance — an observed performance that violated the design requirement that no debris should impact the orbiter — had been reclassified as an accepted risk condition, removing it from the anomaly management process and eliminating the formal engineering review that would have been required to maintain it as an open DR.</p>
+      <p>The CAIB specifically identified the foam shedding normalization as a structural failure of the anomaly management process: an anomaly that should have been classified as a Design Non-Conformance — an observed performance that violated the design requirement that no debris should impact the orbiter — had been reclassified as an accepted risk condition, removing it from the anomaly management process and eliminating the formal engineering review that would have been required to maintain it as an open DR.</p>
 
       <div class="cs-callout lesson">
         <div class="cs-callout-label">✓ Lessons Applied</div>
         <p><strong>1. "Accepted risk" is not a substitute for "resolved anomaly."</strong> Designating a recurring anomaly as an accepted risk removes it from the anomaly management process and eliminates the regular engineering review that a DR would require. Accepted risks must remain visible, must be re-assessed when conditions change, and must have closure criteria — conditions under which the risk would require re-escalation to the formal anomaly management process.</p>
-        <p><strong>2. Every anomaly must be assessed against its actual consequences, not its previous consequences.</strong> The foam shedding programme had assessed each foam impact event against whether it caused damage beyond the observed repair threshold. It had never assessed whether the foam shedding process could, under some combination of conditions, cause damage beyond what the RCC structure could survive. The failure was not the individual assessments — it was the absence of a systematic worst-case assessment of what the foam shedding process could do under boundary conditions.</p>
-        <p><strong>3. The knowledge that a problem exists is always valuable, even if the response options are limited.</strong> The decision not to image Columbia because "we can't do anything about it anyway" denied the programme the information it needed to make a complete assessment of the crew's options. Knowing the extent of the damage might have enabled actions — contingency repair, rescue mission, altered re-entry profile — that could not be evaluated without the information. The assumption that no response is possible is a determination that requires information, not a premise that can be used to justify not acquiring information.</p>
+        <p><strong>2. Every anomaly must be assessed against its actual consequences, not its previous consequences.</strong> The foam shedding program had assessed each foam impact event against whether it caused damage beyond the observed repair threshold. It had never assessed whether the foam shedding process could, under some combination of conditions, cause damage beyond what the RCC structure could survive. The failure was not the individual assessments — it was the absence of a systematic worst-case assessment of what the foam shedding process could do under boundary conditions.</p>
+        <p><strong>3. The knowledge that a problem exists is always valuable, even if the response options are limited.</strong> The decision not to image Columbia because "we can't do anything about it anyway" denied the program the information it needed to make a complete assessment of the crew's options. Knowing the extent of the damage might have enabled actions — contingency repair, rescue mission, altered re-entry profile — that could not be evaluated without the information. The assumption that no response is possible is a determination that requires information, not a premise that can be used to justify not acquiring information.</p>
       </div>
     </div>
   <div class="cs-sources">
       <div class="cs-sources-label">Primary Sources</div>
       <ul class="cs-sources-list">
-        <li><em>Columbia Accident Investigation Board Report</em> — CAIB, August 2003. Eight volumes; the comprehensive investigation of the accident, the foam strike, the in-flight damage assessment process, and the organisational factors that prevented corrective action.</li>
-        <li>Gehman, H.W. et al., <em>CAIB Report Volume I</em> — the primary analytical volume covering physical cause, organisational cause, and recommendations. Freely available from NASA.</li>
+        <li><em>Columbia Accident Investigation Board Report</em> — CAIB, August 2003. Eight volumes; the comprehensive investigation of the accident, the foam strike, the in-flight damage assessment process, and the organizational factors that prevented corrective action.</li>
+        <li>Gehman, H.W. et al., <em>CAIB Report Volume I</em> — the primary analytical volume covering physical cause, organizational cause, and recommendations. Freely available from NASA.</li>
         <li>Langewiesche, W., <em>Columbia's Last Flight</em> — The Atlantic, November 2003. The most readable account of the accident and the decision-making during the mission.</li>
       </ul>
     </div>
       <div class="cs-xref">
       <span class="cs-xref-label">Referenced In</span>
       <div class="cs-xref-links">
-        <span class="cs-xref-link">Article 06 — Anomaly Management</span>
+        <span class="cs-xref-link">Article 14 — Anomaly Management</span>
       </div>
     </div>
   </div>
@@ -539,11 +554,11 @@
     <div class="cs-header">
       <div class="cs-header-inner">
         <div class="cs-tag">
-          <span class="article-ref">Articles 05 (Thermal-Vacuum) · 07 (Instruments &amp; Calibration)</span>
+          <span class="article-ref">Articles 10 (Thermal-Vacuum) · 12 (Instruments &amp; Calibration)</span>
           <span class="lesson-cat">Optical Testing Failure · Calibration Recovery · Servicing Mission Design</span>
         </div>
         <div class="cs-title">Hubble Space Telescope</div>
-        <div class="cs-subtitle">A spherically aberrated primary mirror, a corrective optics system designed from calibration data, and the most productive calibration programme in space astronomy history</div>
+        <div class="cs-subtitle">A spherically aberrated primary mirror, a corrective optics system designed from calibration data, and the most productive calibration program in space astronomy history</div>
       </div>
     </div>
 
@@ -558,21 +573,21 @@
 
     <div class="cs-body">
       <h3 class="cs-sh">The Mirror Polishing Error</h3>
-      <p>Hubble's primary mirror — a 2.4-metre ultra-low-expansion glass blank, optically polished to the highest precision ever achieved for a space telescope at the time — was polished to the wrong shape. The mirror had a spherical aberration: its edge was ground approximately 2.2 micrometres too flat relative to its centre, compared to the specified parabolic figure. Two micrometres — less than a fiftieth of the diameter of a human hair — was enough to prevent Hubble from focusing to the diffraction limit, producing blurred images that severely limited its science capability.</p>
+      <p>Hubble's primary mirror — a 2.4-metre ultra-low-expansion glass blank, optically polished to the highest precision ever achieved for a space telescope at the time — was polished to the wrong shape. The mirror had a spherical aberration: its edge was ground approximately 2.2 micrometres too flat relative to its center, compared to the specified parabolic figure. Two micrometres — less than a fiftieth of the diameter of a human hair — was enough to prevent Hubble from focusing to the diffraction limit, producing blurred images that severely limited its science capability.</p>
 
       <p>The error was introduced during the fabrication process by Perkin-Elmer Corporation (later Hughes Danbury Optical Systems), who used a metrological tool called a null corrector to guide the polishing. The null corrector itself was incorrectly assembled — a small lens within it was positioned 1.3 mm out of position. The null corrector therefore reported the mirror as correctly figured when it was not. And because the null corrector was the primary metrology reference for the polishing process, the mirror was polished to the null corrector's specification rather than to the telescope's optical requirement.</p>
 
       <h3 class="cs-sh">The Critical Test That Wasn't Performed</h3>
-      <p>The spherical aberration could have been detected before launch by end-to-end optical testing of the assembled telescope — testing that would have demonstrated the actual image quality delivered by the combined primary and secondary mirrors. Such testing had been planned at various stages of the programme but was ultimately not performed at the system level, for a combination of reasons: the test facilities required for end-to-end testing of a 2.4-metre telescope at optical wavelengths were extraordinarily expensive and complex; the programmatic pressure was strongly against the cost and schedule impact of a full end-to-end test; and there was confidence in the individual component metrology — the null corrector measurements showed the mirror was correctly figured.</p>
+      <p>The spherical aberration could have been detected before launch by end-to-end optical testing of the assembled telescope — testing that would have demonstrated the actual image quality delivered by the combined primary and secondary mirrors. Such testing had been planned at various stages of the program but was ultimately not performed at the system level, for a combination of reasons: the test facilities required for end-to-end testing of a 2.4-metre telescope at optical wavelengths were extraordinarily expensive and complex; the programmatic pressure was strongly against the cost and schedule impact of a full end-to-end test; and there was confidence in the individual component metrology — the null corrector measurements showed the mirror was correctly figured.</p>
 
       <div class="cs-callout warn">
         <div class="cs-callout-label">⚠ The Cost of Not Testing</div>
-        <p>The end-to-end optical test that was not performed — the test that would have detected the spherical aberration before launch — would have cost on the order of tens of millions of dollars and added months to the programme schedule. The cost of the corrective optics package developed for Servicing Mission 1, the servicing mission itself, and the partial loss of Hubble's science capability during the three years between launch and correction was several hundred times that figure.</p>
+        <p>The end-to-end optical test that was not performed — the test that would have detected the spherical aberration before launch — would have cost on the order of tens of millions of dollars and added months to the program schedule. The cost of the corrective optics package developed for Servicing Mission 1, the servicing mission itself, and the partial loss of Hubble's science capability during the three years between launch and correction was several hundred times that figure.</p>
         <p>This is the arithmetic of I&T decisions made under cost and schedule pressure. The test that is too expensive to perform in development is rarely too expensive in the absolute sense — it is too expensive relative to an implicit assumption that the hardware is probably correct. When that assumption turns out to be wrong, the cost of not having tested far exceeds the cost of testing. The challenge is that this arithmetic is only visible in retrospect. In prospect, the test is a cost and the assumption of hardware correctness has no price tag attached.</p>
       </div>
 
       <h3 class="cs-sh">Recovery Through Calibration and Corrective Optics</h3>
-      <p>Within weeks of Hubble's first images, the spherical aberration was detected. The investigation that followed identified both the magnitude of the error and — crucially — its precise mathematical form: because the null corrector had been consistently misaligned, the aberration was extremely well-characterised, a pure spherical aberration of known amplitude. This precision characterisation, derived from the calibration data collected during the initial commissioning observations, made correction possible in a way that a random or poorly characterised aberration would not have been.</p>
+      <p>Within weeks of Hubble's first images, the spherical aberration was detected. The investigation that followed identified both the magnitude of the error and — crucially — its precise mathematical form: because the null corrector had been consistently misaligned, the aberration was extremely well-characterized, a pure spherical aberration of known amplitude. This precision characterization, derived from the calibration data collected during the initial commissioning observations, made correction possible in a way that a random or poorly characterized aberration would not have been.</p>
 
       <p>Two approaches were used simultaneously. First, the instrument teams developed algorithms that deconvolved the known point spread function from science images — using the precise knowledge of the aberration to partially recover the resolution that the aberration had blurred. Second, NASA designed the Corrective Optics Space Telescope Axial Replacement (COSTAR) — a device that inserted corrective optical elements into the beam paths of the three main science instruments, compensating for the primary mirror's aberration at each instrument's focal plane. COSTAR required knowing the precise shape of the primary mirror's aberration to sub-micrometre accuracy; the calibration data provided exactly that.</p>
 
@@ -583,16 +598,16 @@
         <div class="fact-cell"><span class="fact-num">35+ yr</span><p>Operational lifetime to date — well beyond the original 15-year design life</p></div>
       </div>
 
-      <h3 class="cs-sh">The Calibration Programme — A Model for the Field</h3>
-      <p>The Hubble calibration programme, maintained by the Space Telescope Science Institute (STScI), is the most extensive and longest-running instrument calibration programme in the history of space astronomy. It has operated continuously since 1990, through five servicing missions that installed new instruments and upgraded existing ones, through the replacement of essentially every science instrument originally flown, and through the progressive degradation and recovery of Hubble's systems over three and a half decades.</p>
+      <h3 class="cs-sh">The Calibration Program — A Model for the Field</h3>
+      <p>The Hubble calibration program, maintained by the Space Telescope Science Institute (STScI), is the most extensive and longest-running instrument calibration program in the history of space astronomy. It has operated continuously since 1990, through five servicing missions that installed new instruments and upgraded existing ones, through the replacement of essentially every science instrument originally flown, and through the progressive degradation and recovery of Hubble's systems over three and a half decades.</p>
 
-      <p>The programme maintains dedicated calibration observation programmes for every instrument aboard Hubble, using a network of spectrophotometric standard stars, photometric standard fields, and calibration targets that are observed regularly throughout each observing cycle. The calibration database is updated with each new calibration observation set, and the science data archive is reprocessed with improved calibrations on a regular schedule — meaning that science data obtained in 1991 can be and has been reprocessed with calibration algorithms developed in 2020, producing results more accurate than were possible at the time of the original observation.</p>
+      <p>The program maintains dedicated calibration observation programs for every instrument aboard Hubble, using a network of spectrophotometric standard stars, photometric standard fields, and calibration targets that are observed regularly throughout each observing cycle. The calibration database is updated with each new calibration observation set, and the science data archive is reprocessed with improved calibrations on a regular schedule — meaning that science data obtained in 1991 can be and has been reprocessed with calibration algorithms developed in 2020, producing results more accurate than were possible at the time of the original observation.</p>
 
       <div class="cs-callout lesson">
         <div class="cs-callout-label">✓ Lessons Applied</div>
         <p><strong>1. End-to-end system optical testing is not optional for optical instruments.</strong> Component-level metrology, however precise, does not substitute for system-level optical testing. The only way to verify that an assembled optical system delivers the required image quality is to measure that image quality with a source of known properties at the system input and compare the output to the requirement. For a telescope of Hubble's aperture, this is expensive and complex — but it is the test that would have caught the spherical aberration. The cost of not performing it was, in retrospect, vastly greater than the cost of performing it.</p>
-        <p><strong>2. Precise characterisation of an anomaly enables recovery.</strong> The spherical aberration, precisely as measured by the initial commissioning calibration, was the key input to COSTAR's design. Had the aberration been poorly characterised — had the calibration programme been inadequate — the corrective optics could not have been designed with sufficient accuracy. The investment in rigorous calibration during commissioning paid dividends that were not anticipated when the calibration programme was designed.</p>
-        <p><strong>3. Calibration is a lifetime commitment.</strong> The Hubble calibration programme has operated continuously for 35 years and shows no sign of diminishing in importance. It is the infrastructure that makes Hubble's science possible and that ensures the comparability of data taken decades apart by different instruments. Every major space observatory should plan and fund its calibration programme as a permanent, ongoing activity — not as a one-time post-launch exercise.</p>
+        <p><strong>2. Precise characterization of an anomaly enables recovery.</strong> The spherical aberration, precisely as measured by the initial commissioning calibration, was the key input to COSTAR's design. Had the aberration been poorly characterized — had the calibration program been inadequate — the corrective optics could not have been designed with sufficient accuracy. The investment in rigorous calibration during commissioning paid dividends that were not anticipated when the calibration program was designed.</p>
+        <p><strong>3. Calibration is a lifetime commitment.</strong> The Hubble calibration program has operated continuously for 35 years and shows no sign of diminishing in importance. It is the infrastructure that makes Hubble's science possible and that ensures the comparability of data taken decades apart by different instruments. Every major space observatory should plan and fund its calibration program as a permanent, ongoing activity — not as a one-time post-launch exercise.</p>
       </div>
     </div>
   <div class="cs-sources">
@@ -606,8 +621,8 @@
       <div class="cs-xref">
       <span class="cs-xref-label">Referenced In</span>
       <div class="cs-xref-links">
-        <span class="cs-xref-link">Article 05 — Thermal-Vacuum</span>
-        <span class="cs-xref-link">Article 07 — Science Instruments</span>
+        <span class="cs-xref-link">Article 10 — Thermal-Vacuum</span>
+        <span class="cs-xref-link">Article 12 — Instrument Integration</span>
       </div>
     </div>
   </div>
@@ -621,11 +636,11 @@
     <div class="cs-header">
       <div class="cs-header-inner">
         <div class="cs-tag">
-          <span class="article-ref">Articles 05 (Thermal-Vacuum) · 06 (Anomalies) · 08 (Launch Readiness)</span>
+          <span class="article-ref">Articles 10 (Thermal-Vacuum) · 14 (Anomalies) · 16 (Launch Readiness)</span>
           <span class="lesson-cat">Sustained I&amp;T Discipline · Single-Point Failure Management · Commissioning</span>
         </div>
         <div class="cs-title">James Webb Space Telescope</div>
-        <div class="cs-subtitle">The most complex spacecraft ever launched, a 20-year I&T programme, and what rigorous anomaly management discipline looks like at scale</div>
+        <div class="cs-subtitle">The most complex spacecraft ever launched, a 20-year I&T program, and what rigorous anomaly management discipline looks like at scale</div>
       </div>
     </div>
 
@@ -642,17 +657,17 @@
       <h3 class="cs-sh">The Scale of the Challenge</h3>
       <p>JWST is the most complex scientific spacecraft ever launched. Its 6.5-metre primary mirror — 18 individually-adjustable gold-coated beryllium mirror segments — must be aligned to within nanometres after deployment in space. Its sunshield — five layers of Kapton film roughly the size of a tennis court, folded into a volume the size of a school bus for launch — must deploy reliably after more than two decades of ground testing in a thermal environment that cannot perfectly replicate the 40 K cryogenic operating temperature of the telescope side. And unlike Hubble, it orbits at L2 — 1.5 million kilometres from Earth — beyond the reach of any servicing mission.</p>
 
-      <p>The programme spanned roughly 25 years from initial concept to first science data. During that time, the I&T programme conducted what is certainly the most extensive single-spacecraft test programme in history — from the individual mirror segment polishing qualification programme to the system-level cryogenic test in Chamber A at Johnson Space Center, a test that alone required 17 weeks of continuous operation at temperatures below 40 K.</p>
+      <p>The program spanned roughly 25 years from initial concept to first science data. During that time, the I&T program conducted what is certainly the most extensive single-spacecraft test program in history — from the individual mirror segment polishing qualification program to the system-level cryogenic test in Chamber A at Johnson Space Center, a test that alone required 17 weeks of continuous operation at temperatures below 40 K.</p>
 
       <h3 class="cs-sh">The Single-Point Failure Problem</h3>
-      <p>The article series cites JWST's identification and mitigation of approximately 344 single-point failures during the I&T programme. A single-point failure is any failure mode that could cause mission loss and for which no redundant system or protective design exists. On most spacecraft, single-point failures are managed through redundancy design — critical systems have backup units. But JWST's mass, power, and volume budgets, and the physical constraints of packaging the observatory for launch, made it impossible to provide redundancy for every function. The result was a spacecraft with a significant number of inherent single-point failures.</p>
+      <p>The article series cites JWST's identification and mitigation of approximately 344 single-point failures during the I&T program. A single-point failure is any failure mode that could cause mission loss and for which no redundant system or protective design exists. On most spacecraft, single-point failures are managed through redundancy design — critical systems have backup units. But JWST's mass, power, and volume budgets, and the physical constraints of packaging the observatory for launch, made it impossible to provide redundancy for every function. The result was a spacecraft with a significant number of inherent single-point failures.</p>
 
-      <p>The programme's response was not to accept these failures as inevitable but to systematically identify each one, assess its probability of occurrence and its mission impact, and implement mitigations that reduced each one to the lowest achievable risk. Mitigations included design changes (redesigning mechanisms to eliminate single-failure modes), operational constraints (defining operating procedures that reduced the probability of triggering a failure mode), and acceptance criteria (formally documenting each residual single-point failure and the rationale for accepting it at the final launch readiness review).</p>
+      <p>The program's response was not to accept these failures as inevitable but to systematically identify each one, assess its probability of occurrence and its mission impact, and implement mitigations that reduced each one to the lowest achievable risk. Mitigations included design changes (redesigning mechanisms to eliminate single-failure modes), operational constraints (defining operating procedures that reduced the probability of triggering a failure mode), and acceptance criteria (formally documenting each residual single-point failure and the rationale for accepting it at the final launch readiness review).</p>
 
       <div class="cs-callout note">
         <div class="cs-callout-label">⚙ The 344-SPF Review</div>
-        <p>The 344-single-point-failure number is frequently cited but requires context. Not all 344 represent equivalent risk — they span a range from failures that would cause immediate catastrophic loss to failures that would cause a degraded science capability but not mission loss. The programme's risk classification system organised them accordingly, with the most critical SPFs receiving the most intensive mitigation effort and the most thorough independent review.</p>
-        <p>What distinguishes JWST's approach is not the number itself but the systematic, documented process by which each was identified, assessed, and dispositioned. The programme did not discover 344 SPFs and panic — it discovered them through rigorous failure mode and effects analysis conducted throughout the design and I&T process, treated each as an engineering problem to be addressed, and produced a documented risk posture at launch readiness that was clear, complete, and honestly presented to the launch authorisation chain. That is what good risk management looks like.</p>
+        <p>The 344-single-point-failure number is frequently cited but requires context. Not all 344 represent equivalent risk — they span a range from failures that would cause immediate catastrophic loss to failures that would cause a degraded science capability but not mission loss. The program's risk classification system organised them accordingly, with the most critical SPFs receiving the most intensive mitigation effort and the most thorough independent review.</p>
+        <p>What distinguishes JWST's approach is not the number itself but the systematic, documented process by which each was identified, assessed, and dispositioned. The program did not discover 344 SPFs and panic — it discovered them through rigorous failure mode and effects analysis conducted throughout the design and I&T process, treated each as an engineering problem to be addressed, and produced a documented risk posture at launch readiness that was clear, complete, and honestly presented to the launch authorisation chain. That is what good risk management looks like.</p>
       </div>
 
       <h3 class="cs-sh">The Thermal-Vacuum Test at Johnson Space Center</h3>
@@ -667,31 +682,31 @@
       </div>
 
       <h3 class="cs-sh">Deployment and Commissioning — The Anomaly Management Record</h3>
-      <p>JWST's commissioning phase — from launch on Christmas Day 2021 through the formal start of science operations in late July 2022 — was, as the article series notes, distinguished by the systematic rigour of its anomaly management throughout. Every anomaly observed during the 344 deployment events, the mirror segment alignment process, and the instrument activation and calibration phases was documented, investigated, and formally dispositioned.</p>
+      <p>JWST's commissioning phase — from launch on Christmas Day 2021 through the formal start of science operations in late July 2022 — was, as the article series notes, distinguished by the systematic rigor of its anomaly management throughout. Every anomaly observed during the 344 deployment events, the mirror segment alignment process, and the instrument activation and calibration phases was documented, investigated, and formally dispositioned.</p>
 
-      <p>Notably, the JWST commissioning team identified early in the mission that the L2 orbit insertion had been more efficient than planned — the launch vehicle had provided a slightly better-than-nominal injection trajectory, and the initial orbit correction manoeuvres had been slightly more efficient than predicted. The combined effect was a propellant saving of approximately 2–3 years' worth of station-keeping propellant, extending the expected mission lifetime from 10+ years to potentially 20+ years. This positive finding was identified, verified, and reported through the formal programme communication channels with the same rigour as any anomaly finding.</p>
+      <p>Notably, the JWST commissioning team identified early in the mission that the L2 orbit insertion had been more efficient than planned — the launch vehicle had provided a slightly better-than-nominal injection trajectory, and the initial orbit correction maneuvers had been slightly more efficient than predicted. The combined effect was a propellant saving of approximately 2–3 years' worth of station-keeping propellant, extending the expected mission lifetime from 10+ years to potentially 20+ years. This positive finding was identified, verified, and reported through the formal program communication channels with the same rigor as any anomaly finding.</p>
 
       <div class="cs-callout lesson">
         <div class="cs-callout-label">✓ Lessons Applied</div>
-        <p><strong>1. No spacecraft is too complex to test thoroughly.</strong> JWST's mass, scale, and complexity could have been used to justify test compressions that reduced confidence in the design. Instead, the programme maintained its test programme requirements even as schedules slipped and costs grew. The payoff was a spacecraft that entered commissioning with a complete test record, a correlated thermal model, and zero unreviewed launch anomalies.</p>
+        <p><strong>1. No spacecraft is too complex to test thoroughly.</strong> JWST's mass, scale, and complexity could have been used to justify test compressions that reduced confidence in the design. Instead, the program maintained its test program requirements even as schedules slipped and costs grew. The payoff was a spacecraft that entered commissioning with a complete test record, a correlated thermal model, and zero unreviewed launch anomalies.</p>
         <p><strong>2. Single-point failures must be systematically identified and managed, not assumed away.</strong> The 344 SPF review is a template for how risk management should work: identify every failure mode, assess each one honestly, implement mitigations wherever possible, and formally accept the residual risk at the appropriate authority level. The spacecraft that launches with a documented and assessed SPF list is in a better risk posture than the spacecraft that launches with an uncounted SPF list that was never formally examined.</p>
-        <p><strong>3. The commissioning record is as important as the launch success.</strong> JWST's commissioning was not simply a post-launch checkout. It was the final phase of a 25-year I&T programme, and it was conducted with the same engineering discipline as the ground programme. The anomalies detected during commissioning — and the positive findings like the propellant margin extension — were all fed back into the mission's engineering baseline. The mission operations team that began science operations in July 2022 had a more accurate, more complete understanding of their spacecraft than any previous observatory team at the same point in mission life.</p>
+        <p><strong>3. The commissioning record is as important as the launch success.</strong> JWST's commissioning was not simply a post-launch checkout. It was the final phase of a 25-year I&T program, and it was conducted with the same engineering discipline as the ground program. The anomalies detected during commissioning — and the positive findings like the propellant margin extension — were all fed back into the mission's engineering baseline. The mission operations team that began science operations in July 2022 had a more accurate, more complete understanding of their spacecraft than any previous observatory team at the same point in mission life.</p>
       </div>
     </div>
   <div class="cs-sources">
       <div class="cs-sources-label">Primary Sources</div>
       <ul class="cs-sources-list">
-        <li>Menzel, M. et al., <em>James Webb Space Telescope Observatory Architecture and Performance</em> — Proc. SPIE 9904, 2016. Technical overview of the observatory design and the constraints that drove the I&T programme.</li>
-        <li><em>Independent Comprehensive Review Panel Final Report</em> (Casani Report) — NASA, October 2010. The review that led to the programme replan, cost rebaseline, and revised I&T strategy.</li>
+        <li>Menzel, M. et al., <em>James Webb Space Telescope Observatory Architecture and Performance</em> — Proc. SPIE 9904, 2016. Technical overview of the observatory design and the constraints that drove the I&T program.</li>
+        <li><em>Independent Comprehensive Review Panel Final Report</em> (Casani Report) — NASA, October 2010. The review that led to the program replan, cost rebaseline, and revised I&T strategy.</li>
         <li>Parrish, K. et al., <em>JWST Integration and Test Challenges</em> — various SPIE conference proceedings 2012–2022. Documents the specific I&T challenges and solutions developed for the observatory-level test campaign.</li>
       </ul>
     </div>
       <div class="cs-xref">
       <span class="cs-xref-label">Referenced In</span>
       <div class="cs-xref-links">
-        <span class="cs-xref-link">Article 05 — Thermal-Vacuum</span>
-        <span class="cs-xref-link">Article 06 — Anomaly Management</span>
-        <span class="cs-xref-link">Article 08 — Launch Readiness</span>
+        <span class="cs-xref-link">Article 10 — Thermal-Vacuum</span>
+        <span class="cs-xref-link">Article 14 — Anomaly Management</span>
+        <span class="cs-xref-link">Article 16 — Launch Readiness</span>
       </div>
     </div>
   </div>
@@ -705,7 +720,7 @@
     <div class="cs-header">
       <div class="cs-header-inner">
         <div class="cs-tag">
-          <span class="article-ref">Article 04 (Environmental Testing — Vibration, Acoustics, and Shock)</span>
+          <span class="article-ref">Article 09 (Environmental Testing — Vibration, Acoustics, and Shock)</span>
           <span class="lesson-cat">Acoustic Boundary Conditions · Panel Resonance · First-Person Engineering Account</span>
         </div>
         <div class="cs-title">A Solar Array Panel Failure — First-Person Account</div>
@@ -718,13 +733,13 @@
       <div class="cs-meta-cell"><div class="cs-meta-label">Environment</div><div class="cs-meta-value">Acoustic reverberant chamber test</div></div>
       <div class="cs-meta-cell"><div class="cs-meta-label">Hardware</div><div class="cs-meta-value">Solar array panel (details withheld)</div></div>
       <div class="cs-meta-cell"><div class="cs-meta-label">Outcome</div><div class="cs-meta-value">Panel failure; root cause investigation; design change</div></div>
-      <div class="cs-meta-cell"><div class="cs-meta-label">Article Reference</div><div class="cs-meta-value">Article 04, §6 (Acoustic Testing)</div></div>
+      <div class="cs-meta-cell"><div class="cs-meta-label">Article Reference</div><div class="cs-meta-value">Article 09, §6 (Acoustic Testing)</div></div>
       <div class="cs-meta-cell"><div class="cs-meta-label">Lesson Category</div><div class="cs-meta-value">Test boundary conditions; acoustic panel response</div></div>
     </div>
 
     <div class="cs-body">
       <h3 class="cs-sh">The Account</h3>
-      <p>Article 04 references a solar array acoustic failure as a first-person account. The specific programme is not identified in the article series; the account is generalised from a real programme experience to illustrate the principle under discussion. The following reconstruction is consistent with the account as given and with the failure mode it describes.</p>
+      <p>Article 04 references a solar array acoustic failure as a first-person account. The specific program is not identified in the article series; the account is generalised from a real program experience to illustrate the principle under discussion. The following reconstruction is consistent with the account as given and with the failure mode it describes.</p>
 
       <p>During qualification acoustic testing of a solar array panel in a reverberant chamber, the panel experienced a structural failure — cracking of the honeycomb core substrate in a pattern consistent with a panel resonance mode. The failure was unexpected: the panel had passed its random vibration tests without anomaly, and the acoustic qualification test was expected to be straightforward. The acoustic environment applied in the chamber was per the qualification specification, correctly derived from the launch vehicle acoustic environment prediction.</p>
 
@@ -747,22 +762,22 @@
       <div class="cs-callout lesson">
         <div class="cs-callout-label">✓ Lessons Applied</div>
         <p><strong>1. Test fixture boundary conditions change the result, not just the convenience.</strong> A test fixture that is designed purely for structural adequacy and handling convenience — without analysis of how it affects the test article's dynamic response — is a test fixture that may invalidate the test it is supposed to support. For acoustic and vibration testing of distributed structures like solar panels, the boundary conditions at the panel edges have a first-order effect on the modal frequencies and mode shapes, and therefore on the dynamic response and structural loads. Fixture design is part of test design.</p>
-        <p><strong>2. A finite element model that does not predict the failure mode is not a validated model.</strong> The pre-test FEM did not identify the panel bending mode. This was not simply a prediction miss — it was evidence that the model was missing a physical behaviour of the structure that was important for its response characterisation. After the failure, the model was updated to include that behaviour and re-correlated against test data. A test failure that reveals a model deficiency and forces model correction is valuable — it means the ground test found what the model missed, rather than leaving it to be found in flight.</p>
+        <p><strong>2. A finite element model that does not predict the failure mode is not a validated model.</strong> The pre-test FEM did not identify the panel bending mode. This was not simply a prediction miss — it was evidence that the model was missing a physical behavior of the structure that was important for its response characterization. After the failure, the model was updated to include that behavior and re-correlated against test data. A test failure that reveals a model deficiency and forces model correction is valuable — it means the ground test found what the model missed, rather than leaving it to be found in flight.</p>
         <p><strong>3. Acoustic testing reveals modes that vibration testing does not.</strong> The panel passed its random vibration tests. It failed its acoustic test. This is consistent with the physical distinction between the two test types: acoustic loading excites the full surface of large flat structures simultaneously, exciting panel-mode resonances that shaker-table vibration testing — which loads the structure through its mounting interfaces — may not adequately excite. Large flat structures with potential panel resonances must be assessed for their acoustic response specifically, not assumed to be covered by vibration test results.</p>
       </div>
     </div>
   <div class="cs-sources">
       <div class="cs-sources-label">Primary Sources</div>
       <ul class="cs-sources-list">
-        <li>This case study is based on a class of recurring anomaly pattern in spacecraft I&T; specific mission documentation is withheld to protect programme confidentiality. The acoustic failure mode is documented generically in NASA-HDBK-7005, <em>Dynamic Environmental Criteria</em>, and in NASA-STD-7001, <em>Payload Vibroacoustic Test Criteria</em>.</li>
+        <li>This case study is based on a class of recurring anomaly pattern in spacecraft I&T; specific mission documentation is withheld to protect program confidentiality. The acoustic failure mode is documented generically in NASA-HDBK-7005, <em>Dynamic Environmental Criteria</em>, and in NASA-STD-7001, <em>Payload Vibroacoustic Test Criteria</em>.</li>
         <li>NASA-STD-7001B, <em>Payload Vibroacoustic Test Criteria</em> — NASA, 2014. The governing standard for acoustic test requirements and the rationale for acoustic testing as distinct from vibration testing.</li>
-        <li>NASA-HDBK-7005, <em>Dynamic Environmental Criteria</em> — NASA, 2001. Handbook providing the technical basis for launch environment characterisation and test derivation.</li>
+        <li>NASA-HDBK-7005, <em>Dynamic Environmental Criteria</em> — NASA, 2001. Handbook providing the technical basis for launch environment characterization and test derivation.</li>
       </ul>
     </div>
       <div class="cs-xref">
       <span class="cs-xref-label">Referenced In</span>
       <div class="cs-xref-links">
-        <span class="cs-xref-link">Article 04 — Environmental Testing</span>
+        <span class="cs-xref-link">Article 09 — Environmental Testing</span>
       </div>
     </div>
   </div>
@@ -776,7 +791,7 @@
     <div class="cs-header">
       <div class="cs-header-inner">
         <div class="cs-tag">
-          <span class="article-ref">Article 04 (Environmental Testing) · Article 03 (Functional Testing)</span>
+          <span class="article-ref">Article 09 (Environmental Testing) · Article 06 (Functional Testing)</span>
           <span class="lesson-cat">Software Fault · Spurious Signal · System-Level Integration Testing</span>
         </div>
         <div class="cs-title">Mars Polar Lander</div>
@@ -795,7 +810,7 @@
 
     <div class="cs-body">
       <h3 class="cs-sh">The Mission</h3>
-      <p>Mars Polar Lander (MPL) was a Mars Scout lander mission designed to land near the Martian south polar cap and study the climate history recorded in the polar layered terrain. It launched in January 1999 — two months after the loss of Mars Climate Orbiter, from the same "faster, better, cheaper" programme era. The lander carried a soil sampler, meteorological instruments, and two small penetrators (the Deep Space 2 probes) designed to be released during entry and impact the surface to sample subsurface soil and ice.</p>
+      <p>Mars Polar Lander (MPL) was a Mars Scout lander mission designed to land near the Martian south polar cap and study the climate history recorded in the polar layered terrain. It launched in January 1999 — two months after the loss of Mars Climate Orbiter, from the same "faster, better, cheaper" program era. The lander carried a soil sampler, meteorological instruments, and two small penetrators (the Deep Space 2 probes) designed to be released during entry and impact the surface to sample subsurface soil and ice.</p>
 
       <h3 class="cs-sh">The Failure Mode</h3>
       <p>MPL was lost on December 3, 1999, during its landing sequence. No telemetry was received after the spacecraft entered the Martian atmosphere. The subsequent investigation, conducted without direct telemetry evidence of the failure, relied on analysis of the spacecraft's design and flight software to determine the most probable cause of loss.</p>
@@ -807,26 +822,26 @@
       <div class="cs-callout warn">
         <div class="cs-callout-label">⚠ The Test That Was Not Performed</div>
         <p>The landing leg sensor transient — the spurious signal that the investigation board identified as the probable trigger — had been observed during hardware testing at the component level. Engineers documented that the sensors produced brief transient signals during leg deployment events. This was known. What was not known — or was not acted upon — was that the flight software's logic for interpreting the landing sensor outputs was sensitive to these transients.</p>
-        <p>The critical test that would have caught this failure mode was a system-level integration test that deployed the landing legs while the flight software was running and while the descent software was in a landing-sequence-active state. Such a test would have reproduced the spurious signal in a context where the flight software's response could be observed and evaluated. According to the investigation board's report, this specific combination — legs deployed, flight software in terminal descent mode, landing sensor outputs monitored — was not tested. The component-level sensor transient characterisation and the flight software logic were each verified in isolation. Their interaction in the flight configuration was not.</p>
+        <p>The critical test that would have caught this failure mode was a system-level integration test that deployed the landing legs while the flight software was running and while the descent software was in a landing-sequence-active state. Such a test would have reproduced the spurious signal in a context where the flight software's response could be observed and evaluated. According to the investigation board's report, this specific combination — legs deployed, flight software in terminal descent mode, landing sensor outputs monitored — was not tested. The component-level sensor transient characterization and the flight software logic were each verified in isolation. Their interaction in the flight configuration was not.</p>
       </div>
 
       <h3 class="cs-sh">The Broader Pattern: 1999 Was Not a Good Year for Mars</h3>
-      <p>The loss of Mars Polar Lander came 73 days after the loss of Mars Climate Orbiter. Two Mars missions lost within the same year, each to a failure mode that ground testing could have caught, each attributable at least in part to the constraints of the "faster, better, cheaper" programme philosophy that had driven schedule and cost compression across JPL's planetary programme in the 1990s.</p>
+      <p>The loss of Mars Polar Lander came 73 days after the loss of Mars Climate Orbiter. Two Mars missions lost within the same year, each to a failure mode that ground testing could have caught, each attributable at least in part to the constraints of the "faster, better, cheaper" program philosophy that had driven schedule and cost compression across JPL's planetary program in the 1990s.</p>
 
-      <p>The double loss in 1999 was a turning point. NASA's subsequent review of its Mars programme — and the broader review of the "faster, better, cheaper" approach — led to significant changes in how planetary missions were scoped, staffed, and tested. The programmatic pressure to compress schedules and reduce costs had repeatedly produced test compressions that removed the specific tests that would have caught the specific failure modes. The lesson was not that "faster, better, cheaper" was inherently wrong — but that cost and schedule pressure applied without adequate assessment of the test programme risks it created was a reliable path to mission loss.</p>
+      <p>The double loss in 1999 was a turning point. NASA's subsequent review of its Mars program — and the broader review of the "faster, better, cheaper" approach — led to significant changes in how planetary missions were scoped, staffed, and tested. The programmatic pressure to compress schedules and reduce costs had repeatedly produced test compressions that removed the specific tests that would have caught the specific failure modes. The lesson was not that "faster, better, cheaper" was inherently wrong — but that cost and schedule pressure applied without adequate assessment of the test program risks it created was a reliable path to mission loss.</p>
 
       <div class="fact-strip">
         <div class="fact-cell"><span class="fact-num">73 days</span><p>Between the loss of Mars Climate Orbiter and Mars Polar Lander</p></div>
         <div class="fact-cell"><span class="fact-num">~40 m</span><p>Estimated altitude at which engines shut down prematurely</p></div>
         <div class="fact-cell"><span class="fact-num">~22 m/s</span><p>Estimated surface impact velocity vs. ~2.4 m/s design landing velocity</p></div>
-        <div class="fact-cell"><span class="fact-num">2</div><p>Mars missions lost in 1999 — both attributable to test programme gaps under schedule pressure</p></div>
+        <div class="fact-cell"><span class="fact-num">2</div><p>Mars missions lost in 1999 — both attributable to test program gaps under schedule pressure</p></div>
       </div>
 
       <div class="cs-callout lesson">
         <div class="cs-callout-label">✓ Lessons Applied</div>
-        <p><strong>1. System-level integration testing must cover critical transition events.</strong> Landing leg deployment is a discrete, high-consequence event in the mission profile. The interaction between the mechanical event (leg deployment transient) and the software state (terminal descent logic active) was a system-level behaviour that could only be characterised by a system-level test. Component-level tests of the sensor and of the software, conducted independently, did not and could not reveal this interaction. Critical transition events must be explicitly included in the system-level functional test programme.</p>
-        <p><strong>2. Known transient behaviours must be evaluated in the context of the software that processes them.</strong> The leg deployment sensor transient was documented at the component level. The question that was not answered — and should have been asked explicitly — was: does the flight software's logic for this sensor correctly handle the full range of input signals the sensor can produce, including the documented transient? This is a software requirements verification question that must be part of the flight software verification plan.</p>
-        <p><strong>3. Cost and schedule pressure on the test programme must be assessed against specific failure modes, not general reliability targets.</strong> Test compressions are always described in terms of what they save. They must also be described in terms of what failure modes they leave unverified. A programme that removes a system-level integration test to save four weeks of schedule has not saved four weeks — it has accepted the risk of a specific class of failures that the test would have caught, without necessarily identifying what those failures are or evaluating whether the risk is acceptable. Making that risk explicit — identifying the specific failure modes that each test compression leaves unverified — is the minimum requirement for a defensible test programme decision.</p>
+        <p><strong>1. System-level integration testing must cover critical transition events.</strong> Landing leg deployment is a discrete, high-consequence event in the mission profile. The interaction between the mechanical event (leg deployment transient) and the software state (terminal descent logic active) was a system-level behavior that could only be characterized by a system-level test. Component-level tests of the sensor and of the software, conducted independently, did not and could not reveal this interaction. Critical transition events must be explicitly included in the system-level functional test program.</p>
+        <p><strong>2. Known transient behaviors must be evaluated in the context of the software that processes them.</strong> The leg deployment sensor transient was documented at the component level. The question that was not answered — and should have been asked explicitly — was: does the flight software's logic for this sensor correctly handle the full range of input signals the sensor can produce, including the documented transient? This is a software requirements verification question that must be part of the flight software verification plan.</p>
+        <p><strong>3. Cost and schedule pressure on the test program must be assessed against specific failure modes, not general reliability targets.</strong> Test compressions are always described in terms of what they save. They must also be described in terms of what failure modes they leave unverified. A program that removes a system-level integration test to save four weeks of schedule has not saved four weeks — it has accepted the risk of a specific class of failures that the test would have caught, without necessarily identifying what those failures are or evaluating whether the risk is acceptable. Making that risk explicit — identifying the specific failure modes that each test compression leaves unverified — is the minimum requirement for a defensible test program decision.</p>
       </div>
     </div>
   <div class="cs-sources">
@@ -834,14 +849,14 @@
       <ul class="cs-sources-list">
         <li><em>Report on the Loss of the Mars Polar Lander and Deep Space 2 Missions</em> — JPL Special Review Board, March 2000. Establishes the probable cause as premature engine shutdown triggered by spurious signals from the landing leg deployment sensors, a failure mode not tested at the system level.</li>
         <li>Euler, E.A. et al., <em>The Failures of the Mars Climate Orbiter and Mars Polar Lander: A Perspective from the People Involved</em> — Advances in the Astronautical Sciences, 2001. First-person account from JPL engineers involved in both losses.</li>
-        <li>Mishkin, A., <em>Sojourner: An Insider's View of the Mars Pathfinder Mission</em> — Berkley Books, 2003. Provides programme context for the faster-better-cheaper era that produced both Mars Polar Lander and Mars Climate Orbiter.</li>
+        <li>Mishkin, A., <em>Sojourner: An Insider's View of the Mars Pathfinder Mission</em> — Berkley Books, 2003. Provides program context for the faster-better-cheaper era that produced both Mars Polar Lander and Mars Climate Orbiter.</li>
       </ul>
     </div>
       <div class="cs-xref">
       <span class="cs-xref-label">Referenced In</span>
       <div class="cs-xref-links">
-        <span class="cs-xref-link">Article 03 — Functional Testing</span>
-        <span class="cs-xref-link">Article 04 — Environmental Testing</span>
+        <span class="cs-xref-link">Article 06 — Functional Testing</span>
+        <span class="cs-xref-link">Article 09 — Environmental Testing</span>
       </div>
     </div>
   </div>
@@ -850,7 +865,7 @@
   <div class="closing">
     <div class="closing-inner">
       <div class="closing-label">Closing Observation</div>
-      <div class="closing-text">These nine case studies, taken together, describe a consistent pattern. The failures share a common structure: something was known, or knowable, that would have changed the outcome — but the programme's structures, its schedule pressures, its institutional cultures, or its testing gaps prevented that knowledge from becoming the corrective action it needed to be. The successes share a different common structure: the engineering discipline to follow the process, document everything, investigate every anomaly, and refuse to be reassured by the absence of previous consequence.<br><br>The I&T process is not a bureaucratic obstacle between an engineering team and a launch date. It is the mechanism by which a spacecraft earns the right to be trusted with a mission. These cases are the evidence.</div>
+      <div class="closing-text">These nine case studies, taken together, describe a consistent pattern. The failures share a common structure: something was known, or knowable, that would have changed the outcome — but the program's structures, its schedule pressures, its institutional cultures, or its testing gaps prevented that knowledge from becoming the corrective action it needed to be. The successes share a different common structure: the engineering discipline to follow the process, document everything, investigate every anomaly, and refuse to be reassured by the absence of previous consequence.<br><br>The I&T process is not a bureaucratic obstacle between an engineering team and a launch date. It is the mechanism by which a spacecraft earns the right to be trusted with a mission. These cases are the evidence.</div>
     </div>
   </div>
 
@@ -892,27 +907,27 @@
       <select id="artNav_spacecraft_iat_case_studies_html">
         <option value="">— Select any article in the series —</option>
         <optgroup label="── Main Series ──────────────────────────">
-          <option value="spacecraft_iat_intro.html">01 · Introduction to Spacecraft I&T</option>
-          <option value="spacecraft_iat_article01.html">02 · I&T Programme Structure</option>
-          <option value="" disabled>03 · Configuration Management (Coming Soon)</option>
-          <option value="" disabled>04 · Quality Assurance (Coming Soon)</option>
-          <option value="" disabled>05 · Cleanrooms & Contamination Control (Coming Soon)</option>
-          <option value="" disabled>06 · EGSE & Test Harness (Coming Soon)</option>
-          <option value="" disabled>07 · Functional Testing (Coming Soon)</option>
-          <option value="" disabled>08 · Flight Software V&V (Coming Soon)</option>
-          <option value="" disabled>09 · Mass Properties & Structural Loads (Coming Soon)</option>
-          <option value="" disabled>10 · Vibration, Acoustics & Shock (Coming Soon)</option>
-          <option value="" disabled>11 · Thermal-Vacuum Testing (Coming Soon)</option>
-          <option value="" disabled>12 · EMC Testing (Coming Soon)</option>
-          <option value="" disabled>13 · Instrument Integration & Calibration (Coming Soon)</option>
-          <option value="" disabled>14 · Propulsion Testing (Coming Soon)</option>
-          <option value="" disabled>15 · Anomaly Management (Coming Soon)</option>
-          <option value="" disabled>16 · Launch Vehicle Integration (Coming Soon)</option>
-          <option value="" disabled>17 · Launch Readiness & Commissioning (Coming Soon)</option>
+          <option value="spacecraft_iat_intro.html">Intro · Introduction to Spacecraft I&amp;T</option>
+          <option value="spacecraft_iat_article01.html">01 · I&amp;T Program Structure</option>
+          <option value="spacecraft_iat_article11.html">02 · Configuration Management</option>
+          <option value="spacecraft_iat_article16.html">03 · Quality Assurance</option>
+          <option value="spacecraft_iat_article02.html">04 · Cleanrooms &amp; Contamination Control</option>
+          <option value="spacecraft_iat_article10.html">05 · EGSE &amp; Test Harness</option>
+          <option value="spacecraft_iat_article03.html">06 · Functional Testing</option>
+          <option value="spacecraft_iat_article09.html">07 · Flight Software V&amp;V</option>
+          <option value="spacecraft_iat_article14.html">08 · Mass Properties &amp; Structural Loads</option>
+          <option value="spacecraft_iat_article04.html">09 · Vibration, Acoustics &amp; Shock</option>
+          <option value="spacecraft_iat_article05.html">10 · Thermal-Vacuum Testing</option>
+          <option value="spacecraft_iat_article12.html">11 · EMC Testing</option>
+          <option value="spacecraft_iat_article07.html">12 · Instrument Integration &amp; Calibration</option>
+          <option value="spacecraft_iat_article13.html">13 · Propulsion Testing</option>
+          <option value="spacecraft_iat_article06.html">14 · Anomaly Management</option>
+          <option value="spacecraft_iat_article15.html">15 · Launch Vehicle Integration</option>
+          <option value="spacecraft_iat_article08.html">16 · Launch Readiness &amp; Commissioning</option>
         </optgroup>
         <optgroup label="── Supplementary ──────────────────────────">
-          <option value="" disabled>Supp · Small Satellites (Coming Soon)</option>
-          <option value="spacecraft_iat_case_studies.html" selected disabled>&#9654; Supp · Case Studies</option>
+          <option value="spacecraft_iat_smallsat.html">S1 · Small Satellites</option>
+          <option value="spacecraft_iat_case_studies.html" selected disabled>&#9654; S2 · Case Studies</option>
         </optgroup>
       </select>
     </div>
