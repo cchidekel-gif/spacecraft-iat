@@ -76,11 +76,13 @@
     <ul class="toc-list">
       <li><a href="#s1"><span>1. What the I&amp;T Plan Must Accomplish</span><span class="toc-num">§1</span></a></li>
       <li><a href="#s2"><span>2. The Levels of Integration — From Parts to Observatory</span><span class="toc-num">§2</span></a></li>
-      <li><a href="#s3"><span>3. The Phases of an I&amp;T Campaign</span><span class="toc-num">§3</span></a></li>
-      <li><a href="#s4"><span>4. The Governing Documents</span><span class="toc-num">§4</span></a></li>
-      <li><a href="#s5"><span>5. The Technical Reviews</span><span class="toc-num">§5</span></a></li>
-      <li><a href="#s6"><span>6. Ground Support Equipment</span><span class="toc-num">§6</span></a></li>
-      <li><a href="#s7"><span>7. Building the I&amp;T Plan: Practical Guidance</span><span class="toc-num">§7</span></a></li>
+      <li><a href="#s3"><span>3. The Model Philosophy — STM, EM, QM, PFM, FM</span><span class="toc-num">§3</span></a></li>
+      <li><a href="#s4"><span>4. The Phases of an I&amp;T Campaign</span><span class="toc-num">§4</span></a></li>
+      <li><a href="#s5"><span>5. The Governing Documents</span><span class="toc-num">§5</span></a></li>
+      <li><a href="#s6"><span>6. The Technical Reviews</span><span class="toc-num">§6</span></a></li>
+      <li><a href="#s7"><span>7. Ground Support Equipment</span><span class="toc-num">§7</span></a></li>
+      <li><a href="#s8"><span>8. Test Facility Qualification and Readiness</span><span class="toc-num">§8</span></a></li>
+      <li><a href="#s9"><span>9. Building the I&amp;T Plan: Practical Guidance</span><span class="toc-num">§9</span></a></li>
       <li><a href="#glossary"><span>Key Terms Glossary</span><span class="toc-num">GL</span></a></li>
     </ul>
   </div>
@@ -291,8 +293,93 @@
     <p><strong>Configuration control:</strong> With a program spanning more than two decades of development, maintaining precise knowledge of the as-tested vs. as-flown configuration across thousands of components required extraordinary configuration management discipline — a lesson applicable to any long-duration program.</p>
   </div>
 
-  <!-- SECTION 3 -->
-  <h2 class="sh" id="s3">3. The Phases of an I&amp;T Campaign</h2>
+  <!-- SECTION 3 — MODEL PHILOSOPHY -->
+  <h2 class="sh" id="s3">3. The Model Philosophy — STM, EM, QM, PFM, FM</h2>
+
+  <p>One of the first and most consequential decisions in any spacecraft program is the <span class="kt">model philosophy</span> — the decision about how many physical versions of the spacecraft (or its subsystems) will be built, and what role each version plays in the verification program. The model philosophy determines how much hardware the program procures, how many test campaigns are conducted, how design risk is retired before the flight unit is exposed to environmental test, and — critically — how much schedule and cost margin is available when anomalies occur.</p>
+
+  <p>The model philosophy is not a hardware procurement decision that can be deferred to Phase C. It is a verification strategy decision that must be made in Phase A or early Phase B, because it determines the entire downstream structure of the I&T program: how many test facilities are needed and when, how many technician-hours are required, how the qualification and acceptance test campaigns overlap or sequence, and what the program's options are if flight hardware is damaged during test.</p>
+
+  <h3 class="ssh">The Standard Model Designations</h3>
+
+  <table class="gen-table">
+    <thead>
+      <tr><th>Model</th><th>Full Name</th><th>Purpose</th><th>Build Standard</th><th>Test Exposure</th><th>Fate After Test</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>STM</strong></td>
+        <td>Structural / Thermal Model</td>
+        <td>Verify structural integrity and thermal design under environmental loads before flight hardware exists</td>
+        <td>Structurally representative; thermally representative; non-functional electrically. May use lower-grade materials where structural properties match.</td>
+        <td>Full qualification-level vibration, acoustic, and thermal balance testing. May be tested to failure or to levels beyond qualification to explore design margins.</td>
+        <td>Retained for reference; sometimes refurbished as a ground test bed. Not flown.</td>
+      </tr>
+      <tr>
+        <td><strong>EM</strong></td>
+        <td>Engineering Model</td>
+        <td>Verify electrical design, functional performance, software interfaces, and integration procedures before flight hardware is committed</td>
+        <td>Electrically representative using flight-equivalent (not necessarily flight-quality) components. Mechanical fidelity varies — may be form-factor representative or may use engineering-grade structure.</td>
+        <td>Full functional testing; software integration and validation; EGSE compatibility verification; interface testing with other subsystems. May undergo limited environmental test (vibration at acceptance levels).</td>
+        <td>Retained as a ground testbed for flight software development, anomaly investigation, and operations support. Often operated in parallel with the flight unit throughout the mission.</td>
+      </tr>
+      <tr>
+        <td><strong>QM</strong></td>
+        <td>Qualification Model</td>
+        <td>Demonstrate design margins by undergoing environmental test at levels more severe than the flight unit will experience</td>
+        <td>Built to full flight specification — identical to the flight model in design, materials, and workmanship. Components are from the same production lots where practicable.</td>
+        <td>Full qualification-level environmental test: vibration, acoustics, thermal-vacuum, EMC, and any mission-specific environments — all at qualification levels (typically 1.25× to 1.5× flight levels) and qualification durations (typically 2× to 4× flight durations).</td>
+        <td>Not flown. The qualification test consumes a significant fraction of the hardware's fatigue life. Retained for reference or refurbished as a flight spare in extremis.</td>
+      </tr>
+      <tr>
+        <td><strong>FM</strong></td>
+        <td>Flight Model</td>
+        <td>The unit that flies. Undergoes acceptance-level environmental test only — verifying workmanship without consuming design margin.</td>
+        <td>Full flight specification. Flight-qualified components from controlled lots. Full flight-quality workmanship with QA inspection at every stage.</td>
+        <td>Acceptance-level environmental test only: vibration, acoustics, thermal-vacuum, EMC — all at flight levels and acceptance durations. The acceptance test screens for workmanship defects; it does not demonstrate design margins (that was done by the QM).</td>
+        <td>Launched.</td>
+      </tr>
+      <tr>
+        <td><strong>PFM</strong></td>
+        <td>Protoflight Model</td>
+        <td>A single unit that serves as both the qualification model and the flight model — tested at qualification levels but acceptance durations, then flown</td>
+        <td>Full flight specification — identical to a flight model in every respect.</td>
+        <td>Protoflight-level environmental test: qualification-level amplitudes with acceptance-level durations. A deliberate compromise between the design-margin verification of full qualification and the need to preserve the hardware for flight.</td>
+        <td>Launched. The protoflight unit is the flight unit — there is no backup.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="ssh">Choosing the Model Philosophy</h3>
+  <p>The choice among model philosophies is driven by program cost, schedule, risk posture, and mission criticality. The principal approaches are:</p>
+
+  <ul class="body-list">
+    <li><strong>Full qualification approach (STM + EM + QM + FM).</strong> The most conservative and most expensive philosophy. Each model retires a specific category of risk before the flight unit is built: the STM retires structural/thermal risk; the EM retires electrical/functional risk; the QM demonstrates design margins at qualification levels; and the FM is tested only at acceptance levels, preserving its full design life for flight. This approach is standard for NASA flagship missions (Class A), ESA cornerstone missions, and any program where mission failure is unacceptable and the hardware cannot be replaced. The cost is three or four complete hardware builds, plus the test campaigns for each.</li>
+    <li><strong>Protoflight approach (STM + EM + PFM).</strong> Eliminates the separate qualification model by testing the flight unit at protoflight levels — qualification amplitudes with acceptance durations. Reduces the number of hardware builds by one. The risk is that the flight unit absorbs some fatigue life during the protoflight test, and that any anomaly during protoflight testing damages the only flight article. Standard for Class B and many Class C missions, for commercial spacecraft, and for programs where cost constraints preclude building a dedicated qualification unit.</li>
+    <li><strong>Minimal approach (EM + PFM or PFM only).</strong> Eliminates the STM entirely and may eliminate the EM if the design heritage is strong. Qualification of the structural and thermal design relies on analysis, heritage data from similar designs, and the protoflight test. This approach is standard for commercial communications satellites with extensive design heritage, for CubeSat-class missions, and for programs with aggressive cost and schedule targets. The risk is higher: there is less ground test evidence of design margin, fewer opportunities to discover problems before the flight unit is committed, and no spare hardware if the PFM is damaged.</li>
+  </ul>
+
+  <div class="callout rust">
+    <div class="callout-label">⚠ The Protoflight Trap</div>
+    <p>The protoflight approach is attractive because it saves the cost and schedule of a dedicated qualification unit. It is also the approach that produces the most severe consequences when things go wrong — because the unit being tested is the unit that must fly. If the protoflight test reveals a design deficiency — a structural resonance that produces loads beyond the design allowable, a thermal path that does not perform as predicted, an EMC emission that exceeds the specification — the program must repair the flight unit, re-test it, and accept the residual fatigue life consumed by the original test and the repair. There is no backup qualification unit that absorbed the damage instead.</p>
+    <p>Programs that choose the protoflight approach must do so with a clear understanding that they are accepting a specific risk: the risk that the protoflight test will reveal a problem that, on a full-qualification program, would have been discovered on the QM and corrected before the FM was built. That risk is manageable for programs with strong design heritage, mature manufacturing processes, and well-characterized environments. It is significantly less manageable for new designs, new technologies, and missions to environments (orbits, thermal conditions, radiation levels) that differ substantially from the heritage base.</p>
+  </div>
+
+  <h3 class="ssh">The Model Philosophy and the I&T Schedule</h3>
+  <p>The model philosophy has a direct and significant impact on the I&T schedule. A full-qualification program runs four parallel-to-sequential test campaigns (STM structural/thermal, EM functional, QM environmental, FM acceptance), each requiring test facility time, staffing, and anomaly resolution time. The campaigns overlap — the EM functional campaign may run concurrently with the STM environmental campaign — but the QM environmental campaign must complete before the FM acceptance campaign can confirm that the design is qualified.</p>
+
+  <p>A protoflight program compresses the QM and FM campaigns into one, saving months of schedule. But the protoflight campaign is also the campaign with the least schedule margin for anomaly resolution, because any anomaly must be resolved on the only available flight article, and the resolution must not consume more of the hardware's fatigue life than the margin can accommodate.</p>
+
+  <p>The EM, regardless of the model philosophy chosen, is the program's most important risk-reduction investment. The EM functional test campaign discovers interface problems, software defects, harness errors, and procedural deficiencies before the flight hardware is at risk. Programs that eliminate the EM to save cost discover these problems during flight hardware integration — at a point where every anomaly is a potential threat to schedule and to the flight article. The EM is not an optional model. It is the program's learning tool, and the lessons it teaches are lessons that the flight hardware should never have to learn.</p>
+
+  <div class="callout green">
+    <div class="callout-label">✓ The EM as Ground Testbed</div>
+    <p>One of the most valuable long-term investments a program can make is retaining the engineering model — fully functional, fully harnessed, with flight-equivalent software — as a ground testbed that operates in parallel with the flight spacecraft throughout the mission. The EM testbed enables: flight software updates to be validated on representative hardware before upload to the flight unit; on-orbit anomalies to be reproduced and investigated on ground hardware without risk to the flight unit; operational procedure changes to be rehearsed; and contingency scenarios to be analyzed with hardware in the loop.</p>
+    <p>The JWST, Hubble, and virtually every major NASA and ESA observatory maintains an EM-derived ground testbed for exactly these purposes. The cost of maintaining the testbed is a small fraction of the mission operations budget, and its value — particularly during anomaly investigation, when the ability to reproduce a flight anomaly on ground hardware can mean the difference between a successful recovery and a lost capability — is difficult to overstate.</p>
+  </div>
+
+  <!-- SECTION 4 (was Section 3) -->
+  <h2 class="sh" id="s4">4. The Phases of an I&amp;T Campaign</h2>
 
   <p>An I&amp;T campaign does not begin when the first hardware arrives on the test floor. It begins during the design phase of the program, when the I&amp;T approach is first defined, and it ends — formally — at the launch readiness review that authorizes the spacecraft to fly. The campaign progresses through a sequence of phases corresponding to the NASA mission lifecycle; programs under other agencies follow essentially the same logical progression.</p>
 
@@ -355,8 +442,8 @@
 
   <p>Phase D is the heart of the I&amp;T campaign — the period when all the planning done in Phases A through C is executed. But the quality of Phase D is almost entirely determined by the quality of the planning that preceded it. Programs that arrive at Phase D with a well-developed I&amp;T Plan, mature EGSE, and thoroughly tested lower-level hardware move through system-level integration and test with manageable disruption. Programs that arrive with deferred problems and immature test infrastructure discover, painfully, that the test floor is a very expensive place to resolve issues that should have been addressed earlier.</p>
 
-  <!-- SECTION 4 -->
-  <h2 class="sh" id="s4">4. The Governing Documents</h2>
+  <!-- SECTION 5 -->
+  <h2 class="sh" id="s5">5. The Governing Documents</h2>
 
   <p>A spacecraft I&amp;T campaign generates and consumes a substantial body of documentation. New engineers sometimes experience this as an overwhelming bureaucratic burden. With experience, it becomes clear that the documentation architecture is the engineering memory of the program — every test performed, every anomaly found, every configuration change made, captured in a way that supports traceability, retrievability, and institutional memory.</p>
 
@@ -409,7 +496,7 @@
   </div>
 
   <!-- SECTION 5 -->
-  <h2 class="sh" id="s5">5. The Technical Reviews</h2>
+  <h2 class="sh" id="s6">6. The Technical Reviews</h2>
 
   <p>At each major transition in the I&amp;T campaign, a formal technical review is conducted. These reviews are not rubber stamps — they are structured examinations of readiness to proceed, conducted by a board that includes personnel <strong><u>independent</u></strong> of the performing team. The reviews serve two functions: they force the program to demonstrate readiness against defined criteria, and they provide an external check on the program's self-assessment.</p>
 
@@ -429,7 +516,7 @@
   </div>
 
   <!-- SECTION 6 -->
-  <h2 class="sh" id="s6">6. Ground Support Equipment — The Invisible Infrastructure</h2>
+  <h2 class="sh" id="s7">7. Ground Support Equipment — The Invisible Infrastructure</h2>
 
   <p>No discussion of I&amp;T program architecture is complete without addressing Ground Support Equipment (GSE). GSE is the infrastructure — mechanical, electrical, and software — that makes spacecraft integration and test possible. It includes fixtures that support the spacecraft during handling and test, electrical systems that simulate the space environment, and software systems that command the spacecraft, acquire its telemetry, and evaluate its performance during test.</p>
 
@@ -446,8 +533,53 @@
 
   <p>EGSE development must begin early — in Phase B — because EGSE must be ready before the first component-level tests begin. Programs that defer EGSE development discover that they are trying to test flight hardware with immature test equipment, which is exactly backwards from any rational risk posture.</p>
 
-  <!-- SECTION 7 -->
-  <h2 class="sh" id="s7">7. Building the I&amp;T Plan: Practical Guidance</h2>
+  <!-- SECTION 8 — TEST FACILITY QUALIFICATION -->
+  <h2 class="sh" id="s8">8. Test Facility Qualification and Readiness</h2>
+
+  <p>The spacecraft is not the only hardware in the test chamber that must be qualified. The test facility itself — the thermal-vacuum chamber, the vibration shaker, the acoustic chamber, the EMC shielded room — is a complex engineering system whose performance directly determines the validity of the test results. A vibration shaker that cannot deliver the specified input spectrum at the specified level within the specified tolerance produces test data that does not verify the requirement. A thermal-vacuum chamber with a leak rate that prevents it from reaching the required vacuum level produces an environment that is not the environment specified in the test procedure. A reverberant acoustic chamber whose modal density is insufficient at low frequencies produces a sound field that does not meet the diffuse-field assumption on which the test specification is based.</p>
+
+  <p>Test facility qualification and maintenance is a discipline in its own right — one that most I&T engineers encounter only indirectly, when the facility performs correctly, or painfully, when it does not. This section addresses the qualification, calibration, and readiness verification activities that ensure the test facility will perform as required when the flight hardware arrives.</p>
+
+  <h3 class="ssh">Vibration Facility Qualification</h3>
+  <p>A vibration test facility — the electrodynamic or hydraulic shaker, the slip table, the power amplifier, and the closed-loop control system — must be qualified to demonstrate that it can deliver the required test environments with the required accuracy. The key qualification parameters are:</p>
+
+  <ul class="body-list">
+    <li><strong>Force capacity.</strong> The shaker must generate sufficient force to drive the test article (plus the fixture) at the required acceleration levels across the full frequency range. Force capacity is not a single number — it varies with frequency, stroke, and the mass being driven. The facility's force capacity must be verified with a mass load representative of the heaviest test article the facility will support.</li>
+    <li><strong>Frequency range and spectral accuracy.</strong> The control system must maintain the specified input acceleration spectrum within the allowed tolerance band (typically ±3 dB) across the full frequency range of the test — typically 5 Hz to 2,000 Hz for random vibration. The control system's ability to maintain the spectrum degrades at frequencies where the fixture or test article has resonances; the qualification must demonstrate adequate control at and near these frequencies.</li>
+    <li><strong>Cross-axis performance.</strong> When the shaker drives in one axis, the acceleration in the two perpendicular axes (the cross-axis response) must be below a defined limit — typically less than 50% of the in-axis level. Excessive cross-axis response indicates a fixture problem, a slip table alignment issue, or a shaker bearing problem.</li>
+    <li><strong>Control system calibration.</strong> The control system's accelerometer inputs, charge amplifiers, digital signal processing, and feedback loop must be calibrated as an integrated system. The calibration verifies that the acceleration level reported by the control system is the acceleration level actually delivered at the control point — and that the abort limits, which protect the test article from over-test in the event of a control system anomaly, function correctly.</li>
+  </ul>
+
+  <h3 class="ssh">Thermal-Vacuum Chamber Qualification</h3>
+  <p>A thermal-vacuum chamber must be qualified for: ultimate vacuum level (the lowest pressure the chamber can achieve with no test article, demonstrating the pumping system capacity and the chamber's base leak rate); leak rate (the rate at which atmospheric gas enters the sealed chamber, which determines how quickly the vacuum degrades if the pumping system is interrupted); thermal shroud performance (the temperature range, uniformity, and transition rate of the chamber's thermal control surfaces); cleanliness (the chamber's internal particulate and molecular contamination level, which must be consistent with the test article's cleanliness requirements); and solar simulator performance (for chambers equipped with solar simulation lamps — the spectral fidelity, spatial uniformity, and intensity stability of the simulated solar flux).</p>
+
+  <p>Chamber qualification is performed after initial facility construction and is repeated after any major maintenance activity — pump overhaul, shroud repair, seal replacement, or facility modification. The qualification test sequence typically includes: a pumpdown test (chamber evacuated from atmospheric pressure to the specified vacuum level, with the pumpdown time and ultimate pressure recorded); a leak-rate test (chamber sealed at vacuum with pumps isolated, pressure rise measured over a defined period); a thermal performance test (shrouds cycled through the full temperature range with temperature sensors distributed across the shroud surfaces to verify uniformity); and a cleanliness verification (witness plates or particle counters placed inside the chamber during a simulated test cycle to verify contamination levels).</p>
+
+  <div class="callout steel">
+    <div class="callout-label">⚙ Chamber Bakeout — The Contamination Problem</div>
+    <p>A thermal-vacuum chamber that has been opened to atmosphere — for test article installation, for maintenance, or simply because it has been idle — absorbs water vapor, volatile organic compounds, and particulate matter from the ambient environment. When the chamber is evacuated, these contaminants outgas from the chamber walls and internal surfaces, potentially depositing on the test article and corrupting both the contamination cleanliness and the thermal test results.</p>
+    <p>The standard mitigation is a <span class="kt">chamber bakeout</span> — a period before each test campaign during which the empty chamber is evacuated and the shrouds are heated (typically to +60°C to +80°C) to accelerate outgassing of contaminants from the chamber walls. The bakeout continues until the chamber's residual gas analyzer (RGA) shows that the outgassing rate has fallen below the specified threshold. Bakeout duration depends on the chamber's size, its exposure history, and the test article's contamination sensitivity — it can range from 24 hours for a small, clean chamber to several weeks for a large chamber that has been idle for months.</p>
+    <p>Skipping or shortening the bakeout to save schedule is a false economy. A chamber that has not been adequately baked out will deposit contaminants on the test article that may not be detected until after the test, at which point the contamination may require cleaning that damages delicate surfaces, or may produce thermal test results that are corrupted by the contamination's effect on surface emissivity and absorptivity.</p>
+  </div>
+
+  <h3 class="ssh">Acoustic Chamber Qualification</h3>
+  <p>A reverberant acoustic chamber must be qualified for: overall sound pressure level (OASPL) capacity at the maximum required test level; spectral shape accuracy (the ability to produce the specified one-third-octave-band spectrum within tolerance across the full frequency range, typically 31.5 Hz to 10,000 Hz); spatial uniformity (the variation in SPL across the test volume must be within a defined tolerance — typically ±3 dB — to ensure the test article experiences a reasonably uniform sound field); and reverberation time (the decay rate of sound energy in the chamber after the source is stopped, which characterizes the chamber's diffuse-field quality). Chambers with insufficient volume-to-wavelength ratio at low frequencies may have poor modal density, producing spatial non-uniformities and spectral control difficulties that limit their ability to produce a valid diffuse acoustic field for large test articles.</p>
+
+  <h3 class="ssh">Facility Maintenance and Readiness Verification</h3>
+  <p>Test facilities are complex mechanical and electrical systems that require ongoing maintenance to sustain their qualified performance. Vibration shaker bearings wear; vacuum chamber seals degrade; acoustic chamber absorption material deteriorates; control system electronics drift. A maintenance program — with defined inspection intervals, preventive maintenance activities, and calibration schedules — is essential to ensuring that the facility performs correctly when the next test article arrives.</p>
+
+  <p>Before every test campaign involving flight hardware, the test facility undergoes a <span class="kt">facility readiness verification</span> — a functional check that confirms the facility can deliver the required test environment. For a vibration facility, this typically includes a dry run at low level with a dummy mass to verify the control system's spectral accuracy and the facility's force capacity. For a thermal-vacuum chamber, it includes a pumpdown to the required vacuum level and a thermal cycle of the shrouds to verify temperature range and transition rate. For an acoustic chamber, it includes a low-level acoustic run to verify spectral control and uniformity.</p>
+
+  <p>The facility readiness verification is reviewed as part of the <span class="kt">Test Readiness Review (TRR)</span> for the test campaign. The TRR, described in Section 6, includes a specific agenda item for facility readiness — confirming that the facility has been qualified, that its maintenance is current, that its calibration is current, and that the readiness verification demonstrates it can deliver the required test environment for the specific test article and test specification.</p>
+
+  <div class="callout amber">
+    <div class="callout-label">◆ When the Facility Is Not Ready</div>
+    <p>The most expensive words in I&T scheduling are "the chamber is down." A test facility that is unavailable when the test article is ready — because of a pump failure, a control system malfunction, a contamination event, or a scheduled maintenance that ran long — does not just delay the current test. It cascades through the entire I&T schedule: the test article occupies its handling stand longer than planned; the next test article cannot enter the facility on its planned date; downstream tests that depend on this test's results are delayed; and the operations team's simulation schedule, which depends on post-test data, is disrupted.</p>
+    <p>Programs can mitigate facility availability risk by: scheduling facility maintenance windows well before the test campaign and confirming facility readiness weeks before the test article arrives; identifying backup facilities (at other centers, at commercial test houses) and maintaining current qualification data for each; and including facility availability risk in the I&T schedule risk assessment, with explicit schedule margin for facility-related delays. The programs that are most vulnerable are those that depend on a single facility with no backup — which, for large thermal-vacuum chambers and acoustic chambers, describes most programs. For these programs, the facility maintenance schedule is a first-order I&T schedule driver and must be managed accordingly.</p>
+  </div>
+
+  <!-- SECTION 9 (was Section 8) -->
+  <h2 class="sh" id="s9">9. Building the I&amp;T Plan: Practical Guidance</h2>
 
   <p>For an engineer writing or contributing to an I&amp;T Plan for the first time, the following guidance reflects lessons learned across multiple programs and multiple decades.</p>
 
@@ -498,15 +630,23 @@
     </thead>
     <tbody>
       <tr><td>Acceptance Testing</td><td>Testing performed on every flight unit to verify it is free of workmanship defects. Compared to qualification testing, acceptance tests are performed at lower levels and shorter durations.</td></tr>
+      <tr><td>Chamber Bakeout</td><td>A pre-test conditioning process in which an empty thermal-vacuum chamber is evacuated and heated to accelerate outgassing of contaminants absorbed from the atmosphere during the chamber's open period. Duration ranges from 24 hours to several weeks depending on chamber size and contamination sensitivity of the test article.</td></tr>
       <tr><td>Configuration Status Accounting (CSA)</td><td>The formal system for tracking the as-built and as-tested configuration of all flight hardware items.</td></tr>
       <tr><td>DPA (Destructive Physical Analysis)</td><td>Examination of sample parts by disassembly and inspection to verify internal construction quality. Performed on lot samples, not on flight parts.</td></tr>
       <tr><td>EGSE</td><td>Electrical Ground Support Equipment. The electrical systems used to power, command, and monitor the spacecraft during ground test operations.</td></tr>
+      <tr><td>Engineering Model (EM)</td><td>An electrically representative but not necessarily flight-quality version of the spacecraft or subsystem, used for functional verification, software integration, EGSE compatibility testing, and integration procedure development. Typically retained as a ground testbed throughout the mission.</td></tr>
+      <tr><td>Facility Readiness Verification</td><td>A functional check performed before every test campaign involving flight hardware, confirming that the test facility (shaker, chamber, acoustic room) can deliver the required test environment. Reviewed as part of the Test Readiness Review. Includes dry runs with dummy loads, pumpdown tests, and spectral accuracy checks.</td></tr>
       <tr><td>Fit Check</td><td>A mechanical interface verification, typically performed using a mass model or engineering model, before the flight instrument is delivered for integration.</td></tr>
+      <tr><td>Flight Model (FM)</td><td>The unit that flies. Built to full flight specification with flight-qualified components. Undergoes acceptance-level environmental testing only — workmanship screening without consuming design margin.</td></tr>
       <tr><td>I&amp;T Plan</td><td>The top-level document defining the philosophy, scope, approach, and organization of the integration and test campaign.</td></tr>
       <tr><td>IPC-A-610 Class 3</td><td>The highest workmanship standard defined by the IPC (Institute for Printed Circuits), required for high-reliability electronics where continued performance is critical.</td></tr>
       <tr><td>Launch Readiness Review (LRR)</td><td>The final formal review before launch, at which the program demonstrates that all I&amp;T activities are complete and the spacecraft is ready to fly.</td></tr>
+      <tr><td>Model Philosophy</td><td>The program-level decision defining how many physical versions of the spacecraft (STM, EM, QM, PFM, FM) will be built and what verification role each plays. Determines the structure, cost, schedule, and risk posture of the entire I&amp;T program.</td></tr>
       <tr><td>Nonconformance Report (NCR)</td><td>Formal documentation of a hardware or software condition that does not meet its requirements. Must be formally closed before flight.</td></tr>
+      <tr><td>Protoflight Model (PFM)</td><td>A single unit that serves as both the qualification and flight model — tested at qualification-level amplitudes but acceptance-level durations, then flown. A deliberate cost/risk trade-off that eliminates the dedicated qualification unit.</td></tr>
+      <tr><td>Qualification Model (QM)</td><td>A unit built to full flight specification and subjected to qualification-level environmental test (higher levels and longer durations than acceptance) to demonstrate design margins. Not flown — the qualification test consumes fatigue life that would reduce the flight unit's on-orbit reliability.</td></tr>
       <tr><td>Qualification Testing</td><td>Testing performed on a qualification unit at levels more severe than flight, to demonstrate design margin. Not performed on flight hardware.</td></tr>
+      <tr><td>Structural/Thermal Model (STM)</td><td>A structurally and thermally representative but electrically non-functional version of the spacecraft, used for qualification-level structural and thermal testing before flight hardware exists. May be tested to levels beyond qualification to explore design margins.</td></tr>
       <tr><td>Test Readiness Review (TRR)</td><td>A formal review conducted before each major test campaign to confirm that the test configuration, procedures, facility, and team are ready to proceed.</td></tr>
       <tr><td>Test-as-You-Fly / Fly-as-You-Test</td><td>The principle that test conditions should replicate flight conditions as closely as possible, and that the flight configuration should match the tested configuration.</td></tr>
       <tr><td>TRD (Test Requirements Document)</td><td>Traces each test requirement to its source mission or system requirement. The formal basis for the test program.</td></tr>
