@@ -108,14 +108,14 @@
   <ul class="body-list">
     <li><strong>What are we trying to prove?</strong> — The test program must be traceable to mission and system requirements. Every test must exist because something needs to be verified. Tests performed "because we always do this" without a clear requirement link are not necessarily wrong, but they cannot be justified when schedule pressure comes — and schedule pressure always comes.</li>
     <li><strong>How will we prove it?</strong> — This covers the approach: which tests are performed at which integration levels, which test environments are used, what instrumentation is required, and what constitutes success. For verification tests, success means demonstrating compliance with a requirement against defined pass/fail criteria. For characterization tests — thermal model correlation, instrument calibration, performance baseline measurement — success means acquiring data of defined quality, coverage, and uncertainty. Both types are legitimate I&amp;T activities; both must be planned, justified, and documented with equal rigor. Section 9 of this article discusses the distinction in detail.</li>
-    <li><strong>What flight configuration will be tested?</strong> — The principle of test-as-you-fly demands that the configuration under test be as close as possible to the flight configuration. The I&amp;T Plan must identify and justify any deviations.</li>
+    <li><strong>What flight configuration will be tested?</strong> — The principle of test-as-you-fly requires that the configuration under test be as close as possible to the flight configuration. The I&amp;T Plan must identify and justify any deviations. This principle appears in the introductory article of this series and is a recurring theme throughout this series.</li>
     <li><strong>How will we know we are done?</strong> — The Plan defines the completion criteria: what data must be collected, what anomalies must be resolved, what reviews must be held, before the spacecraft can be declared ready for launch.</li>
   </ul>
 
   <!-- SECTION 2 -->
   <h2 class="sh" id="s2">2. The Levels of Integration — From Parts to Observatory</h2>
 
-  <p>The most important structural concept in any I&amp;T program is the integration level hierarchy. Spacecraft hardware is assembled in stages, and each stage has its own integration and test requirements. Understanding this hierarchy is not merely academic — it determines the sequence of the entire program, the allocation of test resources, and the strategy for finding problems early, when they are cheapest and easiest to fix.</p>
+  <p>The most fundamental organizational concept in any I&amp;T program is the integration level hierarchy. Spacecraft hardware is assembled in stages, and each stage has its own integration and test requirements. Understanding this hierarchy is not merely academic — it determines the sequence of the entire program, the allocation of test resources, and the strategy for finding problems early, when they are cheapest and easiest to fix.</p>
 
   <p>The hierarchy described below reflects the full range of complexity, from a simple single-instrument spacecraft to a large multi-instrument observatory. Not every program has every level — a small CubeSat mission might compress several levels together. A flagship-class observatory like the James Webb Space Telescope has every level and more. The principle is the same regardless of scale: build upward from the simplest elements, verify at each level before proceeding to the next, and never assume that passing tests at a lower level guarantees performance at a higher one.</p>
 
@@ -162,7 +162,7 @@
           <span class="level-tag">Workmanship</span>
         </div>
         <div class="level-desc">At Level 1, piece parts are assembled into functional units: populated circuit card assemblies (CCAs), bonded structural panels, small mechanisms, and harness segments. I&amp;T activities here focus on workmanship verification and basic functionality. Circuit cards are subjected to optical and often <strong>X-ray inspection</strong> to verify solder joint quality and component placement.</div>
-        <div class="level-desc">Spacecraft electronics are typically required to meet NASA, Military or International standards such as <span class="kt">IPC-A-610 Class 3</span> workmanship standards, intended for high-reliability electronics where continued performance is critical. For circuit cards destined for optical instruments or sensitive detectors, contamination control begins here.</div>
+        <div class="level-desc">Spacecraft electronics are typically required to meet NASA, Military or International standards such as <span class="kt">IPC-A-610 Class 3</span> workmanship standards, intended for high-reliability electronics where continued performance is critical. For circuit cards destined for optical instruments or sensitive detectors, contamination control (discussed in greater detail in Artilce 06: "Cleanrooms, Contamination, and ESD") begins here. </div>
         <div class="level-tests">
           <strong>Typical I&amp;T Activities</strong>
           X-ray inspection · Electrical continuity · Dimensional inspection · Workmanship audit
@@ -184,7 +184,7 @@
           <span class="level-tag">Qual vs. Acceptance</span>
         </div>
         <div class="level-desc">At Level 2, assemblies are integrated into complete electronic units, mechanisms, and structural assemblies: a flight computer, a power conditioning and distribution unit (PCDU), a reaction wheel assembly, a star tracker, a propulsion system component. This is the first level at which comprehensive environmental testing is typically performed.</div>
-        <div class="level-desc">Component-level testing serves two purposes: it screens out latent workmanship defects (the burn-in function), and it verifies the unit can survive launch and the space environment (the qualification function). This is where the critical distinction between <span class="kt">qualification testing</span> (on a qual unit, at elevated levels) and <span class="kt">acceptance testing</span> (on every flight unit, at flight levels) is most sharply drawn — a distinction with profound implications for program cost and schedule.</div>
+        <div class="level-desc">Component-level testing serves two purposes: it screens out latent workmanship defects (the burn-in function), and it verifies the unit can survive launch and the space environment (the qualification function). This is where the critical distinction between <span class="kt">qualification testing</span> (on a qual unit, at elevated levels) and <span class="kt">acceptance testing</span> (on every flight unit, at flight levels) is most sharply drawn — a distinction with profound implications for program cost and schedule. Test levels, models and philospohy are explred in section 3 of this article.</div>
         <div class="level-tests">
           <strong>Typical I&amp;T Activities</strong>
           Comprehensive functional testing · Vibration testing · Thermal cycling &amp; thermal-vacuum · EMC testing · Mass properties verification
@@ -237,8 +237,8 @@
 
     <div class="callout rust" style="margin: 0 0 2px 0;">
       <div class="callout-label">⚠ The Instrument/Payload Delivery Problem</div>
-      <p>Late instrument delivery is one of the most common causes of spacecraft I&amp;T schedule compression. The pattern is familiar: the instrument slips, the spacecraft integration schedule is held, and then both are compressed together to hit the launch date — placing the program under maximum pressure at exactly the moment requiring maximum care.</p>
-      <p>The correct response is to identify early which I&amp;T activities are schedule-critical, which have float, and which can be deferred to the launch site. This planning must be done before the instrument slips — not after.</p>
+      <p>Late instrument or payload delivery is one of the most common causes of spacecraft I&amp;T schedule compression. The pattern is familiar: the instrument slips, the spacecraft integration schedule is held, and then both are compressed together to hit the launch date — placing the program under maximum pressure at exactly the moment requiring maximum care.</p>
+      <p>The correct response is to identify early which I&amp;T activities are schedule-critical, which have float, and which can be deferred to the launch site. This planning must be done before the payload slips — not after.</p>
     </div>
 
     <!-- L5 -->
@@ -253,7 +253,7 @@
           <span class="level-tag">System-Level I&amp;T</span>
           <span class="level-tag">Full Environmental Suite</span>
         </div>
-        <div class="level-desc">At Level 5, subsystems, instruments, and payload elements are integrated into the complete spacecraft — the vehicle on the test floor, surrounded by ground support equipment, with technicians in cleanroom garments at every access panel. Multiple subsystems must be assembled in a carefully controlled sequence determined by access requirements, contamination sensitivity, and interface dependencies.</div>
+        <div class="level-desc">At Level 5, subsystems, instruments, and payload elements are integrated into the complete spacecraft — the vehicle on the test floor, surrounded by ground support equipment, often in a cleanroom where contamination control rules significantly increase the time and complexity of every task. Multiple subsystems must be assembled in a carefully controlled sequence determined by access requirements, contamination sensitivity, and interface dependencies.</div>
         <div class="level-desc">Spacecraft-level testing is where the payoff of the entire lower-level test program is realized — or where its gaps become apparent. Problems that escaped detection at component and subsystem level are found here, in the most time-consuming test environment of the campaign. Every problem found at the subsystem level is one that does not have to be found on the spacecraft.</div>
         <div class="level-tests">
           <strong>Typical I&amp;T Activities</strong>
@@ -296,7 +296,9 @@
   <!-- SECTION 3 — MODEL PHILOSOPHY -->
   <h2 class="sh" id="s3">3. The Model Philosophy — STM, EM, QM, PFM, FM</h2>
 
-  <p>One of the first and most consequential decisions in any spacecraft program is the <span class="kt">model philosophy</span> — the decision about how many physical versions of the spacecraft (or its subsystems) will be built, and what role each version plays in the verification program. The model philosophy determines how much hardware the program procures, how many test campaigns are conducted, how design risk is retired before the flight unit is exposed to environmental test, and — critically — how much schedule and cost margin is available when anomalies occur.</p>
+  <p>One of the first and most consequential decisions in any spacecraft program is the <span class="kt">model philosophy</span> — the decision about how many physical versions of the spacecraft (or its subsystems) will be built, and what role each version plays in the verification program. The model philosophy determines how much hardware the program procures, how many test campaigns are conducted, how design risk is retired before the flight unit is exposed to environmental test, and — critically — how much schedule and cost margin is available when anomalies occur. </p> 
+  
+  <p>This is also the first of many times the desired engineering rigor clashes with budgetary and schedule constraints. Ideally, prototypes, engineering models, test models and spare systems would be built to fully flesh out designs and issues. This </p>
 
   <p>The model philosophy is not a hardware procurement decision that can be deferred to Phase C. It is a verification strategy decision that must be made in Phase A or early Phase B, because it determines the entire downstream structure of the I&T program: how many test facilities are needed and when, how many technician-hours are required, how the qualification and acceptance test campaigns overlap or sequence, and what the program's options are if flight hardware is damaged during test.</p>
 
