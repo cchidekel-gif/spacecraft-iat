@@ -236,55 +236,77 @@
 
   <p>The <span class="kt">Configuration Control Board (CCB)</span> is the formal governance body responsible for evaluating and approving — or rejecting — all proposed changes to the configuration baseline. It is not an advisory committee. Its decisions are program-binding: no change to a baseline document or to flight hardware proceeds without CCB approval, and the CCB record is part of the configuration audit trail. The CCB's membership, authority levels, and decision process are defined in the program's CM plan.</p>
 
-  <div class="dr-flow">
-    <div class="dr-flow-header">Engineering Change Request — CCB Process Flow</div>
-    <div class="dr-steps">
-      <div class="dr-step">
-        <div class="dr-step-num">1</div>
-        <div style="padding:0;">
-          <div class="dr-step-title">Engineering Change Request (ECR) Initiated</div>
-          <div class="dr-step-desc">Any program member may initiate an ECR to propose a change to a baselined document or to flight hardware. The ECR must identify: the specific item being changed (part number, document number, revision); the reason for the change (anomaly correction, improvement, supplier issue, test finding); the proposed change description; and an initial assessment of the change's impact on interfaces, mass, power, and verification status.</div>
+ <style>
+    .ccb-process{margin:2em 0;border:1px solid var(--rule);overflow:hidden;}
+    .ccb-process-header{background:var(--ink);color:var(--paper);padding:12px 20px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;}
+    .ccb-process-steps{padding:0;}
+    .ccb-pstep{display:grid;grid-template-columns:64px 1fr;border-bottom:1px solid var(--rule);}
+    .ccb-pstep:last-child{border-bottom:none;}
+    .ccb-pstep-num{display:flex;align-items:flex-start;justify-content:center;padding-top:18px;font-family:'JetBrains Mono',monospace;font-size:1.3rem;font-weight:700;color:var(--paper);background:var(--steel);}
+    .ccb-pstep:nth-child(even) .ccb-pstep-num{background:#3a5a6a;}
+    .ccb-pstep-body{padding:16px 20px;background:var(--white);}
+    .ccb-pstep:nth-child(even) .ccb-pstep-body{background:var(--light);}
+    .ccb-pstep-title{font-family:'Playfair Display',serif;font-size:0.98rem;font-weight:700;color:var(--ink);margin-bottom:6px;}
+    .ccb-pstep-desc{font-size:0.86rem;color:#444;line-height:1.65;font-weight:300;}
+    @media(max-width:600px){.ccb-pstep{grid-template-columns:48px 1fr;}.ccb-pstep-num{font-size:1.1rem;}}
+  </style>
+
+  <div class="ccb-process">
+    <div class="ccb-process-header">Engineering Change Request — CCB Process Flow</div>
+    <div class="ccb-process-steps">
+
+      <div class="ccb-pstep">
+        <div class="ccb-pstep-num">1</div>
+        <div class="ccb-pstep-body">
+          <div class="ccb-pstep-title">Engineering Change Request (ECR) Initiated</div>
+          <div class="ccb-pstep-desc">Any program member may initiate an ECR to propose a change to a baselined document or to flight hardware. The ECR must identify: the specific item being changed (part number, document number, revision); the reason for the change (anomaly correction, improvement, supplier issue, test finding); the proposed change description; and an initial assessment of the change's impact on interfaces, mass, power, and verification status.</div>
         </div>
       </div>
-      <div class="dr-step">
-        <div class="dr-step-num">2</div>
-        <div style="padding:0;">
-          <div class="dr-step-title">Impact Assessment</div>
-          <div class="dr-step-desc">The CCB assigns the ECR for technical impact assessment. The assessment must cover: all documents affected by the change; all hardware items affected; all requirements whose verification may be affected; mass, power, link budget, and thermal margin impacts; schedule impact; cost impact; and the effect on any currently open DRs. The assessment is performed by the affected engineering disciplines, not by the person who originated the ECR.</div>
+
+      <div class="ccb-pstep">
+        <div class="ccb-pstep-num">2</div>
+        <div class="ccb-pstep-body">
+          <div class="ccb-pstep-title">Impact Assessment</div>
+          <div class="ccb-pstep-desc">The CCB assigns the ECR for technical impact assessment. The assessment must cover: all documents affected by the change; all hardware items affected; all requirements whose verification may be affected; mass, power, link budget, and thermal margin impacts; schedule impact; cost impact; and the effect on any currently open DRs. The assessment is performed by the affected engineering disciplines, not by the person who originated the ECR.</div>
         </div>
       </div>
-      <div class="dr-step">
-        <div class="dr-step-num">3</div>
-        <div style="padding:0;">
-          <div class="dr-step-title">CCB Review and Decision</div>
-          <div class="dr-step-desc">The CCB reviews the ECR and its impact assessment at a formal board meeting. The board may approve, reject, or request additional information. Approval requires that the change is technically sound, that all impacts have been adequately assessed, that any required re-verification is identified and planned, and that the change is within the board's authority level. Changes above the board's authority level are escalated to the next-higher CCB tier which is often the Program Manager or Cheif Engineer.</div>
+
+      <div class="ccb-pstep">
+        <div class="ccb-pstep-num">3</div>
+        <div class="ccb-pstep-body">
+          <div class="ccb-pstep-title">CCB Review and Decision</div>
+          <div class="ccb-pstep-desc">The CCB reviews the ECR and its impact assessment at a formal board meeting. The board may approve, reject, or request additional information. Approval requires that the change is technically sound, that all impacts have been adequately assessed, that any required re-verification is identified and planned, and that the change is within the board's authority level. Changes above the board's authority level are escalated to the next-higher CCB tier which is often the Program Manager or Chief Engineer.</div>
         </div>
       </div>
-      <div class="dr-step">
-        <div class="dr-step-num">4</div>
-        <div style="padding:0;">
-          <div class="dr-step-title">Engineering Change Notice (ECN) Released</div>
-          <div class="dr-step-desc">An approved ECR is released as an Engineering Change Notice — the formal authorization to implement the change. The ECN is the work order for the change: it specifies exactly what is to be done, which documents are to be revised, which hardware items are to be modified, and what verification is required to close the change. No implementation of the change begins before the ECN is released. Implementing a change before CCB approval is a serious CM violation regardless of how technically straightforward the change appears.</div>
+
+      <div class="ccb-pstep">
+        <div class="ccb-pstep-num">4</div>
+        <div class="ccb-pstep-body">
+          <div class="ccb-pstep-title">Engineering Change Notice (ECN) Released</div>
+          <div class="ccb-pstep-desc">An approved ECR is released as an Engineering Change Notice — the formal authorization to implement the change. The ECN is the work order for the change: it specifies exactly what is to be done, which documents are to be revised, which hardware items are to be modified, and what verification is required to close the change. No implementation of the change begins before the ECN is released. Implementing a change before CCB approval is a serious CM violation regardless of how technically straightforward the change appears.</div>
         </div>
       </div>
-      <div class="dr-step">
-        <div class="dr-step-num">5</div>
-        <div style="padding:0;">
-          <div class="dr-step-title">Implementation and Verification</div>
-          <div class="dr-step-desc">The change is implemented per the ECN. Required re-verification activities are executed and their results documented. All affected documents are updated to their new revision levels. The hardware traveller records the ECN number, the work performed, and the verification results. The CSA database is updated to reflect the new configuration.</div>
+
+      <div class="ccb-pstep">
+        <div class="ccb-pstep-num">5</div>
+        <div class="ccb-pstep-body">
+          <div class="ccb-pstep-title">Implementation and Verification</div>
+          <div class="ccb-pstep-desc">The change is implemented per the ECN. Required re-verification activities are executed and their results documented. All affected documents are updated to their new revision levels. The hardware traveller records the ECN number, the work performed, and the verification results. The CSA database is updated to reflect the new configuration.</div>
         </div>
       </div>
-      <div class="dr-step">
-        <div class="dr-step-num">6</div>
-        <div style="padding:0;">
-          <div class="dr-step-title">ECN Closure and CSA Update</div>
-          <div class="dr-step-desc">The ECN is formally closed when all required implementation and verification actions are complete and documented. The CCB confirms closure. The as-built configuration record is updated. The change is now part of the established baseline. Any future changes to the same item start a new ECR — they do not informally reopen the closed ECN.</div>
+
+      <div class="ccb-pstep">
+        <div class="ccb-pstep-num">6</div>
+        <div class="ccb-pstep-body">
+          <div class="ccb-pstep-title">ECN Closure and CSA Update</div>
+          <div class="ccb-pstep-desc">The ECN is formally closed when all required implementation and verification actions are complete and documented. The CCB confirms closure. The as-built configuration record is updated. The change is now part of the established baseline. Any future changes to the same item start a new ECR — they do not informally reopen the closed ECN.</div>
         </div>
       </div>
+
     </div>
   </div>
 
- <div class="callout amber">
+  <div class="callout amber">
     <div class="callout-label">◆ The ECN closeout Problem</div>
     <p>Since configuration cortrol is a shared technical / administrative function it is not uncommon for the engineering change to move forward in parallel with the paperwork. This can become a problem especially later in the program where schedule pressure is mounting.</p>
     <p>One program I worked on had found a major design flaw associated with cryogen boil off and vent paths. The error was caught in a milestone technical review and a plan to remedy was presented and approved by the review board. The relevant paperwork was generated however, due to schedule pressure, implemeting the change was delayed and eventually forgotten. The instrument was launched with the un-remedied flaw and failed as expected, less than a month into the mission. Why was this not caught in a subsequent pre-launch review ? The ECN was closed based on the "PLAN" to inplement the change, not on implementation and verification of the change. So in the LRR, the issue was listed as closed because the paperwork said it was closed. For effective configuration management and control engineering and administative personnel must work hand-in-hand.</p>
