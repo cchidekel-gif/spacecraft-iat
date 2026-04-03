@@ -571,14 +571,14 @@
         <div class="ccb-num">3</div>
         <div class="ccb-content">
           <div class="ccb-title">CCB Review and Decision</div>
-          <div class="ccb-desc">The CCB reviews the ECR and its impact assessment at a formal board meeting. The board may approve, reject, or request additional information. Approval requires that the change is technically sound, that all impacts have been adequately assessed, that any required re-verification is identified and planned, and that the change is within the board's authority level. Changes above the board's authority level are escalated to the next-higher CCB tier.</div>
+          <div class="ccb-desc">The CCB reviews the ECR and its impact assessment at a formal board meeting. The board may approve, reject, or request additional information. Approval requires that the change is technically sound, that all impacts have been adequately assessed, that any required re-verification is identified and planned, and that the change is within the board's authority level. Changes above the board's authority level are escalated to the next-higher CCB tier which is often the Program Manager or Cheif Engineer.</div>
         </div>
       </div>
       <div class="ccb-step">
         <div class="ccb-num">4</div>
         <div class="ccb-content">
           <div class="ccb-title">Engineering Change Notice (ECN) Released</div>
-          <div class="ccb-desc">An approved ECR is released as an Engineering Change Notice — the formal authorisation to implement the change. The ECN is the work order for the change: it specifies exactly what is to be done, which documents are to be revised, which hardware items are to be modified, and what verification is required to close the change. No implementation of the change begins before the ECN is released. Implementing a change before CCB approval is a serious CM violation regardless of how technically straightforward the change appears.</div>
+          <div class="ccb-desc">An approved ECR is released as an Engineering Change Notice — the formal authorization to implement the change. The ECN is the work order for the change: it specifies exactly what is to be done, which documents are to be revised, which hardware items are to be modified, and what verification is required to close the change. No implementation of the change begins before the ECN is released. Implementing a change before CCB approval is a serious CM violation regardless of how technically straightforward the change appears.</div>
         </div>
       </div>
       <div class="ccb-step">
@@ -598,6 +598,12 @@
     </div>
   </div>
 
+ <div class="callout amber">
+    <div class="callout-label">◆ The ECN closeout Problem</div>
+    <p>Since configuration cortrol is a shared technical / admoinistrative function it is not uncommon for the engineering change to move forward in parallel with the paperwork. This can become a problem especially later in the program where schedule pressure is mounting.</p>
+    <p>One program I worked on had a found a major design flaw associated with cryogen boil off and vent paths. The error was caught in a design review and a plan to remedy was presented and approved by the review board. The relevant paperwork was generated however, due to schedule pressure, implemeting the change was delayed and eventually forgotten. The instrument was launched with the un-remedied flaw and failed as expected, less than a month into the mission. Why was this not caught in a subsequent pre-launch review ? The ECN was closed based on the "PLAN" to inplement the change, not on implementation and verification of the change. So in the LRR, the issue was listed as closed because the paperwork said it was closed. For effective configuration management and control engineering and administative personnel must work hand-in-hand.</p>
+  </div>
+  
   <h3 class="ssh">CCB Authority Levels</h3>
   <p>Not every change requires the full program-level CCB. Most programs use a tiered authority structure: subsystem-level CCBs have authority to approve changes within their subsystem that have no impact outside it; the system-level CCB has authority for changes with cross-subsystem or interface impacts; changes that affect the mission baseline, a customer-controlled document, or a safety-critical requirement require escalation to the highest authority level — typically the chief engineer and program manager, with customer concurrence for NASA and ESA missions.</p>
 
