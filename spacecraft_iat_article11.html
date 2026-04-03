@@ -476,61 +476,93 @@
   <!-- SECTION 9 -->
   <h2 class="sh" id="s9">9. When CM Breaks Down — The Failure Modes</h2>
 
-  <div class="failure-grid">
-    <div class="failure-card">
-      <div class="failure-card-top" style="background:var(--ink);">
-        <span style="font-size:1.4rem;flex-shrink:0;">🔀</span>
-        <div style="font-weight:700;font-size:0.95rem;color:var(--paper);">The Unapproved Change</div>
-      </div>
-      <div class="failure-card-body">
-        <p>An engineer or technician makes a change to the hardware or software without going through the CCB process — a wire re-route "to make integration easier," a connector substitution "because the original is out of stock," a software parameter update "to fix an obvious bug." The change may be technically correct. But it is not in the CM record. It will not appear in the PCA. It will not be visible when the anomaly investigation asks "what changed?" The unapproved change is the most common CM failure mode and the one most likely to directly cause investigation delays and incorrect root cause conclusions.</p>
-      </div>
-    </div>
-    <div class="failure-card">
-      <div class="failure-card-top" style="background:var(--ink);">
-        <span style="font-size:1.4rem;flex-shrink:0;">📦</span>
-        <div style="font-weight:700;font-size:0.95rem;color:var(--paper);">Serial Number Confusion</div>
-      </div>
-      <div class="failure-card-body">
-        <p>Two components of the same part number are interchanged during a maintenance operation, and the serialised part records are not updated. The CSA database now records the wrong serial number at each location. When one of the components is later found to have a performance anomaly in its test history, the investigation cannot determine from the CSA record whether the anomalous component is the one in location A or location B. Resolution requires physical inspection and potentially disassembly. In programs with many serialised components, serial number confusion during rework is a persistent source of CSA errors that requires disciplined incoming and outgoing inspections at every maintenance operation.</p>
-      </div>
-    </div>
-    <div class="failure-card">
-      <div class="failure-card-top" style="background:var(--ink);">
-        <span style="font-size:1.4rem;flex-shrink:0;">📝</span>
-        <div style="font-weight:700;font-size:0.95rem;color:var(--paper);">The Retroactive Traveller</div>
-      </div>
-      <div class="failure-card-body">
-        <p>Work is performed without contemporaneous traveller sign-off — technicians complete multiple steps and sign them all at the end of the work session, or a week after the work was done. The traveller record no longer reflects what was done; it reflects what the technician remembers or believes was done. This is indistinguishable in the record from correct practice unless the timestamps reveal the anomaly. A traveller that was signed in bulk at the end of a day provides no evidence that each step was actually performed when and as specified. Some programs have found, during PCA, that traveller entries were backdated — a discovery that invalidates the entire as-built record for the affected hardware.</p>
-      </div>
-    </div>
-    <div class="failure-card">
-      <div class="failure-card-top" style="background:var(--ink);">
-        <span style="font-size:1.4rem;flex-shrink:0;">🏃</span>
-        <div style="font-weight:700;font-size:0.95rem;color:var(--paper);">The "Obvious" Change</div>
-      </div>
-      <div class="failure-card-body">
-        <p>A change that appears so obviously correct, so trivially minor, that the engineer implementing it judges it unnecessary to go through the CCB process. This failure mode is correlated with schedule pressure: when the program is behind, the CCB process is perceived as a bottleneck, and small changes begin to be implemented without CCB review. Each individual bypass may be technically defensible. Collectively, they erode the integrity of the configuration record and remove the oversight mechanism that catches the occasional change that is not as obviously benign as it appears. The connector substitution story in §3 is a canonical example.</p>
+ <style>
+    .cm-failures{margin:2em 0;display:grid;grid-template-columns:1fr;gap:0;}
+    .cmf-card{border:1px solid var(--rule);border-bottom:none;overflow:hidden;}
+    .cmf-card:last-child{border-bottom:1px solid var(--rule);}
+    .cmf-card-inner{display:grid;grid-template-columns:64px 1fr;min-height:0;}
+    .cmf-icon{display:flex;align-items:flex-start;justify-content:center;padding-top:18px;font-size:1.5rem;background:var(--ink);}
+    .cmf-card:nth-child(2) .cmf-icon{background:#1e1c18;}
+    .cmf-card:nth-child(3) .cmf-icon{background:var(--ink);}
+    .cmf-card:nth-child(4) .cmf-icon{background:#1e1c18;}
+    .cmf-body{padding:16px 20px;background:var(--white);}
+    .cmf-card:nth-child(even) .cmf-body{background:var(--light);}
+    .cmf-title{font-family:'Playfair Display',serif;font-size:0.98rem;font-weight:700;color:var(--ink);margin-bottom:6px;}
+    .cmf-desc{font-size:0.86rem;color:#444;line-height:1.65;font-weight:300;}
+    @media(max-width:600px){.cmf-card-inner{grid-template-columns:48px 1fr;}}
+  </style>
+
+  <div class="cm-failures">
+
+    <div class="cmf-card">
+      <div class="cmf-card-inner">
+        <div class="cmf-icon">🔀</div>
+        <div class="cmf-body">
+          <div class="cmf-title">The Unapproved Change</div>
+          <div class="cmf-desc">An engineer or technician makes a change to the hardware or software without going through the CCB process — a wire re-route "to make integration easier," a connector substitution "because the original is out of stock," a software parameter update "to fix an obvious bug." The change may be technically correct. But it is not in the CM record. It will not appear in the PCA. It will not be visible when the anomaly investigation asks "what changed?" The unapproved change is the most common CM failure mode and the one most likely to directly cause investigation delays and incorrect root cause conclusions.</div>
+        </div>
       </div>
     </div>
+
+    <div class="cmf-card">
+      <div class="cmf-card-inner">
+        <div class="cmf-icon">📦</div>
+        <div class="cmf-body">
+          <div class="cmf-title">Serial Number Confusion</div>
+          <div class="cmf-desc">Two components of the same part number are interchanged during a maintenance operation, and the serialised part records are not updated. The CSA database now records the wrong serial number at each location. When one of the components is later found to have a performance anomaly in its test history, the investigation cannot determine from the CSA record whether the anomalous component is the one in location A or location B. Resolution requires physical inspection and potentially disassembly. In programs with many serialised components, serial number confusion during rework is a persistent source of CSA errors that requires disciplined incoming and outgoing inspections at every maintenance operation.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cmf-card">
+      <div class="cmf-card-inner">
+        <div class="cmf-icon">📝</div>
+        <div class="cmf-body">
+          <div class="cmf-title">The Retroactive Traveller</div>
+          <div class="cmf-desc">Work is performed without contemporaneous traveller sign-off — technicians complete multiple steps and sign them all at the end of the work session, or a week after the work was done. The traveller record no longer reflects what was done; it reflects what the technician remembers or believes was done. This is indistinguishable in the record from correct practice unless the timestamps reveal the anomaly. A traveller that was signed in bulk at the end of a day provides no evidence that each step was actually performed when and as specified. Some programs have found, during PCA, that traveller entries were backdated — a discovery that invalidates the entire as-built record for the affected hardware.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cmf-card">
+      <div class="cmf-card-inner">
+        <div class="cmf-icon">🏃</div>
+        <div class="cmf-body">
+          <div class="cmf-title">The "Obvious" Change</div>
+          <div class="cmf-desc">A change that appears so obviously correct, so trivially minor, that the engineer implementing it judges it unnecessary to go through the CCB process. This failure mode is correlated with schedule pressure: when the program is behind, the CCB process is perceived as a bottleneck, and small changes begin to be implemented without CCB review. Each individual bypass may be technically defensible. Collectively, they erode the integrity of the configuration record and remove the oversight mechanism that catches the occasional change that is not as obviously benign as it appears. The connector substitution story in §3 is a canonical example.</div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
-  <div class="stat-strip">
-    <div class="stat-cell">
-      <span class="stat-num">&gt;30%</span>
-      <p>Fraction of on-orbit anomaly investigations that are complicated or delayed by an incomplete or inaccurate pre-launch configuration record, in programs without rigorous CM</p>
+  <style>
+    .cm-stats{margin:2em 0;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--rule);}
+    .cm-stat{padding:20px 16px;text-align:center;border-right:1px solid var(--rule);background:var(--ink);}
+    .cm-stat:last-child{border-right:none;}
+    .cm-stat:nth-child(even){background:#1e1c18;}
+    .cm-stat-num{font-family:'JetBrains Mono',monospace;font-size:1.6rem;font-weight:700;color:var(--gold);margin-bottom:8px;line-height:1.2;}
+    .cm-stat-desc{font-size:0.78rem;color:#b8b0a0;line-height:1.5;font-weight:300;}
+    @media(max-width:700px){.cm-stats{grid-template-columns:1fr 1fr;}.cm-stat{border-bottom:1px solid var(--rule);}.cm-stat:nth-child(2){border-right:none;}.cm-stat:nth-child(3),.cm-stat:nth-child(4){border-bottom:none;}}
+    @media(max-width:440px){.cm-stats{grid-template-columns:1fr;}.cm-stat{border-right:none;border-bottom:1px solid var(--rule);}.cm-stat:last-child{border-bottom:none;}}
+  </style>
+
+  <div class="cm-stats">
+    <div class="cm-stat">
+      <div class="cm-stat-num">&gt;30%</div>
+      <div class="cm-stat-desc">Fraction of on-orbit anomaly investigations complicated or delayed by an incomplete or inaccurate pre-launch configuration record</div>
     </div>
-    <div class="stat-cell">
-      <span class="stat-num">100%</span>
-      <p>Of changes to flight hardware and software that should go through CCB — no exceptions for "minor" changes</p>
+    <div class="cm-stat">
+      <div class="cm-stat-num">100%</div>
+      <div class="cm-stat-desc">Of changes to flight hardware and software that should go through CCB — no exceptions for "minor" changes</div>
     </div>
-    <div class="stat-cell">
-      <span class="stat-num">3–6 mo</span>
-      <p>Typical duration of a thorough Physical Configuration Audit for a large, complex spacecraft — a significant I&T phase milestone in its own right</p>
+    <div class="cm-stat">
+      <div class="cm-stat-num">3–6 mo</div>
+      <div class="cm-stat-desc">Typical duration of a thorough Physical Configuration Audit for a large, complex spacecraft</div>
     </div>
-    <div class="stat-cell">
-      <span class="stat-num">20+ yr</span>
-      <p>Period for which the as-built record must remain accessible — the full mission life plus archive period, covering all possible anomaly investigations</p>
+    <div class="cm-stat">
+      <div class="cm-stat-num">20+ yr</div>
+      <div class="cm-stat-desc">Period for which the as-built record must remain accessible — full mission life plus archive period</div>
     </div>
   </div>
 
