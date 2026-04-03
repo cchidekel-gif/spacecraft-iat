@@ -119,55 +119,99 @@
 
   <p>A <span class="kt">configuration baseline</span> is a formally approved description of the spacecraft's configuration at a specific point in the program — a snapshot that serves as the reference against which subsequent changes are measured and controlled. Baselines are established at formal program reviews and represent the program's collective agreement that the configuration as documented at that point is technically correct and approved for the next phase of development. Once established, a baseline can only be changed through the formal change control process.</p>
 
-  <div class="history-timeline">
+  <style>
+    .bl-cards{margin:2em 0;}
+    .bl-card{border:1px solid var(--rule);margin-bottom:10px;overflow:hidden;}
+    .bl-card-header{display:flex;align-items:stretch;}
+    .bl-badge{width:90px;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;padding:10px 6px;font-family:'JetBrains Mono',monospace;text-align:center;}
+    .bl-badge-phase{font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:2px;}
+    .bl-badge-review{font-size:8px;letter-spacing:0.08em;color:rgba(255,255,255,0.55);margin-top:4px;}
+    .bl-badge.func{background:#4a6274;}
+    .bl-badge.alloc{background:#2e7d52;}
+    .bl-badge.prod{background:#b87420;}
+    .bl-badge.asbuilt{background:#b84a2e;}
+    .bl-badge.ops{background:#5a3a7a;}
+    .bl-hdr-text{flex:1;padding:14px 18px;background:var(--ink);}
+    .bl-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--paper);margin-bottom:3px;}
+    .bl-subtitle{font-size:0.82rem;color:#9a9080;font-style:italic;font-weight:300;}
+    .bl-body{padding:14px 18px;background:var(--white);font-size:0.86rem;color:#333;line-height:1.65;font-weight:300;}
+    .bl-card:nth-child(even) .bl-body{background:var(--light);}
+    @media(max-width:600px){.bl-badge{width:70px;}.bl-badge-phase{font-size:8px;}.bl-title{font-size:0.95rem;}}
+  </style>
 
-    <div class="ht-item notable">
-      <div class="ht-year">Phase A/B</div>
-      <div class="ht-content">
-      <div class="ht-mission">Functional Baseline</div>
-      <div class="ht-desc">The highest-level description of what the spacecraft must do — the mission requirements and system-level performance specifications. Established at System Requirements Review (SRR). Defines the "what" without yet specifying the "how." All subsequent design work flows from this baseline. Changes to the functional baseline require the highest level of CCB authority and have the broadest downstream impact.</div>
-      <div class="ht-desc" style="font-weight:600;margin-top:8px;color:#4a6274;font-size:0.82rem;">Established at: SRR</div>
+  <div class="bl-cards">
+
+    <div class="bl-card">
+      <div class="bl-card-header">
+        <div class="bl-badge func">
+          <div class="bl-badge-phase">Phase A/B</div>
+          <div class="bl-badge-review">SRR</div>
+        </div>
+        <div class="bl-hdr-text">
+          <div class="bl-title">Functional Baseline</div>
+          <div class="bl-subtitle">What the spacecraft must do — mission requirements and system-level performance specifications</div>
+        </div>
       </div>
+      <div class="bl-body">The highest-level description of what the spacecraft must do — the mission requirements and system-level performance specifications. Established at System Requirements Review (SRR). Defines the "what" without yet specifying the "how." All subsequent design work flows from this baseline. Changes to the functional baseline require the highest level of CCB authority and have the broadest downstream impact.</div>
     </div>
 
-    <div class="ht-item notable">
-      <div class="ht-year">Phase B/C</div>
-      <div class="ht-content">
-      <div class="ht-mission">Allocated Baseline</div>
-      <div class="ht-desc">The decomposition of system-level requirements into subsystem and component specifications — the allocation of performance requirements to specific hardware elements. Established at Preliminary Design Review (PDR). Defines what each subsystem must do and how its performance is verified. Changes to the allocated baseline require CCB review and may require re-analysis of requirement margins across multiple subsystems.</div>
-      <div class="ht-desc" style="font-weight:600;margin-top:8px;color:#4a6274;font-size:0.82rem;">Established at: PDR</div>
+    <div class="bl-card">
+      <div class="bl-card-header">
+        <div class="bl-badge alloc">
+          <div class="bl-badge-phase">Phase B/C</div>
+          <div class="bl-badge-review">PDR</div>
+        </div>
+        <div class="bl-hdr-text">
+          <div class="bl-title">Allocated Baseline</div>
+          <div class="bl-subtitle">Decomposition of system requirements into subsystem and component specifications</div>
+        </div>
       </div>
+      <div class="bl-body">The decomposition of system-level requirements into subsystem and component specifications — the allocation of performance requirements to specific hardware elements. Established at Preliminary Design Review (PDR). Defines what each subsystem must do and how its performance is verified. Changes to the allocated baseline require CCB review and may require re-analysis of requirement margins across multiple subsystems.</div>
     </div>
 
-    <div class="ht-item critical">
-      <div class="ht-year">Phase C/D</div>
-      <div class="ht-content">
-      <div class="ht-mission">Product Baseline</div>
-      <div class="ht-desc">The complete design documentation for the spacecraft as it is to be built — detailed drawings, specifications, software design documents, interface control documents. Established at Critical Design Review (CDR). This is the "build-to" baseline: the complete set of instructions for fabricating and assembling the spacecraft. After CDR, every drawing change, every specification update, every ICD revision is a formal change requiring CCB approval and may require re-verification of affected requirements.</div>
-      <div class="ht-desc" style="font-weight:600;margin-top:8px;color:#4a6274;font-size:0.82rem;">Established at: CDR</div>
+    <div class="bl-card">
+      <div class="bl-card-header">
+        <div class="bl-badge prod">
+          <div class="bl-badge-phase">Phase C/D</div>
+          <div class="bl-badge-review">CDR</div>
+        </div>
+        <div class="bl-hdr-text">
+          <div class="bl-title">Product Baseline</div>
+          <div class="bl-subtitle">Complete design documentation — the "build-to" package</div>
+        </div>
       </div>
+      <div class="bl-body">The complete design documentation for the spacecraft as it is to be built — detailed drawings, specifications, software design documents, interface control documents. Established at Critical Design Review (CDR). This is the "build-to" baseline: the complete set of instructions for fabricating and assembling the spacecraft. After CDR, every drawing change, every specification update, every ICD revision is a formal change requiring CCB approval and may require re-verification of affected requirements.</div>
     </div>
 
-    <div class="ht-item critical">
-      <div class="ht-year">Phase D (I&T)</div>
-      <div class="ht-content">
-      <div class="ht-mission">As-Built Baseline</div>
-      <div class="ht-desc">The documented record of the spacecraft as it was actually built — every component installed, every serial number recorded, every drawing revision verified as the basis for the physical hardware, every post-CDR change incorporated and documented. Built progressively throughout the I&T phase and formally audited at the Physical Configuration Audit before launch. This is what was launched. It is the primary reference for anomaly investigation throughout the mission lifetime.</div>
-      <div class="ht-desc" style="font-weight:600;margin-top:8px;color:#4a6274;font-size:0.82rem;">Audited at: PCA / Pre-Ship Review</div>
+    <div class="bl-card">
+      <div class="bl-card-header">
+        <div class="bl-badge asbuilt">
+          <div class="bl-badge-phase">Phase D</div>
+          <div class="bl-badge-review">PCA / PSR</div>
+        </div>
+        <div class="bl-hdr-text">
+          <div class="bl-title">As-Built Baseline</div>
+          <div class="bl-subtitle">What was actually built — every component, serial number, and change recorded</div>
+        </div>
       </div>
+      <div class="bl-body">The documented record of the spacecraft as it was actually built — every component installed, every serial number recorded, every drawing revision verified as the basis for the physical hardware, every post-CDR change incorporated and documented. Built progressively throughout the I&amp;T phase and formally audited at the Physical Configuration Audit before launch. This is what was launched. It is the primary reference for anomaly investigation throughout the mission lifetime.</div>
     </div>
 
-    <div class="ht-item positive">
-      <div class="ht-year">Phase E (Operations)</div>
-      <div class="ht-content">
-      <div class="ht-mission">Operational Baseline</div>
-      <div class="ht-desc">The as-built baseline as modified by on-orbit changes — software patches, parameter updates, operational procedure changes — accumulated over the mission lifetime. Every in-flight change is documented against the as-built baseline to maintain an accurate current-configuration record. The operational baseline is the reference for on-orbit anomaly investigation and for mission extension planning.</div>
-      <div class="ht-desc" style="font-weight:600;margin-top:8px;color:#4a6274;font-size:0.82rem;">Maintained throughout mission</div>
+    <div class="bl-card">
+      <div class="bl-card-header">
+        <div class="bl-badge ops">
+          <div class="bl-badge-phase">Phase E</div>
+          <div class="bl-badge-review">Mission Life</div>
+        </div>
+        <div class="bl-hdr-text">
+          <div class="bl-title">Operational Baseline</div>
+          <div class="bl-subtitle">As-built baseline plus all on-orbit changes — the living configuration record</div>
+        </div>
       </div>
+      <div class="bl-body">The as-built baseline as modified by on-orbit changes — software patches, parameter updates, operational procedure changes — accumulated over the mission lifetime. Every in-flight change is documented against the as-built baseline to maintain an accurate current-configuration record. The operational baseline is the reference for on-orbit anomaly investigation and for mission extension planning.</div>
     </div>
 
   </div>
-
   <!-- SECTION 3 -->
   <h2 class="sh" id="s3">3. Configuration Identification — Naming, Numbering, and Serialisation</h2>
 
