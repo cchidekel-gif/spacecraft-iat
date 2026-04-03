@@ -119,46 +119,51 @@
 
   <p>A <span class="kt">configuration baseline</span> is a formally approved description of the spacecraft's configuration at a specific point in the program — a snapshot that serves as the reference against which subsequent changes are measured and controlled. Baselines are established at formal program reviews and represent the program's collective agreement that the configuration as documented at that point is technically correct and approved for the next phase of development. Once established, a baseline can only be changed through the formal change control process.</p>
 
-  <div class="baseline-timeline">
+  <div class="history-timeline">
 
-    <div class="bt-item functional">
-      <div class="bt-dot"></div>
-      <div class="bt-phase">Phase A/B</div>
-      <div class="bt-title">Functional Baseline</div>
-      <div class="bt-desc">The highest-level description of what the spacecraft must do — the mission requirements and system-level performance specifications. Established at System Requirements Review (SRR). Defines the "what" without yet specifying the "how." All subsequent design work flows from this baseline. Changes to the functional baseline require the highest level of CCB authority and have the broadest downstream impact.</div>
-      <div class="bt-review">Established at: SRR</div>
+    <div class="ht-item notable">
+      <div class="ht-year">Phase A/B</div>
+      <div class="ht-content">
+      <div class="ht-mission">Functional Baseline</div>
+      <div class="ht-desc">The highest-level description of what the spacecraft must do — the mission requirements and system-level performance specifications. Established at System Requirements Review (SRR). Defines the "what" without yet specifying the "how." All subsequent design work flows from this baseline. Changes to the functional baseline require the highest level of CCB authority and have the broadest downstream impact.</div>
+      <div class="ht-desc" style="font-weight:600;margin-top:8px;color:#4a6274;font-size:0.82rem;">Established at: SRR</div>
+      </div>
     </div>
 
-    <div class="bt-item allocated">
-      <div class="bt-dot"></div>
-      <div class="bt-phase">Phase B/C</div>
-      <div class="bt-title">Allocated Baseline</div>
-      <div class="bt-desc">The decomposition of system-level requirements into subsystem and component specifications — the allocation of performance requirements to specific hardware elements. Established at Preliminary Design Review (PDR). Defines what each subsystem must do and how its performance is verified. Changes to the allocated baseline require CCB review and may require re-analysis of requirement margins across multiple subsystems.</div>
-      <div class="bt-review">Established at: PDR</div>
+    <div class="ht-item notable">
+      <div class="ht-year">Phase B/C</div>
+      <div class="ht-content">
+      <div class="ht-mission">Allocated Baseline</div>
+      <div class="ht-desc">The decomposition of system-level requirements into subsystem and component specifications — the allocation of performance requirements to specific hardware elements. Established at Preliminary Design Review (PDR). Defines what each subsystem must do and how its performance is verified. Changes to the allocated baseline require CCB review and may require re-analysis of requirement margins across multiple subsystems.</div>
+      <div class="ht-desc" style="font-weight:600;margin-top:8px;color:#4a6274;font-size:0.82rem;">Established at: PDR</div>
+      </div>
     </div>
 
-    <div class="bt-item product">
-      <div class="bt-dot"></div>
-      <div class="bt-phase">Phase C/D</div>
-      <div class="bt-title">Product Baseline</div>
-      <div class="bt-desc">The complete design documentation for the spacecraft as it is to be built — detailed drawings, specifications, software design documents, interface control documents. Established at Critical Design Review (CDR). This is the "build-to" baseline: the complete set of instructions for fabricating and assembling the spacecraft. After CDR, every drawing change, every specification update, every ICD revision is a formal change requiring CCB approval and may require re-verification of affected requirements.</div>
-      <div class="bt-review">Established at: CDR</div>
+    <div class="ht-item critical">
+      <div class="ht-year">Phase C/D</div>
+      <div class="ht-content">
+      <div class="ht-mission">Product Baseline</div>
+      <div class="ht-desc">The complete design documentation for the spacecraft as it is to be built — detailed drawings, specifications, software design documents, interface control documents. Established at Critical Design Review (CDR). This is the "build-to" baseline: the complete set of instructions for fabricating and assembling the spacecraft. After CDR, every drawing change, every specification update, every ICD revision is a formal change requiring CCB approval and may require re-verification of affected requirements.</div>
+      <div class="ht-desc" style="font-weight:600;margin-top:8px;color:#4a6274;font-size:0.82rem;">Established at: CDR</div>
+      </div>
     </div>
 
-    <div class="bt-item as-built">
-      <div class="bt-dot"></div>
-      <div class="bt-phase">Phase D (I&T)</div>
-      <div class="bt-title">As-Built Baseline</div>
-      <div class="bt-desc">The documented record of the spacecraft as it was actually built — every component installed, every serial number recorded, every drawing revision verified as the basis for the physical hardware, every post-CDR change incorporated and documented. Built progressively throughout the I&T phase and formally audited at the Physical Configuration Audit before launch. This is what was launched. It is the primary reference for anomaly investigation throughout the mission lifetime.</div>
-      <div class="bt-review">Audited at: PCA / Pre-Ship Review</div>
+    <div class="ht-item critical">
+      <div class="ht-year">Phase D (I&T)</div>
+      <div class="ht-content">
+      <div class="ht-mission">As-Built Baseline</div>
+      <div class="ht-desc">The documented record of the spacecraft as it was actually built — every component installed, every serial number recorded, every drawing revision verified as the basis for the physical hardware, every post-CDR change incorporated and documented. Built progressively throughout the I&T phase and formally audited at the Physical Configuration Audit before launch. This is what was launched. It is the primary reference for anomaly investigation throughout the mission lifetime.</div>
+      <div class="ht-desc" style="font-weight:600;margin-top:8px;color:#4a6274;font-size:0.82rem;">Audited at: PCA / Pre-Ship Review</div>
+      </div>
     </div>
 
-    <div class="bt-item ops">
-      <div class="bt-dot"></div>
-      <div class="bt-phase">Phase E (Operations)</div>
-      <div class="bt-title">Operational Baseline</div>
-      <div class="bt-desc">The as-built baseline as modified by on-orbit changes — software patches, parameter updates, operational procedure changes — accumulated over the mission lifetime. Every in-flight change is documented against the as-built baseline to maintain an accurate current-configuration record. The operational baseline is the reference for on-orbit anomaly investigation and for mission extension planning.</div>
-      <div class="bt-review">Maintained throughout mission</div>
+    <div class="ht-item positive">
+      <div class="ht-year">Phase E (Operations)</div>
+      <div class="ht-content">
+      <div class="ht-mission">Operational Baseline</div>
+      <div class="ht-desc">The as-built baseline as modified by on-orbit changes — software patches, parameter updates, operational procedure changes — accumulated over the mission lifetime. Every in-flight change is documented against the as-built baseline to maintain an accurate current-configuration record. The operational baseline is the reference for on-orbit anomaly investigation and for mission extension planning.</div>
+      <div class="ht-desc" style="font-weight:600;margin-top:8px;color:#4a6274;font-size:0.82rem;">Maintained throughout mission</div>
+      </div>
     </div>
 
   </div>
@@ -187,49 +192,49 @@
 
   <p>The <span class="kt">Configuration Control Board (CCB)</span> is the formal governance body responsible for evaluating and approving — or rejecting — all proposed changes to the configuration baseline. It is not an advisory committee. Its decisions are program-binding: no change to a baseline document or to flight hardware proceeds without CCB approval, and the CCB record is part of the configuration audit trail. The CCB's membership, authority levels, and decision process are defined in the program's CM plan.</p>
 
-  <div class="ccb-flow">
-    <div class="ccb-header">Engineering Change Request — CCB Process Flow</div>
-    <div class="ccb-steps">
-      <div class="ccb-step">
-        <div class="ccb-num">1</div>
-        <div class="ccb-content">
-          <div class="ccb-title">Engineering Change Request (ECR) Initiated</div>
-          <div class="ccb-desc">Any program member may initiate an ECR to propose a change to a baselined document or to flight hardware. The ECR must identify: the specific item being changed (part number, document number, revision); the reason for the change (anomaly correction, improvement, supplier issue, test finding); the proposed change description; and an initial assessment of the change's impact on interfaces, mass, power, and verification status.</div>
+  <div class="dr-flow">
+    <div class="dr-flow-header">Engineering Change Request — CCB Process Flow</div>
+    <div class="dr-steps">
+      <div class="dr-step">
+        <div class="dr-step-num">1</div>
+        <div style="padding:0;">
+          <div class="dr-step-title">Engineering Change Request (ECR) Initiated</div>
+          <div class="dr-step-desc">Any program member may initiate an ECR to propose a change to a baselined document or to flight hardware. The ECR must identify: the specific item being changed (part number, document number, revision); the reason for the change (anomaly correction, improvement, supplier issue, test finding); the proposed change description; and an initial assessment of the change's impact on interfaces, mass, power, and verification status.</div>
         </div>
       </div>
-      <div class="ccb-step">
-        <div class="ccb-num">2</div>
-        <div class="ccb-content">
-          <div class="ccb-title">Impact Assessment</div>
-          <div class="ccb-desc">The CCB assigns the ECR for technical impact assessment. The assessment must cover: all documents affected by the change; all hardware items affected; all requirements whose verification may be affected; mass, power, link budget, and thermal margin impacts; schedule impact; cost impact; and the effect on any currently open DRs. The assessment is performed by the affected engineering disciplines, not by the person who originated the ECR.</div>
+      <div class="dr-step">
+        <div class="dr-step-num">2</div>
+        <div style="padding:0;">
+          <div class="dr-step-title">Impact Assessment</div>
+          <div class="dr-step-desc">The CCB assigns the ECR for technical impact assessment. The assessment must cover: all documents affected by the change; all hardware items affected; all requirements whose verification may be affected; mass, power, link budget, and thermal margin impacts; schedule impact; cost impact; and the effect on any currently open DRs. The assessment is performed by the affected engineering disciplines, not by the person who originated the ECR.</div>
         </div>
       </div>
-      <div class="ccb-step">
-        <div class="ccb-num">3</div>
-        <div class="ccb-content">
-          <div class="ccb-title">CCB Review and Decision</div>
-          <div class="ccb-desc">The CCB reviews the ECR and its impact assessment at a formal board meeting. The board may approve, reject, or request additional information. Approval requires that the change is technically sound, that all impacts have been adequately assessed, that any required re-verification is identified and planned, and that the change is within the board's authority level. Changes above the board's authority level are escalated to the next-higher CCB tier which is often the Program Manager or Cheif Engineer.</div>
+      <div class="dr-step">
+        <div class="dr-step-num">3</div>
+        <div style="padding:0;">
+          <div class="dr-step-title">CCB Review and Decision</div>
+          <div class="dr-step-desc">The CCB reviews the ECR and its impact assessment at a formal board meeting. The board may approve, reject, or request additional information. Approval requires that the change is technically sound, that all impacts have been adequately assessed, that any required re-verification is identified and planned, and that the change is within the board's authority level. Changes above the board's authority level are escalated to the next-higher CCB tier which is often the Program Manager or Cheif Engineer.</div>
         </div>
       </div>
-      <div class="ccb-step">
-        <div class="ccb-num">4</div>
-        <div class="ccb-content">
-          <div class="ccb-title">Engineering Change Notice (ECN) Released</div>
-          <div class="ccb-desc">An approved ECR is released as an Engineering Change Notice — the formal authorization to implement the change. The ECN is the work order for the change: it specifies exactly what is to be done, which documents are to be revised, which hardware items are to be modified, and what verification is required to close the change. No implementation of the change begins before the ECN is released. Implementing a change before CCB approval is a serious CM violation regardless of how technically straightforward the change appears.</div>
+      <div class="dr-step">
+        <div class="dr-step-num">4</div>
+        <div style="padding:0;">
+          <div class="dr-step-title">Engineering Change Notice (ECN) Released</div>
+          <div class="dr-step-desc">An approved ECR is released as an Engineering Change Notice — the formal authorization to implement the change. The ECN is the work order for the change: it specifies exactly what is to be done, which documents are to be revised, which hardware items are to be modified, and what verification is required to close the change. No implementation of the change begins before the ECN is released. Implementing a change before CCB approval is a serious CM violation regardless of how technically straightforward the change appears.</div>
         </div>
       </div>
-      <div class="ccb-step">
-        <div class="ccb-num">5</div>
-        <div class="ccb-content">
-          <div class="ccb-title">Implementation and Verification</div>
-          <div class="ccb-desc">The change is implemented per the ECN. Required re-verification activities are executed and their results documented. All affected documents are updated to their new revision levels. The hardware traveller records the ECN number, the work performed, and the verification results. The CSA database is updated to reflect the new configuration.</div>
+      <div class="dr-step">
+        <div class="dr-step-num">5</div>
+        <div style="padding:0;">
+          <div class="dr-step-title">Implementation and Verification</div>
+          <div class="dr-step-desc">The change is implemented per the ECN. Required re-verification activities are executed and their results documented. All affected documents are updated to their new revision levels. The hardware traveller records the ECN number, the work performed, and the verification results. The CSA database is updated to reflect the new configuration.</div>
         </div>
       </div>
-      <div class="ccb-step">
-        <div class="ccb-num">6</div>
-        <div class="ccb-content">
-          <div class="ccb-title">ECN Closure and CSA Update</div>
-          <div class="ccb-desc">The ECN is formally closed when all required implementation and verification actions are complete and documented. The CCB confirms closure. The as-built configuration record is updated. The change is now part of the established baseline. Any future changes to the same item start a new ECR — they do not informally reopen the closed ECN.</div>
+      <div class="dr-step">
+        <div class="dr-step-num">6</div>
+        <div style="padding:0;">
+          <div class="dr-step-title">ECN Closure and CSA Update</div>
+          <div class="dr-step-desc">The ECN is formally closed when all required implementation and verification actions are complete and documented. The CCB confirms closure. The as-built configuration record is updated. The change is now part of the established baseline. Any future changes to the same item start a new ECR — they do not informally reopen the closed ECN.</div>
         </div>
       </div>
     </div>
@@ -251,7 +256,7 @@
 
   <p><span class="kt">Configuration Status Accounting (CSA)</span> is the ongoing record of the spacecraft's current configuration: a continuously updated inventory of every configuration item, documenting its current part number, serial number, drawing revision, installation location, and the complete history of changes that brought it to its current state. CSA is not a one-time document — it is a database that must be updated with every change, every installation, every removal, and every verification activity.</p>
 
-  <table class="csa-table">
+  <table class="doc-table">
     <thead>
       <tr>
         <th>CSA Element</th>
@@ -298,40 +303,40 @@
 
   <p>The <span class="kt">traveller</span> — also called a router, a work order packet, or a build record depending on the program — is the document that accompanies a specific piece of hardware through every step of its assembly, test, and inspection history. It is the operational heart of the as-built configuration record: the place where the action of building and testing the spacecraft is recorded in real time, by the people performing the work, with signatures and timestamps that create a legally and technically auditable chain of custody.</p>
 
-  <div class="traveller">
-    <div class="traveller-header">Anatomy of a Hardware Traveller — Key Elements</div>
-    <div class="traveller-rows">
-      <div class="traveller-row">
-        <div class="traveller-field">Hardware Identity</div>
-        <div class="traveller-content"><strong>Part number, serial number, drawing revision, and lot code</strong> of the item being built or tested. Verified at the start of every operation. If the hardware identity on the traveller does not match the hardware in hand, work stops immediately pending resolution.</div>
+  <div class="protocol-grid">
+    <div class="dr-flow-header">Anatomy of a Hardware Traveller — Key Elements</div>
+    <div style="display:grid;gap:2px;">
+      <div class="protocol-card" style="margin-bottom:2px;">
+        <div class="protocol-card-header" style="min-width:140px;">Hardware Identity</div>
+        <div class="protocol-body"><strong>Part number, serial number, drawing revision, and lot code</strong> of the item being built or tested. Verified at the start of every operation. If the hardware identity on the traveller does not match the hardware in hand, work stops immediately pending resolution.</div>
       </div>
-      <div class="traveller-row">
-        <div class="traveller-field">Work Instructions</div>
-        <div class="traveller-content">Reference to the <strong>specific procedure, drawing, and revision</strong> that governs each step. Not paraphrased — referenced by document number and revision so that the exact instructions are traceable. Steps are marked complete only when the specified procedure has been executed as written, not as interpreted.</div>
+      <div class="protocol-card" style="margin-bottom:2px;">
+        <div class="protocol-card-header" style="min-width:140px;">Work Instructions</div>
+        <div class="protocol-body">Reference to the <strong>specific procedure, drawing, and revision</strong> that governs each step. Not paraphrased — referenced by document number and revision so that the exact instructions are traceable. Steps are marked complete only when the specified procedure has been executed as written, not as interpreted.</div>
       </div>
-      <div class="traveller-row">
-        <div class="traveller-field">Step Sign-Off</div>
-        <div class="traveller-content">Each step is signed and dated by the <strong>person who performed it</strong>. For critical or irreversible steps, a second signature from an independent inspector or QA representative is required. No step may be retroactively signed — signatures are contemporaneous with the work. Blank signature blocks at a final review indicate incomplete work.</div>
+      <div class="protocol-card" style="margin-bottom:2px;">
+        <div class="protocol-card-header" style="min-width:140px;">Step Sign-Off</div>
+        <div class="protocol-body">Each step is signed and dated by the <strong>person who performed it</strong>. For critical or irreversible steps, a second signature from an independent inspector or QA representative is required. No step may be retroactively signed — signatures are contemporaneous with the work. Blank signature blocks at a final review indicate incomplete work.</div>
       </div>
-      <div class="traveller-row">
-        <div class="traveller-field">Torque Records</div>
-        <div class="traveller-content">For fasteners with specified torque requirements — structural fasteners, electrical connector retaining screws — <strong>the actual torque applied is recorded</strong>, not simply "torque applied per drawing." The calibration certificate number of the torque tool used is recorded. Untorqued connectors and fasteners have caused anomalies in flight; the torque record is the evidence that the specified torque was applied.</div>
+      <div class="protocol-card" style="margin-bottom:2px;">
+        <div class="protocol-card-header" style="min-width:140px;">Torque Records</div>
+        <div class="protocol-body">For fasteners with specified torque requirements — structural fasteners, electrical connector retaining screws — <strong>the actual torque applied is recorded</strong>, not simply "torque applied per drawing." The calibration certificate number of the torque tool used is recorded. Untorqued connectors and fasteners have caused anomalies in flight; the torque record is the evidence that the specified torque was applied.</div>
       </div>
-      <div class="traveller-row">
-        <div class="traveller-field">Materials Used</div>
-        <div class="traveller-content"><strong>Lot numbers and expiry dates</strong> of all materials — adhesives, potting compounds, lubricants, conformal coatings — used during assembly. Expired or out-of-certification materials may not be used on flight hardware. Recording the lot number enables traceability if a material later shows a quality issue.</div>
+      <div class="protocol-card" style="margin-bottom:2px;">
+        <div class="protocol-card-header" style="min-width:140px;">Materials Used</div>
+        <div class="protocol-body"><strong>Lot numbers and expiry dates</strong> of all materials — adhesives, potting compounds, lubricants, conformal coatings — used during assembly. Expired or out-of-certification materials may not be used on flight hardware. Recording the lot number enables traceability if a material later shows a quality issue.</div>
       </div>
-      <div class="traveller-row">
-        <div class="traveller-field">Anomaly Notation</div>
-        <div class="traveller-content">Any observation that deviates from the expected — a connector that is harder to seat than normal, a torque value that is at the low end of the specified range, a visual indication that is different from the acceptance standard photograph — is <strong>documented in the traveller and entered as a DR</strong>. The traveller is not the place to decide that an anomaly is acceptable; it is the place to record that it was observed.</div>
+      <div class="protocol-card" style="margin-bottom:2px;">
+        <div class="protocol-card-header" style="min-width:140px;">Anomaly Notation</div>
+        <div class="protocol-body">Any observation that deviates from the expected — a connector that is harder to seat than normal, a torque value that is at the low end of the specified range, a visual indication that is different from the acceptance standard photograph — is <strong>documented in the traveller and entered as a DR</strong>. The traveller is not the place to decide that an anomaly is acceptable; it is the place to record that it was observed.</div>
       </div>
-      <div class="traveller-row">
-        <div class="traveller-field">Test Data Reference</div>
-        <div class="traveller-content">References to <strong>test data files and test reports</strong> generated during testing of the item. The traveller does not contain the test data itself — it contains pointers to where it is stored, with document numbers sufficient to retrieve the data. The test report reference, combined with the serial number, creates the link between the physical item and its performance record.</div>
+      <div class="protocol-card" style="margin-bottom:2px;">
+        <div class="protocol-card-header" style="min-width:140px;">Test Data Reference</div>
+        <div class="protocol-body">References to <strong>test data files and test reports</strong> generated during testing of the item. The traveller does not contain the test data itself — it contains pointers to where it is stored, with document numbers sufficient to retrieve the data. The test report reference, combined with the serial number, creates the link between the physical item and its performance record.</div>
       </div>
-      <div class="traveller-row">
-        <div class="traveller-field">Cleanliness and ESD</div>
-        <div class="traveller-content"><strong>Cleanroom class, contamination survey results, and ESD precaution compliance</strong> recorded for every operation conducted in a controlled environment. The contamination record is the evidence that the cleanroom protocol was followed; it is also the first reference when a contamination anomaly is discovered later in the program.</div>
+      <div class="protocol-card" style="margin-bottom:2px;">
+        <div class="protocol-card-header" style="min-width:140px;">Cleanliness and ESD</div>
+        <div class="protocol-body"><strong>Cleanroom class, contamination survey results, and ESD precaution compliance</strong> recorded for every operation conducted in a controlled environment. The contamination record is the evidence that the cleanroom protocol was followed; it is also the first reference when a contamination anomaly is discovered later in the program.</div>
       </div>
     </div>
   </div>
@@ -385,40 +390,40 @@
   <!-- SECTION 9 -->
   <h2 class="sh" id="s9">9. When CM Breaks Down — The Failure Modes</h2>
 
-  <div class="cm-risk-grid">
-    <div class="cmr-card">
-      <div class="cmr-header">
-        <span class="cmr-icon">🔀</span>
-        <div class="cmr-title">The Unapproved Change</div>
+  <div class="failure-grid">
+    <div class="failure-card">
+      <div class="failure-card-top" style="background:var(--ink);">
+        <span style="font-size:1.4rem;flex-shrink:0;">🔀</span>
+        <div style="font-weight:700;font-size:0.95rem;color:var(--paper);">The Unapproved Change</div>
       </div>
-      <div class="cmr-body">
+      <div class="failure-card-body">
         <p>An engineer or technician makes a change to the hardware or software without going through the CCB process — a wire re-route "to make integration easier," a connector substitution "because the original is out of stock," a software parameter update "to fix an obvious bug." The change may be technically correct. But it is not in the CM record. It will not appear in the PCA. It will not be visible when the anomaly investigation asks "what changed?" The unapproved change is the most common CM failure mode and the one most likely to directly cause investigation delays and incorrect root cause conclusions.</p>
       </div>
     </div>
-    <div class="cmr-card">
-      <div class="cmr-header">
-        <span class="cmr-icon">📦</span>
-        <div class="cmr-title">Serial Number Confusion</div>
+    <div class="failure-card">
+      <div class="failure-card-top" style="background:var(--ink);">
+        <span style="font-size:1.4rem;flex-shrink:0;">📦</span>
+        <div style="font-weight:700;font-size:0.95rem;color:var(--paper);">Serial Number Confusion</div>
       </div>
-      <div class="cmr-body">
+      <div class="failure-card-body">
         <p>Two components of the same part number are interchanged during a maintenance operation, and the serialised part records are not updated. The CSA database now records the wrong serial number at each location. When one of the components is later found to have a performance anomaly in its test history, the investigation cannot determine from the CSA record whether the anomalous component is the one in location A or location B. Resolution requires physical inspection and potentially disassembly. In programs with many serialised components, serial number confusion during rework is a persistent source of CSA errors that requires disciplined incoming and outgoing inspections at every maintenance operation.</p>
       </div>
     </div>
-    <div class="cmr-card">
-      <div class="cmr-header">
-        <span class="cmr-icon">📝</span>
-        <div class="cmr-title">The Retroactive Traveller</div>
+    <div class="failure-card">
+      <div class="failure-card-top" style="background:var(--ink);">
+        <span style="font-size:1.4rem;flex-shrink:0;">📝</span>
+        <div style="font-weight:700;font-size:0.95rem;color:var(--paper);">The Retroactive Traveller</div>
       </div>
-      <div class="cmr-body">
+      <div class="failure-card-body">
         <p>Work is performed without contemporaneous traveller sign-off — technicians complete multiple steps and sign them all at the end of the work session, or a week after the work was done. The traveller record no longer reflects what was done; it reflects what the technician remembers or believes was done. This is indistinguishable in the record from correct practice unless the timestamps reveal the anomaly. A traveller that was signed in bulk at the end of a day provides no evidence that each step was actually performed when and as specified. Some programs have found, during PCA, that traveller entries were backdated — a discovery that invalidates the entire as-built record for the affected hardware.</p>
       </div>
     </div>
-    <div class="cmr-card">
-      <div class="cmr-header">
-        <span class="cmr-icon">🏃</span>
-        <div class="cmr-title">The "Obvious" Change</div>
+    <div class="failure-card">
+      <div class="failure-card-top" style="background:var(--ink);">
+        <span style="font-size:1.4rem;flex-shrink:0;">🏃</span>
+        <div style="font-weight:700;font-size:0.95rem;color:var(--paper);">The "Obvious" Change</div>
       </div>
-      <div class="cmr-body">
+      <div class="failure-card-body">
         <p>A change that appears so obviously correct, so trivially minor, that the engineer implementing it judges it unnecessary to go through the CCB process. This failure mode is correlated with schedule pressure: when the program is behind, the CCB process is perceived as a bottleneck, and small changes begin to be implemented without CCB review. Each individual bypass may be technically defensible. Collectively, they erode the integrity of the configuration record and remove the oversight mechanism that catches the occasional change that is not as obviously benign as it appears. The connector substitution story in §3 is a canonical example.</p>
       </div>
     </div>
