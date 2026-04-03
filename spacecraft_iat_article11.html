@@ -369,42 +369,62 @@
 
   <p>The <span class="kt">traveller</span> — also called a router, a work order packet, or a build record depending on the program — is the document that accompanies a specific piece of hardware through every step of its assembly, test, and inspection history. It is the operational heart of the as-built configuration record: the place where the action of building and testing the spacecraft is recorded in real time, by the people performing the work, with signatures and timestamps that create a legally and technically auditable chain of custody.</p>
 
-  <div class="protocol-grid">
-    <div class="dr-flow-header">Anatomy of a Hardware Traveller — Key Elements</div>
-    <div style="display:grid;gap:2px;">
-      <div class="protocol-card" style="margin-bottom:2px;">
-        <div class="protocol-card-header" style="min-width:140px;">Hardware Identity</div>
-        <div class="protocol-body"><strong>Part number, serial number, drawing revision, and lot code</strong> of the item being built or tested. Verified at the start of every operation. If the hardware identity on the traveller does not match the hardware in hand, work stops immediately pending resolution.</div>
-      </div>
-      <div class="protocol-card" style="margin-bottom:2px;">
-        <div class="protocol-card-header" style="min-width:140px;">Work Instructions</div>
-        <div class="protocol-body">Reference to the <strong>specific procedure, drawing, and revision</strong> that governs each step. Not paraphrased — referenced by document number and revision so that the exact instructions are traceable. Steps are marked complete only when the specified procedure has been executed as written, not as interpreted.</div>
-      </div>
-      <div class="protocol-card" style="margin-bottom:2px;">
-        <div class="protocol-card-header" style="min-width:140px;">Step Sign-Off</div>
-        <div class="protocol-body">Each step is signed and dated by the <strong>person who performed it</strong>. For critical or irreversible steps, a second signature from an independent inspector or QA representative is required. No step may be retroactively signed — signatures are contemporaneous with the work. Blank signature blocks at a final review indicate incomplete work.</div>
-      </div>
-      <div class="protocol-card" style="margin-bottom:2px;">
-        <div class="protocol-card-header" style="min-width:140px;">Torque Records</div>
-        <div class="protocol-body">For fasteners with specified torque requirements — structural fasteners, electrical connector retaining screws — <strong>the actual torque applied is recorded</strong>, not simply "torque applied per drawing." The calibration certificate number of the torque tool used is recorded. Untorqued connectors and fasteners have caused anomalies in flight; the torque record is the evidence that the specified torque was applied.</div>
-      </div>
-      <div class="protocol-card" style="margin-bottom:2px;">
-        <div class="protocol-card-header" style="min-width:140px;">Materials Used</div>
-        <div class="protocol-body"><strong>Lot numbers and expiry dates</strong> of all materials — adhesives, potting compounds, lubricants, conformal coatings — used during assembly. Expired or out-of-certification materials may not be used on flight hardware. Recording the lot number enables traceability if a material later shows a quality issue.</div>
-      </div>
-      <div class="protocol-card" style="margin-bottom:2px;">
-        <div class="protocol-card-header" style="min-width:140px;">Anomaly Notation</div>
-        <div class="protocol-body">Any observation that deviates from the expected — a connector that is harder to seat than normal, a torque value that is at the low end of the specified range, a visual indication that is different from the acceptance standard photograph — is <strong>documented in the traveller and entered as a DR</strong>. The traveller is not the place to decide that an anomaly is acceptable; it is the place to record that it was observed.</div>
-      </div>
-      <div class="protocol-card" style="margin-bottom:2px;">
-        <div class="protocol-card-header" style="min-width:140px;">Test Data Reference</div>
-        <div class="protocol-body">References to <strong>test data files and test reports</strong> generated during testing of the item. The traveller does not contain the test data itself — it contains pointers to where it is stored, with document numbers sufficient to retrieve the data. The test report reference, combined with the serial number, creates the link between the physical item and its performance record.</div>
-      </div>
-      <div class="protocol-card" style="margin-bottom:2px;">
-        <div class="protocol-card-header" style="min-width:140px;">Cleanliness and ESD</div>
-        <div class="protocol-body"><strong>Cleanroom class, contamination survey results, and ESD precaution compliance</strong> recorded for every operation conducted in a controlled environment. The contamination record is the evidence that the cleanroom protocol was followed; it is also the first reference when a contamination anomaly is discovered later in the program.</div>
-      </div>
+ <style>
+    .trav-anatomy{margin:2em 0;border:1px solid var(--rule);overflow:hidden;}
+    .trav-anatomy-header{background:var(--ink);color:var(--paper);padding:12px 20px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;}
+    .trav-item{display:grid;grid-template-columns:160px 1fr;border-bottom:1px solid var(--rule);}
+    .trav-item:last-child{border-bottom:none;}
+    .trav-label{padding:14px 16px;background:var(--ink);display:flex;align-items:flex-start;font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:700;color:var(--paper);line-height:1.4;}
+    .trav-item:nth-child(even) .trav-label{background:#1e1c18;}
+    .trav-desc{padding:14px 18px;background:var(--white);font-size:0.86rem;color:#333;line-height:1.65;font-weight:300;}
+    .trav-item:nth-child(even) .trav-desc{background:var(--light);}
+    .trav-desc strong{font-weight:600;color:var(--ink);}
+    @media(max-width:600px){.trav-item{grid-template-columns:1fr;}.trav-label{padding:10px 16px;font-size:0.85rem;}}
+  </style>
+
+  <div class="trav-anatomy">
+    <div class="trav-anatomy-header">Anatomy of a Hardware Traveller — Key Elements</div>
+
+    <div class="trav-item">
+      <div class="trav-label">Hardware Identity</div>
+      <div class="trav-desc"><strong>Part number, serial number, drawing revision, and lot code</strong> of the item being built or tested. Verified at the start of every operation. If the hardware identity on the traveller does not match the hardware in hand, work stops immediately pending resolution.</div>
     </div>
+
+    <div class="trav-item">
+      <div class="trav-label">Work Instructions</div>
+      <div class="trav-desc">Reference to the <strong>specific procedure, drawing, and revision</strong> that governs each step. Not paraphrased — referenced by document number and revision so that the exact instructions are traceable. Steps are marked complete only when the specified procedure has been executed as written, not as interpreted.</div>
+    </div>
+
+    <div class="trav-item">
+      <div class="trav-label">Step Sign-Off</div>
+      <div class="trav-desc">Each step is signed and dated by the <strong>person who performed it</strong>. For critical or irreversible steps, a second signature from an independent inspector or QA representative is required. No step may be retroactively signed — signatures are contemporaneous with the work. Blank signature blocks at a final review indicate incomplete work.</div>
+    </div>
+
+    <div class="trav-item">
+      <div class="trav-label">Torque Records</div>
+      <div class="trav-desc">For fasteners with specified torque requirements — structural fasteners, electrical connector retaining screws — <strong>the actual torque applied is recorded</strong>, not simply "torque applied per drawing." The calibration certificate number of the torque tool used is recorded. Untorqued connectors and fasteners have caused anomalies in flight; the torque record is the evidence that the specified torque was applied.</div>
+    </div>
+
+    <div class="trav-item">
+      <div class="trav-label">Materials Used</div>
+      <div class="trav-desc"><strong>Lot numbers and expiry dates</strong> of all materials — adhesives, potting compounds, lubricants, conformal coatings — used during assembly. Expired or out-of-certification materials may not be used on flight hardware. Recording the lot number enables traceability if a material later shows a quality issue.</div>
+    </div>
+
+    <div class="trav-item">
+      <div class="trav-label">Anomaly Notation</div>
+      <div class="trav-desc">Any observation that deviates from the expected — a connector that is harder to seat than normal, a torque value that is at the low end of the specified range, a visual indication that is different from the acceptance standard photograph — is <strong>documented in the traveller and entered as a DR</strong>. The traveller is not the place to decide that an anomaly is acceptable; it is the place to record that it was observed.</div>
+    </div>
+
+    <div class="trav-item">
+      <div class="trav-label">Test Data Reference</div>
+      <div class="trav-desc">References to <strong>test data files and test reports</strong> generated during testing of the item. The traveller does not contain the test data itself — it contains pointers to where it is stored, with document numbers sufficient to retrieve the data. The test report reference, combined with the serial number, creates the link between the physical item and its performance record.</div>
+    </div>
+
+    <div class="trav-item">
+      <div class="trav-label">Cleanliness and ESD</div>
+      <div class="trav-desc"><strong>Cleanroom class, contamination survey results, and ESD precaution compliance</strong> recorded for every operation conducted in a controlled environment. The contamination record is the evidence that the cleanroom protocol was followed; it is also the first reference when a contamination anomaly is discovered later in the program.</div>
+    </div>
+
   </div>
 
   <p>The traveller's authority derives entirely from the accuracy and completeness with which it is maintained. A traveller with blank fields, retroactive entries, or pencilled corrections is a traveller that cannot be trusted — and a traveller that cannot be trusted is a gap in the as-built record that must be resolved, not accepted. Programs that treat traveller maintenance as a formality to be completed after the fact rather than a discipline to be performed concurrent with the work produce as-built records that are reconstructions rather than records.</p>
