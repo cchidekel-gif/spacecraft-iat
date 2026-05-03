@@ -118,16 +118,89 @@
   <p>The quality assurance organization must be independent of the engineering and production organizations whose work it is reviewing. This independence is not an organizational formality — it is the structural safeguard against the pressure that every program experiences to accept marginal work, close anomalies without adequate investigation, and approve waivers that should not be approved when schedule and cost are under pressure.</p>
   <p>In practice, QA independence means that the QA manager reports to the program manager or to the company's quality director — not to the chief engineer or the I&T manager. The QA organization has the authority to withhold approval of work, to require repeat inspections, to issue hold tags that stop work on specific operations, and to escalate quality concerns to the program manager without going through the engineering management chain. These authorities are not ceremonial. A QA organization that does not have an independent reporting chain, or that routinely concurs with engineering judgments under schedule pressure without exercising its own technical assessment, is not performing its function. It is worse than having no QA at all — because it gives the program the appearance of independent quality oversight without actually providing it. Decisions pass through what looks like an independent check but is in fact a rubber stamp, and the program proceeds with a false confidence that its quality processes are functioning. Independence means that QA will, when the evidence warrants it, say no — and that the organization's structure ensures that raising a quality concern carries no more professional risk than reporting a test result.</p>
 
-  <h2 class="sh" id="s3">3. The Four Principal Inspection Types</h2>
-  <table class="insp-table">
-    <thead><tr><th>Inspection Type</th><th>When Performed</th><th>What Is Verified</th><th>Who Performs</th></tr></thead>
-    <tbody>
-      <tr><td>In-Process Inspection</td><td>During the work operation, at defined points in the procedure where specific conditions must be verified before proceeding</td><td>That the work in progress conforms to the procedure requirements at the inspection point — correct component installed, correct torque applied, correct orientation achieved, no foreign object debris introduced</td><td>Typically the performing technician (self-inspection) supplemented by an independent QA inspector at mandatory inspection points. Both signatures required in the traveler.</td></tr>
-      <tr><td>Receiving Inspection</td><td>At delivery of any component, material, or assembly to the integration facility from an external supplier or internal manufacturing source</td><td>That the delivered item conforms to the purchase order or internal release requirements: correct part number and revision, correct serial number if serialized, conforming certification documentation, no shipping damage, storage requirements met</td><td>Receiving inspection QA inspector, typically supported by the receiving organization's incoming inspection procedure. Items that fail receiving inspection are segregated and placed on quarantine hold pending disposition.</td></tr>
-      <tr><td>First Article Inspection (FAI)</td><td>On the first completed article of a new design, or the first article built after a significant process or design change, before subsequent articles are built</td><td>Complete dimensional verification that the article conforms to all drawing requirements; material certification verification; process documentation completeness; identification marking correctness. More comprehensive than subsequent acceptance inspections.</td><td>QA inspector and, for critical items, an independent dimensional inspection team. Results documented in a First Article Inspection Report that remains in the configuration record.</td></tr>
-      <tr><td>Closeout Inspection</td><td>Immediately before any area of the spacecraft is closed out — made inaccessible — by structural assembly, harness installation, or thermal blanket application</td><td>No foreign object debris (FOD) in the area being closed; all required work in the area is complete and signed off; all tools, test equipment, and personal items removed; inhibit status correct; no open DRs that require access to the area being closed</td><td>QA inspector with sign-off authority for the specific area. For particularly sensitive areas (e.g., propellant lines, optical paths), an additional independent witness may be required. The closeout inspection record is part of the permanent configuration record.</td></tr>
-    </tbody>
-  </table>
+<h2 class="sh" id="s3">3. The Four Principal Inspection Types</h2>
+
+  <style>
+    .insp-cards{margin:2em 0;display:grid;grid-template-columns:1fr;gap:0;}
+    .insp-card{border:1px solid var(--rule);border-bottom:none;overflow:hidden;}
+    .insp-card:last-child{border-bottom:1px solid var(--rule);}
+    .insp-card-header{display:flex;align-items:stretch;}
+    .insp-badge{width:90px;display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:10px 8px;font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.1em;text-transform:uppercase;text-align:center;color:rgba(255,255,255,0.9);line-height:1.4;}
+    .insp-badge.ip{background:#2e7d52;}
+    .insp-badge.ri{background:#2e5a7a;}
+    .insp-badge.fai{background:#b87420;}
+    .insp-badge.co{background:#7a2e2e;}
+    .insp-hdr-text{flex:1;padding:12px 18px;background:var(--ink);}
+    .insp-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--paper);margin-bottom:3px;}
+    .insp-when{font-size:0.82rem;color:#9a9080;font-style:italic;font-weight:300;line-height:1.5;}
+    .insp-body{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+    .insp-cell{padding:14px 18px;border-right:1px solid var(--rule);background:var(--white);}
+    .insp-cell:last-child{border-right:none;}
+    .insp-card:nth-child(even) .insp-cell{background:var(--light);}
+    .insp-cell-label{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+    .insp-cell p{font-size:0.84rem;color:#333;line-height:1.6;font-weight:300;margin:0;}
+    @media(max-width:680px){.insp-body{grid-template-columns:1fr;}.insp-cell{border-right:none;border-bottom:1px solid var(--rule);}.insp-cell:last-child{border-bottom:none;}}
+  </style>
+
+  <div class="insp-cards">
+
+    <div class="insp-card">
+      <div class="insp-card-header">
+        <div class="insp-badge ip">In-<br>Process</div>
+        <div class="insp-hdr-text">
+          <div class="insp-title">In-Process Inspection</div>
+          <div class="insp-when">During the work operation, at defined points in the procedure where specific conditions must be verified before proceeding</div>
+        </div>
+      </div>
+      <div class="insp-body">
+        <div class="insp-cell"><div class="insp-cell-label">What Is Verified</div><p>That the work in progress conforms to the procedure requirements at the inspection point — correct component installed, correct torque applied, correct orientation achieved, no foreign object debris introduced.</p></div>
+        <div class="insp-cell"><div class="insp-cell-label">Who Performs</div><p>Typically the performing technician (self-inspection) supplemented by an independent QA inspector at mandatory inspection points. Both signatures required in the traveller.</p></div>
+      </div>
+    </div>
+
+    <div class="insp-card">
+      <div class="insp-card-header">
+        <div class="insp-badge ri">Receiving</div>
+        <div class="insp-hdr-text">
+          <div class="insp-title">Receiving Inspection</div>
+          <div class="insp-when">At delivery of any component, material, or assembly to the integration facility from an external supplier or internal manufacturing source</div>
+        </div>
+      </div>
+      <div class="insp-body">
+        <div class="insp-cell"><div class="insp-cell-label">What Is Verified</div><p>That the delivered item conforms to the purchase order or internal release requirements: correct part number and revision, correct serial number if serialized, conforming certification documentation, no shipping damage, storage requirements met.</p></div>
+        <div class="insp-cell"><div class="insp-cell-label">Who Performs</div><p>Receiving inspection QA inspector, typically supported by the receiving organization's incoming inspection procedure. Items that fail receiving inspection are segregated and placed on quarantine hold pending disposition.</p></div>
+      </div>
+    </div>
+
+    <div class="insp-card">
+      <div class="insp-card-header">
+        <div class="insp-badge fai">First<br>Article</div>
+        <div class="insp-hdr-text">
+          <div class="insp-title">First Article Inspection (FAI)</div>
+          <div class="insp-when">On the first completed article of a new design, or the first article built after a significant process or design change, before subsequent articles are built</div>
+        </div>
+      </div>
+      <div class="insp-body">
+        <div class="insp-cell"><div class="insp-cell-label">What Is Verified</div><p>Complete dimensional verification that the article conforms to all drawing requirements; material certification verification; process documentation completeness; identification marking correctness. More comprehensive than subsequent acceptance inspections.</p></div>
+        <div class="insp-cell"><div class="insp-cell-label">Who Performs</div><p>QA inspector and, for critical items, an independent dimensional inspection team. Results documented in a First Article Inspection Report that remains in the configuration record.</p></div>
+      </div>
+    </div>
+
+    <div class="insp-card">
+      <div class="insp-card-header">
+        <div class="insp-badge co">Close-<br>out</div>
+        <div class="insp-hdr-text">
+          <div class="insp-title">Closeout Inspection</div>
+          <div class="insp-when">Immediately before any area of the spacecraft is closed out — made inaccessible — by structural assembly, harness installation, or thermal blanket application</div>
+        </div>
+      </div>
+      <div class="insp-body">
+        <div class="insp-cell"><div class="insp-cell-label">What Is Verified</div><p>No foreign object debris (FOD) in the area being closed; all required work in the area is complete and signed off; all tools, test equipment, and personal items removed; inhibit status correct; no open DRs that require access to the area being closed.</p></div>
+        <div class="insp-cell"><div class="insp-cell-label">Who Performs</div><p>QA inspector with sign-off authority for the specific area. For particularly sensitive areas (e.g., propellant lines, optical paths), an additional independent witness may be required. The closeout inspection record is part of the permanent configuration record.</p></div>
+      </div>
+    </div>
+
+  </div>
 
   <h2 class="sh" id="s4">4. Mandatory Inspection Points and Hold Points</h2>
   <p>Not all inspection points in a procedure are equal. A <span class="kt">Mandatory Inspection Point (MIP)</span> is a designated step in a procedure where a QA inspector must be physically present and must independently verify the specified condition before the work can proceed. The inspector's signature is required in the traveler at the MIP. If the inspector is not available, work stops until the inspector arrives — the MIP is not satisfied by a retrospective inspection after the operation has continued.</p>
