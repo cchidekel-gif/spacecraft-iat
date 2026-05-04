@@ -125,7 +125,7 @@
     .insp-card{border:1px solid var(--rule);border-bottom:none;overflow:hidden;}
     .insp-card:last-child{border-bottom:1px solid var(--rule);}
     .insp-card-header{display:flex;align-items:stretch;}
-    .insp-badge{width:90px;display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:10px 8px;font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.1em;text-transform:uppercase;text-align:center;color:rgba(255,255,255,0.9);line-height:1.4;}
+   .insp-badge{width:120px;display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:12px 10px;font-family:'Source Serif 4',serif;font-size:0.82rem;font-weight:600;text-align:center;color:rgba(255,255,255,0.95);line-height:1.35;}
     .insp-badge.ip{background:#2e7d52;}
     .insp-badge.ri{background:#2e5a7a;}
     .insp-badge.fai{background:#b87420;}
@@ -139,7 +139,7 @@
     .insp-card:nth-child(even) .insp-cell{background:var(--light);}
     .insp-cell-label{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
     .insp-cell p{font-size:0.84rem;color:#333;line-height:1.6;font-weight:300;margin:0;}
-    @media(max-width:680px){.insp-body{grid-template-columns:1fr;}.insp-cell{border-right:none;border-bottom:1px solid var(--rule);}.insp-cell:last-child{border-bottom:none;}}
+   @media(max-width:680px){.insp-body{grid-template-columns:1fr;}.insp-cell{border-right:none;border-bottom:1px solid var(--rule);}.insp-cell:last-child{border-bottom:none;}.insp-badge{width:100px;}}
   </style>
 
   <div class="insp-cards">
@@ -383,11 +383,43 @@
   <h2 class="sh" id="s10">10. Quality Metrics — What to Measure and What They Mean</h2>
   <p>Quality metrics — quantitative measures of the program's quality performance — serve two purposes: they provide a current snapshot of quality status, and they reveal trends that may indicate systemic problems before those problems produce catastrophic defects. The right metrics are those that measure something meaningful about the quality of the work being done, not merely the activity of the quality organization.</p>
 
-  <div class="stat-strip">
-    <div class="stat-cell"><span class="stat-num">NCR/unit</span><p>Non-conformance reports per unit of production — a normalized measure of defect rate that allows comparison across programs and over time within a program</p></div>
-    <div class="stat-cell"><span class="stat-num">SCRR</span><p>Scheduled vs. Completed Re-Inspection Rate — the fraction of required re-inspections after rework that are completed on schedule; a measure of rework cycle discipline</p></div>
-    <div class="stat-cell"><span class="stat-num">Open NCR Age</span><p>The distribution of ages of open non-conformance reports — NCRs that remain open for extended periods indicate dispositioning bottlenecks or systemic quality problems that are not being resolved</p></div>
-    <div class="stat-cell"><span class="stat-num">Repeat NCR %</span><p>The fraction of NCRs that represent a defect type seen before — a high repeat NCR rate indicates that corrective actions are not effective or are not being implemented</p></div>
+   <style>
+    .qa-metrics{margin:2em 0;display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--rule);overflow:hidden;}
+    .qa-metric{display:grid;grid-template-columns:100px 1fr;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);}
+    .qa-metric:nth-child(even){border-right:none;}
+    .qa-metric:nth-child(3),.qa-metric:nth-child(4){border-bottom:none;}
+    .qa-metric-badge{display:flex;align-items:center;justify-content:center;padding:14px 10px;font-family:'JetBrains Mono',monospace;font-size:0.7rem;font-weight:700;text-align:center;color:rgba(255,255,255,0.95);line-height:1.3;}
+    .qa-metric:nth-child(1) .qa-metric-badge{background:#2e7d52;}
+    .qa-metric:nth-child(2) .qa-metric-badge{background:#2e5a7a;}
+    .qa-metric:nth-child(3) .qa-metric-badge{background:#b87420;}
+    .qa-metric:nth-child(4) .qa-metric-badge{background:#7a2e2e;}
+    .qa-metric-body{padding:14px 18px;background:var(--white);font-size:0.86rem;color:#333;line-height:1.6;font-weight:300;}
+    .qa-metric:nth-child(3) .qa-metric-body,.qa-metric:nth-child(4) .qa-metric-body{background:var(--light);}
+    @media(max-width:680px){.qa-metrics{grid-template-columns:1fr;}.qa-metric{border-right:none;border-bottom:1px solid var(--rule);}.qa-metric:nth-child(3){border-bottom:1px solid var(--rule);}.qa-metric:last-child{border-bottom:none;}}
+  </style>
+
+  <div class="qa-metrics">
+
+    <div class="qa-metric">
+      <div class="qa-metric-badge">NCR /<br>Unit</div>
+      <div class="qa-metric-body">Non-conformance reports per unit of production — a normalized measure of defect rate that allows comparison across programs and over time within a program.</div>
+    </div>
+
+    <div class="qa-metric">
+      <div class="qa-metric-badge">SCRR</div>
+      <div class="qa-metric-body">Scheduled vs. Completed Re-Inspection Rate — the fraction of required re-inspections after rework that are completed on schedule; a measure of rework cycle discipline.</div>
+    </div>
+
+    <div class="qa-metric">
+      <div class="qa-metric-badge">Open<br>NCR Age</div>
+      <div class="qa-metric-body">The distribution of ages of open non-conformance reports — NCRs that remain open for extended periods indicate dispositioning bottlenecks or systemic quality problems that are not being resolved.</div>
+    </div>
+
+    <div class="qa-metric">
+      <div class="qa-metric-badge">Repeat<br>NCR %</div>
+      <div class="qa-metric-body">The fraction of NCRs that represent a defect type seen before — a high repeat NCR rate indicates that corrective actions are not effective or are not being implemented.</div>
+    </div>
+
   </div>
 
   <p>Trends in these metrics are more important than point-in-time values. A program whose NCR rate is declining as integration proceeds is demonstrating that its quality processes are improving — as the workforce becomes more experienced with the specific procedures, materials, and standards of this program. A program whose NCR rate is increasing as it approaches the end of integration may be experiencing schedule pressure that is compromising quality practices. Both trends are visible in the metrics before they produce a crisis — if the metrics are reviewed regularly and honestly, and if the program leadership is willing to act on what the metrics reveal.</p>
@@ -396,13 +428,71 @@
   <p>Every QA system described in this article — the inspection procedures, the workmanship standards, the certifications, the stop-work authority, the customer oversight — can be documented, audited, and demonstrated to be formally in place. None of it, by itself, makes a spacecraft of high quality. The spacecraft is made of high quality by the people who build and test it, and by the culture in which they work — the culture that determines whether those people treat the documented requirements as meaningful constraints on their work or as bureaucratic obstacles to be navigated around when schedule and cost are under pressure.</p>
   <p>Quality culture is the aggregate of individual attitudes, team norms, management behaviors, and organizational incentives that determine how quality is actually prioritized when it conflicts with schedule, cost, or technical convenience. It cannot be audited directly, because audits observe documented practices, not the attitudes that determine how those practices are applied in the moments that matter — the moment a technician decides whether to report a marginal solder joint or move on; the moment a test engineer decides whether to investigate an anomaly that might delay the test or to attribute it to a known benign cause; the moment a manager decides whether to approve a waiver that should require more analysis or to close it to clear the schedule.</p>
 
-  <div class="qcp">
-    <div class="qcp-header">Characteristics of a Genuine Quality Culture</div>
-    <div class="qcp-item"><div class="qcp-num">1</div><div class="qcp-content"><div class="qcp-title">Anyone Can Stop the Work</div><div class="qcp-desc">Any person — technician, engineer, QA inspector, new graduate — who observes a quality concern has both the right and the obligation to raise it, without fear of management pressure, ridicule, or career consequences. Programs where only senior people raise quality concerns are programs where quality concerns are being suppressed.</div></div></div>
-    <div class="qcp-item"><div class="qcp-num">2</div><div class="qcp-content"><div class="qcp-title">Anomalies Are Assets, Not Embarrassments</div><div class="qcp-desc">A program that finds many anomalies during ground testing is not a program with poor quality — it is a program with a rigorous test program that is finding problems before they become on-orbit failures. A program with suspiciously few anomalies should examine whether the test program is rigorous enough to find them, not congratulate itself on its quality.</div></div></div>
-    <div class="qcp-item"><div class="qcp-num">3</div><div class="qcp-content"><div class="qcp-title">Schedule Never Overrides Safety or Quality</div><div class="qcp-desc">This principle is easy to affirm in a program review and difficult to uphold at 11 PM the night before a major milestone, when a borderline quality finding is the only thing standing between the program and a week's schedule delay. The programs that uphold this principle in those moments — consistently, visibly, with management endorsement — are the programs that arrive at launch with justified confidence in their spacecraft.</div></div></div>
-    <div class="qcp-item"><div class="qcp-num">4</div><div class="qcp-content"><div class="qcp-title">Root Cause, Not Blame</div><div class="qcp-desc">When a defect occurs, the quality culture's response is to understand why — what in the process, the training, the procedure, or the work environment allowed the defect to occur — and to fix that, not to find and punish an individual. Blame culture suppresses anomaly reporting. Root cause culture creates the conditions in which anomalies are reported promptly, investigated thoroughly, and corrected systemically.</div></div></div>
-    <div class="qcp-item"><div class="qcp-num">5</div><div class="qcp-content"><div class="qcp-title">Quality Is Everybody's Job</div><div class="qcp-desc">The quality organization is responsible for the quality management system. The quality of the spacecraft is the responsibility of every person who touches it — engineers who write procedures that are actually executable, technicians who perform work that meets the standard, managers who create the conditions in which quality is achievable. A QA organization that carries the entire burden of quality for a program that does not share that burden is a QA organization that is being asked to do the impossible.</div></div></div>
+  <style>
+    .qc-culture{margin:2em 0;border:1px solid var(--rule);overflow:hidden;}
+    .qc-culture-header{background:var(--ink);color:var(--paper);padding:14px 20px;font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;letter-spacing:0.02em;}
+    .qc-item{display:grid;grid-template-columns:56px 1fr;border-bottom:1px solid var(--rule);}
+    .qc-item:last-child{border-bottom:none;}
+    .qc-num{display:flex;align-items:flex-start;justify-content:center;padding-top:18px;font-family:'JetBrains Mono',monospace;font-size:1.2rem;font-weight:700;color:var(--paper);}
+    .qc-item:nth-child(1) .qc-num{background:#2e7d52;}
+    .qc-item:nth-child(2) .qc-num{background:#2e5a7a;}
+    .qc-item:nth-child(3) .qc-num{background:#b87420;}
+    .qc-item:nth-child(4) .qc-num{background:#7a2e2e;}
+    .qc-item:nth-child(5) .qc-num{background:#5a3a7a;}
+    .qc-body{padding:16px 20px;}
+    .qc-item:nth-child(1) .qc-body{background:#f0faf4;border-left:3px solid #2e7d52;}
+    .qc-item:nth-child(2) .qc-body{background:#f0f5fa;border-left:3px solid #2e5a7a;}
+    .qc-item:nth-child(3) .qc-body{background:#faf8f0;border-left:3px solid #b87420;}
+    .qc-item:nth-child(4) .qc-body{background:#faf0f0;border-left:3px solid #7a2e2e;}
+    .qc-item:nth-child(5) .qc-body{background:#f5f0fa;border-left:3px solid #5a3a7a;}
+    .qc-title{font-family:'Playfair Display',serif;font-size:0.98rem;font-weight:700;color:var(--ink);margin-bottom:6px;}
+    .qc-desc{font-size:0.86rem;color:#444;line-height:1.65;font-weight:300;}
+    @media(max-width:600px){.qc-item{grid-template-columns:44px 1fr;}.qc-num{font-size:1rem;}}
+  </style>
+
+  <div class="qc-culture">
+    <div class="qc-culture-header">Characteristics of a Genuine Quality Culture</div>
+
+    <div class="qc-item">
+      <div class="qc-num">1</div>
+      <div class="qc-body">
+        <div class="qc-title">Anyone Can Stop the Work</div>
+        <div class="qc-desc">Any person — technician, engineer, QA inspector, new graduate — who observes a quality concern has both the right and the obligation to raise it, without fear of management pressure, ridicule, or career consequences. Programs where only senior people raise quality concerns are programs where quality concerns are being suppressed.</div>
+      </div>
+    </div>
+
+    <div class="qc-item">
+      <div class="qc-num">2</div>
+      <div class="qc-body">
+        <div class="qc-title">Anomalies Are Assets, Not Embarrassments</div>
+        <div class="qc-desc">A program that finds many anomalies during ground testing is not a program with poor quality — it is a program with a rigorous test program that is finding problems before they become on-orbit failures. A program with suspiciously few anomalies should examine whether the test program is rigorous enough to find them, not congratulate itself on its quality.</div>
+      </div>
+    </div>
+
+    <div class="qc-item">
+      <div class="qc-num">3</div>
+      <div class="qc-body">
+        <div class="qc-title">Schedule Never Overrides Safety or Quality</div>
+        <div class="qc-desc">This principle is easy to affirm in a program review and difficult to uphold at 11 PM the night before a major milestone, when a borderline quality finding is the only thing standing between the program and a week's schedule delay. The programs that uphold this principle in those moments — consistently, visibly, with management endorsement — are the programs that arrive at launch with justified confidence in their spacecraft.</div>
+      </div>
+    </div>
+
+    <div class="qc-item">
+      <div class="qc-num">4</div>
+      <div class="qc-body">
+        <div class="qc-title">Root Cause, Not Blame</div>
+        <div class="qc-desc">When a defect occurs, the quality culture's response is to understand why — what in the process, the training, the procedure, or the work environment allowed the defect to occur — and to fix that, not to find and punish an individual. Blame culture suppresses anomaly reporting. Root cause culture creates the conditions in which anomalies are reported promptly, investigated thoroughly, and corrected systemically.</div>
+      </div>
+    </div>
+
+    <div class="qc-item">
+      <div class="qc-num">5</div>
+      <div class="qc-body">
+        <div class="qc-title">Quality Is Everybody's Job</div>
+        <div class="qc-desc">The quality organization is responsible for the quality management system. The quality of the spacecraft is the responsibility of every person who touches it — engineers who write procedures that are actually executable, technicians who perform work that meets the standard, managers who create the conditions in which quality is achievable. A QA organization that carries the entire burden of quality for a program that does not share that burden is a QA organization that is being asked to do the impossible.</div>
+      </div>
+    </div>
+
   </div>
 
   <p>The Columbia Accident Investigation Board, reviewing the loss of Space Shuttle Columbia in 2003, identified NASA's safety culture as a root cause alongside the physical foam strike that breached the orbiter's heat shield. The CAIB found that management practices had allowed concerns raised by engineers — about the foam strike, about the imaging needed to assess damage, about the risk of re-entry with unknown thermal protection damage — to be suppressed or overridden by schedule and operational momentum. The physical failure mode was foam. The enabling condition was culture.</p>
