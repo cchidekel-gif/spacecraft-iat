@@ -256,17 +256,120 @@
   <p>The most powerful quality assurance tool — and the one most rarely used and most important when it is — is the stop-work authority: the power of a QA inspector, a quality engineer, or any program employee to halt work on the spacecraft when they observe a condition that poses an unacceptable quality risk or a potential safety violation, until that condition is resolved.</p>
   <p>Stop-work authority is distinct from the DR system. A DR documents an anomaly for investigation and dispositioning. Stop-work authority prevents further work — which might make the anomaly worse, or might make it undetectable, or might compromise the integrity of the investigation — until the responsible parties have assessed the situation. A stop-work call is not a career-limiting act of insubordination. In a healthy quality culture, it is evidence of the kind of individual vigilance that the program depends on. This authority extends to safety concerns with equal force: any person who observes a condition that could endanger personnel — an improperly supported load, a hazardous material handling violation, an inadequate lockout/tagout — has the same obligation and the same authority to stop work immediately. Safety stop-work does not require QA involvement or engineering concurrence; it requires only the observation of the hazard.</p>
 
-  <table class="sw-table">
-    <thead><tr><th>Condition Warranting Stop-Work</th><th>Why Work Must Stop</th><th>Resolution Before Resuming</th></tr></thead>
-    <tbody>
-      <tr><td>Uncertified person performing quality-critical work</td><td>All work performed by an uncertified person must be dispositioned — inspected, re-worked, or accepted with documented rationale — before it can be incorporated into the flight configuration. Continuing work does not reduce this obligation; it potentially adds to the scope of the discrepancy.</td><td>Uncertified person removed from the work. All work performed confirmed inspected and dispositioned. Certified person resumes the operation. NCR issued documenting the occurrence.</td></tr>
-      <tr><td>Procedure not available at the work station</td><td>Work performed without the current approved procedure is work that may not conform to the approved process. The technician's memory of the procedure is not a substitute for the procedure itself.</td><td>Current approved procedure obtained and confirmed to be the current revision. Any steps performed without the procedure reviewed for conformance. Work resumed with procedure at hand.</td></tr>
-      <tr><td>Observed workmanship defect</td><td>A workmanship defect observed during the work operation — a cold solder joint, a damaged connector contact, a cable with insulation damage — must be documented and dispositioned before the operation continues. Continuing the operation may cover the defect, making it undetectable or increasing the rework scope.</td><td>NCR initiated. Defect documented with photographs. Disposition determined by MRB. Rework (if required) performed by certified technician to the applicable workmanship standard. QA inspection of rework before operation continues.</td></tr>
-      <tr><td>Uncontrolled tool or material near flight hardware</td><td>A tool, test equipment item, or material that is not part of the approved procedure and is not controlled by the traveler represents a potential FOD source and a potential quality escape that may not be detectable after the fact.</td><td>Foreign item removed and its origin and purpose identified. Any risk of foreign object debris assessed. If FOD risk cannot be ruled out, a FOD inspection of the affected area performed before the operation continues.</td></tr>
-      <tr><td>Expired or uncertified material in use</td><td>Material with expired shelf life (adhesives, solvents, conformal coatings, solder flux) may not perform to its specification. Using expired material is using an unqualified process.</td><td>Expired material removed and segregated. All work performed with the expired material identified and dispositioned. Fresh material of the correct type, with current certification, obtained and confirmed before resuming.</td></tr>
-      <tr><td>Potential safety hazard</td><td>A condition that could endanger personnel — an improperly rigged crane load, a pressurized system being approached without required protective equipment, a hazardous material spill, an inadequate lockout/tagout, or any condition that violates the facility's safety protocols — requires immediate cessation of work. Safety stop-work authority is absolute and is not subject to engineering judgment or schedule considerations.</td><td>Hazard identified and area secured. Safety officer notified. Condition assessed and corrected. Safety officer authorizes resumption of work. If the hazard resulted from a procedural deficiency, the procedure is revised and re-approved before the operation resumes.</td></tr>
-    </tbody>
-  </table>
+    <style>
+    .sw-cards{margin:2em 0;display:grid;grid-template-columns:1fr;gap:0;}
+    .sw-card{border:1px solid var(--rule);border-bottom:none;overflow:hidden;}
+    .sw-card:last-child{border-bottom:1px solid var(--rule);}
+    .sw-card-header{display:flex;align-items:stretch;}
+    .sw-badge{width:120px;display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:12px 10px;font-family:'Source Serif 4',serif;font-size:0.82rem;font-weight:600;text-align:center;color:rgba(255,255,255,0.95);line-height:1.35;}
+    .sw-card:nth-child(1) .sw-badge{background:#7a2e2e;}
+    .sw-card:nth-child(2) .sw-badge{background:#2e5a7a;}
+    .sw-card:nth-child(3) .sw-badge{background:#b87420;}
+    .sw-card:nth-child(4) .sw-badge{background:#4a6274;}
+    .sw-card:nth-child(5) .sw-badge{background:#6a5a20;}
+    .sw-card:nth-child(6) .sw-badge{background:#8a2020;}
+    .sw-hdr-text{flex:1;padding:12px 18px;background:var(--ink);}
+    .sw-hdr-label{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:4px;}
+    .sw-hdr-why{font-size:0.86rem;color:#c8c0b0;line-height:1.6;font-weight:300;}
+    .sw-resolution{padding:14px 18px;background:var(--white);font-size:0.86rem;color:#333;line-height:1.6;font-weight:300;border-left:3px solid var(--rule);}
+    .sw-card:nth-child(1) .sw-resolution{border-left-color:#7a2e2e;}
+    .sw-card:nth-child(2) .sw-resolution{border-left-color:#2e5a7a;}
+    .sw-card:nth-child(3) .sw-resolution{border-left-color:#b87420;}
+    .sw-card:nth-child(4) .sw-resolution{border-left-color:#4a6274;}
+    .sw-card:nth-child(5) .sw-resolution{border-left-color:#6a5a20;}
+    .sw-card:nth-child(6) .sw-resolution{border-left-color:#8a2020;}
+    .sw-card:nth-child(even) .sw-resolution{background:var(--light);}
+    .sw-res-label{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+    @media(max-width:600px){.sw-card-header{flex-direction:column;}.sw-badge{width:100%;padding:10px 16px;}}
+  </style>
+
+  <div class="sw-cards">
+
+    <div class="sw-card">
+      <div class="sw-card-header">
+        <div class="sw-badge">Uncertified<br>Personnel</div>
+        <div class="sw-hdr-text">
+          <div class="sw-hdr-label">Why Work Must Stop</div>
+          <div class="sw-hdr-why">All work performed by an uncertified person must be dispositioned — inspected, re-worked, or accepted with documented rationale — before it can be incorporated into the flight configuration. Continuing work does not reduce this obligation; it potentially adds to the scope of the discrepancy.</div>
+        </div>
+      </div>
+      <div class="sw-resolution">
+        <div class="sw-res-label">Resolution Before Resuming</div>
+        Uncertified person removed from the work. All work performed confirmed inspected and dispositioned. Certified person resumes the operation. NCR issued documenting the occurrence.
+      </div>
+    </div>
+
+    <div class="sw-card">
+      <div class="sw-card-header">
+        <div class="sw-badge">Procedure Not<br>Available</div>
+        <div class="sw-hdr-text">
+          <div class="sw-hdr-label">Why Work Must Stop</div>
+          <div class="sw-hdr-why">Work performed without the current approved procedure is work that may not conform to the approved process. The technician's memory of the procedure is not a substitute for the procedure itself.</div>
+        </div>
+      </div>
+      <div class="sw-resolution">
+        <div class="sw-res-label">Resolution Before Resuming</div>
+        Current approved procedure obtained and confirmed to be the current revision. Any steps performed without the procedure reviewed for conformance. Work resumed with procedure at hand.
+      </div>
+    </div>
+
+    <div class="sw-card">
+      <div class="sw-card-header">
+        <div class="sw-badge">Workmanship<br>Defect</div>
+        <div class="sw-hdr-text">
+          <div class="sw-hdr-label">Why Work Must Stop</div>
+          <div class="sw-hdr-why">A workmanship defect observed during the work operation — a cold solder joint, a damaged connector contact, a cable with insulation damage — must be documented and dispositioned before the operation continues. Continuing the operation may cover the defect, making it undetectable or increasing the rework scope.</div>
+        </div>
+      </div>
+      <div class="sw-resolution">
+        <div class="sw-res-label">Resolution Before Resuming</div>
+        NCR initiated. Defect documented with photographs. Disposition determined by MRB. Rework (if required) performed by certified technician to the applicable workmanship standard. QA inspection of rework before operation continues.
+      </div>
+    </div>
+
+    <div class="sw-card">
+      <div class="sw-card-header">
+        <div class="sw-badge">Uncontrolled<br>Tool or Material</div>
+        <div class="sw-hdr-text">
+          <div class="sw-hdr-label">Why Work Must Stop</div>
+          <div class="sw-hdr-why">A tool, test equipment item, or material that is not part of the approved procedure and is not controlled by the traveller represents a potential FOD source and a potential quality escape that may not be detectable after the fact.</div>
+        </div>
+      </div>
+      <div class="sw-resolution">
+        <div class="sw-res-label">Resolution Before Resuming</div>
+        Foreign item removed and its origin and purpose identified. Any risk of foreign object debris assessed. If FOD risk cannot be ruled out, a FOD inspection of the affected area performed before the operation continues.
+      </div>
+    </div>
+
+    <div class="sw-card">
+      <div class="sw-card-header">
+        <div class="sw-badge">Expired or<br>Uncertified Material</div>
+        <div class="sw-hdr-text">
+          <div class="sw-hdr-label">Why Work Must Stop</div>
+          <div class="sw-hdr-why">Material with expired shelf life (adhesives, solvents, conformal coatings, solder flux) may not perform to its specification. Using expired material is using an unqualified process.</div>
+        </div>
+      </div>
+      <div class="sw-resolution">
+        <div class="sw-res-label">Resolution Before Resuming</div>
+        Expired material removed and segregated. All work performed with the expired material identified and dispositioned. Fresh material of the correct type, with current certification, obtained and confirmed before resuming.
+      </div>
+    </div>
+
+    <div class="sw-card">
+      <div class="sw-card-header">
+        <div class="sw-badge">Safety<br>Hazard</div>
+        <div class="sw-hdr-text">
+          <div class="sw-hdr-label">Why Work Must Stop</div>
+          <div class="sw-hdr-why">A condition that could endanger personnel — an improperly rigged crane load, a pressurized system being approached without required protective equipment, a hazardous material spill, an inadequate lockout/tagout, or any condition that violates the facility's safety protocols — requires immediate cessation of work. Safety stop-work authority is absolute and is not subject to engineering judgment or schedule considerations.</div>
+        </div>
+      </div>
+      <div class="sw-resolution">
+        <div class="sw-res-label">Resolution Before Resuming</div>
+        Hazard identified and area secured. Safety officer notified. Condition assessed and corrected. Safety officer authorizes resumption of work. If the hazard resulted from a procedural deficiency, the procedure is revised and re-approved before the operation resumes.
+      </div>
+    </div>
+
+  </div>
 
   <h2 class="sh" id="s9">9. Customer and Independent Oversight</h2>
   <p>For government-sponsored programs — NASA, ESA, and DoD missions — the funding agency exercises its own independent oversight of the program's quality management system, in addition to the program's internal QA activities. This oversight takes several forms, each of which serves a different purpose.</p>
