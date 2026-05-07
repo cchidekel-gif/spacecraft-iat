@@ -1812,15 +1812,9 @@ ul.cs-list li::before {
   background-color: var(--gold);
 }
 
-/* ── FOOTER METADATA ────────────────────────────────────────── */
-
-.sn-footer-meta {
-  font-family: 'Source Serif 4', serif;
-  font-size: 0.85rem;
-  color: var(--steel);
-  line-height: 1.6;
-}
-
-.sn-footer-meta strong {
-  color: var(--ink);
-}
+/* ── FOOTER ──────────────────────────────────────────────────
+   The footer uses your EXISTING CSS classes:
+     .article-footer, .footer-inner, .footer-col,
+     .footer-label, .footer-text, .tags, .tag
+   No new footer styles are needed here.
+   ──────────────────────────────────────────────────────────── */
