@@ -21,27 +21,156 @@
      ---------------------------------------------------------- */
   var articles = [
     // ── Main Series ──────────────────────────────────────────
-    { id: "intro", seriesNum: "Intro", title: "Introduction to Spacecraft I&T",                    url: "spacecraft_iat_intro.html",      published: true  },
-    { id: "01",    seriesNum: "01",    title: "I&T Program Structure",                              url: "spacecraft_iat_article01.html",  published: true  },
-    { id: "02",    seriesNum: "02",    title: "Configuration Management",                           url: "spacecraft_iat_article11.html",  published: true  },
-    { id: "03",    seriesNum: "03",    title: "Quality Assurance, Inspection, and Oversight",        url: "spacecraft_iat_article16.html",  published: true  },
-    { id: "04",    seriesNum: "04",    title: "The Cleanroom: Environment, Protocol, and Practice",  url: "spacecraft_iat_article02.html",  published: false  },
-    { id: "05",    seriesNum: "05",    title: "EGSE and the Test Harness",                          url: "spacecraft_iat_article10.html",  published: false  },
-    { id: "06",    seriesNum: "06",    title: "Functional Testing",                                 url: "spacecraft_iat_article03.html",  published: false  },
-    { id: "07",    seriesNum: "07",    title: "Flight Software Verification and Validation",        url: "spacecraft_iat_article09.html",  published: false  },
-    { id: "08",    seriesNum: "08",    title: "Mass Properties and Structural Loads",               url: "spacecraft_iat_article14.html",  published: false  },
-    { id: "09",    seriesNum: "09",    title: "Vibration, Acoustics, and Shock Testing",            url: "spacecraft_iat_article04.html",  published: false  },
-    { id: "10",    seriesNum: "10",    title: "Thermal-Vacuum Testing",                             url: "spacecraft_iat_article05.html",  published: false  },
-    { id: "11",    seriesNum: "11",    title: "EMC Testing",                                        url: "spacecraft_iat_article12.html",  published: false  },
-    { id: "12",    seriesNum: "12",    title: "Instrument Integration and Calibration",             url: "spacecraft_iat_article07.html",  published: false  },
-    { id: "13",    seriesNum: "13",    title: "Propulsion System Testing",                          url: "spacecraft_iat_article13.html",  published: false  },
-    { id: "14",    seriesNum: "14",    title: "Anomaly Management",                                url: "spacecraft_iat_article06.html",  published: false },
-    { id: "15",    seriesNum: "15",    title: "Launch Vehicle Integration",                         url: "spacecraft_iat_article15.html",  published: false },
-    { id: "16",    seriesNum: "16",    title: "Launch Readiness and Commissioning",                 url: "spacecraft_iat_article08.html",  published: false  },
+    //
+    // Each entry contains:
+    //   id         — internal key
+    //   seriesNum  — display number in navigator ("01", "S1", etc.)
+    //   title      — full article title
+    //   url        — HTML filename (same directory as this script)
+    //   published  — flip to true when the article goes live
+    //   topics     — array of tag strings shown in the footer
+    //   audience   — one-sentence audience description for the footer
+    //
+    // To publish a new article:
+    //   1. Set  published: true
+    //   2. Confirm  url  matches the HTML filename
+    //   3. Fill in  topics  and  audience
+
+    { id: "intro", seriesNum: "Intro",
+      title:    "Introduction to Spacecraft I&T",
+      url:      "spacecraft_iat_intro.html",
+      published: true,
+      topics:   ["Integration & Test", "Test Philosophy", "Test-As-You-Fly", "Hardware Hierarchy", "Lessons Learned", "Verification"],
+      audience: "New engineers, students, and anyone curious about what happens between spacecraft design and launch \u2014 no prior I&T experience required."
+    },
+     { id: "01", seriesNum: "01",
+      title:    "I&T Program Structure",
+      url:      "spacecraft_iat_article01.html",
+      published: true,
+      topics:   ["I&T Plan", "Integration Levels", "Model Philosophy", "STM", "EM", "QM", "PFM", "FM", "Technical Reviews", "EGSE", "Test Facilities", "Characterization Testing"],
+      audience: "I&T engineers, program managers, and systems engineers responsible for planning, structuring, or reviewing a spacecraft integration and test campaign."
+    },
+   { id: "02", seriesNum: "02",
+      title:    "Configuration Management",
+      url:      "spacecraft_iat_article11.html",
+      published: true,
+      topics:   ["Configuration Management", "CCB", "As-Built Record", "Traveller", "PCA", "FCA", "CSA"],
+      audience: "New and early-career spacecraft engineers and technicians who work with flight hardware and need to understand why the documentation discipline surrounding that work is as important as the technical work itself."
+    },
+    { id: "03", seriesNum: "03",
+      title:    "Quality Assurance, Inspection, and Oversight",
+      url:      "spacecraft_iat_article16.html",
+      published: true,
+      topics:   ["Quality Assurance", "Inspection", "Workmanship", "Stop-Work", "Quality Culture", "NCR", "MRB"],
+      audience: "Every person who works on flight hardware \u2014 engineer, technician, manager, or inspector. Quality assurance is not a specialty discipline; it is a shared responsibility that every participant in the I&T program must understand and practice."
+    },
+     { id: "04", seriesNum: "04",
+      title:    "The Cleanroom: Environment, Protocol, and Practice",
+      url:      "spacecraft_iat_article02.html",
+      published: true,
+      topics:   ["Cleanroom", "ESD", "FOD", "Contamination", "ISO 14644", "Workmanship"],
+      audience: "New and early-career spacecraft engineers, aerospace students, and anyone with a serious interest in how spacecraft are built and tested."
+    },
+      { id: "05", seriesNum: "05",
+      title:    "EGSE and the Test Harness",
+      url:      "spacecraft_iat_article10.html",
+      published: true,
+      topics:   ["EGSE", "Test Harness", "Ground Loops", "Simulators", "Power EGSE", "RF EGSE", "Calibration"],
+      audience: "New and early-career spacecraft engineers, aerospace students, and any practitioner who works with spacecraft test infrastructure and needs to understand the discipline behind it."
+    },
+    { id: "06", seriesNum: "06",
+      title:    "Functional Testing",
+      url:      "spacecraft_iat_article03.html",
+      published: true,
+      topics:   ["Functional Test", "Test-as-You-Fly", "Verification", "Requirements", "Fault Protection", "Anomaly Mgmt"],
+      audience: "New and early-career spacecraft engineers, aerospace students, and anyone with a serious interest in how spacecraft are built and tested."
+    },
+    { id: "07", seriesNum: "07",
+      title:    "Flight Software Verification and Validation",
+      url:      "spacecraft_iat_article09.html",
+      published: true,
+      topics:   ["Flight Software", "V&V", "DO-178C", "Fault Protection", "HIL Testing", "FLATSAT"],
+      audience: "New and early-career spacecraft engineers, aerospace students, and I&T practitioners who need to understand flight software V&V without specializing in it."
+    },
+   { id: "08", seriesNum: "08",
+      title:    "Mass Properties and Structural Loads",
+      url:      "spacecraft_iat_article14.html",
+      published: true,
+      topics:   ["Mass Properties", "Structural Analysis", "FEM", "Coupled Loads", "Modal Survey", "Factor of Safety"],
+      audience: "I&T engineers and program staff who interact with structural and mass properties data and need to understand how it is generated, what it means, and why it matters for launch readiness."
+    },
+   { id: "09", seriesNum: "09",
+      title:    "Vibration, Acoustics, and Shock Testing",
+      url:      "spacecraft_iat_article04.html",
+      published: true,
+      topics:   ["Vibration", "Acoustics", "Shock", "Qualification", "Acceptance Testing", "Notching", "Force Limiting"],
+      audience: "I&T engineers, structural and environmental test engineers, and program staff responsible for planning and executing mechanical environmental test campaigns."
+    },
+   { id: "10", seriesNum: "10",
+      title:    "Thermal-Vacuum Testing",
+      url:      "spacecraft_iat_article05.html",
+      published: true,
+      topics:   ["Thermal-Vacuum", "Thermal Balance", "Thermal Cycling", "Thermal Model", "Cryogenic Testing", "Outgassing"],
+      audience: "I&T engineers, thermal engineers, and program staff responsible for planning and executing thermal-vacuum test campaigns."
+    },
+    { id: "11", seriesNum: "11",
+      title:    "EMC Testing",
+      url:      "spacecraft_iat_article12.html",
+      published: true,
+      topics:   ["EMC", "MIL-STD-461", "Conducted Emissions", "Radiated Emissions", "Bonding", "Grounding", "Interference"],
+      audience: "I&T engineers, EMC specialists, and systems engineers responsible for ensuring electromagnetic compatibility across the integrated spacecraft."
+    },
+     { id: "12", seriesNum: "12",
+      title:    "Instrument Integration and Calibration",
+      url:      "spacecraft_iat_article07.html",
+      published: true,
+      topics:   ["Instrument Integration", "Calibration", "PI Model", "Optical Instruments", "Contamination", "Interface Verification"],
+      audience: "I&T engineers, instrument scientists, and systems engineers working at the spacecraft-payload interface who need to understand the special challenges of science instrument integration and calibration."
+    },
+    { id: "13", seriesNum: "13",
+      title:    "Propulsion System Testing",
+      url:      "spacecraft_iat_article13.html",
+      published: true,
+      topics:   ["Propulsion", "Hazardous Operations", "Leak Testing", "Propellant Loading", "Test-as-You-Fly", "Thruster Verification"],
+      audience: "I&T engineers, propulsion engineers, and safety personnel responsible for propulsion system integration, test, and hazardous operations during ground processing."
+    },
+   { id: "14", seriesNum: "14",
+      title:    "Anomaly Management",
+      url:      "spacecraft_iat_article06.html",
+      published: true,
+      topics:   ["Anomaly Management", "Discrepancy Report", "Root Cause Analysis", "Waivers", "Normalization of Deviance", "Corrective Action"],
+      audience: "Every member of an I&T team \u2014 engineers, technicians, managers, and quality personnel \u2014 who must understand the discipline of finding, documenting, and resolving the unexpected."
+    },
+   { id: "15", seriesNum: "15",
+      title:    "Launch Vehicle Integration",
+      url:      "spacecraft_iat_article15.html",
+      published: true,
+      topics:   ["Launch Vehicle", "ICD", "Payload User's Guide", "Coupled Loads", "Separation System", "Encapsulation"],
+      audience: "Spacecraft I&T engineers, systems engineers, and program managers who must manage the technical and programmatic interface between the spacecraft and the launch vehicle."
+    },
+    { id: "16", seriesNum: "16",
+      title:    "Launch Readiness and Commissioning",
+      url:      "spacecraft_iat_article08.html",
+      published: true,
+      topics:   ["Launch Readiness", "LRR", "Pre-Ship Review", "Countdown", "Commissioning", "Early Orbit Operations"],
+      audience: "Every member of a spacecraft program team \u2014 from the engineers who built and tested the hardware to the managers who must make the launch decision \u2014 and anyone who wants to understand what it takes to justify putting a spacecraft on a rocket."
+    },
 
     // ── Supplementary ────────────────────────────────────────
-    { id: "S1",    seriesNum: "S1",    title: "Small Satellites",                                   url: "",                               published: false },
-    { id: "S2",    seriesNum: "S2",    title: "Case Studies",                                       url: "",                               published: false }
+   { id: "S1", seriesNum: "S1",
+      title:    "Small Satellites",
+      url:      "",
+      published: false,
+      topics:   ["SmallSat", "CubeSat", "Test Tailoring", "Rideshare", "Protoflight", "Risk Acceptance"],
+      audience: "Engineers and program managers working on small satellite programs who need to understand which I&T principles scale down, which break, and what cannot be compromised regardless of spacecraft size."
+    },
+    { id: "S2", seriesNum: "S2",
+      title:    "Case Studies",
+      url:      "",
+      published: false,
+      topics:   ["Lessons Learned", "Mission Failures", "Mars Climate Orbiter", "Hubble", "JWST", "Columbia", "Apollo"],
+      audience: "Anyone in the spacecraft community who wants to understand how real missions succeeded or failed \u2014 and what their I&T programs did or did not do that made the difference."
+    }
   ];
 
   /* ----------------------------------------------------------
@@ -252,8 +381,11 @@
   }
 
   /* ----------------------------------------------------------
-     FOOTER METADATA
-     Renders into <div id="series-nav-footer"></div>
+     ARTICLE FOOTER
+     Renders into <footer id="series-nav-footer"></footer>
+     Produces the three-column layout: Series | Topics | Audience
+     using existing CSS classes: article-footer, footer-inner,
+     footer-col, footer-label, footer-text, tags, tag.
      ---------------------------------------------------------- */
   function renderFooterMeta() {
     var container = document.getElementById("series-nav-footer");
@@ -262,12 +394,71 @@
     var currentArticle = articles.find(isCurrent);
     if (!currentArticle) return;
 
-    var meta = document.createElement("div");
-    meta.className = "sn-footer-meta";
-    meta.innerHTML = "<strong>Series</strong><br>Spacecraft Integration &amp; Test<br>Article " +
+    // Apply the existing footer class to the container element
+    container.className = "article-footer";
+
+    var inner = document.createElement("div");
+    inner.className = "footer-inner";
+
+    // ── Column 1: Series ──────────────────────────────────
+    var col1 = document.createElement("div");
+    col1.className = "footer-col";
+
+    var label1 = document.createElement("div");
+    label1.className = "footer-label";
+    label1.textContent = "Series";
+
+    var text1 = document.createElement("div");
+    text1.className = "footer-text";
+    text1.innerHTML = "Spacecraft Integration &amp; Test<br>Article " +
       currentArticle.seriesNum + " of " + publishedCount;
 
-    container.appendChild(meta);
+    col1.appendChild(label1);
+    col1.appendChild(text1);
+
+    // ── Column 2: Topics ──────────────────────────────────
+    var col2 = document.createElement("div");
+    col2.className = "footer-col";
+
+    var label2 = document.createElement("div");
+    label2.className = "footer-label";
+    label2.textContent = "Topics";
+
+    var tagsDiv = document.createElement("div");
+    tagsDiv.className = "tags";
+
+    if (currentArticle.topics && currentArticle.topics.length > 0) {
+      currentArticle.topics.forEach(function (t) {
+        var span = document.createElement("span");
+        span.className = "tag";
+        span.textContent = t;
+        tagsDiv.appendChild(span);
+      });
+    }
+
+    col2.appendChild(label2);
+    col2.appendChild(tagsDiv);
+
+    // ── Column 3: Audience ────────────────────────────────
+    var col3 = document.createElement("div");
+    col3.className = "footer-col";
+
+    var label3 = document.createElement("div");
+    label3.className = "footer-label";
+    label3.textContent = "Audience";
+
+    var text3 = document.createElement("div");
+    text3.className = "footer-text";
+    text3.textContent = currentArticle.audience || "";
+
+    col3.appendChild(label3);
+    col3.appendChild(text3);
+
+    // Assemble
+    inner.appendChild(col1);
+    inner.appendChild(col2);
+    inner.appendChild(col3);
+    container.appendChild(inner);
   }
 
   /* ----------------------------------------------------------
