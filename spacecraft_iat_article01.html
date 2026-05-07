@@ -796,30 +796,35 @@ document.getElementById('artNav_spacecraft_iat_article01_html').addEventListener
   btn.disabled = !this.value || sel.disabled;
 });
 </script>
-
+<!-- 
 <footer class="article-footer">
   <div class="footer-inner">
-    <div class="footer-col">
+    <div style="flex: 1; min-width: 220px;">
       <div class="footer-label">Series</div>
-      <div class="footer-text">Spacecraft Integration &amp; Test<br>Article 01 of 19</div>
+      <div class="footer-text">Spacecraft Integration &amp; Test — A Complete Course<br>Introduction + 16 Articles · 7 Modules · 2 Supplementary</div>
     </div>
-    <div class="footer-col">
+    <div style="flex: 1; min-width: 220px;">
       <div class="footer-label">Topics</div>
-      <div class="tags">
+      <div class="footer-tags">
         <span class="tag">I&amp;T</span>
-        <span class="tag">Systems Eng.</span>
+        <span class="tag">AI&amp;T</span>
+        <span class="tag">Spacecraft</span>
+        <span class="tag">Systems Engineering</span>
         <span class="tag">Verification</span>
-        <span class="tag">Observatory</span>
-        <span class="tag">EGSE</span>
-        <span class="tag">Test Planning</span>
+        <span class="tag">Environmental Test</span>
+        <span class="tag">Space Science</span>
       </div>
     </div>
-    <div class="footer-col">
-      <div class="footer-label">Audience</div>
+    <div style="flex: 1; min-width: 220px;">
+      <div class="footer-label">Intended Audience</div>
       <div class="footer-text">New and early-career spacecraft engineers, aerospace students, and anyone with a serious interest in how spacecraft are built and tested.</div>
     </div>
   </div>
 </footer>
+-->
+<div id="series-nav-footer"></div> <!-- replaces the footer class block-->
+
+
 </div>
 <script src="series-nav.js"></script>
 <script>if(window.location.hash=="#top"||!window.location.hash){document.addEventListener("DOMContentLoaded",function(){window.scrollTo(0,0);});window.addEventListener("load",function(){window.scrollTo(0,0);});}</script>
