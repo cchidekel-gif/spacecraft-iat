@@ -6,7 +6,7 @@
     <span class="masthead-right">Article 01 of 19</span>
 </div>
 
-<!-- SERIES NAV BAR -->
+<!-- SERIES NAV BAR 
 <div class="series-nav">
   <span>Series:</span>
   <span class="sep">·</span>
@@ -46,6 +46,8 @@
   <span class="sep">·</span>
   <span style="color:#4a6a7a;cursor:default;" title="Coming soon">S2</span>
 </div>
+-->
+<div id="series-nav-top"></div> <!-- Replaces the series Nav Bar above -->
 
 <div class="hero">
   <div class="hero-eyebrow">Spacecraft Integration &amp; Test · Article 01 0f 19</div>
@@ -349,7 +351,7 @@
   That is not a small thing. It is the reason we do this work. It is the reason I wrote this series. If you are reading this, you are now part of that story. Welcome to the team.
 </p>
 
-  <!-- NEXT ARTICLE -->
+  <!-- NEXT ARTICLE 
   <div class="next-article">
     <div class="next-article-content">
       <div class="next-label">Next Article · Article 01 of 16</div>
@@ -357,11 +359,13 @@
       <div class="next-desc">Integration level hierarchy, program phases, governing documents, and the I&amp;T plan that ties them together</div>
     </div>
   </div>
+-->
+<div id="series-nav-next"></div> <!-- Replaces the Next Article Code-->
 
 </article>
 </div>
 
-<!-- ARTICLE NAVIGATOR -->
+<!-- ARTICLE NAVIGATOR 
 <div class="art-nav">
   <div class="art-nav-inner">
     <span class="art-nav-label">Go to article</span>
@@ -398,6 +402,10 @@
     </button>
   </div>
 </div>
+-->
+<div id="series-nav-bottom"></div> <!-- Replaces the Article Navigator Drop Down-->
+
+
 <script>
 document.getElementById('artNav_spacecraft_iat_intro_html').addEventListener('change', function() {
   var btn = document.getElementById('artNavBtn_spacecraft_iat_intro_html');
@@ -406,6 +414,7 @@ document.getElementById('artNav_spacecraft_iat_intro_html').addEventListener('ch
 });
 </script>
 
+<!-- 
 <footer class="article-footer">
   <div class="footer-inner">
     <div style="flex: 1; min-width: 220px;">
@@ -430,5 +439,10 @@ document.getElementById('artNav_spacecraft_iat_intro_html').addEventListener('ch
     </div>
   </div>
 </footer>
+-->
+<div id="series-nav-footer"></div> <!-- replaces the footer class block-->
+
 </div>
+
+<script src="series-nav.js"></script>
 <script>if(window.location.hash=="#top"||!window.location.hash){document.addEventListener("DOMContentLoaded",function(){window.scrollTo(0,0);});window.addEventListener("load",function(){window.scrollTo(0,0);});}</script>
