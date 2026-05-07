@@ -5,17 +5,17 @@
   <span class="masthead-series">Spacecraft Engineering Series · Integration &amp; Test</span>
   <span class="masthead-right">Article 04 of 19</span>
 </div>
+<!-- SERIES NAV BAR 
 <div class="series-nav">
   <span>Series:</span>
   <span class="sep">·</span>
-  <a href="https://cchidekel-gif.github.io/spacecraft-iat/spacecraft_iat_intro.html#top" style="color:#b8cdd8;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#b8cdd8'">01</a>
+  <span class="current">01</span>
   <span class="sep">·</span>
-  <a href="https://cchidekel-gif.github.io/spacecraft-iat/spacecraft_iat_article01.html#top" style="color:#b8cdd8;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#b8cdd8'">02</a>
+  <span style="color:#4a6a7a;cursor:default;" title="Coming soon">02</span>
   <span class="sep">·</span>
-  <a href="https://cchidekel-gif.github.io/spacecraft-iat/spacecraft_iat_article11.html#top" style="color:#b8cdd8;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#b8cdd8'">03</a>
+  <span style="color:#4a6a7a;cursor:default;" title="Coming soon">03</span>
   <span class="sep">·</span>
-  <span class="current">04</span>
-
+  <span style="color:#4a6a7a;cursor:default;" title="Coming soon">04</span>
   <span class="sep">·</span>
   <span style="color:#4a6a7a;cursor:default;" title="Coming soon">05</span>
   <span class="sep">·</span>
@@ -45,6 +45,9 @@
   <span class="sep">·</span>
   <span style="color:#4a6a7a;cursor:default;" title="Coming soon">S2</span>
 </div>
+-->
+<div id="series-nav-top"></div> <!-- Replaces the series Nav Bar above -->
+
 <div class="hero">
   <div class="hero-inner">
     <div class="hero-eyebrow">Spacecraft Integration &amp; Test · Article 04 of 19</div>
@@ -531,31 +534,31 @@
 </div>
 
 
-<!-- ARTICLE NAVIGATOR -->
+<!-- ARTICLE NAVIGATOR 
 <div class="art-nav">
   <div class="art-nav-inner">
     <span class="art-nav-label">Go to article</span>
     <div class="art-nav-select-wrap">
-      <select id="artNav_spacecraft_iat_article16_html">
+      <select id="artNav_spacecraft_iat_intro_html">
         <option value="">— Select any article in the series —</option>
         <optgroup label="── Main Series ──────────────────────────">
-          <option value="spacecraft_iat_intro.html">Intro · Introduction to Spacecraft I&amp;T</option>
+          <option value="spacecraft_iat_intro.html" selected disabled>&#9654; Intro · Introduction to Spacecraft I&amp;T</option>
           <option value="spacecraft_iat_article01.html">01 · I&amp;T Program Structure</option>
-          <option value="spacecraft_iat_article11.html">02 · Configuration Management</option>
-          <option value="spacecraft_iat_article16.html" selected disabled>&#9654; 03 · Quality Assurance </option>
-          <option value="spacecraft_iat_article02.html" disabled>04 · Cleanrooms &amp; Contamination Control (Coming Soon)</option>
-          <option value="spacecraft_iat_article10.html" disabled></option>>05 · EGSE &amp; Test Harness (Coming Soon)</option>
-          <option value="spacecraft_iat_article03.html" disabled>06 · Functional Testing (Coming Soon)</option>
-          <option value="spacecraft_iat_article09.html" disabled>07 · Flight Software V&amp;V (Coming Soon)</option>
-          <option value="spacecraft_iat_article14.html" disabled>08 · Mass Properties &amp; Structural Loads (Coming Soon)</option>
-          <option value="spacecraft_iat_article04.html" disabled>09 · Vibration, Acoustics &amp; Shock (Coming Soon)</option>
-          <option value="spacecraft_iat_article05.html" disabled>10 · Thermal-Vacuum Testing (Coming Soon)</option>
-          <option value="spacecraft_iat_article12.html" disabled>11 · EMC Testing (Coming Soon)</option>
-          <option value="spacecraft_iat_article07.html" disabled>12 · Instrument Integration &amp; Calibration (Coming Soon)</option>
-          <option value="spacecraft_iat_article13.html" disabled>13 · Propulsion Testing (Coming Soon)</option>
-          <option value="spacecraft_iat_article06.html" disabled>14 · Anomaly Management (Coming Soon)</option>
-          <option value="spacecraft_iat_article15.html" disabled>15 · Launch Vehicle Integration (Coming Soon)</option>
-          <option value="spacecraft_iat_article08.html" disabled>16 · Launch Readiness &amp; Commissioning (Coming Soon)</option>
+          <option value="" disabled>02 · Configuration Management (Coming Soon)</option>
+          <option value="" disabled>03 · Quality Assurance (Coming Soon)</option>
+          <option value="" disabled>04 · Cleanrooms &amp; Contamination Control (Coming Soon)</option>
+          <option value="" disabled>05 · EGSE &amp; Test Harness (Coming Soon)</option>
+          <option value="" disabled>06 · Functional Testing (Coming Soon)</option>
+          <option value="" disabled>07 · Flight Software V&amp;V (Coming Soon)</option>
+          <option value="" disabled>08 · Mass Properties &amp; Structural Loads (Coming Soon)</option>
+          <option value="" disabled>09 · Vibration, Acoustics &amp; Shock (Coming Soon)</option>
+          <option value="" disabled>10 · Thermal-Vacuum Testing (Coming Soon)</option>
+          <option value="" disabled>11 · EMC Testing (Coming Soon)</option>
+          <option value="" disabled>12 · Instrument Integration &amp; Calibration (Coming Soon)</option>
+          <option value="" disabled>13 · Propulsion Testing (Coming Soon)</option>
+          <option value="" disabled>14 · Anomaly Management (Coming Soon)</option>
+          <option value="" disabled>15 · Launch Vehicle Integration (Coming Soon)</option>
+          <option value="" disabled>16 · Launch Readiness &amp; Commissioning (Coming Soon)</option>
         </optgroup>
         <optgroup label="── Supplementary ──────────────────────────">
           <option value="" disabled>S1 · Small Satellites (Coming Soon)</option>
@@ -563,11 +566,14 @@
         </optgroup>
       </select>
     </div>
-    <button class="art-nav-go" id="artNavBtn_spacecraft_iat_article16_html" disabled onclick="var v=document.getElementById('artNav_spacecraft_iat_article16_html').value; if(v) window.location.href=v+'#top';">
+    <button class="art-nav-go" id="artNavBtn_spacecraft_iat_intro_html" disabled onclick="var v=document.getElementById('artNav_spacecraft_iat_intro_html').value; if(v) window.location.href=v+'#top';">
       Open &#8594;
     </button>
   </div>
 </div>
+-->
+<div id="series-nav-bottom"></div> <!-- Replaces the Article Navigator Drop Down-->
+
 <script>
 document.getElementById('artNav_spacecraft_iat_article16_html').addEventListener('change', function() {
   var btn = document.getElementById('artNavBtn_spacecraft_iat_article16_html');
@@ -576,12 +582,35 @@ document.getElementById('artNav_spacecraft_iat_article16_html').addEventListener
 });
 </script>
 
+<!-- 
 <footer class="article-footer">
   <div class="footer-inner">
-    <div class="footer-col"><div class="footer-label">Series</div><div class="footer-text">Spacecraft Integration &amp; Test<br>Article 03 of 19</div></div>
-    <div class="footer-col"><div class="footer-label">Topics</div><div class="tags"><span class="tag">Quality Assurance</span><span class="tag">Inspection</span><span class="tag">Workmanship</span><span class="tag">Stop-Work</span><span class="tag">Quality Culture</span><span class="tag">NCR</span><span class="tag">MRB</span></div></div>
-    <div class="footer-col"><div class="footer-label">Audience</div><div class="footer-text">Every person who works on flight hardware — engineer, technician, manager, or inspector. Quality assurance is not a specialty discipline; it is a shared responsibility that every participant in the I&amp;T program must understand and practice.</div></div>
+    <div style="flex: 1; min-width: 220px;">
+      <div class="footer-label">Series</div>
+      <div class="footer-text">Spacecraft Integration &amp; Test — A Complete Course<br>Introduction + 16 Articles · 7 Modules · 2 Supplementary</div>
+    </div>
+    <div style="flex: 1; min-width: 220px;">
+      <div class="footer-label">Topics</div>
+      <div class="footer-tags">
+        <span class="tag">I&amp;T</span>
+        <span class="tag">AI&amp;T</span>
+        <span class="tag">Spacecraft</span>
+        <span class="tag">Systems Engineering</span>
+        <span class="tag">Verification</span>
+        <span class="tag">Environmental Test</span>
+        <span class="tag">Space Science</span>
+      </div>
+    </div>
+    <div style="flex: 1; min-width: 220px;">
+      <div class="footer-label">Intended Audience</div>
+      <div class="footer-text">New and early-career spacecraft engineers, aerospace students, and anyone with a serious interest in how spacecraft are built and tested.</div>
+    </div>
   </div>
 </footer>
+-->
+<div id="series-nav-footer"></div> <!-- replaces the footer class block-->
+
 </div>
+
+<script src="series-nav.js"></script>
 <script>if(window.location.hash=="#top"||!window.location.hash){document.addEventListener("DOMContentLoaded",function(){window.scrollTo(0,0);});window.addEventListener("load",function(){window.scrollTo(0,0);});}</script>
