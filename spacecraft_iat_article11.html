@@ -7,15 +7,13 @@
   <span class="masthead-right">Article 02 of 16</span>
 </div>
 
-<!-- SERIES NAV -->
+<!-- SERIES NAV BAR 
 <div class="series-nav">
   <span>Series:</span>
   <span class="sep">·</span>
-  <a href="https://cchidekel-gif.github.io/spacecraft-iat/spacecraft_iat_intro.html#top" style="color:#b8cdd8;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#b8cdd8'">Intro</a>
+  <span class="current">01</span>
   <span class="sep">·</span>
-  <a href="https://cchidekel-gif.github.io/spacecraft-iat/spacecraft_iat_article01.html#top" style="color:#b8cdd8;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#b8cdd8'">01</a>
-  <span class="sep">·</span>
-  <span class="current">02</span>
+  <span style="color:#4a6a7a;cursor:default;" title="Coming soon">02</span>
   <span class="sep">·</span>
   <span style="color:#4a6a7a;cursor:default;" title="Coming soon">03</span>
   <span class="sep">·</span>
@@ -49,6 +47,8 @@
   <span class="sep">·</span>
   <span style="color:#4a6a7a;cursor:default;" title="Coming soon">S2</span>
 </div>
+-->
+<div id="series-nav-top"></div> <!-- Replaces the series Nav Bar above -->
 
 <!-- HERO -->
 <div class="hero">
@@ -488,14 +488,16 @@
   </ul>
 
 
-  <!-- NEXT LESSON -->
+   <!-- NEXT ARTICLE 
   <div class="next-article">
     <div class="next-article-content">
-      <div class="next-label">Next Lesson · L04 of 17 · Article 4</div>
-      <div class="next-title">Quality Assurance, Inspection, and Oversight</div>
-      <div class="next-desc">Workmanship standards, inspection types, stop-work authority, and the quality culture that makes all formal QA systems meaningful</div>
+      <div class="next-label">Next Article · Article 01 of 16</div>
+      <div class="next-title">The I&amp;T Plan and Program Architecture</div>
+      <div class="next-desc">Integration level hierarchy, program phases, governing documents, and the I&amp;T plan that ties them together</div>
     </div>
   </div>
+-->
+<div id="series-nav-next"></div> <!-- Replaces the Next Article Code-->
 
   <!-- GLOSSARY -->
   <h2 class="sh" id="glossary">Key Terms Used in This Article</h2>
@@ -524,17 +526,17 @@
 </div>
 
 
-<!-- ARTICLE NAVIGATOR -->
+<!-- ARTICLE NAVIGATOR 
 <div class="art-nav">
   <div class="art-nav-inner">
     <span class="art-nav-label">Go to article</span>
     <div class="art-nav-select-wrap">
-      <select id="artNav_spacecraft_iat_article11_html" onchange="this.nextElementSibling.disabled = !this.value || this.options[this.selectedIndex].disabled">
+      <select id="artNav_spacecraft_iat_intro_html">
         <option value="">— Select any article in the series —</option>
         <optgroup label="── Main Series ──────────────────────────">
-      <option value="spacecraft_iat_intro.html">01 · Introduction to Spacecraft I&T</option>
-      <option value="spacecraft_iat_article01.html">02 · I&T Program Structure</option>
-      <option value="spacecraft_iat_article11.html" selected disabled>▶ 03 · Configuration Management</option>
+          <option value="spacecraft_iat_intro.html" selected disabled>&#9654; Intro · Introduction to Spacecraft I&amp;T</option>
+          <option value="spacecraft_iat_article01.html">01 · I&amp;T Program Structure</option>
+          <option value="" disabled>02 · Configuration Management (Coming Soon)</option>
           <option value="" disabled>03 · Quality Assurance (Coming Soon)</option>
           <option value="" disabled>04 · Cleanrooms &amp; Contamination Control (Coming Soon)</option>
           <option value="" disabled>05 · EGSE &amp; Test Harness (Coming Soon)</option>
@@ -556,11 +558,13 @@
         </optgroup>
       </select>
     </div>
-    <button class="art-nav-go" id="artNavBtn_spacecraft_iat_article01_html" disabled onclick="var v=document.getElementById('artNav_spacecraft_iat_article01_html').value; if(v) window.location.href=v+'#top';">
+    <button class="art-nav-go" id="artNavBtn_spacecraft_iat_intro_html" disabled onclick="var v=document.getElementById('artNav_spacecraft_iat_intro_html').value; if(v) window.location.href=v+'#top';">
       Open &#8594;
     </button>
   </div>
 </div>
+-->
+<div id="series-nav-bottom"></div> <!-- Replaces the Article Navigator Drop Down-->
 
 <script>
 document.getElementById('artNav_spacecraft_iat_article01_html').addEventListener('change', function() {
@@ -570,27 +574,35 @@ document.getElementById('artNav_spacecraft_iat_article01_html').addEventListener
 });
 </script>
 
+<!-- 
 <footer class="article-footer">
   <div class="footer-inner">
-    <div class="footer-col">
+    <div style="flex: 1; min-width: 220px;">
       <div class="footer-label">Series</div>
-      <div class="footer-text">Spacecraft Integration &amp; Test<br>Article 03 — Configuration Management and the As-Built Record</div>
+      <div class="footer-text">Spacecraft Integration &amp; Test — A Complete Course<br>Introduction + 16 Articles · 7 Modules · 2 Supplementary</div>
     </div>
-    <div class="footer-col">
+    <div style="flex: 1; min-width: 220px;">
       <div class="footer-label">Topics</div>
-      <div class="tags">
-        <span class="tag">Configuration Management</span>
-        <span class="tag">CCB</span>
-        <span class="tag">As-Built Record</span>
-        <span class="tag">Traveller</span>
-        <span class="tag">PCA</span>
-        <span class="tag">FCA</span>
-        <span class="tag">CSA</span>
+      <div class="footer-tags">
+        <span class="tag">I&amp;T</span>
+        <span class="tag">AI&amp;T</span>
+        <span class="tag">Spacecraft</span>
+        <span class="tag">Systems Engineering</span>
+        <span class="tag">Verification</span>
+        <span class="tag">Environmental Test</span>
+        <span class="tag">Space Science</span>
       </div>
     </div>
-    <div class="footer-col">
-      <div class="footer-label">Audience</div>
-      <div class="footer-text">New and early-career spacecraft engineers and technicians who work with flight hardware and need to understand why the documentation discipline surrounding that work is as important as the technical work itself.</div>
+    <div style="flex: 1; min-width: 220px;">
+      <div class="footer-label">Intended Audience</div>
+      <div class="footer-text">New and early-career spacecraft engineers, aerospace students, and anyone with a serious interest in how spacecraft are built and tested.</div>
     </div>
   </div>
 </footer>
+-->
+<div id="series-nav-footer"></div> <!-- replaces the footer class block-->
+
+</div>
+
+<script src="series-nav.js"></script>
+<script>if(window.location.hash=="#top"||!window.location.hash){document.addEventListener("DOMContentLoaded",function(){window.scrollTo(0,0);});window.addEventListener("load",function(){window.scrollTo(0,0);});}</script>
