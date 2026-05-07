@@ -1668,3 +1668,159 @@ ul.cs-list li::before {
   .delivery-milestones { flex-direction: column; }
   .dm { border-right: none; border-bottom: 1px solid var(--rule); }
 }
+/* ============================================================
+   SERIES NAVIGATOR STYLES
+   Add these rules to your spacecraft_iat.css stylesheet.
+   Uses existing design-system variables:
+     --ink, --paper, --cream, --rust, --gold, --steel
+   ============================================================ */
+
+/* ── TOP BREADCRUMB NAV ─────────────────────────────────────── */
+
+.sn-top-header {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.85rem;
+  color: var(--steel);
+  letter-spacing: 0.03em;
+  margin-bottom: 0.3rem;
+}
+
+.sn-top-breadcrumb {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  line-height: 1.8;
+  color: var(--steel);
+}
+
+.sn-top-label {
+  font-weight: 600;
+  color: var(--steel);
+}
+
+.sn-top-sep {
+  color: var(--steel);
+  opacity: 0.5;
+}
+
+.sn-top-link {
+  color: var(--rust);
+  text-decoration: none;
+  padding: 0.1em 0.15em;
+  border-radius: 2px;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.sn-top-link:hover {
+  color: var(--paper);
+  background-color: var(--rust);
+}
+
+/* ▸ Current article — highlighted in the breadcrumb */
+.sn-top-current {
+  color: var(--paper);
+  background-color: var(--rust);
+  font-weight: 700;
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+}
+
+/* Unpublished articles — dimmed, no link */
+.sn-top-unpublished {
+  color: var(--steel);
+  opacity: 0.4;
+}
+
+/* ── NEXT-ARTICLE TEASER ────────────────────────────────────── */
+
+.sn-next-teaser {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--steel);
+}
+
+.sn-next-label {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.85rem;
+  color: var(--steel);
+  letter-spacing: 0.03em;
+  margin-bottom: 0.3rem;
+}
+
+.sn-next-link {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--rust);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.sn-next-link:hover {
+  color: var(--gold);
+}
+
+/* ── BOTTOM DROPDOWN NAV ────────────────────────────────────── */
+
+.sn-bottom-wrapper {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 460px;
+}
+
+.sn-bottom-label {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.sn-bottom-select {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--ink);
+  background-color: var(--cream);
+  border: 1px solid var(--steel);
+  border-radius: 4px;
+  padding: 0.5em 0.7em;
+  width: 100%;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.sn-bottom-select:focus {
+  outline: none;
+  border-color: var(--rust);
+}
+
+.sn-bottom-btn {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--paper);
+  background-color: var(--rust);
+  border: none;
+  border-radius: 4px;
+  padding: 0.5em 1.2em;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: background-color 0.2s ease;
+}
+
+.sn-bottom-btn:hover {
+  background-color: var(--gold);
+}
+
+/* ── FOOTER METADATA ────────────────────────────────────────── */
+
+.sn-footer-meta {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.85rem;
+  color: var(--steel);
+  line-height: 1.6;
+}
+
+.sn-footer-meta strong {
+  color: var(--ink);
+}
