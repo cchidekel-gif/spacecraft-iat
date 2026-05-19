@@ -496,20 +496,36 @@
 
   <h3 class="ssh">Contamination Sources</h3>
 
+ <h3 class="ssh">Contamination Sources</h3>
+  <p>The table below identifies the primary contamination sources encountered during spacecraft I&amp;T. Each source is classified by its dominant contamination type — particulate (P), molecular (M), or both — because the controls and monitoring methods differ for each.</p>
+
   <table class="data-table">
     <thead>
-      <tr><th>Source</th><th>Mechanism</th><th>Risk Level</th><th>Primary Control</th></tr>
+      <tr><th>Source</th><th>Type</th><th>Mechanism</th><th>Risk</th><th>Primary Control</th></tr>
     </thead>
     <tbody>
-      <tr><td>Personnel</td><td>Skin cells, hair, breath aerosols, cosmetics, clothing fibers</td><td>High</td><td>Gowning, access control, behavior protocols</td></tr>
-      <tr><td>Materials outgassing</td><td>Volatile organic compounds (VOCs), silicones, plasticizers released from adhesives, coatings, cable insulation</td><td>High</td><td>Materials screening (ASTM E595), approved materials list, bake-out</td></tr>
-      <tr><td>Cleaning solvents</td><td>Residue from improper cleaning; reaction products from incompatible solvent/surface combinations</td><td>Medium</td><td>Approved solvent list; approved cleaning procedures; verification wipes</td></tr>
-      <tr><td>Tools and fixtures</td><td>Lubricants, cutting fluids, metallic particles from machined surfaces, rubber particles from O-rings</td><td>Medium</td><td>Cleanroom-approved tools; pre-cleaning of fixtures entering the room</td></tr>
-      <tr><td>Facility infiltration</td><td>Particles entering through doors, HVAC systems, construction activity in adjacent spaces</td><td>Medium</td><td>Positive pressure; HEPA filtration; access control; particle monitoring</td></tr>
-      <tr><td>Hardware itself</td><td>Particle generation from mechanisms in motion (bearings, gears), connector mate/de-mate operations</td><td>Lower</td><td>Covers during mechanism operation; directed airflow from sensitive surfaces during connector work</td></tr>
-      <tr><td>Propellants and pressurants</td><td>Chemical contamination from propulsion system fluids; residue after propellant loading</td><td>High</td><td>Strict sequencing (propulsion work after optical/electrical closeout); purge and verify procedures</td></tr>
+      <tr style="background-color: rgba(180, 130, 70, 0.08);">
+        <td>Personnel</td><td><span class="tag">P</span></td><td>Skin cells, hair, breath aerosols, clothing fibers</td><td>High</td><td>Gowning, access control, behavior protocols</td></tr>
+      <tr style="background-color: rgba(180, 130, 70, 0.08);">
+        <td>Personnel — cosmetics &amp; lotions</td><td><span class="tag">M</span></td><td>Silicone-based products, fragrances, and lotions deposit molecular films on nearby surfaces through vapor transport and contact transfer</td><td>High</td><td>Prohibited materials policy; pre-entry screening; shower requirement for Class 100 optical work</td></tr>
+      <tr style="background-color: rgba(100, 100, 100, 0.06);">
+        <td>Materials outgassing</td><td><span class="tag">M</span></td><td>Volatile organic compounds (VOCs), silicones, plasticizers released from adhesives, coatings, cable insulation</td><td>High</td><td>Materials screening (ASTM E595), approved materials list, bake-out</td></tr>
+      <tr style="background-color: rgba(100, 100, 100, 0.06);">
+        <td>Cleaning solvents</td><td><span class="tag">M</span></td><td>Residue from improper cleaning; reaction products from incompatible solvent/surface combinations</td><td>Medium</td><td>Approved solvent list; approved cleaning procedures; verification wipes</td></tr>
+      <tr style="background-color: rgba(180, 130, 70, 0.08);">
+        <td>Tools and fixtures</td><td><span class="tag">P</span>&nbsp;<span class="tag">M</span></td><td>Metallic particles from machined surfaces, rubber particles from O-rings (P); lubricants, cutting fluid residue (M)</td><td>Medium</td><td>Cleanroom-approved tools; pre-cleaning of all fixtures entering the room</td></tr>
+      <tr style="background-color: rgba(180, 130, 70, 0.08);">
+        <td>Facility infiltration</td><td><span class="tag">P</span></td><td>Particles entering through doors, HVAC systems, construction activity in adjacent spaces</td><td>Medium</td><td>Positive pressure; HEPA filtration; access control; particle monitoring</td></tr>
+      <tr style="background-color: rgba(180, 130, 70, 0.08);">
+        <td>Hardware itself</td><td><span class="tag">P</span></td><td>Particle generation from mechanisms in motion (bearings, gears), connector mate/de-mate operations</td><td>Lower</td><td>Covers during mechanism operation; directed airflow from sensitive surfaces during connector work</td></tr>
+      <tr style="background-color: rgba(100, 100, 100, 0.06);">
+        <td>Propellants and pressurants</td><td><span class="tag">M</span></td><td>Chemical contamination from propulsion system fluids; residue after propellant loading</td><td>High</td><td>Strict sequencing (propulsion work after optical/electrical closeout); purge and verify procedures</td></tr>
     </tbody>
   </table>
+
+  <p class="table-legend" style="font-size: 0.85rem; color: var(--steel); margin-top: 0.5rem;">
+    <span class="tag">P</span>&nbsp;= particulate &emsp; <span class="tag">M</span>&nbsp;= molecular &emsp; Rows with warm tint are primarily particulate sources; cool tint indicates primarily molecular sources.
+  </p>
 
   <h3 class="ssh">Material Screening and Bake-Out</h3>
   <p>Before any material — adhesive, coating, lubricant, foam, cable insulation — is approved for use in or near spacecraft hardware, it must be screened for outgassing. The standard test is ASTM E595, which measures total mass loss (TML) and collected volatile condensable material (CVCM) when a sample is heated in vacuum. The typical acceptance criterion for spacecraft materials is TML &lt; 1.0% and CVCM &lt; 0.1%. Materials that fail these criteria may be usable after a controlled <strong>bake-out</strong> — a period of heating in vacuum to drive off volatiles before installation — but bake-out effectiveness must be verified by post-bake outgassing measurement.</p>
