@@ -499,30 +499,151 @@
  <h3 class="ssh">Contamination Sources</h3>
   <p>The table below identifies the primary contamination sources encountered during spacecraft I&amp;T. Each source is classified by its dominant contamination type — particulate (P), molecular (M), or both — because the controls and monitoring methods differ for each.</p>
 
-  <table class="data-table">
-    <thead>
-      <tr><th>Source</th><th>Type</th><th>Mechanism</th><th>Risk</th><th>Primary Control</th></tr>
-    </thead>
-    <tbody>
-      <tr style="background-color: rgba(180, 130, 70, 0.08);">
-        <td>Personnel</td><td><span class="tag">P</span></td><td>Skin cells, hair, breath aerosols, clothing fibers</td><td>High</td><td>Gowning, access control, behavior protocols</td></tr>
-      <tr style="background-color: rgba(180, 130, 70, 0.08);">
-        <td>Personnel — cosmetics &amp; lotions</td><td><span class="tag">M</span></td><td>Silicone-based products, fragrances, and lotions deposit molecular films on nearby surfaces through vapor transport and contact transfer</td><td>High</td><td>Prohibited materials policy; pre-entry screening; shower requirement for Class 100 optical work</td></tr>
-      <tr style="background-color: rgba(100, 100, 100, 0.06);">
-        <td>Materials outgassing</td><td><span class="tag">M</span></td><td>Volatile organic compounds (VOCs), silicones, plasticizers released from adhesives, coatings, cable insulation</td><td>High</td><td>Materials screening (ASTM E595), approved materials list, bake-out</td></tr>
-      <tr style="background-color: rgba(100, 100, 100, 0.06);">
-        <td>Cleaning solvents</td><td><span class="tag">M</span></td><td>Residue from improper cleaning; reaction products from incompatible solvent/surface combinations</td><td>Medium</td><td>Approved solvent list; approved cleaning procedures; verification wipes</td></tr>
-      <tr style="background-color: rgba(180, 130, 70, 0.08);">
-        <td>Tools and fixtures</td><td><span class="tag">P</span>&nbsp;<span class="tag">M</span></td><td>Metallic particles from machined surfaces, rubber particles from O-rings (P); lubricants, cutting fluid residue (M)</td><td>Medium</td><td>Cleanroom-approved tools; pre-cleaning of all fixtures entering the room</td></tr>
-      <tr style="background-color: rgba(180, 130, 70, 0.08);">
-        <td>Facility infiltration</td><td><span class="tag">P</span></td><td>Particles entering through doors, HVAC systems, construction activity in adjacent spaces</td><td>Medium</td><td>Positive pressure; HEPA filtration; access control; particle monitoring</td></tr>
-      <tr style="background-color: rgba(180, 130, 70, 0.08);">
-        <td>Hardware itself</td><td><span class="tag">P</span></td><td>Particle generation from mechanisms in motion (bearings, gears), connector mate/de-mate operations</td><td>Lower</td><td>Covers during mechanism operation; directed airflow from sensitive surfaces during connector work</td></tr>
-      <tr style="background-color: rgba(100, 100, 100, 0.06);">
-        <td>Propellants and pressurants</td><td><span class="tag">M</span></td><td>Chemical contamination from propulsion system fluids; residue after propellant loading</td><td>High</td><td>Strict sequencing (propulsion work after optical/electrical closeout); purge and verify procedures</td></tr>
-    </tbody>
-  </table>
+    <h3 class="ssh">Contamination Sources</h3>
+  <p>The table below identifies the primary contamination sources encountered during spacecraft I&amp;T. Each source is classified by its dominant contamination type — particulate, molecular, or both — because the controls and monitoring methods differ for each.</p>
 
+  <style>
+    .contam-cards{margin:2em 0;display:grid;grid-template-columns:1fr;gap:0;}
+    .contam-card{border:1px solid var(--rule);border-bottom:none;overflow:hidden;}
+    .contam-card:last-child{border-bottom:1px solid var(--rule);}
+    .contam-card-header{display:flex;align-items:stretch;}
+    .contam-badge{width:120px;display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:12px 10px;font-family:'Source Serif 4',serif;font-size:0.82rem;font-weight:600;text-align:center;color:rgba(255,255,255,0.95);line-height:1.35;}
+    .contam-badge.particulate{background:#2e5a7a;}
+    .contam-badge.molecular{background:#7a2e2e;}
+    .contam-badge.both{background:linear-gradient(135deg, #2e5a7a 50%, #7a2e2e 50%);}
+    .contam-hdr-text{flex:1;padding:12px 18px;background:var(--ink);}
+    .contam-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--paper);margin-bottom:3px;}
+    .contam-risk{font-size:0.82rem;color:#9a9080;font-style:italic;font-weight:300;line-height:1.5;}
+    .contam-body{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+    .contam-cell{padding:14px 18px;border-right:1px solid var(--rule);background:var(--white);}
+    .contam-cell:last-child{border-right:none;}
+    .contam-card:nth-child(even) .contam-cell{background:var(--light);}
+    .contam-cell-label{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+    .contam-cell p{font-size:0.84rem;color:#333;line-height:1.6;font-weight:300;margin:0;}
+    @media(max-width:680px){.contam-body{grid-template-columns:1fr;}.contam-cell{border-right:none;border-bottom:1px solid var(--rule);}.contam-cell:last-child{border-bottom:none;}.contam-badge{width:100px;}}
+  </style>
+
+  <div class="contam-cards">
+
+    <div class="contam-card">
+      <div class="contam-card-header">
+        <div class="contam-badge particulate">Particulate</div>
+        <div class="contam-hdr-text">
+          <div class="contam-title">Personnel — Particulate Shedding</div>
+          <div class="contam-risk">Risk: High</div>
+        </div>
+      </div>
+      <div class="contam-body">
+        <div class="contam-cell"><div class="contam-cell-label">Mechanism</div><p>Skin cells, hair, breath aerosols, and clothing fibers shed continuously during normal activity. A person in street clothes sheds roughly 100,000 particles per minute; gowning reduces this by orders of magnitude but never to zero.</p></div>
+        <div class="contam-cell"><div class="contam-cell-label">Primary Control</div><p>Full cleanroom gowning per room classification; access control limiting personnel count and duration; behavioral protocols prohibiting rapid movement, eating, and personal items.</p></div>
+      </div>
+    </div>
+
+    <div class="contam-card">
+      <div class="contam-card-header">
+        <div class="contam-badge molecular">Molecular</div>
+        <div class="contam-hdr-text">
+          <div class="contam-title">Personnel — Cosmetics and Lotions</div>
+          <div class="contam-risk">Risk: High</div>
+        </div>
+      </div>
+      <div class="contam-body">
+        <div class="contam-cell"><div class="contam-cell-label">Mechanism</div><p>Silicone-based products, fragrances, and lotions deposit molecular films on nearby surfaces through vapor transport and contact transfer. Effects are cumulative and not easily reversed on optical surfaces.</p></div>
+        <div class="contam-cell"><div class="contam-cell-label">Primary Control</div><p>Prohibited materials policy; pre-entry screening; shower requirement for Class 100 optical work. All personnel briefed on prohibited personal care products before cleanroom access is granted.</p></div>
+      </div>
+    </div>
+
+    <div class="contam-card">
+      <div class="contam-card-header">
+        <div class="contam-badge molecular">Molecular</div>
+        <div class="contam-hdr-text">
+          <div class="contam-title">Materials Outgassing</div>
+          <div class="contam-risk">Risk: High</div>
+        </div>
+      </div>
+      <div class="contam-body">
+        <div class="contam-cell"><div class="contam-cell-label">Mechanism</div><p>Volatile organic compounds (VOCs), silicones, and plasticizers released from adhesives, coatings, potting compounds, and cable insulation. Outgassing rates increase with temperature and decrease with time, but some materials outgas for years.</p></div>
+        <div class="contam-cell"><div class="contam-cell-label">Primary Control</div><p>Materials screening per ASTM E595 (TML &lt; 1.0%, CVCM &lt; 0.1%); approved materials list (AML); controlled bake-out of suspect materials before installation; no unapproved material substitutions.</p></div>
+      </div>
+    </div>
+
+    <div class="contam-card">
+      <div class="contam-card-header">
+        <div class="contam-badge molecular">Molecular</div>
+        <div class="contam-hdr-text">
+          <div class="contam-title">Cleaning Solvents</div>
+          <div class="contam-risk">Risk: Medium</div>
+        </div>
+      </div>
+      <div class="contam-body">
+        <div class="contam-cell"><div class="contam-cell-label">Mechanism</div><p>Residue from improper cleaning technique or incomplete solvent evaporation; reaction products from incompatible solvent/surface combinations that deposit new molecular species while attempting to remove existing contamination.</p></div>
+        <div class="contam-cell"><div class="contam-cell-label">Primary Control</div><p>Approved solvent list matched to specific surface types; approved cleaning procedures with defined wipe patterns and solvent quantities; verification wipes analyzed to confirm cleanliness after cleaning.</p></div>
+      </div>
+    </div>
+
+    <div class="contam-card">
+      <div class="contam-card-header">
+        <div class="contam-badge both">P + M</div>
+        <div class="contam-hdr-text">
+          <div class="contam-title">Tools and Fixtures</div>
+          <div class="contam-risk">Risk: Medium</div>
+        </div>
+      </div>
+      <div class="contam-body">
+        <div class="contam-cell"><div class="contam-cell-label">Mechanism</div><p>Metallic particles from machined surfaces, rubber particles from O-rings, and fiber debris from fixtures (particulate); lubricants, cutting fluid residue, and mold release agents (molecular).</p></div>
+        <div class="contam-cell"><div class="contam-cell-label">Primary Control</div><p>Cleanroom-approved tools only; pre-cleaning and inspection of all fixtures before entry; no shop-floor tools permitted without explicit approval and cleaning verification.</p></div>
+      </div>
+    </div>
+
+    <div class="contam-card">
+      <div class="contam-card-header">
+        <div class="contam-badge particulate">Particulate</div>
+        <div class="contam-hdr-text">
+          <div class="contam-title">Facility Infiltration</div>
+          <div class="contam-risk">Risk: Medium</div>
+        </div>
+      </div>
+      <div class="contam-body">
+        <div class="contam-cell"><div class="contam-cell-label">Mechanism</div><p>Particles entering through doors during access, through HVAC systems during filter degradation, and from construction or maintenance activity in adjacent uncontrolled spaces.</p></div>
+        <div class="contam-cell"><div class="contam-cell-label">Primary Control</div><p>Positive pressure differential maintained at all access points; HEPA filtration with monitored filter integrity; access control limiting door open-time; continuous particle monitoring with alarm thresholds.</p></div>
+      </div>
+    </div>
+
+    <div class="contam-card">
+      <div class="contam-card-header">
+        <div class="contam-badge particulate">Particulate</div>
+        <div class="contam-hdr-text">
+          <div class="contam-title">Hardware Itself</div>
+          <div class="contam-risk">Risk: Lower</div>
+        </div>
+      </div>
+      <div class="contam-body">
+        <div class="contam-cell"><div class="contam-cell-label">Mechanism</div><p>Particle generation from mechanisms in motion (bearings, gears, deployment hinges), connector mate/de-mate operations that abrade contact surfaces, and fastener installation that generates metallic debris.</p></div>
+        <div class="contam-cell"><div class="contam-cell-label">Primary Control</div><p>Protective covers during mechanism operation; directed airflow away from sensitive surfaces during connector work; particle fallout shields during overhead structural assembly; vacuum collection at fastener installation points.</p></div>
+      </div>
+    </div>
+
+    <div class="contam-card">
+      <div class="contam-card-header">
+        <div class="contam-badge molecular">Molecular</div>
+        <div class="contam-hdr-text">
+          <div class="contam-title">Propellants and Pressurants</div>
+          <div class="contam-risk">Risk: High</div>
+        </div>
+      </div>
+      <div class="contam-body">
+        <div class="contam-cell"><div class="contam-cell-label">Mechanism</div><p>Chemical contamination from propulsion system fluids — hydrazine, NTO, MMH — and their vapor byproducts; residue deposited on nearby surfaces after propellant loading operations.</p></div>
+        <div class="contam-cell"><div class="contam-cell-label">Primary Control</div><p>Strict sequencing: propulsion loading performed after all optical and electrical closeout work is complete. Purge and verify procedures after any propellant operation; dedicated ventilation during hazardous operations.</p></div>
+      </div>
+    </div>
+
+  </div>
+
+  <p style="font-size:0.85rem;color:var(--steel);margin-top:0.5rem;">
+    <span style="display:inline-block;width:12px;height:12px;background:#2e5a7a;border-radius:2px;vertical-align:middle;margin-right:4px;"></span>&thinsp;Particulate &emsp;
+    <span style="display:inline-block;width:12px;height:12px;background:#7a2e2e;border-radius:2px;vertical-align:middle;margin-right:4px;"></span>&thinsp;Molecular &emsp;
+    <span style="display:inline-block;width:12px;height:12px;background:linear-gradient(135deg,#2e5a7a 50%,#7a2e2e 50%);border-radius:2px;vertical-align:middle;margin-right:4px;"></span>&thinsp;Both
+  </p>
   <p class="table-legend" style="font-size: 0.85rem; color: var(--steel); margin-top: 0.5rem;">
     <span class="tag">P</span>&nbsp;= particulate &emsp; <span class="tag">M</span>&nbsp;= molecular &emsp; Rows with warm tint are primarily particulate sources; cool tint indicates primarily molecular sources.
   </p>
