@@ -523,6 +523,33 @@
     @media(max-width:680px){.contam-body{grid-template-columns:1fr;}.contam-cell{border-right:none;border-bottom:1px solid var(--rule);}.contam-cell:last-child{border-bottom:none;}.contam-badge{width:100px;}}
   </style>
 
+ <h3 class="ssh">Contamination Sources</h3>
+  <p>The table below identifies the primary contamination sources encountered during spacecraft I&amp;T, ordered by risk level. Each source is classified by its dominant contamination type — particulate, molecular, or both — because the controls and monitoring methods differ for each.</p>
+
+  <style>
+    .contam-cards{margin:2em 0;display:grid;grid-template-columns:1fr;gap:0;}
+    .contam-card{border:1px solid var(--rule);border-bottom:none;overflow:hidden;}
+    .contam-card:last-child{border-bottom:1px solid var(--rule);}
+    .contam-card-header{display:flex;align-items:stretch;}
+    .contam-badge{width:120px;display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:12px 10px;font-family:'Source Serif 4',serif;font-size:0.82rem;font-weight:600;text-align:center;color:rgba(255,255,255,0.95);line-height:1.35;}
+    .contam-badge.particulate{background:#2e5a7a;}
+    .contam-badge.molecular{background:#7a2e2e;}
+    .contam-badge.both{background:linear-gradient(135deg, #2e5a7a 50%, #7a2e2e 50%);}
+    .contam-hdr-text{flex:1;padding:12px 18px;background:var(--ink);}
+    .contam-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--paper);margin-bottom:3px;}
+    .contam-risk{font-size:0.85rem;color:var(--paper);font-weight:600;line-height:1.5;}
+    .contam-risk-high{color:#e8c36a;}
+    .contam-risk-medium{color:#b0b0b0;}
+    .contam-risk-lower{color:#7a9a8a;}
+    .contam-body{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+    .contam-cell{padding:14px 18px;border-right:1px solid var(--rule);background:var(--white);}
+    .contam-cell:last-child{border-right:none;}
+    .contam-card:nth-child(even) .contam-cell{background:var(--light);}
+    .contam-cell-label{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+    .contam-cell p{font-size:0.84rem;color:#333;line-height:1.6;font-weight:300;margin:0;}
+    @media(max-width:680px){.contam-body{grid-template-columns:1fr;}.contam-cell{border-right:none;border-bottom:1px solid var(--rule);}.contam-cell:last-child{border-bottom:none;}.contam-badge{width:100px;}}
+  </style>
+
   <div class="contam-cards">
 
     <div class="contam-card">
@@ -530,7 +557,7 @@
         <div class="contam-badge particulate">Particulate</div>
         <div class="contam-hdr-text">
           <div class="contam-title">Personnel — Particulate Shedding</div>
-          <div class="contam-risk">Risk: High</div>
+          <div class="contam-risk contam-risk-high">Risk: High</div>
         </div>
       </div>
       <div class="contam-body">
@@ -544,7 +571,7 @@
         <div class="contam-badge molecular">Molecular</div>
         <div class="contam-hdr-text">
           <div class="contam-title">Personnel — Cosmetics and Lotions</div>
-          <div class="contam-risk">Risk: High</div>
+          <div class="contam-risk contam-risk-high">Risk: High</div>
         </div>
       </div>
       <div class="contam-body">
@@ -558,7 +585,7 @@
         <div class="contam-badge molecular">Molecular</div>
         <div class="contam-hdr-text">
           <div class="contam-title">Materials Outgassing</div>
-          <div class="contam-risk">Risk: High</div>
+          <div class="contam-risk contam-risk-high">Risk: High</div>
         </div>
       </div>
       <div class="contam-body">
@@ -571,8 +598,22 @@
       <div class="contam-card-header">
         <div class="contam-badge molecular">Molecular</div>
         <div class="contam-hdr-text">
+          <div class="contam-title">Propellants and Pressurants</div>
+          <div class="contam-risk contam-risk-high">Risk: High</div>
+        </div>
+      </div>
+      <div class="contam-body">
+        <div class="contam-cell"><div class="contam-cell-label">Mechanism</div><p>Chemical contamination from propulsion system fluids — hydrazine, NTO, MMH — and their vapor byproducts; residue deposited on nearby surfaces after propellant loading operations.</p></div>
+        <div class="contam-cell"><div class="contam-cell-label">Primary Control</div><p>Strict sequencing: propulsion loading performed after all optical and electrical closeout work is complete. Purge and verify procedures after any propellant operation; dedicated ventilation during hazardous operations.</p></div>
+      </div>
+    </div>
+
+    <div class="contam-card">
+      <div class="contam-card-header">
+        <div class="contam-badge molecular">Molecular</div>
+        <div class="contam-hdr-text">
           <div class="contam-title">Cleaning Solvents</div>
-          <div class="contam-risk">Risk: Medium</div>
+          <div class="contam-risk contam-risk-medium">Risk: Medium</div>
         </div>
       </div>
       <div class="contam-body">
@@ -586,7 +627,7 @@
         <div class="contam-badge both">P + M</div>
         <div class="contam-hdr-text">
           <div class="contam-title">Tools and Fixtures</div>
-          <div class="contam-risk">Risk: Medium</div>
+          <div class="contam-risk contam-risk-medium">Risk: Medium</div>
         </div>
       </div>
       <div class="contam-body">
@@ -600,7 +641,7 @@
         <div class="contam-badge particulate">Particulate</div>
         <div class="contam-hdr-text">
           <div class="contam-title">Facility Infiltration</div>
-          <div class="contam-risk">Risk: Medium</div>
+          <div class="contam-risk contam-risk-medium">Risk: Medium</div>
         </div>
       </div>
       <div class="contam-body">
@@ -614,26 +655,12 @@
         <div class="contam-badge particulate">Particulate</div>
         <div class="contam-hdr-text">
           <div class="contam-title">Hardware Itself</div>
-          <div class="contam-risk">Risk: Lower</div>
+          <div class="contam-risk contam-risk-lower">Risk: Lower</div>
         </div>
       </div>
       <div class="contam-body">
         <div class="contam-cell"><div class="contam-cell-label">Mechanism</div><p>Particle generation from mechanisms in motion (bearings, gears, deployment hinges), connector mate/de-mate operations that abrade contact surfaces, and fastener installation that generates metallic debris.</p></div>
         <div class="contam-cell"><div class="contam-cell-label">Primary Control</div><p>Protective covers during mechanism operation; directed airflow away from sensitive surfaces during connector work; particle fallout shields during overhead structural assembly; vacuum collection at fastener installation points.</p></div>
-      </div>
-    </div>
-
-    <div class="contam-card">
-      <div class="contam-card-header">
-        <div class="contam-badge molecular">Molecular</div>
-        <div class="contam-hdr-text">
-          <div class="contam-title">Propellants and Pressurants</div>
-          <div class="contam-risk">Risk: High</div>
-        </div>
-      </div>
-      <div class="contam-body">
-        <div class="contam-cell"><div class="contam-cell-label">Mechanism</div><p>Chemical contamination from propulsion system fluids — hydrazine, NTO, MMH — and their vapor byproducts; residue deposited on nearby surfaces after propellant loading operations.</p></div>
-        <div class="contam-cell"><div class="contam-cell-label">Primary Control</div><p>Strict sequencing: propulsion loading performed after all optical and electrical closeout work is complete. Purge and verify procedures after any propellant operation; dedicated ventilation during hazardous operations.</p></div>
       </div>
     </div>
 
@@ -644,9 +671,7 @@
     <span style="display:inline-block;width:12px;height:12px;background:#7a2e2e;border-radius:2px;vertical-align:middle;margin-right:4px;"></span>&thinsp;Molecular &emsp;
     <span style="display:inline-block;width:12px;height:12px;background:linear-gradient(135deg,#2e5a7a 50%,#7a2e2e 50%);border-radius:2px;vertical-align:middle;margin-right:4px;"></span>&thinsp;Both
   </p>
-  <p class="table-legend" style="font-size: 0.85rem; color: var(--steel); margin-top: 0.5rem;">
-    <span class="tag">P</span>&nbsp;= particulate &emsp; <span class="tag">M</span>&nbsp;= molecular &emsp; Rows with warm tint are primarily particulate sources; cool tint indicates primarily molecular sources.
-  </p>
+  
 
   <h3 class="ssh">Material Screening and Bake-Out</h3>
   <p>Before any material — adhesive, coating, lubricant, foam, cable insulation — is approved for use in or near spacecraft hardware, it must be screened for outgassing. The standard test is ASTM E595, which measures total mass loss (TML) and collected volatile condensable material (CVCM) when a sample is heated in vacuum. The typical acceptance criterion for spacecraft materials is TML &lt; 1.0% and CVCM &lt; 0.1%. Materials that fail these criteria may be usable after a controlled <strong>bake-out</strong> — a period of heating in vacuum to drive off volatiles before installation — but bake-out effectiveness must be verified by post-bake outgassing measurement.</p>
