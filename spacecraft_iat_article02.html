@@ -269,6 +269,8 @@
     <p><strong>Failing to test the ESD wrist strap:</strong> A failed wrist strap provides no protection and no indication of failure at the point of use. The test takes ten seconds. Skipping it is indefensible on a program with ESD-sensitive flight hardware.</p>
   </div>
 
+
+  <!---
   <h2 class="sh" id="s5">5. The Four Threats: Contamination, ESD, FOD, and Workmanship</h2>
 
   <p>Every protocol in a spacecraft cleanroom addresses one or more of four categories of threat to flight hardware. Understanding these categories — and the specific failure modes they represent — is the foundation of cleanroom discipline.</p>
@@ -354,7 +356,21 @@
       </div>
     </div>
   </div>
+-->
+<h2 class="sh" id="s5">5. The Four Threats to Flight Hardware</h2>
 
+  <p>Every protocol in a spacecraft cleanroom — every gowning step, every material restriction, every grounding requirement, every tool inventory — addresses one or more of four categories of threat. Understanding these categories and the failure modes they represent is the foundation of cleanroom discipline. Each is introduced briefly here and treated in depth in the sections that follow.</p>
+
+  <ul class="body-list">
+    <li><strong>Particulate and molecular contamination</strong> — invisible, cumulative, and often irreversible. Particles degrade optical surfaces and migrate into mechanisms; molecular films reduce throughput and can be polymerized into permanent coatings by solar UV. Contamination control is the subject of Section 6.</li>
+    <li><strong>Electrostatic discharge (ESD)</strong> — imperceptible, instantaneous, and potentially latent. A single discharge below the threshold of human sensation can destroy or degrade a semiconductor device, creating a failure that may not manifest until the hardware is on orbit. ESD control is the subject of Section 7.</li>
+    <li><strong>Foreign object debris (FOD)</strong> — mechanical, preventable, and mission-ending. A loose fastener, a wire fragment, or a dropped tool inside the spacecraft can migrate during launch vibration into bearings, valve seats, or electrical connectors. FOD control is the subject of Section 8.</li>
+    <li><strong>Workmanship</strong> — the quality of human skill, process execution, and verification. An incorrectly torqued fastener, a cold solder joint, a harness connector not fully seated — poor workmanship creates failure modes that are invisible on inspection but catastrophic in the launch environment or in service. Workmanship is controlled through technician certification, approved procedures, and independent inspection at key steps, and is treated comprehensively in Article 03: Quality Assurance, Inspection, and Oversight.</li>
+  </ul>
+
+  <p>These four threats are not independent. A contamination event can be caused by a FOD incident. An ESD failure can be masked by a workmanship error that introduced a separate fault on the same circuit. A program that is rigorous about one category but careless about another has an incomplete defense posture. The cleanroom system must be applied in its entirety.</p>
+
+<!--
   <h2 class="sh" id="s6">6. Contamination Control: Sources, Monitoring, and Mitigation</h2>
 
   <p>Contamination control in spacecraft I&amp;T is a continuous, program-wide discipline — not an activity confined to the cleanroom floor. It spans the entire lifecycle of hardware from piece part procurement through launch, and it requires coordination between design, materials engineering, procurement, manufacturing, and I&amp;T teams.</p>
@@ -462,6 +478,65 @@
       </tr>
     </tbody>
   </table>
+-->
+
+<h2 class="sh" id="s6">6. Contamination Control: Particulate, Molecular, and Material</h2>
+
+  <p>Contamination control in spacecraft I&amp;T is a continuous, program-wide discipline — not an activity confined to the cleanroom floor. It spans the entire lifecycle of hardware from piece-part procurement through launch, and it requires coordination between design, materials engineering, procurement, manufacturing, and I&amp;T teams. It addresses two fundamentally different categories of contamination, each with its own sources, detection methods, and consequences.</p>
+
+  <h3 class="ssh">Particulate Contamination</h3>
+  <p>Particulate contamination is the deposition of solid particles — skin cells, fibers, metal fragments, dust, adhesive residue — on hardware surfaces. Its effects depend on where the particles land. On an optical surface, a single particle of 10-micron diameter can permanently obscure a detector pixel. On a mechanical interface, particles can prevent proper seating of a connector or introduce wear into a bearing. On an electrical surface, conductive particles can create short circuits. During launch vibration, particles that were stationary on a surface can migrate into locations where they cause damage far from their original point of deposition.</p>
+
+  <p>Particulate contamination is controlled primarily through the cleanroom environment itself — the HEPA filtration, positive pressure, and air change rates described in Section 2 — and through the gowning and behavioral protocols described in Section 4. But environmental controls alone are not sufficient. Every material, tool, and fixture that enters the cleanroom is a potential particle source, and the activities performed on hardware — connector mating and de-mating, mechanism operation, fastener installation — generate particles at the point of work regardless of how clean the surrounding air may be.</p>
+
+  <h3 class="ssh">Molecular Contamination</h3>
+  <p>Molecular contamination is the deposition of chemical films — volatile organic compounds, silicones, plasticizers, solvent residues — on hardware surfaces through outgassing, direct contact, or vapor transport. Unlike particulate contamination, molecular contamination is invisible. It cannot be seen on an optical surface, felt on a mechanical interface, or detected by the particle counters that verify cleanroom classification. It builds up over time, and its most damaging effects may not become apparent until the hardware is in the space environment.</p>
+
+  <p>The particular danger of molecular contamination for optical systems is photochemical fixation: ultraviolet radiation from the sun can polymerize a thin organic film on an optical surface into a permanent coating that cannot be removed without damaging the surface itself. This process is irreversible and cumulative. A contamination film that would be inconsequential on a laboratory instrument — easily wiped away with an approved solvent — becomes a permanent throughput loss on a space telescope. Hydrocarbon outgassing from improperly screened adhesives, trapped during ground integration and then redistributed by on-orbit thermal cycling, has caused the degradation of optical coatings on multiple flight instruments.</p>
+
+  <h3 class="ssh">Contamination Sources</h3>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>Source</th><th>Mechanism</th><th>Risk Level</th><th>Primary Control</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Personnel</td><td>Skin cells, hair, breath aerosols, cosmetics, clothing fibers</td><td>High</td><td>Gowning, access control, behavior protocols</td></tr>
+      <tr><td>Materials outgassing</td><td>Volatile organic compounds (VOCs), silicones, plasticizers released from adhesives, coatings, cable insulation</td><td>High</td><td>Materials screening (ASTM E595), approved materials list, bake-out</td></tr>
+      <tr><td>Cleaning solvents</td><td>Residue from improper cleaning; reaction products from incompatible solvent/surface combinations</td><td>Medium</td><td>Approved solvent list; approved cleaning procedures; verification wipes</td></tr>
+      <tr><td>Tools and fixtures</td><td>Lubricants, cutting fluids, metallic particles from machined surfaces, rubber particles from O-rings</td><td>Medium</td><td>Cleanroom-approved tools; pre-cleaning of fixtures entering the room</td></tr>
+      <tr><td>Facility infiltration</td><td>Particles entering through doors, HVAC systems, construction activity in adjacent spaces</td><td>Medium</td><td>Positive pressure; HEPA filtration; access control; particle monitoring</td></tr>
+      <tr><td>Hardware itself</td><td>Particle generation from mechanisms in motion (bearings, gears), connector mate/de-mate operations</td><td>Lower</td><td>Covers during mechanism operation; directed airflow from sensitive surfaces during connector work</td></tr>
+      <tr><td>Propellants and pressurants</td><td>Chemical contamination from propulsion system fluids; residue after propellant loading</td><td>High</td><td>Strict sequencing (propulsion work after optical/electrical closeout); purge and verify procedures</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="ssh">Material Screening and Bake-Out</h3>
+  <p>Before any material — adhesive, coating, lubricant, foam, cable insulation — is approved for use in or near spacecraft hardware, it must be screened for outgassing. The standard test is ASTM E595, which measures total mass loss (TML) and collected volatile condensable material (CVCM) when a sample is heated in vacuum. The typical acceptance criterion for spacecraft materials is TML &lt; 1.0% and CVCM &lt; 0.1%. Materials that fail these criteria may be usable after a controlled <strong>bake-out</strong> — a period of heating in vacuum to drive off volatiles before installation — but bake-out effectiveness must be verified by post-bake outgassing measurement.</p>
+
+  <p>The approved materials list (AML) is a living program document that records every material evaluated and its disposition. Using any material not on the AML without explicit approval is a nonconformance on most programs. The temptation to "just use what's available" — a tube of adhesive from the shelf, a piece of foam for padding — is one of the most common sources of contamination on spacecraft programs and one of the most difficult to trace after the fact.</p>
+
+  <h3 class="ssh">Contamination Monitoring</h3>
+  <p>Contamination control without monitoring is contamination hope. The program must verify that its controls are working, detect contamination events when they occur, and establish the evidentiary record that the spacecraft's contamination state is known and acceptable at the time of launch.</p>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>Method</th><th>What It Measures</th><th>Frequency / Application</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Particle counters</td><td>Airborne particle concentration; used to verify and maintain cleanroom classification</td><td>Continuous in operational cleanrooms; periodic certification per ISO 14644-2</td></tr>
+      <tr><td>Witness mirrors</td><td>Particulate and molecular deposition on polished optical-quality surfaces placed near flight hardware</td><td>Placed during all activities near optical hardware; inspected at defined intervals and after any anomaly</td></tr>
+      <tr><td>Quartz crystal microbalance (QCM)</td><td>Molecular deposition rates; extremely sensitive to thin-film deposition on a resonant crystal surface</td><td>Used during thermal-vacuum testing and during high-risk contamination operations; continuous readout</td></tr>
+      <tr><td>Surface particle counts</td><td>Particles on specific hardware surfaces using optical microscopy or laser scatter; measured in particles per unit area</td><td>Performed before and after major operations on optical surfaces; before optical closeout</td></tr>
+      <tr><td>Witness coupons</td><td>Chemically analyzed coupons that capture both particulate and molecular contamination for post-facto analysis</td><td>Co-located with sensitive hardware during long-duration storage or shipping</td></tr>
+      <tr><td>TQCM (temperature-controlled QCM)</td><td>Molecular contamination flux as a function of temperature; identifies outgassing sources by thermal signature</td><td>During thermal-vacuum testing; during bake-out operations</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout gold">
+    <div class="callout-label">✦ The Contamination Budget</div>
+    <p>On programs with stringent optical cleanliness requirements, contamination is not just controlled — it is budgeted. The program allocates a total allowable contamination level for each critical surface over the entire mission lifecycle, from fabrication through end of life on orbit. Each phase of the program — component manufacturing, instrument integration, spacecraft integration, shipping, launch site operations, launch, and on-orbit operations — is allocated a fraction of that budget. Contamination monitoring data is tracked against the budget at every phase gate. A surface that has consumed 80% of its contamination budget before leaving the integration facility has almost no margin left for launch site operations and the on-orbit environment. The contamination budget makes the invisible visible — it converts an abstract cleanliness requirement into a quantitative constraint that the program can manage, track, and defend at review.</p>
+  </div>
 
   <h2 class="sh" id="s7">7. Electrostatic Discharge (ESD): The Invisible Killer</h2>
 
