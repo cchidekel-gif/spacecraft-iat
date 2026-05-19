@@ -119,54 +119,119 @@
 
   <p>Cleanrooms are classified by the concentration of airborne particles permitted within them. The international standard governing cleanroom classification is <span class="kt">ISO 14644-1</span>, which defines cleanroom classes based on the maximum permitted concentration of particles of 0.1 µm or larger per cubic meter of air. This standard superseded the older US Federal Standard 209E (which used particle counts per cubic foot), though FS-209E terminology remains in common use in the aerospace industry — you will encounter both systems on any real program.</p>
 
-  <table class="iso-table">
-    <thead>
-      <tr>
-        <th>ISO Class</th>
-        <th>Old Fed. Std.</th>
-        <th>Max Particles ≥0.5µm per m³</th>
-        <th>Typical Spacecraft Application</th>
-        <th>Characteristic Environment</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>ISO 4</td>
-        <td>Class 10</td>
-        <td>352</td>
-        <td>Detector assembly, cryogenic optical surfaces, focal plane integration</td>
-        <td>Laminar-flow benches only; full gowning with face masks</td>
-      </tr>
-      <tr>
-        <td>ISO 5</td>
-        <td>Class 100</td>
-        <td>3,520</td>
-        <td>Telescope mirror assembly, precision optical integration, sensor alignment</td>
-        <td>High-bay cleanroom; full gowning; restricted materials list</td>
-      </tr>
-      <tr>
-        <td>ISO 6</td>
-        <td>Class 1,000</td>
-        <td>35,200</td>
-        <td>Instrument-level integration, detector housing assembly</td>
-        <td>Cleanroom with positive pressure; full gowning</td>
-      </tr>
-      <tr>
-        <td>ISO 7</td>
-        <td>Class 10,000</td>
-        <td>352,000</td>
-        <td>Spacecraft bus integration, subsystem assembly, structural integration</td>
-        <td>Standard spacecraft cleanroom; full gowning; HEPA-filtered air</td>
-      </tr>
-      <tr>
-        <td>ISO 8</td>
-        <td>Class 100,000</td>
-        <td>3,520,000</td>
-        <td>Large structure integration, propulsion system work, non-contamination-sensitive ops</td>
-        <td>Gowning with smock and hat; controlled access</td>
-      </tr>
-    </tbody>
-  </table>
+   <style>
+    .iso-cards{margin:2em 0;display:grid;grid-template-columns:1fr;gap:0;}
+    .iso-card{border:1px solid var(--rule);border-bottom:none;overflow:hidden;}
+    .iso-card:last-child{border-bottom:1px solid var(--rule);}
+    .iso-card-header{display:flex;align-items:stretch;}
+    .iso-badge{width:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;padding:12px 10px;font-family:'Source Serif 4',serif;color:rgba(255,255,255,0.95);line-height:1.35;text-align:center;}
+    .iso-badge-class{font-size:1.05rem;font-weight:700;}
+    .iso-badge-old{font-size:0.72rem;font-weight:400;opacity:0.85;margin-top:2px;}
+    .iso-badge.iso4{background:#1a3a4a;}
+    .iso-badge.iso5{background:#2e5a7a;}
+    .iso-badge.iso6{background:#3a7a5a;}
+    .iso-badge.iso7{background:#b87420;}
+    .iso-badge.iso8{background:#7a5a3a;}
+    .iso-hdr-text{flex:1;padding:12px 18px;background:var(--ink);}
+    .iso-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--paper);margin-bottom:3px;}
+    .iso-particles{font-size:0.85rem;color:#e8c36a;font-weight:600;line-height:1.5;}
+    .iso-body{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+    .iso-cell{padding:14px 18px;border-right:1px solid var(--rule);background:var(--white);}
+    .iso-cell:last-child{border-right:none;}
+    .iso-card:nth-child(even) .iso-cell{background:var(--light);}
+    .iso-cell-label{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+    .iso-cell p{font-size:0.84rem;color:#333;line-height:1.6;font-weight:300;margin:0;}
+    @media(max-width:680px){.iso-body{grid-template-columns:1fr;}.iso-cell{border-right:none;border-bottom:1px solid var(--rule);}.iso-cell:last-child{border-bottom:none;}.iso-badge{width:100px;}}
+  </style>
+
+  <div class="iso-cards">
+
+    <div class="iso-card">
+      <div class="iso-card-header">
+        <div class="iso-badge iso4">
+          <div class="iso-badge-class">ISO 4</div>
+          <div class="iso-badge-old">Class 10</div>
+        </div>
+        <div class="iso-hdr-text">
+          <div class="iso-title">Detector Assembly and Cryogenic Optical Surfaces</div>
+          <div class="iso-particles">≤ 352 particles ≥0.5µm per m³</div>
+        </div>
+      </div>
+      <div class="iso-body">
+        <div class="iso-cell"><div class="iso-cell-label">Typical Application</div><p>Detector assembly, cryogenic optical surfaces, focal plane integration. The most demanding cleanliness environment in spacecraft I&amp;T — any particle on these surfaces is a permanent performance loss.</p></div>
+        <div class="iso-cell"><div class="iso-cell-label">Characteristic Environment</div><p>Laminar-flow benches only; full gowning with face masks or supplied-air hoods; severely restricted materials list; minimal personnel count; continuous particle monitoring at the work surface.</p></div>
+      </div>
+    </div>
+
+    <div class="iso-card">
+      <div class="iso-card-header">
+        <div class="iso-badge iso5">
+          <div class="iso-badge-class">ISO 5</div>
+          <div class="iso-badge-old">Class 100</div>
+        </div>
+        <div class="iso-hdr-text">
+          <div class="iso-title">Precision Optical Integration and Sensor Alignment</div>
+          <div class="iso-particles">≤ 3,520 particles ≥0.5µm per m³</div>
+        </div>
+      </div>
+      <div class="iso-body">
+        <div class="iso-cell"><div class="iso-cell-label">Typical Application</div><p>Telescope mirror assembly, precision optical integration, sensor alignment. Primary mirror handling and instrument optical bench integration are typically performed at this level.</p></div>
+        <div class="iso-cell"><div class="iso-cell-label">Characteristic Environment</div><p>High-bay cleanroom or dedicated optical integration facility; full gowning; restricted materials list; witness mirrors deployed at all times; molecular contamination monitoring active.</p></div>
+      </div>
+    </div>
+
+    <div class="iso-card">
+      <div class="iso-card-header">
+        <div class="iso-badge iso6">
+          <div class="iso-badge-class">ISO 6</div>
+          <div class="iso-badge-old">Class 1,000</div>
+        </div>
+        <div class="iso-hdr-text">
+          <div class="iso-title">Instrument-Level Integration</div>
+          <div class="iso-particles">≤ 35,200 particles ≥0.5µm per m³</div>
+        </div>
+      </div>
+      <div class="iso-body">
+        <div class="iso-cell"><div class="iso-cell-label">Typical Application</div><p>Instrument-level integration, detector housing assembly. Work at this level often involves hardware that will later be exposed at ISO 5 or ISO 4 for final optical alignment.</p></div>
+        <div class="iso-cell"><div class="iso-cell-label">Characteristic Environment</div><p>Cleanroom with positive pressure; full gowning; controlled materials; may use localized laminar-flow curtains to achieve higher cleanliness at specific work surfaces within the room.</p></div>
+      </div>
+    </div>
+
+    <div class="iso-card">
+      <div class="iso-card-header">
+        <div class="iso-badge iso7">
+          <div class="iso-badge-class">ISO 7</div>
+          <div class="iso-badge-old">Class 10,000</div>
+        </div>
+        <div class="iso-hdr-text">
+          <div class="iso-title">Spacecraft Bus Integration and Subsystem Assembly</div>
+          <div class="iso-particles">≤ 352,000 particles ≥0.5µm per m³</div>
+        </div>
+      </div>
+      <div class="iso-body">
+        <div class="iso-cell"><div class="iso-cell-label">Typical Application</div><p>Spacecraft bus integration, subsystem assembly, structural integration. This is the baseline for most spacecraft system-level I&amp;T work — the environment where the vehicle takes shape on the integration stand.</p></div>
+        <div class="iso-cell"><div class="iso-cell-label">Characteristic Environment</div><p>Standard spacecraft high-bay cleanroom; full gowning; HEPA-filtered air at 60–150 air changes per hour; positive pressure; continuous environmental monitoring. Local laminar-flow workstations provide ISO 5 micro-environments within the room as needed.</p></div>
+      </div>
+    </div>
+
+    <div class="iso-card">
+      <div class="iso-card-header">
+        <div class="iso-badge iso8">
+          <div class="iso-badge-class">ISO 8</div>
+          <div class="iso-badge-old">Class 100,000</div>
+        </div>
+        <div class="iso-hdr-text">
+          <div class="iso-title">Large Structure Integration and Non-Sensitive Operations</div>
+          <div class="iso-particles">≤ 3,520,000 particles ≥0.5µm per m³</div>
+        </div>
+      </div>
+      <div class="iso-body">
+        <div class="iso-cell"><div class="iso-cell-label">Typical Application</div><p>Large structure integration, propulsion system mechanical work, non-contamination-sensitive operations. Electrical and optical hardware is typically bagged or covered when work at this level is performed nearby.</p></div>
+        <div class="iso-cell"><div class="iso-cell-label">Characteristic Environment</div><p>Gowning with smock and hat; controlled access; HEPA filtration but at lower air change rates; may share facility space with higher-class areas separated by curtains or partitions.</p></div>
+      </div>
+    </div>
+
+  </div>
 
   <p>For most spacecraft system-level integration work, an <span class="kt">ISO 7 (Class 10,000)</span> cleanroom is the baseline. Work involving exposed optical surfaces, detector arrays, or cryogenic components typically requires <span class="kt">ISO 5 (Class 100)</span> or better, often achieved within a larger ISO 7 space using local laminar-flow workstations that provide a cleaner microenvironment at the work surface.</p>
 
