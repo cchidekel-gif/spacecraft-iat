@@ -746,19 +746,120 @@
   <h3 class="ssh">Contamination Monitoring</h3>
   <p>Contamination control without monitoring is contamination hope. The program must verify that its controls are working, detect contamination events when they occur, and establish the evidentiary record that the spacecraft's contamination state is known and acceptable at the time of launch.</p>
 
-  <table class="data-table">
-    <thead>
-      <tr><th>Method</th><th>What It Measures</th><th>Frequency / Application</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>Particle counters</td><td>Airborne particle concentration; used to verify and maintain cleanroom classification</td><td>Continuous in operational cleanrooms; periodic certification per ISO 14644-2</td></tr>
-      <tr><td>Witness mirrors</td><td>Particulate and molecular deposition on polished optical-quality surfaces placed near flight hardware</td><td>Placed during all activities near optical hardware; inspected at defined intervals and after any anomaly</td></tr>
-      <tr><td>Quartz crystal microbalance (QCM)</td><td>Molecular deposition rates; extremely sensitive to thin-film deposition on a resonant crystal surface</td><td>Used during thermal-vacuum testing and during high-risk contamination operations; continuous readout</td></tr>
-      <tr><td>Surface particle counts</td><td>Particles on specific hardware surfaces using optical microscopy or laser scatter; measured in particles per unit area</td><td>Performed before and after major operations on optical surfaces; before optical closeout</td></tr>
-      <tr><td>Witness coupons</td><td>Chemically analyzed coupons that capture both particulate and molecular contamination for post-facto analysis</td><td>Co-located with sensitive hardware during long-duration storage or shipping</td></tr>
-      <tr><td>TQCM (temperature-controlled QCM)</td><td>Molecular contamination flux as a function of temperature; identifies outgassing sources by thermal signature</td><td>During thermal-vacuum testing; during bake-out operations</td></tr>
-    </tbody>
-  </table>
+    <style>
+    .monitor-cards{margin:2em 0;display:grid;grid-template-columns:1fr;gap:0;}
+    .monitor-card{border:1px solid var(--rule);border-bottom:none;overflow:hidden;}
+    .monitor-card:last-child{border-bottom:1px solid var(--rule);}
+    .monitor-card-header{display:flex;align-items:stretch;}
+    .monitor-badge{width:120px;display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:12px 10px;font-family:'Source Serif 4',serif;font-size:0.82rem;font-weight:600;text-align:center;color:rgba(255,255,255,0.95);line-height:1.35;}
+    .monitor-badge.airborne{background:#2e5a7a;}
+    .monitor-badge.surface{background:#b87420;}
+    .monitor-badge.analytical{background:#2e7d52;}
+    .monitor-hdr-text{flex:1;padding:12px 18px;background:var(--ink);}
+    .monitor-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--paper);margin-bottom:3px;}
+    .monitor-type{font-size:0.85rem;color:#e8c36a;font-weight:600;line-height:1.5;}
+    .monitor-body{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+    .monitor-cell{padding:14px 18px;border-right:1px solid var(--rule);background:var(--white);}
+    .monitor-cell:last-child{border-right:none;}
+    .monitor-card:nth-child(even) .monitor-cell{background:var(--light);}
+    .monitor-cell-label{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+    .monitor-cell p{font-size:0.84rem;color:#333;line-height:1.6;font-weight:300;margin:0;}
+    @media(max-width:680px){.monitor-body{grid-template-columns:1fr;}.monitor-cell{border-right:none;border-bottom:1px solid var(--rule);}.monitor-cell:last-child{border-bottom:none;}.monitor-badge{width:100px;}}
+  </style>
+
+  <div class="monitor-cards">
+
+    <div class="monitor-card">
+      <div class="monitor-card-header">
+        <div class="monitor-badge airborne">Airborne</div>
+        <div class="monitor-hdr-text">
+          <div class="monitor-title">Particle Counters</div>
+          <div class="monitor-type">Particulate — Airborne Concentration</div>
+        </div>
+      </div>
+      <div class="monitor-body">
+        <div class="monitor-cell"><div class="monitor-cell-label">What It Measures</div><p>Airborne particle concentration by size bin, used to verify and maintain cleanroom classification per ISO 14644-1. Provides the primary evidence that the cleanroom environment is performing to specification.</p></div>
+        <div class="monitor-cell"><div class="monitor-cell-label">Frequency / Application</div><p>Continuous in operational cleanrooms with real-time display and alarm thresholds; periodic certification per ISO 14644-2 at defined intervals and after any facility modification or contamination event.</p></div>
+      </div>
+    </div>
+
+    <div class="monitor-card">
+      <div class="monitor-card-header">
+        <div class="monitor-badge surface">Surface</div>
+        <div class="monitor-hdr-text">
+          <div class="monitor-title">Witness Mirrors</div>
+          <div class="monitor-type">Particulate + Molecular — Surface Deposition</div>
+        </div>
+      </div>
+      <div class="monitor-body">
+        <div class="monitor-cell"><div class="monitor-cell-label">What It Measures</div><p>Particulate and molecular deposition on polished optical-quality surfaces placed adjacent to flight hardware. Witness mirrors capture what actually reaches hardware surfaces — a more direct measure of contamination risk than airborne particle count alone.</p></div>
+        <div class="monitor-cell"><div class="monitor-cell-label">Frequency / Application</div><p>Placed during all activities near optical hardware; inspected under controlled illumination at defined intervals and after any anomaly or suspected contamination event. Results logged against the contamination budget.</p></div>
+      </div>
+    </div>
+
+    <div class="monitor-card">
+      <div class="monitor-card-header">
+        <div class="monitor-badge analytical">Analytical</div>
+        <div class="monitor-hdr-text">
+          <div class="monitor-title">Quartz Crystal Microbalance (QCM)</div>
+          <div class="monitor-type">Molecular — Real-Time Deposition Rate</div>
+        </div>
+      </div>
+      <div class="monitor-body">
+        <div class="monitor-cell"><div class="monitor-cell-label">What It Measures</div><p>Molecular deposition rates by detecting mass accumulation on a piezoelectric crystal surface through changes in resonant frequency. Extremely sensitive — capable of detecting nanogram-level deposition — and provides real-time, continuous readout of molecular contamination flux.</p></div>
+        <div class="monitor-cell"><div class="monitor-cell-label">Frequency / Application</div><p>Used during thermal-vacuum testing and during high-risk contamination operations such as adhesive curing or propulsion system work. Continuous readout allows immediate detection of contamination events as they occur.</p></div>
+      </div>
+    </div>
+
+    <div class="monitor-card">
+      <div class="monitor-card-header">
+        <div class="monitor-badge surface">Surface</div>
+        <div class="monitor-hdr-text">
+          <div class="monitor-title">Surface Particle Counts</div>
+          <div class="monitor-type">Particulate — Hardware Surface Cleanliness</div>
+        </div>
+      </div>
+      <div class="monitor-body">
+        <div class="monitor-cell"><div class="monitor-cell-label">What It Measures</div><p>Particles on specific hardware surfaces using optical microscopy or laser scatter techniques, measured in particles per unit area by size bin. Provides direct verification of surface cleanliness on the flight hardware itself, not just the surrounding environment.</p></div>
+        <div class="monitor-cell"><div class="monitor-cell-label">Frequency / Application</div><p>Performed before and after major operations on optical surfaces; before optical closeout; and at phase gates where the contamination budget is formally assessed. Results compared against surface cleanliness level requirements per IEST-STD-CC1246.</p></div>
+      </div>
+    </div>
+
+    <div class="monitor-card">
+      <div class="monitor-card-header">
+        <div class="monitor-badge analytical">Analytical</div>
+        <div class="monitor-hdr-text">
+          <div class="monitor-title">Witness Coupons</div>
+          <div class="monitor-type">Particulate + Molecular — Post-Facto Analysis</div>
+        </div>
+      </div>
+      <div class="monitor-body">
+        <div class="monitor-cell"><div class="monitor-cell-label">What It Measures</div><p>Chemically analyzed coupons that capture both particulate and molecular contamination for laboratory analysis after exposure. Unlike witness mirrors (visual inspection), coupons are destructively analyzed to identify specific contaminant species and quantities.</p></div>
+        <div class="monitor-cell"><div class="monitor-cell-label">Frequency / Application</div><p>Co-located with sensitive hardware during long-duration storage, shipping, and launch site operations. Retrieved and analyzed at defined intervals or when a contamination event is suspected. Results provide forensic-quality data for anomaly investigation.</p></div>
+      </div>
+    </div>
+
+    <div class="monitor-card">
+      <div class="monitor-card-header">
+        <div class="monitor-badge analytical">Analytical</div>
+        <div class="monitor-hdr-text">
+          <div class="monitor-title">TQCM (Temperature-Controlled QCM)</div>
+          <div class="monitor-type">Molecular — Thermal Signature Identification</div>
+        </div>
+      </div>
+      <div class="monitor-body">
+        <div class="monitor-cell"><div class="monitor-cell-label">What It Measures</div><p>Molecular contamination flux as a function of temperature, by cycling the QCM crystal through a controlled temperature range. Different contaminant species condense and evaporate at characteristic temperatures, allowing identification of specific outgassing sources by their thermal signature.</p></div>
+        <div class="monitor-cell"><div class="monitor-cell-label">Frequency / Application</div><p>During thermal-vacuum testing where the chamber environment amplifies outgassing; during bake-out operations to verify that volatile species have been driven off; and during contamination investigations to identify the source of an unexpected deposition event.</p></div>
+      </div>
+    </div>
+
+  </div>
+
+  <p style="font-size:0.85rem;color:var(--steel);margin-top:0.5rem;">
+    <span style="display:inline-block;width:12px;height:12px;background:#2e5a7a;border-radius:2px;vertical-align:middle;margin-right:4px;"></span>&thinsp;Airborne environment monitoring &emsp;
+    <span style="display:inline-block;width:12px;height:12px;background:#b87420;border-radius:2px;vertical-align:middle;margin-right:4px;"></span>&thinsp;Hardware surface measurement &emsp;
+    <span style="display:inline-block;width:12px;height:12px;background:#2e7d52;border-radius:2px;vertical-align:middle;margin-right:4px;"></span>&thinsp;Analytical / laboratory instrument
+  </p>
 
   <div class="callout gold">
     <div class="callout-label">✦ The Contamination Budget</div>
