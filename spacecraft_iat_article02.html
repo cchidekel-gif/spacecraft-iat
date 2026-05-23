@@ -188,7 +188,7 @@
       </div>
       <div class="iso-body">
         <div class="iso-cell"><div class="iso-cell-label">Typical Application</div><p>Detector assembly, cryogenic optical surfaces, focal plane integration. The most demanding cleanliness environment in spacecraft I&amp;T — any particle on these surfaces is a permanent performance loss.</p></div>
-        <div class="iso-cell"><div class="iso-cell-label">Characteristic Environment</div><p>Laminar-flow benches only; full gowning with face masks or supplied-air hoods; severely restricted materials list; minimal personnel count; continuous particle monitoring at the work surface.</p></div>
+        <div class="iso-cell"><div class="iso-cell-label">Characteristic Environment</div><p>Laminar-flow benches only; full gowning with face masks or supplied-air hoods(for only the most sensitive operations); severely restricted materials list; minimal personnel count; continuous particle monitoring at the work surface.</p></div>
       </div>
     </div>
 
@@ -205,7 +205,7 @@
       </div>
       <div class="iso-body">
         <div class="iso-cell"><div class="iso-cell-label">Typical Application</div><p>Telescope mirror assembly, precision optical integration, sensor alignment. Primary mirror handling and instrument optical bench integration are typically performed at this level.</p></div>
-        <div class="iso-cell"><div class="iso-cell-label">Characteristic Environment</div><p>High-bay cleanroom or dedicated optical integration facility; full gowning; restricted materials list; witness mirrors deployed at all times; molecular contamination monitoring active.</p></div>
+        <div class="iso-cell"><div class="iso-cell-label">Characteristic Environment</div><p>High-bay cleanroom or dedicated optical integration facility; full gowning; restricted materials list; witness mirrors used often. use of quartz crystal microbalances (QCMs) for molecular contamination monitoring.</p></div>
       </div>
     </div>
 
@@ -239,7 +239,7 @@
       </div>
       <div class="iso-body">
         <div class="iso-cell"><div class="iso-cell-label">Typical Application</div><p>Spacecraft bus integration, subsystem assembly, structural integration. This is the baseline for most spacecraft system-level I&amp;T work — the environment where the vehicle takes shape on the integration stand.</p></div>
-        <div class="iso-cell"><div class="iso-cell-label">Characteristic Environment</div><p>Standard spacecraft high-bay cleanroom; full gowning; HEPA-filtered air at 60–150 air changes per hour; positive pressure; continuous environmental monitoring. Local laminar-flow workstations provide ISO 5 micro-environments within the room as needed.</p></div>
+        <div class="iso-cell"><div class="iso-cell-label">Characteristic Environment</div><p>Standard spacecraft high-bay cleanroom; full gowning; HEPA-filtered air often around 60–150 air changes per hour (facility design dependent); positive pressure; continuous environmental monitoring. Local laminar-flow workstations provide ISO 5 micro-environments within the room as needed.</p></div>
       </div>
     </div>
 
@@ -278,8 +278,8 @@
 
   <h3 class="ssh">Airflow and Pressurization</h3>
   <p>Cleanroom air is continuously recirculated through <span class="kt">HEPA (High-Efficiency Particulate Air)</span> or <span class="kt">ULPA (Ultra-Low Particulate Air)</span> filters. HEPA filters remove at least 99.97% of particles at 0.3 µm and are standard for ISO 7 and ISO 8 environments; ULPA filters remove at least 99.999% at 0.12 µm and are used in ISO 5 and cleaner environments.</p>
-  <p>How the filtered air reaches the work area matters as much as how clean it is. Unidirectional (laminar) flow delivers air in parallel streamlines — typically ceiling to floor — sweeping particles away from hardware in a continuous curtain. This is the standard for ISO 5 and cleaner environments and for laminar-flow workstations within larger rooms. Non-unidirectional (turbulent) flow introduces air through ceiling diffusers and mixes it within the room volume — less effective at protecting specific work surfaces but practical for large high-bay volumes at ISO 7 and ISO 8. Most spacecraft cleanrooms combine both: turbulent flow at the room level with laminar-flow workstations providing higher-class micro-environments where optical or detector hardware is exposed. Wall-flow configurations mount HEPA units on one or more walls, delivering air horizontally across the work area. These are common in smaller cleanrooms, portable clean tents, and retrofit installations where ceiling plenums are impractical. The horizontal flow path changes the contamination geometry — personnel standing upstream of the hardware become direct contamination sources — making work area layout and personnel positioning critical planning considerations.</p>
-  <p>Regardless of flow pattern or filter placement, cleanrooms are maintained at <strong>positive pressure </strong>relative to adjacent spaces, so that when a door is opened, air flows outward rather than inward, preventing unfiltered air from entering the controlled environment.</p>
+  <p>Not all cleanrooms deliver filtered air from the ceiling, and not all horizontal flow configurations are compromises. Wall-flow configurations mount HEPA filter units on one or more walls, delivering air horizontally across the work volume. At the bench scale, this is the standard approach for component-level and piece-part work — detector handling, connector assembly, small optics cleaning — where the HEPA bank at the back of a laminar-flow bench sweeps particles away from the work piece toward the operator rather than allowing them to fall onto the hardware. At larger scales, wall-flow is the preferred solution when the hardware is tall enough that ceiling-mounted filters would be too far above the work zone to be effective, when the most contamination-sensitive surfaces face downward and ceiling-to-floor flow would drag particles across them, or when cranes and overhead rigging must have unobstructed access to the hardware — a common requirement during spacecraft structural integration that is incompatible with a ceiling full of HEPA filters. Wall-flow is also the practical choice for portable clean tents erected around specific hardware on the integration floor, and for retrofit installations where ceiling plenums are impractical.</p>
+  <p>In all wall-flow configurations, the engineer must account for the horizontal flow path. Personnel standing upstream of the hardware become direct contamination sources in a way that ceiling-to-floor flow avoids. Work area layout, personnel positioning relative to the airflow direction, and the placement of contamination-generating activities relative to sensitive hardware surfaces are all deliberate planning considerations — not details that take care of themselves.</p>
 
  <h3 class="ssh">Temperature Control</h3>
   <p>Spacecraft cleanrooms are typically maintained at 68±2°F (20±1°C). This is not primarily for human comfort. Temperature stability is an engineering requirement that serves multiple cleanroom disciplines simultaneously.</p>
