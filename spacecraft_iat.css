@@ -1812,6 +1812,10 @@ ul.cs-list li::before {
   background-color: var(--gold);
 }
 
+.article-body {
+  overflow-x: hidden;
+}
+
 /* ── FOOTER ──────────────────────────────────────────────────
    The footer uses your EXISTING CSS classes:
      .article-footer, .footer-inner, .footer-col,
