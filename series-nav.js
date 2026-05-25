@@ -64,11 +64,11 @@
       topics:   ["Quality Assurance", "Inspection", "Workmanship", "Stop-Work", "Quality Culture", "NCR", "MRB"],
       audience: "Every person who works on flight hardware \u2014 engineer, technician, manager, or inspector. Quality assurance is not a specialty discipline; it is a shared responsibility that every participant in the I&T program must understand and practice."
     },
-     { id: "04", seriesNum: "04",
-      title:    "The Cleanroom: Environment, Protocol, and Practice",
+      { id: "04", seriesNum: "04",
+      title:    "The Cleanroom: Where Discipline Meets Flight Hardware",
       url:      "spacecraft_iat_article02.html",
-      published: false,
-      topics:   ["Cleanroom", "ESD", "FOD", "Contamination", "ISO 14644", "Workmanship"],
+      published: true,
+      topics:   ["Cleanroom", "Contamination Control", "Molecular Contamination", "ESD", "FOD", "ISO 14644", "ASTM E595", "Gowning", "Cleanroom Culture"],
       audience: "New and early-career spacecraft engineers, aerospace students, and anyone with a serious interest in how spacecraft are built and tested."
     },
       { id: "05", seriesNum: "05",
