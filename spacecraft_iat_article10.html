@@ -120,16 +120,18 @@
   <!-- SECTION 1 -->
   <h2 class="sh" id="s1">1. What EGSE Is and Why It Matters</h2>
 
-  <p><span class="kt">Electrical Ground Support Equipment (EGSE)</span> is the collective term for all the electrical and electronic systems used to support the testing, monitoring, and operation of a spacecraft during ground integration and test. It encompasses everything connected to the spacecraft by an electrical wire that is not part of the spacecraft itself: the power supplies, the command and telemetry systems, the RF test support equipment, the sensor stimulators, the hardware simulators, and the interconnecting harnesses that tie them all together.</p>
+<p><span class="kt">Electrical Ground Support Equipment (EGSE)</span> is the collective term for all the electrical and electronic systems used to support the testing, monitoring, and operation of a spacecraft during ground integration and test. It encompasses everything connected to the spacecraft by an electrical wire that is not part of the spacecraft itself: the power supplies, the command and telemetry systems, the RF test support equipment, the sensor stimulators, the hardware simulators, and the interconnecting harnesses that tie them all together.</p>
 
-  <p>The scope of EGSE for a modern spacecraft program is substantial. A typical medium-to-large science mission will have EGSE that includes:</p>
+<p>The principles and disciplines described in this article apply with equal force to test facility infrastructure — the data acquisition systems, signal conditioning electronics, vibration control and monitoring systems, thermal control equipment, and facility-provided instrumentation harnesses that support environmental testing. That infrastructure is not always labeled EGSE, and it is typically operated by the test facility rather than the spacecraft program, but it occupies the same position in the test validity chain: it stands between the spacecraft and the conclusions the test team draws about it. For clarity and readability, this article uses the term EGSE throughout. The reader should understand that term broadly, to include any ground-based electrical system through which spacecraft test data passes or by which the spacecraft's test environment is established — regardless of who owns it or what it is called.</p>
+
+  <p>The scope of EGSE for a spacecraft program is substantial. A typical medium-to-large mission will have EGSE that includes:</p>
 
   <ul class="body-list">
     <li>A spacecraft-level command and telemetry system capable of commanding the spacecraft through all mission modes and processing its full telemetry output in real time</li>
     <li>Multiple power supply configurations that can simulate the launch vehicle power bus, the spacecraft's internal power bus states, and the on-orbit solar array environment under various illumination conditions</li>
     <li>RF signal generation and measurement equipment for testing the spacecraft's communications system at all operating frequencies and modes</li>
     <li>Simulators for every external interface that is not connected to real flight hardware during a given test phase — launch vehicle simulators, ground station simulators, adjacent spacecraft bus simulators for instrument testing</li>
-    <li>Sensor stimulators that inject controlled input signals into the spacecraft's sensors — star tracker stimulators, Sun sensor simulators, accelerometer calibration fixtures, inertial measurement unit test tables</li>
+    <li>Sensor stimulators that inject controlled input signals into the spacecraft's sensors — star tracker stimulators, Sun sensor simulators, accelerometer calibration fixtures, inertial measurement unit test tables, target signatures or  support for other mission objectives.</li>
     <li>Test harnesses — the multi-conductor wiring assemblies that connect the EGSE to the spacecraft through the spacecraft's flight umbilical connectors</li>
     <li>The EGSE software — the application software running on ground computers that controls the EGSE hardware, sends commands, receives and processes telemetry, evaluates test results against limits, and generates test records</li>
   </ul>
