@@ -2208,6 +2208,11 @@ ul.cs-list li::before {
 }
 
 .ql-desc p {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
   margin: 0 0 0.75rem 0;
 }
 
