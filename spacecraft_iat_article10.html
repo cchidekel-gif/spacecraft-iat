@@ -192,57 +192,64 @@
   <!-- SECTION 2 -->
   <h2 class="sh" id="s2">2. The Principal Categories of EGSE</h2>
 
-  <div class="egse-grid">
-    <div class="egse-card">
-      <div class="egse-header">
-        <span class="egse-icon">⚡</span>
-        <div class="egse-title">Electrical Ground Support Equipment (Power)</div>
-        <div class="egse-abbr">EGSE-P / Power EGSE</div>
-      </div>
-      <div class="egse-body">
-        <p>Supplies and controls all electrical power to the spacecraft during ground testing. Includes programmable power supplies simulating the launch vehicle power bus (typically 28V regulated), solar array simulators providing sun-dependent output characteristics, battery simulation and conditioning equipment, and ordnance firing circuits for pyrotechnic device testing. Must faithfully represent the impedance, regulation, and transient characteristics of the flight power sources.</p>
-      </div>
-    </div>
-    <div class="egse-card">
-      <div class="egse-header">
-        <span class="egse-icon">📡</span>
-        <div class="egse-title">Command and Telemetry EGSE</div>
-        <div class="egse-abbr">C&amp;TM EGSE / MCS</div>
-      </div>
-      <div class="egse-body">
-        <p>Sends commands to and receives telemetry from the spacecraft through its ground test interfaces. Generates command sequences, monitors real-time telemetry against programmed limits, records all command and telemetry data to permanent storage, and provides the operator display through which the test team monitors spacecraft health. This is the primary tool through which the test team observes and interacts with the spacecraft during every test.</p>
+ <div class="cat-grid">
+
+  <div class="cat-card cat-power">
+    <div class="cat-head">
+      <div class="cat-icon">⚡</div>
+      <div class="cat-titles">
+        <div class="cat-title">Power EGSE</div>
+        <div class="cat-abbr">EGSE-P / Power EGSE</div>
       </div>
     </div>
-    <div class="egse-card">
-      <div class="egse-header">
-        <span class="egse-icon">📻</span>
-        <div class="egse-title">RF EGSE</div>
-        <div class="egse-abbr">RF EGSE / RFSE</div>
-      </div>
-      <div class="egse-body">
-        <p>Supports testing of the spacecraft's radio frequency systems — transponders, transmitters, receivers, and antennas. Includes signal generators, spectrum analyzers, network analyzers, RF attenuators, waveguide connections, and near-field antenna test equipment. Must be capable of generating and receiving at all frequencies and power levels used by the spacecraft, with sufficient dynamic range and calibration accuracy to verify the spacecraft's RF performance against its specification.</p>
-      </div>
-    </div>
-    <div class="egse-card">
-      <div class="egse-header">
-        <span class="egse-icon">🎯</span>
-        <div class="egse-title">Sensor Stimulators and Simulators</div>
-        <div class="egse-abbr">SIM EGSE</div>
-      </div>
-      <div class="egse-body">
-        <p>Injects controlled input signals into the spacecraft's sensors, or replaces missing hardware with a functional equivalent. Includes star field simulators for attitude sensor testing, Sun simulators for coarse Sun sensor calibration, mass flow simulators for propulsion system interface testing, and instrument bus simulators for payload interface verification when the actual instruments are not yet available. Fidelity — how closely the simulator represents the actual hardware — is the central design requirement.</p>
+    <div class="cat-body">Supplies and controls all electrical power to the spacecraft during ground testing. Includes programmable power supplies simulating the launch vehicle power bus (typically 28V regulated), solar array simulators providing sun-dependent output characteristics, battery simulation and conditioning equipment, and ordnance firing circuits for pyrotechnic device testing. Must faithfully represent the impedance, regulation, and transient characteristics of the flight power sources.</div>
+  </div>
+
+  <div class="cat-card cat-ct">
+    <div class="cat-head">
+      <div class="cat-icon">📡</div>
+      <div class="cat-titles">
+        <div class="cat-title">Command and Telemetry EGSE</div>
+        <div class="cat-abbr">C&amp;TM EGSE / MCS</div>
       </div>
     </div>
-    <div class="egse-card">
-      <div class="egse-header">
-        <span class="egse-icon">🔌</span>
-        <div class="egse-title">Test Harnesses</div>
-        <div class="egse-abbr">GSE Harness / Umbilical</div>
-      </div>
-      <div class="egse-body">
-        <p>The multi-conductor wiring assemblies that make the physical electrical connection between the spacecraft and all EGSE. Connect through the spacecraft's flight umbilical connectors — the same connectors used for launch vehicle interfaces — and must faithfully represent the electrical characteristics (impedance, capacitance, shielding) of the flight harness where differences would affect test results. Documented as flight-like or non-flight-like depending on their design intent and fidelity.</p>
+    <div class="cat-body">Sends commands to and receives telemetry from the spacecraft through its ground test interfaces. Generates command sequences, monitors real-time telemetry against programmed limits, records all command and telemetry data to permanent storage, and provides the operator display through which the test team monitors spacecraft health. This is the primary tool through which the test team observes and interacts with the spacecraft during every test.</div>
+  </div>
+
+  <div class="cat-card cat-rf">
+    <div class="cat-head">
+      <div class="cat-icon">📻</div>
+      <div class="cat-titles">
+        <div class="cat-title">RF EGSE</div>
+        <div class="cat-abbr">RF EGSE / RFSE</div>
       </div>
     </div>
+    <div class="cat-body">Supports testing of the spacecraft's radio frequency systems — transponders, transmitters, receivers, and antennas. Includes signal generators, spectrum analyzers, network analyzers, RF attenuators, waveguide connections, and near-field antenna test equipment. Must be capable of generating and receiving at all frequencies and power levels used by the spacecraft, with sufficient dynamic range and calibration accuracy to verify the spacecraft's RF performance against its specification.</div>
+  </div>
+
+  <div class="cat-card cat-sim">
+    <div class="cat-head">
+      <div class="cat-icon">🎯</div>
+      <div class="cat-titles">
+        <div class="cat-title">Sensor Stimulators and Simulators</div>
+        <div class="cat-abbr">SIM EGSE</div>
+      </div>
+    </div>
+    <div class="cat-body">Injects controlled input signals into the spacecraft's sensors, or replaces missing hardware with a functional equivalent. Includes star field simulators for attitude sensor testing, Sun simulators for coarse Sun sensor calibration, mass flow simulators for propulsion system interface testing, and instrument bus simulators for payload interface verification when the actual instruments are not yet available. Fidelity — how closely the simulator represents the actual hardware — is the central design requirement.</div>
+  </div>
+
+  <div class="cat-card cat-harness">
+    <div class="cat-head">
+      <div class="cat-icon">🔌</div>
+      <div class="cat-titles">
+        <div class="cat-title">Test Harnesses</div>
+        <div class="cat-abbr">GSE Harness / Umbilical</div>
+      </div>
+    </div>
+    <div class="cat-body">The multi-conductor wiring assemblies that make the physical electrical connection between the spacecraft and all EGSE. Connect through the spacecraft's flight umbilical connectors — the same connectors used for launch vehicle interfaces — and must faithfully represent the electrical characteristics (impedance, capacitance, shielding) of the flight harness where differences would affect test results. Documented as flight-like or non-flight-like depending on their design intent and fidelity.</div>
+  </div>
+
+</div>
   </div>
 
   <!-- SECTION 3 -->
