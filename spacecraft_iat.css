@@ -2220,4 +2220,37 @@ ul.cs-list li::before {
   margin-bottom: 0;
 }
 
-/* ─────────────────────────────────────────────── */
+/* ──────────────────Added to article 10 end of section 9───────────────────────────── */
+
+
+
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 14px;
+  margin: 1.5rem 0;
+}
+
+.stat-item {
+  background: var(--cream, #f8f6f1);
+  border-radius: 12px;
+  padding: 16px 18px;
+  border-top: 3px solid var(--steel, #0C447C);
+}
+
+.stat-number {
+  font-size: 1.9rem;
+  font-weight: 700;
+  font-family: var(--font-display);
+  color: var(--steel, #0C447C);
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--ink);
+  opacity: 0.75;
+}
+
