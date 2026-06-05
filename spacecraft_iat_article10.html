@@ -511,182 +511,205 @@
 </div>
   </div>
 
-  <h3>EGSE Verification — What to Measure, When, and Against What Standard</h3>
+ <h3>EGSE Verification — What to Measure, When, and Against What Standard</h3>
 
-<p>EGSE qualification and configuration control establishes the framework. What makes that framework operational is a structured verification program that specifies — for each category of EGSE — what parameter is verified, at what frequency, against what reference standard, and what action is required when verification reveals a discrepancy. The entries below provide this structure for the principal EGSE categories.</p>
+<p>EGSE qualification and configuration control establishes the framework. What makes that framework operational is a structured verification program that specifies — for each category of EGSE — what parameter is verified, at what frequency, against what reference standard, and what action is required when verification reveals a discrepancy.</p>
 
 <div class="verification-blocks">
 
-  <div class="verification-entry">
-    <div class="verification-category">Power EGSE
-      <span class="verification-subtitle">Power supplies, solar array simulators, battery simulators</span>
-    </div>
-    <div class="verification-fields">
-      <div class="verification-field">
-        <div class="verification-label">Parameter Verified</div>
-        <div class="verification-value">Output voltage accuracy; current limit accuracy; source impedance; transient response characteristics</div>
-      </div>
-      <div class="verification-field">
-        <div class="verification-label">Verification Method</div>
-        <div class="verification-value">Calibrated reference voltmeter and current meter; load step injection for transient characterization</div>
-      </div>
-      <div class="verification-field">
-        <div class="verification-label">Frequency</div>
-        <div class="verification-value">Before each major test campaign; after any repair or maintenance; after shipping</div>
-      </div>
-      <div class="verification-field">
-        <div class="verification-label">Reference Standard</div>
-        <div class="verification-value">NIST-traceable voltage and current references; manufacturer's specification for source impedance</div>
-      </div>
-      <div class="verification-field verification-field--action">
-        <div class="verification-label">Action on Discrepancy</div>
-        <div class="verification-value">Remove from service; re-calibrate or repair; assess all tests conducted since last valid calibration for potential re-test</div>
+  <div class="vb-entry vb-power">
+    <div class="vb-header">
+      <div class="vb-icon">⚡</div>
+      <div>
+        <div class="vb-title">Power EGSE</div>
+        <div class="vb-sub">Power supplies, solar array simulators, battery simulators</div>
       </div>
     </div>
-  </div>
-
-  <div class="verification-entry">
-    <div class="verification-category">RF EGSE
-      <span class="verification-subtitle">Signal generators, spectrum analyzers, power meters, network analyzers</span>
-    </div>
-    <div class="verification-fields">
-      <div class="verification-field">
-        <div class="verification-label">Parameter Verified</div>
-        <div class="verification-value">Frequency accuracy; output power accuracy; receiver sensitivity; insertion loss of all RF path components</div>
+    <div class="vb-grid">
+      <div class="vb-field">
+        <div class="vb-label">Parameter Verified</div>
+        <div class="vb-val">Output voltage accuracy; current limit accuracy; source impedance; transient response characteristics</div>
       </div>
-      <div class="verification-field">
-        <div class="verification-label">Verification Method</div>
-        <div class="verification-value">Calibrated frequency counter; calibrated power sensor; known-impedance reflection standard for network analyzer</div>
+      <div class="vb-field">
+        <div class="vb-label">Verification Method</div>
+        <div class="vb-val">Calibrated reference voltmeter and current meter; load step injection for transient characterization</div>
       </div>
-      <div class="verification-field">
-        <div class="verification-label">Frequency</div>
-        <div class="verification-value">12 months for instruments; before each RF performance test campaign for path insertion loss</div>
+      <div class="vb-field">
+        <div class="vb-label">Frequency</div>
+        <div class="vb-val">Before each major test campaign; after any repair or maintenance; after shipping</div>
       </div>
-      <div class="verification-field">
-        <div class="verification-label">Reference Standard</div>
-        <div class="verification-value">NIST-traceable frequency, power, and impedance standards; manufacturer calibration laboratory</div>
+      <div class="vb-field">
+        <div class="vb-label">Reference Standard</div>
+        <div class="vb-val">NIST-traceable voltage and current references; manufacturer's specification for source impedance</div>
       </div>
-      <div class="verification-field verification-field--action">
-        <div class="verification-label">Action on Discrepancy</div>
-        <div class="verification-value">Remove from service; recalibrate; re-measure all RF performance data obtained since last valid calibration; re-execute affected tests if data cannot be corrected</div>
+      <div class="vb-field vb-action">
+        <div class="vb-label">Action on Discrepancy</div>
+        <div class="vb-val">Remove from service; re-calibrate or repair; assess all tests conducted since last valid calibration for potential re-test</div>
       </div>
     </div>
   </div>
 
-  <div class="verification-entry">
-    <div class="verification-category">Command and Telemetry EGSE
-      <span class="verification-subtitle">Ground command system, telemetry processor, limit tables</span>
-    </div>
-    <div class="verification-fields">
-      <div class="verification-field">
-        <div class="verification-label">Parameter Verified</div>
-        <div class="verification-value">Command bit error rate; telemetry frame sync performance; limit table values vs. spacecraft ICDs; command format vs. ICD</div>
-      </div>
-      <div class="verification-field">
-        <div class="verification-label">Verification Method</div>
-        <div class="verification-value">Bit error rate test (BERT) against known pattern; limit table audit against current ICD revision; command format verification by loopback or spacecraft response</div>
-      </div>
-      <div class="verification-field">
-        <div class="verification-label">Frequency</div>
-        <div class="verification-value">Before each major test campaign; after any software update; after any ICD change affecting monitored parameters</div>
-      </div>
-      <div class="verification-field">
-        <div class="verification-label">Reference Standard</div>
-        <div class="verification-value">Current revision of spacecraft ICD; approved telemetry limit database</div>
-      </div>
-      <div class="verification-field verification-field--action">
-        <div class="verification-label">Action on Discrepancy</div>
-        <div class="verification-value">Correct limit table errors before proceeding; assess whether incorrect limits allowed anomalies to go undetected in prior tests; re-execute affected tests if assessment is inconclusive</div>
+  <div class="vb-entry vb-rf">
+    <div class="vb-header">
+      <div class="vb-icon">📡</div>
+      <div>
+        <div class="vb-title">RF EGSE</div>
+        <div class="vb-sub">Signal generators, spectrum analyzers, power meters, network analyzers</div>
       </div>
     </div>
-  </div>
-
-  <div class="verification-entry">
-    <div class="verification-category">Simulators
-      <span class="verification-subtitle">Interface and functional simulators for missing hardware</span>
-    </div>
-    <div class="verification-fields">
-      <div class="verification-field">
-        <div class="verification-label">Parameter Verified</div>
-        <div class="verification-value">Interface protocol compliance; functional response accuracy against hardware model; timing accuracy</div>
+    <div class="vb-grid">
+      <div class="vb-field">
+        <div class="vb-label">Parameter Verified</div>
+        <div class="vb-val">Frequency accuracy; output power accuracy; receiver sensitivity; insertion loss of all RF path components</div>
       </div>
-      <div class="verification-field">
-        <div class="verification-label">Verification Method</div>
-        <div class="verification-value">Protocol analyzer for digital interfaces; comparison against hardware specification for functional responses; oscilloscope timing verification</div>
+      <div class="vb-field">
+        <div class="vb-label">Verification Method</div>
+        <div class="vb-val">Calibrated frequency counter; calibrated power sensor; known-impedance reflection standard for network analyzer</div>
       </div>
-      <div class="verification-field">
-        <div class="verification-label">Frequency</div>
-        <div class="verification-value">After any simulator software update; after any change to the hardware being simulated; before any safety-critical test (fault protection verification, mode transition testing)</div>
+      <div class="vb-field">
+        <div class="vb-label">Frequency</div>
+        <div class="vb-val">12 months for instruments; before each RF performance test campaign for path insertion loss</div>
       </div>
-      <div class="verification-field">
-        <div class="verification-label">Reference Standard</div>
-        <div class="verification-value">Current revision of hardware specification; approved simulator model documentation; simulator fidelity assessment</div>
+      <div class="vb-field">
+        <div class="vb-label">Reference Standard</div>
+        <div class="vb-val">NIST-traceable frequency, power, and impedance standards; manufacturer calibration laboratory</div>
       </div>
-      <div class="verification-field verification-field--action">
-        <div class="verification-label">Action on Discrepancy</div>
-        <div class="verification-value">Update fidelity assessment; re-verify simulator against changed hardware specification; do not use simulator for safety-critical testing until updated fidelity assessment is complete and approved</div>
+      <div class="vb-field vb-action">
+        <div class="vb-label">Action on Discrepancy</div>
+        <div class="vb-val">Remove from service; recalibrate; re-measure all RF performance data obtained since last valid calibration; re-execute affected tests if data cannot be corrected</div>
       </div>
     </div>
   </div>
 
-  <div class="verification-entry">
-    <div class="verification-category">Test Harnesses
-      <span class="verification-subtitle">All harnesses connecting EGSE to flight hardware</span>
+  <div class="vb-entry vb-ct">
+    <div class="vb-header">
+      <div class="vb-icon">📋</div>
+      <div>
+        <div class="vb-title">Command and Telemetry EGSE</div>
+        <div class="vb-sub">Ground command system, telemetry processor, limit tables</div>
+      </div>
     </div>
-    <div class="verification-fields">
-      <div class="verification-field">
-        <div class="verification-label">Parameter Verified</div>
-        <div class="verification-value">Conductor continuity; shield continuity; insulation resistance; connector contact resistance; mating cycle count</div>
+    <div class="vb-grid">
+      <div class="vb-field">
+        <div class="vb-label">Parameter Verified</div>
+        <div class="vb-val">Command bit error rate; telemetry frame sync performance; limit table values vs. spacecraft ICDs; command format vs. ICD</div>
       </div>
-      <div class="verification-field">
-        <div class="verification-label">Verification Method</div>
-        <div class="verification-value">Continuity meter; insulation resistance meter (500V); milliohm meter for contact resistance; harness log for mating cycle tracking</div>
+      <div class="vb-field">
+        <div class="vb-label">Verification Method</div>
+        <div class="vb-val">Bit error rate test against known pattern; limit table audit against current ICD revision; command format verification by loopback or spacecraft response</div>
       </div>
-      <div class="verification-field">
-        <div class="verification-label">Frequency</div>
-        <div class="verification-value">Before each connection to flight hardware; after any harness repair; after shipping</div>
+      <div class="vb-field">
+        <div class="vb-label">Frequency</div>
+        <div class="vb-val">Before each major test campaign; after any software update; after any ICD change affecting monitored parameters</div>
       </div>
-      <div class="verification-field">
-        <div class="verification-label">Reference Standard</div>
-        <div class="verification-value">Harness acceptance test specification; connector manufacturer's mating cycle specification</div>
+      <div class="vb-field">
+        <div class="vb-label">Reference Standard</div>
+        <div class="vb-val">Current revision of spacecraft ICD; approved telemetry limit database</div>
       </div>
-      <div class="verification-field verification-field--action">
-        <div class="verification-label">Action on Discrepancy</div>
-        <div class="verification-value">Remove from service; repair or replace damaged conductors, connectors, or shields; retire any connector approaching mating cycle limit</div>
+      <div class="vb-field vb-action">
+        <div class="vb-label">Action on Discrepancy</div>
+        <div class="vb-val">Correct limit table errors before proceeding; assess whether incorrect limits allowed anomalies to go undetected in prior tests; re-execute affected tests if assessment is inconclusive</div>
       </div>
     </div>
   </div>
 
-  <div class="verification-entry">
-    <div class="verification-category">Sensor Stimulators
-      <span class="verification-subtitle">Star tracker simulators, sun sensor stimulators, IMU test tables</span>
+  <div class="vb-entry vb-sim">
+    <div class="vb-header">
+      <div class="vb-icon">🖥</div>
+      <div>
+        <div class="vb-title">Simulators</div>
+        <div class="vb-sub">Interface and functional simulators for missing hardware</div>
+      </div>
     </div>
-    <div class="verification-fields">
-      <div class="verification-field">
-        <div class="verification-label">Parameter Verified</div>
-        <div class="verification-value">Output signal accuracy (intensity, angle, spectral content as applicable); timing accuracy; positioning accuracy for angular stimulators</div>
+    <div class="vb-grid">
+      <div class="vb-field">
+        <div class="vb-label">Parameter Verified</div>
+        <div class="vb-val">Interface protocol compliance; functional response accuracy against hardware model; timing accuracy</div>
       </div>
-      <div class="verification-field">
-        <div class="verification-label">Verification Method</div>
-        <div class="verification-value">Calibrated photometer or radiometer for optical stimulators; calibrated angle encoder for angular positioning; timing analyzer for pulse outputs</div>
+      <div class="vb-field">
+        <div class="vb-label">Verification Method</div>
+        <div class="vb-val">Protocol analyzer for digital interfaces; comparison against hardware specification for functional responses; oscilloscope timing verification</div>
       </div>
-      <div class="verification-field">
-        <div class="verification-label">Frequency</div>
-        <div class="verification-value">Before each use for performance-critical testing; after any repair or optical alignment change</div>
+      <div class="vb-field">
+        <div class="vb-label">Frequency</div>
+        <div class="vb-val">After any simulator software update; after any change to the hardware being simulated; before any safety-critical test</div>
       </div>
-      <div class="verification-field">
-        <div class="verification-label">Reference Standard</div>
-        <div class="verification-value">Sensor manufacturer's test specification; attitude sensor ICD; stimulator calibration record</div>
+      <div class="vb-field">
+        <div class="vb-label">Reference Standard</div>
+        <div class="vb-val">Current revision of hardware specification; approved simulator model documentation; simulator fidelity assessment</div>
       </div>
-      <div class="verification-field verification-field--action">
-        <div class="verification-label">Action on Discrepancy</div>
-        <div class="verification-value">Suspend testing; recalibrate stimulator; assess accuracy of attitude sensor calibration data obtained with out-of-tolerance stimulator; re-calibrate sensor if stimulator error was within the sensor's performance margin</div>
+      <div class="vb-field vb-action">
+        <div class="vb-label">Action on Discrepancy</div>
+        <div class="vb-val">Update fidelity assessment; re-verify simulator against changed hardware specification; do not use for safety-critical testing until updated fidelity assessment is complete and approved</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="vb-entry vb-harness">
+    <div class="vb-header">
+      <div class="vb-icon">🔌</div>
+      <div>
+        <div class="vb-title">Test Harnesses</div>
+        <div class="vb-sub">All harnesses connecting EGSE to flight hardware</div>
+      </div>
+    </div>
+    <div class="vb-grid">
+      <div class="vb-field">
+        <div class="vb-label">Parameter Verified</div>
+        <div class="vb-val">Conductor continuity; shield continuity; insulation resistance; connector contact resistance; mating cycle count</div>
+      </div>
+      <div class="vb-field">
+        <div class="vb-label">Verification Method</div>
+        <div class="vb-val">Continuity meter; insulation resistance meter (500V); milliohm meter for contact resistance; harness log for mating cycle tracking</div>
+      </div>
+      <div class="vb-field">
+        <div class="vb-label">Frequency</div>
+        <div class="vb-val">Before each connection to flight hardware; after any harness repair; after shipping</div>
+      </div>
+      <div class="vb-field">
+        <div class="vb-label">Reference Standard</div>
+        <div class="vb-val">Harness acceptance test specification; connector manufacturer's mating cycle specification</div>
+      </div>
+      <div class="vb-field vb-action">
+        <div class="vb-label">Action on Discrepancy</div>
+        <div class="vb-val">Remove from service; repair or replace damaged conductors, connectors, or shields; retire any connector approaching mating cycle limit</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="vb-entry vb-stim">
+    <div class="vb-header">
+      <div class="vb-icon">🎯</div>
+      <div>
+        <div class="vb-title">Sensor Stimulators</div>
+        <div class="vb-sub">Star tracker simulators, sun sensor stimulators, IMU test tables</div>
+      </div>
+    </div>
+    <div class="vb-grid">
+      <div class="vb-field">
+        <div class="vb-label">Parameter Verified</div>
+        <div class="vb-val">Output signal accuracy (intensity, angle, spectral content); timing accuracy; positioning accuracy for angular stimulators</div>
+      </div>
+      <div class="vb-field">
+        <div class="vb-label">Verification Method</div>
+        <div class="vb-val">Calibrated photometer or radiometer for optical stimulators; calibrated angle encoder for angular positioning; timing analyzer for pulse outputs</div>
+      </div>
+      <div class="vb-field">
+        <div class="vb-label">Frequency</div>
+        <div class="vb-val">Before each use for performance-critical testing; after any repair or optical alignment change</div>
+      </div>
+      <div class="vb-field">
+        <div class="vb-label">Reference Standard</div>
+        <div class="vb-val">Sensor manufacturer's test specification; attitude sensor ICD; stimulator calibration record</div>
+      </div>
+      <div class="vb-field vb-action">
+        <div class="vb-label">Action on Discrepancy</div>
+        <div class="vb-val">Suspend testing; recalibrate stimulator; assess accuracy of attitude sensor calibration data obtained with out-of-tolerance stimulator; re-calibrate sensor if stimulator error was within the sensor's performance margin</div>
       </div>
     </div>
   </div>
 
 </div>
-
   <!-- SECTION 9 -->
   <p>The EGSE suite that supports launch site operations is a reduced, purpose-specific subset of the full I&T EGSE. It is designed to support the specific tests required at the launch site — receiving inspection, final functional verification, countdown testing — rather than the full test program. Its relationship with the I&T EGSE is critical: the launch site EGSE must produce results that are comparable to the I&T EGSE results from the pre-ship functional test, so that deviations introduced during shipping can be detected.</p>
 
