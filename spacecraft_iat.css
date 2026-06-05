@@ -2254,3 +2254,17 @@ ul.cs-list li::before {
   opacity: 0.75;
 }
 
+.stats-row {
+  max-width: 520px;
+}
+
+/* ──────────────────Added to article 10 EGSE cases call out───────────────────────────── */
+.case-source {
+  margin-top: 1.25rem;
+  padding-top: 0.9rem;
+  border-top: 0.5px solid rgba(0,0,0,0.12);
+  font-size: 0.8rem;
+  line-height: 1.55;
+  font-style: italic;
+  opacity: 0.8;
+}
