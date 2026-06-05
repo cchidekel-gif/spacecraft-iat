@@ -177,12 +177,15 @@
 
   <div class="case-block">
     <div class="case-header">
-      <span class="case-mission">Hubble Space Telescope (HST) — Early Operations</span>
-      <span class="case-program">NASA GSFC · 1990</span>
+      <span class="case-mission">Hubble Space Telescope (HST)</span>
+      <span class="case-program">NASA · 1990</span>
     </div>
-    <div class="case-failure-type">EGSE telemetry limit tables — anomalies not flagged during ground testing</div>
-    <p>Multiple early-operations anomalies on HST — including jitter from solar array thermoelastic oscillations and the initial characterization of the primary mirror spherical aberration — were preceded by ground test signatures that, in retrospect, were present in the telemetry record during I&T. Post-mission analyses identified cases where the EGSE telemetry limit tables had been set wide enough that out-of-specification sensor readings did not trigger alarms during ground testing. The limits had been set conservatively to avoid nuisance trips during integration, and had not been tightened to flight values before the final functional test campaign. Anomalies that a correctly configured EGSE monitoring system might have flagged were instead recorded as nominal.</p>
-    <div class="case-lesson">Lesson: EGSE telemetry limits must be reviewed and tightened to flight values before any test whose results will be used for launch readiness assessment. Limits set wide for integration convenience are appropriate for early integration testing; they are not appropriate for system-level performance verification.</div>
+    <div class="case-failure-type">GSE misconfiguration — flawed measurement equipment produced a precisely wrong result</div>
+    <p>HST's primary mirror was ground to the wrong shape — a textbook spherical aberration — because the reflective null corrector (RNC), the ground support equipment used to measure the mirror's curvature during fabrication, was itself assembled incorrectly. A metering rod in the RNC was positioned wrong, its adjustment mechanism was not staked, and no post-assembly dimensional verification was performed. The mirror was then figured with extraordinary precision to match the flawed reference the GSE provided. Compounding the failure, discrepant readings from other equipment that contradicted the RNC were discounted, and budget and schedule constraints led to skipping an independent end-to-end optical test that would have caught the error before launch.</p>
+    <div class="case-lesson">Lesson: GSE that measures or references flight hardware must be qualified and independently verified with the same rigor as the hardware itself. A measurement instrument that is itself wrong does not produce noisy data — it produces precisely wrong data that looks valid, and against which flight hardware can be confidently built to the wrong specification.</div>
+  </div>
+  <div class="case-source">
+    Several of these cases are drawn from NASA Goddard Space Flight Center's documented I&amp;T lessons-learned record, which identifies inadequate verification of ground support equipment interfacing with flight systems as among the most common root-cause categories for I&amp;T mishaps. See M. R. Wright, "Flight Systems Integration &amp; Test: Lessons Learned for Future Success," SpaceOps 2018 (NASA NTRS 20180003229), and the NASA Lessons Learned Information System (LLIS).
   </div>
 </div>
 
@@ -723,20 +726,12 @@
 
 <div class="stats-row">
   <div class="stat-item">
-    <div class="stat-number">20–40%</div>
-    <div class="stat-label">Typical fraction of total mission cost represented by EGSE development for a large science mission</div>
+    <div class="stat-number">PDR → CDR</div>
+    <div class="stat-label">EGSE requirements should be defined by Preliminary Design Review and interfaces locked by Critical Design Review; EGSE develops in parallel with the spacecraft from the earliest design phases.</div>
   </div>
   <div class="stat-item">
-    <div class="stat-number">3–5 yr</div>
-    <div class="stat-label">Typical EGSE development schedule, running in parallel with spacecraft development from early design phases</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-number">&gt;50%</div>
-    <div class="stat-label">Fraction of early spacecraft test anomalies that, on investigation, prove to have EGSE or test harness root causes in typical programs</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-number">1–2 yr</div>
-    <div class="stat-label">Typical calibration interval for precision RF measurement equipment used in spacecraft communications testing</div>
+    <div class="stat-number">6–36 mo</div>
+    <div class="stat-label">Standard calibration cycle range for the precision electrical and RF test instruments used in spacecraft programs, depending on instrument type and stability.</div>
   </div>
 </div>
 
