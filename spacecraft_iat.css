@@ -2207,5 +2207,12 @@ ul.cs-list li::before {
   opacity: 0.8;
 }
 
+.ql-desc p {
+  margin: 0 0 0.75rem 0;
+}
+
+.ql-desc p:last-child {
+  margin-bottom: 0;
+}
 
 /* ─────────────────────────────────────────────── */
