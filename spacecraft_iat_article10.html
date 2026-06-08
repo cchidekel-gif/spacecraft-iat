@@ -231,47 +231,47 @@
 
   <p>Test harnesses differ from flight harnesses in several important respects, each of which can affect test results:</p>
 <div class="table-wrapper">
-  <table class="doc-table">
-    <thead>
-      <tr>
-        <th>Characteristic</th>
-        <th>Ground Test Harness</th>
-        <th>Flight Harness</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>Length and routing</strong></td>
-        <td>Often longer than flight, routed for test facility convenience rather than optimal electrical performance</td>
-        <td>Designed for minimum length consistent with routing constraints; length is controlled and documented</td>
-      </tr>
-      <tr>
-        <td><strong>Impedance and capacitance</strong></td>
-        <td>May differ significantly from flight due to length differences and conductor cross-section choices; differences often undocumented</td>
-        <td>Impedance and capacitance are design parameters, verified against ICD requirements and documented in the harness design record</td>
-      </tr>
-      <tr>
-        <td><strong>Shield grounding</strong></td>
-        <td>Ground connections may be made at multiple points for test convenience, potentially creating ground loops absent in flight</td>
-        <td>Shield grounding configuration is part of the spacecraft's EMC design; single-point grounding enforced to prevent ground loops</td>
-      </tr>
-      <tr>
-        <td><strong>Termination resistances</strong></td>
-        <td>Connector contact resistance and termination quality may be lower priority than for flight; connectors may be mated/unmated many more times than flight connectors</td>
-        <td>Contact resistance is a qualification parameter; connector mating cycles are tracked and managed against specification limits</td>
-      </tr>
-      <tr>
-        <td><strong>Included signals</strong></td>
-        <td>May include additional test points, instrumentation connections, and diagnostic signals not present in flight</td>
-        <td>Includes only the signals specified in the ICD; no additional test points in flight configuration</td>
-      </tr>
-      <tr>
-        <td><strong>Excluded signals</strong></td>
-        <td>May not include all flight signals, particularly those from systems not yet delivered or not needed for the current test phase</td>
-        <td>Includes all signals defined in the ICD; flight configuration is complete</td>
-      </tr>
-    </tbody>
-  </table>
+  <table class="hc-table">
+  <thead>
+    <tr>
+      <th class="hc-char">Characteristic</th>
+      <th class="hc-ground">Ground Test Harness</th>
+      <th class="hc-flight">Flight Harness</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="hc-char-cell">Length &amp; routing</td>
+      <td class="hc-ground-cell">Often longer than flight, routed for test facility convenience rather than optimal electrical performance</td>
+      <td class="hc-flight-cell">Designed for minimum length consistent with routing constraints; length is controlled and documented</td>
+    </tr>
+    <tr>
+      <td class="hc-char-cell">Impedance &amp; capacitance</td>
+      <td class="hc-ground-cell">May differ significantly from flight due to length and conductor cross-section choices; differences often undocumented</td>
+      <td class="hc-flight-cell">Design parameters, verified against ICD requirements and documented in the harness design record</td>
+    </tr>
+    <tr>
+      <td class="hc-char-cell">Shield grounding</td>
+      <td class="hc-ground-cell">Connections may be made at multiple points for test convenience, potentially creating ground loops absent in flight</td>
+      <td class="hc-flight-cell">Part of the spacecraft's EMC design; single-point grounding enforced to prevent ground loops</td>
+    </tr>
+    <tr>
+      <td class="hc-char-cell">Termination resistances</td>
+      <td class="hc-ground-cell">Contact resistance and termination quality may be lower priority; connectors may be mated and unmated far more often than flight</td>
+      <td class="hc-flight-cell">Contact resistance is a qualification parameter; mating cycles tracked and managed against specification limits</td>
+    </tr>
+    <tr>
+      <td class="hc-char-cell">Included signals</td>
+      <td class="hc-ground-cell">May include additional test points, instrumentation connections, and diagnostic signals not present in flight</td>
+      <td class="hc-flight-cell">Includes only the signals specified in the ICD; no additional test points</td>
+    </tr>
+    <tr>
+      <td class="hc-char-cell">Excluded signals</td>
+      <td class="hc-ground-cell">May omit flight signals from systems not yet delivered or not needed for the current test phase</td>
+      <td class="hc-flight-cell">Includes all signals defined in the ICD; configuration is complete</td>
+    </tr>
+  </tbody>
+</table>
 </div>
 
   <div class="callout rust">
