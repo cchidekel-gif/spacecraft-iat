@@ -2348,6 +2348,11 @@ ul.cs-list li::before {
 .cat-harness .cat-title { color: #712B13; }
 .cat-harness .cat-abbr { color: #993C1D; }
 
+.cat-stim .cat-head { background: #EAF3DE; }
+.cat-stim .cat-icon { background: #C0DD97; }
+.cat-stim .cat-title { color: #27500A; }
+.cat-stim .cat-abbr { color: #3B6D11; }
+
 /* ──────────────────Added to article 10 EGSE scope list in first section───────────────────────────── */
 
 .scope-list {
