@@ -2347,3 +2347,20 @@ ul.cs-list li::before {
 .cat-harness .cat-icon { background: #F5C4B3; }
 .cat-harness .cat-title { color: #712B13; }
 .cat-harness .cat-abbr { color: #993C1D; }
+
+/* ──────────────────Added to article 10 EGSE scope list in first section───────────────────────────── */
+
+.egse-scope-list {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin: 1.25rem 0;
+}
+.egse-scope-list li {
+  display: list-item;
+  font-weight: 400;
+  margin-bottom: 0.6rem;
+  line-height: 1.6;
+}
+.egse-scope-list li strong {
+  font-weight: 700;
+}
