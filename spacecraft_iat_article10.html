@@ -307,10 +307,10 @@
 
   <p>The spacecraft's power system — solar arrays, batteries, power conditioning and distribution — is tested throughout the I&T campaign against power sources provided by the EGSE rather than the flight power sources it will use on orbit. The fidelity with which the EGSE power sources represent the flight power environment has a direct effect on the validity of those tests.</p>
 
-  <h3 class="ssh">The Launch Vehicle Power Interface</h3>
+  <h3>The Launch Vehicle Power Interface</h3>
   <p>During ground testing, and during the launch countdown up to separation, the spacecraft is powered from the launch vehicle through the umbilical. The EGSE that simulates this interface — typically a regulated 28V or 42V DC power supply with defined source impedance and transient response characteristics — must match the electrical characteristics of the actual launch vehicle power bus. The launch vehicle bus has a specific source impedance that determines how the bus voltage responds to load transients. If the EGSE power supply has significantly different source impedance, the spacecraft's power system will be tested against a source that responds differently to load changes than the flight source, and anomalies that would occur during the actual launch vehicle interface may not be detected.</p>
 
-  <h3 class="ssh">The Solar Array Simulator</h3>
+  <h3>The Solar Array Simulator</h3>
   <p>During testing of the spacecraft's on-orbit power system behavior, the solar array simulator — a programmable power supply that mimics the current-voltage (I-V) characteristic of the flight solar arrays — must replicate not just the nominal operating point of the arrays but their full I-V characteristic across the range of illumination conditions, temperatures, and degradation states the arrays will experience over the mission lifetime. A solar array simulator that only replicates the arrays' behavior at the nominal operating point will not reveal anomalies in the power system's response to off-nominal conditions: partial shadowing, low-temperature cold-case operation, or end-of-life degraded array output.</p>
 
   <h3>Battery Simulation and the Use of ETU Batteries</h3>
@@ -327,7 +327,7 @@
 
 <p>For this reason, the EGSE typically does <em>not</em> mate directly to the flight umbilical connectors for the bulk of the campaign. Several approaches protect the flight interface:</p>
 
-<ul>
+ <ul class="body-list">
   <li><strong>Connector savers</strong> — sacrificial connectors that mate to the flight connector once and remain installed, presenting their own mating surface to the EGSE for repeated connection. The savers absorb the wear of the campaign's mate/de-mate cycles; the flight connector beneath sees only the single mating to the saver. Savers are removed and the flight connector inspected before the connections that must be made flight-direct.</li>
   <li><strong>Test interface panels</strong> — a dedicated panel of test connectors, wired into the spacecraft harness, that provides EGSE access without touching the flight umbilical at all. The EGSE connects to the test panel throughout integration; the flight umbilical is reserved for the tests and operations that specifically require it.</li>
 </ul>
