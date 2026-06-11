@@ -525,7 +525,7 @@
         <div class="ql-desc">Anomalies in EGSE behavior — unexpected readings, calibration failures, software errors, hardware malfunctions — must be reported in the program's DR system with the same rigor as spacecraft anomalies. An EGSE anomaly that affected a spacecraft test must be assessed for whether it compromised that test's validity. Tests performed on spacecraft hardware with an anomalous EGSE may need to be repeated after the EGSE anomaly is resolved.</div>
       </div>
     </div>
-</div>
+
 
 <h3>The Test Equipment Calibration Program</h3>
 
@@ -542,7 +542,8 @@
 
 <p>The instruments most likely to fall outside this program are the portable and handheld ones — the digital multimeters, oscilloscopes, and handheld RF meters introduced earlier. Precisely because they are informal and shared — borrowed, passed between programs, used without a formal check-in — they are the equipment most likely to make a measurement while out of cycle or entirely uncontrolled, and that measurement may be the basis for a real engineering decision. A program that maintains rigorous calibration control over its rack-mounted EGSE while treating its handheld instruments informally has a traceability gap exactly where unrecorded, consequential measurements are most likely to be made. Every instrument that measures flight hardware belongs in the calibration program, regardless of its size or how casually it is used; a gap of this kind often does not surface until two instruments disagree and the question of which one was in cycle cannot be answered.</p>
 
-<p>The distinction between this program and the calibration of the flight instrument itself is worth stating plainly, because the two are easily conflated. The flight instrument is calibrated to convert its output into meaningful physical units for the science mission — the discipline of instrument calibration, its traceability chain, and its on-orbit legacy are treated in <a href="spacecraft_iat_article07.html">Article 12, Science Instrument Integration and Calibration</a>. The test equipment calibration program described here serves a different purpose: it ensures that the ground equipment used to measure and operate the spacecraft is itself trustworthy. A program can have an impeccable flight instrument calibration and still deliver invalid test results if the EGSE that performed the tests was operating on expired or out-of-tolerance calibration. Both are required; neither substitutes for the other.</p>
+<p>The distinction between this program and the calibration of the flight instrument itself is worth stating plainly, because the two are easily conflated. The flight instrument is calibrated to convert its output into meaningful physical units for the science mission — the discipline of instrument calibration, its traceability chain, and its on-orbit legacy are treated in <a href="spacecraft_iat_article07.html">Article 12, Science Instrument Integration and Calibration</a>. The test equipment calibration program described here serves a different purpose: it ensures that the ground equipment used to measure and operate the spacecraft is itself trustworthy. A program can have an impeccable flight instrument calibration and still deliver invalid test results if the EGSE that performed the tests was operating on expired or out-of-tolerance calibration. Both are required; neither substitutes for the other.
+</p>
 
     <div class="callout callout-warning" id="facility-egse-gap">
   <div class="callout-title">⚠ The Facility EGSE Qualification Gap</div>
@@ -550,7 +551,7 @@
   <p>This distinction matters because the program's launch readiness case depends on the validity of data produced by both program and facility EGSE. A telemetry measurement taken with a program-owned, calibration-current instrument is traceable. A thermal measurement taken with a facility thermocouple conditioner whose last calibration date is unknown is not — and if that measurement was used to make a test go/no-go decision, the traceability gap becomes a data quality question at the launch readiness review.</p>
   <p>Before any environmental test, the program should obtain from the facility: current calibration certificates for all data acquisition instruments used in the test; confirmation that all facility harnesses and sensors are within their qualification life; and documentation of any facility instrumentation anomalies or repairs since the last use of the affected equipment. These are not unreasonable demands — any competent test facility maintains this documentation as a matter of course. The program's responsibility is to ask for it, review it, and retain it as part of the test data package. Facility instrumentation that cannot be documented to the same standard as program EGSE should not be used to make irreversible test decisions.</p>
 </div>
-  </div>
+ 
 
 <div>
 
