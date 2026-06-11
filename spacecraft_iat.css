@@ -2431,3 +2431,43 @@ ul.cs-list li::before {
 .hc-char-cell { font-weight: 700; }
 .hc-ground-cell { opacity: 0.85; border-left: 2px solid #F5C4B3; }
 .hc-flight-cell { opacity: 0.85; border-left: 2px solid #B5D4F4; }
+
+/* ──────────────────Added to article 10 EGSE failure mode table───────────────────────────── */
+
+.fm-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 1.5rem 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 0.5px solid rgba(0,0,0,0.12);
+}
+.fm-table thead th {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 11px 14px;
+  text-align: left;
+  background: var(--cream, #ede7d5);
+  color: var(--ink);
+}
+.fm-table th.fm-mode   { width: 16%; }
+.fm-table th.fm-man    { width: 39%; }
+.fm-table th.fm-risk   { width: 37%; }
+.fm-table th.fm-level  { width: 8%; }
+.fm-table tbody td {
+  padding: 11px 14px;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  vertical-align: top;
+  border-top: 0.5px solid rgba(0,0,0,0.1);
+  color: var(--ink);
+}
+.fm-table tbody tr:nth-child(even) td { background: var(--cream, #ede7d5); }
+.fm-mode-cell { font-weight: 700; }
+.fm-level-cell { white-space: nowrap; font-weight: 700; font-size: 0.78rem; }
+.fm-level-high   { color: #993C1D; }
+.fm-level-medium { color: #854F0B; }
+.fm-level-lower  { color: #0F6E56; }
