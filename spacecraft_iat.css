@@ -2441,24 +2441,25 @@ ul.cs-list li::before {
   margin: 1.5rem 0;
   border-radius: 12px;
   overflow: hidden;
-  border: 0.5px solid rgba(0,0,0,0.12);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
 }
 .fm-table thead th {
-  font-size: 0.72rem;
-  font-weight: 700;
+  font-size: 0.7rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: 11px 14px;
+  letter-spacing: 0.06em;
+  padding: 12px 14px;
   text-align: left;
-  background: var(--cream, #ede7d5);
-  color: var(--ink);
+  background: #1C2A3A;
+  color: #fff;
 }
-.fm-table th.fm-mode   { width: 16%; }
-.fm-table th.fm-man    { width: 39%; }
-.fm-table th.fm-risk   { width: 37%; }
-.fm-table th.fm-level  { width: 8%; }
+.fm-table th.fm-level { text-align: center; }
+.fm-table th.fm-mode   { width: 17%; }
+.fm-table th.fm-man    { width: 38%; }
+.fm-table th.fm-risk   { width: 36%; }
+.fm-table th.fm-level  { width: 9%; }
 .fm-table tbody td {
-  padding: 11px 14px;
+  padding: 12px 14px;
   font-size: 0.85rem;
   line-height: 1.5;
   vertical-align: top;
@@ -2466,8 +2467,24 @@ ul.cs-list li::before {
   color: var(--ink);
 }
 .fm-table tbody tr:nth-child(even) td { background: var(--cream, #ede7d5); }
-.fm-mode-cell { font-weight: 700; }
-.fm-level-cell { white-space: nowrap; font-weight: 700; font-size: 0.78rem; }
-.fm-level-high   { color: #993C1D; }
-.fm-level-medium { color: #854F0B; }
-.fm-level-lower  { color: #0F6E56; }
+.fm-mode-cell {
+  font-weight: 700;
+  border-left: 4px solid transparent;
+}
+.fm-row-high .fm-mode-cell   { border-left-color: #D1453B; }
+.fm-row-medium .fm-mode-cell { border-left-color: #E08A1E; }
+.fm-row-lower .fm-mode-cell  { border-left-color: #2E9E7B; }
+.fm-level-cell { text-align: center; vertical-align: middle; }
+.fm-badge {
+  display: inline-block;
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 3px 9px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+.fm-badge-high   { background: #FBE3E1; color: #A3271E; }
+.fm-badge-medium { background: #FBEEDA; color: #8A540C; }
+.fm-badge-lower  { background: #DDF2EA; color: #1C6B52; }

@@ -414,7 +414,7 @@
 
   <p>EGSE failures fall into two broad categories: failures that are immediately obvious — a power supply that trips off, a command link that drops — and failures that are subtle, producing incorrect but plausible test results that may not be recognized as EGSE failures at all. The second category is the more dangerous.</p>
 
-  <table class="fm-table">
+<table class="fm-table">
   <thead>
     <tr>
       <th class="fm-mode">EGSE Failure Mode</th>
@@ -424,47 +424,47 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
+    <tr class="fm-row-high">
       <td class="fm-mode-cell">Calibration Drift</td>
       <td>Measurement instruments (voltmeters, current monitors, RF power meters) that have drifted out of calibration produce readings that are offset from the true value. Drift is typically gradual and may not trigger any alarm.</td>
       <td>Performance measurements compared against specification limits are invalid. A spacecraft that marginally passes may actually marginally fail; one that marginally fails may actually pass. Link budget measurements may be systematically biased.</td>
-      <td class="fm-level-cell fm-level-high">High</td>
+      <td class="fm-level-cell"><span class="fm-badge fm-badge-high">High</span></td>
     </tr>
-    <tr>
+    <tr class="fm-row-high">
       <td class="fm-mode-cell">Ground Loop Injection</td>
       <td>Unintended ground current paths through test harness shields inject noise into signal circuits, producing noisy or offset sensor readings and apparent intermittent anomalies.</td>
       <td>Sensor performance tests are invalid. Noise-sensitive measurements (attitude sensor outputs, precision analog measurements) are corrupted. Anomalies may be incorrectly attributed to spacecraft hardware.</td>
-      <td class="fm-level-cell fm-level-high">High</td>
+      <td class="fm-level-cell"><span class="fm-badge fm-badge-high">High</span></td>
     </tr>
-    <tr>
+    <tr class="fm-row-high">
       <td class="fm-mode-cell">Simulator Model Error</td>
       <td>A simulator whose model incorrectly represents the real hardware behavior produces spacecraft responses to the simulated stimulus that differ from the spacecraft's response to the real hardware.</td>
       <td>Tests that pass against an incorrect simulator may fail against the real hardware — discovered only when real hardware is installed. Fault protection tests against incorrect failure signatures may leave protection logic unverified against real failure modes.</td>
-      <td class="fm-level-cell fm-level-high">High</td>
+      <td class="fm-level-cell"><span class="fm-badge fm-badge-high">High</span></td>
     </tr>
-    <tr>
+    <tr class="fm-row-medium">
       <td class="fm-mode-cell">Harness Impedance Mismatch</td>
       <td>Test harness with impedance significantly different from flight harness changes the signal integrity of high-speed digital buses and analog signals. May manifest as communication errors, corrupted data frames, or analog measurement offsets.</td>
       <td>Digital interface tests may pass on long, high-capacitance test harnesses due to signal slew rate limiting, but fail in flight with a lower-capacitance, higher-bandwidth flight harness. Or vice versa.</td>
-      <td class="fm-level-cell fm-level-medium">Medium</td>
+      <td class="fm-level-cell"><span class="fm-badge fm-badge-medium">Medium</span></td>
     </tr>
-    <tr>
+    <tr class="fm-row-medium">
       <td class="fm-mode-cell">EGSE Software Limit Error</td>
       <td>Incorrect limit values programmed into the telemetry monitoring software — limits that are wider or narrower than the spacecraft's actual specification — cause real out-of-limit conditions to be missed or in-limit conditions to be falsely flagged.</td>
       <td>Missed limit violations allow anomalies to go undetected during testing. False limit violations consume investigation time and may desensitize the test team to real anomalies ("cry wolf" effect).</td>
-      <td class="fm-level-cell fm-level-medium">Medium</td>
+      <td class="fm-level-cell"><span class="fm-badge fm-badge-medium">Medium</span></td>
     </tr>
-    <tr>
+    <tr class="fm-row-medium">
       <td class="fm-mode-cell">Command Format Error</td>
       <td>An EGSE command that differs from the flight command format — different timing, different encoding, different argument range — exercises the spacecraft software against a non-flight input.</td>
       <td>Software that correctly handles the test command may fail to correctly handle the flight command. The specific failure mode depends on the nature of the format difference. Timing differences in commanding sequences are a particularly common and consequential source.</td>
-      <td class="fm-level-cell fm-level-medium">Medium</td>
+      <td class="fm-level-cell"><span class="fm-badge fm-badge-medium">Medium</span></td>
     </tr>
-    <tr>
+    <tr class="fm-row-lower">
       <td class="fm-mode-cell">Power Supply Transient Behavior</td>
       <td>A power supply whose transient response (response to load steps) differs from the flight power source's transient response subjects the spacecraft power system to a different load transient environment than it will experience in flight.</td>
       <td>Power system anomalies triggered by specific transient conditions (power-up sequencing, thruster firing pulses) may be missed or artificially induced. Battery charge/discharge behavior under representative transient loads not verified.</td>
-      <td class="fm-level-cell fm-level-lower">Lower</td>
+      <td class="fm-level-cell"><span class="fm-badge fm-badge-lower">Lower</span></td>
     </tr>
   </tbody>
 </table>
