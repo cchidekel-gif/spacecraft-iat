@@ -2500,3 +2500,14 @@ ul.cs-list li::before {
   line-height: 1.55;
   opacity: 0.75;
 }
+
+/* ──────────────────Added to article intro (intro) for the "about these exampples" callout───────────────────────────── */
+
+.mission-graphic.note-sources {
+  background: #F4EEE2;            /* warm parchment, distinct from the dark boxes */
+  border-left: 4px solid #8A6D3B; /* muted gold accent instead of the dark fill */
+}
+.mission-graphic.note-sources .mission-content strong,
+.mission-graphic.note-sources .mission-content p {
+  color: #2a2a2a;                 /* dark text, since the background is now light */
+}
