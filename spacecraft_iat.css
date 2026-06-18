@@ -2488,3 +2488,15 @@ ul.cs-list li::before {
 .fm-badge-high   { background: #FBE3E1; color: #A3271E; }
 .fm-badge-medium { background: #FBEEDA; color: #8A540C; }
 .fm-badge-lower  { background: #DDF2EA; color: #1C6B52; }
+
+/* ──────────────────Added for each article that will have a sources note at the end───────────────────────────── */
+
+
+.source-note {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 0.5px solid rgba(0,0,0,0.12);
+  font-size: 0.82rem;
+  line-height: 1.55;
+  opacity: 0.75;
+}
