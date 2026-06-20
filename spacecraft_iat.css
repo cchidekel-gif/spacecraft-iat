@@ -2511,3 +2511,57 @@ ul.cs-list li::before {
 .mission-graphic.note-sources .mission-content p {
   color: #2a2a2a;                 /* dark text, since the background is now light */
 }
+
+
+/* ──────────────────Added to article 10 for the EGSE mismatch 3 item callout───────────────────────────── */
+.ms-wrap {
+  border: 0.5px solid rgba(0,0,0,0.12);
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 1.5rem 0;
+}
+.ms-head {
+  padding: 11px 16px;
+  background: #1C2A3A;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.ms-head .ms-sub { font-weight: 400; opacity: 0.8; font-size: 0.78rem; margin-top: 2px; }
+.ms-row {
+  display: flex;
+  align-items: stretch;
+  border-top: 0.5px solid rgba(0,0,0,0.1);
+}
+.ms-tag {
+  flex-shrink: 0;
+  width: 130px;
+  padding: 13px 14px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+}
+.ms-tag .ms-deg { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+.ms-body {
+  padding: 13px 16px;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--ink);
+  opacity: 0.9;
+  border-left: 0.5px solid rgba(0,0,0,0.1);
+}
+.ms-row-1 .ms-tag { background: #DDF2EA; color: #1C6B52; }
+.ms-row-2 .ms-tag { background: #FBEEDA; color: #8A540C; }
+.ms-row-3 .ms-tag { background: #FBE3E1; color: #A3271E; }
+.ms-foot {
+  padding: 12px 16px;
+  font-size: 0.8rem;
+  line-height: 1.55;
+  font-style: italic;
+  color: var(--ink);
+  background: var(--cream, #ede7d5);
+  border-top: 0.5px solid rgba(0,0,0,0.1);
+}
