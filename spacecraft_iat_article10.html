@@ -633,6 +633,38 @@
 
 <div class="verification-blocks">
 
+  <div class="vb-entry vb-harness">
+    <div class="vb-header">
+      <div class="vb-icon">🔌</div>
+      <div>
+        <div class="vb-title">Test Harnesses</div>
+        <div class="vb-sub">All harnesses connecting EGSE to flight hardware</div>
+      </div>
+    </div>
+    <div class="vb-grid">
+      <div class="vb-field">
+        <div class="vb-label">Parameter Verified</div>
+        <div class="vb-val">Conductor continuity; shield continuity; insulation resistance; connector contact resistance; mating cycle count</div>
+      </div>
+      <div class="vb-field">
+        <div class="vb-label">Verification Method</div>
+        <div class="vb-val">Continuity meter; insulation resistance meter (500V); milliohm meter for contact resistance; harness log for mating cycle tracking</div>
+      </div>
+      <div class="vb-field">
+        <div class="vb-label">Frequency</div>
+        <div class="vb-val">Before each connection to flight hardware; after any harness repair; after shipping</div>
+      </div>
+      <div class="vb-field">
+        <div class="vb-label">Reference Standard</div>
+        <div class="vb-val">Harness acceptance test specification; connector manufacturer's mating cycle specification</div>
+      </div>
+      <div class="vb-field vb-action">
+        <div class="vb-label">Action on Discrepancy</div>
+        <div class="vb-val">Remove from service; repair or replace damaged conductors, connectors, or shields; retire any connector approaching mating cycle limit</div>
+      </div>
+    </div>
+  </div>
+
   <div class="vb-entry vb-power">
     <div class="vb-header">
       <div class="vb-icon">⚡</div>
@@ -661,38 +693,6 @@
       <div class="vb-field vb-action">
         <div class="vb-label">Action on Discrepancy</div>
         <div class="vb-val">Remove from service; re-calibrate or repair; assess all tests conducted since last valid calibration for potential re-test</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="vb-entry vb-rf">
-    <div class="vb-header">
-      <div class="vb-icon">📡</div>
-      <div>
-        <div class="vb-title">RF EGSE</div>
-        <div class="vb-sub">Signal generators, spectrum analyzers, power meters, network analyzers</div>
-      </div>
-    </div>
-    <div class="vb-grid">
-      <div class="vb-field">
-        <div class="vb-label">Parameter Verified</div>
-        <div class="vb-val">Frequency accuracy; output power accuracy; receiver sensitivity; insertion loss of all RF path components</div>
-      </div>
-      <div class="vb-field">
-        <div class="vb-label">Verification Method</div>
-        <div class="vb-val">Calibrated frequency counter; calibrated power sensor; known-impedance reflection standard for network analyzer</div>
-      </div>
-      <div class="vb-field">
-        <div class="vb-label">Frequency</div>
-        <div class="vb-val">12 months for instruments; before each RF performance test campaign for path insertion loss</div>
-      </div>
-      <div class="vb-field">
-        <div class="vb-label">Reference Standard</div>
-        <div class="vb-val">NIST-traceable frequency, power, and impedance standards; manufacturer calibration laboratory</div>
-      </div>
-      <div class="vb-field vb-action">
-        <div class="vb-label">Action on Discrepancy</div>
-        <div class="vb-val">Remove from service; recalibrate; re-measure all RF performance data obtained since last valid calibration; re-execute affected tests if data cannot be corrected</div>
       </div>
     </div>
   </div>
@@ -729,6 +729,38 @@
     </div>
   </div>
 
+  <div class="vb-entry vb-rf">
+    <div class="vb-header">
+      <div class="vb-icon">📡</div>
+      <div>
+        <div class="vb-title">RF EGSE</div>
+        <div class="vb-sub">Signal generators, spectrum analyzers, power meters, network analyzers</div>
+      </div>
+    </div>
+    <div class="vb-grid">
+      <div class="vb-field">
+        <div class="vb-label">Parameter Verified</div>
+        <div class="vb-val">Frequency accuracy; output power accuracy; receiver sensitivity; insertion loss of all RF path components</div>
+      </div>
+      <div class="vb-field">
+        <div class="vb-label">Verification Method</div>
+        <div class="vb-val">Calibrated frequency counter; calibrated power sensor; known-impedance reflection standard for network analyzer</div>
+      </div>
+      <div class="vb-field">
+        <div class="vb-label">Frequency</div>
+        <div class="vb-val">12 months for instruments; before each RF performance test campaign for path insertion loss</div>
+      </div>
+      <div class="vb-field">
+        <div class="vb-label">Reference Standard</div>
+        <div class="vb-val">NIST-traceable frequency, power, and impedance standards; manufacturer calibration laboratory</div>
+      </div>
+      <div class="vb-field vb-action">
+        <div class="vb-label">Action on Discrepancy</div>
+        <div class="vb-val">Remove from service; recalibrate; re-measure all RF performance data obtained since last valid calibration; re-execute affected tests if data cannot be corrected</div>
+      </div>
+    </div>
+  </div>
+
   <div class="vb-entry vb-sim">
     <div class="vb-header">
       <div class="vb-icon">🖥</div>
@@ -761,44 +793,12 @@
     </div>
   </div>
 
-  <div class="vb-entry vb-harness">
-    <div class="vb-header">
-      <div class="vb-icon">🔌</div>
-      <div>
-        <div class="vb-title">Test Harnesses</div>
-        <div class="vb-sub">All harnesses connecting EGSE to flight hardware</div>
-      </div>
-    </div>
-    <div class="vb-grid">
-      <div class="vb-field">
-        <div class="vb-label">Parameter Verified</div>
-        <div class="vb-val">Conductor continuity; shield continuity; insulation resistance; connector contact resistance; mating cycle count</div>
-      </div>
-      <div class="vb-field">
-        <div class="vb-label">Verification Method</div>
-        <div class="vb-val">Continuity meter; insulation resistance meter (500V); milliohm meter for contact resistance; harness log for mating cycle tracking</div>
-      </div>
-      <div class="vb-field">
-        <div class="vb-label">Frequency</div>
-        <div class="vb-val">Before each connection to flight hardware; after any harness repair; after shipping</div>
-      </div>
-      <div class="vb-field">
-        <div class="vb-label">Reference Standard</div>
-        <div class="vb-val">Harness acceptance test specification; connector manufacturer's mating cycle specification</div>
-      </div>
-      <div class="vb-field vb-action">
-        <div class="vb-label">Action on Discrepancy</div>
-        <div class="vb-val">Remove from service; repair or replace damaged conductors, connectors, or shields; retire any connector approaching mating cycle limit</div>
-      </div>
-    </div>
-  </div>
-
   <div class="vb-entry vb-stim">
     <div class="vb-header">
       <div class="vb-icon">🎯</div>
       <div>
         <div class="vb-title">Sensor Stimulators</div>
-        <div class="vb-sub">Star tracker simulators, sun sensor stimulators, IMU test tables</div>
+        <div class="vb-sub">Sun sensor stimulators, star tracker stimulators, GPS constellation simulators</div>
       </div>
     </div>
     <div class="vb-grid">
@@ -824,6 +824,8 @@
       </div>
     </div>
   </div>
+
+</div>
 
 </div>
   <!-- SECTION 9 -->
