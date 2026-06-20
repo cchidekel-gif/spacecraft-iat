@@ -500,7 +500,7 @@
         </div>
         <div class="ms-row ms-row-3">
           <div class="ms-tag"><span class="ms-deg">Subtle</span><span>Dangerous</span></div>
-          <div class="ms-body">The test passes, the data looks entirely plausible, and nothing flags the disagreement. The stale interface ships silently forward — the worst outcome, precisely because there is no symptom to investigate.</div>
+          <div class="ms-body">The test passes and the data looks entirely plausible — but only because the stale EGSE accepts behavior a compliant one would have flagged. A genuine spacecraft problem goes undetected, the hardware moves forward on the strength of a test that never actually exercised the right interface, and the defect surfaces only when the system finally operates as a whole — potentially on orbit, where it can no longer be fixed. The worst outcome, precisely because the passing test actively conceals the fault.</div>
         </div>
         <div class="ms-foot">The test cannot be relied upon to expose the mismatch: whether it does so depends on where the mismatch happens to fall, not on how consequential it is.</div>
       </div>
