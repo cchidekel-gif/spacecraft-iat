@@ -45,23 +45,23 @@
 
   <div class="toc-wrap">
     <div class="toc-label">In This Article</div>
-    <ul class="toc-list">
-      <li><a href="#s1">1. What EGSE Is and Why It Matters — The Equipment Between You and the Spacecraft</a></li>
-      <li><a href="#s2">2. The Principal Categories of EGSE — The Six Categories and the Risks Each Introduces</a></li>
-      <li><a href="#s3">3. The Test Harness — Design, Differences, and Risks</a></li>
-      <li><a href="#s4">4. Power EGSE — Simulating the Launch Vehicle and On-Orbit Environment</a></li>
-      <li><a href="#s5">5. Command and Telemetry EGSE — The Flight Interface and the System of Record</a></li>
-      <li><a href="#s6">6. RF and Communications EGSE — Where a Tenth of a Decibel Decides Pass or Fail</a></li>
-      <li><a href="#s7">7. Simulators — When the Real Hardware Isn't There</a></li>
-      <li><a href="#s8">8. Sensor Stimulators — When the Stimulus Is the Reference</a></li>
-      <li><a href="#s9">9. EGSE Failure Modes — How EGSE Can Mislead You</a></li>
-      <li><a href="#s10">10. EGSE Qualification and Configuration Control — Keeping the Equipment Trustworthy</a></li>
-      <li><a href="#s11">11. EGSE at the Launch Site — The Reduced Suite and the Baseline It Must Match</a></li>
-      <li><a href="#s12">12. Grounding, Shielding, and the EGSE Interface — Where Ground Loops Are Born</a></li>
-      <li><a href="#s13">13. What the I&T Engineer Must Never Forget About EGSE</a></li>
-      <li><a href="#glossary">Key Terms Glossary</a></li>
-</ul>
-
+      <ul class="toc-list">
+        <li><a href="#s1">1. What EGSE Is and Why It Matters — The Equipment Between You and the Spacecraft</a></li>
+        <li><a href="#s2">2. The Principal Categories of EGSE — The Six Categories and the Risks Each Introduces</a></li>
+        <li><a href="#s3">3. The Test Harness — Design, Differences, and Risks</a></li>
+        <li><a href="#s4">4. Power EGSE — Simulating the Launch Vehicle and On-Orbit Environment</a></li>
+        <li><a href="#s5">5. Command and Telemetry EGSE — The Flight Interface and the System of Record</a></li>
+        <li><a href="#s6">6. RF and Communications EGSE — Where a Tenth of a Decibel Decides Pass or Fail</a></li>
+        <li><a href="#s7">7. Simulators — When the Real Hardware Isn't There</a></li>
+        <li><a href="#s8">8. Sensor Stimulators — When the Stimulus Is the Reference</a></li>
+        <li><a href="#s9">9. EGSE Failure Modes — How EGSE Can Mislead You</a></li>
+        <li><a href="#s10">10. EGSE Qualification and Configuration Control — Keeping the Equipment Trustworthy</a></li>
+        <li><a href="#s11">11. EGSE at the Launch Site — The Reduced Suite and the Baseline It Must Match</a></li>
+        <li><a href="#s12">12. Grounding, Shielding, and the EGSE Interface — Where Ground Loops Are Born</a></li>
+        <li><a href="#s13">13. What the I&T Engineer Must Never Forget About EGSE</a></li>
+        <li><a href="#glossary">Key Terms Glossary</a></li>
+      </ul>
+    </div>
   <p>Every <em>powered</em> test the spacecraft undergoes during the I&T campaign is directly mediated by EGSE — the electrical ground support equipment that supplies power, monitors telemetry, sends commands, simulates missing hardware, and connects the spacecraft to the test environment. But even tests that are minimally or unpowered — structural tests, acoustic and vibration qualification, thermal-vacuum survival runs, deployment mechanism verification — depend on EGSE and instrumentation harnesses to configure the spacecraft beforehand and to verify, through functional tests before and after, that the hardware survived. No test in the I&T campaign is truly EGSE-independent: even when the spacecraft is not electrically active, the ground support infrastructure surrounding it determines whether the test is set up correctly and whether its outcome can be interpreted with confidence.</p>
 
 <p>Equally important — and more often overlooked — is the test facility's own ground support infrastructure: the data acquisition systems & associated sensors, signal conditioning electronics, thermal control equipment, vibration control and monitoring systems, and the instrumentation harnesses that connect it all together. This equipment is typically furnished and operated by the test facility under its own procedures, its own calibration schedule, and its own configuration control — not the spacecraft program's. The division of responsibility is sensible operationally, but it creates a gap in awareness: the program owns the test results and is accountable for their validity, yet the infrastructure through which much of the environmental test data flows belongs to someone else. Facility EGSE and instrumentation must be treated with the same verification discipline as program-provided EGSE, because a measurement error in a facility data acquisition channel is just as capable of producing a false test conclusion as a drift in a program-owned telemetry instrument. When an accelerometer reads zero during a vibration test, or a thermal sensor reads ambient during a thermal-vacuum run, the root cause may be a broken solder joint in a facility harness, a mis-scaled data acquisition channel, or a conditioning amplifier whose calibration lapsed between programs — not a spacecraft anomaly. When anomalies arise, the first question should be: Is what I am seeing real (is the measurement infrastructure & EGSE working correctly)? </p>
