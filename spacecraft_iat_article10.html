@@ -46,22 +46,21 @@
   <div class="toc-wrap">
     <div class="toc-label">In This Article</div>
     <ul class="toc-list">
-      <li><a href="#s1">1. What EGSE Is and Why It Matters</a></li>
-      <li><a href="#s2">2. The Principal Categories of EGSE</a></li>
+      <li><a href="#s1">1. What EGSE Is and Why It Matters — The Equipment Between You and the Spacecraft</a></li>
+      <li><a href="#s2">2. The Principal Categories of EGSE — The Six Categories and the Risks Each Introduces</a></li>
       <li><a href="#s3">3. The Test Harness — Design, Differences, and Risks</a></li>
       <li><a href="#s4">4. Power EGSE — Simulating the Launch Vehicle and On-Orbit Environment</a></li>
-      <li><a href="#s5">5. Command and Telemetry EGSE</a></li>
-      <li><a href="#s6">6. RF and Communications EGSE</a></li>
+      <li><a href="#s5">5. Command and Telemetry EGSE — The Flight Interface and the System of Record</a></li>
+      <li><a href="#s6">6. RF and Communications EGSE — Where a Tenth of a Decibel Decides Pass or Fail</a></li>
       <li><a href="#s7">7. Simulators — When the Real Hardware Isn't There</a></li>
-      <li><a href="#s8">8. Sensor Stimulators</a></li>
+      <li><a href="#s8">8. Sensor Stimulators — When the Stimulus Is the Reference</a></li>
       <li><a href="#s9">9. EGSE Failure Modes — How EGSE Can Mislead You</a></li>
-      <li><a href="#s10">10. EGSE Qualification and Configuration Control</a></li>
-      <li><a href="#s11">11. EGSE at the Launch Site</a></li>
-      <li><a href="#s12">12. Grounding, Shielding, and the EGSE Interface</a></li>
+      <li><a href="#s10">10. EGSE Qualification and Configuration Control — Keeping the Equipment Trustworthy</a></li>
+      <li><a href="#s11">11. EGSE at the Launch Site — The Reduced Suite and the Baseline It Must Match</a></li>
+      <li><a href="#s12">12. Grounding, Shielding, and the EGSE Interface — Where Ground Loops Are Born</a></li>
       <li><a href="#s13">13. What the I&T Engineer Must Never Forget About EGSE</a></li>
       <li><a href="#glossary">Key Terms Glossary</a></li>
-    </ul>
-  </div>
+</ul>
 
   <p>Every <em>powered</em> test the spacecraft undergoes during the I&T campaign is directly mediated by EGSE — the electrical ground support equipment that supplies power, monitors telemetry, sends commands, simulates missing hardware, and connects the spacecraft to the test environment. But even tests that are minimally or unpowered — structural tests, acoustic and vibration qualification, thermal-vacuum survival runs, deployment mechanism verification — depend on EGSE and instrumentation harnesses to configure the spacecraft beforehand and to verify, through functional tests before and after, that the hardware survived. No test in the I&T campaign is truly EGSE-independent: even when the spacecraft is not electrically active, the ground support infrastructure surrounding it determines whether the test is set up correctly and whether its outcome can be interpreted with confidence.</p>
 
@@ -81,7 +80,7 @@
 </div>
 
   <!-- SECTION 1 -->
-  <h2 class="sh" id="s1">1. What EGSE Is and Why It Matters</h2>
+  <h2 class="sh" id="s1">1. What EGSE Is and Why It Matters — The Equipment Between You and the Spacecraft</h2>
 
 <p><span class="kt">Electrical Ground Support Equipment (EGSE)</span> is the collective term for all the electrical and electronic systems used to support the testing, monitoring, and operation of a spacecraft during ground integration and test. It encompasses everything that interfaces with the spacecraft to power it, command it, monitor it, stimulate its sensors, or stand in for hardware it will eventually work with — the power supplies, the command and telemetry systems, the RF test support equipment, the sensor stimulators, the hardware simulators, and the interconnecting harnesses that tie them together. That interface is not always an electrical wire. It may be a fiber-optic line, an RF cable or waveguide, a coupler that mates over an antenna, or no physical connection at all — a star tracker target projecting a simulated star field across an air gap, or a GPS constellation simulator radiating signals the spacecraft's receiver acquires as if on orbit. What makes a piece of equipment EGSE is its function in the test, not the medium through which it reaches the spacecraft.</p>
 
@@ -100,7 +99,7 @@
 
 
   <!-- SECTION 2 -->
-  <h2 class="sh" id="s2">2. The Principal Categories of EGSE</h2>
+  <h2 class="sh" id="s2">2. The Principal Categories of EGSE — The Six Categories and the Risks Each Introduces</h2>
 
 
 
@@ -271,7 +270,7 @@
 
 
  <!-- SECTION 5  -->
-<h2 class="sh" id="s5">5. Command and Telemetry EGSE</h2>
+<h2 class="sh" id="s5">5. Command and Telemetry EGSE — The Flight Interface and the System of Record</h2>
 
 <p>If power EGSE is what brings the spacecraft to life on the test floor, command and telemetry EGSE is how the test team talks to it and listens to it. It is the system that issues commands to the spacecraft and receives, decodes, displays, and records the telemetry the spacecraft sends back — and it is the single most constant presence in the I&T campaign, active in essentially every powered test from first turn-on through the final pre-ship functional. Where other EGSE categories come and go with the specific test being run, command and telemetry EGSE is almost always connected, because almost nothing can be verified without commanding the spacecraft to do it and watching the telemetry to confirm it happened.</p>
 
@@ -306,7 +305,7 @@
 
   <!-- SECTION 6 -->
 
-<h2 class="sh" id="s6">6. RF and Communications EGSE</h2>
+<h2 class="sh" id="s6">RF and Communications EGSE — Where a Tenth of a Decibel Decides Pass or Fail</h2>
 
 <p>The spacecraft's radio frequency systems — uplink command receiver, downlink telemetry transmitter, ranging transponder, and any mission-specific communications links — are tested through RF EGSE that generates and measures signals at the spacecraft's operating frequencies. RF EGSE is among the more specialized parts of the EGSE suite, requiring precision instruments and careful calibration, and its accuracy directly affects the validity of the link margin measurements that feed the Launch Readiness Review.</p>
 
@@ -387,8 +386,8 @@
   <p>After NEAR's 1998 rendezvous-burn anomaly, investigators used a software-only simulator to replay the event and assess how the spacecraft's fault protection had behaved. Even after substantial improvement to the models and extension of the simulated scenarios, the simulations consistently showed the fault-protection actions damping the attitude anomaly quickly — while the real spacecraft had experienced a far longer and more complex recovery. The Mishap Investigation Board concluded that the simulator, despite the improvements, remained deficient in some respect, because the team simply could not reproduce the full sequence of on-orbit events.</p>
   <p>What makes this case unusually compelling is that the team had ground truth to test against. This was not a pre-flight prediction that turned out wrong; it was a replay of a known event, with the actual outcome in hand, and the simulator still could not match it. If a simulator cannot reproduce a known anomaly even with hindsight, that is a direct measure of how much confidence the pre-flight fault-protection testing conducted on that same simulator actually deserved. Simulator fidelity is not about producing reasonable-looking behavior; it must be good enough that the same fault-management logic, driven by plausible uncertainties and initial conditions, reaches the same qualitative outcome on the ground as in flight.</p>
 </div>
-  <!-- NEW SECTION 8 (renumbering after adding C&T EGSE and this section) -->
-<h2 class="sh" id="s8">8. Sensor Stimulators</h2>
+  <!-- SECTION 8  -->
+<h2 class="sh" id="s8">8. Sensor Stimulators — When the Stimulus Is the Reference</h2>
 
 <p>Many of the spacecraft's sensors cannot be meaningfully tested by commanding the spacecraft and reading telemetry alone, because what they measure is the external world — the direction of the Sun, the pattern of stars, the Earth's magnetic field, the navigation signals from a satellite constellation. To verify that these sensors and the software that processes them work correctly, the test must present them with a controlled, known version of the stimulus they are designed to detect. That is the role of the sensor stimulator: it injects a controlled physical input into a sensor that is present and operating, so that the sensor's response — and the spacecraft's response to the sensor — can be verified against a known truth.</p>
 
@@ -482,7 +481,7 @@
 </table>
 
   <!-- SECTION 10 -->
-  <h2 class="sh" id="s10">10. EGSE Qualification and Configuration Control</h2>
+  <h2 class="sh" id="s10">10. EGSE Qualification and Configuration Control — Keeping the Equipment Trustworthy</h2>
 
   <p>EGSE is not flight hardware, but it is safety-critical test infrastructure. An EGSE failure during testing — particularly during hazardous operations such as pyrotechnic testing or propellant loading — can damage or destroy flight hardware. An EGSE that produces incorrect test results can allow flight hardware anomalies to escape detection. The qualification and configuration management standards for EGSE must reflect these consequences.</p>
 
@@ -794,7 +793,7 @@
 </div>
 
 </div>
- <h2 class="sh" id="s11">11. EGSE at the Launch Site</h2>
+ <h2 class="sh" id="s11">11. EGSE at the Launch Site — The Reduced Suite and the Baseline It Must Match</h2>
   <p>The EGSE suite that supports launch site operations is a reduced, purpose-specific subset of the full I&T EGSE. It is designed to support the specific tests required at the launch site — receiving inspection, final functional verification, countdown testing — rather than the full test program. Its relationship with the I&T EGSE is critical: the launch site EGSE must produce results that are comparable to the I&T EGSE results from the pre-ship functional test, so that deviations introduced during shipping can be detected.</p>
 
 <div class="stats-row">
@@ -832,7 +831,7 @@
 </div>
 
   <!-- SECTION 12 -->
-  <h2 class="sh" id="s12">12. Grounding, Shielding, and the EGSE Interface</h2>
+  <h2 class="sh" id="s12">12. Grounding, Shielding, and the EGSE Interface — Where Ground Loops Are Born</h2>
 
   <p>The spacecraft's electrical grounding and shielding architecture — the system of intentional and controlled ground connections that establishes the voltage reference for every circuit and prevents electromagnetic interference from propagating through the spacecraft — is one of the most challenging aspects of both spacecraft design and EGSE interface design. It is also one of the most common sources of anomalies in newly integrated test configurations, and one of the most difficult to diagnose without a thorough understanding of both the spacecraft's ground architecture and the EGSE's internal grounding.</p>
 
