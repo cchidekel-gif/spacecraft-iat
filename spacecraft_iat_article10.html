@@ -16,56 +16,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link href="spacecraft_iat.css" rel="stylesheet">
 <div>
+<!-- MASTHEAD -->
 <div class="masthead">
   <span class="masthead-series">Spacecraft Engineering Series · Integration &amp; Test</span>
   <span class="masthead-right">Article 05 of 19</span>
 </div>
 
+<div id="series-nav-top"></div>
 
-<div class="series-nav">
-  <span>Series:</span>
-  <span class="sep">·</span>
-  <a href="https://cchidekel-gif.github.io/spacecraft-iat/spacecraft_iat_intro.html#top" style="color:#b8cdd8;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#b8cdd8'">Intro</a>
-  <span class="sep">·</span>
-  <a href="https://cchidekel-gif.github.io/spacecraft-iat/spacecraft_iat_article01.html#top" style="color:#b8cdd8;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#b8cdd8'">01</a>
-  <span class="sep">·</span>
-  <a href="https://cchidekel-gif.github.io/spacecraft-iat/spacecraft_iat_article11.html#top" style="color:#b8cdd8;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#b8cdd8'">02</a>
-  <span class="sep">·</span>
-  <span style="color:#4a6a7a;cursor:default;" title="Coming soon">03</span>
-  <span class="sep">·</span>
-  <a href="https://cchidekel-gif.github.io/spacecraft-iat/spacecraft_iat_article02.html#top" style="color:#b8cdd8;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#b8cdd8'">04</a>
-  <span class="sep">·</span>
-  <span class="current">05</span>
-  <span class="sep">·</span>
-  <a href="https://cchidekel-gif.github.io/spacecraft-iat/spacecraft_iat_article03.html#top" style="color:#b8cdd8;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#b8cdd8'">06</a>
-  <span class="sep">·</span>
-  <a href="https://cchidekel-gif.github.io/spacecraft-iat/spacecraft_iat_article09.html#top" style="color:#b8cdd8;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#b8cdd8'">07</a>
-  <span class="sep">·</span>
-  <span style="color:#4a6a7a;cursor:default;" title="Coming soon">08</span>
-  <span class="sep">·</span>
-  <a href="https://cchidekel-gif.github.io/spacecraft-iat/spacecraft_iat_article04.html#top" style="color:#b8cdd8;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#b8cdd8'">09</a>
-  <span class="sep">·</span>
-  <a href="https://cchidekel-gif.github.io/spacecraft-iat/spacecraft_iat_article05.html#top" style="color:#b8cdd8;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#b8cdd8'">10</a>
-  <span class="sep">·</span>
-  <span style="color:#4a6a7a;cursor:default;" title="Coming soon">11</span>
-  <span class="sep">·</span>
-  <a href="https://cchidekel-gif.github.io/spacecraft-iat/spacecraft_iat_article07.html#top" style="color:#b8cdd8;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#b8cdd8'">12</a>
-  <span class="sep">·</span>
-  <span style="color:#4a6a7a;cursor:default;" title="Coming soon">13</span>
-  <span class="sep">·</span>
-  <a href="https://cchidekel-gif.github.io/spacecraft-iat/spacecraft_iat_article06.html#top" style="color:#b8cdd8;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#b8cdd8'">14</a>
-  <span class="sep">·</span>
-  <span style="color:#4a6a7a;cursor:default;" title="Coming soon">15</span>
-  <span class="sep">·</span>
-  <a href="https://cchidekel-gif.github.io/spacecraft-iat/spacecraft_iat_article08.html#top" style="color:#b8cdd8;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#b8cdd8'">16</a>
-  <span class="sep">·</span>
-  <span style="color:#4a6a7a;cursor:default;" title="Coming soon">S1</span>
-  <span class="sep">·</span>
-  <span style="color:#4a6a7a;cursor:default;" title="Coming soon">S2</span>
-</div>
+<!-- HERO -->
 <div class="hero">
   <div class="hero-inner">
-    <div class="hero-eyebrow">Spacecraft Integration &amp; Test · Article 05 of 16</div>
+    <div class="hero-eyebrow">Spacecraft Integration &amp; Test · Article 05 of 19</div>
     <h1>Electrical Ground<br>Support Equipment<br>and the Test Harness</h1>
     <p class="hero-sub">The power, RF, simulation, and wiring infrastructure that makes spacecraft testing possible — and the discipline of calibration, configuration control, and verification that determines whether the results can be trusted. When EGSE is inadequate, it produces misleading results, masks real anomalies, or damages the very hardware it exists to verify.</p>
     <div class="byline">
@@ -84,18 +46,20 @@
   <div class="toc-wrap">
     <div class="toc-label">In This Article</div>
     <ul class="toc-list">
-      <li><a href="#s1"><span>1. What EGSE Is and Why It Matters</span></a></li>
-      <li><a href="#s2"><span>2. The Principal Categories of EGSE</span></a></li>
-      <li><a href="#s3"><span>3. The Test Harness — Design, Differences, and Risks</span></a></li>
-      <li><a href="#s4"><span>4. Power EGSE — Simulating the Launch Vehicle and On-Orbit Environment</span></a></li>
-      <li><a href="#s5"><span>5. RF and Communications EGSE</span></a></li>
-      <li><a href="#s6"><span>6. Simulators — When the Real Hardware Isn't There</span></a></li>
-      <li><a href="#s7"><span>7. EGSE Failure Modes — How EGSE Can Mislead You</span></a></li>
-      <li><a href="#s8"><span>8. EGSE Qualification and Configuration Control</span></a></li>
-      <li><a href="#s9"><span>9. EGSE at the Launch Site</span></a></li>
-      <li><a href="#s10"><span>10. Grounding, Shielding, and the EGSE Interface</span></a></li>
-      <li><a href="#s11"><span>11. What the I&amp;T Engineer Must Never Forget About EGSE</span></a></li>
-      <li><a href="#glossary"><span>Key Terms Glossary</span></a></li>
+      <li><a href="#s1">1. What EGSE Is and Why It Matters</a></li>
+      <li><a href="#s2">2. The Principal Categories of EGSE</a></li>
+      <li><a href="#s3">3. The Test Harness — Design, Differences, and Risks</a></li>
+      <li><a href="#s4">4. Power EGSE — Simulating the Launch Vehicle and On-Orbit Environment</a></li>
+      <li><a href="#s5">5. Command and Telemetry EGSE</a></li>
+      <li><a href="#s6">6. RF and Communications EGSE</a></li>
+      <li><a href="#s7">7. Simulators — When the Real Hardware Isn't There</a></li>
+      <li><a href="#s8">8. Sensor Stimulators</a></li>
+      <li><a href="#s9">9. EGSE Failure Modes — How EGSE Can Mislead You</a></li>
+      <li><a href="#s10">10. EGSE Qualification and Configuration Control</a></li>
+      <li><a href="#s11">11. EGSE at the Launch Site</a></li>
+      <li><a href="#s12">12. Grounding, Shielding, and the EGSE Interface</a></li>
+      <li><a href="#s13">13. What the I&T Engineer Must Never Forget About EGSE</a></li>
+      <li><a href="#glossary">Key Terms Glossary</a></li>
     </ul>
   </div>
 
@@ -364,7 +328,7 @@
 
 <h3>Antenna Pattern Testing and Near-Field Measurement</h3>
 
-<p> Although definitive pattern characterization is normally done at the component level, some programs verify the antenna pattern in the integrated spacecraft configuration — to capture the effect of surrounding structure and thermal blankets on the installed pattern. This requires either a far-field antenna test range... (a large outdoor or indoor facility where the spacecraft and the test antenna are sufficiently far apart to be in each other's far field) or a near-field measurement system (a precision planar, cylindrical, or spherical scanner that measures the near-field amplitude and phase and mathematically transforms the result to the far field).cecraft's thermal blankets and structural elements that affect the antenna's radiation pattern.</p>
+<p> Although definitive pattern characterization is normally done at the component level, some programs verify the antenna pattern in the integrated spacecraft configuration — to capture the effect of surrounding structure and thermal blankets on the installed pattern. This requires either a far-field antenna test range (a large outdoor or indoor facility where the spacecraft and the test antenna are sufficiently far apart to be in each other's far field) or a near-field measurement system (a precision planar, cylindrical, or spherical scanner that measures the near-field amplitude and phase and mathematically transforms the result to the far field). Near-field testing at the spacecraft level is a major EGSE activity that requires careful characterization of the scanner, its calibration, and the interaction between the measurement system and the spacecraft's thermal blankets and structural elements that affect the antenna's radiation pattern.</p>
 
 <p>Near-field measurements are sensitive to the acoustic and mechanical environment of the test facility during the measurement. Vibration from facility HVAC systems, nearby machinery, or foot traffic on the test floor can corrupt the phase measurements on which the near-field-to-far-field transform depends. Near-field test plans must specify the environmental controls required during measurement, and the scanner's position accuracy — typically verified with laser tracker before each measurement campaign — must be within the tolerances required to achieve the specified far-field pattern accuracy.</p>
 
@@ -830,7 +794,7 @@
 </div>
 
 </div>
- 
+ <h2 class="sh" id="s11">11. EGSE at the Launch Site</h2>
   <p>The EGSE suite that supports launch site operations is a reduced, purpose-specific subset of the full I&T EGSE. It is designed to support the specific tests required at the launch site — receiving inspection, final functional verification, countdown testing — rather than the full test program. Its relationship with the I&T EGSE is critical: the launch site EGSE must produce results that are comparable to the I&T EGSE results from the pre-ship functional test, so that deviations introduced during shipping can be detected.</p>
 
 <div class="stats-row">
@@ -867,8 +831,8 @@
   <p>Launch site EGSE anomalies — instrument failures, software errors, harness connector issues — are among the most schedule-sensitive events in the entire launch campaign. The launch date is fixed, the launch window may be constrained, and the resources available to troubleshoot and resolve a complex EGSE problem at a remote launch site are a fraction of those available at the integration facility. The best mitigation is pre-shipment: full functional verification of the launch site EGSE at the integration facility, including at least one complete execution of the launch site test sequence against a known-good spacecraft configuration, before shipment. Programs that ship the launch site EGSE without a full dry run of the test sequence are relying on the launch site to be the first test of the launch site EGSE — a risk that has caused significant launch delays on multiple programs.</p>
 </div>
 
-  <!-- SECTION 11 -->
-  <h2 class="sh" id="s11">11. Grounding, Shielding, and the EGSE Interface</h2>
+  <!-- SECTION 12 -->
+  <h2 class="sh" id="s12">12. Grounding, Shielding, and the EGSE Interface</h2>
 
   <p>The spacecraft's electrical grounding and shielding architecture — the system of intentional and controlled ground connections that establishes the voltage reference for every circuit and prevents electromagnetic interference from propagating through the spacecraft — is one of the most challenging aspects of both spacecraft design and EGSE interface design. It is also one of the most common sources of anomalies in newly integrated test configurations, and one of the most difficult to diagnose without a thorough understanding of both the spacecraft's ground architecture and the EGSE's internal grounding.</p>
 
@@ -904,8 +868,8 @@
 
 <p>The spacecraft's EGSE ground reference is also the reference against which ESD control in the test area is implemented: the ESD wrist strap ground, the work surface ground, and the spacecraft's integration stand ground should all tie to the same facility ground bus that the EGSE ground uses as its reference. Mismatches between the EGSE ground reference and the ESD ground reference — which can arise when EGSE equipment is powered from a different branch circuit than the integration stand, or when equipment is brought in from different facility areas — create a potential difference between the spacecraft's ground reference and the personnel and tools working on it. This potential difference is the mechanism for ESD discharge to flight hardware during active test operations, when the spacecraft's connectors are exposed and personnel are engaged with the hardware. Verifying that the EGSE ground architecture and the ESD ground architecture share a common reference is not an electrical detail — it is a hardware protection requirement.</p>
 
-  <!-- SECTION 12 -->
-  <h2 class="sh" id="s12">12. What the I&T Engineer Must Never Forget About EGSE</h2>
+  <!-- SECTION 13 -->
+  <h2 class="sh" id="s13">13. What the I&T Engineer Must Never Forget About EGSE</h2>
 
 <p>Every conclusion drawn from a spacecraft test is a conclusion about how the spacecraft performed in the EGSE environment — not necessarily how it will perform in the flight environment. The gap between those two things is determined by the fidelity of the EGSE, the accuracy of its calibration, and the completeness with which its differences from the flight configuration have been characterized. Keeping that gap in mind — never allowing the EGSE to become invisible background infrastructure — is the discipline this article is asking you to develop.</p>
 
@@ -961,7 +925,7 @@
   <!-- NEXT LESSON -->
   <div class="next-article">
     <div class="next-article-content">
-      <div class="next-label">Next Article · Article 06 of 16</div>
+      <div class="next-label">Next Article · Article 06 of 19</div>
       <div class="next-title">Functional Testing and the Test-as-You-Fly Principle</div>
       <div class="next-desc">What is tested, why, how we know it is enough — and the governing principle that connects the test program to flight reality</div>
     </div>
