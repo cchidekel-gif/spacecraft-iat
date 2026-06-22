@@ -46,21 +46,22 @@
   <div class="toc-wrap">
     <div class="toc-label">In This Article</div>
       <ul class="toc-list">
-        <li><a href="#s1">1. What EGSE Is and Why It Matters — The Equipment Between You and the Spacecraft</a></li>
-        <li><a href="#s2">2. The Principal Categories of EGSE — The Six Categories and the Risks Each Introduces</a></li>
+         <li><a href="#s1">1. What EGSE Is and Why It Matters — The Equipment Between You and the Spacecraft</a></li>
+        <li><a href="#s2">2. The Principal Categories of EGSE — What Each Category Is and Does</a></li>
         <li><a href="#s3">3. The Test Harness — Design, Differences, and Risks</a></li>
         <li><a href="#s4">4. Power EGSE — Simulating the Launch Vehicle and On-Orbit Environment</a></li>
         <li><a href="#s5">5. Command and Telemetry EGSE — The Flight Interface and the System of Record</a></li>
         <li><a href="#s6">6. RF and Communications EGSE — Where a Tenth of a Decibel Decides Pass or Fail</a></li>
         <li><a href="#s7">7. Simulators — When the Real Hardware Isn't There</a></li>
         <li><a href="#s8">8. Sensor Stimulators — When the Stimulus Is the Reference</a></li>
-        <li><a href="#s9">9. EGSE Failure Modes — How EGSE Can Mislead You</a></li>
-        <li><a href="#s10">10. EGSE Qualification and Configuration Control — Keeping the Equipment Trustworthy</a></li>
-        <li><a href="#s11">11. EGSE at the Launch Site — The Reduced Suite and the Baseline It Must Match</a></li>
-        <li><a href="#s12">12. Grounding, Shielding, and the EGSE Interface — Where Ground Loops Are Born</a></li>
-        <li><a href="#s13">13. What the I&T Engineer Must Never Forget About EGSE</a></li>
+        <li><a href="#s9">9. Specialized and Hybrid GSE — Beyond the Six Core Categories</a></li>
+        <li><a href="#s10">10. EGSE Failure Modes — How EGSE Can Mislead You</a></li>
+        <li><a href="#s11">11. EGSE Qualification and Configuration Control — Keeping the Equipment Trustworthy</a></li>
+        <li><a href="#s12">12. EGSE at the Launch Site — The Reduced Suite and the Baseline It Must Match</a></li>
+        <li><a href="#s13">13. Grounding, Shielding, and the EGSE Interface — Where Ground Loops Are Born</a></li>
+        <li><a href="#s14">14. What the I&T Engineer Must Never Forget About EGSE</a></li>
         <li><a href="#glossary">Key Terms Glossary</a></li>
-      </ul>
+</ul>
     </div>
   <p>Every <em>powered</em> test the spacecraft undergoes during the I&T campaign is directly mediated by EGSE — the electrical ground support equipment that supplies power, monitors telemetry, sends commands, simulates missing hardware, and connects the spacecraft to the test environment. But even tests that are minimally or unpowered — structural tests, acoustic and vibration qualification, thermal-vacuum survival runs, deployment mechanism verification — depend on EGSE and instrumentation harnesses to configure the spacecraft beforehand and to verify, through functional tests before and after, that the hardware survived. No test in the I&T campaign is truly EGSE-independent: even when the spacecraft is not electrically active, the ground support infrastructure surrounding it determines whether the test is set up correctly and whether its outcome can be interpreted with confidence.</p>
 
@@ -99,7 +100,7 @@
 
 
   <!-- SECTION 2 -->
-  <h2 class="sh" id="s2">2. The Principal Categories of EGSE — The Six Categories and the Risks Each Introduces</h2>
+  <h2 class="sh" id="s2">2. The Principal Categories of EGSE — What Each Category Is and Does</h2>
 
 
 
@@ -136,7 +137,7 @@
   </div>
 
 </div>
-
+<p>These six are the principal categories of EGSE — the equipment types that appear, in some form, on essentially every spacecraft program. They are not the whole story. Several spacecraft subsystems carry their own specialized ground support equipment that is part electrical and part something else — propulsion, ordnance, optical alignment, and deployment systems among them — equipment that does not fit cleanly into any of the six and yet shares enough of their electrical and software character that the same disciplines apply. That hybrid class is addressed later in this article, after the six core categories and the disciplines that govern them are established. It is also worth noting that the six categories are organized by <em>type of equipment</em>, not by spacecraft subsystem: the ground support for a given subsystem — the attitude control system, for instance — is typically assembled from several of these categories at once, combining command and telemetry, sensor stimulators, and simulators to exercise that one subsystem.</p>
 
 
 
@@ -305,7 +306,7 @@
 
   <!-- SECTION 6 -->
 
-<h2 class="sh" id="s6">RF and Communications EGSE — Where a Tenth of a Decibel Decides Pass or Fail</h2>
+<h2 class="sh" id="s6">6. RF and Communications EGSE — Where a Tenth of a Decibel Decides Pass or Fail</h2>
 
 <p>The spacecraft's radio frequency systems — uplink command receiver, downlink telemetry transmitter, ranging transponder, and any mission-specific communications links — are tested through RF EGSE that generates and measures signals at the spacecraft's operating frequencies. RF EGSE is among the more specialized parts of the EGSE suite, requiring precision instruments and careful calibration, and its accuracy directly affects the validity of the link margin measurements that feed the Launch Readiness Review.</p>
 
@@ -419,9 +420,27 @@
 
  <!-- END SECTION 8 -->
 
+<!-- SECTION 9 -->
 
-  <!-- SECTION 9 -->
-  <h2 class="sh" id="s9">9. EGSE Failure Modes — How EGSE Can Mislead You</h2>
+<h2 class="sh" id="s9">9. Specialized and Hybrid GSE — Beyond the Six Core Categories</h2>
+
+<p>The six categories cover the EGSE that nearly every spacecraft program shares. But several spacecraft subsystems carry their own specialized ground support equipment that sits at the boundary of EGSE — equipment that is neither purely electrical ground support nor purely mechanical, but a hybrid of electrical sensing, control, and software with some other engineering domain at its core. This equipment is easy to overlook in a discussion organized around the six categories, precisely because it does not fit any of them cleanly. Yet it shares the defining characteristic that makes EGSE matter: it stands between the test team and the spacecraft, and its accuracy, configuration, and fidelity determine whether the tests it supports are valid. The disciplines developed throughout this article — calibration and traceability, configuration control against a moving baseline, simulator and stimulator fidelity, and the habit of asking whether the equipment itself is telling the truth — apply to all of it, regardless of which engineering domain it nominally belongs to.</p>
+
+<p>A few of the most common examples illustrate the class:</p>
+
+<ul>
+  <li><strong>Propulsion GSE</strong> — the pressurization and servicing panels, leak-detection apparatus, and propellant or simulant handling equipment used to test and service the propulsion system. Its core function is fluid and pressure, which places much of it outside traditional EGSE — but it is threaded throughout with electrical instrumentation (pressure transducers, temperature sensors, flow meters), control systems, and data acquisition software, all of which carry the same calibration and configuration-control burden as any EGSE measurement chain. The detailed treatment of propulsion testing belongs to its own article in this series; what matters here is that the electrical and software portions of propulsion GSE are subject to the EGSE disciplines.</li>
+  <li><strong>Ordnance and pyrotechnic GSE</strong> — the firing units, no-fire and all-fire test sets, stray-voltage monitors, and safe-and-arm verification equipment used to test pyrotechnic devices and their initiation circuits. This is heavily electrical and intensely safety-critical: an error in ordnance GSE can fire a device inadvertently or, just as dangerously, certify a circuit as safe when it is not. The current-limiting, command-inhibit, and verification disciplines discussed elsewhere in this article apply here with the least tolerance for error of anywhere in the test program.</li>
+  <li><strong>Optical and alignment GSE</strong> — theodolites, autocollimators, laser trackers, and the optical reference equipment used to measure and verify the alignment of instruments, sensors, and structures. This equipment is electrical and electronic in operation but optical in function, and it sits squarely in the EGSE-discipline space for one reason above all: it is measurement equipment whose own accuracy directly determines the validity of the alignment it certifies. An alignment reference that is itself misconfigured does not produce obviously wrong data — it produces precisely wrong data that the hardware is then built or aligned to match.</li>
+  <li><strong>Deployment and mechanism GSE</strong> — the gravity-negation rigs, deployment monitors, and motion-tracking equipment used to verify the operation of deployable structures and mechanisms. This straddles the boundary with mechanical ground support equipment: the rigs and fixtures are mechanical, but the monitoring and verification instrumentation is electrical, and the same questions of measurement accuracy and configuration apply to the electrical portion.</li>
+</ul>
+
+<p>The point of grouping these together is not to treat each in depth — several have their own dedicated treatment elsewhere in this series — but to make a single principle explicit: the EGSE disciplines are not confined to equipment that is labeled EGSE. Any ground equipment that senses, controls, stimulates, or measures the spacecraft electrically, and whose output the test program relies on, inherits the same obligations of calibration, configuration control, and demonstrated fidelity. What the equipment is called matters far less than what it does in the test validity chain.</p>
+
+
+
+  <!-- ECTION 10 -->
+  <h2 class="sh" id="s10">10. EGSE Failure Modes — How EGSE Can Mislead You</h2>
 
   <p>EGSE failures fall into two broad categories: failures that are immediately obvious — a power supply that trips off, a command link that drops — and failures that are subtle, producing incorrect but plausible test results that may not be recognized as EGSE failures at all. The second category is the more dangerous.</p>
 
@@ -480,8 +499,8 @@
   </tbody>
 </table>
 
-  <!-- SECTION 10 -->
-  <h2 class="sh" id="s10">10. EGSE Qualification and Configuration Control — Keeping the Equipment Trustworthy</h2>
+  <!-- SECTION 11 -->
+  <h2 class="sh" id="s11">11. EGSE Qualification and Configuration Control — Keeping the Equipment Trustworthy</h2>
 
   <p>EGSE is not flight hardware, but it is safety-critical test infrastructure. An EGSE failure during testing — particularly during hazardous operations such as pyrotechnic testing or propellant loading — can damage or destroy flight hardware. An EGSE that produces incorrect test results can allow flight hardware anomalies to escape detection. The qualification and configuration management standards for EGSE must reflect these consequences.</p>
 
@@ -793,7 +812,10 @@
 </div>
 
 </div>
- <h2 class="sh" id="s11">11. EGSE at the Launch Site — The Reduced Suite and the Baseline It Must Match</h2>
+
+<!-- SECTION 12 -->
+
+ <h2 class="sh" id="s12">12. EGSE at the Launch Site — The Reduced Suite and the Baseline It Must Match</h2>
   <p>The EGSE suite that supports launch site operations is a reduced, purpose-specific subset of the full I&T EGSE. It is designed to support the specific tests required at the launch site — receiving inspection, final functional verification, countdown testing — rather than the full test program. Its relationship with the I&T EGSE is critical: the launch site EGSE must produce results that are comparable to the I&T EGSE results from the pre-ship functional test, so that deviations introduced during shipping can be detected.</p>
 
 <div class="stats-row">
@@ -830,8 +852,8 @@
   <p>Launch site EGSE anomalies — instrument failures, software errors, harness connector issues — are among the most schedule-sensitive events in the entire launch campaign. The launch date is fixed, the launch window may be constrained, and the resources available to troubleshoot and resolve a complex EGSE problem at a remote launch site are a fraction of those available at the integration facility. The best mitigation is pre-shipment: full functional verification of the launch site EGSE at the integration facility, including at least one complete execution of the launch site test sequence against a known-good spacecraft configuration, before shipment. Programs that ship the launch site EGSE without a full dry run of the test sequence are relying on the launch site to be the first test of the launch site EGSE — a risk that has caused significant launch delays on multiple programs.</p>
 </div>
 
-  <!-- SECTION 12 -->
-  <h2 class="sh" id="s12">12. Grounding, Shielding, and the EGSE Interface — Where Ground Loops Are Born</h2>
+  <!-- SECTION 13 -->
+  <h2 class="sh" id="s13">13. Grounding, Shielding, and the EGSE Interface — Where Ground Loops Are Born</h2>
 
   <p>The spacecraft's electrical grounding and shielding architecture — the system of intentional and controlled ground connections that establishes the voltage reference for every circuit and prevents electromagnetic interference from propagating through the spacecraft — is one of the most challenging aspects of both spacecraft design and EGSE interface design. It is also one of the most common sources of anomalies in newly integrated test configurations, and one of the most difficult to diagnose without a thorough understanding of both the spacecraft's ground architecture and the EGSE's internal grounding.</p>
 
@@ -867,8 +889,8 @@
 
 <p>The spacecraft's EGSE ground reference is also the reference against which ESD control in the test area is implemented: the ESD wrist strap ground, the work surface ground, and the spacecraft's integration stand ground should all tie to the same facility ground bus that the EGSE ground uses as its reference. Mismatches between the EGSE ground reference and the ESD ground reference — which can arise when EGSE equipment is powered from a different branch circuit than the integration stand, or when equipment is brought in from different facility areas — create a potential difference between the spacecraft's ground reference and the personnel and tools working on it. This potential difference is the mechanism for ESD discharge to flight hardware during active test operations, when the spacecraft's connectors are exposed and personnel are engaged with the hardware. Verifying that the EGSE ground architecture and the ESD ground architecture share a common reference is not an electrical detail — it is a hardware protection requirement.</p>
 
-  <!-- SECTION 13 -->
-  <h2 class="sh" id="s13">13. What the I&T Engineer Must Never Forget About EGSE</h2>
+  <!-- SECTION 14 -->
+  <h2 class="sh" id="s14">14. What the I&T Engineer Must Never Forget About EGSE</h2>
 
 <p>Every conclusion drawn from a spacecraft test is a conclusion about how the spacecraft performed in the EGSE environment — not necessarily how it will perform in the flight environment. The gap between those two things is determined by the fidelity of the EGSE, the accuracy of its calibration, and the completeness with which its differences from the flight configuration have been characterized. Keeping that gap in mind — never allowing the EGSE to become invisible background infrastructure — is the discipline this article is asking you to develop.</p>
 
