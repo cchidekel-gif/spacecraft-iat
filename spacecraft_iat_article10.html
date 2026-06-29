@@ -201,7 +201,22 @@
 
 <p>A category of test harness that operates largely outside the spacecraft program's formal EGSE discipline is the facility-provided instrumentation harness: the wiring that carries accelerometer signals during vibration testing, thermocouple and thermistor outputs during thermal-vacuum testing, heater control currents during bakeout and thermal conditioning, and strain gauge data during structural load testing. These harnesses are furnished by the test facility — not the spacecraft program — and are routed, connected, and managed by facility technicians operating under facility procedures rather than program I&T procedures. They are often treated as background infrastructure: present before the spacecraft arrives, removed after it leaves, and assumed to be working correctly in between.</p>
 
-<p>That assumption is the problem. A facility accelerometer harness with a backed-out or poorly crimped contact at a connector produces a zero or intermittent reading — indistinguishable in the data from an accelerometer that was not excited because the test fixture was not transmitting vibration to that location. A facility thermocouple harness with a degraded junction or a channel-mapping error reads a plausible but wrong temperature — not an obviously dead channel, which would be caught quickly, but a believable value that tracks in roughly the right direction while being offset, or a reading that belongs to a different sensor entirely. A heater control harness with high contact resistance in a connector delivers reduced power to the heater — indistinguishable from a heater element with elevated resistance or a power relay with degraded performance. In each case, the failure produces data that looks like a spacecraft response, so the first instinct is to investigate the spacecraft. The root cause is in the facility wiring.</p>
+<p>That assumption is the problem. Facility instrumentation harness failures rarely announce 
+themselves as obvious dead channels — those are caught quickly. The dangerous failures are 
+the subtle ones that produce data with the character of a real spacecraft response.</p>
+
+<p>A facility accelerometer harness with a backed-out or poorly crimped contact produces an 
+intermittent connection that opens and closes under the vibration load itself — dropping data 
+at certain frequencies, producing anomalous amplitude spikes when the contact momentarily 
+arcs, or generating false resonance signatures when the contact's own mechanical behavior 
+coincides with the test frequency. A facility thermocouple harness with a degraded junction 
+or a channel-mapping error reads a plausible but wrong temperature — a believable value that 
+tracks in roughly the right direction while being offset, or a reading that belongs to a 
+different sensor entirely. A heater control harness with high contact resistance delivers 
+reduced power to the heater — indistinguishable from a heater element with elevated resistance 
+or an error in the thermal analysis or design. In each case, the failure produces data that looks 
+like a spacecraft response, so the first instinct is to investigate the spacecraft. The root 
+cause is in the facility wiring.</p>
 
 <p>The organizational gap that creates this vulnerability is responsibility ambiguity. The spacecraft program owns the spacecraft and its EGSE. The test facility owns its instrumentation harnesses and data acquisition systems. When an anomaly occurs at the interface between them, neither organization has an automatic obligation to investigate the other's infrastructure — and the spacecraft program, which is paying for the test and is accountable for the results, often lacks the authority or access to inspect the facility's wiring. The resolution requires explicit pre-test agreements: a defined scope of facility harness verification that the program will witness or receive documentation for before the test begins, and a defined protocol for facility harness investigation when anomalous sensor readings occur during the test.</p>
 
@@ -218,6 +233,45 @@
 <p>None of this implies that the test facility is negligent — a competent facility verifies its own instrumentation as a matter of routine, and a facility that did not would not stay in business. The point is about the interface between two organizations and the ownership of the resulting data. The facility verifies its equipment to its own standards and for its own purposes; the spacecraft program owns the test data and must be able to demonstrate its validity at the next review. That makes it the program's responsibility — not to repeat the facility's work, but to establish what verification the facility performs, to witness or receive documentation of it, and to retain that evidence as part of the test data package. A good facility makes this straightforward; the obligation to capture and own the evidence still rests with the program.</p>
 
 <p>The consequence of getting this wrong is not abstract. A test report that notes a thermal anomaly during vacuum testing and resolves it as "facility thermocouple channel remapped, subsequent data nominal" is a test report that found a real problem through good practice and a well-managed facility interface. A test report that notes the same anomaly and resolves it as "spacecraft heater circuit anomaly under investigation" — when the root cause was a facility channel-mapping error — is a test report that consumed weeks of investigation time, generated unnecessary discrepancy reports against flight hardware, and may have delayed subsequent testing. The difference between the two is rarely the facility's competence. It is whether the program and the facility agreed in advance on how facility instrumentation would be verified and how anomalies at the interface would be investigated.</p>
+
+<h3>Mechanical Configuration — The Harness Beyond Its Electrical Properties</h3>
+
+<p>The test harness is evaluated almost exclusively in electrical terms — continuity, 
+insulation resistance, contact resistance, shield integrity. These are necessary checks, 
+but they say nothing about how the harness will behave mechanically in the flight 
+configuration. The ground test environment differs from the flight environment in ways 
+that affect harness integrity directly:</p>
+
+<ul class="scope-list">
+  <li><span class="scope-marker"></span><span class="scope-content"><span class="scope-label">
+  Stress relief and support</span> — a harness that is well-supported by ground handling 
+  fixtures and draped comfortably on the test floor may have inadequate stress relief at 
+  its connectors in the flight configuration, where gravity is absent and launch loads are 
+  present. A connector that is fully seated under gravity-assisted mating on the test floor 
+  may be marginal when the mating axis changes orientation at launch.</span></li>
+  
+  <li><span class="scope-marker"></span><span class="scope-content"><span class="scope-label">
+  Routing and service loops</span> — test harnesses routed for convenience rather than 
+  flight fidelity may be slack where the flight harness is taut, or taut where the flight 
+  harness has a service loop. A harness that clears structure comfortably in the horizontal 
+  test orientation may contact and chafe against that same structure in the launch vertical 
+  orientation.</span></li>
+  
+  <li><span class="scope-marker"></span><span class="scope-content"><span class="scope-label">
+  Dynamic loading</span> — a test harness supported by ground handling equipment does not 
+  experience the launch vibration and shock environment. Marginal crimps and connector 
+  contacts that pass every electrical check under static test conditions can fail under 
+  the dynamic loads of launch — and electrical continuity proven on the ground says nothing 
+  about a stress-induced failure mode that only the flight mechanical configuration 
+  produces.</span></li>
+</ul>
+
+<p>The discipline this requires is a mechanical review of the test harness configuration 
+alongside the electrical one — asking not only whether the harness passes its continuity 
+checks, but whether its routing, support, stress relief, and connector seating in the test 
+configuration faithfully represent the mechanical environment it will experience in flight. 
+Where they do not, the gap must be documented and the flight configuration verified 
+separately.</p>
 
 <div class="callout warning" id="case-landsat6">
   <div class="callout-title">⚠ Case — Landsat-6: Test Configuration Versus Flight Configuration</div>
