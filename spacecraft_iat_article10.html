@@ -164,7 +164,7 @@
     </tr>
     <tr>
       <td class="hc-char-cell">Impedance &amp; capacitance</td>
-      <td class="hc-ground-cell">May differ significantly from flight due to length and conductor cross-section choices and differences in materials; differences often undocumented or considered irrelevant./td>
+      <td class="hc-ground-cell">May differ significantly from flight due to length and conductor cross-section choices and differences in materials; differences often undocumented or considered irrelevant.</td>
       <td class="hc-flight-cell">Design parameters, verified against ICD requirements and documented in the harness design record</td>
     </tr>
     <tr>
@@ -862,6 +862,44 @@
 <p>Most spacecraft use a single-point ground (SPG) architecture: all circuit grounds within the spacecraft are connected to a single chassis reference point, with no direct ground connections between subsystems. This architecture prevents ground loops within the spacecraft by ensuring that all currents return through a defined, single path. The EGSE interface must be compatible with this architecture: the EGSE ground must connect to the spacecraft's ground reference at a single, defined point, and no additional ground paths should exist through the test harness.</p>
 
 <p>In practice, enforcing single-point grounding through a complex EGSE suite with multiple instruments, multiple power supplies, and multiple test harnesses connected simultaneously requires deliberate design. Every EGSE instrument has its own internal ground reference, and every power supply has its own chassis. When multiple instruments are connected to the spacecraft through separate harnesses, each harness shield provides a potential ground path — and a potential ground loop. The EGSE grounding diagram — showing the intended ground path from each EGSE instrument to the spacecraft's defined ground reference point, and confirming the absence of alternate paths — must be developed as a formal design document and verified by measurement before the first test.</p>
+
+<h3>Ground Hierarchies in the Test Facility — Multiple Grounds, Multiple Hazards</h3>
+
+<p>A spacecraft test facility does not operate with a single ground reference. It maintains several distinct ground systems, each existing for a specific purpose and each intentionally isolated from the others. Understanding this ground hierarchy — and the consequences of violating it — is a prerequisite for reasoning about where any EGSE connection, harness shield, or instrument chassis should terminate.</p>
+
+<div class="cat-grid">
+
+  <div class="cat-card cat-power">
+    <div class="cat-head"><div class="cat-icon">⚡</div><div class="cat-titles"><div class="cat-title">Facility / Power Ground</div></div></div>
+    <div class="cat-body">The building's electrical system ground. Carries switching noise from HVAC motors, lighting ballasts, power distribution equipment, and other facility electrical loads. Necessary as a safety ground for facility power; unsuitable as a reference for sensitive measurements.</div>
+  </div>
+
+  <div class="cat-card cat-ct">
+    <div class="cat-head"><div class="cat-icon">📡</div><div class="cat-titles"><div class="cat-title">Quiet / Signal Ground</div></div></div>
+    <div class="cat-body">A low-noise reference maintained specifically for sensitive analog circuits, precision measurement instruments, and sensor signal chains. Physically separated from the facility power ground and protected from current-carrying connections that would introduce noise onto the reference.</div>
+  </div>
+
+  <div class="cat-card cat-stim">
+    <div class="cat-head"><div class="cat-icon">🎯</div><div class="cat-titles"><div class="cat-title">Spacecraft Ground</div></div></div>
+    <div class="cat-body">The spacecraft's own single-point ground reference — the chassis node to which all spacecraft circuit grounds return. Must connect to the EGSE ground system at exactly one defined point. Its integrity relative to the facility ground systems determines the noise environment the spacecraft sees during testing.</div>
+  </div>
+
+</div>
+
+<p>These ground systems are intentionally separate. The problems arise when they are connected unintentionally, connected in the wrong place, or when equipment is referenced to the wrong ground for its function. The failure modes fall into two categories:</p>
+
+<ul class="scope-list">
+  <li><span class="scope-marker"></span><span class="scope-content"><span class="scope-label">Unintentional connections</span> — a test harness shield that inadvertently bridges the spacecraft ground to the facility power ground; an EGSE instrument whose internal design ties its signal ground to its chassis ground, silently collapsing two references that should be separate; a cable tray that places a quiet-ground signal cable in physical contact with a facility power conductor long enough to capacitively couple noise onto the signal. None of these announce themselves — the connection is made, the noise appears in the spacecraft telemetry, and the investigation begins with the spacecraft.</span></li>
+  <li><span class="scope-marker"></span><span class="scope-content"><span class="scope-label">Wrong-ground connections</span> — EGSE measurement instrumentation referenced to the facility power ground where it should reference the quiet ground or the spacecraft ground; a sensitive sensor signal chain terminated to a ground reference that is carrying switching noise from nearby test equipment; a data acquisition system chassis bonded to the facility ground bus at the integration stand, creating a direct path between the facility ground and the spacecraft chassis through the instrumentation harness. The measurement still works — the instrument is grounded, signals are acquired — but the reference it is working against is wrong, and the data it produces reflects that.</span></li>
+</ul>
+
+<div class="callout rust">
+  <div class="callout-label">⚠ The Symptom Is Always in the Spacecraft</div>
+  <p>Ground hierarchy violations share a diagnostic signature: the anomaly appears in the spacecraft's telemetry or sensor outputs, not in the EGSE. Noise injected through a wrong-ground connection looks identical in the data to noise generated by the spacecraft's own electronics. Cross-talk induced by an inadvertent ground connection between two EGSE systems appears as interference between spacecraft subsystems. A measurement referenced to the wrong ground produces an offset or drift that looks like a spacecraft sensor anomaly.</p>
+  <p>The investigation instinct — to examine the spacecraft first — is exactly backwards. Before any noise or interference anomaly investigation turns to the spacecraft, the test configuration's ground hierarchy should be mapped and verified: which ground is each EGSE instrument referenced to, where does each harness shield terminate, and is any unintended connection present between ground systems that should be separate? A ground hierarchy diagram, prepared before the test and verified by measurement at setup, is the tool that makes this investigation tractable rather than open-ended.</p>
+</div>
+
+<p>The practical discipline this requires is explicit ground assignment at the test configuration design stage — not resolved at harness fabrication time, not left to the technician making the connection. Every EGSE instrument, every harness shield termination, and every data acquisition channel should have a documented ground assignment before the first cable is connected, and that assignment should be verified by measurement — not assumed from the wiring diagram — before sensitive testing begins.</p>
 
 <h3>Shield Grounding — Where Ground Loops Are Born</h3>
 
