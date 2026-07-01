@@ -22,15 +22,13 @@
   <span class="masthead-right">Article 04 of 19</span>
 </div>
 
-
-
 <div id="series-nav-top"></div>
 
 <!-- HERO -->
 <div class="hero">
   <div class="hero-inner">
-    <div class="hero-eyebrow">Spacecraft Integration &amp; Test · Article 05 of 19</div>
-    <h1>The Cleanroom: Where Discipline Meets Flight Hardware</h1>
+    <div class="hero-eyebrow">Spacecraft Integration &amp; Test · Article 04 of 19</div>
+    <h1>The Cleanroom: Where<br>Discipline Meets<br>Flight Hardware</h1>
     <p class="hero-sub">Contamination control, electrostatic discharge, FOD accountability, and the culture that holds it all together — from clean tent to high bay.</p>
     <div class="byline">
       <div class="byline-avatar">🛰️</div>
@@ -42,7 +40,6 @@
   </div>
 </div>
 
-<!-- ARTICLE -->
 <div class="container">
 <article class="article-body">
 
@@ -50,42 +47,44 @@
   <div class="toc-wrap">
     <div class="toc-label">In This Article</div>
     <ul class="toc-list">
-      <li><a href="#s1"><span>1. Why the Cleanroom Exists</span></a></li>
-      <li><a href="#s2"><span>2. Cleanroom Classification — ISO Standards</span></a></li>
-      <li><a href="#s3"><span>3. The Cleanroom Environment: Temperature, Humidity, and Airflow</span></a></li>
-      <li><a href="#s4"><span>4. Gowning: The Ritual of Entry</span></a></li>
-      <li><a href="#s5"><span>5. The Four Threats: Contamination, ESD, FOD, and Workmanship</span></a></li>
-      <li><a href="#s6"><span>6. Contamination Control: Particulate, Molecular, and Material</span></a></li>
-      <li><a href="#s7"><span>7. Electrostatic Discharge (ESD): The Invisible Killer</span></a></li>
-      <li><a href="#s8"><span>8. Foreign Object Debris (FOD): The Preventable Catastrophe</span></a></li>
-      <li><a href="#s9"><span>9. Documentation and Cleanroom Records</span></a></li>
-      <li><a href="#s10"><span>10. Cleanroom Culture: What Makes It Work</span></a></li>
-      <li><a href="#glossary"><span>Key Terms Glossary</span></a></li>
+      <li><a href="#s1">1. Why the Cleanroom Exists</a></li>
+      <li><a href="#s2">2. Cleanroom Classification — ISO Standards</a></li>
+      <li><a href="#s3">3. The Cleanroom Environment: Temperature, Humidity, and Airflow</a></li>
+      <li><a href="#s4">4. Gowning: The Ritual of Entry</a></li>
+      <li><a href="#s5">5. The Four Threats to Flight Hardware</a></li>
+      <li><a href="#s6">6. Contamination Control: Particulate, Molecular, and Material</a></li>
+      <li><a href="#s7">7. Electrostatic Discharge (ESD): The Invisible Killer</a></li>
+      <li><a href="#s8">8. Foreign Object Debris (FOD): The Preventable Catastrophe</a></li>
+      <li><a href="#s9">9. Documentation and Cleanroom Records</a></li>
+      <li><a href="#s10">10. Cleanroom Culture: What Makes It Work</a></li>
+      <li><a href="#glossary">Key Terms Glossary</a></li>
     </ul>
   </div>
 
-  <!-- INTRO -->
-  <p class="lead">Before a single bolt is torqued, a single harness connector mated and the spacecraft begins to take shape on the integration stand — a spacecraft engineer must understand the environment in which all of that work will take place. That environment is the cleanroom. Whether it is a full Class 10,000 facility housing a flagship observatory or a portable clean tent enclosing a detector assembly on a component bench, the disciplines it imposes are not optional embellishments to good engineering practice. They are foundational requirements without which flight hardware cannot be safely handled — at any level of assembly, from piece-part through fully integrated spacecraft.</p>
+  <!-- ABOUT THIS ARTICLE -->
+  <div class="callout note">
+    <div class="callout-title">◆ About This Article</div>
+    <p>This article is a structured introduction to cleanroom discipline in spacecraft I&amp;T — covering the principal environmental controls, contamination threats, and the protocols that govern how engineers and technicians work with flight hardware. Each section presents the core concepts and the reasoning behind them. The full technical treatment, including detailed procedures, extended case studies, and the complete discipline framework, is covered in depth in the I&amp;T Guru training curriculum. If your organization would benefit from that depth, contact Charles Chidekel at <a href="mailto:integrationandtestguru@gmail.com">integrationandtestguru@gmail.com</a>.</p>
+  </div>
+
+  <p class="lead">Before a single bolt is torqued, a single harness connector mated, and the spacecraft begins to take shape on the integration stand — a spacecraft engineer must understand the environment in which all of that work will take place. That environment is the cleanroom. Whether it is a full ISO 7 facility housing a flagship observatory or a portable clean tent enclosing a detector assembly on a component bench, the disciplines it imposes are not optional embellishments to good engineering practice. They are foundational requirements without which flight hardware cannot be safely handled — at any level of assembly, from piece-part through fully integrated spacecraft.</p>
 
   <p>I have spent the better part of four decades working in cleanrooms of every classification, on every type of hardware from tiny detector arrays to primary mirror assemblies the size of a dining room table. In that time I have seen what contamination, electrostatic discharge, and foreign object debris can do to hardware that took years to build. The damage is not always dramatic. Sometimes it is invisible until the instrument fails on orbit, or until a calibration campaign reveals an inexplicable throughput loss, or until an anomaly investigation traces a dead telemetry channel back to an ESD event that no one felt, on a day no one remembers.</p>
-
-  <p>This article covers the cleanroom environment: what it is, why it exists, how it is classified and controlled, and — most importantly — the disciplines and protocols that govern how engineers and technicians work within it. It gives particular attention to contamination control — both particulate and molecular, with consequences that extend well beyond optical surfaces — and to electrostatic discharge, a threat that can destroy flight hardware invisibly and instantaneously. It examines foreign object debris accountability, the gowning and behavioral protocols that make the cleanroom function, and the cleanroom culture that determines whether any of these disciplines actually hold under the pressures of a real integration campaign. These are not rules for their own sake. Every protocol described here exists because, somewhere in the history of spaceflight, something went wrong in its absence.</p>
 
   <div class="pull-quote">
     <p>"The cleanroom is the only place in the entire program where a single human hair, a single uncontrolled static discharge, or a single dropped washer can silently destroy years of engineering work. There is no recovery from contamination that was never detected, no repair for a component damaged by a discharge no one felt, and no retrieval of a fastener that migrated into a mechanism during launch. Respect for this environment is not timidity. It is the minimum standard of professionalism demanded by flight hardware."</p>
   </div>
 
+  <!-- SECTION 1 -->
   <h2 class="sh" id="s1">1. Why the Cleanroom Exists</h2>
 
-  <p>Spacecraft hardware fails in many of the same ways that ground-based engineering hardware does — an ESD-damaged component does not care whether it is in a satellite or a server rack, and a bearing contaminated with particulate debris will degrade regardless of whether it operates in a laboratory or in orbit. But spacecraft hardware also fails in ways that ground-based hardware cannot: the space environment imposes stresses — vacuum, radiation, extreme thermal cycling, microgravity — that have no terrestrial analog, and that can turn a minor ground-induced defect into a mission-ending failure. A contamination film that would be inconsequential on a laboratory instrument becomes a permanent optical degradation when polymerized by solar UV — or an unplanned thermal shift when deposited on a radiator surface, or a cumulative power loss when accumulated on solar array cover glass. A latent ESD defect that might operate for years in a benign thermal environment fails when subjected to the relentless cycling between sunlight and eclipse. A loose washer that would rattle harmlessly in a ground-based enclosure migrates under launch vibration or lack of gravity into a valve seat or a deployment mechanism. The cleanroom exists to try and prevent these categories of failure — the immediate damage that kills hardware on the ground and the latent damage that waits for the space environment to finish what careless handling started.</p>
+  <p>Spacecraft hardware fails in many of the same ways that ground-based hardware does — an ESD-damaged component does not care whether it is in a satellite or a server rack. But spacecraft hardware also fails in ways that ground-based hardware cannot: the space environment imposes stresses — vacuum, radiation, extreme thermal cycling, microgravity — that have no terrestrial analog, and that can turn a minor ground-induced defect into a mission-ending failure. A contamination film that would be inconsequential on a laboratory instrument becomes a permanent optical degradation when polymerized by solar UV. A latent ESD defect that might operate for years in a benign thermal environment fails when subjected to relentless eclipse cycling. A loose washer that would rattle harmlessly in a ground-based enclosure migrates under launch vibration into a valve seat or a deployment mechanism.</p>
 
-  <p>Consider the operating environment of a typical science instrument. Its optical surfaces must be free of particulate contamination at the sub-micron level. Its detector arrays must never be exposed to electrostatic charge differences that would be imperceptible to a human but catastrophic to the sensitive semiconductor structures within them. Its mechanical interfaces must be free of any loose debris that could migrate into a bearing or a deployment mechanism during launch vibration. And every material in contact with or adjacent to flight hardware must be screened and controlled for molecular outgassing — because a volatile compound that is harmless at ambient pressure becomes a contamination source in vacuum, depositing on every cold surface it encounters.</p>
-
-  <p>None of these requirements can be met on a normal factory floor, a standard laboratory, or in any environment where human beings work without extraordinary precautions. The cleanroom is the engineered response to this reality. It is a controlled environment designed to minimize the introduction and retention of particulate and molecular contamination, to manage electrostatic charge, to prevent the introduction of foreign object debris, and to provide a physical and procedural framework within which flight hardware can be safely handled.</p>
+  <p>The cleanroom is the engineered response to this reality. It is a controlled environment designed to minimize the introduction and retention of particulate and molecular contamination, to manage electrostatic charge, to prevent the introduction of foreign object debris, and to provide the physical and procedural framework within which flight hardware can be safely handled.</p>
 
   <div class="callout gold">
     <div class="callout-label">✦ The Stakes of Contamination — Real Programs, Real Consequences</div>
-    <p>A single particle of 10-micron diameter deposited on a detector array can permanently degrade the response of the affected pixel — and a 10-micron particle is invisible to the unaided eye. A molecular film on an optical surface, also invisible, can reduce system throughput by several percent, directly reducing data collection for the life of the mission. These are not theoretical concerns. The following documented cases illustrate the breadth of the threat.</p>
+    <p>A single particle of 10-micron diameter deposited on a detector array can permanently degrade the response of the affected pixel — and a 10-micron particle is invisible to the unaided eye. A molecular film on an optical surface, also invisible, can reduce system throughput by several percent, directly reducing data collection for the life of the mission. The following documented cases illustrate the breadth of the threat.</p>
   </div>
 
   <style>
@@ -106,7 +105,6 @@
   </style>
 
   <div class="contam-case-cards">
-
     <div class="contam-case-card">
       <div class="contam-case-card-header">
         <div class="contam-case-badge">
@@ -135,7 +133,7 @@
         </div>
       </div>
       <div class="contam-case-body">
-        <p>Over 7.5 years in geosynchronous orbit, approximately 240 angstroms of molecular contamination accumulated on the optical solar reflector (OSR) radiators of the GOES-8 Imager and Sounder radiant coolers — not from a materials screening failure, but from normal outgassing of qualified spacecraft bus materials whose molecules were electrostatically re-attracted back onto spacecraft surfaces. The solar absorptance increased continuously with no sign of leveling off, progressively degrading the instruments' ability to reject heat. The lesson is not that something was done wrong on the ground, but that molecular contamination of thermal surfaces in geosynchronous orbit is an inherent, unavoidable phenomenon that must be accounted for in the thermal design margin — and that programs which assume beginning-of-life optical properties will persist are underdesigning their thermal control systems.</p>
+        <p>Over 7.5 years in geosynchronous orbit, approximately 240 angstroms of molecular contamination accumulated on the OSR radiators of the GOES-8 Imager and Sounder radiant coolers — not from a materials screening failure, but from normal outgassing of qualified spacecraft bus materials whose molecules were electrostatically re-attracted back onto spacecraft surfaces. The lesson is not that something was done wrong on the ground, but that molecular contamination of thermal surfaces in geosynchronous orbit is an inherent, unavoidable phenomenon that must be accounted for in the thermal design margin.</p>
       </div>
     </div>
 
@@ -151,19 +149,17 @@
         </div>
       </div>
       <div class="contam-case-body">
-        <p>Silicone polymer adhesive used in Russian-built segments outgassed and deposited silicate films on solar array cover glass over the station's operational lifetime. The arrays experienced progressive power performance degradation, with the contamination contributing to reduced transmittance through the cover glass to the photovoltaic cells beneath.</p>
+        <p>Silicone polymer adhesive used in Russian-built segments outgassed and deposited silicate films on solar array cover glass over the station's operational lifetime, causing progressive power performance degradation through reduced transmittance to the photovoltaic cells beneath.</p>
       </div>
     </div>
-
   </div>
 
-  <p style="font-size:0.88rem;line-height:1.7;color:#333;font-weight:300;">Each of these represents a different contamination mechanism, a different category of hardware impact, and a different lesson — but every one traces back to decisions made, or not made, on the ground before launch. Every one is a documented failure mode from a real program, not a textbook hypothetical.</p>
-
+  <!-- SECTION 2 -->
   <h2 class="sh" id="s2">2. Cleanroom Classification — ISO Standards</h2>
 
-  <p>Cleanrooms are classified by the concentration of airborne particles permitted within them. The international standard governing cleanroom classification is <span class="kt">ISO 14644-1</span>, which defines cleanroom classes based on the maximum permitted concentration of particles of 0.1 µm or larger per cubic meter of air. This standard superseded the older US Federal Standard 209E (which used particle counts per cubic foot), though FS-209E terminology remains in common use in the aerospace industry — you will encounter both systems on any real program.</p>
+  <p>Cleanrooms are classified by the concentration of airborne particles permitted within them. The international standard is <span class="kt">ISO 14644-1</span>, which defines cleanroom classes based on the maximum permitted concentration of particles per cubic meter of air. The older US Federal Standard 209E terminology (Class 100, Class 10,000) remains in common use in the aerospace industry — you will encounter both systems on any real program.</p>
 
-   <style>
+  <style>
     .iso-cards{margin:2em 0;display:grid;grid-template-columns:1fr;gap:0;}
     .iso-card{border:1px solid var(--rule);border-bottom:none;overflow:hidden;}
     .iso-card:last-child{border-bottom:1px solid var(--rule);}
@@ -189,51 +185,32 @@
   </style>
 
   <div class="iso-cards">
-
     <div class="iso-card">
       <div class="iso-card-header">
-        <div class="iso-badge iso4">
-          <div class="iso-badge-class">ISO 4</div>
-          <div class="iso-badge-old">Class 10</div>
-        </div>
-        <div class="iso-hdr-text">
-          <div class="iso-title">Detector Assembly and Cryogenic Optical Surfaces</div>
-          <div class="iso-particles">≤ 352 particles ≥0.5µm per m³</div>
-        </div>
+        <div class="iso-badge iso4"><div class="iso-badge-class">ISO 4</div><div class="iso-badge-old">Class 10</div></div>
+        <div class="iso-hdr-text"><div class="iso-title">Detector Assembly and Cryogenic Optical Surfaces</div><div class="iso-particles">≤ 352 particles ≥0.5µm per m³</div></div>
       </div>
       <div class="iso-body">
         <div class="iso-cell"><div class="iso-cell-label">Typical Application</div><p>Detector assembly, cryogenic optical surfaces, focal plane integration. The most demanding cleanliness environment in spacecraft I&amp;T — any particle on these surfaces is a permanent performance loss.</p></div>
-        <div class="iso-cell"><div class="iso-cell-label">Characteristic Environment</div><p>Laminar-flow benches only; full gowning with face masks or supplied-air hoods(for only the most sensitive operations); severely restricted materials list; minimal personnel count; continuous particle monitoring at the work surface.</p></div>
+        <div class="iso-cell"><div class="iso-cell-label">Characteristic Environment</div><p>Laminar-flow benches only; full gowning with face masks or supplied-air hoods for the most sensitive operations; severely restricted materials list; minimal personnel count; continuous particle monitoring at the work surface.</p></div>
       </div>
     </div>
 
     <div class="iso-card">
       <div class="iso-card-header">
-        <div class="iso-badge iso5">
-          <div class="iso-badge-class">ISO 5</div>
-          <div class="iso-badge-old">Class 100</div>
-        </div>
-        <div class="iso-hdr-text">
-          <div class="iso-title">Precision Optical Integration and Sensor Alignment</div>
-          <div class="iso-particles">≤ 3,520 particles ≥0.5µm per m³</div>
-        </div>
+        <div class="iso-badge iso5"><div class="iso-badge-class">ISO 5</div><div class="iso-badge-old">Class 100</div></div>
+        <div class="iso-hdr-text"><div class="iso-title">Precision Optical Integration and Sensor Alignment</div><div class="iso-particles">≤ 3,520 particles ≥0.5µm per m³</div></div>
       </div>
       <div class="iso-body">
         <div class="iso-cell"><div class="iso-cell-label">Typical Application</div><p>Telescope mirror assembly, precision optical integration, sensor alignment. Primary mirror handling and instrument optical bench integration are typically performed at this level.</p></div>
-        <div class="iso-cell"><div class="iso-cell-label">Characteristic Environment</div><p>High-bay cleanroom or dedicated optical integration facility; full gowning; restricted materials list; witness mirrors used often. use of quartz crystal microbalances (QCMs) for molecular contamination monitoring.</p></div>
+        <div class="iso-cell"><div class="iso-cell-label">Characteristic Environment</div><p>High-bay cleanroom or dedicated optical integration facility; full gowning; restricted materials list; witness mirrors and quartz crystal microbalances (QCMs) for molecular contamination monitoring.</p></div>
       </div>
     </div>
 
     <div class="iso-card">
       <div class="iso-card-header">
-        <div class="iso-badge iso6">
-          <div class="iso-badge-class">ISO 6</div>
-          <div class="iso-badge-old">Class 1,000</div>
-        </div>
-        <div class="iso-hdr-text">
-          <div class="iso-title">Instrument-Level Integration</div>
-          <div class="iso-particles">≤ 35,200 particles ≥0.5µm per m³</div>
-        </div>
+        <div class="iso-badge iso6"><div class="iso-badge-class">ISO 6</div><div class="iso-badge-old">Class 1,000</div></div>
+        <div class="iso-hdr-text"><div class="iso-title">Instrument-Level Integration</div><div class="iso-particles">≤ 35,200 particles ≥0.5µm per m³</div></div>
       </div>
       <div class="iso-body">
         <div class="iso-cell"><div class="iso-cell-label">Typical Application</div><p>Instrument-level integration, detector housing assembly. Work at this level often involves hardware that will later be exposed at ISO 5 or ISO 4 for final optical alignment.</p></div>
@@ -243,916 +220,443 @@
 
     <div class="iso-card">
       <div class="iso-card-header">
-        <div class="iso-badge iso7">
-          <div class="iso-badge-class">ISO 7</div>
-          <div class="iso-badge-old">Class 10,000</div>
-        </div>
-        <div class="iso-hdr-text">
-          <div class="iso-title">Spacecraft Bus Integration and Subsystem Assembly</div>
-          <div class="iso-particles">≤ 352,000 particles ≥0.5µm per m³</div>
-        </div>
+        <div class="iso-badge iso7"><div class="iso-badge-class">ISO 7</div><div class="iso-badge-old">Class 10,000</div></div>
+        <div class="iso-hdr-text"><div class="iso-title">Spacecraft Bus Integration and Subsystem Assembly</div><div class="iso-particles">≤ 352,000 particles ≥0.5µm per m³</div></div>
       </div>
       <div class="iso-body">
         <div class="iso-cell"><div class="iso-cell-label">Typical Application</div><p>Spacecraft bus integration, subsystem assembly, structural integration. This is the baseline for most spacecraft system-level I&amp;T work — the environment where the vehicle takes shape on the integration stand.</p></div>
-        <div class="iso-cell"><div class="iso-cell-label">Characteristic Environment</div><p>Standard spacecraft high-bay cleanroom; full gowning; HEPA-filtered air often around 60–150 air changes per hour (facility design dependent); positive pressure; continuous environmental monitoring. Local laminar-flow workstations provide ISO 5 micro-environments within the room as needed.</p></div>
+        <div class="iso-cell"><div class="iso-cell-label">Characteristic Environment</div><p>Standard spacecraft high-bay cleanroom; full gowning; HEPA-filtered air; positive pressure; continuous environmental monitoring. Local laminar-flow workstations provide ISO 5 micro-environments as needed.</p></div>
       </div>
     </div>
 
     <div class="iso-card">
       <div class="iso-card-header">
-        <div class="iso-badge iso8">
-          <div class="iso-badge-class">ISO 8</div>
-          <div class="iso-badge-old">Class 100,000</div>
-        </div>
-        <div class="iso-hdr-text">
-          <div class="iso-title">Large Structure Integration and Non-Sensitive Operations</div>
-          <div class="iso-particles">≤ 3,520,000 particles ≥0.5µm per m³</div>
-        </div>
+        <div class="iso-badge iso8"><div class="iso-badge-class">ISO 8</div><div class="iso-badge-old">Class 100,000</div></div>
+        <div class="iso-hdr-text"><div class="iso-title">Large Structure Integration and Non-Sensitive Operations</div><div class="iso-particles">≤ 3,520,000 particles ≥0.5µm per m³</div></div>
       </div>
       <div class="iso-body">
         <div class="iso-cell"><div class="iso-cell-label">Typical Application</div><p>Large structure integration, propulsion system mechanical work, non-contamination-sensitive operations. Electrical and optical hardware is typically bagged or covered when work at this level is performed nearby.</p></div>
-        <div class="iso-cell"><div class="iso-cell-label">Characteristic Environment</div><p>Gowning with smock and hat; controlled access; HEPA filtration but at lower air change rates; may share facility space with higher-class areas separated by curtains or partitions.</p></div>
+        <div class="iso-cell"><div class="iso-cell-label">Characteristic Environment</div><p>Gowning with smock and hat; controlled access; HEPA filtration at lower air change rates; may share facility space with higher-class areas separated by curtains or partitions.</p></div>
       </div>
     </div>
-
   </div>
-
-  <p>For most spacecraft system-level integration work, an <span class="kt">ISO 7 (Class 10,000)</span> cleanroom is the baseline. Work involving exposed optical surfaces, detector arrays, or cryogenic components typically requires <span class="kt">ISO 5 (Class 100)</span> or better, often achieved within a larger ISO 7 space using local laminar-flow workstations that provide a cleaner microenvironment at the work surface.</p>
 
   <div class="callout gold">
     <div class="callout-label">✦ Beyond Particle Count: The Molecular Contamination Gap</div>
-    <p>ISO 14644-1 gives the program a clear, certifiable number for particulate cleanliness — a Class 7 cleanroom either meets its particle count limit or it does not. No equivalent classification exists for molecular contamination. ISO 14644-8 addresses airborne molecular contamination and ISO 14644-10 addresses surface chemical contamination, but neither provides the simple, auditable classification table that ISO 14644-1 gives for particles. There is no "Molecular Class 7." This gap in the standards framework is itself a risk: programs that certify their cleanroom to an ISO particulate class and stop there have addressed only half the contamination problem — and for optical systems, often the less dangerous half.</p>
-    <p>In practice, spacecraft molecular contamination control is governed less by ISO than by a combination of ASTM and IEST standards: ASTM E595 for material outgassing screening (TML and CVCM), and IEST-STD-CC1246 for surface cleanliness levels including nonvolatile residue (NVR) — the surface-deposited analog of airborne molecular contamination. European programs use ECSS-Q-ST-70-01C, which provides a more integrated contamination control framework spanning both particulate and molecular threats. The point for the practicing engineer is this: a cleanroom that controls particles but ignores molecular contamination is not adequate for optical spacecraft integration, and the absence of a simple ISO classification number for molecular cleanliness makes it easier for programs to overlook this requirement than it should be.</p>
+    <p>ISO 14644-1 gives the program a clear, certifiable number for particulate cleanliness. No equivalent classification exists for molecular contamination. Programs that certify their cleanroom to an ISO particulate class and stop there have addressed only half the contamination problem — and for optical systems, often the less dangerous half. In practice, spacecraft molecular contamination control is governed by ASTM E595 for material outgassing screening, IEST-STD-CC1246 for surface cleanliness levels, and ECSS-Q-ST-70-01C for European programs. A cleanroom that controls particles but ignores molecular contamination is not adequate for optical spacecraft integration.</p>
   </div>
 
+  <!-- SECTION 3 -->
   <h2 class="sh" id="s3">3. The Cleanroom Environment: Temperature, Humidity, and Airflow</h2>
 
-  <p>The physical environment of a spacecraft cleanroom is controlled along three primary axes: airflow, temperature, and humidity. Each of these parameters is controlled for a specific reason, and deviations from specification must be documented and evaluated for their potential impact on hardware.</p>
+  <p>The physical environment of a spacecraft cleanroom is controlled along three primary axes: airflow, temperature, and humidity. Each is controlled for a specific reason, and deviations from specification must be documented and evaluated for their potential impact on hardware.</p>
 
-  
+  <p>Cleanroom air is continuously recirculated through <span class="kt">HEPA</span> or <span class="kt">ULPA</span> filters and delivered in either ceiling-to-floor downflow or wall-flow configurations. Downflow rooms achieve their cleanliness through dilution and high air-change rate — true unidirectional flow from ceiling to floor is not achievable in any room of useful size once obstructions, personnel, and hardware are present. Wall-flow configurations at bench scale genuinely produce unidirectional sweep, which is why laminar-flow benches are the standard for the most sensitive operations. Temperature is typically controlled to 68±2°F (20±1°C) — not primarily for human comfort, but for dimensional stability of precision hardware, humidity coupling, and personnel endurance in full gowning. Humidity is controlled to 45±10% RH, a range that keeps ESD charge generation manageable, condensation risk negligible, and moisture-sensitive materials safe simultaneously. Both parameters are logged continuously, and excursions are evaluated against the specific hardware present at the time of the event.</p>
 
-  <h3 class="ssh">Airflow and Pressurization</h3>
-  <p>Cleanroom air is continuously recirculated through <span class="kt">HEPA (High-Efficiency Particulate Air)</span> or <span class="kt">ULPA (Ultra-Low Particulate Air)</span> filters. HEPA filters remove at least 99.97% of particles at 0.3 µm and are standard for ISO 7 and ISO 8 environments; ULPA filters remove at least 99.999% at 0.12 µm and are used in ISO 5 and cleaner environments.</p>
-  <p>Filtered air is delivered to the cleanroom volume in one of two configurations, and the distinction between them matters for flow pattern — not just for equipment layout.</p>
-  <p><strong>Ceiling-to-floor (downflow) rooms</strong> supply HEPA-filtered air through ceiling plenums and return it through floor-level or low-wall grilles. This is the most common configuration for large spacecraft high-bays. Despite being frequently described as providing unidirectional downflow in facility documentation, true unidirectional flow from ceiling to floor is not achievable in practice in a room of any useful size. Airflow patterns in a downflow room are highly dependent on the location of supply diffusers and return grilles relative to each other, to the hardware, and to personnel. Obstructions — the spacecraft itself, support GSE, integration stands, personnel — create wakes, recirculation zones, and dead spots where air movement is effectively stagnant. The result is a thoroughly mixed, turbulent environment that achieves its cleanliness through dilution and high air-change rate, not through directional sweep. This is not a failure of the facility — it is the physics of airflow in a large, occupied, obstacle-filled space. The design implication is that return placement and air change rate matter enormously, and that areas of the room with poor return coverage are not receiving the contamination control benefit that the particle count at the center of the room would suggest.</p>
-  <p><strong>Wall-flow configurations</strong> mount HEPA filter units on one or more walls, delivering air horizontally across the work volume. Unlike ceiling-to-floor rooms, wall-flow at bench scale genuinely does produce unidirectional flow — the horizontal flow path from filter face to return establishes a defined directional sweep across the work surface that carries particles away from the work piece. This is precisely why unidirectional-flow benches are the standard for the most sensitive operations: detector handling, connector assembly, small optics cleaning. The HEPA bank at the back of the bench sweeps particles toward the operator rather than allowing them to fall onto the hardware. At larger scales, wall-flow is the preferred solution when hardware is tall enough that ceiling-mounted filters would be too far above the work zone to be effective, when the most contamination-sensitive surfaces face downward, or when cranes and overhead rigging must have unobstructed ceiling access — a common constraint during spacecraft structural integration.</p>
-  <p>In all wall-flow configurations, personnel standing upstream of the hardware become direct contamination sources in a way that downflow rooms partially mitigate through dilution. Work area layout, personnel positioning relative to the airflow direction, and the placement of contamination-generating activities relative to sensitive hardware surfaces are all deliberate planning considerations — not details that take care of themselves.</p>
-
- <h3 class="ssh">Temperature Control</h3>
-  <p>Spacecraft cleanrooms are typically maintained at 68±2°F (20±1°C). This is not primarily for human comfort. Temperature stability is an engineering requirement that serves multiple cleanroom disciplines simultaneously.</p>
-
-  <p><strong>Dimensional stability:</strong> Precision hardware — optical mounts, alignment fixtures, structural interfaces with tight tolerances — changes dimension with temperature. A thermal gradient across a large optical bench during alignment verification can introduce errors that are indistinguishable from actual misalignment. Temperature control ensures that metrology performed in the cleanroom reflects the hardware's true geometric state, not a thermally distorted snapshot.</p>
-
-  <p><strong>Humidity coupling:</strong> Relative humidity is a function of both moisture content and temperature. A temperature drop of just a few degrees can push a room from 45% RH into a range where condensation forms on cold hardware surfaces, while a temperature rise at constant moisture content drops the relative humidity into the low-30s where electrostatic charge accumulates rapidly. Temperature instability makes humidity control unreliable, and unreliable humidity control compromises both contamination control and ESD protection.</p>
-
-<p><strong>Personnel endurance:</strong> Cleanroom gowning — full bunny suit, hood, double gloves, face mask, boot covers — is inherently insulating. Personnel performing physically demanding work in full gowning at temperatures even a few degrees above the nominal range fatigue faster, sweat more, and shed more particles. Perspiration is not merely a comfort problem — sweat carries salts, oils, and biological compounds that can deposit on optical surfaces, degrade electrical contacts, and introduce ionic contamination onto exposed circuit assemblies and connector pin fields. A technician who is hot is also moving more and breathing harder, compounding the particle shedding rate beyond what gowning alone can control. Temperature control at the lower end of the comfort range is not a concession to comfort — it is a direct contamination control measure.</p>
-
-  <p>Temperature is logged continuously as part of the cleanroom's environmental monitoring record. Any significant excursion must be evaluated not just against the room specification, but against the specific hardware present, the operations underway, and the contamination and ESD implications for that hardware at the time of the excursion.</p>
-
-  <h3 class="ssh">Humidity Control</h3>
-  <p>Relative humidity in spacecraft cleanrooms is typically controlled to 45±10% RH — a range that represents a deliberate compromise between competing risks.</p>
-
-  <p><strong>Below 35% RH</strong>, electrostatic charge accumulates rapidly on personnel, tools, and hardware surfaces. At 20% RH — not uncommon in winter in facilities without aggressive humidification — the voltage generated by routine movement can exceed 10,000 volts. The entire ESD control program described in Section 7 becomes harder to execute in a dry environment: charge generation rates outpace dissipation through wrist straps and grounding chains, and insulating surfaces that would remain benign at 45% RH become active charge sources. Low humidity does not defeat ESD controls, but it reduces every margin in the system.</p>
-
-  <p><strong>Above 55% RH</strong>, the risks reverse. Condensation can form on any hardware surface that is cooler than the ambient dew point — a particular concern when cold hardware is brought from a thermal-vacuum chamber or a cold-storage environment into the cleanroom. Elevated humidity promotes corrosion on metallic surfaces and fasteners, particularly on dissimilar-metal interfaces where galvanic couples accelerate the process. Hygroscopic optical coatings can absorb moisture and change their spectral performance characteristics — a change that may not be detected until the coating is in vacuum on orbit and the absorbed moisture outgasses, altering the coating's properties permanently. Propulsion system components that contain moisture-sensitive materials — certain valve seat compounds, pyrotechnic initiators, and solid propellant grains — can be degraded or rendered unsafe by sustained humidity exposure.</p>
-
-  <p>The 45±10% RH control band is not arbitrary. It is the narrowest practical range that keeps ESD charge generation manageable, condensation risk negligible, and moisture-sensitive materials safe — simultaneously. Humidity is logged continuously, and excursions are evaluated against the specific hardware present in the cleanroom at the time, through the program's anomaly management process.</p>
-
+  <!-- SECTION 4 -->
   <h2 class="sh" id="s4">4. Gowning: The Ritual of Entry</h2>
 
-<p>The single largest source of contamination in a cleanroom is the human body. A person at rest sheds roughly 100,000 particles per minute from skin and clothing. Some movement — reaching, turning, leaning — drives that figure to approximately 1,000,000 particles per minute. Walking raises it to 5,000,000 particles per minute or more. These are not worst-case numbers; they are the baseline reality of an ungowned human body in motion. The implication for cleanroom behavior is direct: slow, deliberate movement is not a formality — it is a contamination control measure with measurable impact on the particle environment around flight hardware. Gowning — the process of donning cleanroom garments before entry — is the primary barrier between the human body and the cleanroom environment, reducing shedding by orders of magnitude at each activity level, but never to zero.</p>
+  <p>The single largest source of contamination in a cleanroom is the human body. A person at rest sheds roughly 100,000 particles per minute. Some movement raises that to approximately 1,000,000 particles per minute. Walking raises it to 5,000,000 or more. Gowning reduces shedding by orders of magnitude at each activity level — but never to zero. Slow, deliberate movement in the cleanroom is not a formality; it is a contamination control measure with measurable impact on the particle environment around flight hardware.</p>
 
-  <p>Gowning requirements vary with cleanroom class. The sequence below reflects a full ISO 7 gowning protocol, the standard for spacecraft system-level integration. ISO 5 work may require additional steps, including full-face respirators and nitrogen-purged enclosures.</p>
+  <style>
+    .gs-card{display:flex;align-items:stretch;border:1px solid var(--rule);border-bottom:none;overflow:hidden;background:var(--white);}
+    .gs-card:first-child{border-radius:8px 8px 0 0;}
+    .gs-card:nth-child(even){background:var(--light);}
+    .gs-fig{width:110px;flex-shrink:0;display:flex;align-items:center;justify-content:center;border-right:1px solid var(--rule);padding:10px 4px;}
+    .gs-fig svg{display:block;}
+    .gs-body{flex:1;padding:14px 18px;display:flex;align-items:flex-start;gap:12px;}
+    .gs-num{width:28px;height:28px;border-radius:50%;background:#2e5a7a;color:#fff;font-family:'Source Serif 4',serif;font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+    .gs-num.esd{background:#b87420;}
+    .gs-num.verify{background:#7a2e2e;}
+    .gs-text{flex:1;}
+    .gs-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--ink);line-height:1.3;margin-bottom:3px;}
+    .gs-desc{font-size:0.84rem;color:#333;line-height:1.6;font-weight:300;}
+    .gs-entry{display:flex;align-items:center;justify-content:center;padding:12px;background:#2e7d52;color:#fff;font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;border-radius:0 0 8px 8px;border:1px solid #2e7d52;}
+    .gs-legend{display:flex;gap:16px;justify-content:center;margin-top:0.75rem;font-size:0.8rem;color:var(--steel);align-items:center;flex-wrap:wrap;}
+    .gs-dot{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:4px;vertical-align:middle;}
+    @media(max-width:680px){.gs-fig{width:80px;}.gs-body{padding:10px 12px;}}
+  </style>
 
-  <!-- Gowning Sequence — Section 4 visual component -->
-<!-- Place this after the introductory paragraph of Section 4 -->
+  <div style="margin:2em 0;">
 
-<style>
-  .gs-card{display:flex;align-items:stretch;border:1px solid var(--rule);border-bottom:none;overflow:hidden;background:var(--white);}
-  .gs-card:first-child{border-radius:8px 8px 0 0;}
-  .gs-card:nth-child(even){background:var(--light);}
-  .gs-fig{width:110px;flex-shrink:0;display:flex;align-items:center;justify-content:center;border-right:1px solid var(--rule);padding:10px 4px;}
-  .gs-fig svg{display:block;}
-  .gs-body{flex:1;padding:14px 18px;display:flex;align-items:flex-start;gap:12px;}
-  .gs-num{width:28px;height:28px;border-radius:50%;background:#2e5a7a;color:#fff;font-family:'Source Serif 4',serif;font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
-  .gs-num.esd{background:#b87420;}
-  .gs-num.verify{background:#7a2e2e;}
-  .gs-text{flex:1;}
-  .gs-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--ink);line-height:1.3;margin-bottom:3px;}
-  .gs-desc{font-size:0.84rem;color:#333;line-height:1.6;font-weight:300;}
-  .gs-entry{display:flex;align-items:center;justify-content:center;padding:12px;background:#2e7d52;color:#fff;font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;border-radius:0 0 8px 8px;border:1px solid #2e7d52;}
-  .gs-legend{display:flex;gap:16px;justify-content:center;margin-top:0.75rem;font-size:0.8rem;color:var(--steel);align-items:center;flex-wrap:wrap;}
-  .gs-dot{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:4px;vertical-align:middle;}
-  @media(max-width:680px){.gs-fig{width:80px;}.gs-body{padding:10px 12px;}}
-</style>
-
-<div style="margin:2em 0;">
-
-<!-- Step 1: Air shower / tacky mat -->
-<div class="gs-card">
-  <div class="gs-fig">
-    <svg width="90" height="100" viewBox="0 0 90 100">
-      <line x1="18" y1="8" x2="22" y2="24" stroke="#85B7EB" stroke-width="1.5" opacity="0.5"/>
-      <line x1="33" y1="4" x2="35" y2="22" stroke="#85B7EB" stroke-width="1.5" opacity="0.4"/>
-      <line x1="57" y1="4" x2="55" y2="22" stroke="#85B7EB" stroke-width="1.5" opacity="0.4"/>
-      <line x1="72" y1="8" x2="68" y2="24" stroke="#85B7EB" stroke-width="1.5" opacity="0.5"/>
-      <circle cx="45" cy="28" r="9" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
-      <line x1="45" y1="37" x2="45" y2="65" stroke="var(--ink)" stroke-width="1.5"/>
-      <line x1="45" y1="46" x2="28" y2="57" stroke="var(--ink)" stroke-width="1.5"/>
-      <line x1="45" y1="46" x2="62" y2="57" stroke="var(--ink)" stroke-width="1.5"/>
-      <line x1="45" y1="65" x2="32" y2="86" stroke="var(--ink)" stroke-width="1.5"/>
-      <line x1="45" y1="65" x2="58" y2="86" stroke="var(--ink)" stroke-width="1.5"/>
-      <rect x="23" y="88" width="44" height="5" rx="2" fill="#85B7EB" opacity="0.4"/>
-    </svg>
-  </div>
-  <div class="gs-body">
-    <div class="gs-num">1</div>
-    <div class="gs-text">
-      <div class="gs-title">Air Shower / Tacky Mat Entry</div>
-      <div class="gs-desc">Before entering the gowning area, personnel pass through an air shower (high-velocity air jets that dislodge surface particles) and step onto a tacky mat that removes particles from shoe soles. This occurs before any cleanroom garments are donned.</div>
+    <div class="gs-card">
+      <div class="gs-fig">
+        <svg width="90" height="100" viewBox="0 0 90 100">
+          <line x1="18" y1="8" x2="22" y2="24" stroke="#85B7EB" stroke-width="1.5" opacity="0.5"/>
+          <line x1="33" y1="4" x2="35" y2="22" stroke="#85B7EB" stroke-width="1.5" opacity="0.4"/>
+          <line x1="57" y1="4" x2="55" y2="22" stroke="#85B7EB" stroke-width="1.5" opacity="0.4"/>
+          <line x1="72" y1="8" x2="68" y2="24" stroke="#85B7EB" stroke-width="1.5" opacity="0.5"/>
+          <circle cx="45" cy="28" r="9" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
+          <line x1="45" y1="37" x2="45" y2="65" stroke="var(--ink)" stroke-width="1.5"/>
+          <line x1="45" y1="46" x2="28" y2="57" stroke="var(--ink)" stroke-width="1.5"/>
+          <line x1="45" y1="46" x2="62" y2="57" stroke="var(--ink)" stroke-width="1.5"/>
+          <line x1="45" y1="65" x2="32" y2="86" stroke="var(--ink)" stroke-width="1.5"/>
+          <line x1="45" y1="65" x2="58" y2="86" stroke="var(--ink)" stroke-width="1.5"/>
+          <rect x="23" y="88" width="44" height="5" rx="2" fill="#85B7EB" opacity="0.4"/>
+        </svg>
+      </div>
+      <div class="gs-body">
+        <div class="gs-num">1</div>
+        <div class="gs-text">
+          <div class="gs-title">Air Shower / Tacky Mat Entry</div>
+          <div class="gs-desc">Personnel pass through an air shower and step onto a tacky mat before entering the gowning area. This occurs before any cleanroom garments are donned.</div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-<!-- Step 2: Remove jewelry -->
-<div class="gs-card">
-  <div class="gs-fig">
-    <svg width="90" height="100" viewBox="0 0 90 100">
-      <circle cx="45" cy="28" r="9" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
-      <line x1="45" y1="37" x2="45" y2="65" stroke="var(--ink)" stroke-width="1.5"/>
-      <line x1="45" y1="46" x2="28" y2="57" stroke="var(--ink)" stroke-width="1.5"/>
-      <line x1="45" y1="46" x2="62" y2="57" stroke="var(--ink)" stroke-width="1.5"/>
-      <line x1="45" y1="65" x2="32" y2="86" stroke="var(--ink)" stroke-width="1.5"/>
-      <line x1="45" y1="65" x2="58" y2="86" stroke="var(--ink)" stroke-width="1.5"/>
-      <rect x="23" y="52" width="9" height="6" rx="1" fill="none" stroke="#b87420" stroke-width="1"/>
-      <line x1="21" y1="50" x2="34" y2="60" stroke="#E24B4A" stroke-width="1.5"/>
-      <line x1="34" y1="50" x2="21" y2="60" stroke="#E24B4A" stroke-width="1.5"/>
-      <circle cx="64" cy="57" r="4" fill="none" stroke="#b87420" stroke-width="1"/>
-      <line x1="59" y1="52" x2="69" y2="62" stroke="#E24B4A" stroke-width="1.5"/>
-      <line x1="69" y1="52" x2="59" y2="62" stroke="#E24B4A" stroke-width="1.5"/>
-    </svg>
-  </div>
-  <div class="gs-body">
-    <div class="gs-num">2</div>
-    <div class="gs-text">
-      <div class="gs-title">Remove Street Clothes Items &amp; Jewelry</div>
-      <div class="gs-desc">Watches, rings, bracelets, and any jewelry must be removed — they are particle generators and present ESD and FOD risks. Cosmetics, perfumes, and lotions are prohibited; they are sources of molecular contamination and can interact with optical coatings and sensitive materials.</div>
+    <div class="gs-card">
+      <div class="gs-fig">
+        <svg width="90" height="100" viewBox="0 0 90 100">
+          <circle cx="45" cy="28" r="9" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
+          <line x1="45" y1="37" x2="45" y2="65" stroke="var(--ink)" stroke-width="1.5"/>
+          <line x1="45" y1="46" x2="28" y2="57" stroke="var(--ink)" stroke-width="1.5"/>
+          <line x1="45" y1="46" x2="62" y2="57" stroke="var(--ink)" stroke-width="1.5"/>
+          <line x1="45" y1="65" x2="32" y2="86" stroke="var(--ink)" stroke-width="1.5"/>
+          <line x1="45" y1="65" x2="58" y2="86" stroke="var(--ink)" stroke-width="1.5"/>
+          <rect x="23" y="52" width="9" height="6" rx="1" fill="none" stroke="#b87420" stroke-width="1"/>
+          <line x1="21" y1="50" x2="34" y2="60" stroke="#E24B4A" stroke-width="1.5"/>
+          <line x1="34" y1="50" x2="21" y2="60" stroke="#E24B4A" stroke-width="1.5"/>
+          <circle cx="64" cy="57" r="4" fill="none" stroke="#b87420" stroke-width="1"/>
+          <line x1="59" y1="52" x2="69" y2="62" stroke="#E24B4A" stroke-width="1.5"/>
+          <line x1="69" y1="52" x2="59" y2="62" stroke="#E24B4A" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <div class="gs-body">
+        <div class="gs-num">2</div>
+        <div class="gs-text">
+          <div class="gs-title">Remove Jewelry and Street Items</div>
+          <div class="gs-desc">Watches, rings, and jewelry are removed — they are particle generators and ESD and FOD risks. Cosmetics, perfumes, and lotions are prohibited; they are molecular contamination sources that can interact with optical coatings and sensitive materials.</div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-<!-- Step 3: Hood -->
-<div class="gs-card">
-  <div class="gs-fig">
-    <svg width="90" height="100" viewBox="0 0 90 100">
-      <path d="M33,34 Q33,14 45,14 Q57,14 57,34 L55,39 L35,39 Z" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="1" opacity="0.7"/>
-      <circle cx="45" cy="28" r="7" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
-      <line x1="45" y1="39" x2="45" y2="65" stroke="var(--ink)" stroke-width="1.5"/>
-      <line x1="45" y1="46" x2="28" y2="57" stroke="var(--ink)" stroke-width="1.5"/>
-      <line x1="45" y1="46" x2="62" y2="57" stroke="var(--ink)" stroke-width="1.5"/>
-      <line x1="45" y1="65" x2="32" y2="86" stroke="var(--ink)" stroke-width="1.5"/>
-      <line x1="45" y1="65" x2="58" y2="86" stroke="var(--ink)" stroke-width="1.5"/>
-    </svg>
-  </div>
-  <div class="gs-body">
-    <div class="gs-num">3</div>
-    <div class="gs-text">
-      <div class="gs-title">Don Hood / Hair Cover</div>
-      <div class="gs-desc">A cleanroom hood covers all hair and, in higher-class rooms, the neck and shoulders. Human hair is a significant particle and fiber source. The hood is donned first so that any particles shed during its application fall onto garments not yet worn.</div>
+    <div class="gs-card">
+      <div class="gs-fig">
+        <svg width="90" height="100" viewBox="0 0 90 100">
+          <path d="M33,34 Q33,14 45,14 Q57,14 57,34 L55,39 L35,39 Z" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="1" opacity="0.7"/>
+          <circle cx="45" cy="28" r="7" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
+          <line x1="45" y1="39" x2="45" y2="65" stroke="var(--ink)" stroke-width="1.5"/>
+          <line x1="45" y1="46" x2="28" y2="57" stroke="var(--ink)" stroke-width="1.5"/>
+          <line x1="45" y1="46" x2="62" y2="57" stroke="var(--ink)" stroke-width="1.5"/>
+          <line x1="45" y1="65" x2="32" y2="86" stroke="var(--ink)" stroke-width="1.5"/>
+          <line x1="45" y1="65" x2="58" y2="86" stroke="var(--ink)" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <div class="gs-body">
+        <div class="gs-num">3</div>
+        <div class="gs-text">
+          <div class="gs-title">Don Hood / Hair Cover</div>
+          <div class="gs-desc">A cleanroom hood covers all hair and, in higher-class rooms, the neck and shoulders. The hood is donned first so that any particles shed during its application fall onto garments not yet worn.</div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-<!-- Step 4: Bunny suit -->
-<div class="gs-card">
-  <div class="gs-fig">
-    <svg width="90" height="100" viewBox="0 0 90 100">
-      <path d="M33,34 Q33,14 45,14 Q57,14 57,34 L55,39 L35,39 Z" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="1" opacity="0.7"/>
-      <circle cx="45" cy="28" r="7" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
-      <path d="M38,39 L35,65 L29,88 L39,88 L45,72 L51,88 L61,88 L58,65 L55,39 Z" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="1" opacity="0.6"/>
-      <path d="M38,45 L26,56 L29,58 L40,48" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="1" opacity="0.6"/>
-      <path d="M55,45 L67,56 L64,58 L53,48" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="1" opacity="0.6"/>
-    </svg>
-  </div>
-  <div class="gs-body">
-    <div class="gs-num">4</div>
-    <div class="gs-text">
-      <div class="gs-title">Don Cleanroom Suit (Bunny Suit)</div>
-      <div class="gs-desc">The full-body cleanroom suit is a low-linting garment typically made of polyester with a tight weave that traps particles shed by the body. Suits must be donned without allowing the exterior to contact the floor. The suit is sealed at all openings before the next step.</div>
+    <div class="gs-card">
+      <div class="gs-fig">
+        <svg width="90" height="100" viewBox="0 0 90 100">
+          <path d="M33,34 Q33,14 45,14 Q57,14 57,34 L55,39 L35,39 Z" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="1" opacity="0.7"/>
+          <circle cx="45" cy="28" r="7" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
+          <path d="M38,39 L35,65 L29,88 L39,88 L45,72 L51,88 L61,88 L58,65 L55,39 Z" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="1" opacity="0.6"/>
+          <path d="M38,45 L26,56 L29,58 L40,48" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="1" opacity="0.6"/>
+          <path d="M55,45 L67,56 L64,58 L53,48" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="1" opacity="0.6"/>
+        </svg>
+      </div>
+      <div class="gs-body">
+        <div class="gs-num">4</div>
+        <div class="gs-text">
+          <div class="gs-title">Don Cleanroom Suit</div>
+          <div class="gs-desc">The full-body cleanroom suit is a low-linting garment that traps particles shed by the body. Suits must be donned without allowing the exterior to contact the floor. The suit is sealed at all openings before the next step.</div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-<!-- Step 5: Inner gloves -->
-<div class="gs-card">
-  <div class="gs-fig">
-    <svg width="90" height="100" viewBox="0 0 90 100">
-      <path d="M33,34 Q33,14 45,14 Q57,14 57,34 L55,39 L35,39 Z" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="1" opacity="0.7"/>
-      <circle cx="45" cy="28" r="7" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
-      <path d="M38,39 L35,65 L29,88 L39,88 L45,72 L51,88 L61,88 L58,65 L55,39 Z" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="1" opacity="0.6"/>
-      <path d="M38,45 L26,56 L29,58 L40,48" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="1" opacity="0.6"/>
-      <path d="M55,45 L67,56 L64,58 L53,48" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="1" opacity="0.6"/>
-      <circle cx="25" cy="58" r="5" fill="#9FE1CB" stroke="#0F6E56" stroke-width="1.5"/>
-      <circle cx="68" cy="58" r="5" fill="#9FE1CB" stroke="#0F6E56" stroke-width="1.5"/>
-    </svg>
-  </div>
-  <div class="gs-body">
-    <div class="gs-num">5</div>
-    <div class="gs-text">
-      <div class="gs-title">Don Cleanroom Gloves (Inner Layer)</div>
-      <div class="gs-desc">Latex or nitrile gloves are the first glove layer. Hands are the most contamination-active part of the body during integration work. Inner gloves are donned before the suit cuffs are sealed over them to prevent gaps at the wrist.</div>
+    <div class="gs-card">
+      <div class="gs-fig">
+        <svg width="90" height="100" viewBox="0 0 90 100">
+          <path d="M33,34 Q33,14 45,14 Q57,14 57,34 L55,39 L35,39 Z" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="1" opacity="0.7"/>
+          <circle cx="45" cy="28" r="7" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
+          <path d="M38,39 L35,65 L29,88 L39,88 L45,72 L51,88 L61,88 L58,65 L55,39 Z" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="1" opacity="0.6"/>
+          <path d="M38,45 L26,56 L29,58 L40,48" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="1" opacity="0.6"/>
+          <path d="M55,45 L67,56 L64,58 L53,48" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="1" opacity="0.6"/>
+          <circle cx="25" cy="58" r="5" fill="#9FE1CB" stroke="#0F6E56" stroke-width="1.5"/>
+          <circle cx="68" cy="58" r="5" fill="#9FE1CB" stroke="#0F6E56" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <div class="gs-body">
+        <div class="gs-num">5</div>
+        <div class="gs-text">
+          <div class="gs-title">Don Inner Gloves</div>
+          <div class="gs-desc">Latex or nitrile gloves are the first glove layer. Inner gloves are donned before the suit cuffs are sealed over them to prevent gaps at the wrist.</div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-<!-- Step 6: Boot covers -->
-<div class="gs-card">
-  <div class="gs-fig">
-    <svg width="90" height="100" viewBox="0 0 90 100">
-      <path d="M33,34 Q33,14 45,14 Q57,14 57,34 L55,39 L35,39 Z" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="1" opacity="0.7"/>
-      <circle cx="45" cy="28" r="7" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
-      <path d="M38,39 L35,65 L29,88 L39,88 L45,72 L51,88 L61,88 L58,65 L55,39 Z" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="1" opacity="0.6"/>
-      <path d="M38,45 L26,56 L29,58 L40,48" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="1" opacity="0.6"/>
-      <path d="M55,45 L67,56 L64,58 L53,48" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="1" opacity="0.6"/>
-      <circle cx="25" cy="58" r="5" fill="#9FE1CB" stroke="#0F6E56" stroke-width="1.5"/>
-      <circle cx="68" cy="58" r="5" fill="#9FE1CB" stroke="#0F6E56" stroke-width="1.5"/>
-      <path d="M26,84 L26,94 L41,94 L41,84" fill="#5DCAA5" stroke="#0F6E56" stroke-width="1.5" opacity="0.8"/>
-      <path d="M52,84 L52,94 L67,94 L67,84" fill="#5DCAA5" stroke="#0F6E56" stroke-width="1.5" opacity="0.8"/>
-    </svg>
-  </div>
-  <div class="gs-body">
-    <div class="gs-num">6</div>
-    <div class="gs-text">
-      <div class="gs-title">Don Cleanroom Boots / Boot Covers</div>
-      <div class="gs-desc">Cleanroom boot covers are sealed over the suit legs. In high-class environments, separate cleanroom shoes kept permanently inside the room may replace boot covers. The boot/floor interface is the highest-traffic contamination pathway in the room.</div>
+    <div class="gs-card">
+      <div class="gs-fig">
+        <svg width="90" height="100" viewBox="0 0 90 100">
+          <path d="M33,34 Q33,14 45,14 Q57,14 57,34 L55,39 L35,39 Z" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="1" opacity="0.7"/>
+          <circle cx="45" cy="28" r="7" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
+          <path d="M38,39 L35,65 L29,88 L39,88 L45,72 L51,88 L61,88 L58,65 L55,39 Z" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="1" opacity="0.6"/>
+          <path d="M38,45 L26,56 L29,58 L40,48" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="1" opacity="0.6"/>
+          <path d="M55,45 L67,56 L64,58 L53,48" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="1" opacity="0.6"/>
+          <circle cx="25" cy="58" r="5" fill="#9FE1CB" stroke="#0F6E56" stroke-width="1.5"/>
+          <circle cx="68" cy="58" r="5" fill="#9FE1CB" stroke="#0F6E56" stroke-width="1.5"/>
+          <path d="M26,84 L26,94 L41,94 L41,84" fill="#5DCAA5" stroke="#0F6E56" stroke-width="1.5" opacity="0.8"/>
+          <path d="M52,84 L52,94 L67,94 L67,84" fill="#5DCAA5" stroke="#0F6E56" stroke-width="1.5" opacity="0.8"/>
+        </svg>
+      </div>
+      <div class="gs-body">
+        <div class="gs-num">6</div>
+        <div class="gs-text">
+          <div class="gs-title">Don Boot Covers</div>
+          <div class="gs-desc">Cleanroom boot covers are sealed over the suit legs. The boot/floor interface is the highest-traffic contamination pathway in the room.</div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-<!-- Step 7: Face mask -->
-<div class="gs-card">
-  <div class="gs-fig">
-    <svg width="90" height="100" viewBox="0 0 90 100">
-      <path d="M33,34 Q33,14 45,14 Q57,14 57,34 L55,39 L35,39 Z" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="1" opacity="0.7"/>
-      <circle cx="45" cy="28" r="7" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
-      <path d="M38,28 Q38,37 45,37 Q52,37 52,28" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1.2"/>
-      <path d="M38,39 L35,65 L29,88 L39,88 L45,72 L51,88 L61,88 L58,65 L55,39 Z" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="1" opacity="0.6"/>
-      <path d="M38,45 L26,56 L29,58 L40,48" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="1" opacity="0.6"/>
-      <path d="M55,45 L67,56 L64,58 L53,48" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="1" opacity="0.6"/>
-      <circle cx="25" cy="58" r="5" fill="#9FE1CB" stroke="#0F6E56" stroke-width="1.5"/>
-      <circle cx="68" cy="58" r="5" fill="#9FE1CB" stroke="#0F6E56" stroke-width="1.5"/>
-      <path d="M26,84 L26,94 L41,94 L41,84" fill="#5DCAA5" stroke="#0F6E56" stroke-width="1.5" opacity="0.8"/>
-      <path d="M52,84 L52,94 L67,94 L67,84" fill="#5DCAA5" stroke="#0F6E56" stroke-width="1.5" opacity="0.8"/>
-    </svg>
-  </div>
-  <div class="gs-body">
-    <div class="gs-num">7</div>
-    <div class="gs-text">
-      <div class="gs-title">Don Face Mask</div>
-      <div class="gs-desc">A surgical-style or higher-filtration mask covers the mouth and nose. Breath aerosols are a significant contamination source, particularly relevant for optical surfaces. In ISO 5 and cleaner environments, full-face respirators or supplied-air hoods may be required.</div>
+    <div class="gs-card">
+      <div class="gs-fig">
+        <svg width="90" height="100" viewBox="0 0 90 100">
+          <path d="M33,34 Q33,14 45,14 Q57,14 57,34 L55,39 L35,39 Z" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="1" opacity="0.7"/>
+          <circle cx="45" cy="28" r="7" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
+          <path d="M38,28 Q38,37 45,37 Q52,37 52,28" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1.2"/>
+          <path d="M38,39 L35,65 L29,88 L39,88 L45,72 L51,88 L61,88 L58,65 L55,39 Z" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="1" opacity="0.6"/>
+          <path d="M38,45 L26,56 L29,58 L40,48" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="1" opacity="0.6"/>
+          <path d="M55,45 L67,56 L64,58 L53,48" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="1" opacity="0.6"/>
+          <circle cx="25" cy="58" r="5" fill="#9FE1CB" stroke="#0F6E56" stroke-width="1.5"/>
+          <circle cx="68" cy="58" r="5" fill="#9FE1CB" stroke="#0F6E56" stroke-width="1.5"/>
+          <path d="M26,84 L26,94 L41,94 L41,84" fill="#5DCAA5" stroke="#0F6E56" stroke-width="1.5" opacity="0.8"/>
+          <path d="M52,84 L52,94 L67,94 L67,84" fill="#5DCAA5" stroke="#0F6E56" stroke-width="1.5" opacity="0.8"/>
+        </svg>
+      </div>
+      <div class="gs-body">
+        <div class="gs-num">7</div>
+        <div class="gs-text">
+          <div class="gs-title">Don Face Mask</div>
+          <div class="gs-desc">A surgical-style or higher-filtration mask covers the mouth and nose. Breath aerosols are a significant contamination source, particularly for optical surfaces. ISO 5 and cleaner environments may require full-face respirators.</div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-<!-- Step 8: Outer gloves + ESD wrist strap -->
-<div class="gs-card">
-  <div class="gs-fig">
-    <svg width="90" height="100" viewBox="0 0 90 100">
-      <path d="M33,34 Q33,14 45,14 Q57,14 57,34 L55,39 L35,39 Z" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="1" opacity="0.7"/>
-      <circle cx="45" cy="28" r="7" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
-      <path d="M38,28 Q38,37 45,37 Q52,37 52,28" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1.2"/>
-      <path d="M38,39 L35,65 L29,88 L39,88 L45,72 L51,88 L61,88 L58,65 L55,39 Z" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="1" opacity="0.6"/>
-      <path d="M38,45 L26,56 L29,58 L40,48" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="1" opacity="0.6"/>
-      <path d="M55,45 L67,56 L64,58 L53,48" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="1" opacity="0.6"/>
-      <circle cx="25" cy="58" r="6" fill="#FAC775" stroke="#b87420" stroke-width="1.5"/>
-      <circle cx="68" cy="58" r="6" fill="#FAC775" stroke="#b87420" stroke-width="1.5"/>
-      <rect x="28" y="50" width="7" height="3.5" rx="1" fill="#b87420" stroke="#854F0B" stroke-width="0.8"/>
-      <path d="M31,53.5 L31,62 L16,62 L16,95" fill="none" stroke="#b87420" stroke-width="1" stroke-dasharray="3 2"/>
-      <line x1="10" y1="95" x2="22" y2="95" stroke="#b87420" stroke-width="1.5"/>
-      <line x1="12" y1="98" x2="20" y2="98" stroke="#b87420" stroke-width="1.2"/>
-      <line x1="14" y1="101" x2="18" y2="101" stroke="#b87420" stroke-width="1"/>
-      <path d="M26,84 L26,94 L41,94 L41,84" fill="#5DCAA5" stroke="#0F6E56" stroke-width="1.5" opacity="0.8"/>
-      <path d="M52,84 L52,94 L67,94 L67,84" fill="#5DCAA5" stroke="#0F6E56" stroke-width="1.5" opacity="0.8"/>
-    </svg>
-  </div>
-  <div class="gs-body">
-    <div class="gs-num esd">8</div>
-    <div class="gs-text">
-      <div class="gs-title">Don Outer Gloves &amp; ESD Wrist Strap</div>
-      <div class="gs-desc">A second pair of gloves — ESD-dissipative for most integration work — is donned over the inner gloves. The ESD wrist strap is connected to the grounded work surface before any ESD-sensitive hardware is touched. The wrist strap is functionally tested every time it is donned.</div>
+    <div class="gs-card">
+      <div class="gs-fig">
+        <svg width="90" height="100" viewBox="0 0 90 100">
+          <path d="M33,34 Q33,14 45,14 Q57,14 57,34 L55,39 L35,39 Z" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="1" opacity="0.7"/>
+          <circle cx="45" cy="28" r="7" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
+          <path d="M38,28 Q38,37 45,37 Q52,37 52,28" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1.2"/>
+          <path d="M38,39 L35,65 L29,88 L39,88 L45,72 L51,88 L61,88 L58,65 L55,39 Z" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="1" opacity="0.6"/>
+          <path d="M38,45 L26,56 L29,58 L40,48" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="1" opacity="0.6"/>
+          <path d="M55,45 L67,56 L64,58 L53,48" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="1" opacity="0.6"/>
+          <circle cx="25" cy="58" r="6" fill="#FAC775" stroke="#b87420" stroke-width="1.5"/>
+          <circle cx="68" cy="58" r="6" fill="#FAC775" stroke="#b87420" stroke-width="1.5"/>
+          <rect x="28" y="50" width="7" height="3.5" rx="1" fill="#b87420" stroke="#854F0B" stroke-width="0.8"/>
+          <path d="M31,53.5 L31,62 L16,62 L16,95" fill="none" stroke="#b87420" stroke-width="1" stroke-dasharray="3 2"/>
+          <line x1="10" y1="95" x2="22" y2="95" stroke="#b87420" stroke-width="1.5"/>
+          <path d="M26,84 L26,94 L41,94 L41,84" fill="#5DCAA5" stroke="#0F6E56" stroke-width="1.5" opacity="0.8"/>
+          <path d="M52,84 L52,94 L67,94 L67,84" fill="#5DCAA5" stroke="#0F6E56" stroke-width="1.5" opacity="0.8"/>
+        </svg>
+      </div>
+      <div class="gs-body">
+        <div class="gs-num esd">8</div>
+        <div class="gs-text">
+          <div class="gs-title">Don Outer Gloves &amp; ESD Wrist Strap</div>
+          <div class="gs-desc">ESD-dissipative outer gloves are donned over the inner gloves. The ESD wrist strap is connected to the grounded work surface before any ESD-sensitive hardware is touched. The wrist strap is functionally tested every time it is donned — without exception.</div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-<!-- Step 9: Buddy check -->
-<div class="gs-card">
-  <div class="gs-fig">
-    <svg width="90" height="100" viewBox="0 0 90 100">
-      <!-- Main figure fully gowned -->
-      <path d="M23,30 Q23,14 33,14 Q43,14 43,30 L41,34 L25,34 Z" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="0.8" opacity="0.7"/>
-      <circle cx="33" cy="24" r="6" fill="none" stroke="var(--ink)" stroke-width="1.2"/>
-      <path d="M27,24 Q27,32 33,32 Q39,32 39,24" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.8"/>
-      <path d="M27,34 L25,56 L20,74 L28,74 L33,62 L38,74 L46,74 L44,56 L41,34 Z" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="0.8" opacity="0.6"/>
-      <path d="M27,39 L18,48 L21,50 L29,42" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="0.8" opacity="0.6"/>
-      <path d="M41,39 L50,48 L47,50 L39,42" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="0.8" opacity="0.6"/>
-      <circle cx="17" cy="50" r="4" fill="#FAC775" stroke="#b87420" stroke-width="1"/>
-      <circle cx="51" cy="50" r="4" fill="#FAC775" stroke="#b87420" stroke-width="1"/>
-      <path d="M18,71 L18,79 L30,79 L30,71" fill="#5DCAA5" stroke="#0F6E56" stroke-width="1" opacity="0.8"/>
-      <path d="M36,71 L36,79 L48,79 L48,71" fill="#5DCAA5" stroke="#0F6E56" stroke-width="1" opacity="0.8"/>
-      <!-- Buddy figure -->
-      <circle cx="70" cy="26" r="5.5" fill="none" stroke="var(--ink)" stroke-width="1.2"/>
-      <path d="M64,32 Q64,18 70,18 Q76,18 76,32 L75,34 L65,34 Z" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="0.7" opacity="0.7"/>
-      <line x1="70" y1="34" x2="70" y2="55" stroke="var(--ink)" stroke-width="1.2"/>
-      <line x1="70" y1="40" x2="60" y2="48" stroke="var(--ink)" stroke-width="1.2"/>
-      <line x1="70" y1="40" x2="80" y2="48" stroke="var(--ink)" stroke-width="1.2"/>
-      <rect x="78" y="44" width="9" height="12" rx="1" fill="none" stroke="#2e7d52" stroke-width="1.2"/>
-      <line x1="80" y1="47" x2="85" y2="47" stroke="#2e7d52" stroke-width="0.7"/>
-      <line x1="80" y1="50" x2="85" y2="50" stroke="#2e7d52" stroke-width="0.7"/>
-      <line x1="80" y1="53" x2="83" y2="53" stroke="#2e7d52" stroke-width="0.7"/>
-      <!-- Checkmark -->
-      <path d="M28,85 L35,92 L50,78" fill="none" stroke="#2e7d52" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-  </div>
-  <div class="gs-body">
-    <div class="gs-num verify">9</div>
-    <div class="gs-text">
-      <div class="gs-title">Final Inspection &amp; Buddy Check</div>
-      <div class="gs-desc">Before entering the cleanroom proper, gowning is inspected — ideally by a second person (buddy check). All seams are sealed, the wrist strap tester confirms continuity, no personal items are being carried, and no contaminating materials (pens with caps, non-cleanroom-approved notebooks) are present.</div>
+    <div class="gs-card">
+      <div class="gs-fig">
+        <svg width="90" height="100" viewBox="0 0 90 100">
+          <path d="M23,30 Q23,14 33,14 Q43,14 43,30 L41,34 L25,34 Z" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="0.8" opacity="0.7"/>
+          <circle cx="33" cy="24" r="6" fill="none" stroke="var(--ink)" stroke-width="1.2"/>
+          <path d="M27,24 Q27,32 33,32 Q39,32 39,24" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.8"/>
+          <path d="M27,34 L25,56 L20,74 L28,74 L33,62 L38,74 L46,74 L44,56 L41,34 Z" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="0.8" opacity="0.6"/>
+          <path d="M27,39 L18,48 L21,50 L29,42" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="0.8" opacity="0.6"/>
+          <path d="M41,39 L50,48 L47,50 L39,42" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="0.8" opacity="0.6"/>
+          <circle cx="17" cy="50" r="4" fill="#FAC775" stroke="#b87420" stroke-width="1"/>
+          <circle cx="51" cy="50" r="4" fill="#FAC775" stroke="#b87420" stroke-width="1"/>
+          <path d="M18,71 L18,79 L30,79 L30,71" fill="#5DCAA5" stroke="#0F6E56" stroke-width="1" opacity="0.8"/>
+          <path d="M36,71 L36,79 L48,79 L48,71" fill="#5DCAA5" stroke="#0F6E56" stroke-width="1" opacity="0.8"/>
+          <circle cx="70" cy="26" r="5.5" fill="none" stroke="var(--ink)" stroke-width="1.2"/>
+          <path d="M64,32 Q64,18 70,18 Q76,18 76,32 L75,34 L65,34 Z" fill="#B5D4F4" stroke="#2e5a7a" stroke-width="0.7" opacity="0.7"/>
+          <line x1="70" y1="34" x2="70" y2="55" stroke="var(--ink)" stroke-width="1.2"/>
+          <line x1="70" y1="40" x2="60" y2="48" stroke="var(--ink)" stroke-width="1.2"/>
+          <line x1="70" y1="40" x2="80" y2="48" stroke="var(--ink)" stroke-width="1.2"/>
+          <rect x="78" y="44" width="9" height="12" rx="1" fill="none" stroke="#2e7d52" stroke-width="1.2"/>
+          <path d="M28,85 L35,92 L50,78" fill="none" stroke="#2e7d52" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="gs-body">
+        <div class="gs-num verify">9</div>
+        <div class="gs-text">
+          <div class="gs-title">Final Inspection &amp; Buddy Check</div>
+          <div class="gs-desc">Gowning is inspected — ideally by a second person. All seams are sealed, the wrist strap tester confirms continuity, no personal items are being carried, and no non-approved materials are present.</div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-<div class="gs-entry">Enter Cleanroom</div>
-
-</div>
-
-<div class="gs-legend">
-  <span><span class="gs-dot" style="background:#2e5a7a"></span>Standard gowning step</span>
-  <span><span class="gs-dot" style="background:#b87420"></span>ESD-critical step</span>
-  <span><span class="gs-dot" style="background:#7a2e2e"></span>Verification gate</span>
-</div>
-
-
-  <div class="callout rust">
-    <div class="callout-label">⚠ Common Gowning Violations and Their Consequences</div>
-    <p><strong>Wearing cosmetics or lotions:</strong> Wearing cosmetics or lotions of any kind is prohibited. Their unknown and uncontrooled composition can deposit a myryad of substances on optical surfaces as a molecular film; the effect is cumulative and not easily reversed. Its not uncommon to  require personnel to shower before entering Class 100 environments for optical work.</p>
-    <p><strong>Touching the outside of gloves to non-cleanroom surfaces:</strong> The outside of a cleanroom glove is immediately compromised if it contacts uncontrolled surfaces. Touching a face, adjusting glasses, or picking up a non-cleanroom object with gloved hands requires an immediate glove change. It is not uncommon to requre the use of 2 sets of gloves so if torn or unintentially contaminated, the outer glove can be removed in the cleanroom, the second glove remains to provide protetion.</p>
-    <p><strong>Failing to test the ESD wrist strap:</strong> A failed wrist strap provides no protection and no indication of failure at the point of use. The test takes ten seconds. Skipping it is indefensible on a program with ESD-sensitive flight hardware.</p>
+    <div class="gs-entry">Enter Cleanroom</div>
   </div>
 
+  <div class="gs-legend">
+    <span><span class="gs-dot" style="background:#2e5a7a"></span>Standard gowning step</span>
+    <span><span class="gs-dot" style="background:#b87420"></span>ESD-critical step</span>
+    <span><span class="gs-dot" style="background:#7a2e2e"></span>Verification gate</span>
+  </div>
 
-  
-<h2 class="sh" id="s5">5. The Four Threats to Flight Hardware</h2>
+  <!-- SECTION 5 -->
+  <h2 class="sh" id="s5">5. The Four Threats to Flight Hardware</h2>
 
-  <p>Every protocol in a spacecraft cleanroom — every gowning step, material restriction, each grounding requirement, tool inventory — addresses one or more of four categories of threat. Understanding these categories and the failure modes they represent is the foundation of cleanroom discipline. Each is introduced briefly here and treated in depth in the sections that follow.</p>
+  <p>Every protocol in a spacecraft cleanroom addresses one or more of four categories of threat. Understanding these categories and the failure modes they represent is the foundation of cleanroom discipline.</p>
 
   <ul class="body-list">
-    <li><strong>Particulate and molecular contamination</strong> — invisible, cumulative, and often irreversible. Particles as small as a few microns can permanently degrade detector pixels, obstruct precision mechanisms, and create electrical shorts across closely spaced conductors. Molecular films — deposited by outgassing adhesives, solvents, and human-borne chemicals — are even more insidious: they are undetectable by visual inspection, they accumulate over the entire ground and on-orbit lifecycle, and once polymerized by solar ultraviolet radiation they become permanent coatings degrading performance. Optical surfaces are the most sensitive targets, but molecular contamination also degrades thermal control surfaces, solar array cover glass, sensor windows, electrical contacts, bonded joints, and any cryogenic surface that acts as a cold trap for outgassed species. A contamination event that would be trivial on ground-based hardware can reduce a space instrument's science return, shift its thermal balance, or erode its power margin for the life of the mission. Contamination control is the subject of Section 6.</li>
-
-    <li><strong>Electrostatic discharge (ESD)</strong> — imperceptible, instantaneous, and potentially latent. A technician carrying several thousand volts of static charge — completely unfelt — can destroy a flight-grade semiconductor device with a single touch. The damage may be immediate and total, or it may be partial: a degraded junction that passes every ground test but fails on orbit when thermal cycling, radiation, and sustained operation stress the weakened structure past its limit. This latent failure mode is among the most difficult to detect in a test program and among the most costly to a mission, because by the time it manifests, the hardware is beyond reach. ESD control is the subject of Section 7.</li>
-    <li><strong>Foreign object debris (FOD)</strong> — mechanical, preventable, and mission-ending. Any item present in or on the spacecraft that was not intentionally placed there — a loose fastener, a wire fragment, a piece of solder splash, a dropped tool, a forgotten pen cap — becomes a potential kill mechanism the moment the launch vehicle ignites. During launch vibration, FOD migrates into bearings, valve seats, electrical connectors, and optical paths. A single unrecovered fastener in the wrong location can jam a deployment mechanism, short a power bus, or contaminate a propellant line. FOD failures are among the most preventable in all of spaceflight — and among the most unforgivable, because every one of them means something was left inside the spacecraft that someone should have found. FOD control is the subject of Section 8.</li>
-    <li><strong>Workmanship</strong> — the quality of human skill, process execution, and verification. An incorrectly torqued fastener, a cold solder joint, a harness connector not fully seated — poor workmanship creates failure modes that are invisible on inspection but catastrophic in the launch environment or in service. Workmanship is controlled through technician certification, approved procedures, and independent inspection at key steps, and is treated comprehensively in Article 03: Quality Assurance, Inspection, and Oversight.</li>
+    <li><strong>Particulate and molecular contamination</strong> — invisible, cumulative, and often irreversible. Particles as small as a few microns can permanently degrade detector pixels, obstruct precision mechanisms, and create electrical shorts. Molecular films deposited by outgassing materials are even more insidious: undetectable by visual inspection, they accumulate over the entire ground and on-orbit lifecycle and once polymerized by solar UV become permanent coatings. Contamination control is the subject of Section 6.</li>
+    <li><strong>Electrostatic discharge (ESD)</strong> — imperceptible, instantaneous, and potentially latent. A technician carrying several thousand volts of static charge can destroy a flight-grade semiconductor device with a single touch. The damage may be immediate and total, or it may be partial — a degraded junction that passes every ground test but fails on orbit when thermal cycling and radiation stress the weakened structure past its limit. ESD control is the subject of Section 7.</li>
+    <li><strong>Foreign object debris (FOD)</strong> — mechanical, preventable, and mission-ending. Any item present in or on the spacecraft that was not intentionally placed there becomes a potential kill mechanism the moment the launch vehicle ignites. A single unrecovered fastener can jam a deployment mechanism, short a power bus, or contaminate a propellant line. FOD control is the subject of Section 8.</li>
+    <li><strong>Workmanship</strong> — the quality of human skill, process execution, and verification. An incorrectly torqued fastener, a cold solder joint, a harness connector not fully seated — poor workmanship creates failure modes invisible on inspection but catastrophic in the launch environment. Workmanship is treated comprehensively in Article 03: Quality Assurance.</li>
   </ul>
 
-  <p>These four threats are not independent. A contamination event can be caused by a FOD incident. An ESD failure can be masked by a workmanship error that introduced a separate fault on the same circuit. A program that is rigorous about one category but careless about another has an incomplete defense posture. The cleanroom system must be applied in its entirety.</p>
+  <p>These four threats are not independent. A contamination event can be caused by a FOD incident. An ESD failure can be masked by a workmanship error on the same circuit. A program that is rigorous about one category but careless about another has a defense with a hole in it — and the space environment will find that hole.</p>
 
+  <!-- SECTION 6 -->
+  <h2 class="sh" id="s6">6. Contamination Control: Particulate, Molecular, and Material</h2>
 
+  <p>Contamination control spans the entire lifecycle of hardware from piece-part procurement through launch. It addresses two fundamentally different categories: particulate contamination — the deposition of solid particles on hardware surfaces — and molecular contamination — the deposition of chemical films through outgassing, contact, or vapor transport. Unlike particulate contamination, molecular contamination is invisible, cannot be detected by the particle counters that verify cleanroom classification, and builds up over time. Its most damaging effects may not become apparent until the hardware is in the space environment, where UV polymerization converts a thin organic film into a permanent coating that cannot be removed without destroying the surface.</p>
 
-<h2 class="sh" id="s6">6. Contamination Control: Particulate, Molecular, and Material</h2>
+  <p>Every material that enters the cleanroom carries a contamination history. Pre-cleaning — a formal, controlled process performed in a dedicated staging area outside the cleanroom — removes that history before hardware crosses the threshold. Materials are screened for outgassing per ASTM E595 (TML &lt; 1.0%, CVCM &lt; 0.1%) and recorded on an approved materials list. Using any unapproved material — a tube of adhesive from the shelf, a piece of foam for padding — is a nonconformance on most programs and one of the most common sources of contamination that is the most difficult to trace after the fact.</p>
 
-  <p>Contamination control in spacecraft I&amp;T is a continuous, program-wide discipline — not an activity confined to the cleanroom floor. It spans the entire lifecycle of hardware from piece-part procurement through launch, and it requires coordination between design, materials engineering, procurement, manufacturing, and I&amp;T teams. It addresses two fundamentally different categories of contamination, each with its own sources, detection methods, and consequences.</p>
+  <p>Contamination monitoring verifies that controls are working and establishes the evidentiary record for launch readiness. The principal monitoring tools are particle counters for airborne concentration, witness mirrors placed near hardware to capture surface deposition, quartz crystal microbalances (QCMs) for real-time molecular deposition rates, and surface particle counts that directly verify hardware cleanliness against IEST-STD-CC1246 requirements. On programs with stringent cleanliness requirements, contamination is budgeted — each phase of the program is allocated a fraction of the total allowable contamination level, and monitoring data is tracked against that budget at every phase gate.</p>
 
-  <h3 class="ssh">Particulate Contamination</h3>
-  <p>Particulate contamination is the deposition of solid particles — skin cells, fibers, metal fragments, dust, adhesive residue — on hardware surfaces. Its effects depend on where the particles land. On an optical surface, a single particle of 10-micron diameter can permanently obscure a detector pixel. On a mechanical interface, particles can prevent proper seating of a connector or introduce wear into a bearing. On an electrical surface, conductive particles can create short circuits. During launch vibration, particles that were stationary on a surface can migrate into locations where they cause damage far from their original point of deposition.</p>
-
-  <p>Particulate contamination is controlled primarily through the cleanroom environment itself — the HEPA filtration, positive pressure, and air change rates described in Section 2 — and through the gowning and behavioral protocols described in Section 4. But environmental controls alone are not sufficient. Every material, tool, and fixture that enters the cleanroom is a potential particle source, and the activities performed on hardware — connector mating and de-mating, mechanism operation, fastener installation — generate particles at the point of work regardless of how clean the surrounding air may be.</p>
-
-  <h3 class="ssh">Molecular Contamination</h3>
-  <p>Molecular contamination is the deposition of chemical films — volatile organic compounds, silicones, plasticizers, solvent residues — on hardware surfaces through outgassing, direct contact, or vapor transport. Unlike particulate contamination, molecular contamination is invisible. It cannot be seen on an optical surface, felt on a mechanical interface, or detected by the particle counters that verify cleanroom classification. It builds up over time, and its most damaging effects may not become apparent until the hardware is in the space environment.</p>
-
-  <p>The particular danger of molecular contamination for optical systems is photochemical fixation: ultraviolet radiation from the sun can polymerize a thin organic film on an optical surface into a permanent coating that cannot be removed without destroying the surface itself. This process is irreversible and cumulative. But optical surfaces are the most sensitive target, not the only one. Molecular films on thermal control surfaces — radiators, second-surface mirrors, multi-layer insulation — alter the absorptance and emittance ratios on which the spacecraft's thermal balance depends. A radiator that absorbs more solar energy or rejects less waste heat than designed can shift the entire thermal environment of the vehicle. Solar array cover glass contaminated by molecular deposition loses transmittance to the photovoltaic cells beneath, directly reducing power generation over the mission lifetime. Sensor windows on star trackers, sun sensors, and Earth horizon sensors are vulnerable to the same throughput degradation that affects science instruments — and a contaminated star tracker can degrade attitude determination accuracy to the point where it affects pointing performance across the entire observatory. At cryogenic temperatures, the problem is amplified: any surface operating at cryogenic conditions in vacuum becomes a preferential cold trap, condensing outgassed molecular species that would remain in the vapor phase at room temperature. On a cryogenically cooled instrument, the coldest surface is often the detector itself. Hydrocarbon outgassing from improperly screened adhesives, trapped during ground integration and then redistributed by on-orbit thermal cycling, has caused the degradation of optical coatings, thermal control surfaces, and detector performance on multiple flight programs.</p>
-
-
-
-
-  <style>
-    .contam-cards{margin:2em 0;display:grid;grid-template-columns:1fr;gap:0;}
-    .contam-card{border:1px solid var(--rule);border-bottom:none;overflow:hidden;}
-    .contam-card:last-child{border-bottom:1px solid var(--rule);}
-    .contam-card-header{display:flex;align-items:stretch;}
-    .contam-badge{width:120px;display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:12px 10px;font-family:'Source Serif 4',serif;font-size:0.82rem;font-weight:600;text-align:center;color:rgba(255,255,255,0.95);line-height:1.35;}
-    .contam-badge.particulate{background:#2e5a7a;}
-    .contam-badge.molecular{background:#7a2e2e;}
-    .contam-badge.both{background:linear-gradient(135deg, #2e5a7a 50%, #7a2e2e 50%);}
-    .contam-hdr-text{flex:1;padding:12px 18px;background:var(--ink);}
-    .contam-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--paper);margin-bottom:3px;}
-    .contam-risk{font-size:0.82rem;color:#9a9080;font-style:italic;font-weight:300;line-height:1.5;}
-    .contam-body{display:grid;grid-template-columns:1fr 1fr;gap:0;}
-    .contam-cell{padding:14px 18px;border-right:1px solid var(--rule);background:var(--white);}
-    .contam-cell:last-child{border-right:none;}
-    .contam-card:nth-child(even) .contam-cell{background:var(--light);}
-    .contam-cell-label{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
-    .contam-cell p{font-size:0.84rem;color:#333;line-height:1.6;font-weight:300;margin:0;}
-    @media(max-width:680px){.contam-body{grid-template-columns:1fr;}.contam-cell{border-right:none;border-bottom:1px solid var(--rule);}.contam-cell:last-child{border-bottom:none;}.contam-badge{width:100px;}}
-  </style>
-
- <h3 class="ssh">Contamination Sources</h3>
-  <p>The table below identifies the primary contamination sources encountered during spacecraft I&amp;T, ordered by risk level. Each source is classified by its dominant contamination type — particulate, molecular, or both — because the controls and monitoring methods differ for each.</p>
-
-  <style>
-    .contam-cards{margin:2em 0;display:grid;grid-template-columns:1fr;gap:0;}
-    .contam-card{border:1px solid var(--rule);border-bottom:none;overflow:hidden;}
-    .contam-card:last-child{border-bottom:1px solid var(--rule);}
-    .contam-card-header{display:flex;align-items:stretch;}
-    .contam-badge{width:120px;display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:12px 10px;font-family:'Source Serif 4',serif;font-size:0.82rem;font-weight:600;text-align:center;color:rgba(255,255,255,0.95);line-height:1.35;}
-    .contam-badge.particulate{background:#2e5a7a;}
-    .contam-badge.molecular{background:#7a2e2e;}
-    .contam-badge.both{background:linear-gradient(135deg, #2e5a7a 50%, #7a2e2e 50%);}
-    .contam-hdr-text{flex:1;padding:12px 18px;background:var(--ink);}
-    .contam-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--paper);margin-bottom:3px;}
-    .contam-risk{font-size:0.85rem;color:var(--paper);font-weight:600;line-height:1.5;}
-    .contam-risk-high{color:#e8c36a;}
-    .contam-risk-medium{color:#b0b0b0;}
-    .contam-risk-lower{color:#7a9a8a;}
-    .contam-body{display:grid;grid-template-columns:1fr 1fr;gap:0;}
-    .contam-cell{padding:14px 18px;border-right:1px solid var(--rule);background:var(--white);}
-    .contam-cell:last-child{border-right:none;}
-    .contam-card:nth-child(even) .contam-cell{background:var(--light);}
-    .contam-cell-label{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
-    .contam-cell p{font-size:0.84rem;color:#333;line-height:1.6;font-weight:300;margin:0;}
-    @media(max-width:680px){.contam-body{grid-template-columns:1fr;}.contam-cell{border-right:none;border-bottom:1px solid var(--rule);}.contam-cell:last-child{border-bottom:none;}.contam-badge{width:100px;}}
-  </style>
-
-  <div class="contam-cards">
-
-    <div class="contam-card">
-      <div class="contam-card-header">
-        <div class="contam-badge particulate">Particulate</div>
-        <div class="contam-hdr-text">
-          <div class="contam-title">Personnel — Particulate Shedding</div>
-          <div class="contam-risk contam-risk-high">Risk: High</div>
-        </div>
-      </div>
-      <div class="contam-body">
-        <div class="contam-cell"><div class="contam-cell-label">Mechanism</div><p>Skin cells, hair, breath aerosols, and clothing fibers shed continuously during normal activity. A person at rest in street clothes sheds roughly 100,000 particles per minute; some movement raises this to ~1,000,000 p/min, and walking to ~5,000,000 p/min. Gowning reduces shedding by orders of magnitude at each activity level, but never to zero.</p></div>
-        <div class="contam-cell"><div class="contam-cell-label">Primary Control</div><p>Full cleanroom gowning per room classification; access control limiting personnel count and duration; behavioral protocols prohibiting rapid movement, eating, and personal items.</p></div>
-      </div>
-    </div>
-
-    <div class="contam-card">
-      <div class="contam-card-header">
-        <div class="contam-badge molecular">Molecular</div>
-        <div class="contam-hdr-text">
-          <div class="contam-title">Personnel — Cosmetics and Lotions</div>
-          <div class="contam-risk contam-risk-high">Risk: High</div>
-        </div>
-      </div>
-      <div class="contam-body">
-        <div class="contam-cell"><div class="contam-cell-label">Mechanism</div><p>Silicone-based products, fragrances, and lotions deposit molecular films on nearby surfaces through vapor transport and contact transfer. Effects are cumulative and not easily reversed on optical surfaces.</p></div>
-        <div class="contam-cell"><div class="contam-cell-label">Primary Control</div><p>Prohibited materials policy; pre-entry screening; shower requirement for Class 100 optical work. All personnel briefed on prohibited personal care products before cleanroom access is granted.</p></div>
-      </div>
-    </div>
-
-    <div class="contam-card">
-      <div class="contam-card-header">
-        <div class="contam-badge molecular">Molecular</div>
-        <div class="contam-hdr-text">
-          <div class="contam-title">Materials Outgassing</div>
-          <div class="contam-risk contam-risk-high">Risk: High</div>
-        </div>
-      </div>
-      <div class="contam-body">
-        <div class="contam-cell"><div class="contam-cell-label">Mechanism</div><p>Volatile organic compounds (VOCs), silicones, and plasticizers released from adhesives, coatings, potting compounds, and cable insulation. Outgassing rates increase with temperature and decrease with time, but some materials outgas for years.</p></div>
-        <div class="contam-cell"><div class="contam-cell-label">Primary Control</div><p>Materials screening per ASTM E595 (TML &lt; 1.0%, CVCM &lt; 0.1%); approved materials list (AML); controlled bake-out of suspect materials before installation; no unapproved material substitutions.</p></div>
-      </div>
-    </div>
-
-    <div class="contam-card">
-      <div class="contam-card-header">
-        <div class="contam-badge molecular">Molecular</div>
-        <div class="contam-hdr-text">
-          <div class="contam-title">Propellants and Pressurants</div>
-          <div class="contam-risk contam-risk-high">Risk: High</div>
-        </div>
-      </div>
-      <div class="contam-body">
-        <div class="contam-cell"><div class="contam-cell-label">Mechanism</div><p>Chemical contamination from propulsion system fluids — hydrazine, NTO, MMH — and their vapor byproducts; residue deposited on nearby surfaces after propellant loading operations.</p></div>
-        <div class="contam-cell"><div class="contam-cell-label">Primary Control</div><p>Strict sequencing: propulsion loading performed after all optical and electrical closeout work is complete. Purge and verify procedures after any propellant operation; dedicated ventilation during hazardous operations.</p></div>
-      </div>
-    </div>
-
-    <div class="contam-card">
-      <div class="contam-card-header">
-        <div class="contam-badge molecular">Molecular</div>
-        <div class="contam-hdr-text">
-          <div class="contam-title">Cleaning Solvents</div>
-          <div class="contam-risk contam-risk-medium">Risk: Medium</div>
-        </div>
-      </div>
-      <div class="contam-body">
-        <div class="contam-cell"><div class="contam-cell-label">Mechanism</div><p>Residue from improper cleaning technique or incomplete solvent evaporation; reaction products from incompatible solvent/surface combinations that deposit new molecular species while attempting to remove existing contamination.</p></div>
-        <div class="contam-cell"><div class="contam-cell-label">Primary Control</div><p>Approved solvent list matched to specific surface types; approved cleaning procedures with defined wipe patterns and solvent quantities; verification wipes analyzed to confirm cleanliness after cleaning.</p></div>
-      </div>
-    </div>
-
-    <div class="contam-card">
-      <div class="contam-card-header">
-        <div class="contam-badge both">P + M</div>
-        <div class="contam-hdr-text">
-          <div class="contam-title">Tools and Fixtures</div>
-          <div class="contam-risk contam-risk-medium">Risk: Medium</div>
-        </div>
-      </div>
-      <div class="contam-body">
-        <div class="contam-cell"><div class="contam-cell-label">Mechanism</div><p>Metallic particles from machined surfaces, rubber particles from O-rings, and fiber debris from fixtures (particulate); lubricants, cutting fluid residue, and mold release agents (molecular).</p></div>
-        <div class="contam-cell"><div class="contam-cell-label">Primary Control</div><p>Cleanroom-approved tools only; pre-cleaning and inspection of all fixtures before entry; no shop-floor tools permitted without explicit approval and cleaning verification.</p></div>
-      </div>
-    </div>
-
-    <div class="contam-card">
-      <div class="contam-card-header">
-        <div class="contam-badge particulate">Particulate</div>
-        <div class="contam-hdr-text">
-          <div class="contam-title">Facility Infiltration</div>
-          <div class="contam-risk contam-risk-medium">Risk: Medium</div>
-        </div>
-      </div>
-      <div class="contam-body">
-        <div class="contam-cell"><div class="contam-cell-label">Mechanism</div><p>Particles entering through doors during access, through HVAC systems during filter degradation, and from construction or maintenance activity in adjacent uncontrolled spaces.</p></div>
-        <div class="contam-cell"><div class="contam-cell-label">Primary Control</div><p>Positive pressure differential maintained at all access points; HEPA filtration with monitored filter integrity; access control limiting door open-time; continuous particle monitoring with alarm thresholds.</p></div>
-      </div>
-    </div>
-
-    <div class="contam-card">
-      <div class="contam-card-header">
-        <div class="contam-badge particulate">Particulate</div>
-        <div class="contam-hdr-text">
-          <div class="contam-title">Hardware Itself</div>
-          <div class="contam-risk contam-risk-lower">Risk: Lower</div>
-        </div>
-      </div>
-      <div class="contam-body">
-        <div class="contam-cell"><div class="contam-cell-label">Mechanism</div><p>Particle generation from mechanisms in motion (bearings, gears, deployment hinges), connector mate/de-mate operations that abrade contact surfaces, and fastener installation that generates metallic debris.</p></div>
-        <div class="contam-cell"><div class="contam-cell-label">Primary Control</div><p>Protective covers during mechanism operation; directed airflow away from sensitive surfaces during connector work; particle fallout shields during overhead structural assembly; vacuum collection at fastener installation points.</p></div>
-      </div>
-    </div>
-
-  </div>
-
-  <p style="font-size:0.85rem;color:var(--steel);margin-top:0.5rem;">
-    <span style="display:inline-block;width:12px;height:12px;background:#2e5a7a;border-radius:2px;vertical-align:middle;margin-right:4px;"></span>&thinsp;Particulate &emsp;
-    <span style="display:inline-block;width:12px;height:12px;background:#7a2e2e;border-radius:2px;vertical-align:middle;margin-right:4px;"></span>&thinsp;Molecular &emsp;
-    <span style="display:inline-block;width:12px;height:12px;background:linear-gradient(135deg,#2e5a7a 50%,#7a2e2e 50%);border-radius:2px;vertical-align:middle;margin-right:4px;"></span>&thinsp;Both
-  </p>
-  
-   <h3 class="ssh">Pre-Cleaning: The First Line of Defense</h3>
-  <p>Every item that enters the cleanroom carries a contamination history — from manufacturing, shipping, storage, and handling in uncontrolled environments. A precision torque wrench that spent six months in a tool crib, a flight bracket fresh from the machine shop, a shipping container that traveled cross-country in an uncontrolled truck — each arrives with particulate and molecular contamination that no amount of gowning discipline or airflow control can address once the item is inside the cleanroom. Removing that history is the job of the pre-cleaning facility: a dedicated staging area outside the cleanroom, typically maintained one cleanliness class below the room it serves, where items are cleaned using approved solvents, verified procedures, and documented acceptance criteria. This is not a wipe-down at the door. It is a formal, controlled operation, and nothing crosses the cleanroom threshold until it has been completed and verified.</p>
-
-  <h3 class="ssh">Material Screening and Bake-Out</h3>
-  <p>Before any material — adhesive, coating, lubricant, foam, cable insulation — is approved for use in or near spacecraft hardware, it must be screened for outgassing. The standard test is ASTM E595, which measures total mass loss (TML) and collected volatile condensable material (CVCM) when a sample is heated in vacuum. The typical acceptance criterion for spacecraft materials is TML &lt; 1.0% and CVCM &lt; 0.1%. Materials that fail these criteria may be usable after a controlled <strong>bake-out</strong> — a period of heating in vacuum to drive off volatiles before installation — but bake-out effectiveness must be verified by post-bake outgassing measurement.</p>
-
-  <p>The approved materials list (AML) is a living program document that records every material evaluated and its disposition. Using any material not on the AML without explicit approval is a nonconformance on most programs. The temptation to "just use what's available" — a tube of adhesive from the shelf, a piece of foam for padding — is one of the most common sources of contamination on spacecraft programs and one of the most difficult to trace after the fact.</p>
-
-  <h3 class="ssh">Contamination Monitoring</h3>
- <p>Contamination control without monitoring is contamination hope. The program must verify that its controls are working, detect contamination events when they occur, and establish the evidentiary record that the spacecraft's contamination state is known and acceptable at the time of launch.</p>
-<p>Surface contamination monitoring uses three distinct approaches, each suited to different situations. Passive deposition monitoring — witness mirrors placed near hardware — captures what accumulates on an optical-quality surface over time without active sampling. Active surface sampling techniques physically lift particles from a defined location on the hardware itself: tape lifts use a controlled low-outgassing adhesive to collect particles from a surface for microscopic analysis, while Gel-Pak sampling uses a controlled-tackiness gel carrier that lifts particles without adhesive residue transfer, making it suitable for chemically sensitive or optically critical surfaces. Understanding which technique is appropriate for a given surface and situation is part of the contamination engineer's toolkit.</p>
-
-    <style>
-    .monitor-cards{margin:2em 0;display:grid;grid-template-columns:1fr;gap:0;}
-    .monitor-card{border:1px solid var(--rule);border-bottom:none;overflow:hidden;}
-    .monitor-card:last-child{border-bottom:1px solid var(--rule);}
-    .monitor-card-header{display:flex;align-items:stretch;}
-    .monitor-badge{width:120px;display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:12px 10px;font-family:'Source Serif 4',serif;font-size:0.82rem;font-weight:600;text-align:center;color:rgba(255,255,255,0.95);line-height:1.35;}
-    .monitor-badge.airborne{background:#2e5a7a;}
-    .monitor-badge.surface{background:#b87420;}
-    .monitor-badge.analytical{background:#2e7d52;}
-    .monitor-hdr-text{flex:1;padding:12px 18px;background:var(--ink);}
-    .monitor-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--paper);margin-bottom:3px;}
-    .monitor-type{font-size:0.85rem;color:#e8c36a;font-weight:600;line-height:1.5;}
-    .monitor-body{display:grid;grid-template-columns:1fr 1fr;gap:0;}
-    .monitor-cell{padding:14px 18px;border-right:1px solid var(--rule);background:var(--white);}
-    .monitor-cell:last-child{border-right:none;}
-    .monitor-card:nth-child(even) .monitor-cell{background:var(--light);}
-    .monitor-cell-label{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
-    .monitor-cell p{font-size:0.84rem;color:#333;line-height:1.6;font-weight:300;margin:0;}
-    @media(max-width:680px){.monitor-body{grid-template-columns:1fr;}.monitor-cell{border-right:none;border-bottom:1px solid var(--rule);}.monitor-cell:last-child{border-bottom:none;}.monitor-badge{width:100px;}}
-  </style>
-
-  <div class="monitor-cards">
-
-    <div class="monitor-card">
-      <div class="monitor-card-header">
-        <div class="monitor-badge airborne">Airborne</div>
-        <div class="monitor-hdr-text">
-          <div class="monitor-title">Particle Counters</div>
-          <div class="monitor-type">Particulate — Airborne Concentration</div>
-        </div>
-      </div>
-      <div class="monitor-body">
-        <div class="monitor-cell"><div class="monitor-cell-label">What It Measures</div><p>Airborne particle concentration by size bin, used to verify and maintain cleanroom classification per ISO 14644-1. Provides the primary evidence that the cleanroom environment is performing to specification.</p></div>
-        <div class="monitor-cell"><div class="monitor-cell-label">Frequency / Application</div><p>Continuous in operational cleanrooms with real-time display and alarm thresholds; periodic certification per ISO 14644-2 at defined intervals and after any facility modification or contamination event.</p></div>
-      </div>
-    </div>
-
-    <div class="monitor-card">
-      <div class="monitor-card-header">
-        <div class="monitor-badge surface">Surface</div>
-        <div class="monitor-hdr-text">
-          <div class="monitor-title">Witness Mirrors</div>
-          <div class="monitor-type">Particulate + Molecular — Surface Deposition</div>
-        </div>
-      </div>
-      <div class="monitor-body">
-        <div class="monitor-cell"><div class="monitor-cell-label">What It Measures</div><p>Particulate and molecular deposition on polished optical-quality surfaces placed adjacent to flight hardware. Witness mirrors capture what actually reaches hardware surfaces — a more direct measure of contamination risk than airborne particle count alone.</p></div>
-        <div class="monitor-cell"><div class="monitor-cell-label">Frequency / Application</div><p>Placed during all activities near optical hardware; inspected under controlled illumination at defined intervals and after any anomaly or suspected contamination event. Results logged against the contamination budget.</p></div>
-      </div>
-    </div>
-
-    <div class="monitor-card">
-      <div class="monitor-card-header">
-        <div class="monitor-badge analytical">Analytical</div>
-        <div class="monitor-hdr-text">
-          <div class="monitor-title">Quartz Crystal Microbalance (QCM)</div>
-          <div class="monitor-type">Molecular — Real-Time Deposition Rate</div>
-        </div>
-      </div>
-      <div class="monitor-body">
-        <div class="monitor-cell"><div class="monitor-cell-label">What It Measures</div><p>Molecular deposition rates by detecting mass accumulation on a piezoelectric crystal surface through changes in resonant frequency. Extremely sensitive — capable of detecting nanogram-level deposition — and provides real-time, continuous readout of molecular contamination flux.</p></div>
-        <div class="monitor-cell"><div class="monitor-cell-label">Frequency / Application</div><p>Used during thermal-vacuum testing and during high-risk contamination operations such as adhesive curing or propulsion system work. Continuous readout allows immediate detection of contamination events as they occur.</p></div>
-      </div>
-    </div>
-
-    <div class="monitor-card">
-      <div class="monitor-card-header">
-        <div class="monitor-badge surface">Surface</div>
-        <div class="monitor-hdr-text">
-          <div class="monitor-title">Surface Particle Counts</div>
-          <div class="monitor-type">Particulate — Hardware Surface Cleanliness</div>
-        </div>
-      </div>
-      <div class="monitor-body">
-        <div class="monitor-cell"><div class="monitor-cell-label">What It Measures</div><p>Particles on specific hardware surfaces using optical microscopy or laser scatter techniques, measured in particles per unit area by size bin. Provides direct verification of surface cleanliness on the flight hardware itself, not just the surrounding environment.</p></div>
-        <div class="monitor-cell"><div class="monitor-cell-label">Frequency / Application</div><p>Performed before and after major operations on optical surfaces; before optical closeout; and at phase gates where the contamination budget is formally assessed. Results compared against surface cleanliness level requirements per IEST-STD-CC1246.</p></div>
-      </div>
-    </div>
-
-<div class="monitor-card">
-      <div class="monitor-card-header">
-        <div class="monitor-badge surface">Surface</div>
-        <div class="monitor-hdr-text">
-          <div class="monitor-title">Tape Lifts</div>
-          <div class="monitor-type">Particulate — Localized Surface Sampling</div>
-        </div>
-      </div>
-      <div class="monitor-body">
-        <div class="monitor-cell"><div class="monitor-cell-label">What It Measures</div><p>Particles lifted from a defined surface area using controlled, low-outgassing adhesive tape. The tape backing is examined under optical microscopy for particle count and sizing by size bin, and can be submitted for SEM/EDX analysis to identify particle composition and potential source. Provides highly localized surface data at a specific point of interest rather than an area-averaged measurement.</p></div>
-        <div class="monitor-cell"><div class="monitor-cell-label">Frequency / Application</div><p>Used for spot-checking specific surfaces after a suspected contamination event, for investigating particle sources at defined locations, and for pre-closeout verification of internal surfaces where witness mirrors cannot be placed. Results compared against surface cleanliness requirements per IEST-STD-CC1246. The adhesive chemistry must be verified compatible with the target surface before use.</p></div>
-      </div>
-    </div>
-
-    <div class="monitor-card">
-      <div class="monitor-card-header">
-        <div class="monitor-badge surface">Surface</div>
-        <div class="monitor-hdr-text">
-          <div class="monitor-title">Gel-Pak Sampling</div>
-          <div class="monitor-type">Particulate — Low-Residue Surface Sampling</div>
-        </div>
-      </div>
-      <div class="monitor-body">
-        <div class="monitor-cell"><div class="monitor-cell-label">What It Measures</div><p>Particles lifted from hardware surfaces using a carrier with a controlled-tackiness gel surface. The gel lifts particles without adhesive residue transfer, making it suitable for optically sensitive and chemically sensitive surfaces where tape lift adhesive chemistry is a concern. The sampled gel surface is examined under optical microscopy for particle count, sizing, and morphology, and can be submitted for further analytical characterization including SEM/EDX.</p></div>
-        <div class="monitor-cell"><div class="monitor-cell-label">Frequency / Application</div><p>Preferred over tape lifts on optical surfaces, detector housings, and precision mechanical interfaces where surface chemistry must be preserved. Used when the sampled surface will remain in service after sampling, or when subsequent analytical work requires a residue-free sample substrate. Gel-Pak tackiness grade must be matched to the surface sensitivity — higher-tack grades risk mechanical damage to delicate coatings.</p></div>
-      </div>
-    </div>
-
-    <div class="monitor-card">
-      <div class="monitor-card-header">
-        <div class="monitor-badge analytical">Analytical</div>
-        <div class="monitor-hdr-text">
-          <div class="monitor-title">Witness Coupons</div>
-          <div class="monitor-type">Particulate + Molecular — Post-Facto Analysis</div>
-        </div>
-      </div>
-      <div class="monitor-body">
-        <div class="monitor-cell"><div class="monitor-cell-label">What It Measures</div><p>Chemically analyzed coupons that capture both particulate and molecular contamination for laboratory analysis after exposure. Unlike witness mirrors (visual inspection), coupons are destructively analyzed to identify specific contaminant species and quantities.</p></div>
-        <div class="monitor-cell"><div class="monitor-cell-label">Frequency / Application</div><p>Co-located with sensitive hardware during long-duration storage, shipping, and launch site operations. Retrieved and analyzed at defined intervals or when a contamination event is suspected. Results provide forensic-quality data for anomaly investigation.</p></div>
-      </div>
-    </div>
-
-    <div class="monitor-card">
-      <div class="monitor-card-header">
-        <div class="monitor-badge analytical">Analytical</div>
-        <div class="monitor-hdr-text">
-          <div class="monitor-title">TQCM (Temperature-Controlled QCM)</div>
-          <div class="monitor-type">Molecular — Thermal Signature Identification</div>
-        </div>
-      </div>
-      <div class="monitor-body">
-        <div class="monitor-cell"><div class="monitor-cell-label">What It Measures</div><p>Molecular contamination flux as a function of temperature, by cycling the QCM crystal through a controlled temperature range. Different contaminant species condense and evaporate at characteristic temperatures, allowing identification of specific outgassing sources by their thermal signature.</p></div>
-        <div class="monitor-cell"><div class="monitor-cell-label">Frequency / Application</div><p>During thermal-vacuum testing where the chamber environment amplifies outgassing; during bake-out operations to verify that volatile species have been driven off; and during contamination investigations to identify the source of an unexpected deposition event.</p></div>
-      </div>
-    </div>
-
-  </div>
-
-  <p style="font-size:0.85rem;color:var(--steel);margin-top:0.5rem;">
-    <span style="display:inline-block;width:12px;height:12px;background:#2e5a7a;border-radius:2px;vertical-align:middle;margin-right:4px;"></span>&thinsp;Airborne environment monitoring &emsp;
-    <span style="display:inline-block;width:12px;height:12px;background:#b87420;border-radius:2px;vertical-align:middle;margin-right:4px;"></span>&thinsp;Hardware surface measurement &emsp;
-    <span style="display:inline-block;width:12px;height:12px;background:#2e7d52;border-radius:2px;vertical-align:middle;margin-right:4px;"></span>&thinsp;Analytical / laboratory instrument
-  </p>
-
-  <div class="callout gold">
-    <div class="callout-label">✦ The Contamination Budget</div>
-    <p>On programs with stringent cleanliness requirements, contamination is not just controlled — it is budgeted. The program allocates a total allowable contamination level for each critical surface over the entire mission lifecycle, from fabrication through end of life on orbit. Critical surfaces include not only optical elements but thermal radiators, solar array cover glass, sensor windows, cryogenic cold traps, and any bonding surface where molecular residue could compromise adhesion. Each phase of the program — component manufacturing, instrument integration, spacecraft integration, shipping, launch site operations, launch, and on-orbit operations — is allocated a fraction of that budget. Contamination monitoring data is tracked against the budget at every phase gate. A surface that has consumed 80% of its contamination budget before leaving the integration facility has almost no margin left for launch site operations and the on-orbit environment. The contamination budget makes the invisible visible — it converts an abstract cleanliness requirement into a quantitative constraint that the program can manage, track, and defend at review.</p>
-  </div>
-
-  <p>When the full contamination control system is executed rigorously — pre-cleaning, material screening, environmental monitoring, contamination budgeting, and the airflow and gowning disciplines that tie them together — the results speak for themselves. NASA's Tropical Rainfall Measuring Mission (TRMM), operating at only 350 km altitude, faced an atomic oxygen flux ten times higher than that experienced by LDEF — the Long Duration Exposure Facility, which spent nearly six years in orbit (1984–1990) carrying 57 materials-exposure experiments and remains the most comprehensive source of data on space-environment degradation of spacecraft materials. LDEF data directly influenced TRMM's material selection, contamination control approach, and design decisions from the outset. TRMM operated for 17 years — far beyond its 3-year design life — with its instruments remaining in excellent condition throughout. It is a case where contamination engineering done right before launch prevented the failures documented on other programs.</p>
-
+  <!-- SECTION 7 -->
   <h2 class="sh" id="s7">7. Electrostatic Discharge (ESD): The Invisible Killer</h2>
 
-  <p>Of all the threats to flight hardware in the cleanroom, ESD is perhaps the most insidious precisely because it is imperceptible. The physics is straightforward: when two dissimilar materials contact and separate, charge transfers between them — a process called tribocharging. A person walking across a tile floor can accumulate 10,000 volts or more at low humidity. The human body cannot sense a discharge below roughly 3,500 volts. Many flight-grade semiconductor devices have ESD sensitivity thresholds below 250 volts — some below 100 volts. A technician can destroy a component and never feel it happen.</p>
+  <p>A technician walking across a tile floor can accumulate 10,000 volts or more at low humidity. The human body cannot sense a discharge below roughly 3,500 volts. Many flight-grade semiconductor devices have ESD sensitivity thresholds below 250 volts — some below 100 volts. A technician can destroy a component and never feel it happen.</p>
 
-    <div class="callout gold">
-    <div class="callout-label">✦ ESD Sensitivity Classes</div>
-    <p>Electronic devices are classified by their ESD sensitivity under the JEDEC/ESDA standards. Class 0 devices may be damaged by discharges below 250V; Class 3A devices tolerate up to 4,000V. Many modern semiconductor devices — particularly those used in detector arrays and signal processing chains — are Class 0 or Class 1 (250–500V tolerance). The human body model (HBM) discharge, representing the charge on a human body, can reach 1,000–4,000V in a dry environment, meaning that even a gloved technician with a failed wrist strap in a dry cleanroom may carry enough charge to damage the most sensitive devices.</p>
-    <p>ESD sensitivity class information must be documented on the program's equipment list and communicated to all personnel handling each unit. "This unit is ESD-sensitive" is not sufficient — the class and the required handling precautions must be specified.</p>
-  </div>
+  <p>The more dangerous ESD failure mode is not outright destruction but latent damage: discharges below the outright damage threshold that degrade a device's gate oxide or junction structure incrementally. Each event weakens the device without causing a detectable functional change. The weakened device may pass every ground test and fail months later on orbit when thermal cycling and radiation exposure push the degraded structure past its limit. That failure will not carry an ESD label. It will be attributed to a parts defect or an unexplained anomaly — and the program will move on with its ESD practices unchanged, because by the time latent ESD damage manifests, the evidence has long since disappeared.</p>
 
-  <p>The damage takes two forms. A sufficiently energetic discharge can destroy a device outright — an open junction, a shorted gate, a dead channel discovered at the next functional test. But the more dangerous category is ESD latent failure: discharges below the outright damage threshold that degrade a device's gate oxide or junction structure incrementally. Each event weakens the device without causing a detectable functional change.</p>
+  <p>ESD control rests on three principles: prevent charge generation by substituting static-dissipative materials for standard plastics throughout the work area; dissipate accumulated charge through a grounding chain that keeps all objects — personnel, tools, work surfaces, and the hardware itself — at the same electrical potential; and protect hardware when not actively being worked using approved ESD-safe packaging with shorting plugs on all exposed connectors. The wrist strap is the primary safeguard at the workstation and must be tested at the start of every work session — a test that takes ten seconds and is indefensible to skip on a program with ESD-sensitive flight hardware.</p>
 
-  <p>The weakened device may fail weeks or months later during any powered test or environmental testing — thermal cycling, vibration, or thermal-vacuum — when the mechanical and thermal stresses of the test push the degraded structure past its limit. When that happens, the failure is rarely traced back to ESD. The elapsed time between the discharge event and the test failure obscures the connection. The anomaly investigation looks at the test conditions, the test setup, the handling during the test campaign — not at a momentary discharge that occurred on a Tuesday three months earlier that no one felt and no one recorded. The failure is attributed to a manufacturing defect, a design margin issue, or an unexplained infant mortality, and the root cause is never found.</p>
-
-  <p>If the device survives ground testing, the same latent damage waits for the space environment — thermal cycling, radiation exposure, and sustained operation over months or years — to finish what the original discharge started, producing a failure in hardware that is beyond reach. Latent ESD damage is cumulative, invisible to functional testing, and irreversible whether it manifests on the ground or on orbit. It is among the most difficult failure modes to detect in a test program and among the most consequential to a mission.</p>
-
-  <p>This is precisely why ESD control must be treated with the same rigor as contamination control or FOD accountability — not because ESD failures are frequent, but because they are unattributable. A program that experiences a latent ESD failure will almost certainly never know it. The failure will be classified as a parts defect, a workmanship issue, or an unexplained anomaly, and the program will move on with its ESD practices unchanged. If the same handling lapses persist, the same latent damage will occur on the next program, and the next — each time attributed to something other than ESD, each time reinforcing the false conclusion that ESD controls are adequate when they are not. This is the normalization of deviance applied to an invisible threat: programs that do not take ESD control seriously cannot learn from their own failures, because those failures never carry an ESD label. The only defense is to maintain rigorous ESD discipline as a matter of principle — not because the program has evidence of ESD damage, but because by the time such evidence exists, it is already too late.</p>
-  
-
-  <h3 class="ssh">ESD Control — The Three Principles</h3>
-  <p>ESD control in the cleanroom rests on three principles: prevent charge generation, dissipate accumulated charge before it can reach flight hardware, and protect hardware that is not actively being worked.</p>
-
-  <p><strong>Charge prevention</strong> begins with the materials allowed in the cleanroom. Standard plastics, vinyl, and untreated synthetics are prolific charge generators. ESD-controlled cleanrooms substitute static-dissipative flooring, ESD-safe garments, and approved packaging materials that do not tribocharge. Ordinary items that seem harmless — a plastic clipboard, a roll of standard tape, a nylon cable tie — can be the source of a discharge event if brought into the work area.</p>
-
-  <p><strong>Charge dissipation</strong> is achieved through a grounding chain that ensures all objects in the work environment — personnel, tools, work surfaces, storage containers, and the hardware itself — are at the same electrical potential. When everything is at the same potential, there is no charge difference and no discharge can occur.</p>
-
-  <p>The ESD-dissipative work surface is connected to earth ground through a resistor that limits current flow (preventing shock hazard while allowing charge equalization). The technician's wrist strap connects them to the same ground point through a similar one-megohm current-limiting resistor, bleeding accumulated charge to ground continuously. All tools on the work surface are dissipative or conductive. ESD-sensitive hardware is connected to ground through the work surface or through its own ground reference. The flight hardware structure, once connected to facility ground through the integration stand, serves as the reference ground for all ESD bonding in the work area.</p>
-
-  <ul class="body-list">
-    <li><strong>Wrist straps</strong> must be tested at the start of every work session. A continuous wrist strap monitor is preferred for sustained operations. Failed wrist straps must be replaced immediately and the previous work session's activities evaluated for potential hardware impact.</li>
-    <li><strong>Heel straps and ESD footwear</strong> provide a secondary grounding path when personnel must move around the cleanroom, but wrist straps remain the primary safeguard at the workstation. The wrist strap alone is insufficient for ambulatory work; heel straps alone are insufficient at the workstation. Both are required.</li>
-    <li><strong>Ionizers</strong> — devices that flood the air with balanced positive and negative ions — neutralize charge on insulating surfaces that cannot be directly grounded, such as flight thermal blankets, composite panels, or assembled optical components where direct ground connections are impractical. Ionizer balance and output are themselves calibrated on a regular schedule; an unbalanced ionizer can charge surfaces rather than neutralize them.</li>
-  </ul>
-
-  <p><strong>Hardware protection</strong> when not actively being worked takes the form of approved ESD-safe packaging — static-shielding bags, dissipative foam, and conductive tote boxes — with shorting plugs installed on all exposed connectors. A connector without a shorting plug is an invitation: every pin is an unprotected path to a static-sensitive device. Flight procedures specify that shorting plugs are the last item removed before connector mate and the first item installed after de-mate.</p>
-
-  <ul class="body-list">
-    <li><strong>Prohibited materials</strong> include any standard plastic bags, Styrofoam, common packaging tape, and any other highly insulating material that could tribocharge and then discharge onto sensitive hardware. These are among the most frequently violated rules by personnel new to cleanroom work.</li>
-  </ul>
-
-  <h3 class="ssh">Monitoring and Verification</h3>
-  <p>ESD controls are only as reliable as the verification program behind them. Monitoring is not optional — it is a formal, documented discipline.</p>
-
-  <ul class="body-list">
-    <li><strong>Wrist strap testers</strong> at cleanroom entry points verify continuity and resistance before a technician enters the work area. The test takes ten seconds. Skipping it is indefensible on a program with ESD-sensitive flight hardware.</li>
-    <li><strong>Continuous wrist strap monitors</strong> at workstations provide real-time verification throughout the work session — not just at entry. These monitors alarm immediately if the strap loses continuity or the ground path is interrupted, eliminating the window of vulnerability between the entry-point test and the next scheduled check. For sustained operations on high-value flight hardware, continuous monitoring is the standard, not the upgrade.</li>
-    <li><strong>Periodic surface resistivity audits</strong> measure the resistance of mats, floors, garments, and work surfaces to confirm they remain within the dissipative range specified by the ESD control plan. Dissipative materials degrade over time and with cleaning; what passed certification six months ago may not pass today.</li>
-    <li><strong>Grounding system verification</strong> confirms that the facility ground points, ground bus connections, and equipment bonding paths used by wrist straps, work surfaces, and ESD flooring maintain continuity and resistance within specification. A wrist strap connected to a degraded ground point provides a false sense of security.</li>
-    <li><strong>Ionizer performance</strong> is verified on a defined calibration schedule — offset voltage, ion balance, and decay time are all measured and recorded. An unbalanced ionizer can charge surfaces rather than neutralize them, converting a protective device into a contamination source.</li>
-    <li><strong>Humidity monitoring</strong> is tracked as part of the ESD verification record, not just the environmental monitoring log. When humidity drops below 35% RH, ESD program personnel are notified and may impose additional controls — reduced handling tempo, more frequent wrist strap checks, or suspension of operations on the most sensitive hardware.</li>
-    <li><strong>Compliance verification audits</strong> — formal, scheduled assessments of the entire ESD Protected Area — verify that all elements of the ESD control program are being followed as documented: correct packaging, proper signage, personnel wearing straps, no prohibited materials present, training records current. Per ANSI/ESD S20.20, these audits are a program requirement, not a best practice.</li>
-  </ul>
-
-
-
-  <h3 class="ssh">The Procedural Framework</h3>
-  <p>The ESD control program is codified in standards such as ANSI/ESD S20.20, which defines the requirements for an ESD control program including the designation of ESD Protected Areas, and NASA-HDBK-8739.21, which applies those requirements to spaceflight hardware. Compliance is not discretionary. ESD violations — working without a wrist strap, using unapproved materials, leaving connectors unprotected — are treated as nonconformances, documented in the discrepancy reporting system, and investigated for potential hardware impact. In programs with strong quality cultures, technicians self-report ESD lapses before they are caught by inspection, because the culture has made clear that an unreported discharge is more dangerous than a documented one.</p>
-
+  <!-- SECTION 8 -->
   <h2 class="sh" id="s8">8. Foreign Object Debris (FOD): The Preventable Catastrophe</h2>
 
-  <p>Every spacecraft integration program generates FOD — the question is whether it is controlled and accounted for, or whether it is loose inside the vehicle. FOD control is not a complicated discipline intellectually: it consists of knowing what is in the spacecraft at all times, ensuring that everything that goes in also comes out (unless it is supposed to be there), and verifying this through documented processes. What makes FOD control challenging is the sheer volume of operations — thousands of fasteners, hundreds of connector mates and demates, dozens of access operations, over a multi-year integration campaign.</p>
-
-  <h3 class="ssh">The FOD Control Program</h3>
-  <p>A formal FOD control program typically includes the following elements:</p>
-
-  <ul class="body-list">
-    <li><strong>Tool and hardware accountability:</strong> All tools and small hardware items (fasteners, connector backshells, cable ties, etc) are inventoried before and after each operation and at the end of the work shift. Discrepancies are resolved/dispositioned before any area of the spacecraft is closed up. On many programs, critical tools are tethered to prevent accidental drops into the vehicle.</li>
-    <li><strong>Cavity inspections:</strong> Before any structural closeout, internal cavities are inspected using borescopes, mirrors, and illumination to verify the absence of FOD. Closeouts require a sign-off from an independent inspector, not just the technician performing the work.</li>
-    <li><strong>No-foreign-material (NFM) procedures:</strong> Specific operations — particularly those near open propulsion system ports, optical apertures, or mechanism housings — require NFM procedures, which enumerate every tool and fastener that will be used and require post-operation verification that all items are accounted for.</li>
-    <li><strong>End-of-shift FOD sweeps:</strong> At the end of every work shift, a documented sweep of the integration area may be performed. All items are accounted for, work surfaces are cleared, and open hardware is covered. The sweep is signed by the shift lead or quality assurance.</li>
-    <li><strong>FOD amnesty:</strong> Most programs maintain a FOD amnesty policy: any personnel who find or inadvertently introduce FOD can report it without disciplinary consequence. The goal is to know about the FOD so it can be removed, not to assign blame. Programs without amnesty policies create an incentive to conceal FOD — which is far more dangerous than the FOD itself.</li>
-  </ul>
+  <p>Every spacecraft integration program generates FOD — the question is whether it is controlled and accounted for, or whether it is loose inside the vehicle. A formal FOD control program includes tool and hardware accountability before and after every operation, cavity inspections before structural closeouts, no-foreign-material procedures for operations near open propulsion ports and optical apertures, and end-of-shift sweeps. Most programs maintain a FOD amnesty policy: personnel who find or inadvertently introduce FOD can report it without disciplinary consequence. The goal is to know about the FOD so it can be removed. Programs without amnesty create an incentive to conceal FOD — which is far more dangerous than the FOD itself.</p>
 
   <div class="callout rust">
-    <div class="callout-label">⚠ The Cost of a Missing Fastener</div>
-    
-<p>
-On a program I worked several years ago, a robotic arm system with seven degrees of freedom was being integrated onto the spacecraft. During attachment of harness-securing clamps, a washer slipped from the technician's fingers. It was heard bouncing off hardware — but no one saw where it went.</p>
-<p>What happened next is a textbook example of FOD culture working as intended. Because the program maintained a no-blame policy, the technician announced the dropped washer immediately. No one moved. Each person at the work area carefully searched their immediate surroundings without shifting position — avoiding any movement that might inadvertently kick the washer into a worse location. Other cleanroom personnel approached slowly and systematically searched the area around the workers before anyone was allowed to step away.
-</p>
-<p>The stakes were clear. A seven-degree-of-freedom robotic arm contains bearings, gears, cable wraps, and deployment mechanisms — any one of which could be permanently jammed or damaged by a loose washer migrating under launch vibration. Under normal FOD recovery protocol, all work would halt until the washer was found, requiring detailed inspection with high-intensity lighting, magnification, borescopes, and potentially partial disassembly of the arm to access internal cavities.</p>
-<p>
-In this case, the engineering team recognized that the next scheduled operation was a slow rotation of the arm on its support GSE — a movement of the entire arm assembly on the fixture without actuating any of the arm's internal mechanisms. The proposal was made to perform this rotation to see if gravity would dislodge the washer. The decision was not taken lightly: rotating the arm could also cause the washer to migrate into a less accessible and more damaging location. A formal risk assessment was conducted. The team performed a thorough inspection of the suspected area, evaluated the hardware geometry and every potential opening where the washer could lodge, and concluded that the risk of intrusive inspection in such a confined and mechanism-dense area — with the potential for inspection tools and activities to cause collateral damage — was greater than the risk of a controlled rotation.</p>
-<p>
-The rotation worked. The washer fell free, was recovered, and the arm did not require intrusive inspection or disassembly.</p>
-<p>
-Three lessons from this incident deserve emphasis. 
-  <ul class="body-list">
-<li>First, the no-blame policy paid for itself in the first five seconds. The technician reported the dropped washer instantly, before it could be forgotten, rationalized, or concealed. Every minute of delay in a FOD event expands the search area and increases the likelihood that subsequent work activity will push the debris into a location where it cannot be found. </li><li> Second, the immediate freeze — nobody moving, systematic search outward from the work area — prevented a bad situation from becoming worse. FOD recovery is one of the few situations in spacecraft I&T where doing nothing is the correct first response. </li><li>Third, the decision to rotate the arm rather than proceed directly to intrusive inspection was an engineering risk trade, not a shortcut. It was made formally, with documented rationale, after a physical assessment of the geometry. The team accepted a small, bounded risk (the washer migrates slightly during a controlled, low-energy rotation) to avoid a larger risk (intrusive inspection and potential disassembly of a flight mechanism in a confined space). That distinction — between a risk trade made with evidence and a shortcut taken under schedule pressure — is the difference between good engineering judgment and the normalization of deviance.</li>
-</ul>
-</p>
-
-
+    <div class="callout-label">⚠ A Dropped Washer — FOD Culture in Practice</div>
+    <p>On a program I worked, a washer slipped from a technician's fingers during attachment of harness-securing clamps on a seven-degree-of-freedom robotic arm. It was heard bouncing off hardware. Because the program maintained a no-blame policy, the technician announced the dropped washer immediately. No one moved. Each person carefully searched their immediate surroundings without shifting position, avoiding any movement that might push the washer into a worse location.</p>
+    <p>The engineering team recognized that the next scheduled operation was a slow rotation of the arm on its support fixture. Rather than proceed to intrusive inspection of a mechanism-dense confined space — with all the collateral damage risk that entails — they conducted a formal risk assessment, evaluated every potential location the washer could lodge, and concluded that a controlled rotation was the lower-risk option. The rotation worked. The washer fell free and was recovered.</p>
+    <p>Three lessons: the no-blame policy paid for itself in the first five seconds — immediate reporting prevented the situation from worsening. The immediate freeze — nobody moving, systematic search outward — is the correct first response to any dropped item near open hardware. And the decision to rotate rather than inspect was an engineering risk trade made with evidence and documented rationale, not a shortcut taken under schedule pressure. That distinction is the difference between good engineering judgment and the normalization of deviance.</p>
   </div>
 
+  <!-- SECTION 9 -->
   <h2 class="sh" id="s9">9. Documentation and Cleanroom Records</h2>
 
-  <p>Everything that happens in the cleanroom to flight hardware must be documented. This principle — which sounds bureaucratic but is, in practice, an engineering imperative — underpins the entire cleanroom operation. The documentation system serves three functions: it provides a contemporaneous record that procedures were followed correctly, it enables anomaly investigation when something unexpected occurs, and it creates the traceability chain that a launch readiness review will examine to determine whether the spacecraft is ready to fly.</p>
+  <p>Everything that happens in the cleanroom to flight hardware must be documented. The documentation system serves three functions: it provides a contemporaneous record that procedures were followed correctly, it enables anomaly investigation when something unexpected occurs, and it creates the traceability chain that a launch readiness review will examine.</p>
 
-  <p>The core documents in a cleanroom operation are:</p>
+  <p>Travelers document when protective covers were removed, how long hardware was exposed, and what activities occurred during that exposure — timestamps that are correlated with environmental monitoring data to account for contamination accumulated during each window. Environmental monitoring logs provide the only contemporaneous answer to the question "what were the conditions when this hardware was exposed?" Access logs bound the contamination source population and enforce material control — recording not just who entered but what they brought with them. Discrepancy reports capture gowning violations, wrist strap failures, particle count exceedances, and every other event that creates a window of uncertainty about the environment in which flight hardware was handled. Photographic records under controlled oblique illumination reveal particulate contamination on optical surfaces invisible under normal lighting, and document the FOD-clear state of cavities before structural closeout.</p>
 
-  <ul class="body-list">
-    <li><strong>Travelers / Route Cards:</strong> In the cleanroom context, the traveler serves a specific contamination control function beyond its general role in configuration management (see Article 02"Configuration Management and the As-Built Record"). Each procedural step in the traveler that involves exposed hardware — removal of a connector cap, opening of an optical aperture cover, breaking a contamination seal — creates a window of vulnerability. The traveler documents when that window opened, how long it remained open, what activities occurred in the cleanroom during that period, and when protective covers were reinstalled. For optical hardware operating under a contamination budget, traveler timestamps are correlated with environmental monitoring data to account for contamination accumulated during each exposure. A traveler that records only what was done but not what the environment was doing at the time is incomplete for contamination-sensitive operations.</li>
-    <li><strong>Environmental Monitoring Logs:</strong> Temperature, humidity, particle counts, and molecular contamination monitoring data are logged continuously and archived — not as a compliance exercise, but as the evidentiary chain that the cleanroom environment met its requirements for every hour that flight hardware was present. When an anomaly investigation asks "what were the conditions when this hardware was exposed?"" the environmental monitoring log is the only contemporaneous answer. Any out-of-tolerance reading — a humidity decrease that increased ESD risk, a particle count exceedance during an open-cavity operation, a temperature excursion that may have affected an adhesive cure — must be correlated with the specific hardware present and the specific operations underway at the time. The evaluation is not "did the room recover?"" but "what was the exposure to flight hardware during the excursion, and does that exposure consume margin in the contamination budget or the ESD risk assessment?"</li>
-    <li><strong>Access Logs:</strong> Every person who enters the cleanroom, and every item that enters and exits, is logged with timestamps. Access logs serve two functions unique to the cleanroom environment. First, they bound the contamination source population: when a witness mirror shows unexpected deposition, or a particle count spikes without an obvious cause, the access log identifies every person and every item that was in the room during the period in question. Second, they enforce material control. Every tool, fixture, and supply item that crosses the cleanroom boundary is a potential contamination source and a potential FOD item. An access log that records personnel entry but not material entry is only doing half its job. The log must answer two questions at any point in time: who was in the room, and what did they bring with them?"</li>
-    <li><strong>Discrepancy Reports (DRs):</strong> In the cleanroom, the most critical DRs are often the ones that seem least significant. A particle count that momentarily exceeded the alarm threshold while no optical surfaces were exposed may require only a brief evaluation. The same exceedance during an open-aperture calibration operation demands a formal contamination assessment, potential re-cleaning, and verification against the contamination budget before work proceeds. Cleanroom DRs also capture events with no direct analog elsewhere in I&T: a gowning violation observed but not immediately corrected, a wrist strap that failed its morning test raising questions about the previous day's work, a door seal that was found degraded during routine inspection. Each of these creates a window of uncertainty about the environment in which flight hardware was handled — and that uncertainty must be bounded and dispositioned, not simply noted and filed. The cumulative pattern of cleanroom DRs is itself a diagnostic tool: a rising trend in particle exceedances may indicate filter degradation; a cluster of ESD wrist strap failures may point to a bad lot of straps or a humidity control problem; recurring gowning violations by specific work shifts may reveal a training gap. Programs that analyze their cleanroom DR trends catch systemic problems before they reach hardware."</li>
-    <li><strong>Photographic Records:</strong> In the cleanroom, photographs serve a contamination control purpose beyond the general 'before and after' documentation role they play elsewhere in I&T. Photographs of optical surfaces under controlled oblique illumination can reveal particulate contamination invisible under normal lighting. Photographs of connector pin fields before mating document the absence of FOD and bent pins — conditions that cannot be verified after the connector is seated. Photographs of internal cavities before structural closeout provide the permanent record that the closeout inspector's FOD-clear call was justified. For long-duration integration campaigns where the same hardware area may be opened and closed multiple times over months or years, photographic records from each access create a time-series baseline: any change in hardware condition between accesses — a new mark, a displaced wire, an unexpected residue — is immediately visible when the current state is compared against the previous photograph. Cleanroom photographs are timestamped, labeled with the hardware serial number and operation step, and archived as part of the permanent configuration record.</li>
-  </ul>
+  <p>The cleanroom documentation record is the program's institutional memory. On long-duration integration campaigns, engineers and technicians change and hardware sits in storage for months. Without a complete, accurate, contemporaneous record, the program cannot confidently characterize the state of the spacecraft at any given moment.</p>
 
-  <p>The cleanroom documentation record is not just a compliance requirement — it is the program's institutional memory. On long-duration integration campaigns, engineers and technicians change. Hardware sits in storage for months before the next operation. Without a complete, accurate, contemporaneous record of what was done to every piece of hardware, the program cannot confidently characterize the state of the spacecraft at any given moment.</p>
-
+  <!-- SECTION 10 -->
   <h2 class="sh" id="s10">10. Cleanroom Culture: What Makes It Work</h2>
 
-  <p>Every protocol described in this article can be written down, reviewed, and approved. None of it works unless the people in the cleanroom understand why it matters and have internalized the discipline to follow it under pressure, when there is schedule urgency, when a senior engineer is watching impatiently, when the "quick fix" seems obvious and the correct procedure seems slow.</p>
-
-  <p>Cleanroom culture is the set of shared values and behaviors that makes the protocols effective. It cannot be mandated by a procedure. It is built over time, by leadership behavior, by the way anomalies are handled, and above all by the visible consequence — or lack of consequence — of violations.</p>
+  <p>Every protocol described in this article can be written down, reviewed, and approved. None of it works unless the people in the cleanroom understand why it matters and have internalized the discipline to follow it under pressure — when there is schedule urgency, when a senior engineer is watching impatiently, when the quick fix seems obvious and the correct procedure seems slow.</p>
 
   <div class="pull-quote">
     <p>"The cleanroom protocol that gets bypassed once, without consequence, will be bypassed again — and eventually it will be bypassed at the moment when it mattered most. Culture is what determines whether that bypass ever happens."</p>
   </div>
 
-  <p>The elements of a healthy cleanroom culture include:</p>
+  <p>The elements of a healthy cleanroom culture include stop-work authority that any person can exercise without social or professional consequence; no-fault anomaly reporting where anomalies are reported rather than concealed; visible leadership commitment where senior engineers follow the gowning procedure completely and without shortcuts; training that explains the why rather than just mandating compliance; and regular review that incorporates lessons from anomalies on this and other programs. Technicians and engineers who understand why they wear a wrist strap — who have seen ESD damage under a scanning electron microscope — are far more reliable than those who simply follow a rule. Invest in training that creates understanding, not just compliance.</p>
 
-  <ul class="body-list">
-    <li><strong>Stop-work authority:</strong> Any person in the cleanroom — technician, engineer, or visitor — has the authority and the obligation to call a stop-work if they observe a protocol violation, an unsafe condition, or an unexpected hardware anomaly. Stop-work authority is meaningless if the people who exercise it face social pressure or professional consequences for doing so.</li>
-    <li><strong>No-fault anomaly reporting:</strong> Anomalies are reported, not concealed. The program's interest is in knowing about problems so they can be resolved; the interest of the individual is not served by hiding a problem that will eventually be discovered. Leadership creates this culture by responding to anomaly reports with problem-solving, not blame.</li>
-    <li><strong>Visible leadership commitment:</strong> Senior engineers and program managers who enter the cleanroom and follow the gowning procedure completely, without shortcuts, send a signal about what the program values. Senior leaders who roll their eyes at the wrist strap tester, or who prop open the cleanroom door "just for a minute," communicate the opposite — and their example is followed.</li>
-    <li><strong>Training that explains the why:</strong> Technicians and engineers who understand why they are wearing a wrist strap — who have seen a photograph of ESD damage under a scanning electron microscope, who have been told the story of a FOD-related on-orbit failure — are far more reliable than those who have simply been told "wear the strap because it's required." Invest in training that creates understanding, not just compliance.</li>
-    <li><strong>Regular review and improvement:</strong> Cleanroom protocols are not static. New materials are developed, new hardware types present new challenges, and lessons learned from other programs accumulate. A program that reviews its cleanroom protocols periodically — and incorporates lessons from anomalies — continuously improves its contamination control posture.</li>
-  </ul>
-
-  <div class="callout green">
-    <div class="callout-label">✓ A Note on New Engineers in the Cleanroom</div>
-    <p>If you are entering a spacecraft cleanroom for the first time, the most important thing you can do is ask questions and follow instructions from the technicians who work there every day. These individuals have, in many cases, more practical knowledge of cleanroom discipline and flight hardware handling than engineers with advanced degrees. The hierarchy of the cleanroom floor is not the hierarchy of the org chart: it is the hierarchy of experience and demonstrated competence.</p>
-    <p>Watch what experienced technicians do. Ask why before assuming you understand. And if you are ever uncertain whether something is safe — a procedure step that seems ambiguous, a tool you are not sure belongs — stop and ask. The cost of a question is seconds. The cost of a mistake on flight hardware may be measured in years.</p>
+  <div class="callout note">
+    <div class="callout-title">◆ A Note on New Engineers in the Cleanroom</div>
+    <p>If you are entering a spacecraft cleanroom for the first time, the most important thing you can do is ask questions and follow instructions from the technicians who work there every day. These individuals have, in many cases, more practical knowledge of cleanroom discipline and flight hardware handling than engineers with advanced degrees. Watch what experienced technicians do. Ask why before assuming you understand. And if you are ever uncertain whether something is safe — a procedure step that seems ambiguous, a tool you are not sure belongs — stop and ask. The cost of a question is seconds. The cost of a mistake on flight hardware may be measured in years.</p>
   </div>
 
-  <h2 class="sh">Summary</h2>
+  <h2 id="summary">Summary</h2>
 
-  <p>The cleanroom is not an inconvenience imposed on spacecraft engineers by quality assurance bureaucrats. It is the carefully engineered environment that makes spacecraft integration possible — from a portable clean tent enclosing a detector assembly to a high-bay facility housing a flagship observatory. Within these controlled spaces, hardware that must work perfectly in an environment it cannot be fully tested in is assembled with the confidence that its integrity has been protected at every step.</p>
+  <p>The cleanroom is not an inconvenience imposed on spacecraft engineers by quality assurance bureaucrats. It is the carefully engineered environment that makes spacecraft integration possible. The disciplines it imposes — contamination control, ESD management, FOD accountability, and workmanship standards — are an interlocking system. A program that is rigorous about particle control but careless about ESD, or that maintains excellent gowning discipline but poor FOD accounting, has a defense with a hole in it. The space environment will find that hole.</p>
 
-  <p>The disciplines of the cleanroom — contamination control, electrostatic discharge management, FOD accountability, and workmanship standards — are not independent rules but a coherent, interlocking system. Contamination that is not prevented must be detected; contamination that is not detected cannot be dispositioned; and contamination that is not dispositioned becomes a permanent, unquantified risk to mission performance. The same logic applies to ESD: a charge that is not prevented must be dissipated; a discharge that is not dissipated may create latent damage that no functional test will find. A program that is rigorous about particle control but careless about ESD, or that maintains excellent gowning discipline but poor FOD accounting, has a defense with a hole in it — and the space environment will find that hole.</p>
+  <p>But protocols alone do not protect hardware. Every discipline described in this article depends on the people who execute it — on technicians who report a dropped washer before anyone asks, on inspectors who call a stop-work when the schedule says press on, on leaders who follow the gowning procedure completely when no one would question them if they didn't. That is cleanroom culture, and it cannot be purchased, mandated, or audited into existence. It must be built — deliberately, visibly, and every day.</p>
 
-  <p>But protocols alone do not protect hardware. Every discipline described in this article depends, in the end, on the people who execute it — on technicians who report a dropped washer before anyone asks, on inspectors who call a stop-work when the schedule says press on, on leaders who follow the gowning procedure completely when no one would question them if they didn't. That is cleanroom culture, and it is the element that cannot be purchased, mandated, or audited into existence. It must be built — deliberately, visibly, and every day — by the behavior of every person who crosses the cleanroom threshold.</p>
-
-  <p>In the next article we move from the physical environment of integration to the electrical ground support equipment and the test harness — the systems through which every spacecraft observation during ground testing is mediated.</p>
+  <div class="callout amber">
+    <div class="callout-label">◆ I&amp;T Guru Training</div>
+    <p>This article introduces the cleanroom disciplines that form the foundation of safe spacecraft integration. The I&amp;T Guru training curriculum covers these topics in full technical depth, including detailed contamination monitoring procedures, ESD program implementation, FOD control program design, and the complete material screening and bake-out framework — tailored for new space companies, university programs, and engineering teams standing up or improving their I&amp;T capability.</p>
+    <p>To discuss how this curriculum can serve your organization, contact Charles Chidekel at <a href="mailto:integrationandtestguru@gmail.com">integrationandtestguru@gmail.com</a>.</p>
   </div>
 
-  
-<div id="series-nav-next"></div>
-
+  <!-- NEXT ARTICLE -->
+  <div class="next-article">
+    <div class="next-article-content">
+      <div class="next-label">Next Article · Article 05 of 19</div>
+      <div class="next-title">Electrical Ground Support Equipment and the Test Harness</div>
+      <div class="next-desc">The power, RF, simulation, and wiring infrastructure that makes spacecraft testing possible — and the discipline that determines whether the results can be trusted</div>
+    </div>
+  </div>
 
   <!-- GLOSSARY -->
   <h2 class="sh" id="glossary">Key Terms Used in This Article</h2>
 
   <table class="gloss-table">
-    <thead>
-      <tr><th>Term</th><th>Definition</th></tr>
-    </thead>
+    <thead><tr><th>Term</th><th>Definition</th></tr></thead>
     <tbody>
-      <tr><td>ASTM E595</td><td>Standard test method for total mass loss and collected volatile condensable material from outgassing in a vacuum environment. The standard acceptance criteria for spacecraft materials are TML &lt; 1.0% and CVCM &lt; 0.1%.</td></tr>
+      <tr><td>ASTM E595</td><td>Standard test method for total mass loss and collected volatile condensable material from outgassing in a vacuum environment. Acceptance criteria for spacecraft materials are TML &lt; 1.0% and CVCM &lt; 0.1%.</td></tr>
       <tr><td>Bake-Out</td><td>A controlled heating of hardware or materials in vacuum to drive off volatile compounds before installation on or near flight hardware. Must be verified by post-bake outgassing measurement.</td></tr>
       <tr><td>CVCM</td><td>Collected Volatile Condensable Material. The fraction of outgassed material from ASTM E595 that condenses on a collector plate at 25°C. The key metric for optical contamination risk.</td></tr>
       <tr><td>ESD</td><td>Electrostatic Discharge. The sudden transfer of electrostatic charge between objects at different electrical potentials. Can permanently damage or degrade electronic components, often without visible evidence.</td></tr>
-      <tr><td>FOD</td><td>Foreign Object Debris. Any material — fastener, tool fragment, wire segment, contaminating particle — present in or on hardware where it does not belong and was not intentionally placed.</td></tr>
+      <tr><td>FOD</td><td>Foreign Object Debris. Any material present in or on hardware where it does not belong and was not intentionally placed.</td></tr>
       <tr><td>HEPA Filter</td><td>High-Efficiency Particulate Air filter. Removes at least 99.97% of particles 0.3 µm in diameter. The standard air filtration technology for spacecraft cleanrooms.</td></tr>
-      <tr><td>Gel-Pak Sampling</td><td>A surface particle sampling technique using a carrier with a controlled-tackiness gel surface that lifts particles from hardware without adhesive residue transfer. Preferred over tape lifts for optically sensitive and chemically critical surfaces. The sampled gel is examined under optical microscopy and can be submitted for SEM/EDX analysis.</td></tr>
-<tr><td>ISO 14644-1</td><td>International standard defining cleanroom classification based on airborne particle concentration. Replaces US Federal Standard 209E, though both systems remain in use in the industry.</td></tr>
+      <tr><td>ISO 14644-1</td><td>International standard defining cleanroom classification based on airborne particle concentration. Replaces US Federal Standard 209E, though both systems remain in use.</td></tr>
       <tr><td>ISO Class 7 (Class 10,000)</td><td>The baseline cleanroom class for most spacecraft system-level integration. Permits a maximum of 352,000 particles ≥0.5 µm per cubic meter.</td></tr>
-     <tr><td>Laminar Flow Workstation</td><td>A localized HEPA-filtered work enclosure delivering unidirectional airflow across the work surface, providing a higher cleanliness class (typically ISO 4 or 5) within a larger, lower-class cleanroom. The term "laminar flow" is entrenched industry usage; strictly speaking, the flow transitions from laminar to turbulent the moment it encounters any obstruction — the functional benefit is the unidirectional sweep that carries particles away from the work piece. Used for optical and detector work.</td></tr>
       <tr><td>Molecular Contamination</td><td>Chemical film deposition on hardware surfaces from outgassing volatile organic compounds, silicones, or solvent residues. Not addressed by ISO 14644-1 particle classification.</td></tr>
-      <tr><td>QCM</td><td>Quartz Crystal Microbalance. A highly sensitive instrument that measures mass deposition rates on a piezoelectric crystal surface by detecting changes in resonant frequency. Used for molecular contamination monitoring.</td></tr>
-      <tr><td>Tape Lift</td><td>A surface particle sampling technique using controlled, low-outgassing adhesive tape pressed onto a hardware surface and peeled to lift particulate for microscopic analysis. Provides localized, point-specific surface cleanliness data. Adhesive chemistry must be verified compatible with the target surface before use.</td></tr>
-<tr><td>TML</td><td>Total Mass Loss. The total fraction of a material's mass lost during ASTM E595 vacuum outgassing testing. Acceptance criterion is typically &lt; 1.0%.</td></tr>
-      <tr><td>Traveler / Route Card</td><td>A controlled document that accompanies flight hardware through its assembly and integration sequence. Documents each procedural step, who performed it, when, and who independently verified it.</td></tr>
-      <tr><td>Witness Mirror</td><td>A polished optical-quality surface placed near flight hardware to accumulate and document any particulate or molecular contamination deposited in the surrounding environment.</td></tr>
-      <tr><td>Wrist Strap</td><td>A grounded conductive band worn on the wrist during handling of ESD-sensitive hardware, providing a path for electrostatic charge to equalize safely to ground. Must be tested before each use.</td></tr>
+      <tr><td>QCM</td><td>Quartz Crystal Microbalance. Measures mass deposition rates by detecting changes in resonant frequency of a piezoelectric crystal. Used for real-time molecular contamination monitoring.</td></tr>
+      <tr><td>TML</td><td>Total Mass Loss. The total fraction of a material's mass lost during ASTM E595 vacuum outgassing testing. Acceptance criterion is typically &lt; 1.0%.</td></tr>
+      <tr><td>Witness Mirror</td><td>A polished optical-quality surface placed near flight hardware to accumulate and document particulate or molecular contamination deposited in the surrounding environment.</td></tr>
+      <tr><td>Wrist Strap</td><td>A grounded conductive band worn on the wrist during handling of ESD-sensitive hardware. Must be tested before each use.</td></tr>
     </tbody>
   </table>
 
 </article>
 </div>
 
-
-<div id="series-nav-bottom"></div>
-
+<!-- ARTICLE NAVIGATOR -->
+<div class="art-nav">
+  <div class="art-nav-inner">
+    <span class="art-nav-label">Go to article</span>
+    <div class="art-nav-select-wrap">
+      <select id="artNav_spacecraft_iat_article02_html">
+        <option value="">— Select any article in the series —</option>
+        <optgroup label="── Main Series ──────────────────────────">
+          <option value="spacecraft_iat_intro.html">Intro · Introduction to Spacecraft I&amp;T</option>
+          <option value="spacecraft_iat_article01.html">01 · I&amp;T Program Structure</option>
+          <option value="spacecraft_iat_article11.html">02 · Configuration Management</option>
+          <option value="" disabled>03 · Quality Assurance (Coming Soon)</option>
+          <option value="spacecraft_iat_article02.html" selected disabled>&#9654; 04 · Cleanrooms &amp; Contamination Control</option>
+          <option value="spacecraft_iat_article10.html">05 · EGSE &amp; Test Harness</option>
+          <option value="spacecraft_iat_article03.html">06 · Functional Testing</option>
+          <option value="spacecraft_iat_article09.html">07 · Flight Software V&amp;V</option>
+          <option value="" disabled>08 · Mass Properties &amp; Structural Loads (Coming Soon)</option>
+          <option value="spacecraft_iat_article04.html">09 · Vibration, Acoustics &amp; Shock</option>
+          <option value="spacecraft_iat_article05.html">10 · Thermal-Vacuum Testing</option>
+          <option value="" disabled>11 · EMC Testing (Coming Soon)</option>
+          <option value="spacecraft_iat_article07.html">12 · Instrument Integration &amp; Calibration</option>
+          <option value="" disabled>13 · Propulsion Testing (Coming Soon)</option>
+          <option value="spacecraft_iat_article06.html">14 · Anomaly Management</option>
+          <option value="" disabled>15 · Launch Vehicle Integration (Coming Soon)</option>
+          <option value="spacecraft_iat_article08.html">16 · Launch Readiness &amp; Commissioning</option>
+        </optgroup>
+        <optgroup label="── Supplementary ──────────────────────────">
+          <option value="" disabled>S1 · Small Satellites (Coming Soon)</option>
+          <option value="" disabled>S2 · Case Studies (Coming Soon)</option>
+        </optgroup>
+      </select>
+    </div>
+    <button class="art-nav-go" id="artNavBtn_spacecraft_iat_article02_html" disabled onclick="var v=document.getElementById('artNav_spacecraft_iat_article02_html').value; if(v) window.location.href=v+'#top';">
+      Open &#8594;
+    </button>
+  </div>
+</div>
 <script>
 document.getElementById('artNav_spacecraft_iat_article02_html').addEventListener('change', function() {
   var btn = document.getElementById('artNavBtn_spacecraft_iat_article02_html');
@@ -1161,8 +665,29 @@ document.getElementById('artNav_spacecraft_iat_article02_html').addEventListener
 });
 </script>
 
-
-<footer id="series-nav-footer"></footer>
-<script src="series-nav.js"></script>
+<footer class="article-footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <div class="footer-label">Series</div>
+      <div class="footer-text">Spacecraft Integration &amp; Test<br>Article 04 of 19</div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-label">Topics</div>
+      <div class="tags">
+        <span class="tag">Cleanroom</span>
+        <span class="tag">Contamination</span>
+        <span class="tag">ESD</span>
+        <span class="tag">FOD</span>
+        <span class="tag">ISO 14644</span>
+        <span class="tag">Gowning</span>
+        <span class="tag">Molecular Contamination</span>
+      </div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-label">Audience</div>
+      <div class="footer-text">New and early-career spacecraft engineers, aerospace students, and any practitioner who works with flight hardware and needs to understand the discipline behind cleanroom integration.</div>
+    </div>
+  </div>
+</footer>
 </div>
 <script>if(window.location.hash=="#top"||!window.location.hash){document.addEventListener("DOMContentLoaded",function(){window.scrollTo(0,0);});window.addEventListener("load",function(){window.scrollTo(0,0);});}</script>
