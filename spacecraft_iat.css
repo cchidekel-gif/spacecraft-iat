@@ -1221,8 +1221,8 @@ ul.cs-list li::before {
   border-top: 1px solid rgba(255,255,255,0.08);
 }
 .seq-group-label:first-of-type { border-top: none; }
-.seq-group-label.recur-label { color: var(--green); border-bottom: 2px solid var(--green); }
-.seq-group-label.mile-label  { color: var(--steel); border-bottom: 2px solid var(--steel); }
+.seq-group-label.recur-label { color: var(--green); border-bottom: 2px solid var(--White); }
+.seq-group-label.mile-label  { color: var(--steel); border-bottom: 2px solid var(--White); }
 
 @media (max-width: 680px) {
   .seq-row { grid-template-columns: 1fr; }
