@@ -445,31 +445,31 @@
 
   <p>Functional tests are not performed randomly, but they are also not a fixed, one-time linear sequence. A functional test program consists of a set of recurring, as-needed verification checks — repeated throughout the campaign as conditions warrant — layered together with a set of functional test campaigns anchored to specific programmatic milestones. Naming conventions, exact triggers, and repetition patterns vary by organization; there is no universal numbering scheme, and activities such as the CPT, Aliveness Test, LPT, and FSFT are commonly executed multiple times across a program rather than once each in a strict order. What follows describes the typical composition of a spacecraft-level I&amp;T program; component and subsystem levels follow an analogous structure scaled to their scope.</p>
 
-  <div class="seq-flow">
+<div class="seq-flow">
     <div class="seq-flow-header">Functional Test Activities</div>
     <div class="seq-group-label">Recurring, As-Needed Verification Checks</div>
 
     <div class="seq-row recur">
-      <div class="seq-badge"><div class="seq-icon">💓</div><div class="seq-name">Aliveness Test</div></div>
+      <div class="seq-badge"><div class="seq-icon">🎯</div><div class="seq-name">Comprehensive Performance Test (CPT)</div></div>
       <div class="seq-body">
-        <div class="seq-block"><div class="seq-block-label">Objectives &amp; Content</div><p>A brief power-on health check confirming basic telemetry and communication — not a performance verification. Confirms disconnection, transport, and reconnection did not introduce a fault.</p></div>
-        <div class="seq-block"><div class="seq-block-label">Timing / Trigger</div><p>After any facility move or reconfiguration; before the next major activity. Repeated as often as the program moves hardware between areas.</p></div>
+        <div class="seq-block"><div class="seq-block-label">Timing / Trigger</div><p>First, after spacecraft integration is complete, before any environmental testing. Repeated during thermal-vacuum testing at expected hot and cold plateaus and transitions (see the <a href="spacecraft_iat_article05.html">thermal-vacuum article</a>), after shipment to the launch site, and in some programs prior to mating with the launch vehicle.</p></div>
+        <div class="seq-block"><div class="seq-block-label">Objectives &amp; Content</div><p>The comprehensive functional test that establishes the performance baseline on its first execution, and — repeated afterward — the standard against which the spacecraft's Go/No-Go status for launch is ultimately determined. Often mandated at specific points by the sponsoring organization itself. The full procedure from which the LPT and Aliveness Test below are derived subsets.</p></div>
       </div>
     </div>
 
     <div class="seq-row recur">
       <div class="seq-badge"><div class="seq-icon">⏱</div><div class="seq-name">Limited Performance Test (LPT)</div></div>
       <div class="seq-body">
-        <div class="seq-block"><div class="seq-block-label">Objectives &amp; Content</div><p>A focused subset of the CPT verifying essential or key functions only, providing confidence to proceed without the time cost of a full CPT (a CPT may take days; an LPT one or two shifts).</p></div>
         <div class="seq-block"><div class="seq-block-label">Timing / Trigger</div><p>Between sub-steps of a single campaign (e.g., between vibration axes), or when full CPT equipment is impractical at the current venue. Repeated as often as those conditions recur.</p></div>
+        <div class="seq-block"><div class="seq-block-label">Objectives &amp; Content</div><p>A focused subset of the CPT verifying essential or key functions only, providing confidence to proceed without the time cost of a full CPT (a CPT may take days; an LPT one or two shifts).</p></div>
       </div>
     </div>
 
     <div class="seq-row recur">
-      <div class="seq-badge"><div class="seq-icon">🎯</div><div class="seq-name">Comprehensive Performance Test (CPT)</div></div>
+      <div class="seq-badge"><div class="seq-icon">💓</div><div class="seq-name">Aliveness Test (AT)</div></div>
       <div class="seq-body">
-        <div class="seq-block"><div class="seq-block-label">Objectives &amp; Content</div><p>The comprehensive functional test that establishes the performance baseline on its first execution, and — repeated afterward — the standard against which the spacecraft's Go/No-Go status for launch is ultimately determined. Often mandated at specific points by the sponsoring organization itself.</p></div>
-        <div class="seq-block"><div class="seq-block-label">Timing / Trigger</div><p>First, after spacecraft integration is complete, before any environmental testing. Repeated during thermal-vacuum testing at expected hot and cold plateaus and transitions (see the <a href="spacecraft_iat_article05.html">thermal-vacuum article</a>), after shipment to the launch site, and in some programs prior to mating with the launch vehicle.</p></div>
+        <div class="seq-block"><div class="seq-block-label">Timing / Trigger</div><p>After any facility move or reconfiguration; before the next major activity. Repeated as often as the program moves hardware between areas.</p></div>
+        <div class="seq-block"><div class="seq-block-label">Objectives &amp; Content</div><p>A brief power-on health check confirming basic telemetry and communication — not a performance verification. Confirms disconnection, transport, and reconnection did not introduce a fault.</p></div>
       </div>
     </div>
 
@@ -478,48 +478,48 @@
     <div class="seq-row mile">
       <div class="seq-badge"><div class="seq-icon">🔜</div><div class="seq-name">Pre-Environmental Functional Test</div></div>
       <div class="seq-body">
-        <div class="seq-block"><div class="seq-block-label">Objectives &amp; Content</div><p>An abbreviated functional test confirming the spacecraft is in its nominal baseline condition before being subjected to a test environment. Any anomaly found must be resolved before the environmental test proceeds.</p></div>
         <div class="seq-block"><div class="seq-block-label">Timing / Trigger</div><p>Immediately before each environmental test campaign (vibration, acoustic, thermal-vacuum); typically 24–48 hours prior. Recurs once per environmental campaign the program runs.</p></div>
+        <div class="seq-block"><div class="seq-block-label">Objectives &amp; Content</div><p>An abbreviated functional test confirming the spacecraft is in its nominal baseline condition before being subjected to a test environment. Any anomaly found must be resolved before the environmental test proceeds.</p></div>
       </div>
     </div>
 
     <div class="seq-row mile">
       <div class="seq-badge"><div class="seq-icon">🔚</div><div class="seq-name">Post-Environmental Functional Test</div></div>
       <div class="seq-body">
-        <div class="seq-block"><div class="seq-block-label">Objectives &amp; Content</div><p>A comprehensive functional test detecting any performance degradation caused by the environmental test just completed. Comparison to the pre-environmental baseline is the key part of the assessment; any unexplained deviation is a potential anomaly.</p></div>
         <div class="seq-block"><div class="seq-block-label">Timing / Trigger</div><p>Within 24–48 hours of completing each environmental test, before the spacecraft leaves the test facility. Recurs once per environmental campaign the program runs.</p></div>
+        <div class="seq-block"><div class="seq-block-label">Objectives &amp; Content</div><p>A comprehensive functional test detecting any performance degradation caused by the environmental test just completed. Comparison to the pre-environmental baseline is the key part of the assessment; any unexplained deviation is a potential anomaly.</p></div>
       </div>
     </div>
 
     <div class="seq-row mile">
       <div class="seq-badge"><div class="seq-icon">✅</div><div class="seq-name">Full System Functional Test (FSFT)</div></div>
       <div class="seq-body">
-        <div class="seq-block"><div class="seq-block-label">Objectives &amp; Content</div><p>A comprehensive test of all spacecraft functions serving as the final formal verification that the spacecraft meets all functional requirements in its as-tested, flight-configuration state. A key input to the launch readiness review.</p></div>
         <div class="seq-block"><div class="seq-block-label">Timing / Trigger</div><p>After completion of all environmental test campaigns, before Pre-Ship Review. May be repeated if corrective action after environmental testing requires full re-verification.</p></div>
+        <div class="seq-block"><div class="seq-block-label">Objectives &amp; Content</div><p>A comprehensive test of all spacecraft functions serving as the final formal verification that the spacecraft meets all functional requirements in its as-tested, flight-configuration state. A key input to the launch readiness review.</p></div>
       </div>
     </div>
 
     <div class="seq-row mile">
       <div class="seq-badge"><div class="seq-icon">📦</div><div class="seq-name">Pre-Ship Functional Test</div></div>
       <div class="seq-body">
-        <div class="seq-block"><div class="seq-block-label">Objectives &amp; Content</div><p>An abbreviated functional verification confirming correct flight configuration, nominal system function, and readiness for the shipping environment.</p></div>
         <div class="seq-block"><div class="seq-block-label">Timing / Trigger</div><p>Within 48 hours of packaging and shipment, after Pre-Ship Review.</p></div>
+        <div class="seq-block"><div class="seq-block-label">Objectives &amp; Content</div><p>An abbreviated functional verification confirming correct flight configuration, nominal system function, and readiness for the shipping environment.</p></div>
       </div>
     </div>
 
     <div class="seq-row mile">
       <div class="seq-badge"><div class="seq-icon">🛬</div><div class="seq-name">Launch Site Functional Test</div></div>
       <div class="seq-body">
-        <div class="seq-block"><div class="seq-block-label">Objectives &amp; Content</div><p>A comprehensive functional test verifying the spacecraft survived shipping without damage and remains in its pre-ship condition. Any deviation must be investigated and dispositioned before launch processing continues.</p></div>
         <div class="seq-block"><div class="seq-block-label">Timing / Trigger</div><p>Upon arrival at the launch site, before any launch site operations begin.</p></div>
+        <div class="seq-block"><div class="seq-block-label">Objectives &amp; Content</div><p>A comprehensive functional test verifying the spacecraft survived shipping without damage and remains in its pre-ship condition. Any deviation must be investigated and dispositioned before launch processing continues.</p></div>
       </div>
     </div>
 
     <div class="seq-row mile">
       <div class="seq-badge"><div class="seq-icon">🚦</div><div class="seq-name">Pre-Launch Functional Verification</div></div>
       <div class="seq-body">
-        <div class="seq-block"><div class="seq-block-label">Objectives &amp; Content</div><p>A final abbreviated functional test verifying the spacecraft's nominal launch configuration, limited to functions that could have been affected by launch site operations. Feeds directly into the launch readiness review and final countdown decision.</p></div>
         <div class="seq-block"><div class="seq-block-label">Timing / Trigger</div><p>24–72 hours before launch, as part of the final launch countdown sequence.</p></div>
+        <div class="seq-block"><div class="seq-block-label">Objectives &amp; Content</div><p>A final abbreviated functional test verifying the spacecraft's nominal launch configuration, limited to functions that could have been affected by launch site operations. Feeds directly into the launch readiness review and final countdown decision.</p></div>
       </div>
     </div>
 
