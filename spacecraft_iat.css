@@ -1284,6 +1284,11 @@ ul.cs-list li::before {
   margin-bottom: 3px; font-weight: 500;
 }
 .mode-block p { font-size: 0.86rem; color: #333; line-height: 1.6; }
+.mode-block-label {
+  font-family: 'JetBrains Mono', monospace; font-size: 10.5px;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--steel);
+  margin-bottom: 4px; font-weight: 700;
+}
 
 @media (max-width: 680px) {
   .mode-row { grid-template-columns: 1fr; }
