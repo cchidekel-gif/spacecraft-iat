@@ -1052,7 +1052,7 @@ ul.cs-list li::before {
   padding: 12px 14px;
   background: var(--ink);
   color: var(--paper);
-  min-height: 64px;
+  height: 84px;
 }
 .test-card-icon { font-size: 1.3rem; flex-shrink: 0; }
 .test-card-title {
