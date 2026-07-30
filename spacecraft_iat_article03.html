@@ -391,16 +391,50 @@
 
   <h3 class="ssh">Types of Pass/Fail Criteria</h3>
 
-  <table class="pf-table">
-    <thead><tr><th>Criterion Type</th><th>Description &amp; Example</th><th>Risk of Incorrect Setting</th></tr></thead>
-    <tbody>
-      <tr><td>Hard Limit</td><td>A specific numerical value that must not be exceeded or must be achieved. Derived directly from a requirement. Example: <em>Power consumption shall not exceed 45.0W at any operating voltage within the specified range.</em></td><td>If set too loosely, masks genuine out-of-spec performance. Must be set to the actual requirement, not to a comfortable margin.</td></tr>
-      <tr><td>Yellow/Red Limit</td><td>A two-level limit system. Yellow indicates an off-nominal condition requiring investigation; Red indicates a limit violation requiring immediate action. Yellow limits are set tighter than Red; both are tighter than the requirement limit to provide warning margin.</td><td>Yellow limits set too close to Red eliminate warning time. Yellow limits set too far from nominal generate false positives and erode their own credibility through repeated triggering.</td></tr>
-      <tr><td>Go/No-Go Check</td><td>A qualitative pass/fail: a specific event either occurs or does not. Example: <em>Deployment mechanism shall fully extend within 30 seconds of deployment command. End-switch closure confirms full deployment.</em></td><td>Failure to define the specific indicator of success (end-switch, position telemetry, current signature) allows ambiguous interpretation of the result.</td></tr>
-      <tr><td>Comparison to Baseline</td><td>Performance is compared to a previously established reference measurement. Used when requirements specify "no degradation" or "within X% of pre-test value." Example: <em>RF output power shall be within 0.5 dB of the pre-vibration baseline measurement.</em></td><td>Requires a high-quality pre-test baseline measurement. Baseline measurement errors propagate directly into the pass/fail determination.</td></tr>
-      <tr><td>Functional Continuity</td><td>Verifies that a function continues to operate correctly over a specified duration. Example: <em>The flight computer shall execute the nominal command sequence without error for a minimum of 72 continuous hours.</em></td><td>Duration must be long enough to reveal intermittent failures. "Long enough" must be justified by analysis of the failure mode being screened.</td></tr>
-    </tbody>
-  </table>
+ <div class="crit-flow">
+    <div class="crit-flow-header">Types of Pass/Fail Criteria</div>
+
+    <div class="crit-row hard">
+      <div class="crit-badge"><div class="crit-icon">📏</div><div class="crit-name">Hard Limit</div></div>
+      <div class="crit-body">
+        <div class="crit-block"><div class="crit-block-label">Description &amp; Example</div><p>A specific numerical value that must not be exceeded or must be achieved. Derived directly from a requirement. Example: <em>Power consumption shall not exceed 45.0W at any operating voltage within the specified range.</em></p></div>
+        <div class="crit-block crit-risk"><div class="crit-block-label">Risk of Incorrect Setting</div><p>If set too loosely, masks genuine out-of-spec performance. Must be set to the actual requirement, not to a comfortable margin.</p></div>
+      </div>
+    </div>
+
+    <div class="crit-row yr">
+      <div class="crit-badge"><div class="crit-icon">🚦</div><div class="crit-name">Yellow /<br>Red Limit</div></div>
+      <div class="crit-body">
+        <div class="crit-block"><div class="crit-block-label">Description &amp; Example</div><p>A two-level limit system. Yellow indicates an off-nominal condition requiring investigation; Red indicates a limit violation requiring immediate action. Yellow limits are set tighter than Red; both are tighter than the requirement limit to provide warning margin.</p></div>
+        <div class="crit-block crit-risk"><div class="crit-block-label">Risk of Incorrect Setting</div><p>Yellow limits set too close to Red eliminate warning time. Yellow limits set too far from nominal generate false positives and erode their own credibility through repeated triggering.</p></div>
+      </div>
+    </div>
+
+    <div class="crit-row gng">
+      <div class="crit-badge"><div class="crit-icon">✅</div><div class="crit-name">Go/No-Go<br>Check</div></div>
+      <div class="crit-body">
+        <div class="crit-block"><div class="crit-block-label">Description &amp; Example</div><p>A qualitative pass/fail: a specific event either occurs or does not. Example: <em>Deployment mechanism shall fully extend within 30 seconds of deployment command. End-switch closure confirms full deployment.</em></p></div>
+        <div class="crit-block crit-risk"><div class="crit-block-label">Risk of Incorrect Setting</div><p>Failure to define the specific indicator of success (end-switch, position telemetry, current signature) allows ambiguous interpretation of the result.</p></div>
+      </div>
+    </div>
+
+    <div class="crit-row base">
+      <div class="crit-badge"><div class="crit-icon">📊</div><div class="crit-name">Comparison<br>to Baseline</div></div>
+      <div class="crit-body">
+        <div class="crit-block"><div class="crit-block-label">Description &amp; Example</div><p>Performance is compared to a previously established reference measurement. Used when requirements specify "no degradation" or "within X% of pre-test value." Example: <em>RF output power shall be within 0.5 dB of the pre-vibration baseline measurement.</em></p></div>
+        <div class="crit-block crit-risk"><div class="crit-block-label">Risk of Incorrect Setting</div><p>Requires a high-quality pre-test baseline measurement. Baseline measurement errors propagate directly into the pass/fail determination.</p></div>
+      </div>
+    </div>
+
+    <div class="crit-row cont">
+      <div class="crit-badge"><div class="crit-icon">⏱</div><div class="crit-name">Functional<br>Continuity</div></div>
+      <div class="crit-body">
+        <div class="crit-block"><div class="crit-block-label">Description &amp; Example</div><p>Verifies that a function continues to operate correctly over a specified duration. Example: <em>The flight computer shall execute the nominal command sequence without error for a minimum of 72 continuous hours.</em></p></div>
+        <div class="crit-block crit-risk"><div class="crit-block-label">Risk of Incorrect Setting</div><p>Duration must be long enough to reveal intermittent failures. "Long enough" must be justified by analysis of the failure mode being screened.</p></div>
+      </div>
+    </div>
+
+  </div>
 
   <h3 class="ssh">Setting Limits Correctly</h3>
   <p>Limits that are too tight cause false failures, erode confidence in the test system, and consume schedule on investigations of benign anomalies. Limits that are too loose allow genuine failures to pass undetected. The correct limits are derived from requirements, informed by analysis, and set before the test. They are not adjusted post-test to accommodate unexpected results — any such adjustment must go through the formal nonconformance or waiver process.</p>
