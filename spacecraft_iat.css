@@ -1219,10 +1219,11 @@ ul.cs-list li::before {
   padding: 14px 20px;
   background: var(--ink);
   border-top: 1px solid rgba(255,255,255,0.08);
+   color: var(--paper);
 }
 .seq-group-label:first-of-type { border-top: none; }
-.seq-group-label.recur-label { color: var(--White); border-bottom: 2px solid var(--Green); }
-.seq-group-label.mile-label  { color: var(--White); border-bottom: 2px solid var(--Steel); }
+.seq-group-label.recur-label { border-bottom: 5px solid var(--green); }
+.seq-group-label.mile-label  { border-bottom: 5px solid var(--steel); }
 
 @media (max-width: 680px) {
   .seq-row { grid-template-columns: 1fr; }
