@@ -23,52 +23,12 @@
 </div>
 
 <!-- SERIES NAV -->
-<div class="series-nav">
-  <span>Series:</span>
-  <span class="sep">·</span>
-  <a href="https://cchidekel-gif.github.io/spacecraft-iat/spacecraft_iat_intro.html#top" style="color:#b8cdd8;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#b8cdd8'">Intro</a>
-  <span class="sep">·</span>
-  <a href="https://cchidekel-gif.github.io/spacecraft-iat/spacecraft_iat_article01.html#top" style="color:#b8cdd8;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#b8cdd8'">01</a>
-  <span class="sep">·</span>
-  <span style="color:#4a6a7a;cursor:default;" title="Coming soon">02</span>
-  <span class="sep">·</span>
-  <span style="color:#4a6a7a;cursor:default;" title="Coming soon">03</span>
-  <span class="sep">·</span>
-  <span style="color:#4a6a7a;cursor:default;" title="Coming soon">04</span>
-  <span class="sep">·</span>
-  <span style="color:#4a6a7a;cursor:default;" title="Coming soon">05</span>
-  <span class="sep">·</span>
-  <span class="current">06</span>
-  <span class="sep">·</span>
-  <span style="color:#4a6a7a;cursor:default;" title="Coming soon">07</span>
-  <span class="sep">·</span>
-  <span style="color:#4a6a7a;cursor:default;" title="Coming soon">08</span>
-  <span class="sep">·</span>
-  <span style="color:#4a6a7a;cursor:default;" title="Coming soon">09</span>
-  <span class="sep">·</span>
-  <span style="color:#4a6a7a;cursor:default;" title="Coming soon">10</span>
-  <span class="sep">·</span>
-  <span style="color:#4a6a7a;cursor:default;" title="Coming soon">11</span>
-  <span class="sep">·</span>
-  <span style="color:#4a6a7a;cursor:default;" title="Coming soon">12</span>
-  <span class="sep">·</span>
-  <span style="color:#4a6a7a;cursor:default;" title="Coming soon">13</span>
-  <span class="sep">·</span>
-  <span style="color:#4a6a7a;cursor:default;" title="Coming soon">14</span>
-  <span class="sep">·</span>
-  <span style="color:#4a6a7a;cursor:default;" title="Coming soon">15</span>
-  <span class="sep">·</span>
-  <span style="color:#4a6a7a;cursor:default;" title="Coming soon">16</span>
-  <span class="sep">·</span>
-  <span style="color:#4a6a7a;cursor:default;" title="Coming soon">S1</span>
-  <span class="sep">·</span>
-  <span style="color:#4a6a7a;cursor:default;" title="Coming soon">S2</span>
-</div>
+<div id="series-nav-top"></div>
 
 <!-- HERO -->
 <div class="hero">
   <div class="hero-inner">
-    <div class="hero-eyebrow">Spacecraft Integration &amp; Test · Article 06 of 16</div>
+    <div class="hero-eyebrow">Spacecraft Integration &amp; Test · Article 06 of 19</div>
     <h1>Functional Testing and<br>the Test-as-You-Fly<br>Principle</h1>
     <p class="hero-sub">What we test, why we test it, how we establish pass/fail criteria, and the governing principle that keeps the test program anchored to flight reality.</p>
     <div class="byline">
@@ -113,58 +73,146 @@
 
   <h2 class="sh" id="s1">1. What Functional Testing Is — and Is Not</h2>
 
-  <p>A functional test, in the spacecraft context, is a test that verifies the performance of hardware or software against a specified requirement by commanding it to perform a function and observing the result. The function may be as simple as "power on and return a health telemetry frame" or as complex as "execute a full attitude maneuver sequence using all attitude control system components in their nominal flight configuration and verify pointing accuracy within specification."</p>
+  <p>A spacecraft functional test verifies the performance of a component or systems hardware or software against a specified requirement by applying power (and commands) enabling it to perform a function and observing the result. The function may be as simple as "power on and provide a regulated voltage within specified limits and noise requirements" or as complex as "execute a full attitude maneuver sequence using all attitude control system components in their nominal flight configuration and verify pointing accuracy within specification."</p>
 
-  <p>What distinguishes a functional test from casual operation of the hardware is <strong>structure, traceability, and documentation</strong>. A technician who powers on the spacecraft to check that the lights come on is not performing a functional test. A technician who executes an approved test procedure, step by step, with a designated test conductor overseeing the operations, with limit monitoring active on all telemetry channels, with a real-time data record captured and tagged to the test, and with every unexpected observation documented in a discrepancy report — that is a functional test.</p>
+  <p>What distinguishes a functional test from casual operation of the hardware is <strong>structure, traceability, and documentation</strong>. A technician who applies power to a unit and confirms it draws nominal current, or that a single telemetry point reports "alive," is not performing a functional test. Functional testing requires execution of an approved test procedure, step by step, with a designated test conductor (and Quality Assurance) overseeing the operations, with monitoring active on all telemetry channels, real-time data recorded, captured and tagged to the test, and with every unexpected observation documented in a discrepancy report.</p>
 
   <p>Functional testing is also explicitly distinct from:</p>
 
-  <ul class="body-list">
-    <li><strong>Environmental testing</strong> — vibration, acoustic, thermal-vacuum, and shock testing verify that the hardware survives the physical stresses of launch and space. Functional testing verifies that it performs correctly. Both are necessary; neither substitutes for the other.</li>
-    <li><strong>Inspection</strong> — visual and dimensional inspection verifies that hardware was built correctly and to specification. Functional testing verifies that it operates correctly. A circuit card can pass inspection and fail functional test.</li>
-    <li><strong>Analysis</strong> — thermal models, structural models, and radiation analyses predict performance in environments that cannot be directly tested. Functional testing provides the empirical data against which those analyses are validated or challenged.</li>
-    <li><strong>Calibration</strong> — for science instruments, calibration characterizes the instrument's response to known inputs. Calibration is informed by and interlocked with functional testing but addresses the science performance parameter space rather than the engineering requirement space.</li>
-  </ul>
+<div class="verification-blocks">
+
+  <div class="vb-entry vb-power">
+    <div class="vb-header">
+      <div class="vb-icon">🌀</div>
+      <div>
+        <div class="vb-title">Environmental Testing</div>
+        <div class="vb-sub">Vibration · Acoustic · Thermal-Vacuum · Shock</div>
+      </div>
+    </div>
+    <div class="vb-grid">
+      <div class="vb-field">
+        <div class="vb-label">What It Verifies</div>
+        <div class="vb-val">That the hardware survives the physical stresses of launch and space.</div>
+      </div>
+      <div class="vb-field">
+        <div class="vb-label">What Functional Testing Provides Instead</div>
+        <div class="vb-val">That the hardware performs correctly. Both are necessary; neither substitutes for the other.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="vb-entry vb-rf">
+    <div class="vb-header">
+      <div class="vb-icon">🔍</div>
+      <div>
+        <div class="vb-title">Inspection</div>
+        <div class="vb-sub">Visual &amp; Dimensional</div>
+      </div>
+    </div>
+    <div class="vb-grid">
+      <div class="vb-field">
+        <div class="vb-label">What It Verifies</div>
+        <div class="vb-val">That hardware was built correctly and to specification.</div>
+      </div>
+      <div class="vb-field">
+        <div class="vb-label">What Functional Testing Provides Instead</div>
+        <div class="vb-val">That it operates correctly. A circuit card can pass inspection and fail functional test.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="vb-entry vb-sim">
+    <div class="vb-header">
+      <div class="vb-icon">📈</div>
+      <div>
+        <div class="vb-title">Analysis</div>
+        <div class="vb-sub">Thermal · Structural · Radiation Models</div>
+      </div>
+    </div>
+    <div class="vb-grid">
+      <div class="vb-field">
+        <div class="vb-label">What It Verifies</div>
+        <div class="vb-val">Predicted performance in environments that cannot be directly tested.</div>
+      </div>
+      <div class="vb-field">
+        <div class="vb-label">What Functional Testing Provides Instead</div>
+        <div class="vb-val">The empirical data against which those analyses are validated or challenged.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="vb-entry vb-ct">
+    <div class="vb-header">
+      <div class="vb-icon">🎯</div>
+      <div>
+        <div class="vb-title">Calibration<sup style="color: purple;">**</sup></div>
+        <div class="vb-sub">Science &amp; Sensing Payloads</div>
+      </div>
+    </div>
+    <div class="vb-grid">
+      <div class="vb-field">
+        <div class="vb-label">What It Verifies</div>
+        <div class="vb-val">For science instruments and other sensing payloads, calibration is established and closed out during the instrument's own I&amp;T program, prior to delivery to the spacecraft.</div>
+      </div>
+      <div class="vb-field">
+        <div class="vb-label">What Functional Testing Provides Instead</div>
+        <div class="vb-val">At spacecraft level, functional testing does not recalibrate the instrument — it verifies that calibration has not drifted and that the instrument remains within its established operating parameters through integration, environmental exposure, and pre-launch processing.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<p class="footer-text"> <sup style="color: purple;">**</sup> This framing describes the relationship at the spacecraft level. During the instrument's own development and I&amp;T program, prior to delivery, functional testing and calibration are much more tightly coupled — calibration is often still being established and refined through that program's own functional test campaign.</p>
 
   <h2 class="sh" id="s2">2. The Test-as-You-Fly Principle</h2>
 
-  <p>The single most important governing principle of spacecraft functional testing is <span class="kt">test-as-you-fly, fly-as-you-test</span>. This deceptively simple phrase encodes a comprehensive philosophy: the conditions under which you test the spacecraft should be as close as possible to the conditions it will experience in flight, and the configuration you fly should be as close as possible to the configuration you tested.</p>
+  <p><span class="kt">Test-as-you-fly, fly-as-you-test</span> is the governing principle most one-off and flagship spacecraft programs treat as non-negotiable. The phrase denotes a comprehensive philosophy: the conditions under which you test the spacecraft should be as close as possible to the conditions it will experience in flight, and the configuration you fly should be as close as possible to the configuration you tested. Programs producing large constellations of identical spacecraft sometimes make a deliberate economic trade against full application of this principle — accepting a statistical failure rate rather than subjecting every unit to the full test campaign — but that is a conscious departure from the principle, not a rejection of it.</p>
 
-  <p>The principle has two directions. <strong>Test-as-you-fly</strong> is a discipline applied during the test program: it demands that tests be conducted using flight software (not ground-only software builds), flight hardware interfaces (not ground simulators where the actual interface can be tested), flight operational procedures (not shortcuts developed for ground convenience), and flight representative signal levels and loading conditions. Any deviation from these requirements must be formally identified, justified, and accepted — because it represents a gap between what was tested and what will fly.</p>
+  <p>Even constellation programs that accept statistical risk do not abandon test-as-you-fly reasoning — they apply it selectively, using the same governing question (does this configuration match what will actually happen in flight?) to decide which specific events remain non-negotiable regardless of unit cost or production volume. Initial acquisition of signal and attitude following separation is one such event: if the spacecraft cannot establish communications and stabilize itself autonomously, no amount of production-run economics recovers it. The same logic typically applies to one-time, unrecoverable mechanical events — solar array and antenna deployment, and separation from the launch vehicle itself — because these are single-shot actions with no on-orbit repair or retry, and a failure can range from complete loss of the individual spacecraft to a collision or debris hazard affecting other payloads on the same launch. Autonomous fault-protection logic that must operate correctly before any ground contact is established is a third category that is rarely descoped, since it is the spacecraft's only line of defense during the period when it cannot yet be commanded. What typically varies across the constellation with unit volume is the depth of environmental margin testing and the extent of full-duration life testing — not the events that, if mishandled, end the mission before it begins.</p>
+
+  <p>The principle has two directions. <strong>Test-as-you-fly</strong> is a discipline applied during the test program: it demands that tests be conducted using flight software (not ground-only software builds), flight hardware interfaces to the maximum extent practical, flight operational procedures (not shortcuts developed for ground convenience), and flight representative signal levels and loading conditions. Testing exactly as you fly, in the literal sense, is often physically impossible — ground support equipment exists precisely because some flight interfaces cannot be tested directly without simulation or approximation (see the companion article on <a href="spacecraft_iat_article10.html">EGSE and test harness fidelity</a> for how that gap is characterized and managed). Test-as-you-fly is not violated by the existence of that gap; it is violated when the gap is not identified, not characterized, and not formally accepted as a known deviation between what was tested and what will fly.</p>
 
   <p><strong>Fly-as-you-test</strong> is a discipline applied at the transition from test to flight: it demands that the configuration launched be the configuration tested. Every change to hardware or software after the conclusion of the test program — a connector replaced, a software patch uploaded, a thermal blanket repositioned — represents a deviation from the tested configuration. Each such deviation must be evaluated: does it invalidate any test result? Does it introduce any untested behavior? Can it be accepted on the basis of analysis alone, or does it require a retest?</p>
 
-  <div class="callout rust">
-    <div class="callout-label">⚠ When Test-as-You-Fly Is Violated</div>
-    <p>The <strong>Mars Observer</strong> spacecraft was lost in 1993 during Mars orbit insertion. While the definitive cause was never confirmed, the most likely failure scenario — a propellant line check valve that allowed fuel and oxidizer to mix and detonate — involved a component that had been tested in a different configuration from its flight state. The propulsion system had been pressurized during ground testing, then vented for shipping, and repressurized at the launch site — a sequence that was never fully tested as an integrated operation.</p>
-    <p>The principle is not a theoretical ideal. It is a practical engineering discipline whose violation has contributed to the loss of multiple spacecraft. Deviations from test-as-you-fly are not impossible to accept — but they must be accepted with open eyes, through a formal process, with full understanding of what has not been tested.</p>
+ <div class="callout rust">
+    <div class="callout-label">⚠ When Test-as-You-Fly Is Violated: Genesis</div>
+    <p>NASA's Genesis sample-return capsule crashed into the Utah desert in September 2004 at nearly 200 miles per hour after its parachute system failed to deploy. The <a href="https://ntrs.nasa.gov/citations/20060008607" target="_blank" rel="noopener">Genesis Failure Investigation Report</a> found the cause with certainty: four gravity-switch sensors, responsible for detecting the capsule's deceleration during atmospheric entry and triggering parachute deployment, had been installed backward — in both the primary and redundant systems — because the engineering drawings themselves specified the wrong orientation.</p>
+    <p>A centrifuge test, specifically capable of exercising the switches under real deceleration and verifying their orientation, had been planned. It was cancelled for cost and schedule reasons. The investigation concluded that performing it would have caught the design flaw. What remained in its place was inspection against the drawing — which confirmed only that the hardware matched a design that was itself wrong.</p>
+    <p>The principle is not a theoretical ideal. It is a practical engineering discipline whose violation has contributed to the loss of multiple spacecraft. Deviations from test-as-you-fly are not impossible to accept — but they must be accepted with open eyes, through a formal process, with full understanding of what has not been tested. Genesis is the case where that did not happen: the test that would have caught the error was identified, scoped, and then quietly set aside under budget pressure.</p>
   </div>
 
   <h3 class="ssh">The Flight Configuration Baseline</h3>
-  <p>Implementing test-as-you-fly requires that the program maintain a precise definition of the <span class="kt">flight configuration baseline</span> — a controlled record of the exact hardware and software configuration that has been tested and is authorized to fly. This baseline is established at the conclusion of the test program and is maintained under configuration control until launch. Every proposed change to the baseline after that point must pass through the program's <span class="kt">Configuration Control Board (CCB)</span>, which evaluates its technical risk and approves, rejects, or modifies it.</p>
+  <p>Implementing fly-as-you-test requires that the program maintain a precise definition of the <span class="kt">flight configuration baseline</span> — a controlled record of the exact hardware and software configuration that has been tested and is authorized to fly. This baseline is typically first frozen before the start of environmental testing, so that vibration, acoustic, EMI/EMC and thermal-vacuum results can be tied to a known, fixed configuration rather than a moving target. If testing reveals an anomaly requiring a hardware or software change, the baseline is formally re-evaluated; once the change is implemented and the affected functional and environmental tests are re-verified, the baseline is re-frozen to reflect the corrected configuration.</p>
+
+  <p>The program's <span class="kt">Configuration Control Board (CCB)</span> is not a mechanism that appears only at this point — it is the standing authority throughout the program for any change or deviation affecting interface control documents, requirements, or approved designs (see the companion article on <a href="spacecraft_iat_article11.html">configuration management and the CCB process</a> for the full governance treatment). What changes once the baseline is frozen for environmental and functional testing is the stakes of what passes through it: after that point, even a minor change — a connector reseated differently, a software patch, a repositioned thermal blanket — represents a deviation from a configuration that has already accumulated test evidence behind it, and the CCB's evaluation of technical risk must account for what specific testing would need to be repeated or re-justified by analysis, not merely whether the change is otherwise sound.</p>
 
   <p>Configuration control is not a bureaucratic formality. It is the mechanism by which the program preserves the engineering validity of its test program in the face of the inevitable late changes that accompany every spacecraft program. A program that relaxes configuration control discipline after the test program is complete is, in effect, flying an untested spacecraft.</p>
 
   <h2 class="sh" id="s3">3. Requirement Traceability: The Foundation of the Test Program</h2>
 
-  <p>Every functional test in the program must trace to a requirement — a specific, verifiable statement of what the spacecraft or system must do. This traceability is not administrative housekeeping. It is the engineering argument that the test program is sufficient: if every requirement has a test that verifies it, and every test has been passed, then the spacecraft meets its requirements. The converse is also true and more important: any requirement without a test leaves a gap in the verification record that must be filled by analysis, inspection, or similarity — each of which carries more risk than direct test verification.</p>
+<p>Every functional test in the program must trace to a requirement — a specific, verifiable statement of what the spacecraft or system must do. This traceability is not administrative housekeeping. It is the engineering argument that the test program is sufficient: if every requirement allocated to functional test has a test that verifies it, and every one of those tests has been passed, then the spacecraft meets that portion of its requirements.</p>
+
+  <p>It is important to remember that not every requirement needs a functional test to be verified. Many requirements are more appropriately and completely verified by inspection, analysis, or similarity — and assigning them to those methods is a deliberate, correct verification strategy, not a compromise standing in for a missing test. A fixed mechanical clearance or a part's physical dimension is fully verified by dimensional inspection against the drawing; no functional test adds anything the inspection did not already confirm. A structural margin against worst-case combined flight loads is properly verified by analysis — a model validated against qualification-level test data — because testing the actual flight structure to its true predicted worst-case load would itself risk damaging the hardware the verification exists to protect.</p>
+
+  <p>What the traceability discipline in this section requires is narrower and specific to functional test: every requirement allocated to functional verification must have a functional test that covers it, and that allocation decision — which requirements go to test, and which to inspection, analysis, or similarity — must itself be deliberate and documented. A requirement with no verification method assigned at all, by any method, is the actual gap in the verification record.</p>
 
   <div class="trace-diagram">
     <div class="trace-header">Requirement-to-Test Traceability Chain</div>
     <div class="trace-flow">
-      <div class="trace-row">
+<div class="trace-row">
         <div class="trace-level"><span class="trace-level-label l1">Mission Requirements</span></div>
-        <div class="trace-content"><p><strong>Source:</strong> Science requirements, orbital requirements, lifetime requirements. Established by the mission concept and the science team. Example: <em>"The instrument shall image a 1° × 1° field of view with a spatial resolution of no worse than 1 arcsecond."</em></p></div>
+        <div class="trace-content"><p><strong>Source:</strong> Payload performance requirements, orbital requirements, lifetime requirements. Established by the mission concept and the sponsoring organization — the science team for a science mission, the payload customer for a communications or Earth-observation mission, the program office for a technology demonstration. Example: <em>"The instrument shall image a 1° × 1° field of view with a spatial resolution better than 1 arcsecond"</em> for a science payload, or <em>"The transponder shall maintain a minimum G/T of 4.0 dB/K across the specified coverage area"</em> for a communications payload.</p></div>
       </div>
       <div class="trace-arrow">↓ derived into</div>
       <div class="trace-row">
         <div class="trace-level"><span class="trace-level-label l2">System Requirements</span></div>
-        <div class="trace-content"><p><strong>Allocation:</strong> Mission requirements are allocated to spacecraft systems. Example: <em>"The attitude control system shall maintain pointing knowledge to better than 0.5 arcseconds (3σ) during science observations."</em></p></div>
+        <div class="trace-content"><p><strong>Allocation:</strong> Mission requirements are allocated to spacecraft systems. Example: <em>"The attitude control system shall maintain pointing knowledge to better than 0.5 arcseconds (3σ) during payload operations."</em></p></div>
       </div>
       <div class="trace-arrow">↓ allocated to</div>
       <div class="trace-row">
         <div class="trace-level"><span class="trace-level-label l3">Subsystem Requirements</span></div>
-        <div class="trace-content"><p><strong>Specification:</strong> System requirements are decomposed into subsystem-level requirements. Example: <em>"The star tracker shall provide attitude measurements with a measurement noise of no worse than 0.1 arcseconds (1σ) at 2 Hz."</em></p></div>
+       <div class="trace-content"><p><strong>Specification:</strong> System requirements are decomposed into subsystem-level requirements. Example: <em>"The star tracker shall provide attitude measurements with a measurement noise better than 0.1 arcseconds (1σ) at 2 Hz."</em></p></div>
       </div>
       <div class="trace-arrow">↓ verified by</div>
       <div class="trace-row">
@@ -185,24 +233,36 @@
     <p>Test is the gold standard. Every requirement verified by analysis rather than test represents a risk that is accepted explicitly, not implicitly. The V&amp;V matrix makes this risk visible and trackable.</p>
   </div>
 
+<table class="pf-table">
+    <thead><TR><center> Example Verification Matrix Excerpt</center></TR>
+      <tr><th>Req ID</th><th>Requirement</th><th>Method</th><th>Verification Reference</th><th>Result</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>SYS-042</td><td>Pointing knowledge better than 0.5 arcsec (3σ) during payload operations</td><td>Test</td><td>FT-04 Attitude Determination Functional Test</td><td>0.31 arcsec (3σ)</td><td>Passed</td></tr>
+      <tr><td>SYS-107</td><td>Solar array deployed length shall not exceed 4.2 m</td><td>Inspection</td><td>Dimensional Inspection Report DIR-2201</td><td>4.18 m</td><td>Passed</td></tr>
+      <tr><td>SYS-118</td><td>Primary structure shall survive worst-case combined flight loads with positive margin</td><td>Analysis</td><td>Structural Analysis Report SAR-3040, Rev C</td><td>MS +0.12 (bonded joint, critical case)</td><td>Passed</td></tr>
+      <tr><td>SYS-156</td><td>Battery shall maintain capacity above 80% of BOL after 5-year mission life</td><td>Analysis</td><td>Battery Life Analysis BLA-118, validated against cell life test data</td><td>Predicted 83% EOL</td><td>Open</td></tr>
+      <tr><td>SYS-203</td><td>Deployable boom shall be manually stowable and releasable by ground personnel using standard tooling, without special fixtures</td><td>Demonstration</td><td>Ground Handling Demonstration GHD-07</td><td>Stow/release performed successfully by test crew</td><td>Passed</td></tr>
+    </tbody>
+  </table>
+
   <h2 class="sh" id="s4">4. Types of Functional Tests</h2>
 
-  <p>Functional tests are not a single category — they span a range of objectives, configurations, and levels of rigor. The following types represent the standard taxonomy used across most spacecraft programs.</p>
+  <p>There are multiple categories of standard functional tests  — they span a range of objectives, configurations, and levels of rigor. The following are the most common types used across most spacecraft programs.</p>
 
   <div class="test-type-grid">
     <div class="test-card smoke">
       <div class="test-card-header">
         <div class="test-card-icon">🔥</div>
-        <div><div class="test-card-title">Smoke Test / Power-On Check</div><div class="test-card-sub">First activation — confirm basic life signs</div></div>
+        <div><div class="test-card-title">Initial Power-On Check</div><div class="test-card-sub">First activation — confirm basic life signs</div></div>
       </div>
-      <div class="test-card-body"><p>The first power-on of a newly integrated unit or assembly. Objectives are minimal: verify that the hardware does not fail catastrophically upon first energization, that basic telemetry is received, and that no anomalous currents, voltages, or temperatures are observed. A smoke test is not a performance verification — it is a health check to confirm that integration has not introduced a gross fault before committing to a full functional test sequence.</p></div>
+      <div class="test-card-body"><p>The first power-on of a newly integrated unit or assembly. Objectives are minimal: verify that the hardware does not fail catastrophically upon first energization, that basic telemetry is received, and that no anomalous currents, voltages, or temperatures are observed. This test is not a performance verification — it is a health check to confirm that integration has not introduced a gross fault before committing to a full functional test sequence.</p></div>
     </div>
     <div class="test-card func">
       <div class="test-card-header">
         <div class="test-card-icon">✅</div>
         <div><div class="test-card-title">Functional Verification Test</div><div class="test-card-sub">Requirement-by-requirement — the core of the program</div></div>
       </div>
-      <div class="test-card-body"><p>The comprehensive, requirement-traced test that verifies each function of the unit, subsystem, or spacecraft against its specified performance limits. Each step is traceable to a requirement in the V&amp;V matrix. Pass/fail criteria are defined before the test begins. This is the primary vehicle for establishing and maintaining the verification record, and it is repeated (in abbreviated or full form) after every environmental test to confirm that performance has not been degraded.</p></div>
+      <div class="test-card-body"><p>The comprehensive, requirement-traced test that verifies each function of the unit, subsystem, or spacecraft against its specified performance limits. Each step is traceable to a requirement in the V&amp;V matrix. Pass/fail criteria are defined before the test begins. This is the primary vehicle for establishing and maintaining the verification record, and it is repeated (in abbreviated or full form) after every major activity (after first power-on, within facility moves, software updates etc), and before, during and after environmental tests to confirm that performance has not been degraded.</p></div>
     </div>
     <div class="test-card perf">
       <div class="test-card-header">
@@ -223,9 +283,9 @@
         <div class="test-card-icon">💾</div>
         <div><div class="test-card-title">Software Functional Test</div><div class="test-card-sub">Flight software — the invisible subsystem</div></div>
       </div>
-      <div class="test-card-body"><p>Flight software functional tests verify that the flight software performs correctly on the flight hardware, in the flight operational environment. Software that passes its software-only tests in a simulated environment can and does fail on flight hardware — because hardware timing, interrupt handling, and resource constraints are not perfectly replicated by simulation. Software functional tests must be performed with the actual flight processor, flight memory, and flight data bus, running the flight software build intended for launch.</p></div>
+      <div class="test-card-body"><p>Flight software functional tests verify that the flight software performs correctly on the flight hardware, in the flight operational environment — not just in a simulated one, since hardware timing, interrupt handling, and resource constraints are not perfectly replicated by simulation. Every bug fix, update, or patch changes the build under test and requires the affected functional tests, and applicable regression tests, to be re-executed on the actual flight hardware before the new build is considered verified.</p></div>
     </div>
-    <div class="test-card e2e">
+ <div class="test-card e2e">
       <div class="test-card-header">
         <div class="test-card-icon">📡</div>
         <div><div class="test-card-title">End-to-End Test</div><div class="test-card-sub">Full signal chain — from ground to orbit and back</div></div>
@@ -234,20 +294,26 @@
     </div>
   </div>
 
+
+  <div class="callout steel">
+    <div class="callout-label">▸ Where This Fits: Flight Software V&amp;V</div>
+    <p>This section addresses functional testing as executed and dispositioned at the spacecraft level — running an already-built flight software binary against flight hardware and verifying its behavior. The software development lifecycle that produces that binary — unit testing, hardware-in-the-loop testing, fault-protection verification, build release and configuration control, and the deeper mechanics of regression testing across build iterations — is covered in full in the companion article on <a href="spacecraft_iat_article09.html">Flight Software Verification and Validation</a>, including a dedicated treatment of how flight software behaves specifically at the system-level test campaign described in this article.</p>
+  </div>
+
   <h2 class="sh" id="s5">5. Spacecraft Operating Modes and Mode Transition Testing</h2>
 
-  <p>A spacecraft does not operate in a single state. It transitions through a defined set of operating modes over the course of its mission — from launch configuration to safe mode to normal operations to science observation mode, and through contingency modes when anomalies are detected. Each mode has a defined set of active functions, power states, thermal conditions, and software behaviors. Mode transition testing verifies that the spacecraft transitions correctly between all defined modes, including under fault conditions.</p>
+  <p>A spacecraft does not operate in a single state. It transitions through a defined set of operating modes over the course of its mission — from launch configuration to safe mode to normal operations to mission/observation mode, and through contingency modes when anomalies are detected. Each mode has a defined set of active functions, power states, thermal conditions, and software behaviors. Mode transition testing verifies that the spacecraft transitions correctly between all defined modes, including under fault conditions.</p>
 
-  <table class="mode-table">
+ <table class="mode-table">
     <thead><tr><th>Mode</th><th>Description &amp; Functional Content</th><th>Key Test Objectives</th></tr></thead>
     <tbody>
       <tr><td>LAUNCH</td><td>Spacecraft is launch-vehicle encapsulated. Minimum power. Flight computer running launch monitoring software. All deployables inhibited by mechanical inhibits.</td><td>Verify all inhibit circuits are active. Verify battery state. Verify telemetry through umbilical. Verify separation signal response in simulation.</td></tr>
-      <tr><td>INITIAL ACQUISITION</td><td>Post-separation. Solar arrays deploy. Primary communications established. Spacecraft achieves power-positive condition and begins autonomous safe-mode operations.</td><td>Simulate separation event. Verify autonomous deployment sequence. Verify sun acquisition algorithm. Verify telemetry beacon transmission and ground receipt.</td></tr>
-      <tr><td>SAFE MODE</td><td>Minimum-risk autonomous configuration. Only essential subsystems active. Spacecraft Sun-pointing. Awaiting ground contact and assessment.</td><td>Command spacecraft to safe mode from all other modes. Verify correct hardware state transitions. Verify autonomous fault detection triggers safe mode entry.</td></tr>
-      <tr><td>NORMAL OPS</td><td>All subsystems active. Full attitude control. Scheduled command execution. Science instruments in standby or operational state.</td><td>Verify all subsystem interfaces in normal ops configuration. Verify scheduled command execution. Verify autonomy rule set operation.</td></tr>
-      <tr><td>SCIENCE / OBS</td><td>Science instruments fully operational. Fine pointing active. Data recording to on-board mass memory. Downlink of science data during contact periods.</td><td>Verify instrument commanding through flight software. Verify data recording and playback. Verify pointing stability during simulated observations.</td></tr>
-      <tr><td>MANEUVER</td><td>Propulsion system active. Attitude control reconfigured for thrust direction. Science instruments safed during burn.</td><td>Verify propulsion system enable/disable sequences. Verify attitude control reconfiguration. Verify instrument safing logic. Simulate abort scenarios.</td></tr>
-      <tr><td>CONTINGENCY</td><td>Fault-triggered states: battery low, single-string mode, communication loss, instrument anomaly. Autonomous response sequences.</td><td>Inject fault conditions and verify autonomous response. Verify fault protection logic tables. Verify recovery procedure sequences from each contingency state.</td></tr>
+      <tr><td>INITIAL ACQUISITION</td><td>Post-separation. Solar arrays deploy. Primary communications established. Spacecraft achieves power-positive condition and begins autonomous safe-mode operations.</td><td>Simulate separation event. Verify autonomous deployment sequence. Verify sun acquisition algorithm. Verify telemetry transmission and ground receipt.</td></tr>
+      <tr><td>SAFE MODE</td><td>Minimum-risk autonomous configuration. Only essential subsystems active. Spacecraft Sun-pointing. Awaiting ground contact and assessment.</td><td>Command spacecraft to safe mode from all other modes. Verify correct hardware state transitions. Verify autonomous fault detection triggers safe mode entry. Command recovery from safe mode to Normal Ops and to Payload Ops, and verify correct hardware and software state transitions on exit.</td></tr>
+      <tr><td>NORMAL OPS</td><td>All subsystems active. Full attitude control. Scheduled command execution. Payload in standby or operational state.</td><td>Verify all subsystem interfaces in normal ops configuration. Verify scheduled command execution. Verify autonomy rule set operation.</td></tr>
+      <tr><td>PAYLOAD OPS</td><td>Payload fully operational. Fine pointing active. Data recording to on-board mass memory. Downlink of payload data during contact periods.</td><td>Verify payload commanding through flight software. Verify data recording and playback. Verify pointing stability during simulated payload operations.</td></tr>
+      <tr><td>MANEUVER</td><td>Propulsion system active. Attitude control reconfigured for thrust direction. Payload safed during burn.</td><td>Verify propulsion system enable/disable sequences. Verify attitude control reconfiguration. Verify payload safing logic. Simulate abort scenarios.</td></tr>
+      <tr><td>CONTINGENCY</td><td>Fault-triggered states: battery low, single-string mode, communication loss, payload anomaly. Autonomous response sequences.</td><td>Inject fault conditions and verify autonomous response. Verify fault protection logic tables. Verify recovery procedure sequences from each contingency state.</td></tr>
     </tbody>
   </table>
 
@@ -260,9 +326,20 @@
     <p>On multiple flight programs, untested or incompletely tested fault protection logic has triggered unnecessary safe mode entries, caused incorrect autonomous responses to genuine anomalies, or — in the worst cases — contributed to mission loss. Fault protection testing is not a formality. It is essential flight safety verification.</p>
   </div>
 
+  <div class="callout rust">
+    <div class="callout-label">⚠ When the Simulator Doesn't Reproduce Flight Timing: Mars Pathfinder</div>
+    <p>Days into its mission on Mars in July 1997, Pathfinder began experiencing total system resets whenever it collected meteorological data. The cause, diagnosed by JPL engineers running the exact spacecraft replica in their lab, was a priority inversion: a low-priority weather-data task held a shared resource that a high-priority data-bus task needed, while a medium-priority communications task ran freely in between — starving the high-priority task long enough that a watchdog timer concluded the system had failed and forced a reset.</p>
+    <p>The fix, uploaded to the spacecraft across tens of millions of miles, was a single configuration flag: enabling priority inheritance on the VxWorks mutex involved. JPL's software lead, <a href="https://www.cs.unc.edu/~anderson/teach/comp790/papers/mars_pathfinder_long_version.html" target="_blank" rel="noopener">Glenn Reeves, later confirmed</a> that the same reset had occurred once or twice during months of pre-flight testing — but was intermittent, difficult to reproduce under schedule pressure, and was attributed to a hardware glitch rather than investigated as a software timing defect.</p>
+    <p>This is fault protection logic doing exactly what it was designed to do — respond autonomously to an anomalous condition — in response to a condition the ground test program never fully characterized. The watchdog reset was not itself a design flaw; it was the correct response to a real, if misdiagnosed, timing fault. Resource contention and real-time scheduling behavior depend on the exact timing of interrupts, task switches, and hardware loading, and a simulator can execute the same code correctly while never reproducing the precise window that triggers the fault. Intermittent, hard-to-reproduce results are not necessarily flight-critical — most are simply confusing, time-consuming, and easy to misdiagnose — but that uncertainty is exactly why they cannot be dismissed by assumption.</p>
+  </div>
+
   <h2 class="sh" id="s6">6. Pass/Fail Criteria and Limit Setting</h2>
 
-  <p>A functional test without defined pass/fail criteria is not a test — it is an observation. The pass/fail criterion is the engineering statement of what constitutes a successful test result, and it must be established before the test is executed, not after the data is collected. Post-hoc pass/fail determination is one of the most common and most dangerous forms of test-program degradation, because it creates the opportunity — however unintentional — for the result to influence the criterion.</p>
+ <p>A functional test without defined pass/fail criteria is not a test — it is an observation. The pass/fail criterion is what constitutes a successful test result, and it must be established before the test is executed, not after the data is collected. When a test is found without one, there is a single diagnostic question that identifies where the failure actually occurred: does a specific, quantified limit exist anywhere in the program's governing requirements documents? If it does not, the gap is a requirements failure — the requirement itself was never stated as a specific, verifiable, quantified statement, and the traceability principle described in §3 was never satisfied at its source. If the limit does exist but was never carried down into this specific test procedure's own pass/fail block, the gap is a procedure failure — a break in the same requirements-to-test traceability chain, occurring one step later, in procedure preparation and review (§8).</p>
+
+  <p>A thermal-vacuum test illustrates the first case. If the governing requirement reads "operate within design temperature range" rather than a specific number tied to this test point, no procedure can derive a limit from it — there is nothing specific to derive, so any temperature the unit reaches can be argued as acceptable after the fact. The defect is upstream of the test entirely. An RF link test illustrates the second case: the top-level link-budget requirement may specify a precise bit-error-rate threshold, but if that number is never carried down into this particular test's written pass/fail block, the test runs without a criterion despite one existing elsewhere in the program's own requirements set — and a marginal result can get rationalized against the link budget only after it is already in hand, rather than checked against a number that was sitting in the procedure before the test began.</p>
+
+ <p>Post test pass/fail determination is a recognized risk in test-program discipline, because it creates the opportunity — however unintentional — for the result to influence the criterion. But the diagnostic matters more than the discipline warning: a missing criterion always points to a specific, fixable defect in either the requirements document or the procedure that was supposed to carry it forward, and treating it as a generic lapse in rigor, without locating which of the two failed, leaves the actual defect uncorrected. This is precisely why procedure review and approval — discussed in §8 — exists to catch before the test is ever run.</p>
 
   <h3 class="ssh">Types of Pass/Fail Criteria</h3>
 
@@ -280,7 +357,7 @@
   <h3 class="ssh">Setting Limits Correctly</h3>
   <p>Limits that are too tight cause false failures, erode confidence in the test system, and consume schedule on investigations of benign anomalies. Limits that are too loose allow genuine failures to pass undetected. The correct limits are derived from requirements, informed by analysis, and set before the test. They are not adjusted post-test to accommodate unexpected results — any such adjustment must go through the formal nonconformance or waiver process.</p>
 
-  <p>Telemetry limit tables — the automated checking of all spacecraft telemetry channels against pre-defined limits during test — are a key tool for catching anomalies that might otherwise be missed in the volume of data generated by a spacecraft test. But limit tables must be actively maintained: limits that were set for an early integration phase may no longer be appropriate for a later phase with a different hardware configuration. Stale or misconfigured limit tables are a known source of missed anomalies on real programs.</p>
+  <p>Telemetry limit tables — the automated checking of all spacecraft telemetry channels against pre-defined limits during test — are a key tool for catching anomalies that might otherwise be missed in the volume of data generated by a spacecraft test. But limit tables must be actively maintained: limits that were set for an early integration phase may no longer be appropriate for a later phase with a different hardware configuration. Stale or misconfigured limit tables are not an uncommon source of missed anomalies on real programs.</p>
 
   <h2 class="sh" id="s7">7. The Functional Test Sequence</h2>
 
@@ -289,15 +366,19 @@
   <table class="seq-table">
     <thead><tr><th>#</th><th>Test Campaign</th><th>Objectives and Content</th><th>Timing / Trigger</th></tr></thead>
     <tbody>
-      <tr><td>FT-01</td><td>Baseline Functional Test (BFT)</td><td>The first comprehensive functional test of the integrated spacecraft. Establishes the performance baseline against which all subsequent tests will be compared. Executed before any environmental testing begins. Must be passed in full before any environmental test is authorized.</td><td>After spacecraft integration is complete and all subsystems have passed their acceptance tests</td></tr>
+      <tr><td>FT-01</td><td>Baseline Functional Test (BFT) ot Comprehensive Performance Test (CPT)</td><td>The comprehensive functional test that establishes the performance baseline against which all subsequent tests are compared, and — repeated at defined points throughout the campaign — the standard against which the spacecraft's Go/No-Go status for launch is ultimately determined. Beyond its first execution before any environmental testing begins, the full CPT is typically repeated during thermal-vacuum testing at each expected hot and cold operating temperature plateau and during transitions between them (see the companion article on <a href="spacecraft_iat_article05.html">thermal-vacuum testing</a> for the full temperature-plateau and transition sequence this repetition follows), after shipment to the launch site, and in some programs immediately prior to mating with the launch vehicle. The requirement to execute the CPT at these specific points is frequently mandated by the sponsoring organization itself — NASA or a Defense agency program office — rather than being solely a program's internal test-planning choice.</td><td>First execution after spacecraft integration is complete and all subsystems have passed acceptance testing; repeated at each defined milestone described above through final launch processing</td></tr>
+      <tr><td>—</td><td>Aliveness Test</td><td>A brief power-on health check confirming basic telemetry and communication — not a performance verification. Performed after any move between facility areas or reconfiguration, to confirm that disconnection, transport, and reconnection did not introduce a fault before the next major activity. Recurring throughout the program rather than tied to a single milestone.</td><td>After any facility move or reconfiguration; before the next major activity or CPT</td></tr>
+      <tr><td>—</td><td>Limited Performance Test (LPT)</td><td>A focused subset of the CPT verifying essential or key functions only, providing sufficient confidence to proceed without the time cost of a full CPT (a CPT may take days; an LPT one or two shifts). Also used when the complete GSE suite needed for a CPT is not practically available at the current venue. Commonly run between sub-steps of a single campaign, such as between axes during vibration testing. Recurring, embedded within campaigns rather than a standalone milestone.</td><td>Between sub-steps of a single environmental campaign (e.g., between vibration axes); or during facility transitions where full CPT equipment is unavailable</td></tr>
       <tr><td>FT-02</td><td>Pre-Environmental Functional Test</td><td>An abbreviated functional test executed immediately before each environmental test campaign (vibration, acoustic, thermal-vacuum). Confirms the spacecraft is in its nominal baseline condition before being subjected to the test environment. Any anomaly found during pre-environmental functional testing must be resolved before the environmental test proceeds.</td><td>Immediately before each major environmental test; typically 24–48 hours prior</td></tr>
       <tr><td>FT-03</td><td>Post-Environmental Functional Test</td><td>A comprehensive functional test executed immediately after each environmental test. The primary purpose is to detect any degradation in performance caused by the environmental test. Comparison to the pre-environmental baseline is a key part of the assessment. Any unexplained deviation is a potential anomaly requiring investigation.</td><td>Within 24–48 hours of completing each environmental test; before the spacecraft leaves the test facility</td></tr>
-      <tr><td>FT-04</td><td>Full System Functional Test (FSFT)</td><td>A comprehensive test of all spacecraft functions executed after all environmental testing is complete. The FSFT is the final formal verification that the spacecraft meets all functional requirements in its as-tested, flight-configuration state. It is a key input to the launch readiness review.</td><td>After completion of all environmental test campaigns; before Pre-Ship Review</td></tr>
+      <tr><td>FT-04</td><td>Full System Functional Test (FSFT)</td><td>A comprehensive test of all spacecraft functions executed after all environmental testing is complete. The FSFT is the final formal verification that the spacecraft meets all functional requirements in its as-tested, flight-configuration state. It is a key input to the launch readiness review.</td><td>After completion of all environmental test campaigns; before Pre-Ship Review. Programs may choose to execute a CPT instead depending on the specific circumstances.</td></tr>
       <tr><td>FT-05</td><td>Pre-Ship Functional Test</td><td>An abbreviated functional verification performed immediately before the spacecraft is packaged for shipment to the launch site. Confirms that the spacecraft is in its correct flight configuration, all systems are nominally functional, and the spacecraft is ready for the shipping environment.</td><td>Within 48 hours of spacecraft packaging and shipment; after Pre-Ship Review</td></tr>
       <tr><td>FT-06</td><td>Launch Site Functional Test</td><td>A comprehensive functional test performed at the launch site after the spacecraft has been received, unpacked, and visually inspected. Verifies that the spacecraft survived shipping without damage and is in its pre-ship condition. Any deviation from the pre-ship baseline must be investigated and dispositioned before launch processing continues.</td><td>Upon arrival at the launch site; before any launch site operations are performed</td></tr>
       <tr><td>FT-07</td><td>Pre-Launch Functional Verification</td><td>A final abbreviated functional test performed in the days before launch, verifying that the spacecraft is in its nominal launch configuration. Checks are limited to those functions that could have been affected by launch site operations. This test feeds directly into the launch readiness review and the final launch countdown decision.</td><td>24–72 hours before launch; part of the final launch countdown sequence</td></tr>
     </tbody>
   </table>
+
+  <p>In practice, the Pre/Post-Environmental, Launch Site, and Pre-Launch tests in this sequence — and the Limited Performance Test described earlier — are frequently not independently designed test suites, but literal subsets derived directly from the CPT itself: the same steps, in the same order, exercised against the same expected results, simply reduced in scope. This is deliberate on two counts. It preserves consistency — the same function is tested the same way regardless of which point in the campaign it is being checked at, so a discrepancy is a discrepancy against a known baseline rather than an artifact of a differently-written test. It also substantially simplifies the practical burden of writing and maintaining test procedures and control software: a derived subset inherits its parent CPT's already-reviewed logic rather than requiring independent authorship and independent review.</p>
 
   <p>This sequence ensures that the spacecraft enters each environmental test campaign with a documented functional baseline, and that the functional consequences of each environmental test are fully characterized before proceeding. Programs that skip pre- or post-environmental functional tests save time in the short term at the cost of ambiguity: if a problem is found in a later functional test, without a post-environmental baseline, it is impossible to determine when the problem was introduced.</p>
 
@@ -307,27 +388,30 @@
 
   <h3 class="ssh">Elements of a Good Test Procedure</h3>
   <ul class="body-list">
-    <li><strong>Purpose and scope:</strong> A clear statement of what the test is verifying and which requirements it addresses. An engineer reading the procedure should immediately understand why the test exists.</li>
+    <li><strong>Purpose and scope:</strong> A clear statement of what the test is verifying and which requirements it addresses. Anyone reading the procedure should immediately understand why the test exists.</li>
     <li><strong>Preconditions:</strong> The exact hardware and software configuration required before the test can start. All preconditions must be met and verified before step 1 is executed. A test started in the wrong configuration may produce invalid results that are not obviously invalid.</li>
-    <li><strong>Required personnel and roles:</strong> A test is not a solo activity. The procedure identifies who must be present: a test conductor who owns the test execution, an operations engineer who commands the spacecraft, a systems engineer who monitors spacecraft health, and an independent test observer. Critical steps may require a second qualified person to independently verify before proceeding.</li>
-    <li><strong>Required equipment and calibration status:</strong> All ground support equipment used in the test must be identified, and its calibration currency verified. An uncalibrated measurement instrument is worse than no measurement — it produces data that appears authoritative but may be incorrect.</li>
+    <li><strong>Required personnel and roles:</strong> A test is not a solo activity. The procedure identifies who must be present — for example, a test conductor who owns the test execution, an operations engineer who commands the spacecraft, a systems engineer who monitors spacecraft health, an EGSE operator, facility operators or staff where the test venue requires them, an independent test observer, and Quality and Safety personnel. This list is illustrative, not exhaustive or fixed — the specific roles required depend on the test's complexity, hazards, and venue. Critical steps may require a second qualified person to independently verify before proceeding.</li>
+    <li><strong>Required equipment and calibration status:</strong> All ground support equipment used in the test must be identified, and its calibration currency verified. An uncalibrated measurement instrument is worse than no measurement — it produces data that appears authoritative but may be incorrect. See the companion article on <a href="spacecraft_iat_article10.html">EGSE and test harness fidelity</a> for the qualification and configuration-control standards this equipment must meet.</li>
     <li><strong>Step-by-step instructions with expected results:</strong> Each step specifies the action to be taken, the expected spacecraft response, and the pass/fail criterion. Expected results are not optional guidance — they are the test specification.</li>
-    <li><strong>Contingency paths:</strong> What to do if a step fails. A test procedure that ends with "if step 42 fails, contact the systems engineer" is incomplete. Common failure modes should have defined contingency paths; novel failures trigger a hold-the-test-call-the-anomaly-team response.</li>
+    <li><strong>Contingency paths:</strong> What to do if a step fails. Not every possible failure can be anticipated in advance, and a procedure is not incomplete simply because it lacks a specified response for every conceivable anomaly. What is required, for any condition the procedure does not explicitly address, is a default: hold the current configuration and contact the test conductor or anomaly team to determine a path forward, unless holding that configuration is itself hazardous. A good procedure also identifies which of its own steps are hazardous — an operation that, once started, leaves the hardware in an unsafe or indeterminate state if it does not complete successfully — and specifies the safing action required in that specific case. Initiating a deployment is a clear example: if the deployment does not complete, the hazard does not end when the step ends, and the procedure must say so and specify what safes it.</li>
     <li><strong>Data capture requirements:</strong> What data must be saved, how it must be labeled, and where it must be archived. A test that produces data that cannot be reconstructed after the fact is a test that cannot be verified as having passed.</li>
   </ul>
 
   <h3 class="ssh">Procedure Review and Approval</h3>
   <p>Test procedures must be reviewed and approved before they are executed on flight hardware. The review process typically involves the author, an independent peer reviewer, the systems engineer responsible for the hardware under test, and a quality assurance representative. The review verifies technical correctness, completeness, and traceability to requirements. It also verifies that the procedure cannot cause damage to the hardware — an important consideration when the procedure involves commanding hardware near its operating limits or exercising failure modes.</p>
 
+  <p>One specific thing this review must catch, explicitly and by name: every pass/fail criterion in the procedure must trace to a specific, quantified requirement, and every quantified requirement allocated to this test must appear in the procedure as an explicit pass/fail criterion, not as an implied or assumed one. A reviewer who signs a procedure without checking this — treating "traceability to requirements" as a box to check rather than a number to actually trace — is the point at which the gap described in §6 survives review and reaches the test floor. This is, in practice, one of the most valuable and most frequently rushed parts of the entire review.</p>
+
   <p>Deviations from approved procedures during execution require a formal in-test decision: minor clarifications may be handled by the test conductor with documented justification; substantive departures require a hold and a formal procedure change. <strong>Improvising deviations during test execution — even apparently sensible ones — is one of the most common sources of test invalidity and test-induced anomalies on real programs.</strong></p>
 
-  <h3 class="ssh">The Test Conductor Role</h3>
-  <p>The test conductor is the person responsible for the execution of a specific test. This role is not administrative — it is one of the most technically demanding positions in the I&amp;T operation. The test conductor must understand the test objectives thoroughly enough to recognize when a step has produced an anomalous result that the procedure did not anticipate; must have the authority and judgment to call a hold when something is not right; and must manage the test team with sufficient clarity that all personnel know their roles and responsibilities at every moment of the test.</p>
+<h3 class="ssh">The Test Conductor Role</h3>
+  <p>The test conductor is the person responsible for the execution of a specific test. The title itself varies across organizations — some assign this function to a systems engineer, some to an engineer with specific expertise in the system under test, and some to a dedicated, generic "test conductor" who performs this role across systems regardless of subsystem specialty. Whatever the title or reporting structure, the function itself is not administrative — it is one of the most technically demanding positions in the I&amp;T operation. The person filling it must understand the test objectives thoroughly enough to recognize when a step has produced an anomalous result that the procedure did not anticipate; must have the authority and judgment to call a hold when something is not right; and must manage the test team with sufficient clarity that all personnel know their roles and responsibilities at every moment of the test.</p>
 
   <div class="callout green">
     <div class="callout-label">✓ The Test Conductor's Call</div>
     <p>In my experience, the most valuable skill a test conductor can have is the willingness to call "hold" when something does not look right — even when the schedule is tight, even when senior people are watching, even when the anomaly seems minor. The test conductor is the last line of defense against proceeding with an invalid or potentially damaging test.</p>
     <p>The test conductor who calls a hold on an ambiguous telemetry reading and turns out to be wrong is slightly embarrassed. The test conductor who does not call a hold on an anomalous reading that turns out to be a genuine fault has a much harder conversation to have. The culture of a test program is defined by which outcome the organization treats as worse.</p>
+    <p>This is the same principle discussed more broadly in the companion article on <a href="spacecraft_iat_article16.html">quality assurance culture</a>: a program that treats a called hold as a defect to be blamed rather than a system working as intended will train its test conductors, quickly and permanently, to stop calling holds.</p>
   </div>
 
   <h2 class="sh" id="s9">9. Deviations, Waivers, and the Management of Test Anomalies</h2>
@@ -337,10 +421,10 @@
   <div class="deviation-bar">
     <div class="deviation-bar-header">Anomaly Classification and Response Framework</div>
     <div class="deviation-items">
-      <div class="dev-item low"><div class="dev-severity">Observation</div><div class="dev-title">Within limits, unexpected</div><div class="dev-desc">Behavior is within limits but not predicted. Documented; investigated to confirm benign; no re-test required if root cause is understood.</div></div>
-      <div class="dev-item med"><div class="dev-severity">Yellow Limit</div><div class="dev-title">Off-nominal, in-work</div><div class="dev-desc">Telemetry exceeds yellow limit. Test holds; systems engineer evaluates. Proceed only when root cause is understood or engineering assessment supports continuation.</div></div>
-      <div class="dev-item high"><div class="dev-severity">Red Limit / Failure</div><div class="dev-title">Test failure — full stop</div><div class="dev-desc">Hard limit violated, required function not performed. Test stops. Formal DR raised. No further test operations until root cause is identified and corrective action approved.</div></div>
-      <div class="dev-item crit"><div class="dev-severity">Safety / Mission Risk</div><div class="dev-title">Stop-work — escalate immediately</div><div class="dev-desc">Condition poses risk to hardware safety or mission. All test operations halt. Senior leadership and safety review board notified. No resumption without formal board review and approval.</div></div>
+      <div class="dev-item low"><div class="dev-severity">Observation</div><div class="dev-title">Within limits, unexpected</div><div class="dev-desc">Behavior is within limits but not predicted. Documented; investigated to confirm benign; no re-test required if root cause is understood. <em>Example: a baseplate temperature runs 2°C warmer than the thermal model predicted during a functional test, but remains well inside its allowable operating range.</em></div></div>
+      <div class="dev-item med"><div class="dev-severity">Yellow Limit</div><div class="dev-title">Off-nominal, in-work</div><div class="dev-desc">Telemetry exceeds yellow limit. Test holds; systems engineer evaluates. Proceed only when root cause is understood or engineering assessment supports continuation. <em>Example: battery voltage dips briefly into the yellow band during a peak-load transient, momentarily exceeding the caution threshold before recovering on its own.</em></div></div>
+      <div class="dev-item high"><div class="dev-severity">Red Limit / Failure</div><div class="dev-title">Test failure — full stop</div><div class="dev-desc">Hard limit violated, required function not performed. Test stops. Formal DR raised. No further test operations until root cause is identified and corrective action approved. <em>Example: a commanded mechanism does not reach its commanded position within the allotted time, or a required telemetry point never reports a value at all.</em></div></div>
+      <div class="dev-item crit"><div class="dev-severity">Safety / Mission Risk</div><div class="dev-title">Stop-work — escalate immediately</div><div class="dev-desc">Condition poses risk to hardware safety or mission. All test operations halt. Senior leadership and safety review board notified. No resumption without formal board review and approval. <em>Example: an unexpected voltage is detected on a pyrotechnic initiation circuit that should be safed, or a deployment begins and does not complete, leaving the hardware in an unknown and potentially hazardous state.</em></div></div>
     </div>
   </div>
 
@@ -352,19 +436,49 @@
     <li>A <span class="kt">waiver</span> is a post-facto acceptance of a known non-conformance: the hardware has been found not to meet a requirement, and the program has determined — through formal engineering review — that the non-conformance is acceptable for flight. Waivers are granted sparingly and are tracked explicitly in the launch readiness matrix. A waiver is not a way to avoid fixing a problem; it is a formal engineering judgment that a known problem does not affect the mission.</li>
   </ul>
 
-  <p>Both deviations and waivers must be approved by the appropriate authority — typically the chief engineer, the technical authority, or an independent review board, depending on the severity of the non-conformance. Neither can be approved by the program manager alone without technical concurrence. The temptation to "waiver our way to launch" — to approve an accumulation of individually small non-conformances without assessing their combined effect — is a real and documented risk pattern in programs under schedule pressure.</p>
+<h3 class="ssh">Open Items, Watch Items, and Deferred Resolution</h3>
+  <p>Not every anomaly is fully resolved before the program moves to its next activity, and this is not itself a departure from good practice — it is a distinct, legitimate disposition, separate from both deviations and waivers. An <span class="kt">open item</span> is any anomaly that remains in the discrepancy tracking system without a terminal disposition: it has not been closed as benign, corrected, or waived, but the program has made a deliberate decision not to let it block progress to the next activity. Two specific forms of open item are common enough to name individually.</p>
+
+  <p>A <span class="kt">watch item</span> is an open item judged low-risk based on available data, actively monitored across subsequent tests to determine whether it recurs, trends toward worsening, or resolves on its own as further data accumulates. Nothing has been accepted — the item remains open, and the monitoring itself is the disposition until enough evidence exists to close it or escalate it.</p>
+
+  <p>A <span class="kt">deferred resolution</span> is an open item whose root cause or full characterization is better established at a later point in the test campaign than at the point it was observed. A borderline thermal reading noticed during an ambient functional test, for example, may be far more efficiently diagnosed once the hardware is actually in the thermal-vacuum chamber, where the environment driving the behavior can be directly controlled and observed, rather than through extended standalone investigation at ambient conditions. Deferring in this case is an engineering judgment about where the anomaly can best be understood — not a decision to set it aside.</p>
+
+  <p>What distinguishes any open item from a waiver is that neither watch items nor deferred items are terminal dispositions. A waiver formally accepts a known non-conformance as acceptable for flight; an open item — whether being watched or deferred — has not been dispositioned at all. It must eventually resolve to one of the terminal states: closed as benign with root cause understood, corrected through hardware or procedure change, or, if it persists, waived through the same formal process described below. An open item that remains open all the way to launch readiness review, without ever reaching one of those terminal states, is not a successfully managed open item — it is a program that has lost track of its own discrepancy list.</p>
+
+<div class="callout rust">
+    <div class="callout-label">⚠ When Waivers Accumulate: Challenger</div>
+    <p><em>Challenger's O-ring failure has been analyzed at length elsewhere — Diane Vaughan's <a href="https://www.press.uchicago.edu/ucp/books/book/chicago/C/bo22781921.html" target="_blank" rel="noopener">"normalization of deviance"</a> is the standard reference — and is included here in brief only because it is the example most engineers already recognize.</em></p>
+    <p>O-ring erosion on the Space Shuttle Solid Rocket Booster field joints was first observed and documented as early as STS-2 in 1981. Over the following flights, erosion or blow-by was repeatedly seen, repeatedly dispositioned as an accepted anomaly, and repeatedly treated — through the Flight Readiness Review process — as evidence that the design tolerated the condition, rather than as evidence that the margin against failure was shrinking with each occurrence.</p>
+    <p>On the night before the January 28, 1986 launch, engineers at Morton Thiokol raised a specific, documented concern: the predicted launch temperature was colder than any prior flight, and O-ring performance at that temperature had never been qualified or flight-proven. Their recommendation against launch was overridden. The primary and secondary seals failed 73 seconds after liftoff, destroying the vehicle and killing its seven-person crew.</p>
+    <p>No single waiver was, on its own, an unreasonable engineering judgment. The failure was cumulative — a sequence of individually defensible decisions that was never evaluated as a whole.</p>
+  </div>
+
+  <div class="callout rust">
+    <div class="callout-label">⚠ When a Discrepant Result Is Overruled: The Hubble Primary Mirror</div>
+    <p>During fabrication of the Hubble Space Telescope's primary mirror, the primary test instrument — a Reflective Null Corrector (RNC) built specifically for this mirror — indicated the surface was correctly figured. But three separate auxiliary tests, including a refractive null corrector and an independent transfer verification between the two instruments, all showed a discrepancy. Because the RNC was considered the higher-precision, state-of-the-art instrument, the three disagreeing results were attributed to the lesser accuracy of the auxiliary equipment rather than investigated as a possible fault in the RNC itself.</p>
+    <p>A full end-to-end optical test — using the complete assembled optical path rather than testing the mirror in isolation — would very likely have caught the error. It was not performed; the cost was judged unjustified because every sub-component had already met its individual specification. A correctly-figured backup mirror, fabricated in parallel by Eastman Kodak, was never used for cross-check.</p>
+    <p>The root cause, identified after launch: a 1.3 mm spacing error in the RNC itself, caused by a flake of non-reflective paint that had come off a metering rod end cap. The mirror had been ground with exquisite precision — to the wrong shape.</p>
+    <p>This is not a story about a bad measurement. It is a story about three independent instruments disagreeing with the trusted one, and that disagreement being dispositioned by authority of the instrument rather than by investigation of the discrepancy.</p>
+  </div>
 
   <h2 class="sh" id="s10">10. What Functional Testing Cannot Tell You</h2>
 
   <p>Functional testing, however thorough, has limits. Understanding those limits is as important as understanding what functional testing accomplishes — because the limits define where other verification methods must carry the load.</p>
 
-  <ul class="body-list">
-    <li><strong>It cannot verify survival of the flight environment.</strong> A spacecraft that passes a comprehensive functional test on the ground may still fail in the launch environment if it has a structural weakness, a marginal solder joint, or a thermal design deficiency. This is precisely why environmental testing exists, and why environmental testing without functional testing is incomplete: the environmental test must be bracketed by functional tests to demonstrate that the hardware that survived the environment still performs its functions.</li>
-    <li><strong>It cannot reveal all latent defects.</strong> ESD latent damage, marginal solder joints that have not yet fractured, adhesive bonds with internal voids — these may pass functional testing on the ground and fail in service. This is a fundamental limitation of ground testing and is addressed through design margins, parts screening, workmanship standards, and — ultimately — acceptance of residual risk.</li>
-    <li><strong>It cannot fully replicate the on-orbit environment.</strong> Microgravity, continuous thermal cycling, radiation accumulation, and plasma environments are not fully reproducible on the ground. Performance in these environments must be partially predicted by analysis, validated by similarity with previously flown hardware, and confirmed during on-orbit commissioning.</li>
+<ul class="body-list">
+    <li><strong>It cannot verify survival of the flight environment.</strong> A spacecraft that passes a comprehensive functional test on the ground may still fail in the launch environment if it has a structural weakness, a marginal solder joint, or a thermal design deficiency. This is precisely why environmental testing exists — see the companion articles on <a href="spacecraft_iat_article04.html">vibration, acoustic, and shock testing</a> and <a href="spacecraft_iat_article05.html">thermal-vacuum testing</a> — and why environmental testing without functional testing is incomplete: the environmental test must be bracketed by functional tests to demonstrate that the hardware that survived the environment still performs its functions.</li>
+    <li><strong>It cannot reveal all latent defects.</strong> ESD latent damage, marginal solder joints that have not yet fractured, adhesive bonds with internal voids — these may pass functional testing on the ground and fail in service. This is a fundamental limitation of ground testing, addressed primarily through the workmanship standards and prevention-focused quality discipline covered in the companion article on <a href="spacecraft_iat_article16.html">quality assurance</a>, and ultimately through acceptance of residual risk.</li>
+    <li><strong>It cannot fully replicate the on-orbit environment.</strong> Microgravity, continuous thermal cycling, radiation accumulation, and plasma environments are not fully reproducible on the ground. Performance in these environments must be partially predicted by analysis, validated by similarity with previously flown hardware, and confirmed during on-orbit commissioning — see the companion thermal-vacuum article for how ground testing approximates the thermal portion of this problem.</li>
     <li><strong>It cannot catch requirements errors.</strong> If a requirement is wrong — if the mission analysis contained an error that led to an incorrect allocation — functional testing against that requirement will pass. The spacecraft will be verified as meeting its specification and will then fail to meet the mission objective. This is why mission-level requirements reviews and independent mission analysis validation are as important as the test program itself.</li>
-    <li><strong>It cannot replace anomaly investigation.</strong> When a functional test produces an anomalous result, the correct response is always to investigate the root cause before proceeding. "It passed the next run" is not an acceptable disposition of an anomaly. Intermittent failures that reproduce inconsistently are among the most dangerous failure modes precisely because they are the easiest to rationalize away.</li>
+    <li><strong>It cannot replace anomaly investigation.</strong> When a functional test produces an anomalous result, the correct response is always to investigate the root cause before proceeding. "It passed the next run" is not an acceptable disposition of an anomaly. The full discipline of root cause analysis — distinguishing symptom from proximate cause from true root cause — is covered in depth in the companion article on <a href="spacecraft_iat_article06.html">anomaly management and problem resolution</a>.</li>
   </ul>
+
+  <div class="callout rust">
+    <div class="callout-label">⚠ When the Ground Cannot Reproduce the Environment: Galileo's High-Gain Antenna</div>
+    <p>Galileo's 16-foot high-gain antenna deployed successfully in ground testing before launch in 1989. On April 11, 1991, en route to Jupiter, the deployment command was sent — and the antenna motors stalled, opening only partway. A JPL investigation found that three of the antenna's eighteen ribs were held closed by friction between their standoff pins and sockets, caused by loss of a dry lubricant film during years of pre-launch storage and repeated cross-country shipping delays following the Challenger disaster.</p>
+    <p>NASA's <a href="ht<tps://llis.nasa.gov/lesson/492" target="_blank" rel="noopener">formal lessons-learned analysis</a> of the failure is explicit about why ground testing did not catch it: the vacuum deployment test was performed without the vibration-induced relative motion between pins and sockets that occurred in flight, and separately, ambient-air ground tests did not reveal the failure mode because oxides and contaminants on the bare titanium pins were acting as an unintended lubricant — a condition that does not exist in the vacuum of space.</p>
+    <p>The hardware passed every test it was given. The ground simply could not reproduce the specific combination of vacuum and vibration history that caused the failure — not because the test program was careless, but because that is a genuine limit of ground testing large mechanisms.</p>
+  </div>
 
   <div class="pull-quote">
     <p>"Every test that passes gives you confidence. But confidence is not certainty, and the gap between the two is where spacecraft are lost. The discipline of functional testing is to make that gap as small as possible — not to pretend it does not exist."</p>
@@ -372,17 +486,18 @@
 
   <h2 class="sh">Summary</h2>
 
-  <p>Functional testing is the systematic, requirement-traced, documented verification that a spacecraft performs its intended functions. Governed by the test-as-you-fly principle — which demands that test conditions replicate flight conditions and that the flight configuration match the tested configuration — the functional test program forms the backbone of the entire I&amp;T verification case.</p>
+  <p>Functional testing is the systematic, requirement-traced, documented verification that a spacecraft performs its intended functions. Governed by the test-as-you-fly, fly-as-you-test principle — which demands that test conditions replicate flight conditions as closely as practical, and that the flight configuration match the tested configuration under formal configuration control — the functional test program forms the backbone of the entire I&amp;T verification case.</p>
 
-  <p>The key disciplines of functional testing are traceability (every test traces to a requirement), pre-defined pass/fail criteria (criteria are established before execution, not after), formal anomaly management (every deviation from expected results is documented and investigated), and completeness (every requirement is covered by a verification method). Programs that maintain these disciplines consistently produce comprehensive, defensible verification records. Programs that let them erode — under schedule pressure, under resource constraints, or through gradual cultural normalization — accumulate hidden risks that may not manifest until the most critical moment of the mission.</p>
+  <p>The key disciplines of functional testing are traceability (every test traces to a specific, quantified requirement, verified by the correct method — test, analysis, inspection, or demonstration), pre-defined pass/fail criteria (established before execution, not derived from the data after the fact), formal anomaly management (every deviation is documented and investigated, whether closed immediately, waived, or carried forward as a deliberately tracked open item), and completeness (every requirement is covered, and every allocation decision is itself deliberate and documented). Programs that maintain these disciplines consistently produce comprehensive, defensible verification records. Programs that let them erode — under schedule pressure, under resource constraints, or through gradual cultural normalization — accumulate hidden risks that may not manifest until the most critical moment of the mission.</p>
+
+  <p>This is not a theoretical concern. Genesis, Mars Pathfinder, Challenger, the Hubble primary mirror, and Galileo's high-gain antenna each illustrate a different way this discipline fails — a verification step skipped under budget pressure, a timing condition ground testing could not reproduce, a known risk re-approved past the point it should have been, an instrument disagreement dismissed rather than investigated, and a ground environment that was structurally incapable of revealing a defect that testing itself did nothing wrong to miss. Functional testing is powerful, but it is not unlimited: it cannot verify environmental survival, cannot reveal every latent defect, cannot fully replicate the on-orbit environment, cannot catch a wrong requirement, and cannot substitute for investigating an anomaly it produces.</p>
 
   <p>The next article descends from the functional domain into the software domain: the flight software verification and validation process, and the specific risks that make software failures uniquely difficult to find and uniquely dangerous to fly.</p>
-  </div>
 
   <!-- NEXT ARTICLE -->
   <div class="next-article">
     <div class="next-article-content">
-      <div class="next-label">Next Article · Article 07 of 16</div>
+      <div class="next-label">Next Article · Article 07 of 19</div>
       <div class="next-title">Flight Software Verification and Validation</div>
       <div class="next-desc">The V&amp;V hierarchy, hardware-in-the-loop testing, fault protection verification, and the specific risks that make software failures uniquely difficult to find</div>
     </div>
@@ -391,23 +506,29 @@
   <!-- GLOSSARY -->
   <h2 class="sh" id="glossary">Key Terms Used in This Article</h2>
 
-  <table class="gloss-table">
+ <table class="gloss-table">
     <thead><tr><th>Term</th><th>Definition</th></tr></thead>
     <tbody>
-      <tr><td>Baseline Functional Test (BFT)</td><td>The first comprehensive functional test of the integrated spacecraft. Establishes the performance baseline against which all subsequent test results are compared.</td></tr>
-      <tr><td>Configuration Control Board (CCB)</td><td>The formal authority that reviews and approves all proposed changes to the flight configuration baseline after the test program has been completed.</td></tr>
+      <tr><td>Aliveness Test</td><td>A brief power-on health check, confirming basic telemetry and communication, performed after a facility move or reconfiguration to verify nothing was disturbed in transit. A health check, not a performance verification.</td></tr>
+      <tr><td>Baseline Functional Test (BFT) / Comprehensive Performance Test (CPT)</td><td>The comprehensive functional test that establishes the performance baseline against which all subsequent test results are compared, and — repeated at defined points throughout the campaign — the standard against which Go/No-Go status for launch is ultimately determined.</td></tr>
+      <tr><td>Configuration Control Board (CCB)</td><td>The standing authority throughout the program for any change or deviation affecting interface control documents, requirements, or approved designs — not only a mechanism that appears after the flight configuration baseline is frozen.</td></tr>
+      <tr><td>Deferred Resolution</td><td>An open item whose root cause or full characterization is better established at a later point in the test campaign — for example, a borderline reading investigated more efficiently once the hardware reaches an environment where the driving condition can be directly observed.</td></tr>
+      <tr><td>Demonstration</td><td>A qualitative verification method: confirming a function operates as intended through direct operation, without measuring performance against a precise numerical criterion. One of four standard verification methods, alongside Test, Analysis, and Inspection.</td></tr>
       <tr><td>Deviation</td><td>A pre-approved, formally documented departure from a requirement. Granted before a test when it is known that a requirement cannot be verified in the ground environment.</td></tr>
       <tr><td>End-to-End Test</td><td>A test that exercises the complete signal chain from the mission operations center through the ground network, spacecraft telecommunications system, and flight computer to the target subsystem — and back.</td></tr>
       <tr><td>Fault Protection</td><td>The autonomous software and hardware logic that detects anomalous conditions and responds to them without ground intervention. Must be fully tested before flight.</td></tr>
-      <tr><td>Flight Configuration Baseline</td><td>The precisely defined hardware and software configuration that has been tested and is authorized to fly. Maintained under configuration control from test completion to launch.</td></tr>
+      <tr><td>Flight Configuration Baseline</td><td>The precisely defined hardware and software configuration that has been tested and is authorized to fly. Typically first frozen before environmental testing begins, re-evaluated and re-frozen as anomalies are resolved, and maintained under configuration control from test completion to launch.</td></tr>
       <tr><td>Full System Functional Test (FSFT)</td><td>A comprehensive verification of all spacecraft functions performed after all environmental testing is complete. A key input to the launch readiness review.</td></tr>
+      <tr><td>Limited Performance Test (LPT)</td><td>A focused subset of the CPT verifying essential or key functions only, trading comprehensive coverage for speed — commonly used between sub-steps of a single test campaign, or when the full CPT equipment suite is impractical to bring to the test venue.</td></tr>
       <tr><td>Mode Transition Testing</td><td>Testing that verifies the spacecraft transitions correctly between all defined operating modes, including under nominal and fault-triggered conditions.</td></tr>
+      <tr><td>Open Item</td><td>An anomaly that remains in the discrepancy tracking system without a terminal disposition — neither closed, corrected, nor waived — because the program has deliberately chosen not to let it block progress. Must eventually resolve to a terminal state; see Watch Item and Deferred Resolution.</td></tr>
       <tr><td>Requirements Verification Matrix (RVM)</td><td>The formal document that maps every system requirement to its verification method, the test or analysis that provides verification, the result, and its status.</td></tr>
-      <tr><td>Test-as-You-Fly</td><td>The principle that test conditions should replicate flight conditions as closely as possible — using flight software, flight hardware interfaces, and flight operational procedures.</td></tr>
-      <tr><td>Test Conductor</td><td>The person responsible for the execution of a specific test. Owns the test execution, holds the authority to call a test hold, and manages the test team throughout the operation.</td></tr>
+      <tr><td>Test-as-You-Fly, Fly-as-You-Test</td><td>The principle that test conditions should replicate flight conditions as closely as practical — using flight software, flight hardware interfaces, flight operational procedures — and that the flight configuration launched should match the configuration tested.</td></tr>
+      <tr><td>Test Conductor</td><td>The person responsible for the execution of a specific test, regardless of the specific title an organization assigns the role. Owns the test execution, holds the authority to call a test hold, and manages the test team throughout the operation.</td></tr>
       <tr><td>Traveler / Test Log</td><td>The controlled record that documents the execution of each test step, who performed it, when, what the observed result was, and any anomalies noted.</td></tr>
       <tr><td>V&amp;V Matrix</td><td>Verification and Validation Matrix. Synonymous with Requirements Verification Matrix. Tracks the closure status of every requirement verification activity in the program.</td></tr>
-      <tr><td>Waiver</td><td>A post-facto formal acceptance that a hardware non-conformance is acceptable for flight. Granted by technical authority after engineering assessment; tracked explicitly through launch.</td></tr>
+      <tr><td>Waiver</td><td>A post-facto formal acceptance that a hardware non-conformance is acceptable for flight. Granted by technical authority after engineering assessment; tracked explicitly through launch. Unlike an open item, a waiver is a terminal disposition.</td></tr>
+      <tr><td>Watch Item</td><td>An open item judged low-risk, kept open and actively monitored across subsequent tests to determine whether it recurs, trends, or resolves on its own. Not an acceptance of the anomaly — the monitoring itself is the disposition until it is closed or escalated.</td></tr>
       <tr><td>Yellow / Red Limits</td><td>A two-level telemetry limit system. Yellow limits indicate off-nominal conditions requiring investigation; Red limits indicate violations requiring immediate test holds or corrective action.</td></tr>
     </tbody>
   </table>
@@ -422,25 +543,25 @@
     <div class="art-nav-select-wrap">
       <select id="artNav_spacecraft_iat_article03_html">
         <option value="">— Select any article in the series —</option>
-        <optgroup label="── Main Series ──────────────────────────">
-          <option value="spacecraft_iat_intro.html">Intro · Introduction to Spacecraft I&amp;T</option>
-          <option value="spacecraft_iat_article01.html">01 · I&amp;T Program Structure</option>
-          <option value="" disabled>02 · Configuration Management (Coming Soon)</option>
-          <option value="" disabled>03 · Quality Assurance (Coming Soon)</option>
-          <option value="" disabled>04 · Cleanrooms &amp; Contamination Control (Coming Soon)</option>
-          <option value="" disabled>05 · EGSE &amp; Test Harness (Coming Soon)</option>
-          <option value="spacecraft_iat_article03.html" selected disabled>&#9654; 06 · Functional Testing</option>
-          <option value="" disabled>07 · Flight Software V&amp;V (Coming Soon)</option>
-          <option value="" disabled>08 · Mass Properties &amp; Structural Loads (Coming Soon)</option>
-          <option value="" disabled>09 · Vibration, Acoustics &amp; Shock (Coming Soon)</option>
-          <option value="" disabled>10 · Thermal-Vacuum Testing (Coming Soon)</option>
-          <option value="" disabled>11 · EMC Testing (Coming Soon)</option>
-          <option value="" disabled>12 · Instrument Integration &amp; Calibration (Coming Soon)</option>
-          <option value="" disabled>13 · Propulsion Testing (Coming Soon)</option>
-          <option value="" disabled>14 · Anomaly Management (Coming Soon)</option>
-          <option value="" disabled>15 · Launch Vehicle Integration (Coming Soon)</option>
-          <option value="" disabled>16 · Launch Readiness &amp; Commissioning (Coming Soon)</option>
-        </optgroup>
+       <optgroup label="── Main Series ──────────────────────────">
+  <option value="spacecraft_iat_intro.html">Intro · Introduction to Spacecraft I&amp;T</option>
+  <option value="spacecraft_iat_article01.html">01 · I&amp;T Program Structure</option>
+  <option value="spacecraft_iat_article11.html">02 · Configuration Management</option>
+  <option value="spacecraft_iat_article16.html">03 · Quality Assurance </option>
+  <option value="spacecraft_iat_article02.html">04 · Cleanrooms &amp; Contamination Control</option>
+  <option value="spacecraft_iat_article10.html">05 · EGSE &amp; Test Harness</option>
+  <option value="spacecraft_iat_article03.html" selected disabled>&#9654; 06 · Functional Testing</option>
+  <option value="" disabled>>07 · Flight Software V&amp;V (Coming Soon)</option>
+  <option value="" disabled>08 · Mass Properties &amp; Structural Loads (Coming Soon)</option>
+  <option value="" disabled>>09 · Vibration, Acoustics &amp; Shock (Coming Soon)</option>
+  <option value="" disabled>10 · Thermal-Vacuum Testing (Coming Soon)</option>
+  <option value="" disabled>11 · EMC Testing (Coming Soon)</option>
+  <option value="" disabled>>12 · Instrument Integration &amp; Calibration (Coming Soon)</option>
+  <option value="" disabled>13 · Propulsion Testing (Coming Soon)</option>
+  <option value="" disabled>>14 · Anomaly Management (Coming Soon)</option>
+  <option value="" disabled>15 · Launch Vehicle Integration (Coming Soon)</option>
+  <option value="" disabled>>16 · Launch Readiness &amp; Commissioning (Coming Soon)</option>
+</optgroup>
         <optgroup label="── Supplementary ──────────────────────────">
           <option value="" disabled>S1 · Small Satellites (Coming Soon)</option>
           <option value="" disabled>S2 · Case Studies (Coming Soon)</option>
