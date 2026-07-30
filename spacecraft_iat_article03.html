@@ -304,18 +304,66 @@
 
   <p>A spacecraft does not operate in a single state. It transitions through a defined set of operating modes over the course of its mission — from launch configuration to safe mode to normal operations to mission/observation mode, and through contingency modes when anomalies are detected. Each mode has a defined set of active functions, power states, thermal conditions, and software behaviors. Mode transition testing verifies that the spacecraft transitions correctly between all defined modes, including under fault conditions.</p>
 
- <table class="mode-table">
-    <thead><tr><th>Mode</th><th>Description &amp; Functional Content</th><th>Key Test Objectives</th></tr></thead>
-    <tbody>
-      <tr><td>LAUNCH</td><td>Spacecraft is launch-vehicle encapsulated. Minimum power. Flight computer running launch monitoring software. All deployables inhibited by mechanical inhibits.</td><td>Verify all inhibit circuits are active. Verify battery state. Verify telemetry through umbilical. Verify separation signal response in simulation.</td></tr>
-      <tr><td>INITIAL ACQUISITION</td><td>Post-separation. Solar arrays deploy. Primary communications established. Spacecraft achieves power-positive condition and begins autonomous safe-mode operations.</td><td>Simulate separation event. Verify autonomous deployment sequence. Verify sun acquisition algorithm. Verify telemetry transmission and ground receipt.</td></tr>
-      <tr><td>SAFE MODE</td><td>Minimum-risk autonomous configuration. Only essential subsystems active. Spacecraft Sun-pointing. Awaiting ground contact and assessment.</td><td>Command spacecraft to safe mode from all other modes. Verify correct hardware state transitions. Verify autonomous fault detection triggers safe mode entry. Command recovery from safe mode to Normal Ops and to Payload Ops, and verify correct hardware and software state transitions on exit.</td></tr>
-      <tr><td>NORMAL OPS</td><td>All subsystems active. Full attitude control. Scheduled command execution. Payload in standby or operational state.</td><td>Verify all subsystem interfaces in normal ops configuration. Verify scheduled command execution. Verify autonomy rule set operation.</td></tr>
-      <tr><td>PAYLOAD OPS</td><td>Payload fully operational. Fine pointing active. Data recording to on-board mass memory. Downlink of payload data during contact periods.</td><td>Verify payload commanding through flight software. Verify data recording and playback. Verify pointing stability during simulated payload operations.</td></tr>
-      <tr><td>MANEUVER</td><td>Propulsion system active. Attitude control reconfigured for thrust direction. Payload safed during burn.</td><td>Verify propulsion system enable/disable sequences. Verify attitude control reconfiguration. Verify payload safing logic. Simulate abort scenarios.</td></tr>
-      <tr><td>CONTINGENCY</td><td>Fault-triggered states: battery low, single-string mode, communication loss, payload anomaly. Autonomous response sequences.</td><td>Inject fault conditions and verify autonomous response. Verify fault protection logic tables. Verify recovery procedure sequences from each contingency state.</td></tr>
-    </tbody>
-  </table>
+ <div class="mode-flow">
+    <div class="mode-flow-header">Spacecraft Operating Modes</div>
+
+    <div class="mode-row launch">
+      <div class="mode-badge"><div class="mode-icon">🚀</div><div class="mode-name">Launch</div></div>
+      <div class="mode-body">
+        <div class="mode-block"><div class="mode-block-label">Description &amp; Functional Content</div><p>Spacecraft is launch-vehicle encapsulated. Minimum power. Flight computer running launch monitoring software. All deployables inhibited by mechanical inhibits.</p></div>
+        <div class="mode-block"><div class="mode-block-label">Key Test Objectives</div><p>Verify all inhibit circuits are active. Verify battery state. Verify telemetry through umbilical. Verify separation signal response in simulation.</p></div>
+      </div>
+    </div>
+
+    <div class="mode-row acq">
+      <div class="mode-badge"><div class="mode-icon">📡</div><div class="mode-name">Initial<br>Acquisition</div></div>
+      <div class="mode-body">
+        <div class="mode-block"><div class="mode-block-label">Description &amp; Functional Content</div><p>Post-separation. Solar arrays deploy. Primary communications established. Spacecraft achieves power-positive condition and begins autonomous safe-mode operations.</p></div>
+        <div class="mode-block"><div class="mode-block-label">Key Test Objectives</div><p>Simulate separation event. Verify autonomous deployment sequence. Verify sun acquisition algorithm. Verify telemetry beacon transmission and ground receipt.</p></div>
+      </div>
+    </div>
+
+    <div class="mode-row safe">
+      <div class="mode-badge"><div class="mode-icon">🛡</div><div class="mode-name">Safe Mode</div></div>
+      <div class="mode-body">
+        <div class="mode-block"><div class="mode-block-label">Description &amp; Functional Content</div><p>Minimum-risk autonomous configuration. Only essential subsystems active. Spacecraft Sun-pointing. Awaiting ground contact and assessment.</p></div>
+        <div class="mode-block"><div class="mode-block-label">Key Test Objectives</div><p>Command spacecraft to safe mode from all other modes. Verify correct hardware state transitions. Verify autonomous fault detection triggers safe mode entry. Command recovery from safe mode to Normal Ops and to Payload Ops, and verify correct hardware and software state transitions on exit.</p></div>
+      </div>
+    </div>
+
+    <div class="mode-row normal">
+      <div class="mode-badge"><div class="mode-icon">⚙</div><div class="mode-name">Normal Ops</div></div>
+      <div class="mode-body">
+        <div class="mode-block"><div class="mode-block-label">Description &amp; Functional Content</div><p>All subsystems active. Full attitude control. Scheduled command execution. Payload in standby or operational state.</p></div>
+        <div class="mode-block"><div class="mode-block-label">Key Test Objectives</div><p>Verify all subsystem interfaces in normal ops configuration. Verify scheduled command execution. Verify autonomy rule set operation.</p></div>
+      </div>
+    </div>
+
+    <div class="mode-row payload">
+      <div class="mode-badge"><div class="mode-icon">🎯</div><div class="mode-name">Payload Ops</div></div>
+      <div class="mode-body">
+        <div class="mode-block"><div class="mode-block-label">Description &amp; Functional Content</div><p>Payload fully operational. Fine pointing active. Data recording to on-board mass memory. Downlink of payload data during contact periods.</p></div>
+        <div class="mode-block"><div class="mode-block-label">Key Test Objectives</div><p>Verify payload commanding through flight software. Verify data recording and playback. Verify pointing stability during simulated payload operations.</p></div>
+      </div>
+    </div>
+
+    <div class="mode-row maneuver">
+      <div class="mode-badge"><div class="mode-icon">🔥</div><div class="mode-name">Maneuver</div></div>
+      <div class="mode-body">
+        <div class="mode-block"><div class="mode-block-label">Description &amp; Functional Content</div><p>Propulsion system active. Attitude control reconfigured for thrust direction. Payload safed during burn.</p></div>
+        <div class="mode-block"><div class="mode-block-label">Key Test Objectives</div><p>Verify propulsion system enable/disable sequences. Verify attitude control reconfiguration. Verify payload safing logic. Simulate abort scenarios.</p></div>
+      </div>
+    </div>
+
+    <div class="mode-row contingency">
+      <div class="mode-badge"><div class="mode-icon">⚠</div><div class="mode-name">Contingency</div></div>
+      <div class="mode-body">
+        <div class="mode-block"><div class="mode-block-label">Description &amp; Functional Content</div><p>Fault-triggered states: battery low, single-string mode, communication loss, payload anomaly. Autonomous response sequences.</p></div>
+        <div class="mode-block"><div class="mode-block-label">Key Test Objectives</div><p>Inject fault conditions and verify autonomous response. Verify fault protection logic tables. Verify recovery procedure sequences from each contingency state.</p></div>
+      </div>
+    </div>
+
+  </div>
 
   <p>Mode transition testing must cover not only the nominal transitions (Normal Ops → Science Mode) but the full transition matrix: every mode must be reachable from every other mode through the correct command or fault event. Gaps in mode transition testing are gaps in fault protection coverage — the spacecraft may encounter a transition in flight that was never tested on the ground.</p>
 

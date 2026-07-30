@@ -1237,6 +1237,59 @@ ul.cs-list li::before {
   line-height: 1.6;
 }
 
+/* ── ARTICLE 03 (Functional Testing): MODE FLOW ── */
+.mode-flow { margin: 2.2em 0; border: 1px solid var(--rule); overflow: hidden; }
+.mode-flow-header {
+  background: var(--ink); color: var(--paper); padding: 12px 20px;
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+}
+.mode-row {
+  display: grid; grid-template-columns: 170px 1fr;
+  border-bottom: 1px solid var(--rule); background: var(--white);
+}
+.mode-row:nth-child(even) { background: var(--light); }
+.mode-row:last-child { border-bottom: none; }
+.mode-badge {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 14px 10px; border-right: 3px solid var(--rule);
+  text-align: center; gap: 5px;
+}
+.mode-icon { font-size: 1.5rem; line-height: 1; }
+.mode-name {
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  line-height: 1.3;
+}
+.mode-row.launch .mode-badge  { border-right-color: var(--muted); }
+.mode-row.acq .mode-badge     { border-right-color: var(--amber); }
+.mode-row.safe .mode-badge    { border-right-color: var(--steel); }
+.mode-row.normal .mode-badge  { border-right-color: var(--green); }
+.mode-row.payload .mode-badge { border-right-color: var(--gold); }
+.mode-row.maneuver .mode-badge{ border-right-color: var(--violet); }
+.mode-row.contingency .mode-badge { border-right-color: var(--rust); }
+.mode-row.launch .mode-name   { color: var(--muted); }
+.mode-row.acq .mode-name      { color: var(--amber); }
+.mode-row.safe .mode-name     { color: var(--steel); }
+.mode-row.normal .mode-name   { color: var(--green); }
+.mode-row.payload .mode-name  { color: #a07c28; }
+.mode-row.maneuver .mode-name { color: var(--violet); }
+.mode-row.contingency .mode-name { color: var(--rust); }
+.mode-body { padding: 13px 18px; }
+.mode-block { margin-bottom: 8px; }
+.mode-block:last-child { margin-bottom: 0; }
+.mode-block-label {
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
+  margin-bottom: 3px; font-weight: 500;
+}
+.mode-block p { font-size: 0.86rem; color: #333; line-height: 1.6; }
+
+@media (max-width: 680px) {
+  .mode-row { grid-template-columns: 1fr; }
+  .mode-badge { flex-direction: row; border-right: none; border-bottom: 3px solid var(--rule); padding: 10px 14px; justify-content: flex-start; }
+}
+
 
 /* ── CS CALLOUT (case study style) ── */
 .cs-callout {
