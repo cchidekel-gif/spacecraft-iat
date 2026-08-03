@@ -44,46 +44,46 @@
       audience: "New engineers, students, and anyone curious about what happens between spacecraft design and launch \u2014 no prior I&T experience required."
     },
      { id: "01", seriesNum: "01",
-      title:    "I&T Program Structure",
-      url:      "spacecraft_iat_article01.html",
-      published: true,
-      topics:   ["I&T Plan", "Integration Levels", "Model Philosophy", "STM", "EM", "QM", "PFM", "FM", "Technical Reviews", "EGSE", "Test Facilities", "Characterization Testing"],
-      audience: "I&T engineers, program managers, and systems engineers responsible for planning, structuring, or reviewing a spacecraft integration and test campaign."
-    },
+  title:    "I&T Program Structure",
+  url:      "spacecraft_iat_article01.html",
+  published: true,
+  topics:   ["I&T Plan", "Integration Levels", "Model Philosophy", "STM", "EM", "QM", "PFM", "FM", "Technical Reviews", "EGSE", "Test Facilities", "Test Phases", "Qualification", "Protoflight", "Characterization Testing"],
+  audience: "I&T engineers, program managers, and systems engineers responsible for planning, structuring, or reviewing a spacecraft integration and test campaign."
+},
    { id: "02", seriesNum: "02",
-      title:    "Configuration Management",
-      url:      "spacecraft_iat_article11.html",
-      published: true,
-      topics:   ["Configuration Management", "CCB", "As-Built Record", "Traveller", "PCA", "FCA", "CSA"],
-      audience: "New and early-career spacecraft engineers and technicians who work with flight hardware and need to understand why the documentation discipline surrounding that work is as important as the technical work itself."
-    },
+  title:    "Configuration Management",
+  url:      "spacecraft_iat_article11.html",
+  published: true,
+  topics:   ["Configuration Management", "CCB", "As-Built Record", "Traveller", "PCA", "FCA", "CSA", "ECN"],
+  audience: "New and early-career spacecraft engineers and technicians who work with flight hardware and need to understand why the documentation discipline surrounding that work is as important as the technical work itself."
+},
     { id: "03", seriesNum: "03",
-      title:    "Quality Assurance, Inspection, and Oversight",
-      url:      "spacecraft_iat_article16.html",
-      published: true,
-      topics:   ["Quality Assurance", "Inspection", "Workmanship", "Stop-Work", "Quality Culture", "NCR", "MRB"],
-      audience: "Every person who works on flight hardware \u2014 engineer, technician, manager, or inspector. Quality assurance is not a specialty discipline; it is a shared responsibility that every participant in the I&T program must understand and practice."
-    },
+  title:    "Quality Assurance, Inspection, and Oversight",
+  url:      "spacecraft_iat_article16.html",
+  published: true,
+  topics:   ["Quality Assurance", "Inspection", "Workmanship", "Stop-Work", "Quality Culture", "NCR", "MRB", "Supplier Quality"],
+  audience: "Every person who works on flight hardware \u2014 engineer, technician, manager, or inspector. Quality assurance is not a specialty discipline; it is a shared responsibility that every participant in the I&T program must understand and practice."
+},
       { id: "04", seriesNum: "04",
       title:    "The Cleanroom: Where Discipline Meets Flight Hardware",
       url:      "spacecraft_iat_article02.html",
       published: true,
       topics:   ["Cleanroom", "Contamination Control", "Molecular Contamination", "ESD", "FOD", "ISO 14644", "ASTM E595", "Gowning", "Cleanroom Culture"],
-      audience: "New and early-career spacecraft engineers, aerospace students, and anyone with a serious interest in how spacecraft are built and tested."
+      audience: "Anyone who works with flight hardware or oversees those who do — engineers, technicians, and QA personnel — and needs to understand the contamination control, ESD, and FOD disciplines that protect hardware from irreversible, often invisible damage."
     },
       { id: "05", seriesNum: "05",
       title:    "EGSE and the Test Harness",
       url:      "spacecraft_iat_article10.html",
       published: true,
       topics:   ["EGSE", "Test Harness", "Ground Loops", "Simulators", "Power EGSE", "RF EGSE", "Calibration"],
-      audience: "New and early-career spacecraft engineers, aerospace students, and any practitioner who works with spacecraft test infrastructure and needs to understand the discipline behind it."
+      audience: "I&T engineers, test conductors, and anyone who designs, operates, or interprets results from spacecraft test infrastructure — and needs to understand how EGSE fidelity, calibration, and configuration control determine whether a test result can be trusted."
     },
     { id: "06", seriesNum: "06",
       title:    "Functional Testing",
       url:      "spacecraft_iat_article03.html",
       published: true,
       topics:   ["Functional Test", "Test-as-You-Fly", "Verification", "Requirements", "Fault Protection", "Anomaly Mgmt"],
-      audience: "New and early-career spacecraft engineers, aerospace students, and anyone with a serious interest in how spacecraft are built and tested."
+      audience: "I&T engineers and test conductors responsible for verifying spacecraft functions against requirements, and who need to understand the traceability, pass/fail, and anomaly-disposition disciplines that make a test result defensible."
     },
     { id: "07", seriesNum: "07",
       title:    "Flight Software Verification and Validation",

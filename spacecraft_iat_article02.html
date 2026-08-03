@@ -586,14 +586,7 @@
     <p>To discuss how this curriculum can serve your organization, contact Charles Chidekel at <a href="mailto:integrationandtestguru@gmail.com">integrationandtestguru@gmail.com</a>.</p>
   </div>
 
-  <!-- NEXT ARTICLE -->
-  <div class="next-article">
-    <div class="next-article-content">
-      <div class="next-label">Next Article · Article 05 of 19</div>
-      <div class="next-title">Electrical Ground Support Equipment and the Test Harness</div>
-      <div class="next-desc">The power, RF, simulation, and wiring infrastructure that makes spacecraft testing possible — and the discipline that determines whether the results can be trusted</div>
-    </div>
-  </div>
+  <div id="series-nav-next"></div>
 
   <!-- GLOSSARY -->
   <h2 class="sh" id="glossary">Key Terms Used in This Article</h2>
@@ -620,43 +613,8 @@
 </article>
 </div>
 
-<!-- ARTICLE NAVIGATOR -->
-<div class="art-nav">
-  <div class="art-nav-inner">
-    <span class="art-nav-label">Go to article</span>
-    <div class="art-nav-select-wrap">
-      <select id="artNav_spacecraft_iat_article02_html">
-        <option value="">— Select any article in the series —</option>
-        <optgroup label="── Main Series ──────────────────────────">
-          <option value="spacecraft_iat_intro.html">Intro · Introduction to Spacecraft I&amp;T</option>
-          <option value="spacecraft_iat_article01.html">01 · I&amp;T Program Structure</option>
-          <option value="spacecraft_iat_article11.html">02 · Configuration Management</option>
-          <option value="" disabled>03 · Quality Assurance (Coming Soon)</option>
-          <option value="spacecraft_iat_article02.html" selected disabled>&#9654; 04 · Cleanrooms &amp; Contamination Control</option>
-          <option value="spacecraft_iat_article10.html">05 · EGSE &amp; Test Harness</option>
-          <option value="spacecraft_iat_article03.html">06 · Functional Testing</option>
-          <option value="spacecraft_iat_article09.html">07 · Flight Software V&amp;V</option>
-          <option value="" disabled>08 · Mass Properties &amp; Structural Loads (Coming Soon)</option>
-          <option value="spacecraft_iat_article04.html">09 · Vibration, Acoustics &amp; Shock</option>
-          <option value="spacecraft_iat_article05.html">10 · Thermal-Vacuum Testing</option>
-          <option value="" disabled>11 · EMC Testing (Coming Soon)</option>
-          <option value="spacecraft_iat_article07.html">12 · Instrument Integration &amp; Calibration</option>
-          <option value="" disabled>13 · Propulsion Testing (Coming Soon)</option>
-          <option value="spacecraft_iat_article06.html">14 · Anomaly Management</option>
-          <option value="" disabled>15 · Launch Vehicle Integration (Coming Soon)</option>
-          <option value="spacecraft_iat_article08.html">16 · Launch Readiness &amp; Commissioning</option>
-        </optgroup>
-        <optgroup label="── Supplementary ──────────────────────────">
-          <option value="" disabled>S1 · Small Satellites (Coming Soon)</option>
-          <option value="" disabled>S2 · Case Studies (Coming Soon)</option>
-        </optgroup>
-      </select>
-    </div>
-    <button class="art-nav-go" id="artNavBtn_spacecraft_iat_article02_html" disabled onclick="var v=document.getElementById('artNav_spacecraft_iat_article02_html').value; if(v) window.location.href=v+'#top';">
-      Open &#8594;
-    </button>
-  </div>
-</div>
+<div id="series-nav-bottom"></div>
+
 <script>
 document.getElementById('artNav_spacecraft_iat_article02_html').addEventListener('change', function() {
   var btn = document.getElementById('artNavBtn_spacecraft_iat_article02_html');
@@ -665,29 +623,8 @@ document.getElementById('artNav_spacecraft_iat_article02_html').addEventListener
 });
 </script>
 
-<footer class="article-footer">
-  <div class="footer-inner">
-    <div class="footer-col">
-      <div class="footer-label">Series</div>
-      <div class="footer-text">Spacecraft Integration &amp; Test<br>Article 04 of 19</div>
-    </div>
-    <div class="footer-col">
-      <div class="footer-label">Topics</div>
-      <div class="tags">
-        <span class="tag">Cleanroom</span>
-        <span class="tag">Contamination</span>
-        <span class="tag">ESD</span>
-        <span class="tag">FOD</span>
-        <span class="tag">ISO 14644</span>
-        <span class="tag">Gowning</span>
-        <span class="tag">Molecular Contamination</span>
-      </div>
-    </div>
-    <div class="footer-col">
-      <div class="footer-label">Audience</div>
-      <div class="footer-text">New and early-career spacecraft engineers, aerospace students, and any practitioner who works with flight hardware and needs to understand the discipline behind cleanroom integration.</div>
-    </div>
-  </div>
-</footer>
+<div id="series-nav-footer"></div>
+
+<script src="series-nav.js"></script>
 </div>
 <script>if(window.location.hash=="#top"||!window.location.hash){document.addEventListener("DOMContentLoaded",function(){window.scrollTo(0,0);});window.addEventListener("load",function(){window.scrollTo(0,0);});}</script>
