@@ -74,14 +74,14 @@
       { id: "05", seriesNum: "05",
       title:    "EGSE and the Test Harness",
       url:      "spacecraft_iat_article10.html",
-      published: false,
+      published: true,
       topics:   ["EGSE", "Test Harness", "Ground Loops", "Simulators", "Power EGSE", "RF EGSE", "Calibration"],
       audience: "New and early-career spacecraft engineers, aerospace students, and any practitioner who works with spacecraft test infrastructure and needs to understand the discipline behind it."
     },
     { id: "06", seriesNum: "06",
       title:    "Functional Testing",
       url:      "spacecraft_iat_article03.html",
-      published: false,
+      published: true,
       topics:   ["Functional Test", "Test-as-You-Fly", "Verification", "Requirements", "Fault Protection", "Anomaly Mgmt"],
       audience: "New and early-career spacecraft engineers, aerospace students, and anyone with a serious interest in how spacecraft are built and tested."
     },
