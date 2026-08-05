@@ -105,54 +105,91 @@
 
   <p>Flight software verification and validation is organized in a hierarchy of increasing integration and fidelity, paralleling the hardware integration hierarchy described in Article 01. Each level tests the software in a progressively more representative environment, with progressively more of the surrounding system present.</p>
 
-  <table class="vv-table">
-    <thead>
-      <tr>
-        <th>V&amp;V Level</th>
-        <th>Environment</th>
-        <th>What Is Being Verified</th>
-        <th>Key Limitations</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Unit Testing</td>
-        <td>Development workstation; software simulator</td>
-        <td>Individual software modules and functions meet their interface requirements and produce correct outputs for all specified input conditions, including boundary and error cases.</td>
-        <td>No real-time constraints. No hardware interactions. Timing, interrupt handling, and hardware-dependent behavior are not verified. Simulation fidelity limits what input conditions can be generated.</td>
-      </tr>
-      <tr>
-        <td>Software Integration Testing (SIT)</td>
-        <td>Development system; flight processor emulator or engineering model processor</td>
-        <td>Software modules interact correctly when integrated; interfaces between subsystems (ADCS, power, communications, payload) function as specified; timing budgets are met on representative hardware.</td>
-        <td>Hardware models may not fully represent flight hardware behavior. Environmental effects (radiation, temperature) not present. Hardware fault conditions may be difficult to inject.</td>
-      </tr>
-      <tr>
-        <td>Hardware-in-the-Loop (HIL) Testing</td>
-        <td>Flight software on flight (or flight-like) processor; real hardware subsystems or high-fidelity simulators</td>
-        <td>Flight software operates correctly with real hardware interfaces. Timing-critical interactions verified. Mode transitions verified end-to-end. Fault protection responses verified with hardware-realistic stimuli.</td>
-        <td>Not all hardware may be available. Environmental test conditions (thermal, vacuum, radiation) may not be present. Some failure modes cannot be safely induced on flight hardware.</td>
-      </tr>
-      <tr>
-        <td>System-Level V&amp;V (FLATSAT / Integrated Test)</td>
-        <td>Complete spacecraft software running on the integrated spacecraft or a high-fidelity functional test bed (FLATSAT)</td>
-        <td>Complete system behavior verified across all mission modes. Spacecraft-level timing, resource utilization, and cross-subsystem interactions verified. Mission scenario simulations executed. End-to-end functional test cases executed.</td>
-        <td>Environmental conditions (thermal, vacuum, radiation, launch dynamics) not present during software-focused testing. Some anomaly modes may require the combined spacecraft environment to manifest.</td>
-      </tr>
-      <tr>
-        <td>Environmental Test V&amp;V</td>
-        <td>Flight software on integrated spacecraft during environmental tests (T-V, vibration, EMC)</td>
-        <td>Software behavior verified in the environmental conditions that ground testing can reproduce. Timing anomalies that manifest only under thermal stress. EMC-induced software state changes. Vibration-induced sensor noise effects on control algorithms.</td>
-        <td>Cannot test all fault conditions during environmental tests. Environmental test priorities may limit software test objectives. Test anomalies must be carefully investigated to distinguish hardware from software root causes.</td>
-      </tr>
-      <tr>
-        <td>Operational Validation (Simulations)</td>
-        <td>High-fidelity spacecraft simulator in the Mission Operations Center</td>
-        <td>Complete mission scenarios — including launch, LEOP, routine science operations, and contingency procedures — validated by the operations team against the flight software baseline. Operations procedures verified against actual software behavior.</td>
-        <td>Simulator fidelity limits. Simulator and flight software may diverge over time if simulator is not kept current. Operations team training objectives may conflict with test objectives.</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="model-cards">
+  <div class="model-card">
+    <div class="model-card-header">
+      <div class="model-badge ut">UT</div>
+      <div class="model-hdr-text">
+        <div class="model-name">Unit Testing</div>
+        <div class="model-purpose">Development workstation; software simulator</div>
+      </div>
+    </div>
+    <div class="model-body two-col">
+      <div class="model-cell"><div class="model-cell-label">What Is Being Verified</div><p>Individual software modules and functions meet their interface requirements and produce correct outputs for all specified input conditions, including boundary and error cases.</p></div>
+      <div class="model-cell"><div class="model-cell-label">Key Limitations</div><p>No real-time constraints. No hardware interactions. Timing, interrupt handling, and hardware-dependent behavior are not verified. Simulation fidelity limits what input conditions can be generated.</p></div>
+    </div>
+  </div>
+
+  <div class="model-card">
+    <div class="model-card-header">
+      <div class="model-badge sit">SIT</div>
+      <div class="model-hdr-text">
+        <div class="model-name">Software Integration Testing (SIT)</div>
+        <div class="model-purpose">Development system; flight processor emulator or engineering model processor</div>
+      </div>
+    </div>
+    <div class="model-body two-col">
+      <div class="model-cell"><div class="model-cell-label">What Is Being Verified</div><p>Software modules interact correctly when integrated; interfaces between subsystems (ADCS, power, communications, payload) function as specified; timing budgets are met on representative hardware.</p></div>
+      <div class="model-cell"><div class="model-cell-label">Key Limitations</div><p>Hardware models may not fully represent flight hardware behavior. Environmental effects (radiation, temperature) not present. Hardware fault conditions may be difficult to inject.</p></div>
+    </div>
+  </div>
+
+  <div class="model-card">
+    <div class="model-card-header">
+      <div class="model-badge hil">HIL</div>
+      <div class="model-hdr-text">
+        <div class="model-name">Hardware-in-the-Loop (HIL) Testing</div>
+        <div class="model-purpose">Flight software on flight (or flight-like) processor; real hardware subsystems or high-fidelity simulators</div>
+      </div>
+    </div>
+    <div class="model-body two-col">
+      <div class="model-cell"><div class="model-cell-label">What Is Being Verified</div><p>Flight software operates correctly with real hardware interfaces. Timing-critical interactions verified. Mode transitions verified end-to-end. Fault protection responses verified with hardware-realistic stimuli.</p></div>
+      <div class="model-cell"><div class="model-cell-label">Key Limitations</div><p>Not all hardware may be available. Environmental test conditions (thermal, vacuum, radiation) may not be present. Some failure modes cannot be safely induced on flight hardware.</p></div>
+    </div>
+  </div>
+
+  <div class="model-card">
+    <div class="model-card-header">
+      <div class="model-badge sys">SYS</div>
+      <div class="model-hdr-text">
+        <div class="model-name">System-Level V&amp;V (FLATSAT / Integrated Test)</div>
+        <div class="model-purpose">Complete spacecraft software running on the integrated spacecraft or a high-fidelity functional test bed (FLATSAT)</div>
+      </div>
+    </div>
+    <div class="model-body two-col">
+      <div class="model-cell"><div class="model-cell-label">What Is Being Verified</div><p>Complete system behavior verified across all mission modes. Spacecraft-level timing, resource utilization, and cross-subsystem interactions verified. Mission scenario simulations executed. End-to-end functional test cases executed.</p></div>
+      <div class="model-cell"><div class="model-cell-label">Key Limitations</div><p>Environmental conditions (thermal, vacuum, radiation, launch dynamics) not present during software-focused testing. Some anomaly modes may require the combined spacecraft environment to manifest.</p></div>
+    </div>
+  </div>
+
+  <div class="model-card">
+    <div class="model-card-header">
+      <div class="model-badge env">ENV</div>
+      <div class="model-hdr-text">
+        <div class="model-name">Environmental Test V&amp;V</div>
+        <div class="model-purpose">Flight software on integrated spacecraft during environmental tests (T-V, vibration, EMC)</div>
+      </div>
+    </div>
+    <div class="model-body two-col">
+      <div class="model-cell"><div class="model-cell-label">What Is Being Verified</div><p>Software behavior verified in the environmental conditions that ground testing can reproduce. Timing anomalies that manifest only under thermal stress. EMC-induced software state changes. Vibration-induced sensor noise effects on control algorithms.</p></div>
+      <div class="model-cell"><div class="model-cell-label">Key Limitations</div><p>Cannot test all fault conditions during environmental tests. Environmental test priorities may limit software test objectives. Test anomalies must be carefully investigated to distinguish hardware from software root causes.</p></div>
+    </div>
+  </div>
+
+  <div class="model-card">
+    <div class="model-card-header">
+      <div class="model-badge ops">OPS</div>
+      <div class="model-hdr-text">
+        <div class="model-name">Operational Validation (Simulations)</div>
+        <div class="model-purpose">High-fidelity spacecraft simulator in the Mission Operations Center</div>
+      </div>
+    </div>
+    <div class="model-body two-col">
+      <div class="model-cell"><div class="model-cell-label">What Is Being Verified</div><p>Complete mission scenarios — including launch, LEOP, routine science operations, and contingency procedures — validated by the operations team against the flight software baseline. Operations procedures verified against actual software behavior.</p></div>
+      <div class="model-cell"><div class="model-cell-label">Key Limitations</div><p>Simulator fidelity limits. Simulator and flight software may diverge over time if simulator is not kept current. Operations team training objectives may conflict with test objectives.</p></div>
+    </div>
+  </div>
+</div>
 
 
 <div class="callout steel">
@@ -235,48 +272,82 @@
 
 <p>Fault protection design begins with the <span class="kt">Failure Modes and Effects Analysis (FMEA)</span> and the <span class="kt">Fault Tree Analysis (FTA)</span> of the spacecraft — the systematic identification of every component failure mode that could threaten the spacecraft's safety or mission success, and the analysis of how each such failure would manifest in the spacecraft's observable behavior. This analysis is not a software-specific activity; it is a spacecraft-wide systems engineering discipline that applies equally to flight hardware, EGSE, and software, and fault protection software is best understood as the flight software discipline's specific implementation of the safety response that FMEA/FTA identifies as necessary. The fault protection software must detect each identified failure mode through one or more monitors, and must respond to each detected condition with a response action that returns the spacecraft to a known safe state.</p>
 
-  <table class="fp-table">
-    <thead>
-      <tr>
-        <th>Monitor Type</th>
-        <th>What It Watches</th>
-        <th>Typical Response</th>
-        <th>Key V&amp;V Challenge</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Limit Monitor</td>
-        <td>Telemetry value above or below a defined threshold (e.g., battery voltage &lt; 28V, temperature &gt; 85°C)</td>
-        <td>Yellow limit: alert / log. Red limit: initiate safe mode or specific corrective action.</td>
-        <td>Limit values must be set correctly — too tight produces false alarms, too loose misses real anomalies. Time-averaging and persistence requirements must be verified for transient rejection.</td>
-      </tr>
-      <tr>
-        <td>Watchdog Timer</td>
-        <td>Software execution — confirms that a specific process completes within its timing budget</td>
-        <td>Resets the processor or initiates a software restart sequence if the watchdog is not cleared within the required interval.</td>
-        <td>Verifying that the watchdog fires correctly under a real software hang — which requires creating a real software hang safely — is difficult. Timing margin under worst-case computational load must be verified.</td>
-      </tr>
-      <tr>
-        <td>Hardware Health Monitor</td>
-        <td>Hardware component status bits, current draw anomalies, communication link failures</td>
-        <td>Component power cycle, switch to redundant unit, or escalation to safe mode depending on severity.</td>
-        <td>Hardware fault conditions must be injected at the interface level (not just simulated in software) to verify that the monitor correctly detects the real hardware failure signature rather than an idealized model of it.</td>
-      </tr>
-      <tr>
-        <td>Attitude Monitor</td>
-        <td>Spacecraft attitude rate, attitude error relative to commanded attitude, Sun sensor outputs</td>
-        <td>Gyro bias update, attitude reinitialization, switch to coarse Sun-pointing (safe mode).</td>
-        <td>The transition between navigation modes (e.g., star tracker to Sun sensor to gyro-only) must be tested under realistic sensor noise and failure scenarios, including simultaneous failures of multiple attitude sensors.</td>
-      </tr>
-      <tr>
-        <td>Sequence Monitor</td>
-        <td>Critical event sequences — confirms that expected events occur within required timing windows (e.g., solar array deployment confirmed within T+30 seconds of separation command)</td>
-        <td>Retry sequence, escalation to contingency mode, or safe mode if sequence does not complete correctly.</td>
-        <td>Time-critical sequences near mission-critical events (separation, orbit insertion) are difficult to test with full environmental fidelity. The interaction between sequence monitor logic and other simultaneously active fault monitors must be verified.</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="model-cards">
+  <div class="model-card">
+    <div class="model-card-header">
+      <div class="model-badge lim">LIM</div>
+      <div class="model-hdr-text">
+        <div class="model-name">Limit Monitor</div>
+        <div class="model-purpose">Telemetry value above or below a defined threshold</div>
+      </div>
+    </div>
+    <div class="model-body">
+      <div class="model-cell"><div class="model-cell-label">What It Watches</div><p>Telemetry value above or below a defined threshold (e.g., battery voltage &lt; 28V, temperature &gt; 85°C).</p></div>
+      <div class="model-cell"><div class="model-cell-label">Typical Response</div><p>Yellow limit: alert / log. Red limit: initiate safe mode or specific corrective action.</p></div>
+      <div class="model-cell"><div class="model-cell-label">Key V&amp;V Challenge</div><p>Limit values must be set correctly — too tight produces false alarms, too loose misses real anomalies. Time-averaging and persistence requirements must be verified for transient rejection.</p></div>
+    </div>
+  </div>
+
+  <div class="model-card">
+    <div class="model-card-header">
+      <div class="model-badge wat">WAT</div>
+      <div class="model-hdr-text">
+        <div class="model-name">Watchdog Timer</div>
+        <div class="model-purpose">Software execution — confirms a process completes within its timing budget</div>
+      </div>
+    </div>
+    <div class="model-body">
+      <div class="model-cell"><div class="model-cell-label">What It Watches</div><p>Software execution — confirms that a specific process completes within its timing budget.</p></div>
+      <div class="model-cell"><div class="model-cell-label">Typical Response</div><p>Resets the processor or initiates a software restart sequence if the watchdog is not cleared within the required interval.</p></div>
+      <div class="model-cell"><div class="model-cell-label">Key V&amp;V Challenge</div><p>Verifying that the watchdog fires correctly under a real software hang — which requires creating a real software hang safely — is difficult. Timing margin under worst-case computational load must be verified.</p></div>
+    </div>
+  </div>
+
+  <div class="model-card">
+    <div class="model-card-header">
+      <div class="model-badge hhm">HHM</div>
+      <div class="model-hdr-text">
+        <div class="model-name">Hardware Health Monitor</div>
+        <div class="model-purpose">Component status bits, current draw anomalies, communication link failures</div>
+      </div>
+    </div>
+    <div class="model-body">
+      <div class="model-cell"><div class="model-cell-label">What It Watches</div><p>Hardware component status bits, current draw anomalies, communication link failures.</p></div>
+      <div class="model-cell"><div class="model-cell-label">Typical Response</div><p>Component power cycle, switch to redundant unit, or escalation to safe mode depending on severity.</p></div>
+      <div class="model-cell"><div class="model-cell-label">Key V&amp;V Challenge</div><p>Hardware fault conditions must be injected at the interface level (not just simulated in software) to verify that the monitor correctly detects the real hardware failure signature rather than an idealized model of it.</p></div>
+    </div>
+  </div>
+
+  <div class="model-card">
+    <div class="model-card-header">
+      <div class="model-badge att">ATT</div>
+      <div class="model-hdr-text">
+        <div class="model-name">Attitude Monitor</div>
+        <div class="model-purpose">Spacecraft attitude rate, attitude error, Sun sensor outputs</div>
+      </div>
+    </div>
+    <div class="model-body">
+      <div class="model-cell"><div class="model-cell-label">What It Watches</div><p>Spacecraft attitude rate, attitude error relative to commanded attitude, Sun sensor outputs.</p></div>
+      <div class="model-cell"><div class="model-cell-label">Typical Response</div><p>Gyro bias update, attitude reinitialization, switch to coarse Sun-pointing (safe mode).</p></div>
+      <div class="model-cell"><div class="model-cell-label">Key V&amp;V Challenge</div><p>The transition between navigation modes (e.g., star tracker to Sun sensor to gyro-only) must be tested under realistic sensor noise and failure scenarios, including simultaneous failures of multiple attitude sensors.</p></div>
+    </div>
+  </div>
+
+  <div class="model-card">
+    <div class="model-card-header">
+      <div class="model-badge seq">SEQ</div>
+      <div class="model-hdr-text">
+        <div class="model-name">Sequence Monitor</div>
+        <div class="model-purpose">Critical event sequences — confirms expected events occur within timing windows</div>
+      </div>
+    </div>
+    <div class="model-body">
+      <div class="model-cell"><div class="model-cell-label">What It Watches</div><p>Critical event sequences — confirms that expected events occur within required timing windows (e.g., solar array deployment confirmed within T+30 seconds of separation command).</p></div>
+      <div class="model-cell"><div class="model-cell-label">Typical Response</div><p>Retry sequence, escalation to contingency mode, or safe mode if sequence does not complete correctly.</p></div>
+      <div class="model-cell"><div class="model-cell-label">Key V&amp;V Challenge</div><p>Time-critical sequences near mission-critical events (separation, orbit insertion) are difficult to test with full environmental fidelity. The interaction between sequence monitor logic and other simultaneously active fault monitors must be verified.</p></div>
+    </div>
+  </div>
+</div>
 
   <div class="callout rust">
   <div class="callout-label">⚠ The Fault Protection Paradox</div>
