@@ -2723,3 +2723,36 @@ ul.cs-list li::before {
   background: var(--cream, #ede7d5);
   border-top: 0.5px solid rgba(0,0,0,0.1);
 }
+
+/* ── SHARED: MODEL/COMPONENT CARDS ── */
+.model-cards{margin:2em 0;}
+.model-card{border:1px solid var(--rule);margin-bottom:12px;overflow:hidden;}
+.model-card-header{display:flex;align-items:stretch;}
+.model-badge{width:72px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:1.1rem;font-weight:700;color:var(--paper);letter-spacing:0.05em;}
+.model-badge.stm{background:#4a6274;}
+.model-badge.em{background:#2e7d52;}
+.model-badge.qm{background:#b87420;}
+.model-badge.fm{background:#b84a2e;}
+.model-badge.pfm{background:#5a3a7a;}
+.model-badge.ut{background:#4a6274;}
+.model-badge.sit{background:#2e7d52;}
+.model-badge.hil{background:#b87420;}
+.model-badge.sys{background:#b84a2e;}
+.model-badge.env{background:#5a3a7a;}
+.model-badge.ops{background:#1a6b6b;}
+.model-badge.lim{background:#4a6274;}
+.model-badge.wat{background:#2e7d52;}
+.model-badge.hhm{background:#b87420;}
+.model-badge.att{background:#b84a2e;}
+.model-badge.seq{background:#5a3a7a;}
+.model-hdr-text{flex:1;padding:14px 18px;background:var(--ink);}
+.model-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--paper);margin-bottom:3px;}
+.model-purpose{font-size:0.85rem;color:#9a9080;font-style:italic;font-weight:300;line-height:1.5;}
+.model-body{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;}
+.model-body.two-col{grid-template-columns:1fr 1fr;}
+.model-cell{padding:14px 18px;border-right:1px solid var(--rule);background:var(--white);}
+.model-cell:last-child{border-right:none;}
+.model-cell-label{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+.model-cell p{font-size:0.84rem;color:#333;line-height:1.6;font-weight:300;margin:0;}
+.model-card:nth-child(even) .model-cell{background:var(--light);}
+@media(max-width:680px){.model-body{grid-template-columns:1fr;}.model-cell{border-right:none;border-bottom:1px solid var(--rule);}.model-cell:last-child{border-bottom:none;}}
