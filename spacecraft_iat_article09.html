@@ -227,28 +227,28 @@
 
   <p><span class="kt">Hardware-in-the-Loop (HIL) testing</span> is the level of V&amp;V at which flight software meets real hardware — where the software's commands produce real electrical signals that drive real hardware responses, and where the hardware's sensor outputs produce real inputs to the software's control algorithms. It is the most important single V&amp;V activity in the entire program for software that has complex, safety-critical interactions with hardware, and it is the level most likely to reveal anomalies that no amount of workstation simulation can find.</p>
 
-  <div class="hil-diagram">
-    <div class="hil-header">Hardware-in-the-Loop Test Configuration — Principal Elements</div>
-    <div class="hil-body">
-      <div class="hil-box flight">
-        <div class="hil-box-label">Flight Element</div>
-        <div class="hil-box-title">Flight Software on Flight Processor</div>
-        <div class="hil-box-sub">Real flight code, real timing constraints, real hardware interfaces. Configuration-controlled flight build.</div>
-      </div>
-      <div class="hil-arrow">⇄</div>
-      <div class="hil-box sim">
-        <div class="hil-box-label">Simulation / EGSE</div>
-        <div class="hil-box-title">Hardware Simulators &amp; Stimuli Generators</div>
-        <div class="hil-box-sub">High-fidelity models of sensors, actuators, and environment. Fault injection capability. Scripted scenario execution.</div>
-      </div>
-      <div class="hil-arrow">⇄</div>
-      <div class="hil-box ground">
-        <div class="hil-box-label">Ground Element</div>
-        <div class="hil-box-title">Mission Operations Software &amp; EGSE Monitor</div>
-        <div class="hil-box-sub">Real ground software commanding real flight software. Telemetry monitoring and anomaly detection in real time.</div>
-      </div>
+  <div class="flow3">
+  <div class="flow3-header">Hardware-in-the-Loop Test Configuration — Principal Elements</div>
+  <div class="flow3-body">
+    <div class="flow3-box a">
+      <div class="flow3-label">Flight Element</div>
+      <div class="flow3-title">Flight Software on Flight Processor</div>
+      <div class="flow3-desc">Real flight code, real timing constraints, real hardware interfaces. Configuration-controlled flight build.</div>
+    </div>
+    <div class="flow3-arrow">⇄</div>
+    <div class="flow3-box b">
+      <div class="flow3-label">Simulation / EGSE</div>
+      <div class="flow3-title">Hardware Simulators &amp; Stimuli Generators</div>
+      <div class="flow3-desc">High-fidelity models of sensors, actuators, and environment. Fault injection capability. Scripted scenario execution.</div>
+    </div>
+    <div class="flow3-arrow">⇄</div>
+    <div class="flow3-box c">
+      <div class="flow3-label">Ground Element</div>
+      <div class="flow3-title">Mission Operations Software &amp; EGSE Monitor</div>
+      <div class="flow3-desc">Real ground software commanding real flight software. Telemetry monitoring and anomaly detection in real time.</div>
     </div>
   </div>
+</div>
 
 <p>The critical design requirement for any HIL test configuration is <strong>fidelity at the interfaces</strong>. The simulators and stimulus generators that stand in for hardware not present in the HIL configuration must faithfully represent the electrical, timing, and data characteristics of the real hardware — not just in the nominal case, but at the extremes of the specification envelope. A simulator that represents the nominal sensor output accurately but does not faithfully reproduce the sensor's noise characteristics, its latency jitter, or its out-of-limit outputs will produce a HIL test that gives false confidence in the software's robustness. This is the same fidelity discipline described in the companion article on <a href="spacecraft_iat_article10.html">EGSE and the test harness</a>: a simulator is a codebase encoding someone's mental model of the vehicle, and the I&amp;T engineer's posture toward it should be interrogation, not trust — knowing precisely which behaviors a given simulator faithfully reproduces and which it does not, for every simulator in the HIL configuration, not just the ones obviously labeled "flight software test support."</p>
 
