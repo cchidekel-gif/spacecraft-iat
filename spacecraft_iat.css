@@ -2758,8 +2758,7 @@ ul.cs-list li::before {
 @media(max-width:680px){.model-body{grid-template-columns:1fr;}.model-cell{border-right:none;border-bottom:1px solid var(--rule);}.model-cell:last-child{border-bottom:none;}}
 
 
- /* 
-  ──────────────────────────────────────────────────────────────
+ /* ──────────────────────────────────────────────────────────────
   hardware in the loop testing for flight software article
   ────────────────────────────────────────────────────────────── */
 
