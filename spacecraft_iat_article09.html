@@ -367,46 +367,49 @@
 
   <p>The <span class="kt">flight software build</span> — the specific, compiled, tested, configuration-controlled binary image that will be loaded into the spacecraft's memory and will execute throughout the mission — is itself a flight article. This is the same configuration management discipline described in the companion article on <a href="spacecraft_iat_article11.html">configuration management and the as-built record</a>, applied to the specific case of a software binary rather than a physical component — the CCB, the traveler-equivalent build record, and the as-built baseline all have direct analogs in the process that follows. It must be subject to the same configuration management discipline as any other flight hardware component. The consequences of loading the wrong software version onto the spacecraft are as severe as installing the wrong component.</p>
 
-  <div class="process-flow">
-    <div class="pf-header">Flight Software Build — Release and Control Process</div>
-    <div class="pf-steps">
-      <div class="pf-step">
-        <div class="pf-num">1</div>
-        <div class="pf-content">
-          <div class="pf-title">Software Development Baseline</div>
-          <div class="pf-desc">Source code placed under version control. Each change formally reviewed and approved through the Software CCB. A unique version identifier is assigned to each baseline. No changes to the baseline without CCB approval — even "one-line fixes" during the I&amp;T phase require full CCB review.</div>
-        </div>
-      </div>
-      <div class="pf-step">
-        <div class="pf-num">2</div>
-        <div class="pf-content">
-          <div class="pf-title">Build Verification — Compiler and Toolchain Qualification</div>
-          <div class="pf-desc">The flight code is compiled using the qualified flight compiler and build toolchain. The compiler itself must be qualified for flight use — compiler optimizations can produce code that behaves differently than the source code's logic implies. The build output is verified against the source using reproducible build procedures.</div>
-        </div>
-      </div>
-      <div class="pf-step">
-        <div class="pf-num">3</div>
-        <div class="pf-content">
-          <div class="pf-title">Software Acceptance Test (SAT)</div>
-          <div class="pf-desc">A defined, repeatable acceptance test suite is executed against the compiled flight binary on the flight processor (or flight-representative processor). The SAT is a subset of the full V&amp;V test suite, selected to cover the highest-risk functions and the most recent changes. Every flight build must pass the SAT before it is released for loading onto flight hardware.</div>
-        </div>
-      </div>
-      <div class="pf-step">
-        <div class="pf-num">4</div>
-        <div class="pf-content">
-          <div class="pf-title">Flight Build Release and Formal Handoff</div>
-          <div class="pf-desc">The verified flight build is formally released under configuration control. A unique, cryptographically signed build identifier is generated. The build is stored in a controlled repository. A chain-of-custody record is established that tracks every subsequent loading of the build onto hardware, including the verification that the loaded image matches the released build by checksum comparison.</div>
-        </div>
-      </div>
-      <div class="pf-step">
-        <div class="pf-num">5</div>
-        <div class="pf-content">
-          <div class="pf-title">Load Verification on Flight Hardware</div>
-          <div class="pf-desc">After loading onto the spacecraft, the software image is verified by checksum comparison against the released build. A post-load functional test confirms that the software starts up, initializes correctly, and executes a basic health check. This verification is performed every time the software is loaded — including after power cycling, after memory anomalies, and at the launch site before final encapsulation.</div>
-        </div>
-      </div>
+  <div class="num-flow">
+  <div class="num-flow-header">Flight Software Build — Release and Control Process</div>
+
+  <div class="num-step">
+    <div class="num-badge">1</div>
+    <div class="num-content">
+      <div class="num-title">Software Development Baseline</div>
+      <div class="num-desc">Source code placed under version control. Each change formally reviewed and approved through the Software CCB. A unique version identifier is assigned to each baseline. No changes to the baseline without CCB approval — even "one-line fixes" during the I&amp;T phase require full CCB review.</div>
     </div>
   </div>
+
+  <div class="num-step">
+    <div class="num-badge">2</div>
+    <div class="num-content">
+      <div class="num-title">Build Verification — Compiler and Toolchain Qualification</div>
+      <div class="num-desc">The flight code is compiled using the qualified flight compiler and build toolchain. The compiler itself must be qualified for flight use — compiler optimizations can produce code that behaves differently than the source code's logic implies. The build output is verified against the source using reproducible build procedures.</div>
+    </div>
+  </div>
+
+  <div class="num-step">
+    <div class="num-badge">3</div>
+    <div class="num-content">
+      <div class="num-title">Software Acceptance Test (SAT)</div>
+      <div class="num-desc">A defined, repeatable acceptance test suite is executed against the compiled flight binary on the flight processor (or flight-representative processor). The SAT is a subset of the full V&amp;V test suite, selected to cover the highest-risk functions and the most recent changes. Every flight build must pass the SAT before it is released for loading onto flight hardware.</div>
+    </div>
+  </div>
+
+  <div class="num-step">
+    <div class="num-badge">4</div>
+    <div class="num-content">
+      <div class="num-title">Flight Build Release and Formal Handoff</div>
+      <div class="num-desc">The verified flight build is formally released under configuration control. A unique, cryptographically signed build identifier is generated. The build is stored in a controlled repository. A chain-of-custody record is established that tracks every subsequent loading of the build onto hardware, including the verification that the loaded image matches the released build by checksum comparison.</div>
+    </div>
+  </div>
+
+  <div class="num-step">
+    <div class="num-badge">5</div>
+    <div class="num-content">
+      <div class="num-title">Load Verification on Flight Hardware</div>
+      <div class="num-desc">After loading onto the spacecraft, the software image is verified by checksum comparison against the released build. A post-load functional test confirms that the software starts up, initializes correctly, and executes a basic health check. This verification is performed every time the software is loaded — including after power cycling, after memory anomalies, and at the launch site before final encapsulation.</div>
+    </div>
+  </div>
+</div>
 
 <h3 class="ssh">The Multiple-Build Problem</h3>
 <p>Almost every program runs multiple parallel software builds during the I&T phase: a development build under active development, a current test build loaded on the integrated spacecraft, and previous builds that were used for earlier test phases. The risk this creates is that test results are only valid for the specific build that was loaded when the test was performed. A test executed on Build 4.2 does not verify that Build 4.3 — which corrected a defect found in 4.2 — still correctly implements every other function that 4.2 implemented. Every new build requires regression testing — the re-execution of a defined subset of previous tests to confirm that the new build has not introduced regressions in previously verified functions.</p>
