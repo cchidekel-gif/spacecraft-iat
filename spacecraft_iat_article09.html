@@ -457,18 +457,18 @@
 
 <p>Seen this way, the honest claim to make about rigorous early-phase discipline is not that it eliminates software risk. It is narrower and more useful than that: it eliminates the errors specifically identifiable that way. Coverage discipline finds the untested path. Requirement-based testing finds the code that doesn't meet the spec. Static analysis finds the construct known, from hard experience, to be dangerous. What none of these methods can find, by design, is the error that only exists in the interaction between correctly-functioning parts — the fault protection response that works exactly as verified in isolation but assumes a predecessor state the full system doesn't actually produce; the HIL simulator that faithfully reproduces everything the team thought to model and nothing it didn't; the timing behavior that only emerges once every subsystem is drawing power and generating telemetry at once. That is not a gap in the discipline. It is the boundary of what any single discipline, applied in isolation, can be expected to catch — which is exactly why the V&amp;V hierarchy in §3 layers method upon method rather than relying on any one of them.</p>
 
-  <div class="stat-strip">
+ <div class="stat-grid">
   <div class="stat-cell">
-    <span class="stat-num">44–58%</span>
+    <span class="number-accent">44–58%</span>
     <p>Fraction of defects removed before coding even began, in studied NASA flight and robotics programs — real evidence of what early-phase discipline buys. The remainder is exactly what survives to be found later, if it is found at all.</p>
   </div>
   <div class="stat-cell">
-    <span class="stat-num">~29–78×</span>
+    <span class="number-accent">~29–78×</span>
     <p>Relative cost to fix a requirements-phase error once a program reaches operations, versus fixing the same error at the requirements phase itself (NASA Johnson Space Center error cost escalation study)</p>
   </div>
   <div class="stat-cell">
-    <span class="stat-num">100%</span>
-<p>Required branch coverage via MC/DC — see §4 — for safety-critical flight software modules under DO-178C Level A</p>
+    <span class="number-accent">100%</span>
+    <p>Required branch coverage via MC/DC — see §4 — for safety-critical flight software modules under DO-178C Level A</p>
   </div>
 </div>
 
