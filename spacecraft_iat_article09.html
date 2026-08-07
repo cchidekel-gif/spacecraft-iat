@@ -455,7 +455,7 @@
 
 <div class="callout gold">
   <div class="callout-label">✦ A Shared-Architecture Mitigation</div>
-  <p>Some programs eliminate a category of this risk deliberately, by architecting the I&amp;T EGSE command and telemetry system and the flight operations ground system around the same core software and, where practical, the same computing platform. This avoids maintaining two independently authored implementations of the same command and telemetry interpretation logic — and avoids the translation layer that would otherwise be needed to reconcile them, which is exactly the kind of interface no one owns end-to-end that produced the Mars Climate Orbiter loss.</p>
+  <p>Some programs eliminate a category of this risk (telemetry format and ground system compatibility) deliberately, by architecting the I&amp;T EGSE command and telemetry system and the flight operations ground system around the same core software and, where practical, the same computing platform. This avoids maintaining two independently authored implementations of the same command and telemetry interpretation logic — and avoids the translation layer that would otherwise be needed to reconcile them, which is exactly the kind of interface no one owns end-to-end that produced the Mars Climate Orbiter loss.</p>
   <p>It carries a further benefit beyond risk reduction: flight operations personnel who use the same system during I&amp;T to monitor and command the spacecraft gain direct, hands-on operational experience well before launch, which both improves the flight operations procedures they write and sharpens their ability to recognize anomalous behavior once the mission is actually flying.</p>
 </div>
 
@@ -466,16 +466,21 @@
  <div class="stat-grid">
   <div class="stat-cell">
     <span class="number-accent">44–58%</span>
-    <p>Fraction of defects removed before coding even began, in studied NASA flight and robotics programs — real evidence of what early-phase discipline buys. The remainder is exactly what survives to be found later, if it is found at all.</p>
+    <p>Fraction of defects removed before coding even began, in studied NASA flight and robotics programs — real evidence of what early-phase discipline buys. The remainder is exactly what survives to be found later, if it is found at all.<sup>1</sup></p>
   </div>
   <div class="stat-cell">
-    <span class="number-accent">~29–78×</span>
-    <p>Relative cost to fix a requirements-phase error once a program reaches operations, versus fixing the same error at the requirements phase itself (NASA Johnson Space Center error cost escalation study)</p>
+    <span class="number-accent">29–1,500×</span>
+    <p>Relative cost to fix a requirements-phase error once a program reaches operations, versus fixing the same error at the requirements phase itself.<sup>2</sup></p>
   </div>
   <div class="stat-cell">
     <span class="number-accent">100%</span>
-    <p>Required branch coverage via MC/DC — see §4 — for safety-critical flight software modules under DO-178C Level A</p>
+    <p>Required branch coverage via MC/DC — see §4 — for safety-critical flight software modules under DO-178C Level A.</p>
   </div>
+</div>
+
+<div class="source-note">
+  <sup>1</sup> "Are Delayed Issues Harder to Resolve? Revisiting Cost-to-Fix of Defects throughout the Lifecycle," analysis of 171 software projects (arXiv:1609.04886); NASA robotics figure as cited therein.<br>
+  <sup>2</sup> "Error Cost Escalation Through the Project Life Cycle," NASA Johnson Space Center (NASA Technical Reports Server, NTRS 20100036670).
 </div>
 
   <h2 class="sh" id="s10">10. On-Orbit Software — Patches, Loads, and the Limits of Ground Verification</h2>
