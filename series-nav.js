@@ -88,7 +88,7 @@
     { id: "07", seriesNum: "07",
       title:    "Flight Software Verification and Validation",
       url:      "spacecraft_iat_article09.html",
-      published: false,
+      published: true,
       topics:   ["Flight Software", "V&V", "DO-178C", "Fault Protection", "HIL Testing", "FLATSAT"],
       audience: "New and early-career spacecraft engineers, aerospace students, and I&T practitioners who need to understand flight software V&V without specializing in it."
     },
