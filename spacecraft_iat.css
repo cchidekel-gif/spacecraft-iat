@@ -2828,3 +2828,32 @@ ul.cs-list li::before {
   .num-step { grid-template-columns: 42px 1fr; }
   .num-badge { font-size: 1.05rem; }
 }
+
+/* ── ARTICLE 08 (Mass Properties): MASS PROPERTIES HIERARCHY TABLE ── */
+.mp-table {
+  width: 100%; border-collapse: collapse; margin: 1.8em 0;
+  font-size: 0.87rem;
+}
+.mp-table thead tr { background: var(--ink); color: var(--paper); }
+.mp-table thead th {
+  padding: 11px 14px; text-align: left;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px; letter-spacing: 0.12em;
+  text-transform: uppercase; font-weight: 500;
+}
+.mp-table tbody tr { border-bottom: 1px solid var(--rule); }
+.mp-table tbody tr:nth-child(even) { background: var(--light); }
+.mp-table tbody tr:hover { background: var(--cream); }
+.mp-table td { padding: 12px 14px; vertical-align: top; line-height: 1.6; }
+.mp-table td:first-child {
+  font-weight: 700; color: var(--rust);
+  white-space: nowrap; font-size: 0.88rem;
+}
+.mp-table td:nth-child(2) { color: #333; width: 28%; }
+.mp-table td:nth-child(3) { color: var(--muted); font-size: 0.85rem; width: 30%; }
+.mp-table td:last-child { color: #333; }
+
+@media (max-width: 680px) {
+  .mp-table { font-size: 0.8rem; }
+  .mp-table td, .mp-table th { padding: 8px 10px; }
+}
