@@ -2858,3 +2858,31 @@ ul.cs-list li::before {
   .mp-table { font-size: 0.8rem; }
   .mp-table td, .mp-table th { padding: 8px 10px; }
 }
+
+/* ── ARTICLE 08 (Mass Properties): LAUNCH LOAD GRID ── */
+.load-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px; margin: 1.8em 0;
+}
+.load-card { border: 1px solid var(--rule); overflow: hidden; background: var(--white); }
+.load-header {
+  display: flex; align-items: center; gap: 10px;
+  padding: 13px 16px;
+}
+.load-icon { font-size: 1.4rem; flex-shrink: 0; }
+.load-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.98rem; font-weight: 700; color: #fff;
+}
+.load-body { padding: 14px 16px; background: var(--white); }
+.load-body p { font-size: 0.86rem; color: #333; line-height: 1.65; font-weight: 300; margin: 0; }
+
+.load-card:nth-child(1) .load-header { background: var(--steel); }
+.load-card:nth-child(2) .load-header { background: var(--green); }
+.load-card:nth-child(3) .load-header { background: var(--gold); }
+.load-card:nth-child(3) .load-title { color: var(--near-black); }
+.load-card:nth-child(4) .load-header { background: var(--rust); }
+
+@media (max-width: 680px) {
+  .load-grid { grid-template-columns: 1fr; }
+}
