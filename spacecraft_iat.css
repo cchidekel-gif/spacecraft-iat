@@ -2886,3 +2886,62 @@ ul.cs-list li::before {
 @media (max-width: 680px) {
   .load-grid { grid-template-columns: 1fr; }
 }
+
+/* ── ARTICLE 08 (Mass Properties): FEM CORRELATION TABLE ── */
+.fem-table {
+  width: 100%; border-collapse: collapse; margin: 1.8em 0;
+  font-size: 0.86rem;
+}
+.fem-table thead tr { background: var(--ink); color: var(--paper); }
+.fem-table thead th {
+  padding: 11px 14px; text-align: left;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px; letter-spacing: 0.12em;
+  text-transform: uppercase; font-weight: 500;
+}
+.fem-table tbody tr { border-bottom: 1px solid var(--rule); }
+.fem-table tbody tr:nth-child(even) { background: var(--light); }
+.fem-table tbody tr:hover { background: var(--cream); }
+.fem-table td { padding: 12px 14px; vertical-align: top; line-height: 1.6; }
+.fem-table td:first-child {
+  font-weight: 700; color: var(--steel);
+  white-space: nowrap; width: 18%;
+}
+.fem-table td:nth-child(2) { color: #333; width: 38%; }
+.fem-table td:last-child { color: var(--muted); font-size: 0.84rem; }
+
+@media (max-width: 680px) {
+  .fem-table { font-size: 0.78rem; }
+  .fem-table td, .fem-table th { padding: 8px 10px; }
+}
+
+/* ── ARTICLE 08 (Mass Properties): STRUCTURAL MARGIN STAT STRIP ── */
+.stat-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin: 2.4em 0;
+}
+.stat-strip .stat-cell {
+  background: var(--paper);
+  padding: 22px 18px;
+  text-align: center;
+}
+.stat-strip .stat-cell p {
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-style: italic;
+  margin-bottom: 0 !important;
+  line-height: 1.5;
+}
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--rust);
+  line-height: 1;
+  display: block;
+  margin-bottom: 6px;
+}
