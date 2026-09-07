@@ -2848,10 +2848,11 @@ ul.cs-list li::before {
 .mp-table td:first-child {
   font-weight: 700; color: var(--rust);
   white-space: nowrap; font-size: 0.88rem;
+  width: 12%;
 }
-.mp-table td:nth-child(2) { color: #333; width: 28%; }
-.mp-table td:nth-child(3) { color: var(--muted); font-size: 0.85rem; width: 30%; }
-.mp-table td:last-child { color: #333; }
+.mp-table td:nth-child(2) { color: #333; width: 22%; }
+.mp-table td:nth-child(3) { color: var(--muted); font-size: 0.85rem; width: 24%; }
+.mp-table td:last-child { color: #333; width: 42%; }
 
 @media (max-width: 680px) {
   .mp-table { font-size: 0.8rem; }
