@@ -95,7 +95,7 @@
    { id: "08", seriesNum: "08",
       title:    "Mass Properties and Structural Loads",
       url:      "spacecraft_iat_article14.html",
-      published: false,
+      published: true,
       topics:   ["Mass Properties", "Structural Analysis", "FEM", "Coupled Loads", "Modal Survey", "Factor of Safety"],
       audience: "I&T engineers and program staff who interact with structural and mass properties data and need to understand how it is generated, what it means, and why it matters for launch readiness."
     },
