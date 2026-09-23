@@ -42,18 +42,19 @@
   <!-- TOC -->
   <div class="toc-wrap">
     <div class="toc-label">In This Article</div>
-    <ul class="toc-list">
+        <ul class="toc-list">
       <li><a href="#s1"><span>1. The Launch Environment: Why It Is So Demanding</span><span class="toc-num">§1</span></a></li>
       <li><a href="#s2"><span>2. The Three Mechanical Environments</span><span class="toc-num">§2</span></a></li>
-      <li><a href="#s3"><span>3. Qualification vs. Acceptance: The Two Philosophies of Environmental Test</span><span class="toc-num">§3</span></a></li>
-      <li><a href="#s4"><span>4. Sine Vibration Testing</span><span class="toc-num">§4</span></a></li>
-      <li><a href="#s5"><span>5. Random Vibration Testing</span><span class="toc-num">§5</span></a></li>
-      <li><a href="#s6"><span>6. Acoustic Testing</span><span class="toc-num">§6</span></a></li>
-      <li><a href="#s7"><span>7. Shock Testing</span><span class="toc-num">§7</span></a></li>
-      <li><a href="#s8"><span>8. Test Fixturing and the Boundary Condition Problem</span><span class="toc-num">§8</span></a></li>
-      <li><a href="#s9"><span>9. Instrumentation, Data Acquisition, and Monitoring</span><span class="toc-num">§9</span></a></li>
-      <li><a href="#s10"><span>10. Notching, Over-Testing, and the Art of the Correct Input</span><span class="toc-num">§10</span></a></li>
-      <li><a href="#s11"><span>11. Post-Test Assessment and Anomaly Response</span><span class="toc-num">§11</span></a></li>
+      <li><a href="#s3"><span>3. Where the Numbers Come From: Defining Vibration, Acoustic, and Shock Test Levels</span><span class="toc-num">§3</span></a></li>
+      <li><a href="#s4"><span>4. Qualification vs. Acceptance: The Two Philosophies of Environmental Test</span><span class="toc-num">§4</span></a></li>
+      <li><a href="#s5"><span>5. Sine Vibration Testing</span><span class="toc-num">§5</span></a></li>
+      <li><a href="#s6"><span>6. Random Vibration Testing</span><span class="toc-num">§6</span></a></li>
+      <li><a href="#s7"><span>7. Acoustic Testing</span><span class="toc-num">§7</span></a></li>
+      <li><a href="#s8"><span>8. Shock Testing</span><span class="toc-num">§8</span></a></li>
+      <li><a href="#s9"><span>9. Test Fixturing and the Boundary Condition Problem</span><span class="toc-num">§9</span></a></li>
+      <li><a href="#s10"><span>10. Instrumentation, Data Acquisition, and Monitoring</span><span class="toc-num">§10</span></a></li>
+      <li><a href="#s11"><span>11. Notching, Over-Testing, and the Art of the Correct Input</span><span class="toc-num">§11</span></a></li>
+      <li><a href="#s12"><span>12. Post-Test Assessment and Anomaly Response</span><span class="toc-num">§12</span></a></li>
       <li><a href="#glossary"><span>Key Terms Glossary</span><span class="toc-num">GL</span></a></li>
     </ul>
   </div>
@@ -173,62 +174,62 @@ The spacecraft must endure these conditions not merely without visible damage, b
 
 
 
-  <h2 class="sh" id="s3">3. Qualification vs. Acceptance: The Two Philosophies of Environmental Test</h2>
+  <h2 class="sh" id="s4">4. Qualification vs. Acceptance: The Two Philosophies of Environmental Test</h2>
 
   <p>Mechanical environmental testing generally serves one of two purposes: <span class="kt">qualification</span> or <span class="kt">acceptance</span>. These are not simply different test levels. Qualification establishes that a design has sufficient margin to survive its intended launch environment, while acceptance verifies that each flight article was built correctly and can withstand its expected test exposure.</p>
   <p>The distinction affects the test levels and durations, the hardware selected, the amount of life consumed, and—most importantly—the conclusions the program can draw from the results.</p>
 
-  <table class="qa-table">
+   <table style="width:100%; border-collapse:collapse; margin:1.5em 0; font-size:0.9rem;">
     <thead>
-      <tr>
-        <th>Parameter</th>
-        <th class="col-qual">Qualification Test</th>
-        <th class="col-acc">Acceptance Test</th>
-        <th>Rationale</th>
+      <tr style="background:var(--ink); color:var(--paper);">
+        <th style="padding:10px 14px; text-align:left; font-family:'Source Serif 4', serif;">Parameter</th>
+        <th style="padding:10px 14px; text-align:left; font-family:'Source Serif 4', serif; border-left:3px solid var(--gold);">Qualification Test</th>
+        <th style="padding:10px 14px; text-align:left; font-family:'Source Serif 4', serif; border-left:3px solid var(--steel);">Acceptance Test</th>
+        <th style="padding:10px 14px; text-align:left; font-family:'Source Serif 4', serif;">Rationale</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>Purpose</td>
-        <td>Demonstrate that the design has adequate margin over the flight environment</td>
-        <td>Screens each flight article for workmanship defects and major nonconformances</td>
-        <td>Qualification assesses the design; acceptance assesses the individual unit</td>
+      <tr style="border-bottom:1px solid var(--rule);">
+        <td style="padding:10px 14px; font-weight:600;">Purpose</td>
+        <td style="padding:10px 14px; border-left:3px solid var(--gold);">Demonstrate that the design has adequate margin over the flight environment</td>
+        <td style="padding:10px 14px; border-left:3px solid var(--steel);">Screens each flight article for workmanship defects and major nonconformances</td>
+        <td style="padding:10px 14px; color:var(--muted);">Qualification assesses the design; acceptance assesses the individual unit</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--rule); background:var(--light);">
+        <td style="padding:10px 14px; font-weight:600;">Hardware used</td>
+        <td style="padding:10px 14px; border-left:3px solid var(--gold);">A dedicated qualification article, structural model, or engineering model; normally not flown</td>
+        <td style="padding:10px 14px; border-left:3px solid var(--steel);">Each flight unit, meaning the hardware intended for launch</td>
+        <td style="padding:10px 14px; color:var(--muted);">Qualification testing can be more severe; acceptance testing must preserve flight hardware life</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--rule);">
+        <td style="padding:10px 14px; font-weight:600;">Input levels</td>
+        <td style="padding:10px 14px; border-left:3px solid var(--gold);">Usually above MEFL-derived acceptance levels, with increased duration or both</td>
+        <td style="padding:10px 14px; border-left:3px solid var(--steel);">Based on the Maximum Expected Flight Level (MEFL), with a controlled margin appropriate to the program</td>
+        <td style="padding:10px 14px; color:var(--muted);">Qualification must establish design margin without creating an unrealistic test environment</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--rule); background:var(--light);">
+        <td style="padding:10px 14px; font-weight:600;">Duration</td>
+        <td style="padding:10px 14px; border-left:3px solid var(--gold);">Usually longer than acceptance testing; for random vibration, a common approach is 3 minutes per axis</td>
+        <td style="padding:10px 14px; border-left:3px solid var(--steel);">Typically the minimum needed to screen workmanship; often about 1 minute per axis for random vibration</td>
+        <td style="padding:10px 14px; color:var(--muted);">Longer exposure increases the chance of revealing fatigue-related weaknesses, but also consumes life</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--rule);">
+        <td style="padding:10px 14px; font-weight:600;">Axes tested</td>
+        <td style="padding:10px 14px; border-left:3px solid var(--gold);">All three orthogonal axes</td>
+        <td style="padding:10px 14px; border-left:3px solid var(--steel);">All three orthogonal axes</td>
+        <td style="padding:10px 14px; color:var(--muted);">Launch loads act in three dimensions, even when laboratory vibration is applied one axis at a time</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--rule); background:var(--light);">
+        <td style="padding:10px 14px; font-weight:600;">Pass criterion</td>
+        <td style="padding:10px 14px; border-left:3px solid var(--gold);">No structural failure or unacceptable degradation; functional testing verifies continued operation afterward</td>
+        <td style="padding:10px 14px; border-left:3px solid var(--steel);">No damage or unacceptable degradation; functional testing confirms the flight article remains within specification</td>
+        <td style="padding:10px 14px; color:var(--muted);">Both tests require functional verification, but qualification may also require additional inspection and analysis</td>
       </tr>
       <tr>
-        <td>Hardware used</td>
-        <td>A dedicated qualification article, structural model, or engineering model; normally not flown</td>
-        <td>Each flight unit, meaning the hardware intended for launch</td>
-        <td>Qualification testing can be more severe; acceptance testing must preserve flight hardware life</td>
-      </tr>
-          <tr>
-        <td>Input levels</td>
-        <td>Usually above MEFL-derived acceptance levels, with increased duration or both</td>
-        <td>Based on the Maximum Expected Flight Level (MEFL), with a controlled margin appropriate to the program</td>
-        <td>Qualification must establish design margin without creating an unrealistic test environment</td>
-      </tr>
-      <tr>
-        <td>Duration</td>
-        <td>Usually longer than acceptance testing; for random vibration, a common approach is 3 minutes per axis</td>
-        <td>Typically the minimum needed to screen workmanship; often about 1 minute per axis for random vibration</td>
-        <td>Longer exposure increases the chance of revealing fatigue-related weaknesses, but also consumes life</td>
-      </tr>
-      <tr>
-        <td>Axes tested</td>
-        <td>All three orthogonal axes</td>
-        <td>All three orthogonal axes</td>
-        <td>Launch loads act in three dimensions, even when laboratory vibration is applied one axis at a time</td>
-      </tr>
-      <tr>
-        <td>Pass criterion</td>
-        <td>No structural failure or unacceptable degradation; functional testing verifies continued operation afterward</td>
-        <td>No damage or unacceptable degradation; functional testing confirms the flight article remains within specification</td>
-        <td>Both tests require functional verification, but qualification may also require additional inspection and analysis</td>
-      </tr>
-      <tr>
-        <td>Life consumption</td>
-        <td>The qualification article may consume substantial fatigue life and is commonly retired after test</td>
-        <td>Exposure must be limited while still providing an effective workmanship screen</td>
-        <td>Excessive testing can reduce the remaining reliability margin of flight hardware</td>
+        <td style="padding:10px 14px; font-weight:600;">Life consumption</td>
+        <td style="padding:10px 14px; border-left:3px solid var(--gold);">The qualification article may consume substantial fatigue life and is commonly retired after test</td>
+        <td style="padding:10px 14px; border-left:3px solid var(--steel);">Exposure must be limited while still providing an effective workmanship screen</td>
+        <td style="padding:10px 14px; color:var(--muted);">Excessive testing can reduce the remaining reliability margin of flight hardware</td>
       </tr>
     </tbody>
   </table>
@@ -249,7 +250,7 @@ The spacecraft must endure these conditions not merely without visible damage, b
     <p>In practice, environmental testing of mission-unique hardware is usually conducted only at the fully assembled spacecraft level — the providing organization frequently lacks the facilities or resources for standalone vibration, acoustic, or shock testing of its own. That makes the spacecraft-level test the first and often only real verification this hardware receives. Where there is sufficient concern — fragile optics, a tight alignment budget, thin margin between predicted and qualified levels, or simply unproven heritage — a standalone component- or subassembly-level test in the relevant environment should be considered and planned for early, since it cannot be added late without schedule and budget impact.</p>
   </div>
 
-  <h2 class="sh" id="s4">4. Sine Vibration Testing</h2>
+  <h2 class="sh" id="s5">5. Sine Vibration Testing</h2>
 
     <p>Sine vibration testing applies controlled back-and-forth motion at a single frequency to the base of a test article. The test system slowly sweeps that frequency from low to high—sometimes reversing direction as well—while instruments measure how the structure responds. Because the input is concentrated at one frequency at a time, sine testing is highly repeatable and helps engineers identify the source of unusual structural behavior.</p>
 
@@ -257,9 +258,9 @@ The spacecraft must endure these conditions not merely without visible damage, b
     <div class="callout-label">⚙ Why Sine and Random? — Matching the Test Method to the Physics</div>
     <p>Unlike acoustics and shock, where the connection to a physical launch event is fairly intuitive — loud engines, an explosive separation — it's less obvious why vibration testing splits into these two specific methods rather than some other approach. The answer is that sine and random vibration each represent a genuinely different category of real flight load, not an arbitrary or convenient division.</p>
 
-    <p>Some launch loads really are close to sinusoidal: POGO oscillation, thrust oscillation from combustion instability, and other narrowband, quasi-periodic loads produced by the engines and structural feedback behave much more like a sustained single-frequency input than like broadband noise. Sine testing represents that class of load reasonably faithfully. Most of the rest of the ascent environment, however, is genuinely stochastic rather than repeatable — combustion turbulence, aerodynamic boundary-layer noise, and many structural modes responding at once don't have a single waveform to point to, and are better described statistically, using a <span class="kt">Power Spectral Density (PSD)</span> — a plot of how vibration energy is distributed across frequency, covered in detail in §5 — rather than a single trace. A sine sweep, driving one frequency at a time, structurally cannot represent that kind of simultaneous, multi-frequency excitation. Sine earns its place for a second reason as well, distinct from how flight-representative it is — one that "What Sine Vibration Reveals," below, covers in full.</p>
+    <p>Some launch loads really are close to sinusoidal: POGO oscillation, thrust oscillation from combustion instability, and other narrowband, quasi-periodic loads produced by the engines and structural feedback behave much more like a sustained single-frequency input than like broadband noise. Sine testing represents that class of load reasonably faithfully. Most of the rest of the ascent environment, however, is genuinely stochastic rather than repeatable — combustion turbulence, aerodynamic boundary-layer noise, and many structural modes responding at once don't have a single waveform to point to, and are better described statistically, using a <span class="kt">Power Spectral Density (PSD)</span> — a plot of how vibration energy is distributed across frequency, covered in detail in §6 — rather than a single trace. A sine sweep, driving one frequency at a time, structurally cannot represent that kind of simultaneous, multi-frequency excitation. Sine earns its place for a second reason as well, distinct from how flight-representative it is — one that "What Sine Vibration Reveals," below, covers in full.</p>
 
-    <p>Sine and random aren't the ceiling of what's technically possible, either. When engine tones and broadband content both matter for a given hardware item, sine-on-random or random-on-random testing combines both in a single run. Time waveform replication drives the shaker with an actual recorded flight acceleration trace rather than a synthetic input — the vibration-test equivalent of the recorded-launch-audio approach described for acoustic testing in §6. These are used when the standard sine/random split isn't judged sufficient for a specific program or component; for most spacecraft-level testing, the sine/random division remains the practical default because it cleanly separates "narrowband and diagnostic" from "broadband and flight-representative."</p>
+    <p>Sine and random aren't the ceiling of what's technically possible, either. When engine tones and broadband content both matter for a given hardware item, sine-on-random or random-on-random testing combines both in a single run. Time waveform replication drives the shaker with an actual recorded flight acceleration trace rather than a synthetic input — the vibration-test equivalent of the recorded-launch-audio approach described for acoustic testing in §7. These are used when the standard sine/random split isn't judged sufficient for a specific program or component; for most spacecraft-level testing, the sine/random division remains the practical default because it cleanly separates "narrowband and diagnostic" from "broadband and flight-representative."</p>
   </div>
 
   <h3 class="ssh">What Sine Vibration Reveals</h3>
@@ -280,11 +281,11 @@ The spacecraft must endure these conditions not merely without visible damage, b
 <p>A resonant-frequency shift of more than about 5 percent is often treated as a threshold for investigation, although the appropriate limit depends on the spacecraft, the mode being evaluated, the test configuration, and the governing program requirements.</p>
 
 
-  <h2 class="sh" id="s5">5. Random Vibration Testing</h2>
+  <h2 class="sh" id="s6">6. Random Vibration Testing</h2>
 
 <p>Random vibration testing applies motion across a broad range of frequencies at the same time, rather than concentrating the input at one frequency as in a sine sweep. The test is defined by a <span class="kt">Power Spectral Density (PSD)</span>, which describes how the vibration level is distributed across frequency, commonly expressed in units of g²/Hz. The total vibration level is often stated as g<sub>rms</sub>, a single value derived from the combined energy across the PSD frequency range.</p>
 
-  <p>As §4 describes, most of the launch vibration environment is genuinely stochastic rather than repeatable, which is why random vibration — not sine — is the better representation of flight for most of the frequency range. The PSD is how that statistical description is actually captured: rather than a single trace, it's a distribution showing how much vibration energy is present at each frequency.</p>
+  <p>As §5 describes, most of the launch vibration environment is genuinely stochastic rather than repeatable, which is why random vibration — not sine — is the better representation of flight for most of the frequency range. The PSD is how that statistical description is actually captured: rather than a single trace, it's a distribution showing how much vibration energy is present at each frequency.</p>
 
   <h3 class="ssh">What Random Vibration Reveals</h3>
   <ul class="body-list">
@@ -307,7 +308,7 @@ The spacecraft must endure these conditions not merely without visible damage, b
     <p>The antenna was redesigned to shift its fundamental bending frequency to roughly 290 Hz — nearly a two-to-one separation from the spacecraft's fundamental — and the redesigned antenna passed its retest with substantially lower response and stress. It's a clean illustration of the point above: a resonance's real danger isn't just whether it exists, but where it falls relative to both the input spectrum's energy and the rest of the structure's own dynamics — and why testing, not analysis alone, is what actually catches a marginal design decision like this one before it becomes a flight failure. (Source: Instar Engineering &amp; Consulting, "Vibration Testing of Small Satellites" technical reference series.)</p>
   </div>
 
-  <h2 class="sh" id="s6">6. Acoustic Testing</h2>
+  <h2 class="sh" id="s7">7. Acoustic Testing</h2>
 
   <p>Acoustic testing exposes a spacecraft to an intense, controlled sound field in a specialized facility known as a <span class="kt">reverberant acoustic chamber</span> (also called a reverberation room or acoustic test facility). These chambers are large concrete or steel enclosures with hard, reflective interior surfaces. The reflections create a diffuse sound field: sound energy arrives at the test article from many directions, producing a reasonably uniform acoustic environment throughout the chamber.</p>
 
@@ -342,7 +343,7 @@ The spacecraft must endure these conditions not merely without visible damage, b
     <p>This approach can be a legitimate and cost-effective test method, but it is not simply "close enough" — the room itself must be engineering-qualified for the purpose, even though it is not a purpose-built chamber. That means verifying the room is structurally adequate to handle the sound pressure levels involved, confirming the space can actually produce a sufficiently diffuse field rather than a few direct paths from the speaker stacks, and instrumenting and controlling the test with the same rigor as a dedicated chamber test. Low-frequency performance is typically the hardest requirement to meet this way: reaching the required SPL at the low frequencies that dominate launch-vehicle exhaust noise generally demands the sheer air volume and horn power of a purpose-built chamber, and a speaker-based setup in a smaller room may fall short there even when it comfortably meets the spec at mid and high frequencies. Any decision to use this approach should include an explicit assessment of whether the facility can meet the full required spectrum, not just the OASPL number.</p>
   <p>Planning a test like this is a joint responsibility between I&amp;T and the mechanical lead, not something either can hand off to the other. A dedicated reverberant chamber is a facility built and staffed for exactly this purpose — configuration, control, and safety are largely built into how the facility already operates, and running a test there is close to "roll the hardware down the hall" by comparison. A speaker-based setup in a general-purpose room has none of that built in: the room's structural qualification, speaker placement and rigging, sound-field verification, instrumentation, and safety controls all have to be worked out and set up from scratch for that specific test. The mechanical lead owns the technical adequacy of this alternative setup — whether the room and configuration can actually deliver the required environment — while I&amp;T owns coordinating the logistics, schedule, and configuration control around it. Neither can be assumed to have it covered without the other.</p>
 
-  <h2 class="sh" id="s7">7. Shock Testing</h2>
+  <h2 class="sh" id="s8">8. Shock Testing</h2>
 
   <p>Mechanical shock testing is often one of the most challenging parts of a spacecraft mechanical-environment test program. Real launch shocks are commonly created when pyrotechnic devices operate: explosive bolts, separation nuts, linear cutting charges, and pin-pullers release or separate hardware at critical points during flight. Each event produces a short, intense burst of motion that travels through the spacecraft structure as a stress wave.</p>
   <p>Unlike sustained vibration, a shock event may last only milliseconds, yet still contain substantial energy at high frequencies. The severity experienced by a component can vary greatly with its location on the spacecraft, the local structure, and the frequency at which the component itself tends to vibrate.</p>
@@ -413,7 +414,7 @@ The spacecraft must endure these conditions not merely without visible damage, b
   <p>A separation test is typically performed with the spacecraft suspended or supported in a way that allows it to actually move upon release — often on a low-friction air-bearing table, suspended from counterweighted cords, or otherwise mechanically decoupled from gravity's effect on the test — since the point is to observe and measure the real separation dynamics, not just apply a shock input to a fixed article. High-speed video and accelerometer or rate-gyro instrumentation are standard, since the event happens in a fraction of a second and both the shock transient and the resulting spacecraft motion need to be captured and reconstructed afterward.</p>
   <p>This test carries its own configuration-control and safety considerations distinct from the shock-input tests described above: it typically involves live or representative pyrotechnics or preloaded springs, may only be performable once on true flight hardware (destructive or single-use release devices cannot simply be reset and fired again), and the mechanical/GNC engineering teams responsible for the separation system and attitude dynamics are as central to planning and executing it as the I&amp;T lead.</p>
 
-  <h2 class="sh" id="s8">8. Test Fixturing and the Boundary Condition Problem</h2>
+  <h2 class="sh" id="s9">9. Test Fixturing and the Boundary Condition Problem</h2>
 
   <p>Mechanical environmental testing depends on the fixture: the structure that connects the test article to the vibration-shaker table or another test-support interface. A fixture is not mechanically neutral. Its mass, stiffness, damping, and natural frequencies influence the motion transmitted to the test article, and an inadequately designed fixture can introduce unintended resonances or distort the test environment.</p>
   <p>The goal is not simply to hold the hardware securely. The fixture must transmit the specified input without becoming the dominant source of the response being measured.</p>
@@ -461,7 +462,7 @@ The spacecraft must endure these conditions not merely without visible damage, b
     <p>In short: the I&amp;T lead's job isn't to judge whether the fixture is right — it's to make sure the right fixture, in the right configuration, with its identity documented, is on hand when the test needs it, and to know enough to recognize when a fixture concern raised by the structural team needs to stop the schedule rather than be absorbed into it.</p>
   </div>
 
-  <h2 class="sh" id="s9">9. Instrumentation, Data Acquisition, and Monitoring</h2>
+  <h2 class="sh" id="s10">10. Instrumentation, Data Acquisition, and Monitoring</h2>
 
   <p>Measurements are not a secondary feature of environmental testing; they are the evidence that makes the test useful. With limited instrumentation, a test may show only that the hardware survived. With well-planned instrumentation, it can show what loads were applied, how the structure responded, whether the response matched predictions, and where to investigate if post-test functional checks reveal a change.</p>
 
@@ -471,7 +472,7 @@ The spacecraft must endure these conditions not merely without visible damage, b
     <li><span class="kt">Accelerometers</span> These are the primary instruments for vibration and shock testing. They measure acceleration over time and can be analyzed by frequency content. Accelerometers are commonly installed on the shaker table, fixture, and test article, particularly at structural interfaces, near heavy components, and at locations predicted to experience high response.</li>
     <li><span class="kt">Control accelerometers</span> A selected subset of accelerometers provides feedback to the test facility’s closed-loop control system. Their measurements are used to maintain the required input at the spacecraft interface. The choice of control locations—and whether several control signals are averaged—can materially affect the environment delivered to the hardware.</li>
     <li><span class="kt">Response accelerometers</span> These additional sensors measure how the test article responds without contributing to the control loop. Their data can be compared with finite-element-model predictions and used to estimate the loads experienced by particular structures, components, or interfaces.</li>
-    <li><span class="kt">Force gauges</span> Force transducers measure load transmitted through an interface. Used with acceleration measurements, they can support <span class="kt">force-limiting</span> (discussed in Section 10), which helps prevent a test fixture or shaker from applying unrealistic interface loads to the flight hardware.</li>
+    <li><span class="kt">Force gauges</span> Force transducers measure load transmitted through an interface. Used with acceleration measurements, they can support <span class="kt">force-limiting</span> (discussed in Section 11), which helps prevent a test fixture or shaker from applying unrealistic interface loads to the flight hardware.</li>
     <li><span class="kt">Microphones</span> During acoustic testing, microphones measure sound-pressure levels at multiple locations in the chamber and, where appropriate, close to the spacecraft surface. These measurements verify that the specified acoustic environment is being achieved.</li>
     <li><span class="kt">Telemetry monitoring</span> Spacecraft systems are often powered and monitored during mechanical testing so that functional anomalies can be detected as they occur. Critical channels may have predefined limits that alert the test team or initiate a controlled test stop when a limit is exceeded.</li>
   </ul>
@@ -517,7 +518,7 @@ The spacecraft must endure these conditions not merely without visible damage, b
   </div>
 
 
-  <h2 class="sh" id="s10">10. Notching, Over-Testing, and the Art of the Correct Input</h2>
+  <h2 class="sh" id="s11">11. Notching, Over-Testing, and the Art of the Correct Input</h2>
 
    <p>One of the most nuanced decisions in mechanical environmental testing is how to handle structural resonances during a vibration test. A common technique, called <span class="kt">notching</span>, reduces the test input in selected frequency bands to prevent the test from applying loads that would not occur in flight.</p>
 
@@ -554,14 +555,14 @@ The spacecraft must endure these conditions not merely without visible damage, b
     <p><strong>A live request to reduce the input is the same kind of moment as an anomaly, and deserves the same discipline.</strong> If a concerning response shows up during a run and someone proposes notching or backing off the input on the spot to get through the test, that is not a quiet, in-the-moment engineering judgment call — it is a change to the approved test configuration, and it needs the same rigor as any other hold: stop, document what's being proposed and why, get it properly approved, and only then proceed. An informal reduction made under schedule pressure to avoid a concerning response can quietly leave the actual flight environment unverified, which defeats the purpose of the test as surely as an unauthorized change made after the fact would.</p>
   </div>
 
-  <h2 class="sh" id="s11">11. Post-Test Assessment and Anomaly Response</h2>
+  <h2 class="sh" id="s12">12. Post-Test Assessment and Anomaly Response</h2>
 
   <p>The work of a mechanical environmental test does not end when the shaker stops. Post-test assessment is where the engineering value of the test is established: the team determines whether the hardware remains healthy, whether its response matched expectations, and whether any unexpected result requires further investigation.</p>
   <p>A successful test is therefore more than one in which the hardware appears intact. It is one that produces sufficient evidence to support a technically credible conclusion about the condition of the article and the validity of the test environment.</p>
 
   <h3 class="ssh">The Post-Test Assessment Sequence</h3>
   <ul class="body-list">
-     <li><strong>Post-test low-level survey sweep:</strong> The first check in the sequence — as described in §4, a low-level sine survey repeated after the full-level test and compared against the pre-test baseline, looking for a resonant-frequency or damping shift that would indicate a structural change.</li>
+     <li><strong>Post-test low-level survey sweep:</strong> The first check in the sequence — as described in §5, a low-level sine survey repeated after the full-level test and compared against the pre-test baseline, looking for a resonant-frequency or damping shift that would indicate a structural change.</li>
     <li><strong>Visual inspection:</strong> Before the article is disturbed, the team inspects it for evidence of damage or movement. Particular attention should be given to structural joints, fasteners, electrical connectors, harness supports, thermal hardware, and locations identified as sensitive during test planning. Any new marks, displaced hardware, or visible damage should be photographed and recorded before disassembly, repair, or reconnection.</li>
     <li><strong>Post-test functional verification:</strong> The program performs the approved functional test and compares results with the pre-test baseline. A result can warrant review even when it remains within specification if it represents an unexplained change from the baseline or suggests developing damage.</li>
     <li><strong>Data review:</strong> Engineers review acceleration, force, control, and other available data against predictions and test limits. Unexpected high-response locations, unanticipated frequency content, loss of control margin, or nonlinear response can identify structural issues that are not visible during inspection.</li>
