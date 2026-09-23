@@ -357,33 +357,33 @@ The spacecraft must endure these conditions not merely without visible damage, b
     <p style="font-style:italic; color:#6b6459;">A 1985 survey by C. J. Moening found approximately 83 shock-related flight failures across roughly 600 launches through 1984 — more than half of them resulting in catastrophic mission loss. A 1996 NASA Langley report breaks the 83 cases down further: 29 involved broken wires, leads, or cracked glass; 28 involved dislodged contaminants; 22 involved other shock-related effects; and 4 involved relay chatter or transfer problems. (The figure is sometimes attributed to an Air Force Research Laboratory survey, likely because a 2000 Institute for Defense Analyses report coauthored by an AFRL researcher also cites it — but Moening's original survey, not AFRL, is the primary source.)</p>
 
   <h3 class="ssh">Methods of Shock Testing</h3>
-  <table class="gen-table">
+    <table style="width:100%; border-collapse:collapse; margin:1.5em 0; font-size:0.9rem;">
     <thead>
-      <tr>
-        <th>Method</th>
-        <th>How it works</th>
-        <th>Typical use</th>
-        <th>Main limitation</th>
+      <tr style="background:var(--ink); color:var(--paper);">
+        <th style="padding:10px 14px; text-align:left; font-family:'Source Serif 4', serif; border-left:3px solid var(--rust);">Method</th>
+        <th style="padding:10px 14px; text-align:left; font-family:'Source Serif 4', serif;">How It Works</th>
+        <th style="padding:10px 14px; text-align:left; font-family:'Source Serif 4', serif;">Typical Use</th>
+        <th style="padding:10px 14px; text-align:left; font-family:'Source Serif 4', serif;">Main Limitation</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>Pyrotechnic Shock Test</td>
-        <td>Actual pyrotechnic devices (or representative devices) fired at or near the test article to create a flight-like shock event</td>
-        <td>Qualification of separation interfaces; testing hardware that will be in close proximity to pyrotechnic devices in flight</td>
-        <td>Requires stringent safety controls; test levels are difficult to fine-tune; the same test article generally cannot be exposed repeatedly</td>
+      <tr style="border-bottom:1px solid var(--rule);">
+        <td style="padding:10px 14px; font-weight:600; border-left:3px solid var(--rust);">Pyrotechnic Shock Test</td>
+        <td style="padding:10px 14px;">Actual pyrotechnic devices (or representative devices) fired at or near the test article to create a flight-like shock event</td>
+        <td style="padding:10px 14px;">Qualification of separation interfaces; testing hardware that will be in close proximity to pyrotechnic devices in flight</td>
+        <td style="padding:10px 14px; color:var(--muted);">Requires stringent safety controls; test levels are difficult to fine-tune; the same test article generally cannot be exposed repeatedly</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--rule); background:var(--light);">
+        <td style="padding:10px 14px; font-weight:600; border-left:3px solid var(--rust);">Mechanical Impact Test</td>
+        <td style="padding:10px 14px;">A tuned impact device, such as a resonant beam, drop table, or pendulum, strikes a fixture to create the required shock response</td>
+        <td style="padding:10px 14px;">Component- and subsystem-level testing where a controllable, repeatable test is needed</td>
+        <td style="padding:10px 14px; color:var(--muted);">It can be difficult to reproduce the highest-frequency content of a true pyroshock event; fixture behavior strongly affects the result</td>
       </tr>
       <tr>
-        <td>Mechanical Impact Test</td>
-        <td>A tuned impact device, such as a resonant beam, drop table, or pendulum, strikes a fixture to create the required shock response</td>
-        <td>Component- and subsystem-level testing where a controllable, repeatable test is needed</td>
-        <td>It can be difficult to reproduce the highest-frequency content of a true pyroshock event; fixture behavior strongly affects the result</td>
-      </tr>
-      <tr>
-        <td>Electrodynamic Shaker Shock</td>
-        <td>A standard vibration shaker driven by a specially shaped transient waveform to produce a defined SRS</td>
-        <td>Low-level shock testing; hardware that is too sensitive for mechanical impact testing</td>
-        <td>Limited in attainable shock level and high-frequency content; shaker stroke and force limits can constrain the test</td>
+        <td style="padding:10px 14px; font-weight:600; border-left:3px solid var(--rust);">Electrodynamic Shaker Shock</td>
+        <td style="padding:10px 14px;">A standard vibration shaker driven by a specially shaped transient waveform to produce a defined SRS</td>
+        <td style="padding:10px 14px;">Low-level shock testing; hardware that is too sensitive for mechanical impact testing</td>
+        <td style="padding:10px 14px; color:var(--muted);">Limited in attainable shock level and high-frequency content; shaker stroke and force limits can constrain the test</td>
       </tr>
     </tbody>
   </table>
