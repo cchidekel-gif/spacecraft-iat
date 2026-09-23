@@ -99,43 +99,58 @@ The spacecraft must endure these conditions not merely without visible damage, b
 
   <h2 class="sh" id="s2">2. The Three Mechanical Environments</h2>
 
-  <div class="env-grid">
-    <div class="env-card vib">
-      <div class="env-card-header">
-        <span class="env-card-icon">📳</span>
-        <div class="env-card-title">Structural Vibration</div>
-        <div class="env-card-freq">2 Hz — 2,000 Hz · Sinusoidal &amp; Random</div>
-      </div>
-      <div class="env-card-body">
-        <p>Vibration is the back-and-forth mechanical motion transmitted through the spacecraft structure during launch. It is driven by the engines, by the way the launch vehicle flexes and responds to those forces, and by aerodynamic buffeting as the vehicle travels through the atmosphere. Engineers describe vibration in terms of its frequency, amplitude, and duration.</p>
+    <style>
+    .env-cards{margin:2em 0;border:1px solid var(--rule);overflow:hidden;}
+    .env-item{display:grid;grid-template-columns:56px 1fr;border-bottom:1px solid var(--rule);}
+    .env-item:last-child{border-bottom:none;}
+    .env-badge{display:flex;align-items:flex-start;justify-content:center;padding-top:18px;font-size:1.3rem;}
+    .env-item:nth-child(1) .env-badge{background:var(--steel);}
+    .env-item:nth-child(2) .env-badge{background:var(--gold);}
+    .env-item:nth-child(3) .env-badge{background:var(--rust);}
+    .env-body{padding:16px 20px;}
+    .env-item:nth-child(1) .env-body{background:#f0f5fa;border-left:3px solid var(--steel);}
+    .env-item:nth-child(2) .env-body{background:#faf8f0;border-left:3px solid var(--gold);}
+    .env-item:nth-child(3) .env-body{background:#faf0f0;border-left:3px solid var(--rust);}
+    .env-title{font-family:'Playfair Display',serif;font-size:0.98rem;font-weight:700;color:var(--ink);margin-bottom:2px;}
+    .env-freq{font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--muted);font-style:italic;margin-bottom:10px;}
+    .env-desc{font-size:0.86rem;color:#444;line-height:1.65;font-weight:300;}
+    .env-desc p{margin:0 0 10px;}
+    .env-desc p:last-child{margin-bottom:0;}
+    @media(max-width:600px){.env-item{grid-template-columns:44px 1fr;}.env-badge{font-size:1.1rem;}}
+  </style>
 
-        <p>Two forms are commonly tested. <strong>Sine vibration</strong> applies motion at one frequency at a time while sweeping through a defined range. <strong>Random vibration</strong> applies energy across many frequencies at once, more closely representing the complex vibration environment produced during flight. Each reveals different weaknesses in hardware, from loosening fasteners and stressed structural joints to failures in electronic assemblies and wiring harnesses.</p>
-
+  <div class="env-cards">
+    <div class="env-item">
+      <div class="env-badge">📳</div>
+      <div class="env-body">
+        <div class="env-title">Structural Vibration</div>
+        <div class="env-freq">2 Hz — 2,000 Hz · Sinusoidal &amp; Random</div>
+        <div class="env-desc">
+          <p>Vibration is the back-and-forth mechanical motion transmitted through the spacecraft structure during launch. It is driven by the engines, by the way the launch vehicle flexes and responds to those forces, and by aerodynamic buffeting as the vehicle travels through the atmosphere. Engineers describe vibration in terms of its frequency, amplitude, and duration.</p>
+          <p>Two forms are commonly tested. Sine vibration applies motion at one frequency at a time while sweeping through a defined range. Random vibration applies energy across many frequencies at once, more closely representing the complex vibration environment produced during flight. Each reveals different weaknesses in hardware, from loosening fasteners and stressed structural joints to failures in electronic assemblies and wiring harnesses.</p>
+        </div>
       </div>
     </div>
-    <div class="env-card acou">
-      <div class="env-card-header">
-        <span class="env-card-icon">🔊</span>
-        <div class="env-card-title">Acoustics</div>
-        <div class="env-card-freq">20 Hz — 10,000 Hz · Sound Pressure Level</div>
-      </div>
-      <div class="env-card-body">
-        <p>Acoustic loading is caused by the intense sound field produced by rocket exhaust and shaped by its interaction with the launch pad, surrounding structures, and the interior of the payload fairing. At liftoff, sound levels inside the fairing can reach roughly 140–145 dB overall—comparable to being near a jet engine at full thrust.</p>
-
-        <p>Unlike vibration transmitted through a spacecraft’s mounting points, acoustic energy acts through rapid fluctuations in air pressure. These fluctuations can excite the spacecraft structure and its lightweight panels, including solar arrays, antenna reflectors, and instrument covers. Large, lightweight structures that may be relatively resistant to vibration entering through their attachment points can nevertheless be especially vulnerable to acoustic loading.</p>
+    <div class="env-item">
+      <div class="env-badge">🔊</div>
+      <div class="env-body">
+        <div class="env-title">Acoustics</div>
+        <div class="env-freq">20 Hz — 10,000 Hz · Sound Pressure Level</div>
+        <div class="env-desc">
+          <p>Acoustic loading is caused by the intense sound field produced by rocket exhaust and shaped by its interaction with the launch pad, surrounding structures, and the interior of the payload fairing. At liftoff, sound levels inside the fairing can reach roughly 140–145 dB overall — comparable to being near a jet engine at full thrust.</p>
+          <p>Unlike vibration transmitted through a spacecraft's mounting points, acoustic energy acts through rapid fluctuations in air pressure. These fluctuations can excite the spacecraft structure and its lightweight panels, including solar arrays, antenna reflectors, and instrument covers. Large, lightweight structures that may be relatively resistant to vibration entering through their attachment points can nevertheless be especially vulnerable to acoustic loading.</p>
+        </div>
       </div>
     </div>
-      <div class="env-card shk">
-      <div class="env-card-header">
-        <span class="env-card-icon">💥</span>
-        <div class="env-card-title">Mechanical Shock</div>
-        <div class="env-card-freq">100 Hz — 10,000 Hz · Shock Response Spectrum</div>
-      </div>
-      <div class="env-card-body">
-        <p>Mechanical shock is a sudden, high-intensity burst of motion caused by pyrotechnic devices—small explosive or gas-driven mechanisms used to release hardware at critical points in flight. These devices may separate launch-vehicle stages, jettison the payload fairing, or release the spacecraft from the launch vehicle.</p>
-        
-        <p>A typical pyrotechnic shock event lasts only a few milliseconds, but it can produce peak accelerations of thousands of g and excite frequencies up to 10,000 Hz. These short, sharp events can be especially demanding for delicate or rigid components, including crystal oscillators, relays, ceramic capacitors, optical mounts, and hardware with resonant frequencies in the affected range. Because the shock travels through complex spacecraft structures and can vary significantly from one location to another, it is among the most difficult launch environments to test and analyze.</p>
-
+    <div class="env-item">
+      <div class="env-badge">💥</div>
+      <div class="env-body">
+        <div class="env-title">Mechanical Shock</div>
+        <div class="env-freq">100 Hz — 10,000 Hz · Shock Response Spectrum</div>
+        <div class="env-desc">
+          <p>Mechanical shock is a sudden, high-intensity burst of motion caused by pyrotechnic devices — small explosive or gas-driven mechanisms used to release hardware at critical points in flight. These devices may separate launch-vehicle stages, jettison the payload fairing, or release the spacecraft from the launch vehicle.</p>
+          <p>A typical pyrotechnic shock event lasts only a few milliseconds, but it can produce peak accelerations of thousands of g and excite frequencies up to 10,000 Hz. These short, sharp events can be especially demanding for delicate or rigid components, including crystal oscillators, relays, ceramic capacitors, optical mounts, and hardware with resonant frequencies in the affected range. Because the shock travels through complex spacecraft structures and can vary significantly from one location to another, it is among the most difficult launch environments to test and analyze.</p>
+        </div>
       </div>
     </div>
   </div>
