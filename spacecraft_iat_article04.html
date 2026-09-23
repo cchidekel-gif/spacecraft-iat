@@ -419,33 +419,69 @@ The spacecraft must endure these conditions not merely without visible damage, b
   <p>Mechanical environmental testing depends on the fixture: the structure that connects the test article to the vibration-shaker table or another test-support interface. A fixture is not mechanically neutral. Its mass, stiffness, damping, and natural frequencies influence the motion transmitted to the test article, and an inadequately designed fixture can introduce unintended resonances or distort the test environment.</p>
   <p>The goal is not simply to hold the hardware securely. The fixture must transmit the specified input without becoming the dominant source of the response being measured.</p>
 
-   <h3 class="ssh">Common Fixture Types</h3>
-  <div class="fixture-grid">
-    <div class="fixture-card">
-      <span class="fixture-icon">⬜</span>
-      <div class="fixture-title">Stiff Cube / Head Expander</div>
-      <div class="fixture-desc"><p>A stiff, lightweight structure that distributes shaker motion across a larger attachment interface. It is used when a test article has multiple mounting points that must be driven together at approximately the same prescribed level.</p> 
-        <p>The fixture should be sufficiently stiff that its significant resonances lie outside the relevant test range or are otherwise understood and controlled. A flexible head expander can produce different motion at different mounting points, making it difficult to determine what the test article actually experienced.</p>
+    <h3 class="ssh">Common Fixture Types</h3>
+
+  <style>
+    .fx-cards{margin:2em 0;border:1px solid var(--rule);overflow:hidden;}
+    .fx-item{display:grid;grid-template-columns:56px 1fr;border-bottom:1px solid var(--rule);}
+    .fx-item:last-child{border-bottom:none;}
+    .fx-badge{display:flex;align-items:flex-start;justify-content:center;padding-top:18px;font-size:1.3rem;}
+    .fx-item:nth-child(1) .fx-badge{background:var(--green);}
+    .fx-item:nth-child(2) .fx-badge{background:var(--deep-blue);}
+    .fx-item:nth-child(3) .fx-badge{background:var(--amber);}
+    .fx-item:nth-child(4) .fx-badge{background:var(--rust);}
+    .fx-body{padding:16px 20px;}
+    .fx-item:nth-child(1) .fx-body{background:#f0faf4;border-left:3px solid var(--green);}
+    .fx-item:nth-child(2) .fx-body{background:#f0f5fa;border-left:3px solid var(--deep-blue);}
+    .fx-item:nth-child(3) .fx-body{background:#faf8f0;border-left:3px solid var(--amber);}
+    .fx-item:nth-child(4) .fx-body{background:#faf0f0;border-left:3px solid var(--rust);}
+    .fx-title{font-family:'Playfair Display',serif;font-size:0.98rem;font-weight:700;color:var(--ink);margin-bottom:6px;}
+    .fx-desc{font-size:0.86rem;color:#444;line-height:1.65;font-weight:300;}
+    .fx-desc p{margin:0 0 10px;}
+    .fx-desc p:last-child{margin-bottom:0;}
+    @media(max-width:600px){.fx-item{grid-template-columns:44px 1fr;}.fx-badge{font-size:1.1rem;}}
+  </style>
+
+  <div class="fx-cards">
+    <div class="fx-item">
+      <div class="fx-badge">⬜</div>
+      <div class="fx-body">
+        <div class="fx-title">Stiff Cube / Head Expander</div>
+        <div class="fx-desc">
+          <p>A stiff, lightweight structure that distributes shaker motion across a larger attachment interface. It is used when a test article has multiple mounting points that must be driven together at approximately the same prescribed level.</p>
+          <p>The fixture should be sufficiently stiff that its significant resonances lie outside the relevant test range or are otherwise understood and controlled. A flexible head expander can produce different motion at different mounting points, making it difficult to determine what the test article actually experienced.</p>
+        </div>
       </div>
     </div>
-    <div class="fixture-card">
-      <span class="fixture-icon">📐</span>
-      <div class="fixture-title">Axis-Change Fixture</div>
-      <div class="fixture-desc"><p>An axis-change fixture reorients the test article so it can be tested in an axis perpendicular to the shaker’s primary direction of motion. These fixtures must balance low mass with high stiffness.</p> 
-        <p>Extra fixture mass reduces the force and acceleration capability available at the test interface. At the same time, insufficient stiffness can bring fixture resonances into the test frequency range and alter the input seen by the hardware.</p>
+    <div class="fx-item">
+      <div class="fx-badge">📐</div>
+      <div class="fx-body">
+        <div class="fx-title">Axis-Change Fixture</div>
+        <div class="fx-desc">
+          <p>An axis-change fixture reorients the test article so it can be tested in an axis perpendicular to the shaker's primary direction of motion. These fixtures must balance low mass with high stiffness.</p>
+          <p>Extra fixture mass reduces the force and acceleration capability available at the test interface. At the same time, insufficient stiffness can bring fixture resonances into the test frequency range and alter the input seen by the hardware.</p>
+        </div>
       </div>
     </div>
-    <div class="fixture-card">
-      <span class="fixture-icon">🔗</span>
-      <div class="fixture-title">Interface Simulation Fixture</div>
-      <div class="fixture-desc"><p>An interface-simulation fixture is designed to represent important aspects of the flight mounting structure, including stiffness, mass distribution, and attachment geometry. It is most useful when the test article’s behavior depends strongly on the structure to which it will be attached in flight—for example, an instrument tested independently before integration with its spacecraft bus. </p> 
-        <p>This approach does not make the ground boundary condition identical to flight. It aims to make the aspects that most affect structural response sufficiently representative for the purpose of the test.</p></div>
+    <div class="fx-item">
+      <div class="fx-badge">🔗</div>
+      <div class="fx-body">
+        <div class="fx-title">Interface Simulation Fixture</div>
+        <div class="fx-desc">
+          <p>An interface-simulation fixture is designed to represent important aspects of the flight mounting structure, including stiffness, mass distribution, and attachment geometry. It is most useful when the test article's behavior depends strongly on the structure to which it will be attached in flight — for example, an instrument tested independently before integration with its spacecraft bus.</p>
+          <p>This approach does not make the ground boundary condition identical to flight. It aims to make the aspects that most affect structural response sufficiently representative for the purpose of the test.</p>
+        </div>
+      </div>
     </div>
-    <div class="fixture-card">
-      <span class="fixture-icon">🪝</span>
-      <div class="fixture-title">Free-Free Suspension</div>
-      <div class="fixture-desc"><p>For a free-free modal survey, the test article is suspended on soft elastic supports, such as cords or bungees, so that the supports have very little influence within the frequency range of interest. This approximates a structure with no rigid attachment boundary and allows engineers to measure its natural frequencies and vibration patterns for comparison with a finite-element model. </p>
-        <p>Free-free suspension is used for modal characterization and model correlation, not for qualification or acceptance environmental testing.</p></div>
+    <div class="fx-item">
+      <div class="fx-badge">🪝</div>
+      <div class="fx-body">
+        <div class="fx-title">Free-Free Suspension</div>
+        <div class="fx-desc">
+          <p>For a free-free modal survey, the test article is suspended on soft elastic supports, such as cords or bungees, so that the supports have very little influence within the frequency range of interest. This approximates a structure with no rigid attachment boundary and allows engineers to measure its natural frequencies and vibration patterns for comparison with a finite-element model.</p>
+          <p>Free-free suspension is used for modal characterization and model correlation, not for qualification or acceptance environmental testing.</p>
+        </div>
+      </div>
     </div>
   </div>
 
