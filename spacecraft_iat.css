@@ -2945,3 +2945,40 @@ ul.cs-list li::before {
   display: block;
   margin-bottom: 6px;
 }
+
+/* ──  Styling for the graphics in the article on spacecraft IAT (Mechanical Environments). The image is displayed as a block element, with a maximum width of 100% to ensure it scales appropriately within its container. The height is set to auto to maintain the aspect ratio of the image. A margin of 1.5rem is applied to center the image vertically and horizontally within its container. The image has rounded corners with a border-radius of 6px, and a subtle border of 1px solid var(--steel) is added for visual separation from the background. ── */
+.acoustic-chamber-img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem auto;
+  border-radius: 6px;
+  border: 1px solid var(--steel);
+}
+
+.launch-env-img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem auto;
+  border-radius: 6px;
+  border: 10px solid var(--white);
+}
+
+.freq-overlap-img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem auto;
+  border-radius: 6px;
+  border: 1px solid var(--steel);
+}
+
+.sep-test-img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem auto;
+  border-radius: 6px;
+  border: 1px solid var(--steel);
+}
