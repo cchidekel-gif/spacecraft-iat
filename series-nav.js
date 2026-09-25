@@ -99,12 +99,12 @@
       topics:   ["Mass Properties", "Structural Analysis", "FEM", "Coupled Loads", "Modal Survey", "Factor of Safety"],
       audience: "I&T engineers and program staff who interact with structural and mass properties data and need to understand how it is generated, what it means, and why it matters for launch readiness."
     },
-   { id: "09", seriesNum: "09",
-      title:    "Vibration, Acoustics, and Shock Testing",
+       { id: "09", seriesNum: "09",
+      title:    "Mechanical Environments: Vibration, Acoustics, and Shock",
       url:      "spacecraft_iat_article04.html",
-      published: false,
+      published: true,
       topics:   ["Vibration", "Acoustics", "Shock", "Qualification", "Acceptance Testing", "Notching", "Force Limiting"],
-      audience: "I&T engineers, structural and environmental test engineers, and program staff responsible for planning and executing mechanical environmental test campaigns."
+      audience: "The violence of launch compressed into minutes on the test floor — how spacecraft are exposed to, and proven to survive, the most severe mechanical environment they will ever experience."
     },
    { id: "10", seriesNum: "10",
       title:    "Thermal-Vacuum Testing",
