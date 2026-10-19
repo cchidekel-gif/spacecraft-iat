@@ -1539,6 +1539,12 @@ ul.cs-list li::before {
   gap: 14px; margin: 1.8em 0;
 }
 
+.inst-card { border: 1px solid var(--rule); border-top: 3px solid var(--steel); background: var(--white); padding: 16px; }
+.inst-card:nth-child(even) { background: var(--light); }
+.inst-icon { font-size: 1.6rem; display: block; margin-bottom: 8px; }
+.inst-title { font-family: 'Playfair Display', serif; font-size: 0.98rem; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+.inst-desc { font-size: 0.88rem; color: #333; line-height: 1.65; font-weight: 300; }
+
 /* ── ARTICLE 06 (Anomaly Management): DR FLOW ── */
 .dr-flow { margin: 2.2em 0; border: 1px solid var(--rule); overflow: hidden; }
 .dr-flow-header {
