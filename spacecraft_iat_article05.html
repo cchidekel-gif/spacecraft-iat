@@ -269,7 +269,7 @@
         <div class="chamber-col-title">Test Support Systems</div>
         <div class="chamber-feature">
           <span class="cf-label">EGSE Feed</span>
-          <span class="cf-desc">Vacuum-rated electrical feedthroughs that carry power, commands, and telemetry between the spacecraft inside the chamber and the EGSE outside. Must handle all spacecraft interfaces without introducing ground loops, electrical noise,thermal shorts or contamination paths</span>
+          <span class="cf-desc">Vacuum-rated electrical feedthroughs that carry power, commands, and telemetry between the spacecraft inside the chamber and the EGSE outside. Must handle all spacecraft interfaces without introducing ground loops, electrical noise, thermal shorts or contamination paths</span>
         </div>
         <div class="chamber-feature">
           <span class="cf-label">RF Feeds</span>
@@ -281,7 +281,7 @@
         </div>
         <div class="chamber-feature">
           <span class="cf-label">Contamination</span>
-          <span class="cf-desc">Witness mirrors, QCM sensors, and RGA (residual gas analyzer) inside the chamber monitor outgassing and contamination throughout the test. Contamination events are documented and may trigger test holds</span>
+             <span class="cf-desc">Cold fingers, witness plates and mirrors, QCM sensors, an RGA (residual gas analyzer), and other detectors such as surface acoustic wave (SAW) sensors monitor outgassing and contamination before and throughout the test. Contamination events are documented and may trigger test holds</span>
         </div>
       </div>
     </div>
@@ -293,6 +293,20 @@
 
       <p>Programs building large spacecraft must plan for their T-V facility requirements years in advance. Chamber availability and size have delayed programs and driven test compromises, such as separate thermal-vacuum tests of the spacecraft bus and the instrument or telescope module. JWST was tested this way because no chamber could hold the whole observatory: the telescope and instrument module (OTIS) was tested in Chamber A at Johnson Space Center, with the heat from the spacecraft bus simulated by ground equipment, and the spacecraft element (bus and sunshield) was tested separately at Northrop Grumman. A split campaign introduces additional risks and requires careful analysis to show that the separate tests together constitute adequate system-level verification, including at the interfaces neither test fully exercises.</p>
   </div>
+
+    <h3 class="ssh">The Chamber Is a Cleanroom</h3>
+  <p>A thermal-vacuum chamber is treated and operated as a cleanroom, and its cleanliness is part of the test. A chamber large enough for personnel to enter requires the same gowning, access control, and contamination protocols as a cleanroom or clean tent, and everyone who works inside it is held to them. The entrance where the hardware goes in is often a clean tent, so the spacecraft moves from the integration cleanroom to the chamber without being exposed to uncontrolled air.</p>
+  <p>The chamber is prepared before the spacecraft arrives. It is typically run empty first, which verifies that the vacuum, shroud, control, and data systems work and also cleans and bakes out the chamber so its cleanliness can be certified. It may then be run again with the test cables and instrumentation that will be used in the test inside it, to clean them. Alternatively, those items are baked out in a separate chamber and moved in afterward. Throughout, the chamber is monitored with cold fingers (cooled surfaces that collect condensable material for later analysis), witness plates, quartz crystal microbalances, residual gas analyzers, and other detectors such as SAW sensors. Contamination engineering reviews the results against the program's cleanliness criteria before the spacecraft moves in.</p>
+  <p>Several other preparations belong on the I&amp;T lead's list:</p>
+  <ul class="body-list">
+    <li><strong>Chamber history.</strong> What was tested last, and how the chamber was cleaned afterward, affects how much cleaning it needs now.</li>
+    <li><strong>Everything that goes in.</strong> Fixtures, MGSE, tapes, adhesives, cable ties, thermocouple mounting materials, and test blankets are reviewed for vacuum use by contamination engineering, usually against outgassing data, before they enter.</li>
+    <li><strong>Cold surfaces are the sinks.</strong> Whatever outgasses tends to condense on the coldest surfaces it can reach. That includes the shrouds, and it also includes the spacecraft's own cold radiators, optics, and detectors. Covers, purges, and the bake-out sequence all exist to keep contamination off the second group.</li>
+    <li><strong>Pumping and backfill.</strong> The chamber must not become the source. Backstreaming from the pumps is controlled, and repressurization uses filtered dry nitrogen (see Section 7).</li>
+    <li><strong>Schedule.</strong> The empty-chamber and cable-cleaning runs happen before the spacecraft arrives and add days to weeks. They need their own slot in the facility schedule.</li>
+    <li><strong>After the test.</strong> Witness plates and samples are analyzed, and the chamber is returned to cleanroom condition, with the contamination record kept alongside the test data.</li>
+  </ul>
+  <p>The I&amp;T lead's job here is the same as elsewhere in the campaign: make sure these runs are scheduled, that results are in hand and accepted by contamination engineering before the hardware moves, and that every person and item entering the chamber is accounted for in the plan.</p>
 
   <h2 class="sh" id="s4">4. Temperature Limit Definitions</h2>
 
