@@ -461,7 +461,7 @@
     inner.appendChild(col3);
     container.appendChild(inner);
 
-    // ── AI-assistance disclosure (one edit updates every article) ──
+     // ── AI-assistance disclosure (one edit updates every article) ──
     var note = document.createElement("p");
     note.className = "footer-disclosure";
     note.style.cssText = "margin:1.5rem 0 0;padding-top:1rem;" +
@@ -470,8 +470,8 @@
     note.innerHTML = "Written by Charles Chidekel with AI assistance from " +
       "Claude (Anthropic). This series has not been reviewed, approved, or " +
       "endorsed by NASA or any other organization. " +
-      '<a href="https://integrationandtest.guru/how-this-series-was-written" ' +
-      'style="color:inherit;text-decoration:underline">' +
+      '<a href="https://integrationandtest.guru/i%26t-education#how-this-series-was-written" ' +
+      'target="_top" style="color:inherit;text-decoration:underline">' +
       "How this series was written</a>.";
     container.appendChild(note);
   }
