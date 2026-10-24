@@ -568,7 +568,7 @@
       <div class="tvp-badge vac"><div class="tvp-icon">🌬️</div><div class="tvp-num">REPRESS</div></div>
       <div class="tvp-body">
         <div class="tvp-title">Warm-Up and Repressurization</div>
-        <div class="tvp-desc">Before venting, the spacecraft is brought above the dew point of the backfill gas everywhere, including cold-biased components and the chamber's cold surfaces. Otherwise, moisture and contaminants condense onto flight hardware. The chamber is then backfilled, normally with dry nitrogen, at a controlled rate. As in pumpdown, high-voltage equipment stays off while the pressure passes through the critical range. Repressurization is a contamination event in its own right, and contamination engineering should agree the procedure in advance.</div>
+        <div class="tvp-desc">Before venting, the spacecraft is brought above the dew point of the backfill gas everywhere, including cold-biased components and the chamber's cold surfaces. Otherwise, moisture and contaminants condense onto flight hardware. The chamber is then backfilled, normally with dry nitrogen, at a controlled rate. As in pumpdown, high-voltage equipment stays off while the pressure passes through the critical range. Repressurization is a contamination event in its own right, and contamination engineering will have a significant contribution to this part of the procedure.</div>
       </div>
     </div>
 
@@ -593,8 +593,8 @@
   <p>Section 2 listed the objectives and who owns them. The I&amp;T lead is responsible for building a campaign that can deliver all of them: configured correctly, staffed around the clock, protected against facility failures, and prepared for the anomaly that will inevitably appear at the least convenient moment.</p>
 
   <h3 class="ssh">Before the Door Closes</h3>
-  <p>Planning and preparing for a thermal-vacuum test often takes two to three times as long or longer as for a vibration or EMC test, and the reasons are built into the test. It is expensive to run, and expensive and time-consuming to stop. Once the chamber is sealed, the spacecraft cannot be touched. And nearly every discipline has an objective in the test and something to prepare for it. Every omission found after pumpdown is therefore costly. The readiness checklist covers several items:</p>
-   <p>Planning and preparing for a thermal-vacuum test often takes two to three times as long as for a vibration or EMC test, and the reasons are built into the test. It is expensive to run, and expensive and time-consuming to stop. Once the chamber is sealed, the spacecraft cannot be touched. And nearly every discipline has an objective in the test and something to prepare for it. Every omission found after pumpdown is therefore costly. The readiness checklist has two parts:</p>
+  
+   <p>Planning and preparing for a thermal-vacuum test often takes two to three times as long as for a vibration or EMC test, and the reasons are built into the test. It is expensive to run, and expensive and time-consuming to stop. Once the chamber is sealed, the spacecraft cannot be touched. And nearly every discipline has an objective in the test and something to prepare for it. Every omission found after pumpdown is therefore costly. The readiness checklist has two sections:</p>
 
   <p><strong>The plan and the people</strong></p>
   <ul class="body-list">
@@ -603,21 +603,26 @@
     <li>The plateau-by-plateau functional test matrix is approved.</li>
     <li>Flight operations procedures and personnel are ready for the windows assigned to them.</li>
     <li>The shift schedule, test conductor roster, and on-call list, with backups, are in place.</li>
+    <li>The facility emergency plan names who decides, who stays, and who leaves for each scenario (fire, severe weather, earthquake, brush fire or controlled-burn smoke, campus evacuation), with the facility operators and 24-hour cryogen supplier contacts on the same call list as the test team.</li>
     <li>The anomaly response plan is in place, including the break-vacuum criteria and who makes the call.</li>
   </ul>
 
   <p><strong>The hardware and the facility</strong></p>
   <ul class="body-list">
-    <li>The as-built configuration is documented before closeout, including blanket and coating inspection and photographs, so post-test findings have a baseline to compare against.</li>
-    <li>The thermocouple installation is closed out and verified channel-by-channel against the map.</li>
-    <li>Feedthrough pin-outs are checked end to end.</li>
-    <li>Thermal data reaches the analysts in near real time, so a preliminary correlation can happen during the test.</li>
-    <li>Calibration, certification, and maintenance dates for all test and facility equipment are verified valid through the planned test end date plus schedule margin.</li>
-    <li>Redlines are defined for both spacecraft and facility parameters.</li>
-  </ul>
+  <li>The as-built configuration is documented before closeout, including blanket and coating inspection and photographs, so post-test findings have a baseline to compare against.</li>
+  <li>The thermocouple installation is closed out and verified channel-by-channel against the map.</li>
+  <li>Feedthrough pin-outs are checked end to end.</li>
+  <li>Thermal data reaches the analysts in near real time, so a preliminary correlation can happen during the test.</li>
+  <li>Calibration, certification, and maintenance dates for all test and facility equipment are verified valid through the planned test end date plus schedule margin.</li>
+  <li>Redlines are defined for both spacecraft and facility parameters.</li>
+  <li>Backup power is verified, not assumed: the generator and any uninterruptible supplies have been tested under load, the pumps, chamber controls, and data acquisition are confirmed to be on the circuits they carry, and the transfer to backup power has been exercised.</li>
+<li>Cryogen supply covers the planned test duration plus margin, with deliveries scheduled, a second supplier identified, and a minimum reserve level that triggers escalation before it is reached (<a href="#s11">Section 11</a> describes a real case where deliveries were blocked and the reserve mattered).</li>
+  <li>A safe state is defined for the chamber and spacecraft in each test phase, including what to do if the facility must be left unattended.</li>
+</ul>
+
+<p><p>The facility emergency items on these lists deserve a decision before the test starts, not during the event. A fire alarm at 2 a.m. in week three is the worst time to work out who stays and what condition the chamber should be left in. The right answer also depends on the test phase: holding in a cold soak with the spacecraft unpowered is a different situation from the middle of a warm-up, and an unattended chamber is a different risk from an interrupted test. Life safety comes first, and no one is asked to stay in a hazard to protect hardware. Whether to hold, warm up in a controlled way, or keep a minimum crew in place is a risk decision for systems engineering and project management together with facility safety. The I&T lead lays out the options and consequences for each phase ahead of time, recommends one, and makes sure the decision and the authority to act on it are written down before the door closes.</p>
 
   <p>The pre-test functional baseline described in Section 7 is the last opportunity to find a problem while the hardware can still be touched.</p>
-
 
     <h3 class="ssh">Certifications and Maintenance That Must Outlast the Test</h3>
   <p>Article 05 covers the <a href="spacecraft_iat_article10.html">test equipment calibration program</a> in detail, but thermal-vacuum testing puts a particular strain on it. Here the requirement is not just that equipment is calibrated and certified when the test starts. Every calibration and certification has to remain valid until the test ends, with margin for the delays that a multi-week campaign almost always experiences. An instrument or system whose certification expires mid-test cannot simply be swapped out behind a sealed chamber door. Depending on what it is, the expiration can halt the test, invalidate the data taken with it, or force a choice between breaking vacuum and running on equipment that is no longer certified.</p>
