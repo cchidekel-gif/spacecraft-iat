@@ -467,8 +467,7 @@
     note.style.cssText = "margin:1.5rem 0 0;padding-top:1rem;" +
       "border-top:1px solid rgba(128,128,128,.35);" +
       "font-size:.85em;font-style:italic;opacity:.85;";
-    note.innerHTML = "Written by Charles Chidekel with AI assistance from " +
-      "Claude (Anthropic). This series has not been reviewed, approved, or " +
+    note.innerHTML = "Written by Charles Chidekel with AI assistance. This series has not been reviewed, approved, or " +
       "endorsed by NASA or any other organization. " +
       '<a href="https://integrationandtest.guru/i%26t-education#how-this-series-was-written" ' +
       'target="_top" style="color:inherit;text-decoration:underline">' +
