@@ -109,7 +109,7 @@
    { id: "10", seriesNum: "10",
       title:    "Thermal-Vacuum Testing",
       url:      "spacecraft_iat_article05.html",
-      published: false,
+      published: true,
       topics:   ["Thermal-Vacuum", "Thermal Balance", "Thermal Cycling", "Thermal Model", "Cryogenic Testing", "Outgassing"],
       audience: "I&T engineers, thermal engineers, and program staff responsible for planning and executing thermal-vacuum test campaigns."
     },
